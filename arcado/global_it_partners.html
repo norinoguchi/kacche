@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan IT Week 2026 Spring - Overseas Exhibitors</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #f1f5f9;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 { margin: 0; font-size: 1.8rem; letter-spacing: -0.025em; }
+        .event-info { margin-top: 15px; font-size: 1rem; opacity: 0.9; }
+
+        /* 言語切替ボタン */
+        .lang-switch {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+        }
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: white;
+            color: #1e3a8a;
+        }
+        
+        .pavilion-container {
+            background: white;
+            margin-bottom: 40px;
+            padding: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .pavilion-header {
+            padding: 20px 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pavilion-name { font-size: 1.4rem; font-weight: bold; }
+        .booth-number { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 9999px; font-size: 0.9rem; }
+        
+        .armenia { background: #ea580c; }
+        .srilanka { background: #b45309; }
+        .pakistan { background: #15803d; }
+
+        .company-table { width: 100%; border-collapse: collapse; }
+        .company-row { border-bottom: 1px solid #e2e8f0; transition: background 0.2s; }
+        .company-row:hover { background-color: #f8fafc; }
+        .company-row:last-child { border-bottom: none; }
+        
+        .company-info-cell { padding: 20px 30px; }
+        .company-name { font-weight: 800; font-size: 1.1rem; color: #1e293b; display: block; margin-bottom: 4px; }
+        .company-desc { font-size: 0.9rem; color: #64748b; }
+        
+        .link-cell { padding: 20px 30px; text-align: right; width: 180px; }
+        .btn-direct {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white !important;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .btn-direct:hover { background-color: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+
+        footer { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 50px; }
+
+        /* 言語表示制御 */
+        [lang="en"] { display: none; }
+        .lang-en [lang="ja"] { display: none; }
+        .lang-en [lang="en"] { display: inline; }
+        .lang-en .company-desc[lang="en"] { display: block; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
+        <button class="lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
+    <h1>
+        <span lang="ja">Japan IT Week 2026 春 出展企業リスト</span>
+        <span lang="en">Japan IT Week 2026 Spring Exhibitor List</span>
+    </h1>
+    <div class="event-info">
+        <span lang="ja">会場: 東京ビッグサイト 西ホール | 2026年4月8日(水)～10日(金)</span>
+        <span lang="en">Venue: Tokyo Big Sight West Hall | April 8 (Wed) - 10 (Fri), 2026</span>
+    </div>
+</header>
+
+<div class="pavilion-container">
+    <div class="pavilion-header armenia">
+        <span class="pavilion-name">
+            <span lang="ja">🇦🇲 アルメニア・パビリオン</span>
+            <span lang="en">🇦🇲 Armenia Pavilion</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">西２ホール W8-26</span>
+            <span lang="en">West Hall 2 W8-26</span>
+        </span>
+    </div>
+    <table class="company-table">
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">UATE</span>
+                <span class="company-desc" lang="ja">アルメニアハイテク産業の発展を目的として設立された業界団体</span>
+                <span class="company-desc" lang="en">Industry association established to promote the development of high-tech industry in Armenia.</span>
+            </td>
+            <td class="link-cell"><a href="https://uate.org/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Osensus</span>
+                <span class="company-desc" lang="ja">フォトグラメトリー技術に基づく人・物の3Dスキャンデバイス</span>
+                <span class="company-desc" lang="en">3D scanning devices for people and objects based on photogrammetry technology.</span>
+            </td>
+            <td class="link-cell"><a href="https://osensus.com/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="pavilion-container">
+    <div class="pavilion-header srilanka">
+        <span class="pavilion-name">
+            <span lang="ja">🇱🇰 スリランカ・パビリオン</span>
+            <span lang="en">🇱🇰 Sri Lanka Pavilion</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">西２ホール W8-18</span>
+            <span lang="en">West Hall 2 W8-18</span>
+        </span>
+    </div>
+    <table class="company-table">
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Sri Lanka EDB</span>
+                <span class="company-desc" lang="ja">スリランカ輸出促進庁</span>
+                <span class="company-desc" lang="en">Sri Lanka Export Development Board</span>
+            </td>
+            <td class="link-cell"><a href="https://www.srilankabusiness.com/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Adventa Holdings</span>
+                <span class="company-desc" lang="ja">4か月以内の迅速なローコード開発</span>
+                <span class="company-desc" lang="en">Rapid low-code development within 4 months.</span>
+            </td>
+            <td class="link-cell"><a href="https://adventa.io/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="pavilion-container">
+    <div class="pavilion-header pakistan">
+        <span class="pavilion-name">
+            <span lang="ja">🇵🇰 パキスタン・パビリオン</span>
+            <span lang="en">🇵🇰 Pakistan Pavilion</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">西２ホール W8-8</span>
+            <span lang="en">West Hall 2 W8-8</span>
+        </span>
+    </div>
+    <table class="company-table">
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">QUALITY RESOURCE PVT LTD.</span>
+                <span class="company-desc" lang="ja">AI・機械学習・モバイルアプリ・Webシステム開発</span>
+                <span class="company-desc" lang="en">AI, Machine Learning, Mobile App, and Web System Development.</span>
+            </td>
+            <td class="link-cell"><a href="https://www.qresource.com/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">VEEVO TECH</span>
+                <span class="company-desc" lang="ja">AIやブロックチェーン技術を活用したソリューション開発</span>
+                <span class="company-desc" lang="en">Solution development using AI and Blockchain technology.</span>
+            </td>
+            <td class="link-cell"><a href="https://veevotech.com/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    <span lang="ja">&copy; 2026 Japan IT Week 海外出展企業ナビゲーター</span>
+    <span lang="en">&copy; 2026 Japan IT Week Overseas Exhibitor Navigator</span>
+</footer>
+
+<script>
+    function switchLang(lang) {
+        if (lang === 'en') {
+            document.body.classList.add('lang-en');
+            document.querySelectorAll('.lang-btn')[0].classList.remove('active');
+            document.querySelectorAll('.lang-btn')[1].classList.add('active');
+        } else {
+            document.body.classList.remove('lang-en');
+            document.querySelectorAll('.lang-btn')[0].classList.add('active');
+            document.querySelectorAll('.lang-btn')[1].classList.remove('active');
+        }
+    }
+</script>
+
+</body>
+</html>

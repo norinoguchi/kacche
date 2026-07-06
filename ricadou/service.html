@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="icon" href="./img/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="./img/favicon.png">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>理華堂 - 機能美に溢れる工芸品の世界への架け橋</title>
+  <meta name="description" content="理華堂のワンストップサービス詳細ページ。日本の素晴らしいデザインや技術の工芸品を世界市場にもっと撹拌するための支援事業。">
+
+  <!-- 既存CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/parts.css">
+
+  <!-- Google Fonts（必要に応じて調整可） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --main:#556b2f;
+      --main-dark:#435623;
+      --sub:#7a8663;
+      --bg:#f8f9fa;
+      --bg-soft:#f2f4ee;
+      --line:rgba(85,107,47,0.18);
+      --text:#2d2f2a;
+      --text-soft:#666b61;
+      --white:#ffffff;
+      --shadow:0 12px 40px rgba(0,0,0,0.06);
+      --radius:22px;
+      --max:1160px;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: "Noto Serif JP", serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 2;
+      letter-spacing: 0.03em;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+      height:auto;
+    }
+
+    .container{
+      width:min(92%, var(--max));
+      margin:0 auto;
+    }
+
+    /* =========================
+       Header
+    ========================= */
+    .service-header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:999;
+      background:rgba(248,249,250,0.86);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(85,107,47,0.08);
+    }
+
+    .service-header-inner{
+      width:min(92%, var(--max));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 0;
+    }
+
+    .service-logo{
+      font-family:"Cormorant Garamond", serif;
+      font-size:2rem;
+      color:var(--main);
+      letter-spacing:0.08em;
+    }
+
+    .service-nav{
+      display:flex;
+      gap:28px;
+      font-size:0.95rem;
+      color:var(--text-soft);
+    }
+
+    .service-nav a{
+      position:relative;
+      transition:.3s;
+    }
+
+    .service-nav a:hover{
+      color:var(--main);
+    }
+
+    .service-nav a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-4px;
+      width:0;
+      height:1px;
+      background:var(--main);
+      transition:.3s;
+    }
+
+    .service-nav a:hover::after{
+      width:100%;
+    }
+
+    /* =========================
+       Hero
+    ========================= */
+    .service-hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      padding-top:90px;
+      background:
+        linear-gradient(rgba(24,28,20,0.30), rgba(24,28,20,0.45)),
+        url("img/service-hero.jpg") center center / cover no-repeat;
+    }
+
+    .service-hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(248,249,250,0.96) 0%, rgba(248,249,250,0) 32%);
+      pointer-events:none;
+    }
+
+    .service-hero-content{
+      position:relative;
+      z-index:2;
+      width:min(92%, 980px);
+      margin:0 auto;
+      color:#fff;
+      padding:90px 0 120px;
+    }
+
+    .service-hero-sub{
+      font-family:"Cormorant Garamond", serif;
+      font-size:1.1rem;
+      letter-spacing:0.22em;
+      margin-bottom:18px;
+      opacity:.95;
+    }
+
+    .service-hero h1{
+      font-size:clamp(2.2rem, 4vw, 4.8rem);
+      line-height:1.35;
+      font-weight:500;
+      margin-bottom:28px;
+    }
+
+    .service-hero p{
+      font-size:clamp(1rem, 2vw, 1.12rem);
+      max-width:760px;
+      color:rgba(255,255,255,0.92);
+      margin-bottom:38px;
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .hero-link{
+      min-width:220px;
+      text-align:center;
+    }
+
+    /* 既存ボタン風を少し合わせる */
+    .btn04.service-btn{
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.5);
+      padding:14px 34px;
+      border-radius:999px;
+    }
+
+    .btn04.service-btn span::before,
+    .btn04.service-btn span::after{
+      background:#fff;
+    }
+
+    .bordertop.service-btn::before{
+      background:#fff;
+    }
+
+    .btn04.service-btn:hover{
+      color:var(--main);
+    }
+
+    .btn04.service-btn.service-btn-sub{
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.35);
+      background:rgba(255,255,255,0.08);
+    }
+
+    .btn04.service-btn.service-btn-sub:hover{
+      color:var(--main);
+      background:#fff;
+    }
+
+    /* =========================
+       Sections
+    ========================= */
+    .section{
+      padding:110px 0;
+    }
+
+    .section.soft{
+      background:var(--bg-soft);
+    }
+
+    .section-head{
+      margin-bottom:50px;
+    }
+
+    .section-label{
+      display:inline-block;
+      color:var(--main);
+      font-family:"Cormorant Garamond", serif;
+      font-size:1.1rem;
+      letter-spacing:0.16em;
+      margin-bottom:12px;
+    }
+
+    .section-head h2{
+      font-size:clamp(1.8rem, 3vw, 3rem);
+      line-height:1.5;
+      font-weight:500;
+      margin-bottom:18px;
+    }
+
+    .section-head p{
+      max-width:760px;
+      color:var(--text-soft);
+    }
+
+    /* =========================
+       Intro
+    ========================= */
+    .intro-grid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:44px;
+      align-items:center;
+    }
+
+    .intro-text{
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:40px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(85,107,47,0.06);
+    }
+
+    .intro-text p{
+      color:var(--text-soft);
+      margin-bottom:1.2em;
+    }
+
+    .intro-text p:last-child{
+      margin-bottom:0;
+    }
+
+    .intro-image img{
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      /* aspect-ratio:4 / 5; */
+      object-fit:contain;
+    }
+
+/* =========================
+   3 Features -> 4 Features用に修正
+========================= */
+.feature-grid {
+  display: grid;
+  /* 3列(1fr 1fr 1fr)から2列に変更することで、4つが綺麗に収まります */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 24px;
+}
+
+.feature-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(85,107,47,0.06);
+  transition: .35s ease;
+  /* 高さの高低差をなくすため追加 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* モバイル対応：960px以下で1列にする設定は既存のままでOKです */
+@media screen and (max-width: 960px){
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+       3 Features
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+    }
+
+    .feature-card{
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(85,107,47,0.06);
+      transition:.35s ease;
+    }
+    ========================= */
+
+    .feature-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .feature-no{
+      color:var(--sub);
+      font-family:"Cormorant Garamond", serif;
+      font-size:1.4rem;
+      margin-bottom:14px;
+      letter-spacing:0.08em;
+    }
+
+    .feature-card h3{
+      font-size:1.4rem;
+      font-weight:500;
+      margin-bottom:14px;
+      color:var(--main);
+    }
+
+    .feature-card p{
+      color:var(--text-soft);
+    }
+
+    /* =========================
+       Flow
+    ========================= */
+    .flow-wrap{
+      display:grid;
+      gap:18px;
+    }
+
+    .flow-item{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:24px;
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:30px 34px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(85,107,47,0.06);
+    }
+
+    .flow-step{
+      color:var(--main);
+      font-family:"Cormorant Garamond", serif;
+      font-size:1.2rem;
+      letter-spacing:0.08em;
+      padding-top:2px;
+    }
+
+    .flow-item h3{
+      font-size:1.35rem;
+      margin-bottom:10px;
+      font-weight:500;
+    }
+
+    .flow-item p{
+      color:var(--text-soft);
+    }
+
+    /* =========================
+       Company
+    ========================= */
+    .case-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+    }
+
+    .case-card{
+      background:var(--white);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(85,107,47,0.06);
+      transition:.35s ease;
+    }
+
+    .case-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .case-card img{
+      aspect-ratio:4 / 3;
+      object-fit:cover;
+    }
+
+    .case-body{
+      padding:26px 24px 28px;
+    }
+
+    .case-tag{
+      color:var(--sub);
+      font-family:"Cormorant Garamond", serif;
+      font-size:1rem;
+      margin-bottom:10px;
+      letter-spacing:0.08em;
+    }
+
+    .case-body h3{
+      font-size:1.25rem;
+      font-weight:500;
+      margin-bottom:12px;
+      color:var(--main);
+    }
+
+    .case-body p{
+      color:var(--text-soft);
+    }
+
+    /* =========================
+       FAQ
+    ========================= */
+    .faq-wrap{
+      display:grid;
+      gap:16px;
+    }
+
+    details{
+      background:var(--white);
+      border-radius:18px;
+      padding:22px 26px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(85,107,47,0.06);
+    }
+
+    summary{
+      list-style:none;
+      cursor:pointer;
+      font-size:1.08rem;
+      font-weight:500;
+      position:relative;
+      padding-right:28px;
+    }
+
+    summary::-webkit-details-marker{
+      display:none;
+    }
+
+    summary::after{
+      content:"+";
+      position:absolute;
+      right:0;
+      top:0;
+      color:var(--main);
+      font-size:1.3rem;
+      line-height:1;
+    }
+
+    details[open] summary::after{
+      content:"−";
+    }
+
+    .faq-answer{
+      margin-top:16px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:var(--text-soft);
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+    .cta-box{
+      background:
+        linear-gradient(rgba(85,107,47,0.10), rgba(85,107,47,0.06)),
+        #fff;
+      border:1px solid rgba(85,107,47,0.12);
+      border-radius:32px;
+      padding:70px 34px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-box h2{
+      font-size:clamp(1.8rem, 3vw, 2.9rem);
+      font-weight:500;
+      line-height:1.6;
+      margin-bottom:20px;
+    }
+
+    .cta-box p{
+      max-width:760px;
+      margin:0 auto 32px;
+      color:var(--text-soft);
+    }
+
+    .cta-btn-wrap{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    .cta-btn-wrap .btn04{
+      border-radius:999px;
+      padding:14px 36px;
+    }
+
+    /* =========================
+       Footer
+    ========================= */
+    .service-footer{
+      padding:32px 0 40px;
+      border-top:1px solid rgba(85,107,47,0.08);
+      background:var(--bg);
+      color:var(--text-soft);
+      font-size:0.92rem;
+    }
+
+    .service-footer-inner{
+      width:min(92%, var(--max));
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    /* =========================
+       Animation helper
+    ========================= */
+    .fade-up{
+      opacity:0;
+      transform:translateY(30px);
+      transition:all .9s ease;
+    }
+
+    .fade-up.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+    @media screen and (max-width: 960px){
+      .service-nav{
+        display:none;
+      }
+
+      .intro-grid,
+      .feature-grid,
+      .case-grid{
+        grid-template-columns:1fr;
+      }
+
+      .flow-item{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .service-hero{
+        min-height:88vh;
+      }
+    }
+
+    @media screen and (max-width: 640px){
+      .section{
+        padding:80px 0;
+      }
+
+      .service-hero-content{
+        padding:70px 0 90px;
+      }
+
+      .hero-btns{
+        flex-direction:column;
+      }
+
+      .hero-link{
+        width:100%;
+      }
+
+      .btn04.service-btn{
+        width:100%;
+      }
+
+      .intro-text,
+      .feature-card,
+      .flow-item,
+      .case-body,
+      details,
+      .cta-box{
+        padding-left:22px;
+        padding-right:22px;
+      }
+
+      .service-logo{
+        font-size:1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="service-header">
+
+    <div class="service-header-inner">
+      <a href="top.html" class="service-logo">理華堂 - Ricadou Japan</a>
+      <nav class="service-nav">
+        <a href="#about">事業概要</a>
+        <a href="#features">特長</a>
+        <a href="#flow">共創プロセス</a>
+        <a href="#company">運営会社</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="service-hero">
+      <div class="service-hero-content">
+        <div class="service-hero-sub blurTrigger">RICADOU Japan Services</div>
+        <h1 class="blurTrigger">
+        機能美に溢れる貴社の工芸品を、<br>「世界のハレの舞台」に繋ぎます。
+        </h1>
+        <p class="blurTrigger">
+          ニッポンの素晴らしいデザインと実用性に優れた工芸品は、世界各地の華やかな舞台、例えば、ホテル、レストラン、リゾート施設や富裕層の生活の中で、もっと沢山使われても良い「機能美」の価値がある。理華堂は、そんな確信を持って創業します。
+        </p>
+
+        <!-- <div class="hero-btns fade-up"> -->
+          <!-- <a href="#about" class="hero-link btn04 bordertop service-btn"><span>サービス内容を見る</span></a> -->
+          <!-- <a href="#contact" class="hero-link btn04 bordertop service-btn service-btn-sub"><span>お問い合わせ</span></a> -->
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div class="section-label">Service Overview</div>
+          <h2>サービス概要</h2>
+          <p>
+            理華堂は、デザインや品質に優れた日本の工芸品を、海外の事業ニーズやライフスタイルに合わせて厳選し、ヨーロッパを中心とした世界の販売店とのコミュニケーション、輸出販売を代行する B2B ワンストップサービスです。
+          </p>
+        </div>
+
+        <div class="intro-grid">
+          <div class="intro-text fade-up">
+            <p>
+            理華堂が目指すのは、単なる越境ECビジネスではなく、また、単なるコンサルティングサービスでもありません。
+            </p>
+            <p>
+            マーケットインの発想で日本の優れた工芸品を厳選し、海外の適切な販売事業者の開拓、
+            英語による商品情報の提供、販売・決済・輸出業務、までを一貫して当社の事業として実施します。
+            </p>
+            <p>
+            これにより、製造事業者様のご負担を増やすことなく、貴社の海外市場を開拓するための全てに伴走し、創作＆製造以外の実務を担当する「共創ビジネス」です。
+            </p>
+            <p>
+            さらに、海外の販売パートナーからの意見も取り込み、海外の市場ニーズの把握を通じて、商品改善の助言や次の事業展開の提案も行うことによって、貴社の未来を共創します。
+            </p>
+          </div>
+
+          <div class="intro-image fade-up">
+            <img src="./img/jigyou.png" alt="理華堂ワンストップサービスのイメージ">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section soft">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div class="section-label">Why Ricadou</div>
+          <h2>理華堂の特長</h2>
+          <p>「よくある」海外販路開拓支援や、越境 EC ストアとは何が違うのでしょうか？</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card fade-up">
+            <div class="feature-no">01</div>
+            <h3>製造者の負担が最小限の海外販路開拓</h3>
+            <p>
+              海外に販路を開拓したいという意欲はあっても、販路開拓に投入できる資金も人材もない。理華堂のサービスでは、そのようなご心配は無用です。<br>
+              海外販売に関する実務の一切は当社で行い、当社の利益は販売マージンによって確保します。貴社にお願いしたいのは、日本語による情報とセールスサンプルのご提供のみです。
+            </p>
+          </div>
+
+          <div class="feature-card fade-up">
+            <div class="feature-no">02</div>
+            <h3>ハイエンド B2B に特化したビジネス</h3>
+            <p>
+              理華堂の本質的な役割は、国際的なビジネスマッチングです。<br>
+              日本の製造パートナーと海外の販売パートナーを適切に結び、厳選した高付加価値製品のみを取引する B2B ビジネスを創出します。<br>
+              収益構造は、一般的な「卸売販売」と同一ですので、取引価格や最低発注数量、納期などについても、現在国内販売用に決められている取引条件をベースにご相談させて頂きます。
+            </p>
+          </div>
+
+          <div class="feature-card fade-up">
+            <div class="feature-no">03</div>
+            <h3>「顔が見える」海外ビジネス</h3>
+            <p>
+              一般的な EC サイトでは購入者の「顔」が見えませんが、理華堂は、海外の販売パートナーとも直接コミュニケーションを取り、製造事業者の皆様との相互理解を深め、国境を超えた信頼関係を築きます。<br>
+              これにより、海外のエンドカスタマーのニーズも的確に把握し、マーケットインの発想による製品改善や新製品の提案も行うことができます。
+            </p>
+          </div>
+
+          <div class="feature-card fade-up">
+            <div class="feature-no">04</div>
+            <h3>高品位映像をフル活用した販促活動</h3>
+            <p>
+              素晴らしい機能美のある工芸製品の魅力や作り手の思いを海外の販売パートナーやエンドカスタマーに伝えるためには、写真や文字だけでは不十分です。<br>
+              理華堂では、映像制作用の高画質カメラを撮影に使用し、商品の美しさや丁寧な作業を忠実に捉え、英語で説明する高品位な映像コンテンツを制作し、販促活動にフル活用します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flow -->
+    <section id="flow" class="section">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div class="section-label">Process</div>
+          <h2>ビジネス共創に向けた流れ</h2>
+          <p>
+            理華堂は、2026年秋を目標に、実際のビジネス開始を目指している創業事業です（東京都の創業助成事業として申請中）。<br>
+            そのため現在は、本事業の趣旨にご賛同いただける製造事業者様を探索している段階ですが、ビジネス開始までの流れは、以下のようなイメージを想定しています。
+        </p>
+        </div>
+
+        <div class="flow-wrap">
+          <div class="flow-item fade-up">
+            <div class="flow-step">STEP 01</div>
+            <div>
+              <h3>事業状況のヒアリング・今後の方向性の相互確認</h3>
+              <p>
+                現在の事業状況、商品の優位性、海外展開の可能性と目的を整理し、本プロジェクトにご参加いただけるかどうかを相互に確認させていただきます。<br>
+                ヒアリングとご相談は、国際ビジネス経験が豊富な中小企業診断士が担当させて頂きますが、相談料などのご心配は無用です。
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item fade-up">
+            <div class="flow-step">STEP 02</div>
+            <div>
+              <h3>取扱商品の仮決定と取引契約の締結</h3>
+              <p>
+                理華堂の事業開始時点において取り扱わせて頂く商品ラインナップや販売価格を仮決定させて頂き、販売マージンや取引条件などの基本的な事項についてご相談させて頂いた上で、取引契約を締結させて頂きます。<br>
+                また、販促用の英文リーフレットや商品紹介英文サイトの構築に向けた内容もこの段階でご相談させて頂きますが、これらの作業も当社で対応させて頂きますので、ご心配は無用です。
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item fade-up">
+            <div class="flow-step">STEP 03</div>
+            <div>
+              <h3>想いと魅力を伝える映像コンテンツの制作</h3>
+              <p>
+                理華堂で扱う「機能美」とクリエイターの想いを伝える高品位映像コンテンツの制作を行います。<br>
+                撮影には、プロフェッショナル用高画質カメラを使用し、低照度な制作環境でも商品の美しさや丁寧な作業を忠実に捉えます。<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item fade-up">
+            <div class="flow-step">STEP 04</div>
+            <div>
+              <h3>Ricadou Japan EC サイトへの商品掲載</h3>
+              <p>
+                EC サイトに商品を登録し、世界への発信を開始します。<br>
+                ECサイトは世界中に向けてオープンされますので、MOQ（最低発注数量）や納期を適切に設定することによって、貴社のご負担が過度にならないように運営します。
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item fade-up">
+            <div class="flow-step">STEP 05</div>
+            <div>
+              <h3>販売パートナーの開拓</h3>
+              <p>
+                インターネットによる探索の他、現地在住のビジネスパートナーとの連携を通じて、本事業に相応しい販売パートナーを開拓します。<br>
+                当社の豊富な国際ビジネス経験を活かして、リモート面談もしくは現地訪問によって直接コミュニケーションを取り、貴社の製品の魅力と価値を伝え、相互にとってメリットのあるビジネスの共創を提案します。
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item fade-up">
+            <div class="flow-step">STEP 06</div>
+            <div>
+              <h3>受注〜納品〜お支払いの流れ</h3>
+              <p>
+                創業後、当面の間は、ECサイト上の決済昨日による「前払い」取引を海外の販売パートナーと行います。また製造事業者の皆様とは、基本的には商品と交換でのお支払いを想定しています。<br><br>
+                ワークフローとしては、①ECサイトでオーダーを受ける、②製造パートナーに当社から製品納期を確認させて頂き、③購入先の販売事業者がその納期を了承した場合のみ、④ECサイトで決済をして頂きます。<br>
+                ⑤決済確認後、製品の製造に着手して頂き、⑥製品完成後、その製品品質を当社にて確認させて頂いた上で、⑦当社から製造事業者様に代金をお支払いさせて頂く、
+                ⑧当社は、販売事業パートナーへ向けての梱包、輸出・納品を責任を持って行う、手順を想定しています。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Company -->
+    <section id="company" class="section soft">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div class="section-label">About us</div>
+          <h2>運営会社：活知恵合同会社について</h2>
+          <p>
+            本事業を運営する活知恵合同会社は、長年の国際ビジネス経験をもとに、日本と海外を結ぶビジネスに伴走する、テクノロジー＆コンサルテーションカンパニーです。
+            活知恵合同会社の企業概要は<a href="https://kacche.jp">【こちら】</a>から。
+          </p>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-card fade-up">
+            <!-- <img src="img/case-01.jpg" alt="伝統工芸・ライフスタイル商品の海外展開"> -->
+            <div class="case-body">
+              <div class="case-tag">Strength 01</div>
+              <h3>豊富な国際ビジネス経験</h3>
+              <p>
+                活知恵の共創メンバーは、世界的なIT企業、電機メーカー、サービス業など様々なグローバルカンパニー出身者が中心です。<br>
+                国際ビジネス経験が豊富で海外の方々とのコミュニケーションが得意なメンバーが揃っていますので、
+                海外販路開拓においても、貴社の良き相談相手、共創パートナーとしていただけます。<br>
+              </p>
+            </div>
+          </article>
+
+          <article class="case-card fade-up">
+            <!-- <img src="img/case-02.jpg" alt="製造業・B2B商材の海外展開"> -->
+            <div class="case-body">
+              <div class="case-tag">Strength 02</div>
+              <h3>地域創生とモノづくりへの思い</h3>
+              <p>
+                活知恵の共創メンバーは、いずれも日本の文化を愛し、地域創生やモノづくりに対する強い思いを持っています。<br>
+                本プロジェクトにおいても、単なるビジネスの枠を超えて、日本各地の伝統技術や新しい感性のデザインをもっと世界に広め、若い世代に繋いでいける事業を共創します。
+              </p>
+            </div>
+          </article>
+
+          <article class="case-card fade-up">
+            <!-- <img src="img/case-03.jpg" alt="地域ブランド・観光関連の海外発信"> -->
+            <div class="case-body">
+              <div class="case-tag">Strength 03</div>
+              <h3>知恵を活かした新事業の創造</h3>
+              <p>
+                活知恵は、中小企業診断士資格を有する代表が中心の新しい会社ですが、これまでに様々な新規事業や新製品を生み出してきた経験があり、実務経験が豊富です。<br>
+                どのような新規事業も最初から完璧に立ち上げることはできませんが、知恵を活かして創意工夫を重ね、貴社とともに、未来のビジネスを創り上げていきます。
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div class="section-label">FAQ</div>
+          <h2>よくあるご質問</h2>
+          <p>
+            初めてご相談いただく方から、よくいただくご質問をまとめています。
+          </p>
+        </div>
+
+        <div class="faq-wrap">
+          <details class="fade-up">
+            <summary>海外との取引経験は全くないのですが大丈夫ですか？</summary>
+            <div class="faq-answer">
+              はい、問題ありません。「理華堂」はそのような事業者様、伝統工芸の継承に励む若手クリエイターの皆様のために創業するプロジェクトです。
+            </div>
+          </details>
+
+          <details class="fade-up">
+            <summary>英語の商品説明資料がなくても大丈夫ですか？</summary>
+            <div class="faq-answer">
+              問題ありません。日本語で頂いた情報やヒアリングさせていただいた内容をもとに、海外の販売パートナーに伝わる形へ当社で用意させて頂きます。
+            </div>
+          </details>
+
+          <details class="fade-up">
+            <summary>どのような商品でも扱ってもらえますか？</summary>
+            <div class="faq-answer">
+              「理華堂」は、伝統技術とデザインに裏付けされた「機能美に溢れる工芸品」を品揃えすることでブランド構築を目指していきます。<br>
+              このため、既存商品をそのまま扱うことが難しい場合もありますが、市場ニーズに合った「機能美」を引き出すための商品改善提案なども行いながら、共創していきたいと考えています。
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta-box fade-up">
+          <h2>
+            理華堂とともに、<br>
+            世界へつながる一歩を。
+          </h2>
+          <p>
+            理華堂にご関心を頂ける製造事業者様、クリエイターの皆様からのご連絡をお待ちしています。<br>
+            まずはお気軽に、活知恵合同会社までお問い合わせください。
+          </p>
+
+          <div class="cta-btn-wrap">
+            <a href="https://kacche.jp/#contact" class="btn04 bordertop" target="_blank"><span>お問い合わせはこちら</span></a>
+            <a href="top.html" class="btn04 bordertop"><span>理華堂のトップページへ戻る</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="service-footer">
+    <div class="service-footer-inner">
+      <div>© Kachhe LLC / 活知恵合同会社</div>
+      <div><a href="top.html">Top</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // スクロールでふわっと表示
+    const fadeUps = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    fadeUps.forEach(el => observer.observe(el));
+
+    // 既存parts.cssのblurアニメを少し活かす
+    const blurTargets = document.querySelectorAll('.blurTrigger');
+    window.addEventListener('load', () => {
+      blurTargets.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('blur');
+        }, 200 + (i * 180));
+      });
+    });
+  </script>
+
+</body>
+</html>

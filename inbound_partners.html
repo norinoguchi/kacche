@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbound Business Partners in Japan</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #f1f5f9;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 { margin: 0; font-size: 1.8rem; letter-spacing: -0.025em; }
+        .event-info { margin-top: 15px; font-size: 1rem; opacity: 0.9; }
+
+        /* 言語切替ボタン */
+        .lang-switch {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+        }
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: white;
+            color: #1e3a8a;
+        }
+        
+        .pavilion-container {
+            background: white;
+            margin-bottom: 40px;
+            padding: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .pavilion-header {
+            padding: 20px 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pavilion-name { font-size: 1.4rem; font-weight: bold; }
+        .booth-number { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 9999px; font-size: 0.9rem; }
+        
+        .business { background: #1e3a8a; }
+        .marketing { background: #ea580c; }
+        .legal { background: #b45309; }
+        .matching { background: #15803d; }
+        .public { background: #882070; }
+
+        .company-table { width: 100%; border-collapse: collapse; }
+        .company-row { border-bottom: 1px solid #e2e8f0; transition: background 0.2s; }
+        .company-row:hover { background-color: #f8fafc; }
+        .company-row:last-child { border-bottom: none; }
+        
+        .company-info-cell { padding: 20px 30px; }
+        .company-name { font-weight: 800; font-size: 1.1rem; color: #1e293b; display: block; margin-bottom: 4px; }
+        .company-desc { font-size: 0.9rem; color: #64748b; }
+        
+        .link-cell { padding: 20px 30px; text-align: right; width: 180px; }
+        .btn-direct {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white !important;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .btn-direct:hover { background-color: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+
+        footer { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 50px; }
+
+        /* 言語表示制御 */
+        [lang="en"] { display: none; }
+        .lang-en [lang="ja"] { display: none; }
+        .lang-en [lang="en"] { display: inline; }
+        .lang-en .company-desc[lang="en"] { display: block; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
+        <button class="lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
+    <h1>
+        <span lang="ja">日本市場進出サポート・協力会社候補リスト</span>
+        <span lang="en">Inbound Business Partners in Japan</span>
+    </h1>
+    <div class="event-info">
+        <span lang="ja">日本市場への進出を目指す海外企業や日本での起業を目指す外国人向けのサポートを提供する協力会社のリストです。</span>
+        <span lang="en">This is a list of support companies for overseas businesses looking to enter the Japanese market and foreign nationals looking to start a business in Japan.</span>
+    </div>
+</header>
+
+<div class="pavilion-container">
+    <div class="pavilion-header business">
+        <span class="pavilion-name">
+            <span lang="ja">日本進出伴走支援</span>
+            <span lang="en">Inbound Business Support</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">伴走支援</span>
+            <span lang="en">Business Support</span>
+        </span>
+    </div>
+    <table class="company-table">
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Kacche LLC</span>
+                <span class="company-desc" lang="ja">WEBサイトやPR動画の日本語化、展示会出展サポート、からビジネスマッチングまで。</span>
+                <span class="company-desc" lang="en">Japanese translation of websites and PR videos, exhibition participation support, and business matching.</span>
+            </td>
+            <td class="link-cell"><a href="https://kacche.jp/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Boost in Japan</span>
+                <span class="company-desc" lang="ja">日本市場へのビジネス参入をワンストップで支援。マーケティング支援から行政手続きまで。</span>
+                <span class="company-desc" lang="en">Japan Market Entry & Business Support for Foreign Companies. Succeed in Japan with Native Japanese Expertise.</span>
+            </td>
+            <td class="link-cell"><a href="https://boost-your-business-in-japan.com/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">MTA</span>
+                <span class="company-desc" lang="ja">日本における展示会出展サポートに特化</span>
+                <span class="company-desc" lang="en">Participating in exhibitions and on linked websites.</span>
+            </td>
+            <td class="link-cell"><a href="https://mta-japan.webflow.io/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name"></span>
+                <span class="company-desc" lang="ja">WEBサイトやPR動画の日本語化、展示会出展サポート、からビジネスマッチングまで。</span>
+                <span class="company-desc" lang="en">Japanese translation of websites and PR videos, exhibition participation support, and business matching.</span>
+            </td>
+            <td class="link-cell"><a href="https://kacche.jp/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="pavilion-container">
+    <div class="pavilion-header marketing">
+        <span class="pavilion-name">
+            <span lang="ja">マーケティング支援</span>
+            <span lang="en">Marketing Support</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">マーケティング</span>
+            <span lang="en">Marketing</span>
+        </span>
+    </div>
+    <table class="company-table">
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Japan Buzz</span>
+                <span class="company-desc" lang="ja">日本のインフルエンサー・マーケティング、ソーシャルメディア管理、日本語SEOサービスを提供する、東京に本社を置く英日二ヶ国語のデジタル広告代理店FIT&COが提供。</span>
+                <span class="company-desc" lang="en">Japanese Influencer Marketing, Social Media management in Japan and Japanese SEO services provided by FIT&CO an English – Japanese bilingual digital agency based in Tokyo Japan, with offices also in London.</span>
+            </td>
+            <td class="link-cell"><a href="https://japanbuzz.info" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Plus Alpha</span>
+                <span class="company-desc" lang="ja">Plus Alphaは、東京に本社を置くソーシャルメディア管理とコンテンツ作成のエージェンシーです。世界中で効果的で独自のコンテンツを作成します。当社のチームは、ブランド、企業、政府のための効果的なソーシャルメディアチャネルの構築に特化しています。</span>
+                <span class="company-desc" lang="en">Plus Alpha is a Social Media Management and Content Creation agency, based in Tokyo, Japan creating effective and unique content worldwide. 
+                    Our team specializes in building effective social media channels for brands, corporations and governments.</span>
+            </td>
+            <td class="link-cell"><a href="https://plusalphatokyo.com/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Info Cubic</span>
+                <span class="company-desc" lang="ja">社員の約半数が外国人のデジタルマーケティング支援企業。デジタル広告からSNS運用まで。</span>
+                <span class="company-desc" lang="en">A digital marketing support company with about half of its employees being foreigners.</span>
+            </td>
+            <td class="link-cell"><a href="https://infocubic.icrossborderjapan.com/en/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">AirSol</span>
+                <span class="company-desc" lang="ja">SNS戦略の立案から運用代行・広告運用まで、トータルでサポート。女性目線を活かし、ターゲットに響くSNS発信を実現します。</span>
+                <span class="company-desc" lang="en">Total support from SNS strategy planning to operation and advertising management. We utilize a female perspective to achieve SNS communication that resonates with the target audience.</span>
+            </td>
+            <td class="link-cell"><a href="https://airsol.jp/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="pavilion-container">
+    <div class="pavilion-header legal">
+        <span class="pavilion-name">
+            <span lang="ja">法律・行政手続き・ビザ</span>
+            <span lang="en">Administrative Procedures & Visas</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">法律・行政手続き</span>
+            <span lang="en">Legal support</span>
+        </span>
+    </div>
+    <table class="company-table">
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">金榮国際行政書士事務所</span>
+                <span class="company-desc" lang="ja">中国語対応が可能な行政書士事務所。中国人向けのビザサポートを提供。</span>
+                <span class="company-desc" lang="en">Administrative lawyer office that supports Chinese speakers. Visa support for Chinese nationals.</span>
+            </td>
+            <td class="link-cell"><a href="https://kanamori-japan-visa.com/office/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">さやか国際行政書士事務所</span>
+                <span class="company-desc" lang="ja">中国人女性が経営する行政書士事務所。中国人向けのビザサポートを提供。</span>
+                <span class="company-desc" lang="en">Administrative lawyer office that supports Chinese speakers. Visa support for Chinese nationals.</span>
+            </td>
+            <td class="link-cell"><a href="https://sayaka-int-as.com/" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="pavilion-container">
+    <div class="pavilion-header matching">
+        <span class="pavilion-name">
+            <span lang="ja">外注先紹介</span>
+            <span lang="en">Outsourcing</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">外注</span>
+            <span lang="en">Outsourcing</span>
+        </span>
+    </div>
+    <table class="company-table">
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">Ready Crew</span>
+                <span class="company-desc" lang="ja">業種別のビジネスマッチング。要件と相性で最適な外注先を無料提案</span>
+                <span class="company-desc" lang="en">Business matching by industry. Free recommendations for the most suitable outsourcing partners.</span>
+            </td>
+            <td class="link-cell"><a href="https://readycrew.jp/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="pavilion-container">
+    <div class="pavilion-header public">
+        <span class="pavilion-name">
+            <span lang="ja">海外企業の日本進出を支援する公的機関</span>
+            <span lang="en">Public Institutions Supporting Foreign Companies' Entry into the Japan</span>
+        </span>
+        <span class="booth-number">
+            <span lang="ja">行政・公的機関</span>
+            <span lang="en">Public Institutions</span>
+        </span>
+    </div>
+    <table class="company-table">
+        <tr class="company-row">
+            <td class="company-info-cell">
+                <span class="company-name">JETRO Invest Japan</span>
+                <span class="company-desc" lang="ja">海外企業の日本進出や日本への投資を支援する、日本政府直下の公的機関</span>
+                <span class="company-desc" lang="en">Public institution under the Japanese government that supports foreign companies' entry into the Japanese market and investments in Japan.</span>
+            </td>
+            <td class="link-cell"><a href="https://www.jetro.go.jp/invest-japan/" target="_blank" class="btn-direct"><span lang="ja">公式サイト</span><span lang="en">Official Website</span></a></td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    <span lang="ja"><a href="https://kacche.jp" target="_blank">&copy; 2026 活知恵合同会社</a></span>
+    <span lang="en"><a href="https://kacche.jp" target="_blank">&copy; 2026 Kacche LLC</a></span>
+</footer>
+
+<script>
+    function switchLang(lang) {
+        if (lang === 'en') {
+            document.body.classList.add('lang-en');
+            document.querySelectorAll('.lang-btn')[0].classList.remove('active');
+            document.querySelectorAll('.lang-btn')[1].classList.add('active');
+        } else {
+            document.body.classList.remove('lang-en');
+            document.querySelectorAll('.lang-btn')[0].classList.add('active');
+            document.querySelectorAll('.lang-btn')[1].classList.remove('active');
+        }
+    }
+</script>
+
+</body>
+</html>

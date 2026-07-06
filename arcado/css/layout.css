@@ -1,0 +1,1018 @@
+@charset "utf-8";
+/* レイアウトのためのCSS */
+body{
+    background:#212f49;
+    font-family: 'Noto Serif JP', serif;
+	color: #555;
+	font-size:1rem;
+	line-height:1.85;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%; 
+	word-wrap: break-word;
+    letter-spacing: 0.2em;
+}
+
+body.appear{
+    background:#f8f9fa;
+}
+
+
+ul{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+
+a{
+	color: #555;
+	text-decoration: none;
+    outline: none;
+}
+
+img{
+    width:100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+*{
+    box-sizing: border-box
+}
+
+/* font-family */
+
+h1,
+#g-nav-list li:nth-child(1),
+#intro h2,    /* 追加 */
+#members h2,  /* 追加 */
+#menu h2,
+#blog h2,
+#footer dl dd,
+#splash-logo{
+    /* font-family:'Parisienne', cursive; */
+    font-family: 'Bodoni', serif;
+}
+
+/* heading */
+#menu h2,
+#service h2,
+#blog h2,
+#intro h2,    /* 追加 */
+#members h2{  /* 追加 */
+    font-size: 4rem;
+    text-align: center;
+    margin: 0 0 50px 0;
+    font-weight: normal;
+    color: #212f49;
+}
+
+#service h3{
+    font-size: 1.2rem;
+    margin: 0 0 20px 0;
+    color: #212f49;
+}
+
+@media screen and (max-width:768px) {
+#menu h2,
+#service h2,
+#blog h2,
+#intro h2,    /* 追加 */
+#members h2{  /* 追加 */
+    font-size: 3rem;
+    }
+}
+
+/* area */
+
+#container{
+    overflow-x: hidden;
+}
+
+.inner{
+    width:100%;
+    margin:0 auto;
+    padding:70px;
+}
+
+@media screen and (max-width:940px) {
+.inner{
+    padding:30px;
+}
+}
+
+/* splash */
+
+#splash-logo p{
+    font-size:1.8rem;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+/* header */
+
+.header-area{
+    position: fixed;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+}
+
+.header-area h1{
+    display: block;
+    font-size: 6vw;
+    font-weight: normal;
+    line-height: 1;
+    letter-spacing: 0;
+    padding: 0 10px;
+}
+
+.header-area p{
+    font-size: 1.3vw;
+    letter-spacing: 0.4em;
+    margin: 0 0 20px 0;
+}
+
+.header-area p br{
+    display: none;
+}
+
+
+@media screen and (max-width:960px) {
+.header-area h1{
+    font-size:3rem;
+}
+.header-area p{
+    font-size:0.8rem;
+    whitewhite-space:no
+}
+
+.header-area p br{
+    display: block;
+}
+
+}
+
+/* gnavi */
+
+#g-nav-list li:nth-of-type(1) a{
+    font-size: 2rem;
+    text-transform: none;
+    font-weight: normal;
+    line-height: 1;
+    white-space: nowrap;
+    margin: 0 0 20px 0;
+}
+
+#g-nav-list li:nth-of-type(2){
+    animation-delay: .2s;
+}
+#g-nav-list li:nth-of-type(3){
+    animation-delay: .4s;
+}
+#g-nav-list li:nth-of-type(4){
+    animation-delay: .6s;
+}
+#g-nav-list li:nth-of-type(5){
+    animation-delay: .8s;
+}
+#g-nav-list li:nth-of-type(6){
+    animation-delay: 1.1s;
+}
+#g-nav-list li:nth-of-type(7){
+    animation-delay: 1.3s;
+}
+/* service */
+
+#service{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top:140px;
+}
+
+#service .service-img{
+    width:46%;
+    min-height: 400px;
+    background: url("../img/kiriko.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#service .service-area{
+    width:52%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    flex-direction: row-reverse;
+}
+
+@media screen and (max-width:1060px) {
+#service .service-img{
+     width:30%;
+}
+#service .service-area{
+    width:68%;
+}
+}
+
+@media screen and (max-width:768px) {
+#service{
+    flex-direction: column-reverse;
+}
+
+#service .service-img,
+#service .service-area{
+    width:100%;
+} 
+    
+#service .service-img{
+    min-height: 250px;
+    }
+    
+#service .service-area{
+    margin: 0 0 140px 0;
+    min-height: 20em;
+    justify-content: center;
+}
+}
+
+#service .service-area h2,
+#service .service-area p,
+#service .service-area .service-btn a {
+    -ms-writing-mode: lr-tb;        /* 横書きに戻す（古いIE用） */
+    -webkit-writing-mode: horizontal-tb; /* 横書きに戻す */
+    writing-mode: horizontal-tb;         /* 横書きに戻す */
+    text-orientation: mixed;             /* 文字の向きを標準に戻す */
+}
+
+#service .service-area h2{
+    width:28%;
+    line-height:2.5;
+    font-size:1.4rem;
+}
+
+#service .service-area p{
+     width:48%;   
+    padding: 50px 0 0 0;
+    line-height: 2.8;
+}
+
+#service .service-area .service-btn{
+    width:10%; 
+    position: relative;
+    top: 50px;
+}
+
+#service .btn04{
+    padding:20px 15px;
+}
+
+
+@media screen and (max-width:1300px) {
+#service .service-area h2{
+    line-height:2;
+}
+#service .service-area p{
+    line-height: 2.3;
+}    
+}
+
+@media screen and (max-width:768px) {
+#service .service-area .service-btn{
+    width:100%;
+    top: 50px;
+    text-align: center;
+}
+    
+    .btn04{
+        width:250px;
+    }
+    
+#service .service-area h2,
+#service .service-area p{
+    width:auto;
+} 
+    
+#service .service-area h2{
+    margin:0 0 0 20px;
+    line-height: 2.2;
+}
+    
+#service .service-area p{
+    line-height: 2;
+}  
+    
+#service .service-area .service-btn a{
+    -ms-writing-mode: lr-tb;
+    -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
+}
+
+#service .btn04{
+    padding: 10px 30px;
+}
+    
+}
+
+@media screen and (max-width:470px) {
+#service .service-area h2{
+    line-height: 1.8;
+}
+#service .service-area p{   
+    height: 23em;
+}
+    
+_:-ms-lang(x)::-ms-backdrop, #service .service-area p{
+    width:8em;
+}
+    
+#service .service-area p br{
+    display: none;
+}
+}
+
+@media screen and (max-width:350px) {
+#service .service-area h2{
+    line-height: 1.6;
+}
+#service .service-area p {
+    line-height: 1.8;
+}
+}
+
+/* menu */
+
+#menu{
+    padding: 70px 0;
+}
+
+#menu section{
+    background: #fff;
+    margin: 0 0 10px 0;
+}
+
+#menu section h3{
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+}
+
+#menu section p{
+    font-size: 0.8rem;
+}
+
+#menu .menu-area{
+    padding: 20px;
+    box-shadow: 5px 0 10px #ccc;
+}
+
+#menu .menu-btn{
+    text-align: center;
+    margin: 50px 0 0 0;
+}
+
+/* contact */
+
+#contact{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+#contact .contact-img{
+    width:70%;
+    min-height: 300px;
+    background:url("../img/contact.webp") no-repeat center;
+    background-size: cover;
+}
+
+#contact .contact-area{
+    width:25%;
+    text-align: center;
+}
+
+@media screen and (max-width:1190px) {
+#contact .contact-img{
+    width:60%;
+    }
+#contact .contact-area{
+    width:35%;
+    }
+}
+
+@media screen and (max-width:768px) {
+#contact .contact-img{
+    width:48%;
+    }
+#contact .contact-area{
+    width:48%;
+    }
+}
+
+@media screen and (max-width:600px) {
+#contact .contact-img,
+#contact .contact-area{
+    width:100%;
+    }
+#contact .contact-img{
+        margin:0 0 50px 0;
+}
+}
+
+#contact .contact-area h2{
+     font-size:1.3rem;   
+    margin:0 0 10px 0;
+}
+
+#contact .contact-area dt{
+     font-size:1.2rem;   
+    margin:0 0 10px 0;
+}
+
+#contact .contact-area dd{
+    font-size: 0.8rem;
+    margin:0 0 30px 0;
+}
+
+/* blog */
+
+#blog{
+    margin:0 0 50px 0;
+}
+.blog-area{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.blog-area article:nth-of-type(1){ 
+    width:30%;
+}
+
+.blog-area .blog-block{
+    width:68%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.blog-area .blog-block article{
+     margin:0 0 3vh 0;   
+}
+
+.blog-area .blog-block article:nth-of-type(1){ 
+    width:42%;
+    animation-delay: 0.5s;
+}
+.blog-area .blog-block article:nth-of-type(2){ 
+    width:20%;
+    animation-delay: 1.5s;
+}
+.blog-area .blog-block article:nth-of-type(3){
+    width:32%;
+    animation-delay: 1s;
+}
+
+.blog-area .blog-block article:nth-of-type(4){ 
+    width:32%;
+    animation-delay: .8s;
+}
+.blog-area .blog-block article:nth-of-type(5){
+    width:20%; 
+    animation-delay: 1.8s;
+}
+.blog-area .blog-block article:nth-of-type(6){
+    width:42%;
+    animation-delay: 1.5s;
+}
+
+@media screen and (max-width:1300px) {
+    .blog-area .blog-block article:nth-of-type(n+1){ 
+        width:48%;
+    }
+}
+
+@media screen and (max-width:820px) {
+    .blog-area article:nth-of-type(1){
+        width:50%;
+        margin:0 auto 3vh auto;
+    }
+
+    .blog-area .blog-block article:nth-of-type(1){
+         margin: 0 0 3vh 0;
+    }
+
+    .blog-area .blog-block{
+            width:100%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .blog-area .blog-block article:nth-of-type(n+1){ 
+        animation-delay: .5s;
+    }
+
+    .blog-area article:nth-of-type(1){
+        width:100%;
+    }
+}
+
+@media screen and (max-width:450px){
+.blog-area .blog-block article:nth-of-type(n+1) {
+    width:100%;
+    animation-delay: 0s!important;
+    }
+}
+
+
+.blog-area h3{
+    font-size:1rem;
+    margin: 0 0 20px 0;
+}
+
+@media screen and (max-width:450px){
+
+  .blog-area h3{
+    font-size:0.9rem;
+}
+    
+  .blog-area p{
+  display: none;
+    }
+}
+
+.blog-area time{
+     font-size: 0.8rem;   
+}
+
+/* .blog-area img{
+    width: auto;
+    height:32vh;   
+}
+
+.blog-area article:nth-of-type(1) img{
+    height:67vh;
+}
+  
+.blog-area .blog-block article:nth-of-type(1) img{
+    height:32vh;   
+} */
+
+/* --- 修正後 --- */
+
+.blog-area img {
+    width: 100%;       /* 親要素（article）の幅いっぱいに広げる */
+    height: 300px;     /* 高さを一定に固定（数値はお好みで調整してください） */
+    object-fit: cover; /* アスペクト比を維持したまま、指定したサイズを埋めるようにトリミング */
+}
+
+.blog-area article:nth-of-type(1) img {
+    height: 623px;     /* 左側の大きな記事用（必要に応じて調整） */
+    object-fit: cover;
+}
+
+.blog-area .blog-block article:nth-of-type(1) img {
+    height: 300px;     /* blog-block内の最初の画像も他と合わせる */
+    object-fit: cover;
+}
+
+@media screen and (max-width:820px) {
+.blog-area article:nth-of-type(1) img{
+    width:100%;
+    height:auto;
+} 
+.blog-area .blog-block article:nth-of-type(1) img{
+    width:auto;
+    height:32vh;
+    }
+}
+  
+@media screen and (max-width:450px){
+.blog-area img,
+.blog-area .blog-block article:nth-of-type(1) img{
+    width:100%;
+    height:auto;
+}
+}
+
+.blog-area figure time{
+    position: absolute;
+    bottom:0;
+    left:0;
+    background:rgba(121, 237, 172, 0.8);
+    display: block;
+    width:100%;
+    padding: 10px;
+    color: #fff;
+}
+
+.blog-area p{
+     margin:0 0 20px 0; 
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.blog-area span{
+     border:1px solid rgba(255,255,255,0.7);
+    display: inline-block;
+    padding:5px 10px;
+    text-align: center;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* footer */
+
+#footer{
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#footer dl{
+     width:30%;   
+}
+
+#footer dl dt{
+    font-size: 0.8rem;
+}
+
+#footer dl dd{
+    font-size: 2rem;
+}
+
+@media screen and (max-width:900px) {
+    #footer dl{
+        margin: 50px 0;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+#footer dl dd{
+    font-size: 1.5rem;
+}
+    
+}
+
+#footer .footer-list{
+     width:65%; 
+    text-align: right;
+}
+
+#footer ul li{
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    line-height: 3;
+}
+
+#footer small{
+    text-align: right;
+    margin: 20px 0 0 0;
+    display: block;
+    width: 100%;
+    font-size: 0.7rem;
+}
+
+#footer #page-top span{
+    display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-top: 4px solid #fff;
+  border-left: 4px solid #fff;
+  transform: rotate(45deg);
+}
+
+
+@media screen and (max-width:900px){
+#footer dl,
+#footer .footer-list,
+#footer small{
+    width:100%;
+    text-align: center;
+}
+    
+}
+
+/* 注意書き（お断り）のスタイル */
+.notice-box {
+    max-width: 800px;         /* 横幅が広がりすぎないように制限 */
+    margin: 0 auto 40px;      /* 中央寄せにして下の余白を作る */
+    padding: 15px 20px;       /* 枠内の余白 */
+    border: 1px solid #ccc;   /* 薄いグレーの枠線 */
+    background-color: #fcfcfc; /* ほんの少し背景色を変えて区別 */
+    border-radius: 4px;       /* 角を少し丸く */
+}
+
+.notice-box p {
+    font-size: 0.75rem;       /* 文字を小さく（12px相当） */
+    line-height: 1.6;         /* 行間を少し詰める */
+    color: #888;              /* 文字色を薄くして主張を抑える */
+    text-align: left;         /* 左揃え */
+    letter-spacing: 0.05em;   /* 字間を少し詰めて注釈らしく */
+    margin: 0;                /* pタグのデフォルト余白を消す */
+}
+
+/* スマホ表示の調整 */
+@media screen and (max-width: 768px) {
+    .notice-box {
+        margin: 0 20px 30px;  /* 左右に余白を持たせる */
+        padding: 12px;
+    }
+}
+
+/* Service Section 改造 */
+
+/* グリッドレイアウト */
+.service-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+    justify-content: center;
+    flex-wrap: wrap; /* 要素を折り返すように設定 */
+}
+
+/* カード本体 */
+.service-card {
+    /* PC・タブレット：横幅を調整して2個並びにする（隙間40pxを考慮） */
+    flex: 0 0 calc(50% - 20px); 
+    max-width: 500px;
+    background: #fff;
+    padding: 60px 40px;
+    border: 1px solid #eee;
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* ホバー時の挙動：少し浮き上がり、境界線に色をつける */
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: #212f49; /* メインカラー */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* 数字アイコン */
+.service-icon {
+    font-family: 'Bodoni', serif;
+    font-size: 5rem;
+    color: rgba(33, 47, 73, 0.3);
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    line-height: 1;
+}
+
+/* タイトル */
+.service-content h3 {
+    font-size: 1.6rem;
+    color: #212f49;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* 仕切り線 */
+.service-divider {
+    width: 30px;
+    height: 2px;
+    background: #212f49;
+    margin: 20px 0;
+}
+
+/* 説明文（英/日） */
+.en-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.jp-desc {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #888;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 960px) {
+    .service-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .service-card {
+        width: 100%;
+        flex: 0 0 100%; /* モバイル時は1カラム（100%）に */
+        padding: 40px 30px;
+    }
+}
+
+/* Introduction Section */
+.intro-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-text {
+    margin-top: 30px;
+    padding: 40px;
+    background: #fff;
+    border-left: 5px solid #212f49;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.intro-text p {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 2;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+
+/* Our Members Section */
+.members-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.member-card {
+    flex: 0 0 calc(33.333% - 27px);
+    max-width: 380px;
+    background: #fff;
+    border: 1px solid #eee;
+    transition: all 0.4s ease;
+    text-align: center;
+    /* ★カード全体からはみ出さないように設定 */
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    border-color: #212f49;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* ★アニメーションのインナー要素からもはみ出さないように設定 */
+.member-card_inner {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* --- Our Members Section 写真部分の修正 --- */
+/* --- Our Members Section 写真エリアの縦幅を拡張 --- */
+
+.member-photo {
+    width: 100%;
+    /* 縦幅を 250px から 320px 程度に伸ばすことで、元写真の比率に近づけます */
+    height: 320px; 
+    overflow: hidden;
+    /* 上下の余白を均等に保ちつつ、左右にもマージンを設けます */
+    padding: 20px 20px 10px 20px; 
+    background: #fff;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover を維持することで、枠を埋めつつ綺麗に表示します */
+    object-fit: cover;
+    /* 写真の重心を中央に持ってくることで、全体のバランスを良くします */
+    object-position: center center; 
+    border-radius: 10px;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+/* ホバー時に写真だけが拡大されるように設定 */
+.member-card:hover .member-photo img {
+    transform: scale(1.05);
+}
+
+.member-info {
+    padding: 25px 20px;
+}
+
+.member-info h3 {
+    font-size: 1.2rem;
+    color: #212f49;
+    margin-bottom: 5px;
+    letter-spacing: 0.1em;
+}
+
+/* 役割と紹介文のスタイル（既存通り） */
+.member-role {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.member-bio {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #666;
+    text-align: left;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 960px) {
+    .member-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .member-card {
+        flex: 0 0 100%;
+    }
+    .intro-text {
+        padding: 25px;
+    }
+}
+
+/* Introduction Section 内のリスト調整 */
+.intro-text_inner .intro-list {
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.intro-text_inner .intro-list li {
+    position: relative;
+    padding-left: 1.8em; /* アイコン分の余白 */
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* 行頭の擬似要素（チェックマークや四角形など） */
+.intro-text_inner .intro-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em; /* 文頭の高さに合わせる */
+    width: 12px;
+    height: 12px;
+    background-color: #212f49; /* テーマカラー */
+    /* clip-path: polygon(14% 44%, 0 58%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); チェックマークの形 */
+}
+
+/* 太字の強調（必要に応じて） */
+.intro-text_inner .intro-list li strong {
+    color: #212f49;
+    font-weight: 600;
+    display: block; /* 見出しのように見せる場合はブロック化 */
+    margin-bottom: 2px;
+}
+
+#g-nav.panelactive {
+    background: rgba(33, 47, 73, 0.95) !important;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        /* スマホでは字間を少し詰め、行間を調整して読みやすくする */
+        letter-spacing: 0.1em; 
+        line-height: 1.7;
+        font-size: 0.95rem; /* わずかに小さくして情報密度を上げる */
+    }
+
+    .intro-text_inner h2 {
+        font-size: 1.4rem; /* 見出しを少しコンパクトに */
+        margin-bottom: 20px;
+    }
+}
+
+/* @media screen and (max-width: 600px) { */
+    /* .intro-text_inner .intro-list li { */
+        /* background: #fff; 背景を白くして浮き立たせる */
+        /* border-left: 4px solid #212f49; Arcadoカラーのアクセント線 */
+        /* margin-bottom: 15px; */
+        /* padding: 15px 15px 15px 2.5em; 余白をしっかり取る */
+        /* border-radius: 4px; */
+        /* box-shadow: 0 2px 5px rgba(0,0,0,0.05); 軽い影で立体感を出す */
+    /* } */
+/* } */
+
+@media screen and (max-width: 600px) {
+    #members {
+        background-color: #f0f2f5; /* ほんの少し色をつける */
+        padding: 50px 0; /* 上下の余白をPCより少し狭めて間延びを防ぐ */
+    }
+}

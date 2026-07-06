@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>創業支援・開業・補助金サポート、デジタル化・DX・アプリ開発・ホームページ・WEB制作・IT導入のご相談は、お気軽に活知恵まで。
+    Entry to Japanese Market, Startup Support, Digitalization, IT Systems & App Development - Kacche
+</title>
+<link rel="icon" href="favicon-kacche.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-kacche.png">
+<meta name="description"  content="活知恵（カッチェ）は、”知恵を活”かして、創業、スタートアップ、新規事業、製品開発、海外市場開拓、デジタル化などの新しいチャレンジを応援します。">
+<meta name="robots" content="noindex,nofollow"><meta name="keywords"  content="">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--=============Google Font ===============-->
+<link href="https://fonts.googleapis.com/css?family=Lato:900&display=swap" rel="stylesheet">
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<!--機能編 9-4-1 ニュースティッカー-->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+<!--自作のCSS-->
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/parts.css">
+<link rel="stylesheet" type="text/css" href="css/layout.css">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C49CZYV1KD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C49CZYV1KD');
+</script>
+
+<body>
+<div id="splash">
+<div id="splash-logo"><div class="bgextend bgLRextend"><span class="bgappear">Kacche<br>活知恵（カッチェ）</span></div></div>
+<!--/splash--></div>
+
+<div class="splashbg"></div><!---画面遷移用-->
+
+<div class="lang-switch">
+    <button onclick="switchLang('ja')" id="btn-ja" class="active">JP</button>
+    <button onclick="switchLang('en')" id="btn-en">EN</button>
+</div>
+
+<div id="wrapper">
+<header id="header">
+<h1><a href="./index.html"><span class="bgextend bgLRextendTrigger"><span class="bgappearTrigger"><img src="img/KaccheLogo.png" style="height: 30px; width: auto;"></span></span></a></h1>
+    
+</header>
+<div id="top-main">
+    <p class="top-lead">
+        <span class="bgextend bgLRextendTrigger lang-ja">
+            <span class="bgappearTrigger"
+            style="color: #FFF; text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;">
+            日本を世界と繋ぎ、未来を共創する。</span>
+        </span>
+
+        <span class="bgextend bgLRextendTrigger lang-en">
+            <span class="bgappearTrigger"
+            style="color: #FFF; text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;">
+            Bridging Japan and the world<br>to co-create the "Future".        
+            </span>
+        </span>
+    </p>
+</div>
+
+<div id="container">
+
+<main id="main-area">
+<section id="vision" class="scroll-point">
+    <div class="img flipLeftTrigger"></div>
+    
+    <div class="content flipLeftTrigger">
+        <h2>
+            <span class="bgextend bgLRextendTrigger">
+                <span class="bgappearTrigger">Forward ever, <br>beyond expectations.</span>
+            </span>
+        </h2>
+
+        <p class="vision-lead">
+            <span class="bgextend bgLRextendTrigger">
+                <span class="bgappearTrigger lang-ja">前進あるのみ。期待の先へ。</span>
+                <span class="bgappearTrigger lang-en"></span>
+            </span>
+        </p>
+
+        <div class="vision-text">
+            <p class="lang-ja">
+                活知恵（カッチェ）は、国内外の多様な実務で培った豊富な経験と知恵を活かして、あらゆる新しいチャレンジに伴走する、テクノロジー＆コンサルテーションカンパニーです。<br>
+                どんな困難な状況でも胸を張り、常に前を向いて創意工夫を重ねることによって、期待を超える「結果」を生み出し、未来を「共創」します。
+            </p>
+            <p class="lang-en">
+                Kacche is a technology and consultation company that supports all kinds of new challenges, leveraging extensive experience and wisdom gained through diverse operations both in Japan and overseas.<br>
+                By facing any difficulty with confidence and continuous ingenuity, we produce results that exceed expectations and co-create the future together.
+            </p>
+        </div>
+    </div> 
+</section>
+
+<!-- note 記事表示セクション -->
+<section id="topics" class="lang-ja">
+    <div class="inner">
+        <h2><span class="bgextend bgLRextendTrigger"><span class="bgappearTrigger">Topics</span></span></h2>
+        <div id="note-articles-container"></div>
+        <a href="https://note.com/nori_noguchi/m/m0e732bc9cc0d" target="_blank" class="btnlinestretches3"><span>More in note</span></a>
+    </div>
+</section>
+
+<script>
+    // ----------------------------------------------------
+    // note 記事表示設定
+    // ----------------------------------------------------
+    const DISPLAY_COUNT = 3; 
+    const ARTICLES = [
+        { date: '2026.04.01', title: '理華堂 RICADOU Japan プロジェクトを始動しました。', url: './ricadou/top.html' },
+        { date: '2026.03.12', title: '起業アイデア「壁打ち」ワークショップを開催しました。', url: 'https://note.com/nori_noguchi/n/n9faffd5345fc' },
+        { date: '2026.02.13', title: 'シニア向け起業セミナーを開催しました。', url: 'https://note.com/nori_noguchi/n/nb56ce7a5c902' },
+        { date: '2026.01.07', title: '活知恵合同会社を法人設立登記しました。', url: 'https://note.com/nori_noguchi/n/n6839d25715ad' },
+        { date: '2025.11.01', title: 'BDCT@有楽町の相談員に就任しました。', url: 'https://note.com/nori_noguchi/n/ncabe753b1112' },
+        { date: '2025.10.01', title: '東京開業ワンストトップセンターの相談員に就任しました。', url: 'https://note.com/nori_noguchi/n/n80f30e3f0ded' },
+    ];
+
+    // ----------------------------------------------------
+    // 表示処理
+    // ----------------------------------------------------
+    const container = document.getElementById('note-articles-container');
+
+    if (ARTICLES.length > 0) {
+        const articleList = document.createElement('ul');
+        articleList.className = 'note-article-list';
+
+        // 最大　DISPLAY_COUNT 個までループ
+        const limit = Math.min(ARTICLES.length, DISPLAY_COUNT);
+
+        for (let i = 0; i < limit; i++) {
+            const url = ARTICLES[i];
+            const listItem = document.createElement('li');
+            listItem.className = 'note-article-item';
+
+            listItem.innerHTML = `
+                    <p class="note-article-date">${ARTICLES[i].date}</p>
+                    <h3 class="note-article-title">
+                        <a href="${ARTICLES[i].url}" target="_blank" rel="noopener noreferrer">${ARTICLES[i].title}</a>
+                    </h3>
+                `;
+
+            articleList.appendChild(listItem);
+        }
+        container.innerHTML = '';
+        container.appendChild(articleList);
+    } else {
+        container.innerHTML = '<p style="text-align: center;">表示する記事が設定されていません。</p>';
+    }
+</script>
+
+<section id="service" class="scroll-point">
+    <div class="img flipLeftTrigger"></div>
+    <h2><span class="bgextend bgLRextendTrigger"><span class="bgappearTrigger">Services</span></span></h2>
+
+    <section class="service-area flex flex-wrap justify-between">
+        <figure class="img flipLeftTrigger"><img src="./img/arcado.png" alt="Global Business"></figure>
+        <div class="content flipLeftTrigger">
+            <div class="content-area">
+                <h3>
+                    <!-- <span>Business Development in Japan</span> -->
+                    <span class="lang-ja">海外テック企業の日本進出支援</span>
+                    <span class="lang-en">Business Development in Japan</span>
+                </h3>
+                <div class="lang-ja">
+                    <p>海外発のスタートアップや優れた技術を有する海外企業の日本市場への進出や事業拡大を支援します。</p>
+                    <p>これまでに様々なITシステムやアプリケーションを国内外の企業と共創してきた実績を活かして、海外の優れたIT開発企業と日本企業をマッチングします。</p>
+                </div>
+                <div class="lang-en">
+                    <p>We support overseas IT companies with superior technologies in their entry and expansion into the Japanese market.</p>
+                    <p>Based on our extensive experience in system and app development, we connect these companies with Japanese enterprises to facilitate collaboration and growth.</p>
+                </div>
+                <div class="btn"><a href="./arcado/index.html" target="_blank" class="btnlinestretches3"><span>Detail</span></a></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-area flex flex-wrap justify-between">
+        <figure class="img flipLeftTrigger"><img src="./img/ricadouimage.png" alt="Ricado"></figure>
+        <div class="content flipLeftTrigger">
+            <div class="content-area">
+                <h3>
+                    <!-- <span>International Challenges</span> -->
+                    <span class="lang-ja">海外市場開拓支援</span>
+                    <span class="lang-en">Global Market Development</span>
+                </h3>
+                <div class="lang-ja">
+                    <p>日本の機能美に溢れる工芸製品の海外市場開拓をワンストップで支援する B2B プロジェクト<a href="./ricadou/top.html" target="_blank">理華堂</a>プロジェクトにチャレンジしています。</p>
+                    <p>日本の製造事業者やクリエイターと海外の販売事業者をマッチングし、マーケットインの発想で海外市場を切り拓く B2B 事業です。</p>
+                </div>
+                <div class="lang-en">
+                    <p>We are challenging the <a href="./ricadou/top.html" target="_blank">RICADOU Japan</a> B2B project, providing one-stop support for the international market expansion of Japanese craft products renowned for their functional beauty.</p>
+                    <p>This B2B initiative connects Japanese manufacturers and creators with international retailers, opening up global markets through a market-in approach.</p>
+                </div>
+                <div class="btn"><a href="./ricadou/top.html" target="_blank" class="btnlinestretches3"><span>Detail</span></a></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-area flex flex-wrap justify-between">
+        <figure class="img flipLeftTrigger"><img src="img/pict_04.jpg" alt="Startup Support"></figure>
+        <div class="content flipLeftTrigger">
+            <div class="content-area">
+                <h3>
+                    <!-- <span>Startup Support</span> -->
+                    <span class="lang-ja">創業・新規事業創出支援</span>
+                    <span class="lang-en">Startup Support</span>
+                </h3>
+                <p class="lang-ja">創業に伴う事業計画の立案、ブランディング、商品開発、販促活動、各種助成金やIT導入のための補助金の活用まで、新たなビジネスを「成功」に結びつけるために必要なあらゆるプロセスにおいて、実務レベルで伴走します。</p>
+                <p class="lang-en">We provide hands-on support for every essential process to ensure the success of new businesses, from drafting business plans and branding to product development, sales promotion, and utilizing various subsidies for IT implementation.</p>
+                <div class="btn"><a href="startup.html" target="_blank" class="btnlinestretches3"><span>Detail</span></a></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-area flex flex-wrap justify-between">
+        <figure class="img flipLeftTrigger"><img src="img/pict_03.jpg" alt="Digital Support"></figure>
+        <div class="content flipLeftTrigger">
+            <div class="content-area">
+                <h3>
+                    <!-- <span>Digital & Technical Support</span> -->
+                    <span class="lang-ja">IT システム・アプリ開発</span>
+                    <span class="lang-en">IT Systems & App Development</span>
+                </h3>
+                <p class="lang-ja">
+                    様々なシステム開発やアプリ開発の豊富な経験と最新のAI/IT技術を活用し、お客様のビジネスニーズと費用に応じた最適なソリューションをご提案・開発・運用いたします。</p>
+                <p class="lang-en">
+                    Leveraging our extensive experience in system and app development alongside cutting-edge AI and IT technologies, 
+                    we propose, develop, and operate optimal solutions tailored to your business needs and budget.</p>
+                <div class="btn"><a href="it_support.html" target="_blank" class="btnlinestretches3"><span>Detail</span></a></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-area flex flex-wrap justify-between">
+        <figure class="img flipLeftTrigger"><img src="img/digitalsign.png" alt="Digital Support"></figure>
+        <div class="content flipLeftTrigger">
+            <div class="content-area">
+                <h3>
+                    <!-- <span>Digital & Technical Support</span> -->
+                    <span class="lang-ja">デジタル化・各種技術支援</span>
+                    <span class="lang-en">Digital & Technical Support</span>
+                </h3>
+                <p class="lang-ja">現代のビジネスにおいては、様々なデジタルツールの活用が不可欠です。当社は、お客様のお困りごとやビジネス状況に応じて、最適なデジタルソリューションを選定し、導入、活用までを伴走支援します。</p>
+                <p class="lang-en">The use of various digital tools is indispensable in modern business. We provide end-to-end support, from selecting the optimal digital solutions based on your specific challenges and business context to their implementation and utilization.</p>
+                <div class="btn"><a href="it_support.html" target="_blank" class="btnlinestretches3"><span>Detail</span></a></div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section id="about" class="scroll-point">
+    <h2><span class="bgextend bgLRextendTrigger"><span class="bgappearTrigger">About</span></span></h2>
+    <ul class="about-list fadeUpTrigger">
+        <li>
+            <dl>
+                <dt class="lang-ja">社名</dt><dt class="lang-en">Company Name</dt>
+                <dd class="lang-ja">活知恵（カッチェ）合同会社</dd>
+                <dd class="lang-en">Kacche LLC</dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt class="lang-ja">設立</dt><dt class="lang-en">Established</dt>
+                <dd class="lang-ja">2026年1月7日</dd>
+                <dd class="lang-en">January 7, 2026</dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt class="lang-ja">資本金</dt><dt class="lang-en">Capital</dt>
+                <dd class="lang-ja">300万円</dd>
+                <dd class="lang-en">3,000,000 JPY</dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt class="lang-ja">本社</dt><dt class="lang-en">Head Office</dt>
+                <dd class="lang-ja">東京都狛江市岩戸南</dd>
+                <dd class="lang-en">Iwato-minami, Komae City, Tokyo, Japan</dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt class="lang-ja">事業内容</dt><dt class="lang-en">Business Activities</dt>
+                <dd>
+                    <div class="lang-ja">
+                        1．創業、海外市場開拓、地域活性化、DX化等に関するコンサルティング事業<br>
+                        2．ブランディングおよび販売促進支援に係るコンテンツの企画、制作<br>
+                        3．事業改善に資するITシステム等の企画、開発、導入、保守及び運用<br>
+                        4．上記に関する製品企画、販売（電子商取引を含む）及び輸出入<br>
+                        5．上記に関する旅行業及び観光関連事業<br>
+                        6．上記に関するイベントの企画、運営<br>
+                        7．前各号に付帯又は関連する一切の事業
+                    </div>
+                    <div class="lang-en">
+                        1. Consulting for business startup, global market development, regional revitalization, and DX.<br>
+                        2. Planning and production of content related to branding and sales promotion support.<br>
+                        3. Planning, development, implementation, and maintenance of IT systems for business improvement.<br>
+                        4. Product planning, sales (including e-commerce), and import/export related to the above.<br>
+                        5. Travel and tourism-related business related to the above.<br>
+                        6. Event planning and management related to the above.<br>
+                        7. All businesses incidental or related to each of the preceding items.
+                    </div>
+                </dd>
+            </dl>
+        </li>
+
+        <li class="representative-details">
+            <details>
+                <summary style="cursor: pointer; list-style: none; outline: none;">
+                    <dl style="margin: 0;">
+                        <dt class="lang-ja">代表社員</dt><dt class="lang-en">CEO</dt>
+                        <dd class="lang-ja">野口 紀彦 (クリックで略歴を表示)</dd>
+                        <dd class="lang-en">Norihiko Noguchi (Click to view profile)</dd>
+                    </dl>
+                </summary>
+                
+                <div class="details-content" style="padding-top: 15px; border-top: 1px dotted #ccc; margin-top: 10px;">
+                    <dl>
+                        <dt class="lang-ja">プロフィール</dt><dt class="lang-en">Profile</dt>
+                        <dd><img src="img/noguchi.png" style="max-width: 300px; height: auto; margin-bottom: 10px;"></dd>
+                    </dl>
+                    <dl>
+                        <dt class="lang-ja">保有資格</dt><dt class="lang-en">Certifications</dt>
+                        <dd class="lang-ja">
+                            ・中小企業診断士（経済産業大臣任命・2011年登録）<br>
+                            ・高度情報処理技術者（IPA認定・エンベデッドシステムスペシャリスト）<br>
+                            ・国内旅行業務取扱管理者
+                        </dd>
+                        <dd class="lang-en">
+                            - Registered Management Consultant (SME Consultant)<br>
+                            - Embedded Systems Specialist (Advanced Information-Processing Engineer, IPA Japan)<br>
+                            - Certified Domestic Travel Service Manager
+                        </dd>
+                    </dl>
+
+                    <dl><dt class="lang-ja">略歴</dt><dt class="lang-en">Career Summary</dt></dl>
+
+                    <dl>
+                        <dt>1990.03</dt>
+                        <dd class="lang-ja">東京工業大学（現：東京科学大学）大学院・理工学研究科・制御工学専攻修了</dd>
+                        <dd class="lang-en">Graduated from the Department of Control Engineering, Graduate School of Tokyo Institute of Technology(Tokyo Sience of Technology).</dd>
+                    </dl>
+
+                    <dl>
+                        <dt>1990.04</dt>
+                        <dd class="lang-ja">
+                            ソニー株式会社入社。映像制作機器（XDCAM等）の新商品企画、欧州市場（英国赴任）での販促に従事。世界50ヵ国以上でのビジネスを経験。
+                        </dd>
+                        <dd class="lang-en">
+                            Joined Sony Corporation. Engaged in product planning for professional video equipment (XDCAM, etc.) and sales promotion in the European market (stationed in the UK).
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>2015.09</dt>
+                        <dd class="lang-ja">
+                            日本貿易振興機構（ジェトロ）入構。海外スタートアップと日本企業のマッチング等、イノベーション支援事業を推進。
+                        </dd>
+                        <dd class="lang-en">
+                            Joined JETRO (Japan External Trade Organization). Promoted innovation support projects such as matching overseas startups with Japanese companies.
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>2018.07</dt>
+                        <dd class="lang-ja">
+                            レシップ株式会社入社。執行役員（ビジネス開発担当）として、クラウド型デジタルサイネージや観光DXシステム QUICK TRIP を新規開発し、
+                            東京駅八重洲口JR高速バスターミナルや、静岡県・富士山入山管理システムなどに採択されるなどの新規事業を統括。
+                        </dd>
+                        <dd class="lang-en">
+                            Joined LECIP Corporation. As Executive Officer (Business Development), oversaw new business initiatives in Digital Signage and Tourism DX.
+                            Successfully launched new products such as the cloud-based digital signage and tourism DX system QUICK TRIP, 
+                            which was adopted for the JR Express Bus Terminal at Tokyo Station Yaesu Exit and the Mt. Fuji Climbing Management System in Shizuoka Prefecture.
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>2026.01</dt>
+                        <dd class="lang-ja">活知恵合同会社を設立。代表社員に就任。</dd>
+                        <dd class="lang-en">Established Kacche LLC.</dd>
+                    </dl>
+                </div>
+            </details>
+        </li>
+    </ul>
+
+<!--
+        <div class="lang-ja">
+            <p style="text-align: center; margin-top: 30px;">活知恵は豊富な実務経験を活かし、幅広い分野の専門家とも協働することによって、あらゆる課題にワンストップで対応します。</p>
+            <p><img src="img/network.png" style="max-width: 800px; height: auto; display: block; margin: 0 auto;"></p>
+        </div>
+-->
+</section>
+
+<section id="project" class="scroll-point">
+    <h2><span class="bgextend bgLRextendTrigger"><span class="bgappearTrigger">Project</span></span></h2>
+    <ul class="accordion-area">
+
+        <li class="fadeUpTrigger">
+            <!-- <section class="open"> -->
+            <section>
+                <h3 class="title">
+                    <span class="lang-ja">ARCAD@Japan - 世界のITスタートアップと日本企業の架け橋</span>
+                    <span class="lang-en">ARCAD@Japan - A Bridge for IT Startups to the Japanese Industries</span>
+                </h3>
+                <div class="box">
+                    <div class="lang-ja">
+                        <p>日本のIT人材の不足は、中小企業や中堅企業にとって特に深刻な課題となっています。
+                            ARCAD@Japanは、海外の優れたIT開発企業と日本企業をマッチングし、国内のIT人材不足を補うとともに、海外企業の優れた技術を日本の市場に展開するプロジェクトです。</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>ARCAD@Japan is a project that matches overseas leading IT development companies with Japanese enterprises, 
+                            supplementing the domestic IT talent shortage and supporting the expansion of overseas companies into the Japanese market.</p>
+                    </div>
+                </div>
+            </section>
+        </li>
+
+        <li class="fadeUpTrigger">
+            <!-- <section class="open"> -->
+            <section>
+                <h3 class="title">
+                    <span class="lang-ja">理華堂 - 機能美溢れる工芸品の世界への架け橋</span>
+                    <span class="lang-en">RICADOU Japan - A Bridge to the World for Selected Japanese Crafts</span>
+                </h3>
+                <div class="box">
+                    <div class="lang-ja">
+                        <p>「理華堂（りかどう）」は、伝統技術とデザインに裏付けされた「理由のある（理）」「華やかな（華）」日本製品を厳選し、世界各国の販売店に届けるプロジェクトです。
+                        日本の製造事業者やクリエイターと海外の販売事業者をマッチングし、マーケットインの発想で海外市場を切り拓きます。</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>"RICADOU Japan" is a project that carefully selects "meaningful" (Ri) and "brilliant" (Ca) Japanese products backed by traditional techniques and design to deliver them to retailers worldwide.
+                        We match Japanese manufacturers and creators with overseas distributors to open up international markets through a market-in approach.</p>
+                    </div>
+                </div>
+            </section>
+        </li>
+
+        <li class="fadeUpTrigger">
+            <!-- <section class="open"> -->
+            <section>
+                <h3 class="title">
+                    <span class="lang-ja">創業セミナー</span>
+                    <span class="lang-en">Entrepreneurship Seminars</span>
+                </h3>
+                <div class="box">
+                    <div class="lang-ja">
+                        <p>東京都のサービスである東京開業ワンストップセンターや、地方自治体、大学、企業などを対象として、
+                        創業に関するセミナーやワークショップを開催しています。創業に必要な知識やノウハウを提供し、創業者の成功を支援します。</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>We organize seminars and workshops on starting a business at the Tokyo One-Stop Business Establishment Center and local government offices.
+                        We support the success of entrepreneurs by providing the essential knowledge and expertise required for a business launch.</p>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+</section>
+
+
+<section id="contact" class="scroll-point">
+  <h2><span class="bgextend bgLRextendTrigger"><span class="bgappearTrigger">Contact</span></span></h2>
+
+  <form action="https://formspree.io/f/mvzvdqag" method="POST" class="fadeUpTrigger">
+    <ul class="form-list">
+      <li>
+        <dl>
+          <dt>
+            <label for="division" class="lang-ja">会社名・部署名</label>
+            <label for="division" class="lang-en">Company / Division</label>
+          </dt>
+          <dd><input type="text" name="Division" id="division" size="60"></dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <label for="name" class="lang-ja">ご担当者名</label>
+            <label for="name" class="lang-en">Name</label>
+          </dt>
+          <dd><input type="text" name="Name" id="name" size="60" required></dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <label for="email" class="lang-ja">メールアドレス</label>
+            <label for="email" class="lang-en">Email Address</label>
+          </dt>
+          <dd><input type="email" name="Email" id="email" size="60" required></dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <label for="tel" class="lang-ja">電話番号</label>
+            <label for="tel" class="lang-en">Phone Number</label>
+          </dt>
+          <dd><input type="text" name="Tel" id="tel" size="60"></dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <label for="msg" class="lang-ja">お問い合わせ内容</label>
+            <label for="msg" class="lang-en">Message</label>
+          </dt>
+          <dd><textarea name="Message" id="msg" cols="50" rows="5" required></textarea></dd>
+        </dl>
+      </li>
+    </ul>
+
+    <div class="submit-btn fadeUpTrigger">
+        <input type="submit" name="submit" value="送信" class="lang-ja">
+        <input type="submit" name="submit" value="Send" class="lang-en">
+    </div>
+
+  </form>
+</section>
+
+
+</main>
+<!--/container--></div>	
+
+<footer id="footer">
+
+<div class="openbtn"><span></span><span>Menu</span><span></span></div>
+<div id="g-nav">
+<div id="g-nav-list">
+        <ul>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+</div>
+</div> 
+    <p class="footer-logo">&copy; Kacche LCC - 活知恵合同会社</p>
+	<p id="page-top"><a href="index.html">Top</a></p>	
+</footer>
+<!--/wrapper--></div>
+   
+<!--=============JS ===============--> 
+<!--jQuery-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!--機能編 9-4-1 ニュースティッカー-->   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<!--機能編 9-1-5 スクロールをするとエリアの高さに合わせて線が伸びる-->  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollgress/2.0.0/scrollgress.min.js"></script>
+<!--自作のJS-->   
+<script src="js/script.js"></script>
+<script>
+function switchLang(lang) {
+    // ボタンの活性状態の切り替え
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+    // コンテンツの表示・非表示
+    const jaElements = document.querySelectorAll('.lang-ja');
+    const enElements = document.querySelectorAll('.lang-en');
+
+    if (lang === 'en') {
+        jaElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = 'inline-block'); // または block
+    } else {
+        jaElements.forEach(el => el.style.display = 'inline-block');
+        enElements.forEach(el => el.style.display = 'none');
+    }
+    
+    // 選択を保存（任意）
+    localStorage.setItem('selectedLang', lang);
+}
+
+// 読み込み時に保存された言語を適用
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selectedLang') || 'ja';
+    switchLang(savedLang);
+});
+</script>
+
+</body>
+</html>

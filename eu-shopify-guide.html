@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本→EU 工芸品販売ガイド</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho:wght@400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #f5f0e8;
+    --accent: #8b1a1a;
+    --gold: #c49a2a;
+    --muted: #6b5d4f;
+    --light: #ede8df;
+    --border: #d4c9b8;
+    --step1: #1a4a6b;
+    --step2: #8b1a1a;
+    --step3: #2d6b2d;
+    --step4: #6b3d1a;
+    --step5: #4a1a6b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif JP', serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.02) 20px,
+      rgba(255,255,255,0.02) 40px
+    );
+  }
+  .header-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.3rem 1rem;
+    margin-bottom: 1.2rem;
+  }
+  header h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    position: relative;
+  }
+  header h1 span { color: var(--gold); }
+  header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.6);
+    letter-spacing: 0.05em;
+  }
+
+  /* Main layout */
+  main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.2rem 4rem; }
+
+  /* Alert box */
+  .alert {
+    background: #fff8e8;
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.2rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+  .alert strong { color: var(--accent); }
+
+  /* Overview table */
+  .overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  .ov-cell {
+    background: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  .ov-cell .ov-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1;
+  }
+  .ov-cell .ov-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  /* Section */
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  /* Step cards */
+  .step {
+    border: 1px solid var(--border);
+    margin-bottom: 1.2rem;
+    background: white;
+    overflow: hidden;
+  }
+  .step-header {
+    display: flex;
+    align-items: stretch;
+    cursor: pointer;
+    user-select: none;
+  }
+  .step-num {
+    width: 60px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+  }
+  .step-1 .step-num { background: var(--step1); }
+  .step-2 .step-num { background: var(--step2); }
+  .step-3 .step-num { background: var(--step3); }
+  .step-4 .step-num { background: var(--step4); }
+  .step-5 .step-num { background: var(--step5); }
+
+  .step-title-wrap {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .step-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .step-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .step-toggle {
+    width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--muted);
+    transition: transform 0.3s;
+  }
+  .step.open .step-toggle { transform: rotate(180deg); }
+
+  .step-body {
+    display: none;
+    padding: 1.2rem 1.4rem 1.4rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.88rem;
+    line-height: 1.9;
+  }
+  .step.open .step-body { display: block; }
+
+  .step-body h4 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin: 1.2rem 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .step-body h4:first-child { margin-top: 0; }
+
+  .step-body ul {
+    list-style: none;
+    padding: 0;
+  }
+  .step-body ul li {
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    position: relative;
+    border-bottom: 1px dashed var(--border);
+  }
+  .step-body ul li:last-child { border-bottom: none; }
+  .step-body ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    font-weight: 500;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+  }
+  .tag-required { background: #fde8e8; color: var(--accent); }
+  .tag-optional { background: #e8f0fd; color: #1a3a8b; }
+  .tag-new { background: #fdf5e8; color: var(--gold); }
+
+  .infobox {
+    background: var(--light);
+    border-left: 3px solid var(--gold);
+    padding: 0.8rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  /* Shopify steps */
+  .shopify-steps {
+    counter-reset: shop;
+  }
+  .shopify-step {
+    counter-increment: shop;
+    padding: 0.6rem 0 0.6rem 2rem;
+    position: relative;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .shopify-step::before {
+    content: counter(shop);
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    background: var(--ink);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .shopify-step:last-child { border-bottom: none; }
+
+  code {
+    background: var(--light);
+    padding: 0.1rem 0.4rem;
+    font-size: 0.82rem;
+    font-family: monospace;
+    border: 1px solid var(--border);
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-top: 0.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0.5rem 0 0.8rem 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.3rem;
+    top: 0.7rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .tl-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.5);
+    text-align: center;
+    padding: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 600px) {
+    .step-num { width: 48px; font-size: 1.2rem; }
+    .overview { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">越境EC 実務ガイド 2025</div>
+  <h1>日本の工芸品を<span>EU圏</span>へ<br>Shopifyで販売するための手続き</h1>
+  <p>Tax / Customs / Compliance / Shipping — 必須手続き完全チェックリスト</p>
+</header>
+
+<main>
+
+  <div class="alert">
+    <strong>⚠ 2025年以降の主な変更点：</strong><br>
+    ① <strong>GPSR（一般製品安全規則）</strong>が2024年12月13日施行。EU外事業者はEU認定代理人の設置が必須。<br>
+    ② <strong>€150関税免除の廃止</strong>は2026年7月1日予定。IOSS登録は早めに対応推奨。
+  </div>
+
+  <div class="overview">
+    <div class="ov-cell">
+      <span class="ov-num" style="color:var(--step1)">①</span>
+      <span class="ov-label">Shopify設定</span>
+    </div>
+    <div class="ov-cell">
+      <span class="ov-num" style="color:var(--step2)">②</span>
+      <span class="ov-label">VAT / IOSS</span>
+    </div>
+    <div class="ov-cell">
+      <span class="ov-num" style="color:var(--step3)">③</span>
+      <span class="ov-label">GPSR対応</span>
+    </div>
+    <div class="ov-cell">
+      <span class="ov-num" style="color:var(--step4)">④</span>
+      <span class="ov-label">通関・輸出</span>
+    </div>
+    <div class="ov-cell">
+      <span class="ov-num" style="color:var(--step5)">⑤</span>
+      <span class="ov-label">その他法務</span>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="section-title">必須手続き ステップ別ガイド</div>
+
+  <div class="step step-1 open">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">01</div>
+      <div class="step-title-wrap">
+        <div class="step-category">Shopify Platform Setup</div>
+        <div class="step-title">Shopifyストアの基本設定</div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body">
+      <h4>ストア作成・プラン</h4>
+      <ul>
+        <li>Shopifyアカウントを作成し、<strong>Basicプラン以上</strong>を選択（EU向け税務機能はBasic Tax / Shopify Taxで利用可能）</li>
+        <li>ストアの通貨をEURに対応させる（マルチ通貨は<strong>Shopify Payments</strong>で設定）</li>
+        <li>表示言語：英語を基本とし、主要EU言語（独・仏・伊など）への対応も検討</li>
+      </ul>
+      <h4>Shopify管理画面での設定手順</h4>
+      <div class="shopify-steps">
+        <div class="shopify-step"><code>設定 › 配送と配達</code> → EU向け配送ゾーンを作成（この設定がEU税務リージョンを自動的に有効化）</div>
+        <div class="shopify-step"><code>設定 › 税金と関税</code> → 「European Union」のManageをクリック</div>
+        <div class="shopify-step">IOSS番号取得後に「Collect VAT」から登録（Step 2参照）</div>
+        <div class="shopify-step">各商品に<strong>HSコード（関税分類番号）</strong>を設定（<code>商品 › 関税情報</code>）</div>
+        <div class="shopify-step">各商品に<strong>原産国「日本（JP）」</strong>を設定</div>
+      </div>
+      <div class="infobox">
+        💡 HSコードは通関・関税計算に必須です。日本の工芸品は品目によって異なります（例：漆器 HS 4419、陶磁器 HS 6912、織物 HS 6301〜）。税関や商工会議所に確認を。
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step step-2">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">02</div>
+      <div class="step-title-wrap">
+        <div class="step-category">Tax Compliance</div>
+        <div class="step-title">VAT・IOSS登録と税務対応 <span class="tag tag-required">必須</span></div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body">
+      <h4>日本からEUに発送する場合 → IOSS制度を使う</h4>
+      <ul>
+        <li><strong>IOSS（Import One-Stop Shop）</strong>：EU域外の事業者が対象。<strong>€150以下</strong>の注文のVATをチェックアウト時に徴収できる制度</li>
+        <li>IOSS登録は<strong>EU加盟国の税務機関 + 仲介業者（Intermediary）</strong>を通じて行う（日本企業は仲介業者が必須）</li>
+        <li>登録後、毎月VAT申告・納税をIOS経由で一本化</li>
+        <li>€150超の注文は：配送業者が到着時に輸入VATを徴収（またはDuties機能で事前徴収）</li>
+      </ul>
+      <h4>IOSS番号のShopifyへの登録</h4>
+      <div class="shopify-steps">
+        <div class="shopify-step"><code>設定 › 税金と関税 › European Union › Manage</code></div>
+        <div class="shopify-step">「Collect VAT」→ Registration countryでIOSS登録国を選択</div>
+        <div class="shopify-step">IOSS VAT number に取得した番号を入力 → 保存</div>
+      </div>
+      <h4>売上規模別の対応方針</h4>
+      <ul>
+        <li><strong>年間EU向け売上 €10,000未満</strong>：マイクロビジネス免除（日本の消費税率で対応も可）またはIOSS登録</li>
+        <li><strong>年間EU向け売上 €10,000以上</strong>：IOSS登録が実質的に必要</li>
+        <li>OSS（Union scheme）はEU域内事業者向け → 日本からの発送にはIOSSを使う</li>
+      </ul>
+      <h4>IOSS仲介業者サービス例</h4>
+      <ul>
+        <li><strong>EAS Project</strong>（Shopifyアプリあり、IOSS登録〜申告まで自動化）</li>
+        <li><strong>Taxually / Avalara / Fonoa</strong>などの国際税務サービス</li>
+        <li>料金は事業者により異なるため比較検討を</li>
+      </ul>
+      <div class="infobox">
+        ⚠ <strong>2026年7月1日以降</strong>：EU規則変更により€150の関税免除撤廃予定。すべての輸入品に関税が課される見通しのため、早めにIOSS登録することを推奨。
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step step-3">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">03</div>
+      <div class="step-title-wrap">
+        <div class="step-category">Product Safety Regulation</div>
+        <div class="step-title">GPSR（一般製品安全規則）対応 <span class="tag tag-new">2024年12月施行</span></div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body">
+      <h4>GPSRとは</h4>
+      <ul>
+        <li>2024年12月13日施行。EU向けに非食品消費者製品を販売するすべての事業者に適用</li>
+        <li>Shopify・Amazon・eBayを問わず、<strong>オンラインでの販売にも同様に適用</strong></li>
+        <li>未対応の場合：販売停止・罰金（年間売上の最大2%）・通関拒否のリスク</li>
+        <li>骨董品（アンティーク）は適用除外。ただし中古品・修理品は対象</li>
+      </ul>
+      <h4>日本企業に必要な対応</h4>
+      <ul>
+        <li>✅ <strong>EU認定代理人（Authorised Representative / Responsible Person）の設置</strong>：EU域内に拠点を持つ代理人の任命が必須</li>
+        <li>✅ 商品ページへの代理人名・連絡先情報の記載</li>
+        <li>✅ 製品モデル番号・写真・タイプなどの情報掲載</li>
+        <li>✅ 現地言語での安全情報・ラベル・製品マニュアルの提供</li>
+        <li>✅ 製品トレーサビリティ記録の保管</li>
+      </ul>
+      <h4>EU認定代理人サービス例（日本語対応）</h4>
+      <ul>
+        <li><strong>オプティ株式会社</strong>（GPSR認定代理人サービス提供、ジェトロ掲載）</li>
+        <li><strong>EAS Project</strong>（Shopifyアプリ内でGPSR対応サービスも提供）</li>
+        <li>その他EU法律事務所・コンプライアンスサービス各社</li>
+      </ul>
+      <div class="infobox">
+        💡 工芸品は電気製品等の分野別法規の対象外のため、GPSRが適用されます。伝統的な手工芸品であっても対応が必要です。
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step step-4">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">04</div>
+      <div class="step-title-wrap">
+        <div class="step-category">Customs & Logistics</div>
+        <div class="step-title">輸出通関・物流・梱包対応</div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body">
+      <h4>日本側の輸出手続き</h4>
+      <ul>
+        <li>輸出申告：20万円超の輸出は税関への輸出申告が必要（通常は運送業者が代行）</li>
+        <li>文化財保護法：文化財に指定された工芸品は輸出許可申請が必要（文化庁）</li>
+        <li>インボイス（商業送り状）・パッキングリストの作成</li>
+        <li>原産地証明書（必要に応じて）：日EU・EPA活用で関税優遇の可能性</li>
+      </ul>
+      <h4>EU側の輸入通関</h4>
+      <ul>
+        <li>IOSS登録済みの場合：€150以下はIOSS番号を記載した送り状で関税・VAT処理が簡素化</li>
+        <li>€150超：輸入VAT＋関税が現地で課税（配送業者または輸入者が支払い）</li>
+        <li>日EU・EPAの関税優遇：多くの工芸品で関税ゼロまたは引き下げ。原産地規則を確認</li>
+      </ul>
+      <h4>推奨運送業者・サービス</h4>
+      <ul>
+        <li><strong>日本郵便（EMS）</strong>：IOSS対応、小口向け</li>
+        <li><strong>DHL / FedEx / UPS</strong>：IOSS番号対応、追跡・保険完備</li>
+        <li><strong>Ship&co</strong>：ShopifyとIOSS番号連携に対応した発送ラベル発行サービス</li>
+        <li>壊れやすい工芸品には十分な緩衝材と「Fragile（壊れ物）」ラベルを必ず使用</li>
+      </ul>
+      <h4>梱包・ラベル表示</h4>
+      <ul>
+        <li>IOSS番号を送り状に記載</li>
+        <li>内容品の正確な英語表記（例：Japanese lacquerware、ceramic tea bowl等）</li>
+        <li>申告価格は正確に（過少申告はNG）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step step-5">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">05</div>
+      <div class="step-title-wrap">
+        <div class="step-category">Legal & Business Setup</div>
+        <div class="step-title">その他の法務・ビジネス対応</div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body">
+      <h4>日本側の事業者登録</h4>
+      <ul>
+        <li>個人・法人問わず、Shopifyでの海外販売に特別な許認可は原則不要</li>
+        <li>消費税の免税事業者でも越境ECは可能（輸出免税）</li>
+        <li>外国為替および外国貿易法：対価受取り（€1万相当超）は原則届出不要だが、大口取引は確認を</li>
+      </ul>
+      <h4>利用規約・プライバシーポリシー（EU向け）</h4>
+      <ul>
+        <li><strong>GDPR対応</strong>：EU顧客の個人情報取り扱い方針を明記したプライバシーポリシーが必須</li>
+        <li>Cookie同意バナーの設置（Shopifyアプリで対応可）</li>
+        <li>返品・返金ポリシー：EUは消費者保護が厚く、<strong>14日間のクーリングオフ</strong>権を付与する必要あり</li>
+        <li>特定商取引法に基づく表記（日本語版）も国内向けに必要</li>
+      </ul>
+      <h4>決済・為替</h4>
+      <ul>
+        <li>Shopify PaymentsまたはPayPalでEUR決済に対応</li>
+        <li>為替手数料・送金手数料を考慮した価格設定を行う</li>
+        <li>Wiseなどの海外送金サービスも活用可</li>
+      </ul>
+      <h4>知的財産・ブランド保護</h4>
+      <ul>
+        <li>商標・著作権：EU市場向けの商標登録はEUIPO（欧州連合知的財産庁）へ</li>
+        <li>伝統工芸品の場合、「地理的表示（GI）」の活用も検討</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="section-title" style="margin-top:3rem">推奨スケジュール（開業まで）</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-date">Week 1–2</span>
+      Shopifyストア作成・商品登録・HSコード調査・EU配送ゾーン設定
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">Week 2–4</span>
+      IOSS仲介業者を選定し登録申請（取得まで1〜2週間程度）・GPSR認定代理人の契約
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">Week 3–5</span>
+      IOSS番号をShopifyに登録・配送業者との契約（IOSS対応確認）・プライバシーポリシー・返品ポリシー整備
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">Week 4–6</span>
+      テスト注文・通関フロー確認・商品ページの多言語対応・GPSR必須情報の記載
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">Week 6〜</span>
+      販売開始 → 毎月IOSS申告・在庫・ロジスティクス管理
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  本ガイドは2025年4月時点の情報に基づいています。税務・法務事項は専門家（税理士・弁護士・通関士）にご相談ください。<br>
+  EU規制は変更される場合があります。最新情報はEuropean Commission・Shopify Help Centerをご確認ください。
+</footer>
+
+<script>
+  function toggle(header) {
+    const step = header.closest('.step');
+    step.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

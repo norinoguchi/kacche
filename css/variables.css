@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+:root {
+    /* Primary Colors */
+    --color-accent: #0b9900;    /* メインの緑色 */
+    --color-text-primary: #333; /* 主要なテキスト・要素の色 */
+    --color-black: #000;        /* 黒色 */
+    --color-white: #fff;        /* 白色 */
+
+    /* Secondary/Tertiary Colors */
+    --color-text-secondary: #666;  /* 中間的なグレーのテキスト色 (例: フッターロゴ) */
+    --color-text-tertiary: #888;   /* 明るいグレーのテキスト色 (例: フッター small) */
+    --color-border-light: #ccc;   /* 明るいグレーのボーダー (例: サブメニュー、about) */
+    --color-border-lightest: #e0e0e0; /* 最も明るいグレーのボーダー (例: note記事リスト) */
+    --color-bg-hover: #f0f0f0;    /* 明るいグレーのホバー背景色 (例: サブメニュー) */
+    --color-bg-light: #f3f3f3;    /* 明るいグレーの背景色 (例: FAQの疑似要素) */
+    --color-hover-secondary: #777; /* 二次的なホバー色 (例: page-topボタン) */
+    
+    /* Utility/System Colors (reset.css由来) */
+    --color-system-mark-bg: #ff0;
+    --color-system-mark-text: #000;
+    --color-system-selection-bg: #b3d4fc;
+}

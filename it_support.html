@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="中小企業向けIT導入支援サービス。課題ヒアリングから改善提案、ITツール選定、補助金活用、導入支援、自社アプリ開発まで一貫対応。">
+  <title>中小企業のIT導入支援サービス｜活知恵（カッチェ）合同会社</title>
+  <style>
+    /* ベーススタイル */
+    body {
+      font-family: "Helvetica Neue", "Hiragino Sans", "Meiryo", sans-serif;
+      margin: 0;
+      color: #333;
+      line-height: 1.7;
+      background-color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ヘッダー */
+    header {
+      position: relative;
+      /* background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; */
+      background: url('img/ittools.png') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .logo {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 3;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.5rem;
+    }
+
+    /* ハンバーガーメニュー */
+    .menu-toggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 3;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+
+    nav {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 180px;
+      border-radius: 4px;
+      z-index: 10;
+    }
+    nav a {
+      display: block;
+      color: #fff;
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* セクション */
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      border-left: 5px solid #08a000;
+      padding-left: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    h3 {
+      color: #08a000;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .service-image, .app-image, .flow-image {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0;
+      height: auto;
+    }
+
+    ul, ol {
+      margin-left: 1.2em;
+    }
+
+    /* CTAセクション */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, #08a000, #00c6ff);
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 8px;
+      margin: 60px 20px;
+    }
+    .cta a {
+      display: inline-block;
+      background-color: #fff;
+      color: #08a000;
+      padding: 14px 40px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+      margin-top: 20px;
+    }
+    .cta a:hover {
+      background-color: #08a000;
+      color: white;
+    }
+
+    /* フォーム */
+    #contact {
+      background-color: #f9f9f9;
+      padding: 60px 20px;
+      border-radius: 8px;
+      margin: 50px auto;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    button {
+      background-color: #08a000;
+      color: white;
+      border: none;
+      padding: 12px 40px;
+      margin-top: 30px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #08a000;
+    }
+
+    footer {
+      background-color: #f7f7f7;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* --- メディアクエリ (スマホ用調整) --- */
+    @media (max-width: 768px) {
+      header {
+        padding: 80px 20px;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      section {
+        margin: 40px 0;
+      }
+      .cta {
+        margin: 40px 10px;
+        padding: 50px 15px;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><a href="kacche.jp" >活知恵（カッチェ）</a></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="nav-menu">
+      <a href="#services">サービス</a>
+      <a href="#apps">アプリ開発</a>
+      <a href="#flow">ご支援の流れ</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+    <h1>デジタルツールの導入・システム開発サポート</h1>
+    <p>― 補助金の活用による業務効率改善、販売促進支援 ―</p>
+  </header>
+
+  <section id="services">
+    <p>
+      活知恵（カッチェ）は、デジタル技術全般に関する豊富な経験と中小企業診断士の知恵を活用し、<strong>現場目線のIT導入支援</strong>を行っています。
+      現状の課題を把握させて頂いた上で、最適なツールの選定、導入実務、運用サポート、補助金申請までワンストップでサポートします。
+    </p>
+    <!-- <img src="https://images.unsplash.com/photo-1581093588401-22d3a5bcd2a8?auto=format&fit=crop&w=1200&q=80" alt="IT支援のイメージ" class="service-image"> -->
+    <h2>提供サービス</h2>
+
+    <h3>1. 現状の課題ヒアリング</h3>
+    <p>経営者・担当者様から現在の課題を丁寧にヒアリングします。</p>
+
+    <h3>2. 改善手段のご提案</h3>
+    <p>業務内容に合わせた最適な改善ソリューションを過不足なくご提案します。</p>
+
+    <h3>3. ITツールの選定</h3>
+    <p>クラウドサービスやデジタルサイネージなど、目的に合う最適なツールをあらゆる選択肢から中立に選定します。</p>
+
+    <h3>4. 補助金活用のご提案</h3>
+    <p>中小企業診断士の支援により、IT導入補助金などの制度を活用し、導入コストを最小限に抑えます。</p>
+
+    <h3>5. 導入・運用支援</h3>
+    <p>初期設定、研修、運用サポートまで継続的に支援します。</p>
+  </section>
+
+<section id="apps">
+    <h2>取扱 IT ツール（一例）</h2>
+    <h3>デジタルサイネージシステム</h3>
+    <p>店舗の前に設置することで、店舗やオフィスの前を通りがかった潜在顧客を引き込むために効果的なツールです。<br>
+        商店街全体やチェーン店向けに適したクラウド型や、小規模な単独店舗に適した簡易型まで、様々なタイプの中から最適なシステムを選定します。<br>
+        またデジタルサイネージに放映するコンテンツの制作も可能ですので、ご相談ください。</p>
+    <h3>モバイルチケット販売システム</h3>
+    <p>外国人が多い施設など、チケット販売のための窓口人件費の抑制や、集客のために有効です。</p>
+    <h3>クラウド会計システム</h3>
+    <p>電子帳簿保存法の施行により、2024年1月1日から、電子取引でやり取りした書類のデータ保存が原則として完全義務化されていますが、
+        デジタルが苦手なために対応が十分に出来ていない小規模事業者も多いのが実情です。活知恵は経営者に寄り添って使えるようにサポートしますので、ぜひご相談ください。</p>
+    <h3>デジタルメニュー・オーダーシステム</h3>
+    <p>飲食店や小売店での非対面注文・決済を可能にし、業務効率化と顧客満足度向上を実現します。<br>
+        店舗の規模や業態に合わせて、最適なシステムを選定・導入支援します。</p>
+  </section>
+
+
+  <section id="apps">
+    <h2>自社専用アプリ開発</h2>
+    <p>
+      自社業務に合わせたアプリを、<strong>低コストで開発</strong>します。<br>
+      海外オフショアやフリーランサーを活用し、コストを抑えながら高品質を実現。<br><br>
+      ・顧客管理・予約・在庫アプリ<br>
+      ・iOS / Android / Web対応<br>
+      ・活知恵が責任を持って必要要件を定義・品質管理を実施します。
+    </p>
+    <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&fit=crop&w=1200&q=80" alt="アプリ開発のイメージ" class="app-image">
+  </section>
+
+  <section id="flow">
+    <h2>ご支援の流れ</h2>
+    <ol>
+      <li>無料相談・ヒアリング</li>
+      <li>改善提案・お見積り</li>
+      <li>補助金申請サポート</li>
+      <li>ITツール導入・運用開始</li>
+      <li>継続サポート</li>
+    </ol>
+    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80" alt="サポートの流れ" class="flow-image">
+  </section>
+
+  <div class="cta">
+    <h2>無料相談・お問い合わせ</h2>
+    <p>初回相談・現状診断は無料です。お気軽にご相談ください。</p>
+    <a href="#contact">お問い合わせフォームへ</a>
+  </div>
+
+  <section id="contact">
+    <h2>お問い合わせフォーム</h2>
+    <form action="https://formspree.io/f/xqagvyqe" method="post">
+      <label for="name">お名前</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">メールアドレス</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">お問い合わせ内容</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">送信する</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 活知恵合同会社（設立準備中） rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
