@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ja" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Discovery Hub - 観光・体験 ＆ 花火祭りプラットフォーム</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slateDark: '#0b0f19',
+                        slateCard: '#131c2e',
+                        accentBlue: '#3b82f6',
+                        accentGold: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter & Noto Sans JP Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        body { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            background-color: #131c2e !important;
+            color: #f8fafa !important;
+            border: 1px solid #1e293b;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .leaflet-container { font-family: 'Noto Sans JP', sans-serif; }
+        .leaflet-popup-close-button { color: #94a3b8 !important; }
+        .leaflet-popup-close-button:hover { color: #ffffff !important; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="bg-slateDark text-slate-100 h-full flex flex-col overflow-hidden">
+
+    <!-- Header -->
+    <header class="bg-slateCard/80 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between shrink-0 z-20">
+        <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20 shrink-0">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                    Japan Discovery Hub 
+                    <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-normal">Pro Platform</span>
+                </h1>
+                <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400">観光・体験 ＆ 花火祭りデータベース</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Language Selector -->
+            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs text-white focus:outline-none focus:border-blue-500 cursor-pointer">
+                <option value="ja">🇯🇵 日本語</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="zh-TW">🇹🇼 繁體中文</option>
+                <option value="zh-CN">🇨🇳 简体中文</option>
+                <option value="ko">🇰🇷 한국어</option>
+                <option value="th">🇹🇭 ไทย</option>
+                <option value="id">🇮🇩 Bahasa Indonesia</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Main Toolbar & Navigation -->
+    <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-3 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shrink-0 z-10">
+        <!-- View Mode & Categories Container -->
+        <div class="flex flex-wrap items-center justify-between gap-2">
+            <!-- View Mode Switcher -->
+            <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800">
+                <button onclick="switchView('map')" id="btn-view-map" class="px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 bg-blue-600 text-white shadow-md">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    <span id="txt-nav-map">マップ</span>
+                </button>
+                <button onclick="switchView('list')" id="btn-view-list" class="px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    <span id="txt-nav-list">リスト</span>
+                </button>
+                <button onclick="switchView('calendar')" id="btn-view-calendar" class="px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span id="txt-nav-calendar">カレンダー</span>
+                </button>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex items-center gap-1.5">
+                <button onclick="filterCategory('all')" id="cat-all" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm">すべて</button>
+                <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">🎆 花火</button>
+                <button onclick="filterCategory('tourism')" id="cat-tourism" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">⛩️ 観光</button>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="relative w-full md:w-64">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </span>
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名やキーワードで検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-4 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all">
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 relative overflow-hidden flex">
+
+        <!-- 1. Map View Container -->
+        <div id="view-map" class="absolute inset-0 flex">
+            <div id="map" class="w-full h-full z-0"></div>
+        </div>
+
+        <!-- 2. List View Container -->
+        <div id="view-list" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <span id="txt-list-title">開催日・日付順リスト</span>
+                    <span class="text-xs font-normal text-slate-400" id="listCount">（0件）</span>
+                </h2>
+                <div id="listContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            </div>
+        </div>
+
+        <!-- 3. Calendar View Container -->
+        <div id="view-calendar" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex items-center justify-between mb-6 bg-slateCard/60 border border-slate-800 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl">
+                    <button onclick="changeMonth(-1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <h2 id="calendarMonthTitle" class="text-base sm:text-lg font-bold text-white">2026年 8月</h2>
+                    <button onclick="changeMonth(1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+
+                <div class="bg-slateCard/40 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div id="calendarHeaders" class="grid grid-cols-7 bg-slate-900/90 text-center text-xs font-semibold text-slate-400 py-3 border-b border-slate-800">
+                    </div>
+                    <div id="calendarGrid" class="grid grid-cols-7 bg-slate-800/20 gap-px"></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl max-h-[90vh] flex flex-col">
+            <div id="modalContent" class="p-5 sm:p-6 overflow-y-auto flex-1"></div>
+            <div class="bg-slate-900/60 px-5 sm:px-6 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
+                <button onclick="closeDetailModal()" id="txt-close" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition-colors">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+        const i18n = {
+            ja: {
+                subtitle: "観光・体験 ＆ 花火祭りデータベース",
+                navMap: "マップ",
+                navList: "リスト",
+                navCalendar: "カレンダー",
+                catAll: "すべて",
+                catFireworks: "🎆 花火・祭り",
+                catTourism: "⛩️ 観光・体験",
+                searchPlaceholder: "地域名やキーワードで検索...",
+                listTitle: "開催日・日付順リスト",
+                noResult: "該当するスポット・イベントが見つかりませんでした。",
+                detailLink: "詳細・相談窓口へ",
+                consultTitle: "このスポットへの訪問・手配のご相談",
+                consultDesc: "旅行手配や現地ガイド、個別コンサルティングのお問い合わせ",
+                consultBtn: "相談する",
+                close: "閉じる",
+                weekdays: ["日", "月", "火", "水", "木", "金", "土"],
+                formatMonth: (y, m) => `${y}年 ${m}月`
+            },
+            en: {
+                subtitle: "Tourism, Experience & Fireworks Festival DB",
+                navMap: "Map",
+                navList: "List",
+                navCalendar: "Calendar",
+                catAll: "All",
+                catFireworks: "🎆 Fireworks",
+                catTourism: "⛩️ Tourism",
+                searchPlaceholder: "Search location or keyword...",
+                listTitle: "Date-sorted List",
+                noResult: "No matching spots or events found.",
+                detailLink: "View Details & Consultation",
+                consultTitle: "Consultation for Visit & Arrangements",
+                consultDesc: "Inquiries for travel arrangement, local guide, or private consulting",
+                consultBtn: "Consult",
+                close: "Close",
+                weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                formatMonth: (y, m) => {
+                    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                    return `${months[m - 1]} ${y}`;
+                }
+            },
+            "zh-TW": {
+                subtitle: "觀光體驗 ＆ 煙火祭典資料庫",
+                navMap: "地圖",
+                navList: "列表",
+                navCalendar: "日曆",
+                catAll: "全部",
+                catFireworks: "🎆 煙火",
+                catTourism: "⛩️ 觀光",
+                searchPlaceholder: "搜尋地區或關鍵字...",
+                listTitle: "依日期排序列表",
+                noResult: "找不到符合的景點或活動。",
+                detailLink: "詳細資訊與諮詢",
+                consultTitle: "行程安排與參訪諮詢",
+                consultDesc: "旅遊安排、當地導遊或個人諮詢洽詢",
+                consultBtn: "諮詢",
+                close: "關閉",
+                weekdays: ["日", "一", "二", "三", "四", "五", "六"],
+                formatMonth: (y, m) => `${y}年 ${m}月`
+            },
+            "zh-CN": {
+                subtitle: "观光体验 ＆ 烟火祭典数据库",
+                navMap: "地图",
+                navList: "列表",
+                navCalendar: "日历",
+                catAll: "全部",
+                catFireworks: "🎆 烟火",
+                catTourism: "⛩️ 观光",
+                searchPlaceholder: "搜索地区或关键词...",
+                listTitle: "按日期排序列表",
+                noResult: "未找到符合的景点或活动。",
+                detailLink: "详细信息与咨询",
+                consultTitle: "行程安排与参访咨询",
+                consultDesc: "旅游安排、当地导游或个人咨询洽询",
+                consultBtn: "咨询",
+                close: "关闭",
+                weekdays: ["日", "一", "二", "三", "四", "五", "六"],
+                formatMonth: (y, m) => `${y}年 ${m}月`
+            },
+            ko: {
+                subtitle: "관광·체험 및 불꽃놀이 축제 데이터베이스",
+                navMap: "지도",
+                navList: "목록",
+                navCalendar: "캘린더",
+                catAll: "전체",
+                catFireworks: "🎆 불꽃놀이",
+                catTourism: "⛩️ 관광",
+                searchPlaceholder: "지역명이나 키워드로 검색...",
+                listTitle: "날짜순 목록",
+                noResult: "일치하는 스포트나 이벤트를 찾을 수 없습니다.",
+                detailLink: "상세 정보 및 상담 창구로",
+                consultTitle: "방문 및 수배 상담",
+                consultDesc: "여행 수배, 현지 가이드, 개인 컨설팅 문의",
+                consultBtn: "상담하기",
+                close: "닫기",
+                weekdays: ["일", "월", "화", "수", "목", "금", "토"],
+                formatMonth: (y, m) => `${y}년 ${m}월`
+            },
+            th: {
+                subtitle: "ฐานข้อมูลการท่องเที่ยว ประสบการณ์ และเทศกาลดอกไม้ไฟ",
+                navMap: "แผนที่",
+                navList: "รายการ",
+                navCalendar: "ปฏิทิน",
+                catAll: "ทั้งหมด",
+                catFireworks: "🎆 ดอกไม้ไฟ",
+                catTourism: "⛩️ ท่องเที่ยว",
+                searchPlaceholder: "ค้นหาชื่อสถานที่...",
+                listTitle: "รายการเรียงตามวันที่",
+                noResult: "ไม่พบสถานที่หรือกิจกรรมที่ตรงกัน",
+                detailLink: "ดูรายละเอียดและติดต่อ",
+                consultTitle: "ปรึกษาการเดินทางและการจัดเตรียม",
+                consultDesc: "สอบถามการจัดเตรียมการเดินทาง ไกด์ท้องถิ่น หรือที่ปรึกษา",
+                consultBtn: "ปรึกษา",
+                close: "ปิด",
+                weekdays: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+                formatMonth: (y, m) => `${m}/${y}`
+            },
+            id: {
+                subtitle: "Database Pariwisata, Pengalaman & Festival Kembang Api",
+                navMap: "Peta",
+                navList: "Daftar",
+                navCalendar: "Kalender",
+                catAll: "Semua",
+                catFireworks: "🎆 Kembang Api",
+                catTourism: "⛩️ Pariwisata",
+                searchPlaceholder: "Cari lokasi...",
+                listTitle: "Daftar Urut Tanggal",
+                noResult: "Tidak ada tempat atau acara yang ditemukan.",
+                detailLink: "Detail & Konsultasi",
+                consultTitle: "Konsultasi Kunjungan & Pengaturan",
+                consultDesc: "Pertanyaan untuk pengaturan perjalanan, pemandu lokal, atau konsultasi",
+                consultBtn: "Konsultasi",
+                close: "Tutup",
+                weekdays: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+                formatMonth: (y, m) => {
+                    const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                    return `${months[m - 1]} ${y}`;
+                }
+            }
+        };
+
+        let spotContentI18n = JSON.parse(localStorage.getItem('japan_discovery_spot_i18n')) || {
+            1: {
+                ja: { title: "長岡まつり大花火大会", location: "新潟県長岡市", desc: "日本三大花火の一つ。信濃川を舞台に圧倒的なスケールで繰り広げられる正三尺玉やフェニックスは必見。" },
+                en: { title: "Nagaoka Fireworks Festival", location: "Nagaoka City, Niigata", desc: "One of Japan's top three fireworks festivals." }
+            }
+        };
+
+        let currentLang = 'ja';
+
+        function getLocalizedSpot(spot) {
+            const spotI18n = spotContentI18n[spot.id] || {};
+            if (spotI18n[currentLang]) {
+                return { ...spot, ...spotI18n[currentLang] };
+            }
+            if (spotI18n['ja']) {
+                return { ...spot, ...spotI18n['ja'] };
+            }
+            return spot;
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = i18n[lang];
+
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            document.getElementById('txt-nav-map').innerText = t.navMap;
+            document.getElementById('txt-nav-list').innerText = t.navList;
+            document.getElementById('txt-nav-calendar').innerText = t.navCalendar;
+
+            document.getElementById('cat-all').innerText = t.catAll;
+            document.getElementById('cat-fireworks').innerText = t.catFireworks;
+            document.getElementById('cat-tourism').innerText = t.catTourism;
+
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('txt-list-title').innerText = t.listTitle;
+            document.getElementById('txt-close').innerText = t.close;
+
+            const wd = t.weekdays;
+            document.getElementById('calendarHeaders').innerHTML = `
+                <div class="text-red-400">${wd[0]}</div>
+                <div>${wd[1]}</div>
+                <div>${wd[2]}</div>
+                <div>${wd[3]}</div>
+                <div>${wd[4]}</div>
+                <div>${wd[5]}</div>
+                <div class="text-blue-400">${wd[6]}</div>
+            `;
+
+            renderCurrentView();
+        }
+
+        const defaultSpots = [
+            { id: 1, category: 'fireworks', date: '2026-08-02', lat: 37.4475, lng: 138.8511 },
+            { id: 2, category: 'fireworks', date: '2026-08-29', lat: 39.4542, lng: 140.4731 },
+            { id: 3, category: 'fireworks', date: '2026-07-17', lat: 35.0037, lng: 135.7600 },
+            { id: 4, category: 'tourism', date: '2026-08-10', lat: 36.2560, lng: 136.9066 },
+            { id: 5, category: 'tourism', date: '2026-09-15', lat: 33.7042, lng: 135.7765 },
+            { id: 6, category: 'fireworks', date: '2026-08-05', lat: 40.8244, lng: 140.7400 }
+        ];
+
+        let spots = JSON.parse(localStorage.getItem('japan_discovery_spots')) || defaultSpots;
+        let currentView = 'map';
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let currentCalendarDate = new Date(2026, 7, 1);
+
+        let map, markersLayer;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            changeLanguage('ja');
+        });
+
+        function initMap() {
+            if (map) return;
+            map = L.map('map', { zoomControl: false }).setView([37.5, 138.0], 6);
+            L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; CARTO',
+                maxZoom: 19
+            }).addTo(map);
+
+            markersLayer = L.layerGroup().addTo(map);
+            updateMapMarkers();
+        }
+
+        function updateMapMarkers() {
+            if (!markersLayer) return;
+            markersLayer.clearLayers();
+
+            const filtered = getFilteredSpots();
+            filtered.forEach(rawSpot => {
+                const spot = getLocalizedSpot(rawSpot);
+                const isFireworks = spot.category === 'fireworks';
+                const iconHtml = `
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg border ${isFireworks ? 'bg-amber-500/20 border-amber-500 text-amber-400' : 'bg-blue-500/20 border-blue-500 text-blue-400'} backdrop-blur-md">
+                        ${isFireworks ? '🎆' : '⛩️'}
+                    </div>
+                `;
+                const customIcon = L.divIcon({
+                    className: 'custom-div-icon',
+                    html: iconHtml,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                });
+
+                const marker = L.marker([spot.lat, spot.lng], { icon: customIcon });
+                marker.on('click', () => showDetailModal(spot.id));
+                markersLayer.addLayer(marker);
+            });
+        }
+
+        function switchView(viewName) {
+            currentView = viewName;
+            ['map', 'list', 'calendar'].forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                const btn = document.getElementById(`btn-view-${v}`);
+                if (v === viewName) {
+                    el.classList.remove('hidden');
+                    btn.className = "px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 bg-blue-600 text-white shadow-md";
+                } else {
+                    el.classList.add('hidden');
+                    btn.className = "px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white";
+                }
+            });
+
+            if (viewName === 'map' && map) {
+                setTimeout(() => map.invalidateSize(), 100);
+            }
+            renderCurrentView();
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            ['all', 'fireworks', 'tourism'].forEach(c => {
+                const btn = document.getElementById(`cat-${c}`);
+                if (c === cat) {
+                    btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm";
+                } else {
+                    btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700";
+                }
+            });
+            renderCurrentView();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            renderCurrentView();
+        }
+
+        function getFilteredSpots() {
+            return spots.map(s => getLocalizedSpot(s)).filter(spot => {
+                const matchCat = currentCategory === 'all' || spot.category === currentCategory;
+                const title = (spot.title || '').toLowerCase();
+                const location = (spot.location || '').toLowerCase();
+                const desc = (spot.desc || '').toLowerCase();
+                const matchQuery = title.includes(searchQuery) || location.includes(searchQuery) || desc.includes(searchQuery);
+                return matchCat && matchQuery;
+            });
+        }
+
+        function renderCurrentView() {
+            updateMapMarkers();
+            if (currentView === 'list') renderListView();
+            if (currentView === 'calendar') renderCalendarView();
+        }
+
+        function renderListView() {
+            const container = document.getElementById('listContainer');
+            const filtered = getFilteredSpots().sort((a, b) => new Date(a.date) - new Date(b.date));
+            const t = i18n[currentLang];
+            document.getElementById('listCount').innerText = `（${filtered.length}件）`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 text-xs">${t.noResult}</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(spot => {
+                const isFw = spot.category === 'fireworks';
+                return `
+                    <div onclick="showDetailModal(${spot.id})" class="bg-slateCard/70 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs px-2.5 py-1 rounded-lg font-medium ${isFw ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}">
+                                    ${isFw ? t.catFireworks : t.catTourism}
+                                </span>
+                                <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${spot.date}</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-1.5">${spot.title || 'Untitled'}</h3>
+                            <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-3">
+                                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                                ${spot.location || ''}
+                            </p>
+                            <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">${spot.desc || ''}</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-blue-400 font-medium">
+                            <span>${t.detailLink}</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function changeMonth(direction) {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + direction);
+            renderCalendarView();
+        }
+
+        function renderCalendarView() {
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth();
+            const t = i18n[currentLang];
+            document.getElementById('calendarMonthTitle').innerText = t.formatMonth(year, month + 1);
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+            const grid = document.getElementById('calendarGrid');
+            
+            const filtered = getFilteredSpots();
+            let html = '';
+
+            for (let i = 0; i < firstDayIndex; i++) {
+                html += `<div class="bg-slate-900/30 min-h-[80px] sm:min-h-[100px] p-1.5 sm:p-2 opacity-30"></div>`;
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                const monthStr = String(month + 1).padStart(2, '0');
+                const dayStr = String(day).padStart(2, '0');
+                const dateKey = `${year}-${monthStr}-${dayStr}`;
+
+                const daySpots = filtered.filter(s => s.date === dateKey);
+
+                html += `
+                    <div class="bg-slateCard/60 hover:bg-slateCard min-h-[90px] sm:min-h-[110px] p-1.5 sm:p-2 flex flex-col transition-colors border border-slate-800/40">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-[11px] sm:text-xs font-bold text-slate-300">${day}</span>
+                            ${daySpots.length > 0 ? `<span class="text-[9px] sm:text-[10px] bg-blue-500/20 text-blue-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}
+                        </div>
+                        <div class="flex-1 space-y-1 overflow-y-auto max-h-[70px]">
+                            ${daySpots.map(s => `
+                                <div onclick="showDetailModal(${s.id})" class="text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md truncate cursor-pointer transition-all ${s.category === 'fireworks' ? 'bg-amber-500/15 text-amber-300 border border-amber-500/20' : 'bg-blue-500/15 text-blue-300 border border-blue-500/20'}" title="${s.title}">
+                                    ${s.category === 'fireworks' ? '🎆' : '⛩️'} ${s.title}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        function showDetailModal(id) {
+            const rawSpot = spots.find(s => s.id === id);
+            if (!rawSpot) return;
+            const spot = getLocalizedSpot(rawSpot);
+            const isFw = spot.category === 'fireworks';
+            const t = i18n[currentLang];
+
+            document.getElementById('modalContent').innerHTML = `
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium ${isFw ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}">
+                        ${isFw ? t.catFireworks : t.catTourism}
+                    </span>
+                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${spot.date}</span>
+                </div>
+                <h3 class="text-base font-bold text-white mb-2">${spot.title || ''}</h3>
+                <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-4">
+                    <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                    ${spot.location || ''}
+                </p>
+                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 mb-5">
+                    <p class="text-xs text-slate-300 leading-relaxed">${spot.desc || ''}</p>
+                </div>
+                <div class="bg-blue-600/10 border border-blue-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                        <h4 class="text-xs font-bold text-blue-400 mb-0.5">${t.consultTitle}</h4>
+                        <p class="text-[11px] text-slate-400">${t.consultDesc}</p>
+                    </div>
+                    <button onclick="alert('ご相談窓口へ接続します')" class="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium shadow-md transition-all shrink-0 w-full sm:w-auto text-center">
+                        ${t.consultBtn}
+                    </button>
+                </div>
+            `;
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
