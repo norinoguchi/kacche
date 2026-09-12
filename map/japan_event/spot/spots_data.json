@@ -1,0 +1,316 @@
+{
+  "spots": [
+    {
+      "id": 1,
+      "category": "fireworks",
+      "startDate": "2026-08-02",
+      "endDate": "2026-08-06",
+      "lat": 37.446996,
+      "lng": 138.8512199,
+      "updatedAt": "2026-09-12 23:38",
+      "photos": [
+        {
+          "url": "nagaoka/pict1.png",
+          "caption": "firあeworks"
+        },
+        {
+          "url": "nagaoka/pict2.png",
+          "caption": "test2"
+        },
+        {
+          "url": "nagaoka/pict3.png",
+          "caption": "test3"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://nagaokamatsuri.com/",
+          "text": "Offitial Website"
+        }
+      ]
+    },
+    {
+      "id": 1789104657141,
+      "category": "tourism",
+      "startDate": "2027-05-01",
+      "endDate": "2027-05-03",
+      "lat": 34.7109786,
+      "lng": 137.7259431,
+      "updatedAt": "2026-09-12 23:49",
+      "photos": [
+        {
+          "url": "hamamatsu/pict1.jpg",
+          "caption": "temporaly"
+        },
+        {
+          "url": "hamamatsu/pict2.jpg",
+          "caption": "test2"
+        },
+        {
+          "url": "hamamatsu/pict3.jpg",
+          "caption": ""
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": 1789106389629,
+      "category": "tourism",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-01",
+      "lat": 33.5990204,
+      "lng": 130.418847,
+      "updatedAt": "2026-09-12 23:49",
+      "photos": [
+        {
+          "url": "hakata/pict1.jpg",
+          "caption": "test"
+        },
+        {
+          "url": "hakata/pict2.jpg",
+          "caption": ""
+        },
+        {
+          "url": "hakata/pict3.jpg",
+          "caption": ""
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": 1789182250991,
+      "category": "tourism",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-01",
+      "lat": 43.061936,
+      "lng": 141.3542924,
+      "updatedAt": "2026-09-12 23:49",
+      "photos": [
+        {
+          "url": "sapporo/pict1.jpg",
+          "caption": ""
+        },
+        {
+          "url": "sapporo/pict2.jpg",
+          "caption": ""
+        },
+        {
+          "url": "sapporo/pict3.jpg",
+          "caption": ""
+        },
+        {
+          "url": "sapporo/pict4.jpg",
+          "caption": ""
+        },
+        {
+          "url": "sapporo/pict5.jpg",
+          "caption": ""
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": 1789224720687,
+      "category": "fireworks",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-01",
+      "lat": 35.7066318,
+      "lng": 139.868677,
+      "updatedAt": "2026-09-12 23:53",
+      "photos": [
+        {
+          "url": "edogawa/pict1.jpg",
+          "caption": ""
+        }
+      ],
+      "links": []
+    }
+  ],
+  "spotContentI18n": {
+    "1": {
+      "en": {
+        "title": "Nagaoka Fireworks Festival",
+        "location": "Nagaoka City, Niigata Prefecture",
+        "desc": "This is a test. I wish there was a feature like this."
+      },
+      "zh-TW": {
+        "title": "長岡煙火大會",
+        "location": "新潟縣長岡市",
+        "desc": "這是一個測試。我希望有一個這樣的功能。"
+      },
+      "zh-CN": {
+        "title": "长冈烟火大会",
+        "location": "新泻县长冈市",
+        "desc": "这是一个测试。我希望有一个这样的功能。"
+      },
+      "ko": {
+        "title": "나가오카 불꽃축제",
+        "location": "니가타현 나가오카시",
+        "desc": "이것은 테스트입니다. 이런 기능이 있으면 좋지만."
+      },
+      "th": {
+        "title": "เทศกาลดอกไม้ไฟนางาโอกะ",
+        "location": "เมืองนางาโอกะ จังหวัดนีงะตะ",
+        "desc": "นี่คือการทดสอบ ฉันหวังว่าจะมีคุณสมบัติเช่นนี้"
+      },
+      "id": {
+        "title": "Festival Kembang Api Nagaoka",
+        "location": "Kota Nagaoka, Prefektur Niigata",
+        "desc": "Ini adalah ujian. Saya berharap ada fitur seperti ini."
+      },
+      "ja": {
+        "title": "長岡花火祭り",
+        "location": "新潟県長岡市",
+        "desc": "これはテストです。こんな機能があればいいのに。"
+      }
+    },
+    "1789104657141": {
+      "ja": {
+        "title": "浜松まつり",
+        "location": "静岡県浜松市",
+        "desc": "浜松まつりは毎年5月に行われる、凧揚げと屋台で有名な勇壮なお祭りです。"
+      },
+      "en": {
+        "title": "tokyo festival",
+        "location": "Komae City, Tokyo",
+        "desc": "This is a fun festival held in Komae City, Tokyo, and includes fireworks!"
+      },
+      "zh-TW": {
+        "title": "東京節",
+        "location": "東京都狛江市",
+        "desc": "這是在東京狛江市舉辦的有趣的節日，其中包括煙火！"
+      },
+      "zh-CN": {
+        "title": "东京节",
+        "location": "东京都狛江市",
+        "desc": "这是在东京狛江市举办的有趣的节日，其中包括烟火！"
+      },
+      "ko": {
+        "title": "도쿄 축제",
+        "location": "도쿄도 에에시",
+        "desc": "이것은 도쿄도 에에시에서 개최되고 있는, 즐거운 축제로 불꽃놀이도 있습니다!"
+      },
+      "th": {
+        "title": "เทศกาลโตเกียว",
+        "location": "เมืองโคมาเอะ โตเกียว",
+        "desc": "เทศกาลนี้เป็นเทศกาลแสนสนุกที่จัดขึ้นในเมืองโคมาเอะ โตเกียว และมีดอกไม้ไฟด้วย!"
+      },
+      "id": {
+        "title": "festival Tokyo",
+        "location": "Kota Komae, Tokyo",
+        "desc": "Ini adalah festival menyenangkan yang diadakan di Kota Komae, Tokyo, dan termasuk kembang api!"
+      }
+    },
+    "1789106389629": {
+      "ja": {
+        "title": "博多どんたく",
+        "location": "福岡県博多市",
+        "desc": "博多どんたくは、古くからの日本の伝統的なお祭りです。"
+      },
+      "en": {
+        "title": "Hakata Dontaku",
+        "location": "Hakata City, Fukuoka Prefecture",
+        "desc": "Hakata Dontaku is an ancient Japanese traditional festival."
+      },
+      "zh-TW": {
+        "title": "博多咚打鼓",
+        "location": "福岡縣博多市",
+        "desc": "博多どんたくは、古くからの日本の伝統的なお祭りです。"
+      },
+      "zh-CN": {
+        "title": "博多咚打鼓",
+        "location": "福冈县博多市",
+        "desc": "博多咚打鼓是日本古老的传统节日。"
+      },
+      "ko": {
+        "title": "하카타 돈타쿠",
+        "location": "후쿠오카현 하카타시",
+        "desc": "하카타 돈타쿠는 옛부터 일본의 전통 축제입니다."
+      },
+      "th": {
+        "title": "ฮากาตะ ดนตะคุ",
+        "location": "เมืองฮากาตะ จังหวัดฟุกุโอกะ",
+        "desc": "Hakata Dontaku เป็นเทศกาลดั้งเดิมของญี่ปุ่นโบราณ"
+      },
+      "id": {
+        "title": "Hakata Dontaku",
+        "location": "Kota Hakata, Prefektur Fukuoka",
+        "desc": "Hakata Dontaku adalah festival tradisional Jepang kuno."
+      }
+    },
+    "1789182250991": {
+      "ja": {
+        "title": "札幌雪祭り",
+        "location": "北海道札幌市",
+        "desc": "日本最大の雪祭りです。"
+      },
+      "en": {
+        "title": "Sapporo Snow Festival",
+        "location": "Sapporo City, Hokkaido",
+        "desc": "It is Japan's largest snow festival."
+      },
+      "zh-TW": {
+        "title": "札幌冰雪節",
+        "location": "北海道札幌市",
+        "desc": "這是日本最大的雪祭。"
+      },
+      "zh-CN": {
+        "title": "札幌冰雪节",
+        "location": "北海道札幌市",
+        "desc": "这是日本最大的雪祭。"
+      },
+      "ko": {
+        "title": "삿포로 눈축제",
+        "location": "홋카이도 삿포로시",
+        "desc": "일본 최대의 눈 축제입니다."
+      },
+      "th": {
+        "title": "เทศกาลหิมะซัปโปโร",
+        "location": "เมืองซัปโปโร ฮอกไกโด",
+        "desc": "เป็นเทศกาลหิมะที่ใหญ่ที่สุดของญี่ปุ่น"
+      },
+      "id": {
+        "title": "Festival Salju Sapporo",
+        "location": "Kota Sapporo, Hokkaido",
+        "desc": "Ini adalah festival salju terbesar di Jepang."
+      }
+    },
+    "1789224720687": {
+      "ja": {
+        "title": "江戸川花火大会",
+        "location": "東京都江戸川区",
+        "desc": "東京で最も賑やかな花火大会"
+      },
+      "en": {
+        "title": "江戸川花火大会",
+        "location": "東京都江戸川区",
+        "desc": "東京で最も賑やかな花火大会"
+      },
+      "zh-TW": {
+        "title": "江戸川花火大会",
+        "location": "東京都江戸川区",
+        "desc": "東京で最も賑やかな花火大会"
+      },
+      "zh-CN": {
+        "title": "江戸川花火大会",
+        "location": "東京都江戸川区",
+        "desc": "東京で最も賑やかな花火大会"
+      },
+      "ko": {
+        "title": "江戸川花火大会",
+        "location": "東京都江戸川区",
+        "desc": "東京で最も賑やかな花火大会"
+      },
+      "th": {
+        "title": "江戸川花火大会",
+        "location": "東京都江戸川区",
+        "desc": "東京で最も賑やかな花火大会"
+      },
+      "id": {
+        "title": "江戸川花火大会",
+        "location": "東京都江戸川区",
+        "desc": "東京で最も賑やかな花火大会"
+      }
+    }
+  }
+}

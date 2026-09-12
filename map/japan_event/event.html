@@ -80,7 +80,6 @@
 
     <!-- Main Toolbar & Navigation -->
     <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-3 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shrink-0 z-10">
-        <!-- View Mode & Categories Container -->
         <div class="flex flex-wrap items-center justify-between gap-2">
             <!-- View Mode Switcher -->
             <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800">
@@ -117,7 +116,6 @@
 
     <!-- Main Content Area -->
     <main class="flex-1 relative overflow-hidden flex">
-
         <!-- 1. Map View Container -->
         <div id="view-map" class="absolute inset-0 flex">
             <div id="map" class="w-full h-full z-0"></div>
@@ -127,7 +125,7 @@
         <div id="view-list" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2">
-                    <span id="txt-list-title">開催日・日付順リスト</span>
+                    <span id="txt-list-title">開催期間・日付順リスト</span>
                     <span class="text-xs font-normal text-slate-400" id="listCount">（0件）</span>
                 </h2>
                 <div id="listContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
@@ -154,16 +152,39 @@
                 </div>
             </div>
         </div>
-
     </main>
 
     <!-- Detail Modal -->
-    <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl max-h-[90vh] flex flex-col">
-            <div id="modalContent" class="p-5 sm:p-6 overflow-y-auto flex-1"></div>
+    <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col">
+            <div id="modalContent" class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-5"></div>
             <div class="bg-slate-900/60 px-5 sm:px-6 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
                 <button onclick="closeDetailModal()" id="txt-close" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition-colors">閉じる</button>
             </div>
+        </div>
+    </div>
+
+    <!-- 画像拡大・スライドショー用ライトボックスモーダル -->
+    <div id="imageLightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white/70 hover:text-white p-2.5 rounded-full bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 transition-all z-20" title="閉じる (Esc)">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="relative max-w-5xl max-h-[80vh] w-full flex items-center justify-center">
+            <button id="lightboxPrevBtn" onclick="prevLightboxImage()" class="absolute left-2 sm:left-4 text-white bg-slate-900/70 hover:bg-slate-900 p-3 rounded-full backdrop-blur-sm border border-slate-700/60 transition-all z-10 hover:scale-105" title="前の写真 (←)">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+
+            <img id="lightboxImage" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-slate-800">
+
+            <button id="lightboxNextBtn" onclick="nextLightboxImage()" class="absolute right-2 sm:right-4 text-white bg-slate-900/70 hover:bg-slate-900 p-3 rounded-full backdrop-blur-sm border border-slate-700/60 transition-all z-10 hover:scale-105" title="次の写真 (→)">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+
+        <div class="mt-4 text-center max-w-xl">
+            <p id="lightboxCaption" class="text-white text-sm font-medium mb-1"></p>
+            <p id="lightboxCounter" class="text-xs text-slate-400 font-mono"></p>
         </div>
     </div>
 
@@ -179,13 +200,15 @@
                 catFireworks: "🎆 花火・祭り",
                 catTourism: "⛩️ 観光・体験",
                 searchPlaceholder: "地域名やキーワードで検索...",
-                listTitle: "開催日・日付順リスト",
+                listTitle: "開催期間・日付順リスト",
                 noResult: "該当するスポット・イベントが見つかりませんでした。",
                 detailLink: "詳細・相談窓口へ",
                 consultTitle: "このスポットへの訪問・手配のご相談",
                 consultDesc: "旅行手配や現地ガイド、個別コンサルティングのお問い合わせ",
                 consultBtn: "相談する",
                 close: "閉じる",
+                photosTitle: "📸 写真ギャラリー （クリックで拡大表示）",
+                linksTitle: "🔗 関連リンク",
                 weekdays: ["日", "月", "火", "水", "木", "金", "土"],
                 formatMonth: (y, m) => `${y}年 ${m}月`
             },
@@ -205,6 +228,8 @@
                 consultDesc: "Inquiries for travel arrangement, local guide, or private consulting",
                 consultBtn: "Consult",
                 close: "Close",
+                photosTitle: "📸 Photo Gallery (Click to enlarge)",
+                linksTitle: "🔗 Related Links",
                 weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
                 formatMonth: (y, m) => {
                     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -227,6 +252,8 @@
                 consultDesc: "旅遊安排、當地導遊或個人諮詢洽詢",
                 consultBtn: "諮詢",
                 close: "關閉",
+                photosTitle: "📸 照片相册（點擊放大）",
+                linksTitle: "🔗 相關連結",
                 weekdays: ["日", "一", "二", "三", "四", "五", "六"],
                 formatMonth: (y, m) => `${y}年 ${m}月`
             },
@@ -246,6 +273,8 @@
                 consultDesc: "旅游安排、当地导游或个人咨询洽询",
                 consultBtn: "咨询",
                 close: "关闭",
+                photosTitle: "📸 照片相册（点击放大）",
+                linksTitle: "🔗 相关链接",
                 weekdays: ["日", "一", "二", "三", "四", "五", "六"],
                 formatMonth: (y, m) => `${y}年 ${m}月`
             },
@@ -265,6 +294,8 @@
                 consultDesc: "여행 수배, 현지 가이드, 개인 컨설팅 문의",
                 consultBtn: "상담하기",
                 close: "닫기",
+                photosTitle: "📸 포토 갤러리 (클릭하여 확대)",
+                linksTitle: "🔗 관련 링크",
                 weekdays: ["일", "월", "화", "수", "목", "금", "토"],
                 formatMonth: (y, m) => `${y}년 ${m}월`
             },
@@ -284,6 +315,8 @@
                 consultDesc: "สอบถามการจัดเตรียมการเดินทาง ไกด์ท้องถิ่น หรือที่ปรึกษา",
                 consultBtn: "ปรึกษา",
                 close: "ปิด",
+                photosTitle: "📸 แกลเลอรี่รูปภาพ (คลิกเพื่อขยาย)",
+                linksTitle: "🔗 ลิงก์ที่เกี่ยวข้อง",
                 weekdays: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
                 formatMonth: (y, m) => `${m}/${y}`
             },
@@ -303,6 +336,8 @@
                 consultDesc: "Pertanyaan untuk pengaturan perjalanan, pemandu lokal, atau konsultasi",
                 consultBtn: "Konsultasi",
                 close: "Tutup",
+                photosTitle: "📸 Galeri Foto (Klik untuk memperbesar)",
+                linksTitle: "🔗 Tautan Terkait",
                 weekdays: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
                 formatMonth: (y, m) => {
                     const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
@@ -311,24 +346,104 @@
             }
         };
 
-        let spotContentI18n = JSON.parse(localStorage.getItem('japan_discovery_spot_i18n')) || {
+        let spots = [];
+        let spotContentI18n = {};
+        let currentLang = 'ja';
+
+        let currentLightboxPhotos = [];
+        let currentLightboxIndex = 0;
+
+        const defaultSpots = [
+            { id: 1, category: 'fireworks', startDate: '2026-08-02', endDate: '2026-08-03', lat: 37.4475, lng: 138.8511, photos: [{ url: "nagaoka.jpg", caption: "夜空を彩る大花火" }], links: [{ url: "https://nagaokamatsuri.com", text: "長岡まつり公式ウェブサイト" }] },
+            { id: 2, category: 'fireworks', startDate: '2026-08-29', endDate: '2026-08-29', lat: 39.4542, lng: 140.4731, photos: [], links: [] },
+            { id: 3, category: 'fireworks', startDate: '2026-07-17', endDate: '2026-07-17', lat: 35.0037, lng: 135.7600, photos: [], links: [] },
+            { id: 4, category: 'tourism', startDate: '2026-08-10', endDate: '2026-08-12', lat: 36.2560, lng: 136.9066, photos: [], links: [] },
+            { id: 5, category: 'tourism', startDate: '2026-09-15', endDate: '2026-09-15', lat: 33.7042, lng: 135.7765, photos: [], links: [] },
+            { id: 6, category: 'fireworks', startDate: '2026-08-05', endDate: '2026-08-05', lat: 40.8244, lng: 140.7400, photos: [], links: [] }
+        ];
+
+        const defaultI18n = {
             1: {
                 ja: { title: "長岡まつり大花火大会", location: "新潟県長岡市", desc: "日本三大花火の一つ。信濃川を舞台に圧倒的なスケールで繰り広げられる正三尺玉やフェニックスは必見。" },
                 en: { title: "Nagaoka Fireworks Festival", location: "Nagaoka City, Niigata", desc: "One of Japan's top three fireworks festivals." }
             }
         };
 
-        let currentLang = 'ja';
+        let currentView = 'map';
+        let currentCategory = 'all';
+        let searchQuery = '';
+        
+        let todayObj = new Date();
+        let currentCalendarDate = new Date(todayObj.getFullYear(), todayObj.getMonth(), 1);
+
+        let map, markersLayer;
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            initMap();
+            await loadData();
+            changeLanguage('ja');
+        });
+
+        async function loadData() {
+            try {
+                // キャッシュ回避用にクエリパラメータを付与してJSON読み込み
+                const response = await fetch(`spot/spots_data.json?v=${Date.now()}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.spots && data.spotContentI18n) {
+                        spots = data.spots;
+                        spotContentI18n = data.spotContentI18n;
+                        // ローカルストレージを最新JSONで更新し同期
+                        localStorage.setItem('japan_discovery_spots', JSON.stringify(spots));
+                        localStorage.setItem('japan_discovery_spot_i18n', JSON.stringify(spotContentI18n));
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.log("spot/spots_data.json fetch error, falling back to localStorage...");
+            }
+
+            spots = JSON.parse(localStorage.getItem('japan_discovery_spots')) || defaultSpots;
+            spotContentI18n = JSON.parse(localStorage.getItem('japan_discovery_spot_i18n')) || defaultI18n;
+        }
+
+        // 相対パス生成関数
+        function buildPhotoUrl(urlRaw) {
+            if (!urlRaw) return "";
+            let u = String(urlRaw).trim();
+
+            if (u.startsWith('http://') || u.startsWith('https://')) {
+                return u;
+            }
+
+            if (u.startsWith('picture/')) {
+                u = u.replace('picture/', '');
+            }
+
+            return `picture/${u}`;
+        }
 
         function getLocalizedSpot(spot) {
             const spotI18n = spotContentI18n[spot.id] || {};
-            if (spotI18n[currentLang]) {
-                return { ...spot, ...spotI18n[currentLang] };
-            }
-            if (spotI18n['ja']) {
-                return { ...spot, ...spotI18n['ja'] };
-            }
-            return spot;
+            const langData = spotI18n[currentLang] || spotI18n['ja'] || {};
+            
+            const processedPhotos = (spot.photos || []).map(p => {
+                return {
+                    ...p,
+                    url: buildPhotoUrl(p.url)
+                };
+            });
+
+            return {
+                ...spot,
+                startDate: spot.startDate || '2026-08-01',
+                endDate: spot.endDate || spot.startDate || '2026-08-01',
+                title: langData.title || '',
+                location: langData.location || '',
+                desc: langData.desc || '',
+                photos: processedPhotos,
+                links: spot.links || []
+            };
         }
 
         function changeLanguage(lang) {
@@ -361,28 +476,6 @@
 
             renderCurrentView();
         }
-
-        const defaultSpots = [
-            { id: 1, category: 'fireworks', date: '2026-08-02', lat: 37.4475, lng: 138.8511 },
-            { id: 2, category: 'fireworks', date: '2026-08-29', lat: 39.4542, lng: 140.4731 },
-            { id: 3, category: 'fireworks', date: '2026-07-17', lat: 35.0037, lng: 135.7600 },
-            { id: 4, category: 'tourism', date: '2026-08-10', lat: 36.2560, lng: 136.9066 },
-            { id: 5, category: 'tourism', date: '2026-09-15', lat: 33.7042, lng: 135.7765 },
-            { id: 6, category: 'fireworks', date: '2026-08-05', lat: 40.8244, lng: 140.7400 }
-        ];
-
-        let spots = JSON.parse(localStorage.getItem('japan_discovery_spots')) || defaultSpots;
-        let currentView = 'map';
-        let currentCategory = 'all';
-        let searchQuery = '';
-        let currentCalendarDate = new Date(2026, 7, 1);
-
-        let map, markersLayer;
-
-        window.addEventListener('DOMContentLoaded', () => {
-            initMap();
-            changeLanguage('ja');
-        });
 
         function initMap() {
             if (map) return;
@@ -465,10 +558,9 @@
         function getFilteredSpots() {
             return spots.map(s => getLocalizedSpot(s)).filter(spot => {
                 const matchCat = currentCategory === 'all' || spot.category === currentCategory;
-                const title = (spot.title || '').toLowerCase();
-                const location = (spot.location || '').toLowerCase();
-                const desc = (spot.desc || '').toLowerCase();
-                const matchQuery = title.includes(searchQuery) || location.includes(searchQuery) || desc.includes(searchQuery);
+                const matchQuery = (spot.title || '').toLowerCase().includes(searchQuery) || 
+                                   (spot.location || '').toLowerCase().includes(searchQuery) || 
+                                   (spot.desc || '').toLowerCase().includes(searchQuery);
                 return matchCat && matchQuery;
             });
         }
@@ -481,7 +573,7 @@
 
         function renderListView() {
             const container = document.getElementById('listContainer');
-            const filtered = getFilteredSpots().sort((a, b) => new Date(a.date) - new Date(b.date));
+            const filtered = getFilteredSpots().sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
             const t = i18n[currentLang];
             document.getElementById('listCount').innerText = `（${filtered.length}件）`;
 
@@ -492,16 +584,19 @@
 
             container.innerHTML = filtered.map(spot => {
                 const isFw = spot.category === 'fireworks';
+                const thumb = spot.photos && spot.photos.length > 0 ? spot.photos[0].url : null;
+                const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
                 return `
                     <div onclick="showDetailModal(${spot.id})" class="bg-slateCard/70 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between">
                         <div>
+                            ${thumb ? `<div class="w-full h-36 rounded-xl mb-3 overflow-hidden bg-slate-900"><img src="${thumb}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'"></div>` : ''}
                             <div class="flex items-center justify-between mb-3">
                                 <span class="text-xs px-2.5 py-1 rounded-lg font-medium ${isFw ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}">
                                     ${isFw ? t.catFireworks : t.catTourism}
                                 </span>
-                                <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${spot.date}</span>
+                                <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
                             </div>
-                            <h3 class="text-sm font-bold text-white mb-1.5">${spot.title || 'Untitled'}</h3>
+                            <h3 class="text-sm font-bold text-white mb-1.5">${spot.title || ''}</h3>
                             <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-3">
                                 <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                                 ${spot.location || ''}
@@ -536,21 +631,31 @@
             let html = '';
 
             for (let i = 0; i < firstDayIndex; i++) {
-                html += `<div class="bg-slate-900/30 min-h-[80px] sm:min-h-[100px] p-1.5 sm:p-2 opacity-30"></div>`;
+                html += `<div class="bg-slate-900/30 min-h-[90px] p-1.5 opacity-30"></div>`;
             }
+
+            const todayY = todayObj.getFullYear();
+            const todayM = todayObj.getMonth();
+            const todayD = todayObj.getDate();
 
             for (let day = 1; day <= totalDays; day++) {
                 const monthStr = String(month + 1).padStart(2, '0');
                 const dayStr = String(day).padStart(2, '0');
                 const dateKey = `${year}-${monthStr}-${dayStr}`;
 
-                const daySpots = filtered.filter(s => s.date === dateKey);
+                const isToday = (year === todayY && month === todayM && day === todayD);
+
+                const daySpots = filtered.filter(s => {
+                    const start = s.startDate;
+                    const end = s.endDate || start;
+                    return dateKey >= start && dateKey <= end;
+                });
 
                 html += `
-                    <div class="bg-slateCard/60 hover:bg-slateCard min-h-[90px] sm:min-h-[110px] p-1.5 sm:p-2 flex flex-col transition-colors border border-slate-800/40">
+                    <div class="min-h-[100px] p-1.5 sm:p-2 flex flex-col transition-colors border ${isToday ? 'bg-blue-600/15 border-blue-500/50 shadow-inner' : 'bg-slateCard/60 hover:bg-slateCard border-slate-800/40'}">
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-[11px] sm:text-xs font-bold text-slate-300">${day}</span>
-                            ${daySpots.length > 0 ? `<span class="text-[9px] sm:text-[10px] bg-blue-500/20 text-blue-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}
+                            <span class="text-[11px] sm:text-xs font-bold ${isToday ? 'text-blue-400 bg-blue-500/20 px-1.5 py-0.5 rounded-md' : 'text-slate-300'}">${day}</span>
+                            ${daySpots.length > 0 ? `<span class="text-[9px] bg-blue-500/20 text-blue-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}
                         </div>
                         <div class="flex-1 space-y-1 overflow-y-auto max-h-[70px]">
                             ${daySpots.map(s => `
@@ -567,27 +672,76 @@
         }
 
         function showDetailModal(id) {
-            const rawSpot = spots.find(s => s.id === id);
+            const rawSpot = spots.find(s => Number(s.id) === Number(id));
             if (!rawSpot) return;
             const spot = getLocalizedSpot(rawSpot);
             const isFw = spot.category === 'fireworks';
             const t = i18n[currentLang];
+            const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
+
+            let photosHtml = '';
+            if (spot.photos && spot.photos.length > 0) {
+                // 開いたスポット固有の写真配列で正しく上書き
+                currentLightboxPhotos = spot.photos;
+
+                photosHtml = `
+                    <div>
+                        <h4 class="text-xs font-bold text-amber-400 mb-2">${t.photosTitle}</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                            ${spot.photos.map((p, index) => `
+                                <div onclick="openLightbox(${index})" class="group relative bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-amber-500/50 cursor-pointer transition-all">
+                                    <div class="h-28 bg-slate-950">
+                                        <img src="${p.url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.style.display='none'">
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <span class="text-xs text-white bg-slate-900/80 px-2 py-1 rounded-md border border-slate-700 flex items-center gap-1">
+                                            🔍 拡大
+                                        </span>
+                                    </div>
+                                    ${p.caption ? `<div class="p-1.5 text-[10px] text-slate-300 truncate bg-slate-900/90">${p.caption}</div>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                currentLightboxPhotos = [];
+            }
+
+            let linksHtml = '';
+            if (spot.links && spot.links.length > 0) {
+                linksHtml = `
+                    <div>
+                        <h4 class="text-xs font-bold text-emerald-400 mb-2">${t.linksTitle}</h4>
+                        <div class="space-y-1.5">
+                            ${spot.links.map(l => `
+                                <a href="${l.url}" target="_blank" class="flex items-center justify-between bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 p-2.5 rounded-xl text-xs text-blue-400 transition-all">
+                                    <span class="truncate">${l.text || l.url}</span>
+                                    <svg class="w-3.5 h-3.5 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
 
             document.getElementById('modalContent').innerHTML = `
                 <div class="flex items-center justify-between mb-3">
                     <span class="text-xs px-2.5 py-1 rounded-lg font-medium ${isFw ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}">
                         ${isFw ? t.catFireworks : t.catTourism}
                     </span>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${spot.date}</span>
+                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">${spot.title || ''}</h3>
                 <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-4">
                     <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                     ${spot.location || ''}
                 </p>
-                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 mb-5">
+                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800">
                     <p class="text-xs text-slate-300 leading-relaxed">${spot.desc || ''}</p>
                 </div>
+                ${photosHtml}
+                ${linksHtml}
                 <div class="bg-blue-600/10 border border-blue-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                     <div>
                         <h4 class="text-xs font-bold text-blue-400 mb-0.5">${t.consultTitle}</h4>
@@ -604,6 +758,51 @@
         function closeDetailModal() {
             document.getElementById('detailModal').classList.add('hidden');
         }
+
+        // --- 画像拡大・スライドショー（ライトボックス）機能 ---
+
+        function openLightbox(index) {
+            if (!currentLightboxPhotos || currentLightboxPhotos.length === 0) return;
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            document.getElementById('imageLightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('imageLightboxModal').classList.add('hidden');
+        }
+
+        function updateLightboxContent() {
+            const photo = currentLightboxPhotos[currentLightboxIndex];
+            if (!photo) return;
+
+            document.getElementById('lightboxImage').src = photo.url;
+            document.getElementById('lightboxCaption').innerText = photo.caption || '';
+            document.getElementById('lightboxCounter').innerText = `${currentLightboxIndex + 1} / ${currentLightboxPhotos.length}`;
+
+            const showNav = currentLightboxPhotos.length > 1;
+            document.getElementById('lightboxPrevBtn').style.display = showNav ? 'block' : 'none';
+            document.getElementById('lightboxNextBtn').style.display = showNav ? 'block' : 'none';
+        }
+
+        function prevLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxPhotos.length) % currentLightboxPhotos.length;
+            updateLightboxContent();
+        }
+
+        function nextLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxPhotos.length;
+            updateLightboxContent();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('imageLightboxModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+            }
+        });
     </script>
 </body>
 </html>
