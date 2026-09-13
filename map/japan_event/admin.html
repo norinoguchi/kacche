@@ -237,38 +237,17 @@
         };
 
         const defaultSpots = [
-            { id: 1, category: 'fireworks', startDate: '2026-08-02', endDate: '2026-08-03', lat: 37.4475, lng: 138.8511, updatedAt: '2026-01-01 10:00', photos: [{ url: "nagaoka.jpg", caption: "夜空を彩る大花火" }], links: [{ url: "https://nagaokamatsuri.com", text: "長岡まつり公式ウェブサイト" }] },
-            { id: 2, category: 'fireworks', startDate: '2026-08-29', endDate: '2026-08-29', lat: 39.4542, lng: 140.4731, updatedAt: '2026-01-02 12:00', photos: [], links: [] },
-            { id: 3, category: 'matsuri', startDate: '2026-07-17', endDate: '2026-07-17', lat: 35.0037, lng: 135.7600, updatedAt: '2026-01-03 14:00', photos: [], links: [] },
-            { id: 4, category: 'food', startDate: '2026-08-10', endDate: '2026-08-12', lat: 36.2560, lng: 136.9066, updatedAt: '2026-01-04 09:00', photos: [], links: [] },
-            { id: 5, category: 'matsuri', startDate: '2026-09-15', endDate: '2026-09-15', lat: 33.7042, lng: 135.7765, updatedAt: '2026-01-05 16:00', photos: [], links: [] },
-            { id: 6, category: 'craft', startDate: '2026-10-10', endDate: '2026-10-12', lat: 35.6762, lng: 139.6503, updatedAt: '2026-01-06 18:00', photos: [], links: [] }
+            { id: 1, category: 'fireworks', startDate: '2026-08-02', endDate: '2026-08-03', lat: 37.4475, lng: 138.8511, updatedAt: '2026-01-01 10:00', photos: [{ url: "nagaoka.jpg", caption: "夜空を彩る大花火" }], links: [{ url: "https://nagaokamatsuri.com", text: "長岡まつり公式ウェブサイト" }] }
         ];
 
-        let spots = JSON.parse(localStorage.getItem('japan_discovery_spots')) || defaultSpots;
-        let spotContentI18n = JSON.parse(localStorage.getItem('japan_discovery_spot_i18n')) || {
+        const defaultI18n = {
             1: {
-                ja: { title: "長岡まつり大花火大会", location: "新潟県長岡市", desc: "日本三大花火の一つ。信濃川を舞台に圧倒的なスケールで繰り広げられる正三尺玉やフェニックスは必見。" },
-                en: { title: "Nagaoka Fireworks Festival", location: "Nagaoka City, Niigata", desc: "One of Japan's top three fireworks festivals." }
+                ja: { title: "長岡まつり大花火大会", location: "新潟県長岡市", desc: "日本三大花火の一つ。" }
             }
         };
 
-        // 旧カテゴリ（tourism）からの移行互換性処理
-        spots.forEach(s => {
-            if (!s.photos) s.photos = [];
-            if (!s.links) s.links = [];
-            if (s.date && !s.startDate) { s.startDate = s.date; s.endDate = s.date; }
-            if (!s.endDate) s.endDate = s.startDate;
-            if (s.category === 'tourism') s.category = 'matsuri';
-
-            s.photos = s.photos.map(p => {
-                let cleanUrl = p.url || '';
-                if (cleanUrl.startsWith('picture/')) {
-                    cleanUrl = cleanUrl.replace('picture/', '');
-                }
-                return { ...p, url: cleanUrl };
-            });
-        });
+        let spots = [];
+        let spotContentI18n = {};
 
         let editingSpotId = null;
         let activeLang = 'ja';
@@ -276,10 +255,52 @@
         let currentSortColumn = 'no';
         let currentSortAsc = true;
 
-        window.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadData();
             renderTable();
             renderLangTabs();
         });
+
+        async function loadData() {
+            try {
+                // spot/ フォルダ配下の spots_data.json を直接読み込む
+                const response = await fetch(`spot/spots_data.json?v=${Date.now()}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.spots && data.spotContentI18n) {
+                        spots = data.spots;
+                        spotContentI18n = data.spotContentI18n;
+                        localStorage.setItem('japan_discovery_spots', JSON.stringify(spots));
+                        localStorage.setItem('japan_discovery_spot_i18n', JSON.stringify(spotContentI18n));
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.log("spot/spots_data.json fetch error, falling back to localStorage...");
+            }
+
+            spots = JSON.parse(localStorage.getItem('japan_discovery_spots')) || defaultSpots;
+            spotContentI18n = JSON.parse(localStorage.getItem('japan_discovery_spot_i18n')) || defaultI18n;
+        }
+
+        // 旧カテゴリ（tourism）からの移行互換性処理
+        function sanitizeData() {
+            spots.forEach(s => {
+                if (!s.photos) s.photos = [];
+                if (!s.links) s.links = [];
+                if (s.date && !s.startDate) { s.startDate = s.date; s.endDate = s.date; }
+                if (!s.endDate) s.endDate = s.startDate;
+                if (s.category === 'tourism') s.category = 'matsuri';
+
+                s.photos = s.photos.map(p => {
+                    let cleanUrl = p.url || '';
+                    if (cleanUrl.startsWith('picture/')) {
+                        cleanUrl = cleanUrl.replace('picture/', '');
+                    }
+                    return { ...p, url: cleanUrl };
+                });
+            });
+        }
 
         function sortData(column) {
             if (currentSortColumn === column) {
@@ -304,6 +325,7 @@
         }
 
         function renderTable() {
+            sanitizeData();
             const tbody = document.getElementById('adminTableBody');
             document.getElementById('totalCount').innerText = `総登録数: ${spots.length}件`;
 
