@@ -1021,9 +1021,7 @@
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">${spot.title || ''}</h3>
 
-                <a href="https://maps.google.com/?q=${spot.lat},${spot.lng}&ll=${spot.lat},${spot.lng}&z=10" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-400 transition-colors mb-4 group" title="Google Mapで開く">
-                    <svg class="w-4 h-4 text-slate-500 group-hover:text-blue-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                    <span class="underline underline-offset-4 decoration-slate-700 group-hover:decoration-blue-400">${spot.location || ''}</span>
+                <a href="https://www.google.com/maps/place/${spot.lat},${spot.lng}/@${spot.lat},${spot.lng},10z" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-400 transition-colors mb-4 group" title="Google Mapで開く">                    <span class="underline underline-offset-4 decoration-slate-700 group-hover:decoration-blue-400">${spot.location || ''}</span>
                     <svg class="w-3 h-3 text-slate-500 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                 </a>
 
