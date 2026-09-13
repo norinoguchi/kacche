@@ -143,13 +143,26 @@
                 </button>
             </div>
 
-            <!-- Category Filters -->
-            <div class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar max-w-full">
-                <button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
-                <button onclick="filterCategory('matsuri')" id="cat-matsuri" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">⛩️ 祭り</button>
-                <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🎆 花火</button>
-                <button onclick="filterCategory('craft')" id="cat-craft" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🪭 工芸</button>
-                <button onclick="filterCategory('food')" id="cat-food" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🍣 食</button>
+            <!-- Category Filters Container (左右スクロール矢印インジケーター付き) -->
+            <div class="relative flex items-center max-w-full overflow-hidden flex-1 min-w-0">
+                <!-- 左矢印ボタン -->
+                <button id="catScrollLeft" onclick="scrollCategories(-120)" class="absolute left-0 z-10 hidden p-1 bg-gradient-to-r from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+
+                <!-- ボタンリスト -->
+                <div id="catFilterScroll" onscroll="checkCatScroll()" class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar max-w-full scroll-smooth">
+                    <button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
+                    <button onclick="filterCategory('matsuri')" id="cat-matsuri" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">⛩️ 祭り</button>
+                    <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🎆 花火</button>
+                    <button onclick="filterCategory('craft')" id="cat-craft" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🪭 工芸</button>
+                    <button onclick="filterCategory('food')" id="cat-food" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🍣 食</button>
+                </div>
+
+                <!-- 右矢印ボタン -->
+                <button id="catScrollRight" onclick="scrollCategories(120)" class="absolute right-0 z-10 hidden p-1 bg-gradient-to-l from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                </button>
             </div>
         </div>
 
@@ -358,7 +371,7 @@
                 consultDesc: "여행 수배, 현지 가이드, 개인 컨설팅 문의",
                 consultBtn: "상담하기",
                 close: "닫기",
-                photosTitle: "📸 포토 갤러리 (클릭하여 확대)",
+                photosTitle: "📸 포토 갤러리 (클릭하여拡大)",
                 linksTitle: "🔗 관련 링크",
                 weekdays: ["일", "월", "화", "수", "목", "금", "토"],
                 formatMonth: (y, m) => `${y}년 ${m}월`
@@ -450,6 +463,7 @@
             initMap();
             await loadData();
             changeLanguage('ja');
+            window.addEventListener('resize', checkCatScroll);
         });
 
         async function loadData() {
@@ -580,6 +594,40 @@
             `;
 
             renderCurrentView();
+            setTimeout(checkCatScroll, 50);
+        }
+
+        /* カテゴリーボタンの横スクロール判定と矢印の制御 */
+        function checkCatScroll() {
+            const container = document.getElementById('catFilterScroll');
+            const leftBtn = document.getElementById('catScrollLeft');
+            const rightBtn = document.getElementById('catScrollRight');
+
+            if (!container) return;
+
+            const scrollLeft = container.scrollLeft;
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+            // 左に隠れているボタンがある場合、左矢印を表示
+            if (scrollLeft > 5) {
+                leftBtn.classList.remove('hidden');
+            } else {
+                leftBtn.classList.add('hidden');
+            }
+
+            // 右に隠れているボタンがある場合、右矢印を表示
+            if (maxScrollLeft - scrollLeft > 5) {
+                rightBtn.classList.remove('hidden');
+            } else {
+                rightBtn.classList.add('hidden');
+            }
+        }
+
+        function scrollCategories(offset) {
+            const container = document.getElementById('catFilterScroll');
+            if (container) {
+                container.scrollBy({ left: offset, behavior: 'smooth' });
+            }
         }
 
         function initMap() {
@@ -725,6 +773,7 @@
                 }, 100);
             }
             renderCurrentView();
+            setTimeout(checkCatScroll, 100);
         }
 
         function filterCategory(cat) {
