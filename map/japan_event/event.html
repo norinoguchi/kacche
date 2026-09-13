@@ -44,7 +44,7 @@
         .leaflet-touch .leaflet-bar, .leaflet-bar {
             border: none !important;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
-            border-radius: 0.875rem !important; /* rounded-xl */
+            border-radius: 0.875rem !important;
             overflow: hidden;
             background-color: rgba(19, 28, 46, 0.85) !important;
             backdrop-filter: blur(8px);
@@ -80,6 +80,10 @@
             background-color: rgba(59, 130, 246, 0.2) !important;
             color: #60a5fa !important;
         }
+
+        /* 横スクロール用のバーを非表示 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0b0f19; }
@@ -122,9 +126,9 @@
 
     <!-- Main Toolbar & Navigation -->
     <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-3 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shrink-0 z-10">
-        <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center justify-between md:justify-start gap-2 flex-1 min-w-0">
             <!-- View Mode Switcher -->
-            <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800">
+            <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800 shrink-0">
                 <button onclick="switchView('map')" id="btn-view-map" class="px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 bg-blue-600 text-white shadow-md">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     <span id="txt-nav-map">マップ</span>
@@ -140,21 +144,27 @@
             </div>
 
             <!-- Category Filters -->
-            <div class="flex items-center gap-1.5">
-                <button onclick="filterCategory('all')" id="cat-all" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm">すべて</button>
-                <button onclick="filterCategory('matsuri')" id="cat-matsuri" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">⛩️ 祭り</button>
-                <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">🎆 花火</button>
-                <button onclick="filterCategory('craft')" id="cat-craft" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">🪭 工芸</button>
-                <button onclick="filterCategory('food')" id="cat-food" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">🍣 食</button>
+            <div class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar max-w-full">
+                <button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
+                <button onclick="filterCategory('matsuri')" id="cat-matsuri" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">⛩️ 祭り</button>
+                <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🎆 花火</button>
+                <button onclick="filterCategory('craft')" id="cat-craft" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🪭 工芸</button>
+                <button onclick="filterCategory('food')" id="cat-food" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🍣 食</button>
             </div>
         </div>
 
-        <!-- Search Box -->
-        <div class="relative w-full md:w-64">
+        <!-- Search Box (クリアボタン付き) -->
+        <div id="searchContainer" class="relative w-full md:w-64 hidden">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </span>
-            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名やキーワードで検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-4 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all">
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名やキーワードで検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-8 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all">
+            <!-- クリアボタン -->
+            <button id="searchClearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-400 hover:text-white hidden transition-colors" title="クリア">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -342,7 +352,7 @@
                 catFood: "🍣 미식",
                 searchPlaceholder: "지역명이나 키워드로 검색...",
                 listTitle: "날짜순 목록",
-                noResult: "일치하는 스포트나 이벤트를 찾을 수 없습니다.",
+                noResult: "일치하는 스포트나 이ベン트를 찾을 수 없습니다.",
                 detailLink: "상세 정보 및 상담 창구로",
                 consultTitle: "방문 및 수배 상담",
                 consultDesc: "여행 수배, 현지 가이드, 개인 컨설팅 문의",
@@ -643,7 +653,7 @@
             updateMapMarkers();
         }
 
-        // 登録・フィルターされている全スポットが収まるように地図範囲を調整する関数
+        // 登録・カテゴリー選択されている全スポットが収まるように地図範囲を調整
         function fitMapToFilteredSpots() {
             if (!map) return;
             const filtered = getFilteredSpots();
@@ -682,12 +692,20 @@
                 markersLayer.addLayer(marker);
             });
 
-            // マーカー更新時にすべてのマーカーが入るよう自動ズーム調整
             fitMapToFilteredSpots();
         }
 
         function switchView(viewName) {
             currentView = viewName;
+
+            // リスト表示時のみ検索ボックスを表示
+            const searchContainer = document.getElementById('searchContainer');
+            if (viewName === 'list') {
+                searchContainer.classList.remove('hidden');
+            } else {
+                searchContainer.classList.add('hidden');
+            }
+
             ['map', 'list', 'calendar'].forEach(v => {
                 const el = document.getElementById(`view-${v}`);
                 const btn = document.getElementById(`btn-view-${v}`);
@@ -714,26 +732,42 @@
             ['all', 'matsuri', 'fireworks', 'craft', 'food'].forEach(c => {
                 const btn = document.getElementById(`cat-${c}`);
                 if (c === cat) {
-                    btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm";
+                    btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm whitespace-nowrap shrink-0";
                 } else {
-                    btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700";
+                    btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0";
                 }
             });
             renderCurrentView();
         }
 
         function handleSearch() {
-            searchQuery = document.getElementById('searchInput').value.toLowerCase();
-            renderCurrentView();
+            const input = document.getElementById('searchInput');
+            searchQuery = input.value.toLowerCase();
+            
+            // クリアボタンの表示切替
+            const clearBtn = document.getElementById('searchClearBtn');
+            if (searchQuery.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            if (currentView === 'list') {
+                renderListView();
+            }
         }
 
+        function clearSearch() {
+            const input = document.getElementById('searchInput');
+            input.value = '';
+            handleSearch();
+            input.focus();
+        }
+
+        // カテゴリーフィルターのみを考慮した基本スポット取得関数
         function getFilteredSpots() {
             return spots.map(s => getLocalizedSpot(s)).filter(spot => {
-                const matchCat = currentCategory === 'all' || spot.category === currentCategory;
-                const matchQuery = (spot.title || '').toLowerCase().includes(searchQuery) || 
-                                   (spot.location || '').toLowerCase().includes(searchQuery) || 
-                                   (spot.desc || '').toLowerCase().includes(searchQuery);
-                return matchCat && matchQuery;
+                return currentCategory === 'all' || spot.category === currentCategory;
             });
         }
 
@@ -745,7 +779,16 @@
 
         function renderListView() {
             const container = document.getElementById('listContainer');
-            const filtered = getFilteredSpots().sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+            // リスト表示時のみカテゴリー情報 + 検索キーワード(searchQuery)の両方で絞り込みを実施
+            const filtered = getFilteredSpots()
+                .filter(spot => {
+                    if (!searchQuery) return true;
+                    return (spot.title || '').toLowerCase().includes(searchQuery) || 
+                           (spot.location || '').toLowerCase().includes(searchQuery) || 
+                           (spot.desc || '').toLowerCase().includes(searchQuery);
+                })
+                .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
             const t = i18n[currentLang];
             document.getElementById('listCount').innerText = `（${filtered.length}件）`;
 
