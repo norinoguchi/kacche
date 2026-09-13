@@ -81,6 +81,16 @@
             color: #60a5fa !important;
         }
 
+        /* マーカーのアニメーション設定 */
+        .spot-marker-icon {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .spot-marker-icon:hover {
+            transform: scale(1.25);
+            z-index: 1000 !important;
+        }
+
         /* 横スクロール用のバーを非表示 */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -533,7 +543,8 @@
                     label: t.catFireworks,
                     icon: '🎆',
                     badgeStyle: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
-                    mapStyle: 'bg-rose-500/20 border-rose-500 text-rose-400',
+                    // 淡く柔らかい上品なパステル背景色 ＆ 繊細なボーダー
+                    mapStyle: 'bg-rose-500/20 backdrop-blur-md border-rose-400/50 text-rose-600 shadow-md shadow-rose-500/10',
                     calStyle: 'bg-rose-500/15 text-rose-300 border-rose-500/20'
                 };
             } else if (cat === 'craft') {
@@ -541,7 +552,7 @@
                     label: t.catCraft,
                     icon: '🪭',
                     badgeStyle: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-                    mapStyle: 'bg-indigo-500/20 border-indigo-500 text-indigo-400',
+                    mapStyle: 'bg-indigo-500/20 backdrop-blur-md border-indigo-400/50 text-indigo-600 shadow-md shadow-indigo-500/10',
                     calStyle: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/20'
                 };
             } else if (cat === 'food') {
@@ -549,7 +560,7 @@
                     label: t.catFood,
                     icon: '🍣',
                     badgeStyle: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-                    mapStyle: 'bg-emerald-500/20 border-emerald-500 text-emerald-400',
+                    mapStyle: 'bg-emerald-500/20 backdrop-blur-md border-emerald-400/50 text-emerald-600 shadow-md shadow-emerald-500/10',
                     calStyle: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/20'
                 };
             } else { // matsuri (デフォルト)
@@ -557,7 +568,7 @@
                     label: t.catMatsuri,
                     icon: '⛩️',
                     badgeStyle: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-                    mapStyle: 'bg-amber-500/20 border-amber-500 text-amber-400',
+                    mapStyle: 'bg-amber-500/20 backdrop-blur-md border-amber-400/50 text-amber-600 shadow-md shadow-amber-500/10',
                     calStyle: 'bg-amber-500/15 text-amber-300 border-amber-500/20'
                 };
             }
@@ -690,10 +701,10 @@
 
             map.addControl(new CustomUnifiedControl());
 
-            // 陸と海のコントラストがはっきりしたスタイリッシュなダークテーマタイル
-            L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a>',
-                maxZoom: 19
+            // 国土地理院・淡色地図
+            L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>'
             }).addTo(map);
 
             markersLayer = L.layerGroup().addTo(map);
@@ -722,16 +733,17 @@
                 const spot = getLocalizedSpot(rawSpot);
                 const catMeta = getCategoryDetails(spot.category);
                 
+                // 大きめのアイコン(text-lg) ＋ 淡く透明感のある上品な背景
                 const iconHtml = `
-                    <div class="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg border ${catMeta.mapStyle} backdrop-blur-md">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg border ${catMeta.mapStyle} spot-marker-icon">
                         ${catMeta.icon}
                     </div>
                 `;
                 const customIcon = L.divIcon({
                     className: 'custom-div-icon',
                     html: iconHtml,
-                    iconSize: [32, 32],
-                    iconAnchor: [16, 16]
+                    iconSize: [36, 36],
+                    iconAnchor: [18, 18]
                 });
 
                 const marker = L.marker([spot.lat, spot.lng], { icon: customIcon });
