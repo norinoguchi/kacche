@@ -31,7 +31,7 @@
     },
     {
       "id": 1789104657141,
-      "category": "tourism",
+      "category": "matsuri",
       "startDate": "2027-05-01",
       "endDate": "2027-05-03",
       "lat": 34.7109786,
@@ -55,7 +55,7 @@
     },
     {
       "id": 1789106389629,
-      "category": "tourism",
+      "category": "matsuri",
       "startDate": "2026-08-01",
       "endDate": "2026-08-01",
       "lat": 33.5990204,
@@ -79,7 +79,7 @@
     },
     {
       "id": 1789182250991,
-      "category": "tourism",
+      "category": "matsuri",
       "startDate": "2026-08-01",
       "endDate": "2026-08-01",
       "lat": 43.061936,
@@ -120,6 +120,38 @@
       "photos": [
         {
           "url": "edogawa/pict1.jpg",
+          "caption": ""
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": 1789255978046,
+      "category": "food",
+      "startDate": "2026-09-20",
+      "endDate": "2026-09-21",
+      "lat": 35.6408352,
+      "lng": 139.6985376,
+      "updatedAt": "2026-09-13 08:34",
+      "photos": [
+        {
+          "url": "meguro/meguro.jpg",
+          "caption": ""
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": 1789256746359,
+      "category": "craft",
+      "startDate": "2026-09-20",
+      "endDate": "2026-09-23",
+      "lat": 34.8768864,
+      "lng": 136.0610175,
+      "updatedAt": "2026-09-13 08:47",
+      "photos": [
+        {
+          "url": "touki/touki.jpg",
           "caption": ""
         }
       ],
@@ -310,6 +342,80 @@
         "title": "江戸川花火大会",
         "location": "東京都江戸川区",
         "desc": "東京で最も賑やかな花火大会"
+      }
+    },
+    "1789255978046": {
+      "ja": {
+        "title": "目黒さんま祭り",
+        "location": "東京都目黒区",
+        "desc": "東京都の目黒川で毎年開催される秋の風物詩"
+      },
+      "en": {
+        "title": "Meguro Sanma Festival",
+        "location": "Meguro Ward, Tokyo",
+        "desc": "Autumn tradition held every year on the Meguro River in Tokyo"
+      },
+      "zh-TW": {
+        "title": "目黑三馬祭",
+        "location": "東京都目黑區",
+        "desc": "東京目黑川每年都會舉辦秋季傳統活動"
+      },
+      "zh-CN": {
+        "title": "目黑三马祭",
+        "location": "东京都目黑区",
+        "desc": "东京目黑川每年都会举办秋季传统活动"
+      },
+      "ko": {
+        "title": "메구로 산마 축제",
+        "location": "도쿄도 메구로구",
+        "desc": "도쿄도의 메구로강에서 매년 개최되는 가을의 풍물시"
+      },
+      "th": {
+        "title": "เทศกาลเมกุโระ ซันมะ",
+        "location": "เขตเมกุโระ โตเกียว",
+        "desc": "ประเพณีฤดูใบไม้ร่วงจัดขึ้นทุกปีที่แม่น้ำเมกุโระในโตเกียว"
+      },
+      "id": {
+        "title": "Festival Meguro Sanma",
+        "location": "Daerah Meguro, Tokyo",
+        "desc": "Tradisi musim gugur diadakan setiap tahun di Sungai Meguro di Tokyo"
+      }
+    },
+    "1789256746359": {
+      "ja": {
+        "title": "信楽陶器市",
+        "location": "滋賀県信楽",
+        "desc": "日本最大の陶器市です"
+      },
+      "en": {
+        "title": "Shigaraki Pottery City",
+        "location": "Shigaraki, Shiga Prefecture",
+        "desc": "Japan's largest pottery market"
+      },
+      "zh-TW": {
+        "title": "信樂陶器城",
+        "location": "滋賀縣信樂市",
+        "desc": "日本最大的陶器市場"
+      },
+      "zh-CN": {
+        "title": "信乐陶器城",
+        "location": "滋贺县信乐市",
+        "desc": "日本最大的陶器市场"
+      },
+      "ko": {
+        "title": "시가라쿠 도기시",
+        "location": "시가현 노부라쿠",
+        "desc": "일본 최대의 도기시입니다."
+      },
+      "th": {
+        "title": "เมืองเครื่องปั้นดินเผาชิการากิ",
+        "location": "ชิการากิ จังหวัดชิงะ",
+        "desc": "ตลาดเครื่องปั้นดินเผาที่ใหญ่ที่สุดของญี่ปุ่น"
+      },
+      "id": {
+        "title": "Kota Tembikar Shigaraki",
+        "location": "Shigaraki, Prefektur Shiga",
+        "desc": "Pasar tembikar terbesar di Jepang"
       }
     }
   }
