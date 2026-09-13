@@ -46,7 +46,7 @@
                     Japan Discovery Hub 
                     <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-normal">Admin CMS</span>
                 </h1>
-                <p class="text-[11px] sm:text-xs text-slate-400">サブフォルダ一括指定・シンプルファイル選択CMS</p>
+                <p class="text-[11px] sm:text-xs text-slate-400">日本文化イベントデータベース CMS</p>
             </div>
         </div>
 
@@ -138,8 +138,10 @@
                         <div>
                             <label class="block text-[11px] font-medium text-slate-300 mb-1">カテゴリー</label>
                             <select id="editCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500">
-                                <option value="fireworks">🎆 花火・祭り</option>
-                                <option value="tourism">⛩️ 観光・体験</option>
+                                <option value="matsuri">⛩️ 祭り</option>
+                                <option value="fireworks">🎆 花火</option>
+                                <option value="craft">🪭 工芸</option>
+                                <option value="food">🍣 食</option>
                             </select>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
@@ -237,10 +239,10 @@
         const defaultSpots = [
             { id: 1, category: 'fireworks', startDate: '2026-08-02', endDate: '2026-08-03', lat: 37.4475, lng: 138.8511, updatedAt: '2026-01-01 10:00', photos: [{ url: "nagaoka.jpg", caption: "夜空を彩る大花火" }], links: [{ url: "https://nagaokamatsuri.com", text: "長岡まつり公式ウェブサイト" }] },
             { id: 2, category: 'fireworks', startDate: '2026-08-29', endDate: '2026-08-29', lat: 39.4542, lng: 140.4731, updatedAt: '2026-01-02 12:00', photos: [], links: [] },
-            { id: 3, category: 'fireworks', startDate: '2026-07-17', endDate: '2026-07-17', lat: 35.0037, lng: 135.7600, updatedAt: '2026-01-03 14:00', photos: [], links: [] },
-            { id: 4, category: 'tourism', startDate: '2026-08-10', endDate: '2026-08-12', lat: 36.2560, lng: 136.9066, updatedAt: '2026-01-04 09:00', photos: [], links: [] },
-            { id: 5, category: 'tourism', startDate: '2026-09-15', endDate: '2026-09-15', lat: 33.7042, lng: 135.7765, updatedAt: '2026-01-05 16:00', photos: [], links: [] },
-            { id: 6, category: 'fireworks', startDate: '2026-08-05', endDate: '2026-08-05', lat: 40.8244, lng: 140.7400, updatedAt: '2026-01-06 18:00', photos: [], links: [] }
+            { id: 3, category: 'matsuri', startDate: '2026-07-17', endDate: '2026-07-17', lat: 35.0037, lng: 135.7600, updatedAt: '2026-01-03 14:00', photos: [], links: [] },
+            { id: 4, category: 'food', startDate: '2026-08-10', endDate: '2026-08-12', lat: 36.2560, lng: 136.9066, updatedAt: '2026-01-04 09:00', photos: [], links: [] },
+            { id: 5, category: 'matsuri', startDate: '2026-09-15', endDate: '2026-09-15', lat: 33.7042, lng: 135.7765, updatedAt: '2026-01-05 16:00', photos: [], links: [] },
+            { id: 6, category: 'craft', startDate: '2026-10-10', endDate: '2026-10-12', lat: 35.6762, lng: 139.6503, updatedAt: '2026-01-06 18:00', photos: [], links: [] }
         ];
 
         let spots = JSON.parse(localStorage.getItem('japan_discovery_spots')) || defaultSpots;
@@ -251,11 +253,13 @@
             }
         };
 
+        // 旧カテゴリ（tourism）からの移行互換性処理
         spots.forEach(s => {
             if (!s.photos) s.photos = [];
             if (!s.links) s.links = [];
             if (s.date && !s.startDate) { s.startDate = s.date; s.endDate = s.date; }
             if (!s.endDate) s.endDate = s.startDate;
+            if (s.category === 'tourism') s.category = 'matsuri';
 
             s.photos = s.photos.map(p => {
                 let cleanUrl = p.url || '';
@@ -285,6 +289,18 @@
                 currentSortAsc = true;
             }
             renderTable();
+        }
+
+        function getCategoryBadge(cat) {
+            if (cat === 'fireworks') {
+                return `<span class="text-[10px] px-2 py-0.5 rounded-md font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20">🎆 花火</span>`;
+            } else if (cat === 'craft') {
+                return `<span class="text-[10px] px-2 py-0.5 rounded-md font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">🪭 工芸</span>`;
+            } else if (cat === 'food') {
+                return `<span class="text-[10px] px-2 py-0.5 rounded-md font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🍣 食</span>`;
+            } else {
+                return `<span class="text-[10px] px-2 py-0.5 rounded-md font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">⛩️ 祭り</span>`;
+            }
         }
 
         function renderTable() {
@@ -338,7 +354,6 @@
             tbody.innerHTML = sortedSpots.map((spot) => {
                 const i18nData = spotContentI18n[spot.id] || {};
                 const jaData = i18nData['ja'] || { title: '(タイトル未設定)', location: '(エリア未設定)' };
-                const isFw = spot.category === 'fireworks';
                 const displayNo = spot.originalNo;
                 const updatedAt = spot.updatedAt || '2026-01-01 00:00';
                 const dateStr = spot.startDate === spot.endDate || !spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
@@ -347,9 +362,7 @@
                     <tr class="hover:bg-slate-800/40 transition-colors">
                         <td class="p-3 sm:p-4 font-mono font-bold text-slate-300">#${displayNo}</td>
                         <td class="p-3 sm:p-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded-md font-medium ${isFw ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}">
-                                ${isFw ? '🎆 花火' : '⛩️ 観光'}
-                            </span>
+                            ${getCategoryBadge(spot.category)}
                         </td>
                         <td class="p-3 sm:p-4 font-bold text-white">${jaData.title}</td>
                         <td class="p-3 sm:p-4 text-slate-300">
@@ -399,7 +412,7 @@
             editingSpotId = Date.now();
             activeLang = 'ja';
             currentEditingData = {
-                category: 'fireworks',
+                category: 'matsuri',
                 startDate: '2026-08-01',
                 endDate: '2026-08-01',
                 lat: 35.6812,
@@ -417,7 +430,7 @@
             activeLang = 'ja';
             const spot = spots.find(s => s.id === id);
             currentEditingData = {
-                category: spot.category,
+                category: spot.category === 'tourism' ? 'matsuri' : spot.category,
                 startDate: spot.startDate || spot.date || '2026-08-01',
                 endDate: spot.endDate || spot.startDate || spot.date || '2026-08-01',
                 lat: spot.lat,

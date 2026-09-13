@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Discovery Hub - 観光・体験 ＆ 花火祭りプラットフォーム</title>
+    <title>Japan Discovery</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -39,6 +39,48 @@
         .leaflet-container { font-family: 'Noto Sans JP', sans-serif; }
         .leaflet-popup-close-button { color: #94a3b8 !important; }
         .leaflet-popup-close-button:hover { color: #ffffff !important; }
+        
+        /* 地図コントロール（ズーム＆全表示リセット）のエレガント共通デザイン */
+        .leaflet-touch .leaflet-bar, .leaflet-bar {
+            border: none !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
+            border-radius: 0.875rem !important; /* rounded-xl */
+            overflow: hidden;
+            background-color: rgba(19, 28, 46, 0.85) !important;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(51, 65, 85, 0.8) !important;
+        }
+
+        .leaflet-touch .leaflet-bar a, .leaflet-bar a {
+            background-color: transparent !important;
+            color: #94a3b8 !important;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6) !important;
+            width: 36px !important;
+            height: 36px !important;
+            line-height: 36px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.2s ease !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+        }
+
+        .leaflet-touch .leaflet-bar a:last-child, .leaflet-bar a:last-child {
+            border-bottom: none !important;
+        }
+
+        .leaflet-touch .leaflet-bar a:hover, .leaflet-bar a:hover {
+            background-color: rgba(30, 41, 59, 0.9) !important;
+            color: #ffffff !important;
+        }
+
+        .leaflet-touch .leaflet-bar a:active, .leaflet-bar a:active {
+            background-color: rgba(59, 130, 246, 0.2) !important;
+            color: #60a5fa !important;
+        }
+
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0b0f19; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
@@ -57,10 +99,10 @@
             </div>
             <div>
                 <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                    Japan Discovery Hub 
+                    Japan Discovery
                     <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-normal">Pro Platform</span>
                 </h1>
-                <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400">観光・体験 ＆ 花火祭りデータベース</p>
+                <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400">日本文化イベントデータベース</p>
             </div>
         </div>
 
@@ -100,8 +142,10 @@
             <!-- Category Filters -->
             <div class="flex items-center gap-1.5">
                 <button onclick="filterCategory('all')" id="cat-all" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm">すべて</button>
+                <button onclick="filterCategory('matsuri')" id="cat-matsuri" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">⛩️ 祭り</button>
                 <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">🎆 花火</button>
-                <button onclick="filterCategory('tourism')" id="cat-tourism" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">⛩️ 観光</button>
+                <button onclick="filterCategory('craft')" id="cat-craft" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">🪭 工芸</button>
+                <button onclick="filterCategory('food')" id="cat-food" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">🍣 食</button>
             </div>
         </div>
 
@@ -192,13 +236,15 @@
     <script>
         const i18n = {
             ja: {
-                subtitle: "観光・体験 ＆ 花火祭りデータベース",
+                subtitle: "日本文化イベントデータベース",
                 navMap: "マップ",
                 navList: "リスト",
                 navCalendar: "カレンダー",
                 catAll: "すべて",
-                catFireworks: "🎆 花火・祭り",
-                catTourism: "⛩️ 観光・体験",
+                catMatsuri: "⛩️ 祭り",
+                catFireworks: "🎆 花火",
+                catCraft: "🪭 工芸",
+                catFood: "🍣 食",
                 searchPlaceholder: "地域名やキーワードで検索...",
                 listTitle: "開催期間・日付順リスト",
                 noResult: "該当するスポット・イベントが見つかりませんでした。",
@@ -213,13 +259,15 @@
                 formatMonth: (y, m) => `${y}年 ${m}月`
             },
             en: {
-                subtitle: "Tourism, Experience & Fireworks Festival DB",
+                subtitle: "Japanese Culture Events Database",
                 navMap: "Map",
                 navList: "List",
                 navCalendar: "Calendar",
                 catAll: "All",
+                catMatsuri: "⛩️ Festival",
                 catFireworks: "🎆 Fireworks",
-                catTourism: "⛩️ Tourism",
+                catCraft: "🪭 Crafts",
+                catFood: "🍣 Food",
                 searchPlaceholder: "Search location or keyword...",
                 listTitle: "Date-sorted List",
                 noResult: "No matching spots or events found.",
@@ -237,13 +285,15 @@
                 }
             },
             "zh-TW": {
-                subtitle: "觀光體驗 ＆ 煙火祭典資料庫",
+                subtitle: "日本文化活動資料庫",
                 navMap: "地圖",
                 navList: "列表",
                 navCalendar: "日曆",
                 catAll: "全部",
+                catMatsuri: "⛩️ 祭典",
                 catFireworks: "🎆 煙火",
-                catTourism: "⛩️ 觀光",
+                catCraft: "🪭 工藝",
+                catFood: "🍣 美食",
                 searchPlaceholder: "搜尋地區或關鍵字...",
                 listTitle: "依日期排序列表",
                 noResult: "找不到符合的景點或活動。",
@@ -258,13 +308,15 @@
                 formatMonth: (y, m) => `${y}年 ${m}月`
             },
             "zh-CN": {
-                subtitle: "观光体验 ＆ 烟火祭典数据库",
+                subtitle: "日本文化活动数据库",
                 navMap: "地图",
                 navList: "列表",
                 navCalendar: "日历",
                 catAll: "全部",
+                catMatsuri: "⛩️ 祭典",
                 catFireworks: "🎆 烟火",
-                catTourism: "⛩️ 观光",
+                catCraft: "🪭 工艺",
+                catFood: "🍣 美食",
                 searchPlaceholder: "搜索地区或关键词...",
                 listTitle: "按日期排序列表",
                 noResult: "未找到符合的景点或活动。",
@@ -279,13 +331,15 @@
                 formatMonth: (y, m) => `${y}年 ${m}月`
             },
             ko: {
-                subtitle: "관광·체험 및 불꽃놀이 축제 데이터베이스",
+                subtitle: "일본 문화 이벤트 데이터베이스",
                 navMap: "지도",
                 navList: "목록",
                 navCalendar: "캘린더",
                 catAll: "전체",
+                catMatsuri: "⛩️ 축제",
                 catFireworks: "🎆 불꽃놀이",
-                catTourism: "⛩️ 관광",
+                catCraft: "🪭 공예",
+                catFood: "🍣 미식",
                 searchPlaceholder: "지역명이나 키워드로 검색...",
                 listTitle: "날짜순 목록",
                 noResult: "일치하는 스포트나 이벤트를 찾을 수 없습니다.",
@@ -300,13 +354,15 @@
                 formatMonth: (y, m) => `${y}년 ${m}월`
             },
             th: {
-                subtitle: "ฐานข้อมูลการท่องเที่ยว ประสบการณ์ และเทศกาลดอกไม้ไฟ",
+                subtitle: "ฐานข้อมูลกิจกรรมวัฒนธรรมญี่ปุ่น",
                 navMap: "แผนที่",
                 navList: "รายการ",
                 navCalendar: "ปฏิทิน",
                 catAll: "ทั้งหมด",
+                catMatsuri: "⛩️ เทศกาล",
                 catFireworks: "🎆 ดอกไม้ไฟ",
-                catTourism: "⛩️ ท่องเที่ยว",
+                catCraft: "🪭 หัตถกรรม",
+                catFood: "🍣 อาหาร",
                 searchPlaceholder: "ค้นหาชื่อสถานที่...",
                 listTitle: "รายการเรียงตามวันที่",
                 noResult: "ไม่พบสถานที่หรือกิจกรรมที่ตรงกัน",
@@ -321,13 +377,15 @@
                 formatMonth: (y, m) => `${m}/${y}`
             },
             id: {
-                subtitle: "Database Pariwisata, Pengalaman & Festival Kembang Api",
+                subtitle: "Database Acara Kebudayaan Jepang",
                 navMap: "Peta",
                 navList: "Daftar",
                 navCalendar: "Kalender",
                 catAll: "Semua",
+                catMatsuri: "⛩️ Festival",
                 catFireworks: "🎆 Kembang Api",
-                catTourism: "⛩️ Pariwisata",
+                catCraft: "🪭 Kerajinan",
+                catFood: "🍣 Kuliner",
                 searchPlaceholder: "Cari lokasi...",
                 listTitle: "Daftar Urut Tanggal",
                 noResult: "Tidak ada tempat atau acara yang ditemukan.",
@@ -356,10 +414,10 @@
         const defaultSpots = [
             { id: 1, category: 'fireworks', startDate: '2026-08-02', endDate: '2026-08-03', lat: 37.4475, lng: 138.8511, photos: [{ url: "nagaoka.jpg", caption: "夜空を彩る大花火" }], links: [{ url: "https://nagaokamatsuri.com", text: "長岡まつり公式ウェブサイト" }] },
             { id: 2, category: 'fireworks', startDate: '2026-08-29', endDate: '2026-08-29', lat: 39.4542, lng: 140.4731, photos: [], links: [] },
-            { id: 3, category: 'fireworks', startDate: '2026-07-17', endDate: '2026-07-17', lat: 35.0037, lng: 135.7600, photos: [], links: [] },
-            { id: 4, category: 'tourism', startDate: '2026-08-10', endDate: '2026-08-12', lat: 36.2560, lng: 136.9066, photos: [], links: [] },
-            { id: 5, category: 'tourism', startDate: '2026-09-15', endDate: '2026-09-15', lat: 33.7042, lng: 135.7765, photos: [], links: [] },
-            { id: 6, category: 'fireworks', startDate: '2026-08-05', endDate: '2026-08-05', lat: 40.8244, lng: 140.7400, photos: [], links: [] }
+            { id: 3, category: 'matsuri', startDate: '2026-07-17', endDate: '2026-07-17', lat: 35.0037, lng: 135.7600, photos: [], links: [] },
+            { id: 4, category: 'food', startDate: '2026-08-10', endDate: '2026-08-12', lat: 36.2560, lng: 136.9066, photos: [], links: [] },
+            { id: 5, category: 'matsuri', startDate: '2026-09-15', endDate: '2026-09-15', lat: 33.7042, lng: 135.7765, photos: [], links: [] },
+            { id: 6, category: 'craft', startDate: '2026-10-10', endDate: '2026-10-12', lat: 35.6762, lng: 139.6503, photos: [], links: [] }
         ];
 
         const defaultI18n = {
@@ -386,14 +444,12 @@
 
         async function loadData() {
             try {
-                // キャッシュ回避用にクエリパラメータを付与してJSON読み込み
                 const response = await fetch(`spot/spots_data.json?v=${Date.now()}`);
                 if (response.ok) {
                     const data = await response.json();
                     if (data.spots && data.spotContentI18n) {
                         spots = data.spots;
                         spotContentI18n = data.spotContentI18n;
-                        // ローカルストレージを最新JSONで更新し同期
                         localStorage.setItem('japan_discovery_spots', JSON.stringify(spots));
                         localStorage.setItem('japan_discovery_spot_i18n', JSON.stringify(spotContentI18n));
                         return;
@@ -407,7 +463,6 @@
             spotContentI18n = JSON.parse(localStorage.getItem('japan_discovery_spot_i18n')) || defaultI18n;
         }
 
-        // 相対パス生成関数
         function buildPhotoUrl(urlRaw) {
             if (!urlRaw) return "";
             let u = String(urlRaw).trim();
@@ -436,6 +491,7 @@
 
             return {
                 ...spot,
+                category: spot.category === 'tourism' ? 'matsuri' : spot.category,
                 startDate: spot.startDate || '2026-08-01',
                 endDate: spot.endDate || spot.startDate || '2026-08-01',
                 title: langData.title || '',
@@ -444,6 +500,43 @@
                 photos: processedPhotos,
                 links: spot.links || []
             };
+        }
+
+        function getCategoryDetails(cat) {
+            const t = i18n[currentLang];
+            if (cat === 'fireworks') {
+                return {
+                    label: t.catFireworks,
+                    icon: '🎆',
+                    badgeStyle: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+                    mapStyle: 'bg-rose-500/20 border-rose-500 text-rose-400',
+                    calStyle: 'bg-rose-500/15 text-rose-300 border-rose-500/20'
+                };
+            } else if (cat === 'craft') {
+                return {
+                    label: t.catCraft,
+                    icon: '🪭',
+                    badgeStyle: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+                    mapStyle: 'bg-indigo-500/20 border-indigo-500 text-indigo-400',
+                    calStyle: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/20'
+                };
+            } else if (cat === 'food') {
+                return {
+                    label: t.catFood,
+                    icon: '🍣',
+                    badgeStyle: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+                    mapStyle: 'bg-emerald-500/20 border-emerald-500 text-emerald-400',
+                    calStyle: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/20'
+                };
+            } else { // matsuri (デフォルト)
+                return {
+                    label: t.catMatsuri,
+                    icon: '⛩️',
+                    badgeStyle: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+                    mapStyle: 'bg-amber-500/20 border-amber-500 text-amber-400',
+                    calStyle: 'bg-amber-500/15 text-amber-300 border-amber-500/20'
+                };
+            }
         }
 
         function changeLanguage(lang) {
@@ -456,8 +549,10 @@
             document.getElementById('txt-nav-calendar').innerText = t.navCalendar;
 
             document.getElementById('cat-all').innerText = t.catAll;
+            document.getElementById('cat-matsuri').innerText = t.catMatsuri;
             document.getElementById('cat-fireworks').innerText = t.catFireworks;
-            document.getElementById('cat-tourism').innerText = t.catTourism;
+            document.getElementById('cat-craft').innerText = t.catCraft;
+            document.getElementById('cat-food').innerText = t.catFood;
 
             document.getElementById('searchInput').placeholder = t.searchPlaceholder;
             document.getElementById('txt-list-title').innerText = t.listTitle;
@@ -480,7 +575,64 @@
         function initMap() {
             if (map) return;
             map = L.map('map', { zoomControl: false }).setView([37.5, 138.0], 6);
-            L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+            // 統合コントロール（全表示リセット ＋ ズームイン ＋ ズームアウト）
+            const CustomUnifiedControl = L.Control.extend({
+                options: { position: 'bottomright' },
+                onAdd: function(mapInstance) {
+                    const container = L.DomUtil.create('div', 'leaflet-bar');
+                    L.DomEvent.disableClickPropagation(container);
+
+                    // 1. 全体表示リセットボタン
+                    const fitBtn = L.DomUtil.create('a', '', container);
+                    fitBtn.href = '#';
+                    fitBtn.title = '全体表示リセット';
+                    fitBtn.role = 'button';
+                    fitBtn.innerHTML = `
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                        </svg>
+                    `;
+                    L.DomEvent.on(fitBtn, 'click', function(e) {
+                        L.DomEvent.stop(e);
+                        fitMapToFilteredSpots();
+                    });
+
+                    // 2. ズームインボタン
+                    const zoomInBtn = L.DomUtil.create('a', '', container);
+                    zoomInBtn.href = '#';
+                    zoomInBtn.title = '拡大';
+                    zoomInBtn.role = 'button';
+                    zoomInBtn.innerHTML = `
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                    `;
+                    L.DomEvent.on(zoomInBtn, 'click', function(e) {
+                        L.DomEvent.stop(e);
+                        mapInstance.zoomIn();
+                    });
+
+                    // 3. ズームアウトボタン
+                    const zoomOutBtn = L.DomUtil.create('a', '', container);
+                    zoomOutBtn.href = '#';
+                    zoomOutBtn.title = '縮小';
+                    zoomOutBtn.role = 'button';
+                    zoomOutBtn.innerHTML = `
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                        </svg>
+                    `;
+                    L.DomEvent.on(zoomOutBtn, 'click', function(e) {
+                        L.DomEvent.stop(e);
+                        mapInstance.zoomOut();
+                    });
+
+                    return container;
+                }
+            });
+
+            map.addControl(new CustomUnifiedControl());
 
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; CARTO',
@@ -491,6 +643,19 @@
             updateMapMarkers();
         }
 
+        // 登録・フィルターされている全スポットが収まるように地図範囲を調整する関数
+        function fitMapToFilteredSpots() {
+            if (!map) return;
+            const filtered = getFilteredSpots();
+            if (filtered.length === 0) {
+                map.setView([37.5, 138.0], 6);
+                return;
+            }
+
+            const bounds = L.latLngBounds(filtered.map(s => [s.lat, s.lng]));
+            map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
+        }
+
         function updateMapMarkers() {
             if (!markersLayer) return;
             markersLayer.clearLayers();
@@ -498,10 +663,11 @@
             const filtered = getFilteredSpots();
             filtered.forEach(rawSpot => {
                 const spot = getLocalizedSpot(rawSpot);
-                const isFireworks = spot.category === 'fireworks';
+                const catMeta = getCategoryDetails(spot.category);
+                
                 const iconHtml = `
-                    <div class="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg border ${isFireworks ? 'bg-amber-500/20 border-amber-500 text-amber-400' : 'bg-blue-500/20 border-blue-500 text-blue-400'} backdrop-blur-md">
-                        ${isFireworks ? '🎆' : '⛩️'}
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg border ${catMeta.mapStyle} backdrop-blur-md">
+                        ${catMeta.icon}
                     </div>
                 `;
                 const customIcon = L.divIcon({
@@ -515,6 +681,9 @@
                 marker.on('click', () => showDetailModal(spot.id));
                 markersLayer.addLayer(marker);
             });
+
+            // マーカー更新時にすべてのマーカーが入るよう自動ズーム調整
+            fitMapToFilteredSpots();
         }
 
         function switchView(viewName) {
@@ -532,14 +701,17 @@
             });
 
             if (viewName === 'map' && map) {
-                setTimeout(() => map.invalidateSize(), 100);
+                setTimeout(() => {
+                    map.invalidateSize();
+                    fitMapToFilteredSpots();
+                }, 100);
             }
             renderCurrentView();
         }
 
         function filterCategory(cat) {
             currentCategory = cat;
-            ['all', 'fireworks', 'tourism'].forEach(c => {
+            ['all', 'matsuri', 'fireworks', 'craft', 'food'].forEach(c => {
                 const btn = document.getElementById(`cat-${c}`);
                 if (c === cat) {
                     btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm";
@@ -583,7 +755,7 @@
             }
 
             container.innerHTML = filtered.map(spot => {
-                const isFw = spot.category === 'fireworks';
+                const catMeta = getCategoryDetails(spot.category);
                 const thumb = spot.photos && spot.photos.length > 0 ? spot.photos[0].url : null;
                 const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
                 return `
@@ -591,8 +763,8 @@
                         <div>
                             ${thumb ? `<div class="w-full h-36 rounded-xl mb-3 overflow-hidden bg-slate-900"><img src="${thumb}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'"></div>` : ''}
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-xs px-2.5 py-1 rounded-lg font-medium ${isFw ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}">
-                                    ${isFw ? t.catFireworks : t.catTourism}
+                                <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${catMeta.badgeStyle}">
+                                    ${catMeta.label}
                                 </span>
                                 <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
                             </div>
@@ -658,11 +830,14 @@
                             ${daySpots.length > 0 ? `<span class="text-[9px] bg-blue-500/20 text-blue-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}
                         </div>
                         <div class="flex-1 space-y-1 overflow-y-auto max-h-[70px]">
-                            ${daySpots.map(s => `
-                                <div onclick="showDetailModal(${s.id})" class="text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md truncate cursor-pointer transition-all ${s.category === 'fireworks' ? 'bg-amber-500/15 text-amber-300 border border-amber-500/20' : 'bg-blue-500/15 text-blue-300 border border-blue-500/20'}" title="${s.title}">
-                                    ${s.category === 'fireworks' ? '🎆' : '⛩️'} ${s.title}
-                                </div>
-                            `).join('')}
+                            ${daySpots.map(s => {
+                                const catMeta = getCategoryDetails(s.category);
+                                return `
+                                    <div onclick="showDetailModal(${s.id})" class="text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md truncate cursor-pointer transition-all border ${catMeta.calStyle}" title="${s.title}">
+                                        ${catMeta.icon} ${s.title}
+                                    </div>
+                                `;
+                            }).join('')}
                         </div>
                     </div>
                 `;
@@ -675,15 +850,13 @@
             const rawSpot = spots.find(s => Number(s.id) === Number(id));
             if (!rawSpot) return;
             const spot = getLocalizedSpot(rawSpot);
-            const isFw = spot.category === 'fireworks';
+            const catMeta = getCategoryDetails(spot.category);
             const t = i18n[currentLang];
             const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
 
             let photosHtml = '';
             if (spot.photos && spot.photos.length > 0) {
-                // 開いたスポット固有の写真配列で正しく上書き
                 currentLightboxPhotos = spot.photos;
-
                 photosHtml = `
                     <div>
                         <h4 class="text-xs font-bold text-amber-400 mb-2">${t.photosTitle}</h4>
@@ -727,8 +900,8 @@
 
             document.getElementById('modalContent').innerHTML = `
                 <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium ${isFw ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}">
-                        ${isFw ? t.catFireworks : t.catTourism}
+                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${catMeta.badgeStyle}">
+                        ${catMeta.label}
                     </span>
                     <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
                 </div>
