@@ -135,33 +135,33 @@
     </header>
 
     <!-- Main Toolbar & Navigation -->
-    <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-3 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shrink-0 z-10">
-        <div class="flex flex-wrap items-center justify-between md:justify-start gap-2 flex-1 min-w-0">
-            <!-- View Mode Switcher -->
-            <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800 shrink-0">
-                <button onclick="switchView('map')" id="btn-view-map" class="px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 bg-blue-600 text-white shadow-md">
+    <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-2.5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 shrink-0 z-10">
+        <div class="flex flex-col sm:flex-row md:flex-row items-stretch sm:items-center gap-2.5 flex-1 min-w-0">
+            <!-- 1段目 (スマホ): View Mode Switcher -->
+            <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800 shrink-0 justify-between sm:justify-start">
+                <button onclick="switchView('map')" id="btn-view-map" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-blue-600 text-white shadow-md">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     <span id="txt-nav-map">マップ</span>
                 </button>
-                <button onclick="switchView('list')" id="btn-view-list" class="px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                <button onclick="switchView('list')" id="btn-view-list" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                     <span id="txt-nav-list">リスト</span>
                 </button>
-                <button onclick="switchView('calendar')" id="btn-view-calendar" class="px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                <button onclick="switchView('calendar')" id="btn-view-calendar" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     <span id="txt-nav-calendar">カレンダー</span>
                 </button>
             </div>
 
-            <!-- Category Filters Container -->
-            <div class="relative flex items-center max-w-full overflow-hidden flex-1 min-w-0">
+            <!-- 2段目 (スマホ): Category Filters Container -->
+            <div class="relative flex items-center w-full min-w-0 overflow-hidden flex-1">
                 <!-- 左矢印ボタン -->
                 <button id="catScrollLeft" onclick="scrollCategories(-120)" class="absolute left-0 z-10 hidden p-1 bg-gradient-to-r from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
 
                 <!-- ボタンリスト -->
-                <div id="catFilterScroll" onscroll="checkCatScroll()" class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar max-w-full scroll-smooth">
+                <div id="catFilterScroll" onscroll="checkCatScroll()" class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar w-full scroll-smooth">
                     <button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
                     <button onclick="filterCategory('matsuri')" id="cat-matsuri" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">⛩️ 祭り</button>
                     <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🎆 花火</button>
@@ -176,7 +176,7 @@
             </div>
         </div>
 
-        <!-- Search Box (クリアボタン付き) -->
+        <!-- Search Box (リスト表示時のみ右側に配置・クリアボタン付き) -->
         <div id="searchContainer" class="relative w-full md:w-64 hidden">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -543,7 +543,6 @@
                     label: t.catFireworks,
                     icon: '🎆',
                     badgeStyle: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
-                    // 淡く柔らかい上品なパステル背景色 ＆ 繊細なボーダー
                     mapStyle: 'bg-rose-500/20 backdrop-blur-md border-rose-400/50 text-rose-600 shadow-md shadow-rose-500/10',
                     calStyle: 'bg-rose-500/15 text-rose-300 border-rose-500/20'
                 };
@@ -558,7 +557,7 @@
             } else if (cat === 'food') {
                 return {
                     label: t.catFood,
-                    icon: '🍣',
+                    icon: '🥢',
                     badgeStyle: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
                     mapStyle: 'bg-emerald-500/20 backdrop-blur-md border-emerald-400/50 text-emerald-600 shadow-md shadow-emerald-500/10',
                     calStyle: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/20'
@@ -733,7 +732,6 @@
                 const spot = getLocalizedSpot(rawSpot);
                 const catMeta = getCategoryDetails(spot.category);
                 
-                // 大きめのアイコン(text-lg) ＋ 淡く透明感のある上品な背景
                 const iconHtml = `
                     <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg border ${catMeta.mapStyle} spot-marker-icon">
                         ${catMeta.icon}
@@ -770,10 +768,10 @@
                 const btn = document.getElementById(`btn-view-${v}`);
                 if (v === viewName) {
                     el.classList.remove('hidden');
-                    btn.className = "px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 bg-blue-600 text-white shadow-md";
+                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-blue-600 text-white shadow-md";
                 } else {
                     el.classList.add('hidden');
-                    btn.className = "px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white";
+                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white";
                 }
             });
 
