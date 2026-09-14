@@ -46,7 +46,7 @@
         <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
             </div>
             <div>
@@ -86,12 +86,12 @@
         </div>
     </section>
 
-    <!-- Map Portal Grid (全9カテゴリー) -->
+    <!-- Map Portal Grid (全10カテゴリー / 各カードに order-* を適用) -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="mapGrid">
             
-            <!-- 1. 祭り (Matsuri & Festivals) -> アクティブ (言語パラメータ付与) -->
-            <a href="japan_event/event.html" id="link-event-map" class="group bg-white border border-slate-200/90 hover:border-blue-500/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col justify-between card-hover">
+            <!-- 1. 祭り (Matsuri & Festivals) -> 表示順: 1 -->
+            <a href="japan_event/event.html" id="link-event-map" class="order-1 group bg-white border border-slate-200/90 hover:border-blue-500/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col justify-between card-hover">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-matsuri"></div>
                     <div class="p-5">
@@ -115,8 +115,8 @@
                 </div>
             </a>
 
-            <!-- 2. 花火 (Fireworks Shows) -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 2. 花火 (Fireworks Shows) -> 表示順: 2 -->
+            <div class="order-2 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-fireworks"></div>
                     <div class="p-5">
@@ -134,8 +134,8 @@
                 </div>
             </div>
 
-            <!-- 3. 食のイベント -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 3. 食のイベント -> 表示順: 3 -->
+            <div class="order-3 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-food-event"></div>
                     <div class="p-5">
@@ -153,8 +153,8 @@
                 </div>
             </div>
 
-            <!-- 4. お酒のイベント -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 4. お酒のイベント -> 表示順: 4 -->
+            <div class="order-4 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-sake-event"></div>
                     <div class="p-5">
@@ -172,8 +172,8 @@
                 </div>
             </div>
 
-            <!-- 5. 全国ラーメンマップ -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 5. 全国ラーメンマップ -> 表示順: 5 -->
+            <div class="order-7 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-ramen"></div>
                     <div class="p-5">
@@ -191,8 +191,8 @@
                 </div>
             </div>
 
-            <!-- 6. 全国うなぎ屋マップ（専門店限定） -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 6. 全国うなぎ屋マップ -> 表示順: 6 -->
+            <div class="order-9 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-unagi"></div>
                     <div class="p-5">
@@ -210,8 +210,8 @@
                 </div>
             </div>
 
-            <!-- 7. 全国手打ちそば＆うどんマップ -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 7. 全国手打ちそば＆うどんマップ -> 表示順: 7 -->
+            <div class="order-10 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-soba-udon"></div>
                     <div class="p-5">
@@ -229,8 +229,8 @@
                 </div>
             </div>
 
-            <!-- 8. コミュニティマーケット -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 8. コミュニティマーケット -> 表示順: 8 -->
+            <div class="order-6 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-market"></div>
                     <div class="p-5">
@@ -248,8 +248,8 @@
                 </div>
             </div>
 
-            <!-- 9. 全国地域密着寿司屋マップ（新規追加） -->
-            <div class="bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 9. 全国地域密着寿司屋マップ -> 表示順: 9 -->
+            <div class="order-9 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-sushi"></div>
                     <div class="p-5">
@@ -263,6 +263,25 @@
                 </div>
                 <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
                     <span id="card9-btn">Under Development</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+            </div>
+
+            <!-- 10. 全国 陶器市＆クラフト器市マップ -> 表示順: 10 -->
+            <div class="order-5 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+                <div>
+                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-pottery"></div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl">🏺</span>
+                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
+                        </div>
+                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card10-title">Pottery & Craft Vessel Fairs</h2>
+                        <p class="text-xs text-slate-600 leading-relaxed" id="card10-desc">Discover historic pottery markets (Arita, Mashiko, Mino) and artisan glass & craft vessel exhibitions across Japan.</p>
+                    </div>
+                </div>
+                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
+                    <span id="card10-btn">Under Development</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                 </div>
             </div>
@@ -310,7 +329,10 @@
                 card8Btn: "Under Development",
                 card9Title: "Authentic Local Sushi",
                 card9Desc: "Discover neighborhood sushi bars and local harbor Edomae masters cherished by residents.",
-                card9Btn: "Under Development"
+                card9Btn: "Under Development",
+                card10Title: "Pottery & Craft Vessel Fairs",
+                card10Desc: "Discover historic pottery markets (Arita, Mashiko, Mino) and artisan glass & craft vessel exhibitions across Japan.",
+                card10Btn: "Under Development"
             },
             ja: {
                 heroTag: "✨ 本物の日本文化と地域の伝統",
@@ -342,7 +364,10 @@
                 card8Btn: "順次公開予定",
                 card9Title: "地域密着 寿司屋マップ",
                 card9Desc: "地元漁港の旬のネタや職人の技を堪能できる、地元で愛される街の寿司処を厳選。",
-                card9Btn: "順次公開予定"
+                card9Btn: "順次公開予定",
+                card10Title: "陶器市＆クラフト器市マップ",
+                card10Desc: "有田焼・益子焼・美濃焼などの歴史ある陶器市や、ガラス器・工芸品の展示販売会を全国網羅。",
+                card10Btn: "順次公開予定"
             },
             "zh-TW": {
                 heroTag: "✨ 道地文化與地方傳統",
@@ -374,7 +399,10 @@
                 card8Btn: "即將推出",
                 card9Title: "在地人最愛壽司店地圖",
                 card9Desc: "尋訪在地漁港直行鮮魚與在地江戶前職人壽司名店。",
-                card9Btn: "即將推出"
+                card9Btn: "即將推出",
+                card10Title: "陶瓷市集與工藝器皿地圖",
+                card10Desc: "網羅有田燒、益子燒等歷史悠久的陶瓷市集，以及琉璃玻璃與工藝展銷會。",
+                card10Btn: "即將推出"
             },
             "zh-CN": {
                 heroTag: "✨ 地道文化与地方传统",
@@ -406,7 +434,10 @@
                 card8Btn: "即将推出",
                 card9Title: "本地人最爱寿司店地图",
                 card9Desc: "寻访当地渔港直供鲜鱼与当地江户前职人寿司名店。",
-                card9Btn: "即将推出"
+                card9Btn: "即将推出",
+                card10Title: "陶瓷市集与工艺器皿地图",
+                card10Desc: "网罗有田烧、益子烧等历史悠久的陶瓷市集，以及琉璃玻璃与工艺展销会。",
+                card10Btn: "即将推出"
             },
             ko: {
                 heroTag: "✨ 진정한 문화와 지역 유산",
@@ -438,7 +469,10 @@
                 card8Btn: "공개 예정",
                 card9Title: "지역 밀착 스시 명가 지도",
                 card9Desc: "현지 어항 직송 신선한 회와 베테랑 장인의 손맛을 느낄 수 있는 동네 스시 집.",
-                card9Btn: "공개 예정"
+                card9Btn: "공개 예정",
+                card10Title: "도자기 및 공예 식기 시장 지도",
+                card10Desc: "아리타, 마시코, 미노 등 역사 깊은 도자기 시장과 유리·공예 식기 전시 판매회.",
+                card10Btn: "공개 예정"
             },
             th: {
                 heroTag: "✨ วัฒนธรรมแท้และมรดกท้องถิ่น",
@@ -470,7 +504,10 @@
                 card8Btn: "เร็วๆ นี้",
                 card9Title: "แผนที่ร้านซูชิท้องถิ่นดั้งเดิม",
                 card9Desc: "ค้นหาร้านซูชิแถบเมืองและท่าเรือท้องถิ่นที่ขวัญใจคนในพื้นที่",
-                card9Btn: "เร็วๆ นี้"
+                card9Btn: "เร็วๆ นี้",
+                card10Title: "แผนที่ตลาดเครื่องปั้นดินเผาและงานคราฟต์",
+                card10Desc: "ค้นพบตลาดเครื่องปั้นดินเผาประวัติศาสตร์ (อาริตะ, มาชิโกะ) และงานแสดงแก้วและภาชนะคราฟต์",
+                card10Btn: "เร็วๆ นี้"
             },
             id: {
                 heroTag: "✨ Kebudayaan Otentik & Warisan Lokal",
@@ -502,7 +539,10 @@
                 card8Btn: "Segera Hadir",
                 card9Title: "Peta Kedai Sushi Lokal Otentik",
                 card9Desc: "Jelajahi kedai sushi lokal dan koki tradisional Edomae favorit warga setempat.",
-                card9Btn: "Segera Hadir"
+                card9Btn: "Segera Hadir",
+                card10Title: "Peta Pasar Keramik & Wadah Kerajinan",
+                card10Desc: "Jelajahi pasar keramik bersejarah (Arita, Mashiko, Mino) serta pameran kerajinan kaca dan wadah.",
+                card10Btn: "Segera Hadir"
             }
         };
 
@@ -515,7 +555,7 @@
             document.getElementById('hero-title').innerText = t.heroTitle;
             document.getElementById('hero-desc').innerText = t.heroDesc;
 
-            for(let i=1; i<=9; i++) {
+            for(let i=1; i<=10; i++) {
                 if(document.getElementById(`card${i}-title`)) {
                     document.getElementById(`card${i}-title`).innerText = t[`card${i}Title`];
                     document.getElementById(`card${i}-desc`).innerText = t[`card${i}Desc`];
@@ -527,45 +567,56 @@
             document.getElementById('link-event-map').href = `japan_event/event.html?lang=${lang}`;
         }
 
-        // --- スライドショー画像の設定（うなぎは重箱・炭火焼きの専門店写真に特化） ---
+        // --- スライドショー画像の設定 ---
         const slideshowData = {
             'slideshow-matsuri': [
-                'japan_event/picture/nagaoka.jpg',
-                'https://images.unsplash.com/photo-1528164344705-47542687990d?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format&fit=crop&q=80'
+                'img/hamamatsu.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/hakata1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/hakata2.jpg?w=800&auto=format&fit=crop&q=80'
             ],
             'slideshow-fireworks': [
-                'https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa?w=800&auto=format&fit=crop&q=80'
+                'img/hanabi1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/hanabi2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/hanabi3.jpg?w=800&auto=format&fit=crop&q=80'
             ],
             'slideshow-food-event': [
-                'https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&auto=format&fit=crop&q=80'
-            ],
-            'slideshow-sake-event': [
-                'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&auto=format&fit=crop&q=80'
-            ],
-            'slideshow-ramen': [
-                'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1591814468924-caf88d1232e1?w=800&auto=format&fit=crop&q=80'
-            ],
-            'slideshow-unagi': [
-                // うな重・専門店を想起させる高品質写真
-                'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=800&auto=format&fit=crop&q=80'
-            ],
-            'slideshow-soba-udon': [
-                'https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&auto=format&fit=crop&q=80'
+                'img/food1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/food2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/food3.jpg?w=800&auto=format&fit=crop&q=80'
             ],
             'slideshow-market': [
-                'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&auto=format&fit=crop&q=80'
+                'img/market1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/market2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/market3.jpg?w=800&auto=format&fit=crop&q=80'
+            ],
+            'slideshow-sake-event': [
+                'img/sake1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/sake2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/sake3.jpg?w=800&auto=format&fit=crop&q=80'
+            ],
+            'slideshow-ramen': [
+                'img/ramen1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/ramen2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/ramen3.jpg?w=800&auto=format&fit=crop&q=80'
+            ],
+            'slideshow-unagi': [
+                'img/unagi1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/unagi2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/unagi3.jpg?w=800&auto=format&fit=crop&q=80'
+            ],
+            'slideshow-soba-udon': [
+                'img/soba1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/soba2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/soba3.jpg?w=800&auto=format&fit=crop&q=80'
             ],
             'slideshow-sushi': [
-                'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&auto=format&fit=crop&q=80',
-                'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=800&auto=format&fit=crop&q=80'
+                'img/sushi1.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/sushi2.jpg?w=800&auto=format&fit=crop&q=80',
+                'img/sushi3.jpg?w=800&auto=format&fit=crop&q=80'
+            ],
+            'slideshow-pottery': [
+                'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&auto=format&fit=crop&q=80',
+                'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&auto=format&fit=crop&q=80'
             ]
         };
 
