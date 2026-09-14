@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Discovery</title>
+    <title>Japan Discovery - Matsuri & Events</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -40,7 +40,7 @@
         .leaflet-popup-close-button { color: #94a3b8 !important; }
         .leaflet-popup-close-button:hover { color: #ffffff !important; }
         
-        /* 地図コントロール（ズーム＆全表示リセット）のエレガント共通デザイン */
+        /* 地図コントロールのエレガント共通デザイン */
         .leaflet-touch .leaflet-bar, .leaflet-bar {
             border: none !important;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
@@ -106,6 +106,12 @@
     <!-- Header -->
     <header class="bg-slateCard/80 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between shrink-0 z-20">
         <div class="flex items-center space-x-3">
+            <!-- ポータルへの戻りボタン -->
+            <a id="btnBackToPortal" href="../map.html" class="mr-1 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span class="hidden sm:inline">Portal</span>
+            </a>
+
             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20 shrink-0">
                 <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -114,7 +120,7 @@
             <div>
                 <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
                     Japan Discovery
-                    <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-normal">Pro Platform</span>
+                    <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-normal">Matsuri & Events</span>
                 </h1>
                 <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400">日本文化イベントデータベース</p>
             </div>
@@ -155,34 +161,30 @@
 
             <!-- 2段目 (スマホ): Category Filters Container -->
             <div class="relative flex items-center w-full min-w-0 overflow-hidden flex-1">
-                <!-- 左矢印ボタン -->
                 <button id="catScrollLeft" onclick="scrollCategories(-120)" class="absolute left-0 z-10 hidden p-1 bg-gradient-to-r from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
 
-                <!-- ボタンリスト -->
                 <div id="catFilterScroll" onscroll="checkCatScroll()" class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar w-full scroll-smooth">
                     <button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
                     <button onclick="filterCategory('matsuri')" id="cat-matsuri" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">⛩️ 祭り</button>
                     <button onclick="filterCategory('fireworks')" id="cat-fireworks" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🎆 花火</button>
                     <button onclick="filterCategory('craft')" id="cat-craft" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🪭 工芸</button>
-                    <button onclick="filterCategory('food')" id="cat-food" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🍣 食</button>
+                    <button onclick="filterCategory('food')" id="cat-food" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🥢 食</button>
                 </div>
 
-                <!-- 右矢印ボタン -->
                 <button id="catScrollRight" onclick="scrollCategories(120)" class="absolute right-0 z-10 hidden p-1 bg-gradient-to-l from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
                 </button>
             </div>
         </div>
 
-        <!-- Search Box (リスト表示時のみ右側に配置・クリアボタン付き) -->
+        <!-- Search Box (リスト表示時のみ表示) -->
         <div id="searchContainer" class="relative w-full md:w-64 hidden">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </span>
             <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名やキーワードで検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-8 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all">
-            <!-- クリアボタン -->
             <button id="searchClearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-400 hover:text-white hidden transition-colors" title="クリア">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -223,8 +225,7 @@
                 </div>
 
                 <div class="bg-slateCard/40 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
-                    <div id="calendarHeaders" class="grid grid-cols-7 bg-slate-900/90 text-center text-xs font-semibold text-slate-400 py-3 border-b border-slate-800">
-                    </div>
+                    <div id="calendarHeaders" class="grid grid-cols-7 bg-slate-900/90 text-center text-xs font-semibold text-slate-400 py-3 border-b border-slate-800"></div>
                     <div id="calendarGrid" class="grid grid-cols-7 bg-slate-800/20 gap-px"></div>
                 </div>
             </div>
@@ -241,7 +242,7 @@
         </div>
     </div>
 
-    <!-- 画像拡大・スライドショー用ライトボックスモーダル -->
+    <!-- 画像拡大・スライドショー用モーダル -->
     <div id="imageLightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white/70 hover:text-white p-2.5 rounded-full bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 transition-all z-20" title="閉じる (Esc)">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -277,7 +278,7 @@
                 catMatsuri: "⛩️ 祭り",
                 catFireworks: "🎆 花火",
                 catCraft: "🪭 工芸",
-                catFood: "🍣 食",
+                catFood: "🥢 食",
                 searchPlaceholder: "地域名やキーワードで検索...",
                 listTitle: "開催期間・日付順リスト",
                 noResult: "該当するスポット・イベントが見つかりませんでした。",
@@ -300,7 +301,7 @@
                 catMatsuri: "⛩️ Festival",
                 catFireworks: "🎆 Fireworks",
                 catCraft: "🪭 Crafts",
-                catFood: "🍣 Food",
+                catFood: "🥢 Food",
                 searchPlaceholder: "Search location or keyword...",
                 listTitle: "Date-sorted List",
                 noResult: "No matching spots or events found.",
@@ -326,7 +327,7 @@
                 catMatsuri: "⛩️ 祭典",
                 catFireworks: "🎆 煙火",
                 catCraft: "🪭 工藝",
-                catFood: "🍣 美食",
+                catFood: "🥢 美食",
                 searchPlaceholder: "搜尋地區或關鍵字...",
                 listTitle: "依日期排序列表",
                 noResult: "找不到符合的景點或活動。",
@@ -349,7 +350,7 @@
                 catMatsuri: "⛩️ 祭典",
                 catFireworks: "🎆 烟火",
                 catCraft: "🪭 工艺",
-                catFood: "🍣 美食",
+                catFood: "🥢 美食",
                 searchPlaceholder: "搜索地区或关键词...",
                 listTitle: "按日期排序列表",
                 noResult: "未找到符合的景点或活动。",
@@ -372,7 +373,7 @@
                 catMatsuri: "⛩️ 축제",
                 catFireworks: "🎆 불꽃놀이",
                 catCraft: "🪭 공예",
-                catFood: "🍣 미식",
+                catFood: "🥢 미식",
                 searchPlaceholder: "지역명이나 키워드로 검색...",
                 listTitle: "날짜순 목록",
                 noResult: "일치하는 스포트나 이ベン트를 찾을 수 없습니다.",
@@ -395,7 +396,7 @@
                 catMatsuri: "⛩️ เทศกาล",
                 catFireworks: "🎆 ดอกไม้ไฟ",
                 catCraft: "🪭 หัตถกรรม",
-                catFood: "🍣 อาหาร",
+                catFood: "🥢 อาหาร",
                 searchPlaceholder: "ค้นหาชื่อสถานที่...",
                 listTitle: "รายการเรียงตามวันที่",
                 noResult: "ไม่พบสถานที่หรือกิจกรรมที่ตรงกัน",
@@ -418,7 +419,7 @@
                 catMatsuri: "⛩️ Festival",
                 catFireworks: "🎆 Kembang Api",
                 catCraft: "🪭 Kerajinan",
-                catFood: "🍣 Kuliner",
+                catFood: "🥢 Kuliner",
                 searchPlaceholder: "Cari lokasi...",
                 listTitle: "Daftar Urut Tanggal",
                 noResult: "Tidak ada tempat atau acara yang ditemukan.",
@@ -472,7 +473,14 @@
         window.addEventListener('DOMContentLoaded', async () => {
             initMap();
             await loadData();
-            changeLanguage('ja');
+            
+            // URLの ?lang=パラメータ を確認し、選択されていればその言語で初期化
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialLang = urlParams.get('lang') || 'ja';
+            
+            document.getElementById('langSelector').value = initialLang;
+            changeLanguage(initialLang);
+
             window.addEventListener('resize', checkCatScroll);
         });
 
@@ -557,7 +565,7 @@
             } else if (cat === 'food') {
                 return {
                     label: t.catFood,
-                    icon: '🥢',
+                    icon: '🥢', // 🥢 に変更
                     badgeStyle: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
                     mapStyle: 'bg-emerald-500/20 backdrop-blur-md border-emerald-400/50 text-emerald-600 shadow-md shadow-emerald-500/10',
                     calStyle: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/20'
@@ -576,6 +584,9 @@
         function changeLanguage(lang) {
             currentLang = lang;
             const t = i18n[lang];
+
+            // ポータルへ戻るボタンのリンク先にも言語パラメータを同期
+            document.getElementById('btnBackToPortal').href = `../map.html?lang=${lang}`;
 
             document.getElementById('txt-subtitle').innerText = t.subtitle;
             document.getElementById('txt-nav-map').innerText = t.navMap;
@@ -607,7 +618,6 @@
             setTimeout(checkCatScroll, 50);
         }
 
-        /* カテゴリーボタンの横スクロール判定と矢印の制御 */
         function checkCatScroll() {
             const container = document.getElementById('catFilterScroll');
             const leftBtn = document.getElementById('catScrollLeft');
@@ -642,14 +652,12 @@
             if (map) return;
             map = L.map('map', { zoomControl: false }).setView([37.5, 138.0], 6);
 
-            // 統合コントロール（全表示リセット ＋ ズームイン ＋ ズームアウト）
             const CustomUnifiedControl = L.Control.extend({
                 options: { position: 'bottomright' },
                 onAdd: function(mapInstance) {
                     const container = L.DomUtil.create('div', 'leaflet-bar');
                     L.DomEvent.disableClickPropagation(container);
 
-                    // 1. 全体表示リセットボタン
                     const fitBtn = L.DomUtil.create('a', '', container);
                     fitBtn.href = '#';
                     fitBtn.title = '全体表示リセット';
@@ -664,7 +672,6 @@
                         fitMapToFilteredSpots();
                     });
 
-                    // 2. ズームインボタン
                     const zoomInBtn = L.DomUtil.create('a', '', container);
                     zoomInBtn.href = '#';
                     zoomInBtn.title = '拡大';
@@ -679,7 +686,6 @@
                         mapInstance.zoomIn();
                     });
 
-                    // 3. ズームアウトボタン
                     const zoomOutBtn = L.DomUtil.create('a', '', container);
                     zoomOutBtn.href = '#';
                     zoomOutBtn.title = '縮小';
@@ -700,7 +706,6 @@
 
             map.addControl(new CustomUnifiedControl());
 
-            // 国土地理院・淡色地図
             L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
                 maxZoom: 18,
                 attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>'
@@ -710,7 +715,6 @@
             updateMapMarkers();
         }
 
-        // 登録・カテゴリー選択されている全スポットが収まるように地図範囲を調整
         function fitMapToFilteredSpots() {
             if (!map) return;
             const filtered = getFilteredSpots();
@@ -755,7 +759,6 @@
         function switchView(viewName) {
             currentView = viewName;
 
-            // リスト表示時のみ検索ボックスを表示
             const searchContainer = document.getElementById('searchContainer');
             if (viewName === 'list') {
                 searchContainer.classList.remove('hidden');
@@ -802,7 +805,6 @@
             const input = document.getElementById('searchInput');
             searchQuery = input.value.toLowerCase();
             
-            // クリアボタンの表示切替
             const clearBtn = document.getElementById('searchClearBtn');
             if (searchQuery.length > 0) {
                 clearBtn.classList.remove('hidden');
@@ -822,7 +824,6 @@
             input.focus();
         }
 
-        // カテゴリーフィルターのみを考慮した基本スポット取得関数
         function getFilteredSpots() {
             return spots.map(s => getLocalizedSpot(s)).filter(spot => {
                 return currentCategory === 'all' || spot.category === currentCategory;
@@ -837,7 +838,6 @@
 
         function renderListView() {
             const container = document.getElementById('listContainer');
-            // リスト表示時のみカテゴリー情報 + 検索キーワード(searchQuery)の両方で絞り込みを実施
             const filtered = getFilteredSpots()
                 .filter(spot => {
                     if (!searchQuery) return true;
@@ -1033,8 +1033,7 @@
             document.getElementById('detailModal').classList.add('hidden');
         }
 
-        // --- 画像拡大・スライドショー（ライトボックス）機能 ---
-
+        // --- ライトボックス機能 ---
         function openLightbox(index) {
             if (!currentLightboxPhotos || currentLightboxPhotos.length === 0) return;
             currentLightboxIndex = index;
