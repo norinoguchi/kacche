@@ -1,0 +1,559 @@
+{
+  "spots": [
+    {
+      "id": 1789104657141,
+      "category": "matsuri",
+      "startDate": "2027-05-01",
+      "endDate": "2027-05-03",
+      "lat": 34.7109786,
+      "lng": 137.7259431,
+      "updatedAt": "2026-09-12 23:49",
+      "photos": [
+        { "url": "hamamatsu/pict1.jpg", "caption": "浜松まつり 大凧揚げ" },
+        { "url": "hamamatsu/pict2.jpg", "caption": "御殿屋台引き回し" }
+      ],
+      "links": [
+        { "url": "https://hamamatsu-daikite.jp/matsuri/", "text": "浜松まつり公式サイト" }
+      ]
+    },
+    {
+      "id": 1789106389629,
+      "category": "matsuri",
+      "startDate": "2027-05-03",
+      "endDate": "2027-05-04",
+      "lat": 33.5990204,
+      "lng": 130.418847,
+      "updatedAt": "2026-09-12 23:49",
+      "photos": [
+        { "url": "hakata/pict1.jpg", "caption": "博多どんたく どんたく隊パレード" }
+      ],
+      "links": [
+        { "url": "https://www.dontaku.fukuoka.jp/", "text": "博多どんたく港まつり公式サイト" }
+      ]
+    },
+    {
+      "id": 1789182250991,
+      "category": "matsuri",
+      "startDate": "2027-02-04",
+      "endDate": "2027-02-11",
+      "lat": 43.061936,
+      "lng": 141.3542924,
+      "updatedAt": "2026-09-12 23:49",
+      "photos": [
+        { "url": "sapporo/pict1.jpg", "caption": "大通会場の巨大雪像" }
+      ],
+      "links": [
+        { "url": "https://www.snowfes.com/", "text": "さっぽろ雪まつり公式サイト" }
+      ]
+    },
+    {
+      "id": 1001,
+      "category": "matsuri",
+      "startDate": "2027-08-02",
+      "endDate": "2027-08-07",
+      "lat": 40.8244,
+      "lng": 140.7400,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "aomori_nebuta/pict1.jpg", "caption": "大型ねぶたの運行" }
+      ],
+      "links": [
+        { "url": "https://www.nebuta.jp/", "text": "青森ねぶた祭 オフィシャルサイト" }
+      ]
+    },
+    {
+      "id": 1002,
+      "category": "matsuri",
+      "startDate": "2027-08-03",
+      "endDate": "2027-08-06",
+      "lat": 39.7186,
+      "lng": 140.1024,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "akita_kanto/pict1.jpg", "caption": "竿燈の妙技" }
+      ],
+      "links": [
+        { "url": "https://www.kantou.gr.jp/", "text": "秋田竿燈まつり 公式サイト" }
+      ]
+    },
+    {
+      "id": 1003,
+      "category": "matsuri",
+      "startDate": "2027-08-06",
+      "endDate": "2027-08-08",
+      "lat": 38.2688,
+      "lng": 140.8721,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "sendai_tanabata/pict1.jpg", "caption": "豪華絢爛な笹飾り" }
+      ],
+      "links": [
+        { "url": "https://www.sendaitanabata.com/", "text": "仙台七夕まつり 公式サイト" }
+      ]
+    },
+    {
+      "id": 1004,
+      "category": "matsuri",
+      "startDate": "2027-08-05",
+      "endDate": "2027-08-07",
+      "lat": 38.2404,
+      "lng": 140.3633,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "yamagata_hanagasa/pict1.jpg", "caption": "花笠踊りパレード" }
+      ],
+      "links": [
+        { "url": "https://www.hanagasa.jp/", "text": "山形花笠まつり 公式サイト" }
+      ]
+    },
+    {
+      "id": 1005,
+      "category": "matsuri",
+      "startDate": "2027-07-01",
+      "endDate": "2027-07-31",
+      "lat": 35.0037,
+      "lng": 135.7772,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "kyoto_gion/pict1.jpg", "caption": "山鉾巡行" }
+      ],
+      "links": [
+        { "url": "http://www.gionmatsuri.or.jp/", "text": "祇園祭山鉾連合会 公式サイト" }
+      ]
+    },
+    {
+      "id": 1006,
+      "category": "matsuri",
+      "startDate": "2027-07-24",
+      "endDate": "2027-07-25",
+      "lat": 34.6937,
+      "lng": 135.5134,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "osaka_tenjin/pict1.jpg", "caption": "船渡御と奉納花火" }
+      ],
+      "links": [
+        { "url": "https://www.tenjinsan.com/", "text": "大阪天満宮 天神祭情報" }
+      ]
+    },
+    {
+      "id": 1007,
+      "category": "matsuri",
+      "startDate": "2027-08-12",
+      "endDate": "2027-08-15",
+      "lat": 34.0704,
+      "lng": 134.5548,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "tokushima_awa/pict1.jpg", "caption": "本場徳島の阿波おどり" }
+      ],
+      "links": [
+        { "url": "https://www.awaodorimirai.com/", "text": "阿波おどり 公式ウェブサイト" }
+      ]
+    },
+    {
+      "id": 1008,
+      "category": "matsuri",
+      "startDate": "2027-08-09",
+      "endDate": "2027-08-12",
+      "lat": 33.5597,
+      "lng": 133.5311,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "kochi_yosakoi/pict1.jpg", "caption": "鳴子を鳴らす鳴子踊り" }
+      ],
+      "links": [
+        { "url": "http://www.cciweb.or.jp/kochi/yosakoiweb/", "text": "よさこい祭 公式Webサイト" }
+      ]
+    },
+    {
+      "id": 1009,
+      "category": "matsuri",
+      "startDate": "2027-07-01",
+      "endDate": "2027-07-15",
+      "lat": 33.5904,
+      "lng": 130.4117,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "hakata_yamakasa/pict1.jpg", "caption": "追い山笠の迫力" }
+      ],
+      "links": [
+        { "url": "https://www.hakatayamakasa.com/", "text": "博多祇園山笠 公式ポータル" }
+      ]
+    },
+    {
+      "id": 1010,
+      "category": "matsuri",
+      "startDate": "2027-10-07",
+      "endDate": "2027-10-09",
+      "lat": 32.7448,
+      "lng": 129.8737,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "nagasaki_kunchi/pict1.jpg", "caption": "龍踊（じゃおどり）" }
+      ],
+      "links": [
+        { "url": "nagasakikunchi.jp", "text": "長崎くんち 公式サイト" }
+      ]
+    },
+    {
+      "id": 1011,
+      "category": "matsuri",
+      "startDate": "2027-05-14",
+      "endDate": "2027-05-16",
+      "lat": 35.7148,
+      "lng": 139.7967,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "asakusa_sanja/pict1.jpg", "caption": "本社神輿担ぎ出し" }
+      ],
+      "links": [
+        { "url": "https://www.asakusajinja.jp/sanjamatsuri/", "text": "浅草神社 三社祭" }
+      ]
+    },
+    {
+      "id": 1012,
+      "category": "matsuri",
+      "startDate": "2027-04-14",
+      "endDate": "2027-04-15",
+      "lat": 36.1424,
+      "lng": 137.2580,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "takayama_spring/pict1.jpg", "caption": "春の高山祭 屋台引き揃え" }
+      ],
+      "links": [
+        { "url": "https://www.hidatakayama.or.jp/", "text": "飛騨高山観光公式サイト" }
+      ]
+    },
+    {
+      "id": 1013,
+      "category": "matsuri",
+      "startDate": "2027-10-09",
+      "endDate": "2027-10-10",
+      "lat": 36.1455,
+      "lng": 137.2570,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "takayama_autumn/pict1.jpg", "caption": "秋の高山祭 宵祭" }
+      ],
+      "links": [
+        { "url": "https://www.hidatakayama.or.jp/", "text": "飛騨高山観光公式サイト" }
+      ]
+    },
+    {
+      "id": 1014,
+      "category": "matsuri",
+      "startDate": "2027-12-02",
+      "endDate": "2027-12-03",
+      "lat": 35.9991,
+      "lng": 139.0858,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "chichibu_yomatsuri/pict1.jpg", "caption": "秩父夜祭 笠鉾・屋台と花火" }
+      ],
+      "links": [
+        { "url": "https://www.chichibuji.gr.jp/event/yomatsuri/", "text": "秩父観光協会 秩父夜祭" }
+      ]
+    },
+    {
+      "id": 1015,
+      "category": "matsuri",
+      "startDate": "2027-10-02",
+      "endDate": "2027-10-03",
+      "lat": 34.9723,
+      "lng": 138.3892,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "kishiwada_danjiri/pict1.jpg", "caption": "やりまわしの迫力" }
+      ],
+      "links": [
+        { "url": "https://www.city.kishiwada.osaka.jp/site/danjiri/", "text": "岸和田市 だんじり祭案内" }
+      ]
+    },
+    {
+      "id": 1016,
+      "category": "matsuri",
+      "startDate": "2027-11-02",
+      "endDate": "2027-11-04",
+      "lat": 33.4503,
+      "lng": 129.9686,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "karatsu_kunchi/pict1.jpg", "caption": "赤獅子をはじめとする曳山" }
+      ],
+      "links": [
+        { "url": "https://www.karatsu-kankou.jp/", "text": "唐津観光協会 唐津くんち" }
+      ]
+    },
+    {
+      "id": 1017,
+      "category": "matsuri",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-04",
+      "lat": 40.5090,
+      "lng": 141.4883,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "hachinohe_sansa/pict1.jpg", "caption": "豪華絢爛な山車の運行" }
+      ],
+      "links": [
+        { "url": "https://hachinohe-kanko.com/10to4", "text": "八戸三社大大祭ポータル" }
+      ]
+    },
+    {
+      "id": 1018,
+      "category": "matsuri",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-04",
+      "lat": 39.7013,
+      "lng": 141.1544,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "morioka_sansa/pict1.jpg", "caption": "和太鼓の大群舞" }
+      ],
+      "links": [
+        { "url": "http://www.sansaodori.jp/", "text": "盛岡さんさ踊り 公式サイト" }
+      ]
+    },
+    {
+      "id": 1019,
+      "category": "matsuri",
+      "startDate": "2027-10-14",
+      "endDate": "2027-10-15",
+      "lat": 34.7797,
+      "lng": 134.6853,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "nada_kenka/pict1.jpg", "caption": "屋台の激しいぶつけ合い" }
+      ],
+      "links": [
+        { "url": "http://www.nada-kenkamatsuri.jp/", "text": "灘のけんか祭り 公式サイト" }
+      ]
+    },
+    {
+      "id": 1020,
+      "category": "matsuri",
+      "startDate": "2027-10-22",
+      "endDate": "2027-10-22",
+      "lat": 35.0314,
+      "lng": 135.7594,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        { "url": "kyoto_jidai/pict1.jpg", "caption": "歴史風俗行列" }
+      ],
+      "links": [
+        { "url": "https://heianjingu.or.jp/", "text": "平安神宮 時代祭案内" }
+      ]
+    }
+  ],
+  "spotContentI18n": {
+    "1789104657141": {
+      "ja": { "title": "浜松まつり", "location": "静岡県浜松市", "desc": "浜松まつりは毎年5月に行われる、大凧揚げと豪華な御殿屋台引き回しで有名な勇壮なお祭りです。" },
+      "en": { "title": "Hamamatsu Festival", "location": "Hamamatsu City, Shizuoka Prefecture", "desc": "Held every May, Hamamatsu Festival is famous for its massive kite-flying battles and ornate palace float parades." },
+      "zh-TW": { "title": "濱松祭", "location": "靜岡縣濱松市", "desc": "濱松祭於每年5月舉行，以放風箏大賽與豪華御殿屋台巡境而聞名的勇猛節慶。" },
+      "zh-CN": { "title": "滨松祭", "location": "静冈县滨松市", "desc": "滨松祭于每年5月举行，以放风筝大赛与豪华御殿屋台巡游而闻名的勇猛节庆。" },
+      "ko": { "title": "하마마츠 축제", "location": "시즈오카현 하마마츠시", "desc": "매년 5월에 열리는 하마마츠 축제는 대형 연날리기와 화려한 고텐야타이 행진으로 유명합니다." },
+      "th": { "title": "เทศกาลฮามามัตสึ", "location": "เมืองฮามามัตสึ จังหวัดชิซูโอกะ", "desc": "จัดขึ้นทุกปีในเดือนพฤษภาคม มีชื่อเสียงด้านการเล่นว่าวยักษ์และการแห่รถเกี้ยวอันอลังการ" },
+      "id": { "title": "Festival Hamamatsu", "location": "Kota Hamamatsu, Prefektur Shizuoka", "desc": "Diadakan setiap bulan Mei, festival ini terkenal dengan pertarungan layang-layang raksasa dan parade kereta hias." }
+    },
+    "1789106389629": {
+      "ja": { "title": "博多どんたく港まつり", "location": "福岡県福岡市", "desc": "ゴールデンウィークに開催され、200万人以上の人出で賑わう市民総参加の伝統あるお祭りです。" },
+      "en": { "title": "Hakata Dontaku Port Festival", "location": "Fukuoka City, Fukuoka Prefecture", "desc": "Held during Golden Week, this traditional festival attracts over 2 million visitors with colorful parades." },
+      "zh-TW": { "title": "博多咚打鼓港祭", "location": "福岡縣福岡市", "desc": "於黃金周期間舉辦，吸引超過200萬人次造訪，全民參與的傳統盛大節慶。" },
+      "zh-CN": { "title": "博多咚打鼓港祭", "location": "福冈县福冈市", "desc": "于黄金周期间举办，吸引超过200万人次造访，全民参与的传统盛大节庆。" },
+      "ko": { "title": "하카타 돈타쿠 항구 축제", "location": "후쿠오카현 후쿠오카시", "desc": "골든위크에 개최되며 200만 명 이상의 방문객으로 붐비는 전통 축제입니다." },
+      "th": { "title": "เทศกาลฮากาตะ ดนตะคุ", "location": "เมืองฟุกุโอกะ จังหวัดฟุกุโอกะ", "desc": "จัดขึ้นช่วงโกลเด้นวีค มีผู้เข้าชมกว่า 2 ล้านคน ประชาชนร่วมเดินขบวนพาเหรดอย่างคึกคัก" },
+      "id": { "title": "Festival Pelabuhan Hakata Dontaku", "location": "Kota Fukuoka, Prefektur Fukuoka", "desc": "Diadakan selama Golden Week, festival tradisional ini menarik lebih dari 2 juta pengunjung." }
+    },
+    "1789182250991": {
+      "ja": { "title": "さっぽろ雪まつり", "location": "北海道札幌市", "desc": "大通公園を中心に迫力ある大雪像や氷彫刻が並ぶ、日本を代表する冬の世界的イベントです。" },
+      "en": { "title": "Sapporo Snow Festival", "location": "Sapporo City, Hokkaido", "desc": "Japan's world-famous winter event featuring massive snow sculptures and ice carvings in Odori Park." },
+      "zh-TW": { "title": "札幌冰雪節", "location": "北海道札幌市", "desc": "以大通公園為中心，展示壯觀的大型雪雕與冰雕，為日本代表性的冬季世界級盛會。" },
+      "zh-CN": { "title": "札幌冰雪节", "location": "北海道札幌市", "desc": "以大通公园为中心，展示壮观的大型雪雕与冰雕，为日本代表性的冬季世界级盛会。" },
+      "ko": { "title": "삿포로 눈축제", "location": "홋카이도 삿포로시", "desc": "오도리 공원을 중심으로 거대한 눈조각과 얼음 조각이 늘어서는 세계적인 겨울 축제입니다." },
+      "th": { "title": "เทศกาลหิมะซัปโปโร", "location": "เมืองซัปโปโร ฮอกไกโด", "desc": "เทศกาลฤดูหนาวระดับโลกของญี่ปุ่น จัดแสดงประติมากรรมหิมะและน้ำแข็งขนาดใหญ่ที่สวนโอโดริ" },
+      "id": { "title": "Festival Salju Sapporo", "location": "Kota Sapporo, Hokkaido", "desc": "Acara musim dingin terkenal di dunia yang menampilkan patung salju raksasa di Taman Odori." }
+    },
+    "1001": {
+      "ja": { "title": "青森ねぶた祭", "location": "青森県青森市", "desc": "巨大な武者人形の灯籠「ねぶた」と「ハネト」の躍動的な乱舞が夜を彩る日本屈指の夏祭りです。" },
+      "en": { "title": "Aomori Nebuta Festival", "location": "Aomori City, Aomori Prefecture", "desc": "One of Japan's top summer festivals featuring huge illuminated warrior floats and energetic dancers." },
+      "zh-TW": { "title": "青森睡魔祭", "location": "青森縣青森市", "desc": "巨大的武士人形花燈「ねぶた」與跳人「ハネト」的熱情舞動照亮夜空，為日本屈指可數的夏日祭典。" },
+      "zh-CN": { "title": "青森睡魔祭", "location": "青森县青森市", "desc": "巨大的武士人形花灯“ねぶた”与跳人“ハネト”的热情舞动照亮夜空，为日本屈指可数的夏日祭典。" },
+      "ko": { "title": "아오모리 네부타 축제", "location": "아오모리현 아오모리시", "desc": "거대한 등불 가마 '네부타'와 '하네토' 무용수들의 역동적인 춤이 밤を 수놓는 대표 여름 축제." },
+      "th": { "title": "เทศกาลอาโอโมริ เนบุตะ", "location": "เมืองอาโอโมริ จังหวัดอาโอโมริ", "desc": "หนึ่งในเทศกาลฤดูร้อนที่ยิ่งใหญ่ที่สุด ตระการตาด้วยหุ่นโคมไฟรบขนาดยักษ์และการเต้นรำอันทรงพลัง" },
+      "id": { "title": "Festival Aomori Nebuta", "location": "Kota Aomori, Prefektur Aomori", "desc": "Festival musim panas terkemuka dengan lentera prajurit raksasa dan penari yang energik." }
+    },
+    "1002": {
+      "ja": { "title": "秋田竿燈まつり", "location": "秋田県秋田市", "desc": "稲穂に見立てた多数の提灯をつけた重い竿燈を、差し手が額や腰で支える妙技が見どころです。" },
+      "en": { "title": "Akita Kanto Festival", "location": "Akita City, Akita Prefecture", "desc": "Performers balance heavy bamboo poles hung with dozens of paper lanterns on their foreheads and hips." },
+      "zh-TW": { "title": "秋田竿燈祭", "location": "秋田縣秋田市", "desc": "表演者用額頭、腰部平衡支撐掛滿無數提燈（象徵稻穗）的重型竹竿，特技表演令人讚嘆。" },
+      "zh-CN": { "title": "秋田竿灯祭", "location": "秋田县秋田市", "desc": "表演者用额头、腰部平衡支撑挂满无数提灯（象征稻穗）的重型竹竿，特技表演令人赞叹。" },
+      "ko": { "title": "아키타 칸토 축제", "location": "아키타현 아키타시", "desc": "벼이삭 모양의 등불을 단 무거운 대나무 대를 이마나 허리로 지탱하는 묘기가 일품입니다." },
+      "th": { "title": "เทศกาลอากิตะ คันโต", "location": "เมืองอากิตะ จังหวัดอากิตะ", "desc": "การแสดงกายกรรมต่อโคมไฟโฮลเดอร์ไม้ไผ่ขนาดใหญ่บน forehead และเอวอย่างน่าทึ่ง" },
+      "id": { "title": "Festival Akita Kanto", "location": "Kota Akita, Prefektur Akita", "desc": "Atlet menyeimbangkan tiang bambu berat berisi puluhan lentera di dahi dan pinggul." }
+    },
+    "1003": {
+      "ja": { "title": "仙台七夕まつり", "location": "宮城県仙台市", "desc": "伊達政宗公の時代から続く伝統行事。アーケード街を埋め尽くす豪華絢爛な笹飾りが美しく揺れます。" },
+      "en": { "title": "Sendai Tanabata Festival", "location": "Sendai City, Miyagi Prefecture", "desc": "A historical festival since Lord Date Masamune's era, with colorful paper decorations throughout streets." },
+      "zh-TW": { "title": "仙台七夕祭", "location": "宮城縣仙台市", "desc": "自伊達政宗公時代流傳至今的傳統行事。覆蓋整條商店街的豪華紙竹裝飾極為美豔。" },
+      "zh-CN": { "title": "仙台七夕祭", "location": "宫城县仙台市", "desc": "自伊达政宗公时代流传至今的传统行事。覆盖整条商店街的豪华纸竹装饰极为美艳。" },
+      "ko": { "title": "센다이 타나바타 축제", "location": "미야기현 센다이시", "desc": "다테 마사무네 시대부터 이어져 온 전통 행사. 상가に 꽉 찬 화려한 대나무 장식이 장관입니다." },
+      "th": { "title": "เทศกาลเซนได ตาบานาตะ", "location": "เมืองเซนได จังหวัดมิยางิ", "desc": "ประเพณีประดับตกแต่งกระดาษทำมือหลากสีสันห้อยลงมาจากกระดาษ bamboo ทั่วเมืองอย่างงดงาม" },
+      "id": { "title": "Festival Sendai Tanabata", "location": "Kota Sendai, Prefektur Miyagi", "desc": "Tradisi bersejarah sejak zaman Date Masamune, dihiasi ribuan dekorasi kertas warna-warni." }
+    },
+    "1004": {
+      "ja": { "title": "山形花笠まつり", "location": "山形県山形市", "desc": "「ヤッショ、マカショ」の掛け声とともに、鮮やかな紅花をあしらった花笠を持った踊り手が練り歩きます。" },
+      "en": { "title": "Yamagata Hanagasa Festival", "location": "Yamagata City, Yamagata Prefecture", "desc": "Dancers wearing traditional straw hats decorated with red safflowers parade through the streets." },
+      "zh-TW": { "title": "山形花笠祭", "location": "山形縣山形市", "desc": "伴隨著「Yassho、Makasho」的口號，舞者手持飾有鮮豔紅花的花笠進行優雅巡遊。" },
+      "zh-CN": { "title": "山形花笠祭", "location": "山形县山形市", "desc": "伴随着“Yassho、Makasho”的口号，舞者手持饰有鲜艳红花的花笠进行优雅巡游。" },
+      "ko": { "title": "야마가타 하나가사 축제", "location": "야마가타현 야마가타시", "desc": "붉은 잇꽃으로 장식한 하나가사를 든 무용수들이 정겨운 구호와 함께 시내를 퍼레이드합니다." },
+      "th": { "title": "เทศกาลยามากาตะ ฮานากาซะ", "location": "เมืองยามากาตะ จังหวัดยามากาตะ", "desc": "ขบวนเต้นรำหมวกหมวกสานประดับดอกไม้สีแดงพร้อมเสียงโห่ร้องจังหวะพื้นเมือง" },
+      "id": { "title": "Festival Yamagata Hanagasa", "location": "Kota Yamagata, Prefektur Yamagata", "desc": "Para penari memakai topi jerami berhias bunga merah merayakan parade kota." }
+    },
+    "1005": {
+      "ja": { "title": "祇園祭", "location": "京都府京都市", "desc": "千年の歴史を誇る八坂神社の祭礼。「動く美術館」と称される豪華な山鉾巡行は圧巻です。" },
+      "en": { "title": "Gion Matsuri", "location": "Kyoto City, Kyoto Prefecture", "desc": "A 1000-year-old festival of Yasaka Shrine. The grand Yamaboko float procession is a moving museum." },
+      "zh-TW": { "title": "祇園祭", "location": "京都府京都市", "desc": "擁有千年歷史的八坂神社祭禮。被譽為「移動美術館」的豪華山鉾巡行堪稱絕景。" },
+      "zh-CN": { "title": "祇园祭", "location": "京都府京都市", "desc": "拥有千年历史的八坂神社祭礼。被誉为“移动美术馆”的豪华山鉾巡游堪称绝景。" },
+      "ko": { "title": "기온 축제", "location": "교토부 교토시", "desc": "천년의 역사를 자랑하는 야사카 신사의 축제. '움직이는 미술관'이라 불리는 야마보코 순행이 압권입니다." },
+      "th": { "title": "เทศกาลกิออน", "location": "เมืองเกียวโต จังหวัดเกียวโต", "desc": "เทศกาลเก่าแก่กว่าพันปีของศาลเจ้ายาซากะ ไฮไลท์คือขบวนรถเกี้ยวโฮโกะที่ตระการตาดั่งพิพิธภัณฑ์เคลื่อนที่" },
+      "id": { "title": "Festival Gion", "location": "Kota Kyoto, Prefektur Kyoto", "desc": "Festival berusia 1000 tahun dari Kuil Yasaka. Parade kereta Yamaboko disebut museum berjalan." }
+    },
+    "1006": {
+      "ja": { "title": "天神祭", "location": "大阪府大阪市", "desc": "日本三大祭り格の一つ。大川を行き交う100隻以上の船渡御と、夜空を彩る奉納花火が幻想的です。" },
+      "en": { "title": "Tenjin Matsuri", "location": "Osaka City, Osaka Prefecture", "desc": "One of Japan's top three festivals, featuring a river procession of 100+ boats and fireworks." },
+      "zh-TW": { "title": "天神祭", "location": "大阪府大阪市", "desc": "日本三大祭之一。100艘以上船隻穿梭於大川的「船渡御」與奉納煙火交織成夢幻景色。" },
+      "zh-CN": { "title": "天神祭", "location": "大阪府大阪市", "desc": "日本三大祭之一。100艘以上船只穿梭于大川的“船渡御”与奉纳烟火交织成梦幻景色。" },
+      "ko": { "title": "텐진 축제", "location": "오사카부 오사카시", "desc": "일본 3대 축제 중 하나. 100척 이상의 배가 오가는 선상 순행과 봉납 불꽃놀이가 장관입니다." },
+      "th": { "title": "เทศกาลเท็นจิน", "location": "เมืองโอซาก้า จังหวัดโอซาก้า", "desc": "หนึ่งในสามเทศกาลที่ยิ่งใหญ่ที่สุด ขบวนเรือกว่า 100 ลำในแม่น้ำและการจุดดอกไม้ไฟเฉลิมฉลอง" },
+      "id": { "title": "Festival Tenjin", "location": "Kota Osaka, Prefektur Osaka", "desc": "Salah satu dari 3 festival terbesar di Jepang, menghadirkan parade 100+ perahu di sungai." }
+    },
+    "1007": {
+      "ja": { "title": "阿波おどり", "location": "徳島県徳島市", "desc": "400年の歴史を持つ日本最大の踊りの祭典。「踊る阿呆に見る阿呆」の熱気が街全体を包み込みます。" },
+      "en": { "title": "Awa Odori", "location": "Tokushima City, Tokushima Prefecture", "desc": "Japan's largest dance festival with 400 years of history, filling the entire city with passion." },
+      "zh-TW": { "title": "阿波舞", "location": "德島縣德島市", "desc": "擁有400年歷史的日本最大舞踊盛典。「跳舞的阿呆與看舞的阿呆」熱情傳遍整座城市。" },
+      "zh-CN": { "title": "阿波舞", "location": "德岛县德岛市", "desc": "拥有400年历史的日本最大舞踊盛典。“跳舞的阿呆与看舞的阿呆”热情传遍整座城市。" },
+      "ko": { "title": "아와 오도리", "location": "도쿠시마현 도쿠시마시", "desc": "400년 역사의 일본 최대 춤 축제. '춤추는 바보, 구경하는 바보'의 열기가 도시 전체를 감쌉니다." },
+      "th": { "title": "เทศกาลเต้นรำอิวะ โอโดริ", "location": "เมืองโทคุชิมะ จังหวัดโทคุชิมะ", "desc": "เทศกาลเต้นรำพื้นเมืองที่ใหญ่ที่สุดด้วยประวัติศาสตร์ 400 ปี ทั่วเมืองเปี่ยมด้วยพลังความสนุกสนาน" },
+      "id": { "title": "Festival Awa Odori", "location": "Kota Tokushima, Prefektur Tokushima", "desc": "Festival tari terbesar di Jepang bertema 400 tahun sejarah yang membakar semangat seluruh kota." }
+    },
+    "1008": {
+      "ja": { "title": "よさこい祭り", "location": "高知県高知市", "desc": "鳴子を手にした踊り子たちが、躍動感あふれるアレンジ衣装と曲でエネルギッシュに舞い踊ります。" },
+      "en": { "title": "Yosakoi Festival", "location": "Kochi City, Kochi Prefecture", "desc": "Dancers holding Naruko wooden clappers perform energetic routines in colorful custom costumes." },
+      "zh-TW": { "title": "夜來祭 (Yosakoi)", "location": "高知縣高知市", "desc": "舞者手持鳴子响板，身穿充滿躍動感的華麗服裝，配合動感音樂熱情奔放地舞動。" },
+      "zh-CN": { "title": "夜来祭 (Yosakoi)", "location": "高知县高知市", "desc": "舞者手持鸣子响板，身穿充满跃动感的华丽服装，配合动感音乐热情奔放地舞动。" },
+      "ko": { "title": "요사코이 축제", "location": "고치현 고치시", "desc": "나루코(클래퍼)를 든 무용수들이 화려한 의상과 신나는 음악에 맞춰 에너지 넘치게 춤춥니다." },
+      "th": { "title": "เทศกาลโยซาโคอิ", "location": "เมืองโคจิ จังหวัดโคจิ", "desc": "การแสดงเต้นรำร่วมสมัยผสมผสานพื้นบ้าน ผู้เต้นขยับไม้เคาะนารุโกะในชุดคอสตูมสุดตระการตา" },
+      "id": { "title": "Festival Yosakoi", "location": "Kota Kochi, Prefektur Kochi", "desc": "Penari memegang pemukul kayu Naruko tampil enerjik dengan kostum kustom yang kaya warna." }
+    },
+    "1009": {
+      "ja": { "title": "博多祇園山笠", "location": "福岡県福岡市", "desc": "700年以上の伝統を誇る櫛田神社の奉納神事。重さ1トン超の山笠を担いで駆け抜ける「追い山笠」は圧巻。" },
+      "en": { "title": "Hakata Gion Yamakasa", "location": "Fukuoka City, Fukuoka Prefecture", "desc": "Men carry 1-ton floats sprinting through the streets in the thrilling finale 'Oiyama'." },
+      "zh-TW": { "title": "博多祇園山笠", "location": "福岡縣福岡市", "desc": "櫛田神社奉納神事，擁有700年以上歷史。壯丁們肩扛重達1噸以上的山笠奔馳の「追山笠」震撼人心。" },
+      "zh-CN": { "title": "博多祇园山笠", "location": "福冈县福冈市", "desc": "栉田神社奉纳神事，拥有700年以上历史。壮丁们肩扛重达1吨以上的山笠奔驰の“追山笠”震撼人心。" },
+      "ko": { "title": "하카타 기온 야마카사", "location": "후쿠오카현 후쿠오카시", "desc": "700년 역사의 신사 봉납 행사. 1톤이 넘는 야마카사를 메고 도심을 달리는 '오이야마'가 박력 만점입니다." },
+      "th": { "title": "เทศกาลฮากาตะ กิออน ยามากาซะ", "location": "เมืองฟุกุโอกะ จังหวัดฟุกุโอกะ", "desc": "พิธีแบกแบกรถเกี้ยวหนักกว่า 1 ตันวิ่งแข่งไปตามถนนในเมืองด้วยความเร้าใจ" },
+      "id": { "title": "Festival Hakata Gion Yamakasa", "location": "Kota Fukuoka, Prefektur Fukuoka", "desc": "Pria membawa kereta hias seberat 1 ton berlari cepat di jalanan dalam acara puncak 'Oiyama'." }
+    },
+    "1010": {
+      "ja": { "title": "長崎くんち", "location": "長崎県長崎市", "desc": "諏訪神社の秋季例大祭。異国情緒あふれる「龍踊（じゃおどり）」や豪快な「傘鉾」などの奉納踊が魅了します。" },
+      "en": { "title": "Nagasaki Kunchi", "location": "Nagasaki City, Nagasaki Prefecture", "desc": "Autumn festival of Suwa Shrine showing multicultural performances like the exotic Dragon Dance." },
+      "zh-TW": { "title": "長崎宮日節 (Kunchi)", "location": "長崎縣長崎市", "desc": "諏訪神社秋季例大祭。充滿異國情調的「龍舞」與豪邁的「傘鉾」奉納舞蹈令人沉醉。" },
+      "zh-CN": { "title": "长崎宫日节 (Kunchi)", "location": "长崎县长崎市", "desc": "诹访神社秋季例大祭。充满异国情调的“龙舞”与豪迈的“伞鉾”奉纳舞蹈令人沉醉。" },
+      "ko": { "title": "나가사키 쿤치", "location": "나가사키현 나가사키시", "desc": "스와 신사의 가을 대축제. 이국적인 '용춤(자오도리)'과 역동적인 가마 공연이 펼쳐집니다." },
+      "th": { "title": "เทศกาลนางาซากิ คุนจิ", "location": "เมืองนางาซากิ จังหวัดนางาซากิ", "desc": "เทศกาลฤดูใบไม้ร่วงผสมผสานวัฒนธรรมตะวันตกและจีน โดดเด่นด้วยการแสดงมังกรเชิดอันตื่นตา" },
+      "id": { "title": "Festival Nagasaki Kunchi", "location": "Kota Nagasaki, Prefektur Nagasaki", "desc": "Festival musim gugur Kuil Suwa menampilkan Tarian Naga bercita rasa multikultural." }
+    },
+    "1011": {
+      "ja": { "title": "三社祭", "location": "東京都台東区", "desc": "浅草神社の例大祭。江戸下町の熱気が炸裂し、約100基の神輿が浅草の街を練り歩く東京代表の夏祭り。" },
+      "en": { "title": "Sanja Matsuri", "location": "Taito Ward, Tokyo", "desc": "Tokyo's iconic festival in Asakusa where nearly 100 portable shrines parade with intense energy." },
+      "zh-TW": { "title": "三社祭", "location": "東京都台東區", "desc": "淺草神社例大祭。展現江戶下町的勃勃生機，約100座神輿巡遊淺草街頭，為東京代表性夏日祭典。" },
+      "zh-CN": { "title": "三社祭", "location": "东京都台东区", "desc": "浅草神社例大祭。展现江户下町的勃勃生机，约100座神舆巡游浅草街头，为东京代表性夏日祭典。" },
+      "ko": { "title": "산자 축제", "location": "도쿄도 다이토구", "desc": "아사쿠사 신사의 대축제. 약 100기의 미코시(가마)가 아사쿠사 거리를 가득 메우는 도쿄 대표 축제." },
+      "th": { "title": "เทศกาลซันจะ", "location": "เขตไทโต โตเกียว", "desc": "เทศกาลแห่งย่านอาซากุสะ มีขบวนแบกศาลเจ้าจำลอง (Mikoshi) กว่า 100 องค์ครึกครื้นตระการตา" },
+      "id": { "title": "Festival Sanja", "location": "Daerah Taito, Tokyo", "desc": "Festival ikonik Tokyo di Asakusa di mana hampir 100 kuil portabel diarak penuh semangat." }
+    },
+    "1012": {
+      "ja": { "title": "春の高山祭（山王祭）", "location": "岐阜県高山市", "desc": "日吉神社の例祭。豪華絢爛な12台の屋台が並び、精密な絡繰人形の奉納パフォーマンスが見ものです。" },
+      "en": { "title": "Spring Takayama Festival", "location": "Takayama City, Gifu Prefecture", "desc": "Festival of Hie Shrine featuring 12 ornate floats and intricate mechanical puppet performances." },
+      "zh-TW": { "title": "春之高山祭（山王祭）", "location": "岐阜縣高山市", "desc": "日吉神社例祭。12台豪華絢爛的屋台排開，精巧機關人偶的獻藝表演極具看點。" },
+      "zh-CN": { "title": "春之高山祭（山王祭）", "location": "岐阜县高山市", "desc": "日吉神社例祭。12台豪华绚烂的屋台排开，精巧机关人偶的献艺表演极具看点。" },
+      "ko": { "title": "봄의 타카야마 축제", "location": "기후현 타카야마시", "desc": "히에 신사의 축제. 화려한 12대의 야타이(가마)와 정교한 태엽 인형 인형극이 볼거리입니다." },
+      "th": { "title": "เทศกาลทาคายามะ ฤดูใบไม้ผลิ", "location": "เมืองทาคายามะ จังหวัดกิฟุ", "desc": "ขบวนรถเกี้ยวไม้โบราณสลักลวดลายประณีต 12 คัน และการแสดงหุ่นกลการช่างอันอัศจรรย์" },
+      "id": { "title": "Festival Takayama Musim Semi", "location": "Kota Takayama, Prefektur Gifu", "desc": "Festival Kuil Hie menampilkan 12 kereta hias megah dan pertunjukan boneka mekanik." }
+    },
+    "1013": {
+      "ja": { "title": "秋の高山祭（八幡祭）", "location": "岐阜県高山市", "desc": "櫻山八幡宮の例祭。秋の飛騨路を11台の屋台が巡り、提灯が灯る宵祭は幻想的な美しさです。" },
+      "en": { "title": "Autumn Takayama Festival", "location": "Takayama City, Gifu Prefecture", "desc": "Festival of Sakurayama Hachimangu Shrine with 11 festival floats illuminated by paper lanterns at night." },
+      "zh-TW": { "title": "秋之高山祭（八幡祭）", "location": "岐阜縣高山市", "desc": "櫻山八幡宮例祭。11台屋台巡遊秋季飛騨路，夜間點亮提燈の「宵祭」呈現夢幻美景。" },
+      "zh-CN": { "title": "秋之高山祭（八幡祭）", "location": "岐阜县高山市", "desc": "樱山八幡宫例祭。11台屋台巡游秋季飞騨路，夜间点亮提灯の“宵祭”呈现梦幻美景。" },
+      "ko": { "title": "가을의 타카야마 축제", "location": "기후현 타카야마시", "desc": "사쿠라야마 하치만구 신사의 축제. 11대의 야타이가 등불を 밝히는 밤 축제(요이마츠리)가 환상적입니다." },
+      "th": { "title": "เทศกาลทาคายามะ ฤดูใบไม้ร่วง", "location": "เมืองทาคายามะ จังหวัดกิฟุ", "desc": "ตระการตากับขบวนรถเกี้ยว 11 คันในบรรยากาศฤดูใบไม้ร่วง ยามค่ำคืนประดับโคมไฟสว่างไสว" },
+      "id": { "title": "Festival Takayama Musim Gugur", "location": "Kota Takayama, Prefektur Gifu", "desc": "Festival Kuil Sakurayama Hachimangu dengan 11 kereta hias bercahaya lentera malam." }
+    },
+    "1014": {
+      "ja": { "title": "秩父夜祭", "location": "埼玉県秩父市", "desc": "ユネスコ無形文化遺産。冬の夜空に上がる大輪の花火と、重厚な屋台・笠鉾の引き回しが共演します。" },
+      "en": { "title": "Chichibu Night Festival", "location": "Chichibu City, Saitama Prefecture", "desc": "UNESCO Intangible Cultural Heritage featuring massive floats paired with brilliant winter fireworks." },
+      "zh-TW": { "title": "秩父夜祭", "location": "埼玉縣秩父市", "desc": "聯合國教科文組織無形文化遺產。冬日夜空綻放的花火與重厚屋台・笠鉾巡境共演奇蹟。" },
+      "zh-CN": { "title": "秩父夜祭", "location": "埼玉县秩父市", "desc": "联合国教科文组织无形文化遗产。冬日夜空绽放的花火与重厚屋台・笠鉾巡游共演奇迹。" },
+      "ko": { "title": "치치부 야간 축제", "location": "사이타마현 치치부시", "desc": "유네스코 무형문화유산. 겨울 밤하늘을 수놓는 불꽃놀이와 웅장한 가마 행진의 콜라보레이션." },
+      "th": { "title": "เทศกาลกลางคืนชิชิบุ", "location": "เมืองชิชิบุ จังหวัดไซตามะ", "desc": "มรดกภูมิปัญญาทางวัฒนธรรม UNESCO ชมรถเกี้ยวยักษ์ตระการตาพร้อมการจุดดอกไม้ไฟฤดูหนาว" },
+      "id": { "title": "Festival Malam Chichibu", "location": "Kota Chichibu, Prefektur Saitama", "desc": "Warisan Budaya Takbenda UNESCO menampilkan kereta raksasa dan kembang api musim dingin." }
+    },
+    "1015": {
+      "ja": { "title": "岸和田だんじり祭", "location": "大阪府岸和田市", "desc": "重さ4トンを超える地車（だんじり）が角を高速で曲がる「やりまわし」のスリルと迫力が名物です。" },
+      "en": { "title": "Kishiwada Danjiri Festival", "location": "Kishiwada City, Osaka Prefecture", "desc": "Famous for the thrilling 'Yarimawashi', turning 4-ton wooden carts sharp corners at high speeds." },
+      "zh-TW": { "title": "岸和田花車祭 (Danjiri)", "location": "大阪府岸和田市", "desc": "重達4噸以上的木製地車（danjiri）在街角高速直角轉彎「やりまわし」的刺激感與迫力聞名。" },
+      "zh-CN": { "title": "岸和田花车祭 (Danjiri)", "location": "大阪府岸和田市", "desc": "重达4吨以上的木制地车（danjiri）在街角高速直角转弯“やりまわし”的刺激感与迫力闻名。" },
+      "ko": { "title": "키시와다 단지리 축제", "location": "오사카부 키시와다시", "desc": "4톤이 넘는 단지리(가마)가 모퉁이를 코너링하는 '야리마와시'의 스릴과 박력이 명물입니다." },
+      "th": { "title": "เทศกาลคิชิวาดะ ดันจิริ", "location": "เมืองคิชิวาดะ จังหวัดโอซาก้า", "desc": "เทศกาลสุดตื่นเต้นลุ้นระทึกกับการดริฟต์ลากรถไม้ดันจิริหนัก 4 ตันเข้าโค้งถนนด้วยความเร็ว" },
+      "id": { "title": "Festival Kishiwada Danjiri", "location": "Kota Kishiwada, Prefektur Osaka", "desc": "Terkenal dengan aksi mendebarkan 'Yarimawashi', membelokkan kereta 4 ton dalam kecepatan tinggi." }
+    },
+    "1016": {
+      "ja": { "title": "唐津くんち", "location": "佐賀県唐津市", "desc": "漆で仕上げられた赤獅子や鯛などの巨大な曳山（ひきやま）14台が城下町を練り歩く豪華な秋祭り。" },
+      "en": { "title": "Karatsu Kunchi", "location": "Karatsu City, Saga Prefecture", "desc": "14 giant lacquered floats shaped like lions and sea breams parade through the castle town." },
+      "zh-TW": { "title": "唐津宮日節 (Kunchi)", "location": "佐賀縣唐津市", "desc": "由漆藝精製の赤獅子、鯛等14台巨大曳山巡遊城下町，為極盡豪華的秋季節慶。" },
+      "zh-CN": { "title": "唐津宫日节 (Kunchi)", "location": "佐贺县唐津市", "desc": "由漆艺精制的赤狮子、鲷等14台巨大曳山巡游城下町，为极尽豪华的秋季节庆。" },
+      "ko": { "title": "카라츠 쿤치", "location": "사가현 카라츠시", "desc": "옻칠을 한 붉은 사자와 도미 등 14대의 거대한 가마(히키야마)가 시내를 누비는 화려한 가을 축제." },
+      "th": { "title": "เทศกาลคารัตสึ คุนจิ", "location": "เมืองคารัตสึ จังหวัดซากะ", "desc": "ขบวนรถเกี้ยวรูปสัตว์โบราณเคลือบลงรัก 14 คัน เช่น สิงโตแดงและปลาไท แห่ไปทั่วเมืองปราสาท" },
+      "id": { "title": "Festival Karatsu Kunchi", "location": "Kota Karatsu, Prefektur Saga", "desc": "14 kereta hias pernis raksasa berbentuk singa dan ikan kakap diarak keliling kota." }
+    },
+    "1017": {
+      "ja": { "title": "八戸三社大祭", "location": "青森県八戸市", "desc": "神話や歌舞伎を題材にした仕掛け付きの絢爛豪華な27台の大型山車が街を彩る伝統のお祭り。" },
+      "en": { "title": "Hachinohe Sansa Taisai", "location": "Hachinohe City, Aomori Prefecture", "desc": "Features 27 magnificent large floats decorated with themes from kabuki and mythology." },
+      "zh-TW": { "title": "八戶三社大祭", "location": "青森縣八戶市", "desc": "以神話與歌舞伎為主題、設有動態機關の27台大型山車，將街道裝點得絢爛華麗。" },
+      "zh-CN": { "title": "八户三社大祭", "location": "青森县八户市", "desc": "以神话与歌舞伎为主题、设有动态机关の27台大型山车，将街道装点得绚烂华丽。" },
+      "ko": { "title": "하치노헤 산샤 대축제", "location": "아오모리현 하치노헤시", "desc": "신화와 가부키를 테마로 한 움직이는 대형 가마 27대가 거리를 수놓는 전통 축제." },
+      "th": { "title": "เทศกาลฮาจิโนะเฮะ ซันสะ ไทไซ", "location": "เมืองฮาจิโนะเฮะ จังหวัดอาโอโมริ", "desc": "ตระการตากับขบวนรถเกี้ยวประดับลวดลายตำนานเทพและละครคาบูกิขนาดยักษ์ 27 คัน" },
+      "id": { "title": "Festival Hachinohe Sansa Taisai", "location": "Kota Hachinohe, Prefektur Aomori", "desc": "Menampilkan 27 kereta hias megah bernuansa mitologi dan pertunjukan kabuki." }
+    },
+    "1018": {
+      "ja": { "title": "盛岡さんさ踊り", "location": "岩手県盛岡市", "desc": "「サッコラ チョイワヤッセ」の掛け声とともに、数千もの和太鼓と踊り手が群舞する世界一の太鼓舞踊です。" },
+      "en": { "title": "Morioka Sansa Odori", "location": "Morioka City, Iwate Prefecture", "desc": "World's largest Taiko drum dance parade with thousands of drummers and dancers." },
+      "zh-TW": { "title": "盛岡三颯舞", "location": "岩手縣盛岡市", "desc": "伴隨著「Sakkora Choawayasse」口號，數千面和太鼓與舞者齊聚群舞的世界一太鼓舞踊。" },
+      "zh-CN": { "title": "盛冈三飒舞", "location": "岩手县盛冈市", "desc": "伴随着“Sakkora Choawayasse”口号，数千面和太鼓与舞者齐聚群舞的世界一太鼓舞踊。" },
+      "ko": { "title": "모리오카 산사 오도리", "location": "이와테현 모리오카시", "desc": "수천 개의 북과 무용수가 함께 춤추는 세계 최대 규모의 태고 춤 퍼레이드입니다." },
+      "th": { "title": "เทศกาลโมริโอกะ ซันสะ โอโดริ", "location": "เมืองโมริโอกะ จังหวัดอิวาเตะ", "desc": "การแสดงตีกลองไทโกะและการเต้นรำพร้อมกันที่ยิ่งใหญ่ที่สุดในโลก บรรยากาศสุดเร้าใจ" },
+      "id": { "title": "Festival Morioka Sansa Odori", "location": "Kota Morioka, Prefektur Iwate", "desc": "Parade tari drum Taiko terbesar di dunia yang dikuti ribuan penabuh drum dan penari." }
+    },
+    "1019": {
+      "ja": { "title": "灘のけんか祭り", "location": "兵庫県姫路市", "desc": "松原八幡神社の秋季例大祭。3基の神輿を激しくぶつけ合わせる絢爛かつ豪快な戦いのような神事。" },
+      "en": { "title": "Nada No Kenka Matsuri", "location": "Himeji City, Hyogo Prefecture", "desc": "Wild autumn festival of Matsubara Hachiman Shrine where three portable shrines collide forcefully." },
+      "zh-TW": { "title": "灘之喧嘩祭（打架祭）", "location": "兵庫縣姬路市", "desc": "松原八幡神社秋季例大祭。3座神輿相互激烈碰撞，展現極盡豪邁與刺激の神事。" },
+      "zh-CN": { "title": "滩之喧哗祭（打架祭）", "location": "兵库县姬路市", "desc": "松原八幡神社秋季例大祭。3座神舆相互激烈碰撞，展现极尽豪迈与刺激の神事。" },
+      "ko": { "title": "나다의 싸움 축제", "location": "효고현 히메지시", "desc": "마츠바라 하치만 신사의 가을 축제. 3기의 가마를 격렬하게 부딪치는 웅장하고 격렬한 행사." },
+      "th": { "title": "เทศกาลนาดะ โนะ เคนกะ", "location": "เมืองฮิเมจิ จังหวัดเฮียวโงะ", "desc": "เทศกาลกระแทกศาลเจ้าจำลอง (Mikoshi) อย่างรุนแรงและเร้าใจ พิธีโบราณแห่งความเข้มแข็ง" },
+      "id": { "title": "Festival Nada No Kenka", "location": "Kota Himeji, Prefektur Hyogo", "desc": "Festival musim gugur di mana 3 kuil portabel saling bertabrakan dengan sangat sengit." }
+    },
+    "1020": {
+      "ja": { "title": "時代祭", "location": "京都府京都市", "desc": "平安神宮の奉納行事。明治維新から平安時代までの各時代の歴史的装束をまとった2000人の行列が練り歩きます。" },
+      "en": { "title": "Jidai Matsuri", "location": "Kyoto City, Kyoto Prefecture", "desc": "A historical parade of 2,000 people wearing authentic costumes spanning 1,000 years of Kyoto history." },
+      "zh-TW": { "title": "時代祭", "location": "京都府京都市", "desc": "平安神宮奉納行事。2000人身著從明治維新倒推至平安時代各時期真實歷史服飾進行大巡遊。" },
+      "zh-CN": { "title": "时代祭", "location": "京都府京都市", "desc": "平安神宫奉纳行事。2000人身着从明治维新倒推至平安时代各时期真实历史服饰进行大巡游。" },
+      "ko": { "title": "시대 축제", "location": "교토부 교토시", "desc": "헤이안 신사의 봉납 행사. 메이지 유신부터 헤이안 시대까지 각 시대의 역사 의상을 입은 2000명의 행렬." },
+      "th": { "title": "เทศกาลจิได", "location": "เมืองเกียวโต จังหวัดเกียวโต", "desc": "ขบวนพาเหรดประวัติศาสตร์จำลองเครื่องแต่งกายโบราณ 1,000 ปี ยิ่งใหญ่ด้วยผู้ร่วมขบวนกว่า 2,000 คน" },
+      "id": { "title": "Festival Jidai", "location": "Kota Kyoto, Prefektur Kyoto", "desc": "Parade sejarah 2.000 orang mengenakan kostum otentik yang mencakup 1.000 tahun sejarah Kyoto." }
+    }
+  }
+}

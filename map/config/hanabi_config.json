@@ -1,0 +1,58 @@
+{
+  "themeColor": "purple",
+  "icon": "🎆",
+  "iconGradient": "from-purple-600 to-indigo-600",
+  "badgeTheme": "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  "btnTheme": "bg-purple-600 hover:bg-purple-500",
+  "i18n": {
+    "ja": {
+      "title": "Fireworks Map",
+      "subtitle": "全国花火大会・競技花火ガイド",
+      "listTitle": "開催期間・日付順 花火大会リスト",
+      "consultTitle": "この花火大会の観覧手配のご相談",
+      "consultDesc": "有料観覧席の手配や周辺宿泊、個別コンサルティングのお問い合わせ"
+    },
+    "en": {
+      "title": "Fireworks Map",
+      "subtitle": "Japanese Fireworks Festival Guide",
+      "listTitle": "Date-sorted Fireworks List",
+      "consultTitle": "Consultation for Fireworks Viewing",
+      "consultDesc": "Inquiries for paid viewing seats, nearby lodging, or private consulting"
+    },
+    "zh-TW": {
+      "title": "Fireworks Map",
+      "subtitle": "全日本花火大會與煙火競技指南",
+      "listTitle": "依日期排序花火大會列表",
+      "consultTitle": "觀賞花火大會安排諮詢",
+      "consultDesc": "付費觀賞席預訂、周邊住宿或個人諮詢洽詢"
+    },
+    "zh-CN": {
+      "title": "Fireworks Map",
+      "subtitle": "全日本花火大会与烟花竞技指南",
+      "listTitle": "按日期排序花火大会列表",
+      "consultTitle": "观赏花火大会安排咨询",
+      "consultDesc": "付费观赏席预订、周边住宿或个人咨询洽询"
+    },
+    "ko": {
+      "title": "Fireworks Map",
+      "subtitle": "전국 불꽃놀이 대회 가이드",
+      "listTitle": "날짜순 불꽃놀이 목록",
+      "consultTitle": "불꽃놀이 관람 수배 상담",
+      "consultDesc": "유료 관람석 수배, 주변 숙박, 개인 컨설팅 문의"
+    },
+    "th": {
+      "title": "Fireworks Map",
+      "subtitle": "คู่มือเทศกาลดอกไม้ไฟญี่ปุ่น",
+      "listTitle": "รายการเทศกาลดอกไม้ไฟเรียงตามวันที่",
+      "consultTitle": "ปรึกษาการเข้าชมเทศกาลดอกไม้ไฟ",
+      "consultDesc": "สอบถามการจองที่นั่งแบบเสียเงิน ที่พักใกล้เคียง หรือที่ปรึกษา"
+    },
+    "id": {
+      "title": "Fireworks Map",
+      "subtitle": "Panduan Festival Kembang Api Jepang",
+      "listTitle": "Daftar Festival Kembang Api Urut Tanggal",
+      "consultTitle": "Konsultasi Kunjungan Festival Kembang Api",
+      "consultDesc": "Pertanyaan pemesanan tempat duduk berbayar, penginapan terdekat, atau konsultasi"
+    }
+  }
+}

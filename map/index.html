@@ -86,12 +86,12 @@
         </div>
     </section>
 
-    <!-- Map Portal Grid (全10カテゴリー / 各カードに order-* を適用) -->
+    <!-- Map Portal Grid -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="mapGrid">
             
-            <!-- 1. 祭り (Matsuri & Festivals) -> 表示順: 1 -->
-            <a href="japan_event/event.html" id="link-event-map" class="order-1 group bg-white border border-slate-200/90 hover:border-blue-500/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col justify-between card-hover">
+            <!-- 1. 祭り (Matsuri & Festivals) -> viewer.html?map=matsuri へ遷移 -->
+            <a href="viewer.html?map=matsuri" id="link-event-map" class="order-1 group bg-white border border-slate-200/90 hover:border-blue-500/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col justify-between card-hover">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-matsuri"></div>
                     <div class="p-5">
@@ -110,31 +110,37 @@
                     </div>
                 </div>
                 <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600 group-hover:bg-blue-50/50 transition-colors">
-                    <span id="card1-btn">Open Map & Calendar</span>
+                    <span id="card1-btn">Open Map & Calendar →</span>
                     <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </div>
             </a>
 
-            <!-- 2. 花火 (Fireworks Shows) -> 表示順: 2 -->
-            <div class="order-2 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
+            <!-- 2. 花火 (Fireworks Shows) -> viewer.html?map=hanabi へ遷移 -->
+            <a href="viewer.html?map=hanabi" id="link-fireworks-map" class="order-2 group bg-white border border-slate-200/90 hover:border-purple-500/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col justify-between card-hover">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-fireworks"></div>
                     <div class="p-5">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-2xl">🎆</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
+                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold">
+                                ● Active Map
+                            </span>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card2-title">Fireworks Festivals</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card2-desc">Discover spectacular summer & autumn fireworks displays over rivers, lakes, and oceans.</p>
+                        <h2 class="text-lg font-bold text-slate-900 group-hover:text-purple-600 transition-colors mb-1.5" id="card2-title">
+                            Fireworks Festivals
+                        </h2>
+                        <p class="text-xs text-slate-600 leading-relaxed" id="card2-desc">
+                            Discover spectacular summer & autumn fireworks displays over rivers, lakes, and oceans.
+                        </p>
                     </div>
                 </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card2-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-purple-600 group-hover:bg-purple-50/50 transition-colors">
+                    <span id="card2-btn">Open Map & Calendar →</span>
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </div>
-            </div>
+            </a>
 
-            <!-- 3. 食のイベント -> 表示順: 3 -->
+            <!-- 3. 食のイベント -->
             <div class="order-3 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-food-event"></div>
@@ -153,7 +159,7 @@
                 </div>
             </div>
 
-            <!-- 4. お酒のイベント -> 表示順: 4 -->
+            <!-- 4. お酒のイベント -->
             <div class="order-4 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-sake-event"></div>
@@ -172,7 +178,7 @@
                 </div>
             </div>
 
-            <!-- 5. 全国ラーメンマップ -> 表示順: 5 -->
+            <!-- 5. 全国ラーメンマップ -->
             <div class="order-7 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-ramen"></div>
@@ -191,7 +197,7 @@
                 </div>
             </div>
 
-            <!-- 6. 全国うなぎ屋マップ -> 表示順: 6 -->
+            <!-- 6. 全国うなぎ屋マップ -->
             <div class="order-9 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-unagi"></div>
@@ -210,7 +216,7 @@
                 </div>
             </div>
 
-            <!-- 7. 全国手打ちそば＆うどんマップ -> 表示順: 7 -->
+            <!-- 7. 全国手打ちそば＆うどんマップ -->
             <div class="order-10 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-soba-udon"></div>
@@ -229,7 +235,7 @@
                 </div>
             </div>
 
-            <!-- 8. コミュニティマーケット -> 表示順: 8 -->
+            <!-- 8. コミュニティマーケット -->
             <div class="order-6 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-market"></div>
@@ -248,7 +254,7 @@
                 </div>
             </div>
 
-            <!-- 9. 全国地域密着寿司屋マップ -> 表示順: 9 -->
+            <!-- 9. 全国地域密着寿司屋マップ -->
             <div class="order-9 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-sushi"></div>
@@ -267,7 +273,7 @@
                 </div>
             </div>
 
-            <!-- 10. 全国 陶器市＆クラフト器市マップ -> 表示順: 10 -->
+            <!-- 10. 全国 陶器市＆クラフト器市マップ -->
             <div class="order-5 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
                 <div>
                     <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-pottery"></div>
@@ -308,7 +314,7 @@
                 card1Btn: "Open Map & Calendar →",
                 card2Title: "Fireworks Festivals",
                 card2Desc: "Discover spectacular summer & autumn fireworks displays over rivers, lakes, and oceans.",
-                card2Btn: "Under Development",
+                card2Btn: "Open Map & Calendar →",
                 card3Title: "Gourmet & Food Events",
                 card3Desc: "Seasonal seafood fairs, regional food markets, and street food gatherings nationwide.",
                 card3Btn: "Under Development",
@@ -343,7 +349,7 @@
                 card1Btn: "マップ＆カレンダーを開く →",
                 card2Title: "全国花火大会マップ",
                 card2Desc: "夜空と水面を彩る全国各地の大花火大会、職人たちの競技花火をマップでチェック。",
-                card2Btn: "順次公開予定",
+                card2Btn: "マップ＆カレンダーを開く →",
                 card3Title: "食のイベント・食フェスマップ",
                 card3Desc: "旬の海鮮市からB級グルメフェス、地域特産品フェアなど食のイベントを特集。",
                 card3Btn: "順次公開予定",
@@ -378,7 +384,7 @@
                 card1Btn: "開啟地圖與日曆 →",
                 card2Title: "全日本花火大會地圖",
                 card2Desc: "探索點亮夜空與水面的全日本大相花火大會與煙火職人競技會。",
-                card2Btn: "即將推出",
+                card2Btn: "開啟地圖與日曆 →",
                 card3Title: "美食節與食文化地圖",
                 card3Desc: "品嚐季節海鮮市集、地方特色美食節與在地下町美食盛會。",
                 card3Btn: "即將推出",
@@ -395,7 +401,7 @@
                 card7Desc: "探索匠人手打蕎麥麵名店與正宗讚岐烏龍麵，感受日本麵食文化。",
                 card7Btn: "即將推出",
                 card8Title: "在地市集與朝市地圖",
-                card8Desc: "熱鬧朝市、跳蚤市場與手作匠人市集，體驗最親切的地方風情。",
+                card8Desc: "熱鬧朝市、跳蚤市場與手作匠人市集，體驗最親切的地方風境。",
                 card8Btn: "即將推出",
                 card9Title: "在地人最愛壽司店地圖",
                 card9Desc: "尋訪在地漁港直行鮮魚與在地江戶前職人壽司名店。",
@@ -413,7 +419,7 @@
                 card1Btn: "打开地图与日历 →",
                 card2Title: "全日本花火大会地图",
                 card2Desc: "探索点亮夜空与水面的全日本盛大花火大会与烟花职人竞技会。",
-                card2Btn: "即将推出",
+                card2Btn: "打开地图与日历 →",
                 card3Title: "美食节与食文化地图",
                 card3Desc: "品尝季节海鲜市集、地方特色美食节与地道下町美食盛会。",
                 card3Btn: "即将推出",
@@ -448,7 +454,7 @@
                 card1Btn: "지도 & 캘린더 열기 →",
                 card2Title: "전국 불꽃놀이 축제 지도",
                 card2Desc: "밤하늘을 화려하게 수놓는 전국의 대형 불꽃놀이 대회 축제를 확인하세요.",
-                card2Btn: "공개 예정",
+                card2Btn: "지도 & 캘린더 열기 →",
                 card3Title: "미식 & 푸드 이벤트 지도",
                 card3Desc: "제철 해산물 축제부터 지역 먹거리 페스티벌까지 음식 이벤트를 총망라.",
                 card3Btn: "공개 예정",
@@ -483,7 +489,7 @@
                 card1Btn: "เปิดแผนที่และปฏิทิน →",
                 card2Title: "แผนที่เทศกาลดอกไม้ไฟ",
                 card2Desc: "ชมการแสดงดอกไม้ไฟอันงดงามตระการตาทั่วประเทศต้อนรับฤดูร้อนและฤดูใบไม้ร่วง",
-                card2Btn: "เร็วๆ นี้",
+                card2Btn: "เปิดแผนที่และปฏิทิน →",
                 card3Title: "แผนที่กิจกรรมอาหารเทศกาล",
                 card3Desc: "เทศกาลอาหารทะเลตามฤดูกาล ตลาดอาหารท้องถิ่น และสตรีทฟู้ด",
                 card3Btn: "เร็วๆ นี้",
@@ -518,7 +524,7 @@
                 card1Btn: "Buka Peta & Kalender →",
                 card2Title: "Peta Festival Kembang Api",
                 card2Desc: "Temukan pertunjukan kembang api musim panas & gugur yang spektakuler.",
-                card2Btn: "Segera Hadir",
+                card2Btn: "Buka Peta & Kalender →",
                 card3Title: "Peta Acara Wisata Kuliner",
                 card3Desc: "Pameran makanan laut musiman, pasar kuliner regional, dan festival jajanan.",
                 card3Btn: "Segera Hadir",
@@ -563,8 +569,9 @@
                 }
             }
 
-            // 1番目（イベントマップ）のリンク先パラメータを更新
-            document.getElementById('link-event-map').href = `japan_event/event.html?lang=${lang}`;
+            // リンク先URLおよび言語パラメータの更新 (viewer.html へ連動)
+            document.getElementById('link-event-map').href = `viewer.html?map=matsuri&lang=${lang}`;
+            document.getElementById('link-fireworks-map').href = `viewer.html?map=hanabi&lang=${lang}`;
         }
 
         // --- スライドショー画像の設定 ---

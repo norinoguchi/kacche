@@ -1,0 +1,1058 @@
+{
+  "spots": [
+    {
+      "id": 3001,
+      "category": "hanabi",
+      "startDate": "2027-08-02",
+      "endDate": "2027-08-03",
+      "lat": 37.446996,
+      "lng": 138.8512199,
+      "updatedAt": "2026-09-15 15:53",
+      "photos": [
+        {
+          "url": "picture/hanabi/pict1.png",
+          "caption": "長岡まつり大花火大会"
+        },
+        {
+          "url": "picture/hanabi/pict2.png",
+          "caption": ""
+        },
+        {
+          "url": "picture/hanabi/pict3.png",
+          "caption": ""
+        }
+      ],
+      "links": [
+        {
+          "url": "https://nagaokamatsuri.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3002,
+      "category": "fireworks",
+      "startDate": "2027-08-28",
+      "endDate": "2027-08-28",
+      "lat": 39.4627,
+      "lng": 140.4764,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/omagari.jpg",
+          "caption": "大曲の花火"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.oomagari-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3003,
+      "category": "fireworks",
+      "startDate": "2027-11-06",
+      "endDate": "2027-11-06",
+      "lat": 36.0621,
+      "lng": 140.1044,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/tsuchiura.jpg",
+          "caption": "土浦全国花火競技大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.tsuchiura-hanabi.jp/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3004,
+      "category": "fireworks",
+      "startDate": "2027-07-31",
+      "endDate": "2027-07-31",
+      "lat": 35.7126,
+      "lng": 139.8039,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/sumidagawa.jpg",
+          "caption": "隅田川花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.sumidagawa-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3005,
+      "category": "hanabi",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 35.7066318,
+      "lng": 139.868677,
+      "updatedAt": "2026-09-15 15:53",
+      "photos": [
+        {
+          "url": "picture/hanabi/pict1.jpg",
+          "caption": "江戸川区花火大会"
+        },
+        {
+          "url": "picture/hanabi/hanabi2.jpg",
+          "caption": ""
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.city.edogawa.tokyo.jp/e032/sports/kankou/hanabi/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3006,
+      "category": "fireworks",
+      "startDate": "2027-08-15",
+      "endDate": "2027-08-15",
+      "lat": 36.0469,
+      "lng": 138.1147,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/suwako.jpg",
+          "caption": "諏訪湖祭水上花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://suwako-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3007,
+      "category": "fireworks",
+      "startDate": "2027-08-08",
+      "endDate": "2027-08-08",
+      "lat": 35.0037,
+      "lng": 135.8686,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/biwako.jpg",
+          "caption": "びわ湖大花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.biwako-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3008,
+      "category": "fireworks",
+      "startDate": "2027-08-08",
+      "endDate": "2027-08-08",
+      "lat": 34.7064,
+      "lng": 135.4853,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/naniwa_yodogawa.jpg",
+          "caption": "なにわ淀川花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.yodohanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3009,
+      "category": "fireworks",
+      "startDate": "2027-05-22",
+      "endDate": "2027-05-22",
+      "lat": 35.4527,
+      "lng": 139.643,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/yokohama_sparkling.jpg",
+          "caption": "横浜スパークリングナイター"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://sparkling.yokohama/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3010,
+      "category": "fireworks",
+      "startDate": "2027-08-05",
+      "endDate": "2027-08-05",
+      "lat": 38.2575,
+      "lng": 140.8608,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/sendai_tanabata_hanabi.jpg",
+          "caption": "仙台七夕花火祭"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.sendai-tanabatahanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3011,
+      "category": "fireworks",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-01",
+      "lat": 40.8322,
+      "lng": 140.7533,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/aomori_hanabi.jpg",
+          "caption": "青森花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://aomorihanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3012,
+      "category": "fireworks",
+      "startDate": "2027-07-25",
+      "endDate": "2027-07-25",
+      "lat": 43.0619,
+      "lng": 141.3542,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/makomanai_hanabi.jpg",
+          "caption": "真駒内花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.makomanai-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3013,
+      "category": "fireworks",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 36.3752,
+      "lng": 139.0036,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/takasaki_hanabi.jpg",
+          "caption": "高崎まつり大花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.takasaki-matsuri.jp/hanabi/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3014,
+      "category": "fireworks",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 36.3314,
+      "lng": 139.6019,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/koga_hanabi.jpg",
+          "caption": "古河花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.kogazine.com/kogahanabi/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3015,
+      "category": "fireworks",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 35.309,
+      "lng": 139.4883,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/fujisawa_hanabi.jpg",
+          "caption": "ふじさわ江の島花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.fujisawa-kanko.jp/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3016,
+      "category": "fireworks",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 35.0975,
+      "lng": 139.0747,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/atami_hanabi.jpg",
+          "caption": "熱海海上花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.atamipa.com/event/hanabi/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3017,
+      "category": "fireworks",
+      "startDate": "2027-08-10",
+      "endDate": "2027-08-10",
+      "lat": 34.9769,
+      "lng": 138.3831,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/abekawa_hanabi.jpg",
+          "caption": "安倍川花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.abekawa-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3018,
+      "category": "fireworks",
+      "startDate": "2027-07-31",
+      "endDate": "2027-07-31",
+      "lat": 34.769,
+      "lng": 137.3914,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/toyohashi_hanabi.jpg",
+          "caption": "豊橋祇園祭 手筒花火"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://toyohashigion.org/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3019,
+      "category": "fireworks",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 35.3912,
+      "lng": 136.7222,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/nagaragawa_hanabi.jpg",
+          "caption": "長良川中日花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.nagaragawa-hanabi.jp/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3020,
+      "category": "fireworks",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-01",
+      "lat": 34.5008,
+      "lng": 135.6022,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/pl_hanabi.jpg",
+          "caption": "PL花火芸術"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.perfect-liberty.or.jp/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3021,
+      "category": "fireworks",
+      "startDate": "2027-07-24",
+      "endDate": "2027-07-24",
+      "lat": 34.6937,
+      "lng": 135.5134,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/tenjin_hanabi.jpg",
+          "caption": "天神祭奉納花火"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.tenjinsan.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3022,
+      "category": "fireworks",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 34.6853,
+      "lng": 135.1955,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/kobe_hanabi.jpg",
+          "caption": "みなとこうべ海上花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://kobehanabi.jp/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3023,
+      "category": "fireworks",
+      "startDate": "2027-07-24",
+      "endDate": "2027-07-24",
+      "lat": 34.3963,
+      "lng": 132.4594,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/hiroshima_hanabi.jpg",
+          "caption": "広島みなと夢花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.hjcity.or.jp/hanabi/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3024,
+      "category": "fireworks",
+      "startDate": "2027-08-05",
+      "endDate": "2027-08-05",
+      "lat": 33.9572,
+      "lng": 130.9413,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/kanmon_hanabi.jpg",
+          "caption": "関門海峡花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://kanmon-hanabi.love/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3025,
+      "category": "fireworks",
+      "startDate": "2027-08-05",
+      "endDate": "2027-08-05",
+      "lat": 33.3192,
+      "lng": 130.5083,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/kurume_hanabi.jpg",
+          "caption": "筑後川花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.city.kurume.fukuoka.jp/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3026,
+      "category": "fireworks",
+      "startDate": "2027-08-07",
+      "endDate": "2027-08-07",
+      "lat": 31.5966,
+      "lng": 130.5571,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/kagoshima_hanabi.jpg",
+          "caption": "かごしま錦江湾大花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://kinkowan-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3027,
+      "category": "fireworks",
+      "startDate": "2027-08-08",
+      "endDate": "2027-08-08",
+      "lat": 33.8686,
+      "lng": 136.0997,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/kumano_hanabi.jpg",
+          "caption": "熊野大花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.kumano-kankou.info/kumano-fireworks/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3028,
+      "category": "fireworks",
+      "startDate": "2027-07-17",
+      "endDate": "2027-07-17",
+      "lat": 35.15,
+      "lng": 136.8833,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/nagoya_minato_hanabi.jpg",
+          "caption": "海の日名古屋港みなと祭花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.nagoya-port-festival.com/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3029,
+      "category": "fireworks",
+      "startDate": "2027-07-20",
+      "endDate": "2027-07-20",
+      "lat": 35.7578,
+      "lng": 139.8789,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/katsushika_hanabi.jpg",
+          "caption": "葛飾納涼花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.city.katsushika.lg.jp/",
+          "text": "公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 3030,
+      "category": "fireworks",
+      "startDate": "2027-10-16",
+      "endDate": "2027-10-16",
+      "lat": 35.6074,
+      "lng": 139.63,
+      "updatedAt": "2026-09-15 14:00",
+      "photos": [
+        {
+          "url": "picture/hanabi/tamagawa_hanabi.jpg",
+          "caption": "世田谷区多摩川花火大会"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.tamagawa-hanabi.com/",
+          "text": "公式サイト"
+        }
+      ]
+    }
+  ],
+  "spotContentI18n": {
+    "3001": {
+      "ja": {
+        "title": "長岡まつり大花火大会",
+        "location": "新潟県長岡市",
+        "desc": "信濃川河川敷で開催される日本三大花火大会の一つ。視界を埋め尽くす超大型スターマイン「フェニックス」は圧巻。"
+      },
+      "en": {
+        "title": "Nagaoka Festival Fireworks Festival",
+        "location": "Nagaoka City, Niigata Prefecture",
+        "desc": "One of Japan's three major fireworks festivals held on the Shinano River riverbed. The super large star mine \"Phoenix\" that fills the field of view is a masterpiece."
+      },
+      "zh-TW": {
+        "title": "長岡祭煙火大會",
+        "location": "新潟縣長岡市",
+        "desc": "日本三大花火大會之一，在信濃川河床舉行。充滿視野的超大型星礦「鳳凰」堪稱傑作。"
+      },
+      "zh-CN": {
+        "title": "长冈祭烟火大会",
+        "location": "新泻县长冈市",
+        "desc": "日本三大花火大会之一，在信浓川河床举行。充满视野的超大型星矿“凤凰”堪称杰作。"
+      },
+      "ko": {
+        "title": "나가오카 축제 큰 불꽃 놀이",
+        "location": "니가타현 나가오카시",
+        "desc": "시나노가와 하천 부지에서 개최되는 일본 3대 불꽃놀이 중 하나. 시야를 가득 채우는 초대형 스타 마인 「피닉스」는 압권."
+      },
+      "th": {
+        "title": "เทศกาลดอกไม้ไฟนางาโอกะ",
+        "location": "เมืองนางาโอกะ จังหวัดนีงะตะ",
+        "desc": "หนึ่งในสามเทศกาลดอกไม้ไฟที่สำคัญของญี่ปุ่นที่จัดขึ้นบริเวณก้นแม่น้ำชินาโนะ เหมืองดาวขนาดใหญ่พิเศษ \"ฟีนิกซ์\" ที่เติมเต็มขอบเขตการมองเห็นถือเป็นผลงานชิ้นเอก"
+      },
+      "id": {
+        "title": "Festival Kembang Api Festival Nagaoka",
+        "location": "Kota Nagaoka, Prefektur Niigata",
+        "desc": "Salah satu dari tiga festival kembang api besar di Jepang yang diadakan di dasar sungai Shinano. Tambang bintang super besar \"Phoenix\" yang memenuhi bidang pandang adalah sebuah mahakarya."
+      }
+    },
+    "3002": {
+      "ja": {
+        "title": "全国花火競技大会（大曲の花火）",
+        "location": "秋田県大仙市",
+        "desc": "全国から選ばれた花火師たちが技術を競い合う日本最高峰の花火競技大会。"
+      },
+      "en": {
+        "title": "Omagari Fireworks Competition",
+        "location": "Daisen City, Akita",
+        "desc": "Japan's top fireworks competition where elite pyrotechnicians compete for the Prime Minister's Prize."
+      }
+    },
+    "3003": {
+      "ja": {
+        "title": "土浦全国花火競技大会",
+        "location": "茨城県土浦市",
+        "desc": "秋に開催される伝統の競技花火大会。スターマインの部や創作花火など見どころ満載。"
+      },
+      "en": {
+        "title": "Tsuchiura All-Japan Fireworks Competition",
+        "location": "Tsuchiura City, Ibaraki",
+        "desc": "A prestigious autumn fireworks competition known for high-speed Star Mines."
+      }
+    },
+    "3004": {
+      "ja": {
+        "title": "隅田川花火大会",
+        "location": "東京都台東区・墨田区",
+        "desc": "江戸時代からの伝統を誇る東京の夏風物詩。スカイツリーと花火の競演を楽しめます。"
+      },
+      "en": {
+        "title": "Sumidagawa Fireworks Festival",
+        "location": "Taito & Sumida Wards, Tokyo",
+        "desc": "Tokyo's iconic traditional fireworks festival dating back to the Edo period with Skytree views."
+      }
+    },
+    "3005": {
+      "ja": {
+        "title": "江戸川区花火大会",
+        "location": "東京都江戸川区",
+        "desc": "5秒で1,000発を打ち上げる迫力のオープニングが名物の大人気花火大会。"
+      },
+      "en": {
+        "title": "Edogawa Fireworks Festival",
+        "location": "Edogawa Ward, Tokyo",
+        "desc": "This extremely popular fireworks festival is famous for its impressive opening, in which 1,000 fireworks are launched in 5 seconds."
+      },
+      "zh-TW": {
+        "title": "江戶川花火大會",
+        "location": "東京都江戶川區",
+        "desc": "這個非常受歡迎的煙火節以其令人印象深刻的開場而聞名，5 秒內發射了 1,000 發煙火。"
+      },
+      "zh-CN": {
+        "title": "江户川花火大会",
+        "location": "东京都江户川区",
+        "desc": "这个非常受欢迎的烟花节以其令人印象深刻的开场而闻名，5 秒内发射了 1,000 发烟花。"
+      },
+      "ko": {
+        "title": "에도가와구 불꽃놀이",
+        "location": "도쿄도 에도가와구",
+        "desc": "5초 만에 1,000발을 발사하는 박력의 오프닝이 명물의 대인기 불꽃놀이."
+      },
+      "th": {
+        "title": "เทศกาลดอกไม้ไฟเอโดกาวะ",
+        "location": "เขตเอโดกาวะ โตเกียว",
+        "desc": "เทศกาลดอกไม้ไฟที่ได้รับความนิยมอย่างมากนี้มีชื่อเสียงในด้านการเปิดดอกไม้ไฟที่น่าประทับใจ โดยมีการจุดพลุดอกไม้ไฟ 1,000 ลูกใน 5 วินาที"
+      },
+      "id": {
+        "title": "Festival Kembang Api Edogawa",
+        "location": "Daerah Edogawa, Tokyo",
+        "desc": "Festival kembang api yang sangat populer ini terkenal dengan pembukaannya yang mengesankan, di mana 1.000 kembang api diluncurkan dalam 5 detik."
+      }
+    },
+    "3006": {
+      "ja": {
+        "title": "諏訪湖祭水上花火大会",
+        "location": "長野県諏訪市",
+        "desc": "湖面から打ち上げられる水上スターマインと四方を山に囲まれた大音響が魅力。"
+      },
+      "en": {
+        "title": "Lake Suwa Fireworks Festival",
+        "location": "Suwa City, Nagano",
+        "desc": "Features water starmines launching from the lake surface with reverberating acoustics."
+      }
+    },
+    "3007": {
+      "ja": {
+        "title": "びわ湖大花火大会",
+        "location": "滋賀県大津市",
+        "desc": "琵琶湖の美しい水面を背景に広がる幻想的な水中スターマインが有名。"
+      },
+      "en": {
+        "title": "Lake Biwa Fireworks Festival",
+        "location": "Otsu City, Shiga",
+        "desc": "Famous for water starmines casting mesmerizing reflections across Lake Biwa."
+      }
+    },
+    "3008": {
+      "ja": {
+        "title": "なにわ淀川花火大会",
+        "location": "大阪府大阪市",
+        "desc": "ボランティアの手によって作られる大阪最大級の迫力満点な夏の風物詩。"
+      },
+      "en": {
+        "title": "Naniwa Yodogawa Fireworks Festival",
+        "location": "Osaka City, Osaka",
+        "desc": "Osaka's largest hand-crafted fireworks display over the Yodo River."
+      }
+    },
+    "3009": {
+      "ja": {
+        "title": "横浜スパークリングツワイライト",
+        "location": "神奈川県横浜市",
+        "desc": "横浜港の夜景と大輪の花火が美しく融合する港町ならではの花火イベント。"
+      },
+      "en": {
+        "title": "Yokohama Sparkling Twilight",
+        "location": "Yokohama City, Kanagawa",
+        "desc": "Fireworks illuminating the stunning night sky and port skyline of Yokohama."
+      }
+    },
+    "3010": {
+      "ja": {
+        "title": "仙台七夕花火祭",
+        "location": "宮城県仙台市",
+        "desc": "仙台七夕まつりの前夜祭として街中心部の広瀬川で開催される花火大会。"
+      },
+      "en": {
+        "title": "Sendai Tanabata Fireworks Festival",
+        "location": "Sendai City, Miyagi",
+        "desc": "Eve event of Sendai Tanabata Festival held along the Hirose River in central Sendai."
+      }
+    },
+    "3011": {
+      "ja": {
+        "title": "青森花火大会",
+        "location": "青森県青森市",
+        "desc": "青森ねぶた祭の最終日を飾り、海上に浮かぶねぶた台船と花火の競演が楽しめる。"
+      },
+      "en": {
+        "title": "Aomori Fireworks Festival",
+        "location": "Aomori City, Aomori",
+        "desc": "The grand finale of Nebuta Festival with illuminated float ships on the bay."
+      }
+    },
+    "3012": {
+      "ja": {
+        "title": "真駒内花火大会",
+        "location": "北海道札幌市",
+        "desc": "音楽・照明・花火が完全にシンクロする北海道最大級のエンターテインメント花火。"
+      },
+      "en": {
+        "title": "Makomanai Fireworks Festival",
+        "location": "Sapporo City, Hokkaido",
+        "desc": "Hokkaido's premier show integrating fireworks, music, and lighting in total harmony."
+      }
+    },
+    "3013": {
+      "ja": {
+        "title": "高崎まつり大花火大会",
+        "location": "群馬県高崎市",
+        "desc": "北関東有数のスピード感あふれる豪華スターマインの連発が特徴。"
+      },
+      "en": {
+        "title": "Takasaki Fireworks Festival",
+        "location": "Takasaki City, Gunma",
+        "desc": "Northern Kanto's top fireworks event famous for high-speed continuous Star Mines."
+      }
+    },
+    "3014": {
+      "ja": {
+        "title": "古河花火大会",
+        "location": "茨城県古河市",
+        "desc": "渡良瀬川の河川敷で打ち上げられる、打ち上げ数・大きさともに強烈なインパクト。"
+      },
+      "en": {
+        "title": "Koga Fireworks Festival",
+        "location": "Koga City, Ibaraki",
+        "desc": "Massive fireworks over the Watarase River including giant 20-inch shells."
+      }
+    },
+    "3015": {
+      "ja": {
+        "title": "ふじさわ江の島花火大会",
+        "location": "神奈川県藤沢市",
+        "desc": "湘南の江の島を背景に秋の澄んだ夜空へ打ち上げられる絶景花火。"
+      },
+      "en": {
+        "title": "Fujisawa Enoshima Fireworks Festival",
+        "location": "Fujisawa City, Kanagawa",
+        "desc": "Autumn fireworks set against the iconic silhouette of Enoshima island."
+      }
+    },
+    "3016": {
+      "ja": {
+        "title": "熱海海上花火大会",
+        "location": "静岡県熱海市",
+        "desc": "年間を通じて開催される熱海の名物。すり鉢状の地形が生み出す天然の音響効果。"
+      },
+      "en": {
+        "title": "Atami Maritime Fireworks Festival",
+        "location": "Atami City, Shizuoka",
+        "desc": "Year-round fireworks show over Atami Bay with natural acoustics created by surrounding hills."
+      }
+    },
+    "3017": {
+      "ja": {
+        "title": "安倍川花火大会",
+        "location": "静岡県静岡市",
+        "desc": "戦災慰霊と復興を祈念して始まった静岡を代表する伝統ある大花火大会。"
+      },
+      "en": {
+        "title": "Abekawa Fireworks Festival",
+        "location": "Shizuoka City, Shizuoka",
+        "desc": "Historic fireworks dedicated to war memorial peace and city restoration."
+      }
+    },
+    "3018": {
+      "ja": {
+        "title": "豊橋祇園祭 手筒花火",
+        "location": "愛知県豊橋市",
+        "desc": "男衆が竹筒を抱えて火の粉を浴びる東三河伝統の勇壮極まりない手筒花火。"
+      },
+      "en": {
+        "title": "Toyohashi Gion Handheld Fireworks",
+        "location": "Toyohashi City, Aichi",
+        "desc": "Brave men hold bamboo cannons firing pillars of sparks in a heroic ritual."
+      }
+    },
+    "3019": {
+      "ja": {
+        "title": "長良川中日花火大会",
+        "location": "岐阜県岐阜市",
+        "desc": "清流長良川と金華山を背景に打ち上げられる東海エリア屈指の夏花火。"
+      },
+      "en": {
+        "title": "Nagaragawa Chunichi Fireworks",
+        "location": "Gifu City, Gifu",
+        "desc": "Tokai region's major summer fireworks set against Mt. Kinka and Nagara River."
+      }
+    },
+    "3020": {
+      "ja": {
+        "title": "PL花火芸術",
+        "location": "大阪府富田林市",
+        "desc": "関西最大級のスケール。巨大なナイアガラとフィナーレの超大型連発は圧巻。"
+      },
+      "en": {
+        "title": "PL Fireworks Art",
+        "location": "Tondabayashi City, Osaka",
+        "desc": "One of Kansai's largest scale fireworks famous for its legendary intense finale."
+      }
+    },
+    "3021": {
+      "ja": {
+        "title": "天神祭奉納花火",
+        "location": "大阪府大阪市",
+        "desc": "天神祭のフィナーレを彩る。大川の船渡御と約5,000発の花火の競演。"
+      },
+      "en": {
+        "title": "Tenjin Matsuri Fireworks",
+        "location": "Osaka City, Osaka",
+        "desc": "The grand finale of Tenjin Festival featuring 5,000 fireworks along river boat parades."
+      }
+    },
+    "3022": {
+      "ja": {
+        "title": "みなとこうべ海上花火大会",
+        "location": "兵庫県神戸市",
+        "desc": "神戸港のメリケンパーク沖から打ち上げられ、メリケンパークの夜景と見事に調和。"
+      },
+      "en": {
+        "title": "Minato Kobe Maritime Fireworks",
+        "location": "Kobe City, Hyogo",
+        "desc": "Fired off Kobe Harbor off Meriken Park, reflecting beautifully across the bay."
+      }
+    },
+    "3023": {
+      "ja": {
+        "title": "広島みなと夢花火大会",
+        "location": "広島県広島市",
+        "desc": "広島港1万トンバースで開催され、瀬戸内海の夜空と海面を艶やかに彩る。"
+      },
+      "en": {
+        "title": "Hiroshima Minato Yume Fireworks",
+        "location": "Hiroshima City, Hiroshima",
+        "desc": "Held at Hiroshima Port berth, lighting up the tranquil Seto Inland Sea night."
+      }
+    },
+    "3024": {
+      "ja": {
+        "title": "関門海峡花火大会",
+        "location": "山口県下関市・福岡県北九州市",
+        "desc": "門司と下関の両岸から競うように打ち上げられる全国的にも珍しい海峡花火。"
+      },
+      "en": {
+        "title": "Kanmon Straits Fireworks Festival",
+        "location": "Shimonoseki & Kitakyushu",
+        "desc": "A unique cross-strait display fired simultaneously from both sides of Kanmon Strait."
+      }
+    },
+    "3025": {
+      "ja": {
+        "title": "筑後川花火大会",
+        "location": "福岡県久留米市",
+        "desc": "350年以上の歴史を誇る西日本最大級のスケールを誇る伝統の花火大会。"
+      },
+      "en": {
+        "title": "Chikugogawa Fireworks Festival",
+        "location": "Kurume City, Fukuoka",
+        "desc": "Boasting over 350 years of tradition, one of West Japan's largest fireworks events."
+      }
+    },
+    "3026": {
+      "ja": {
+        "title": "かごしま錦江湾大花火大会",
+        "location": "鹿児島県鹿児島市",
+        "desc": "雄大な桜島を背景に錦江湾で打ち上げられる、九州最大級の大花火。"
+      },
+      "en": {
+        "title": "Kagoshima Kinkowan Fireworks",
+        "location": "Kagoshima City, Kagoshima",
+        "desc": "Kyushu's major show set against the active Sakurajima volcano across Kinko Bay."
+      }
+    },
+    "3027": {
+      "ja": {
+        "title": "熊野大花火大会",
+        "location": "三重県熊野市",
+        "desc": "世界遺産・鬼ヶ城の大岩壁を利用した自爆花火と海上自爆花火が圧巻の迫力。"
+      },
+      "en": {
+        "title": "Kumano Fireworks Festival",
+        "location": "Kumano City, Mie",
+        "desc": "World Heritage site Onigajo cliff echoes with massive maritime detonations."
+      }
+    },
+    "3028": {
+      "ja": {
+        "title": "海の日名古屋港みなと祭花火大会",
+        "location": "愛知県名古屋市",
+        "desc": "名古屋港の海上で繰り広げられる音楽と光がシンクロするメモリアル花火。"
+      },
+      "en": {
+        "title": "Nagoya Port Festival Fireworks",
+        "location": "Nagoya City, Aichi",
+        "desc": "A vibrant Marine Day festival featuring music-synchronized fireworks over the harbor."
+      }
+    },
+    "3029": {
+      "ja": {
+        "title": "葛飾納涼花火大会",
+        "location": "東京都葛飾区",
+        "desc": "下町情趣あふれる柴又の江戸川河川敷で開催される距離感の近い臨場感あふれる花火。"
+      },
+      "en": {
+        "title": "Katsushika Fireworks Festival",
+        "location": "Katsushika Ward, Tokyo",
+        "desc": "A cozy, immersive fireworks display held on the Edogawa riverbank in Shibamata."
+      }
+    },
+    "3030": {
+      "ja": {
+        "title": "世田谷区多摩川花火大会",
+        "location": "東京都世田谷区",
+        "desc": "対岸の川崎市花火大会と同時開催され、多摩川の夜空を二重に彩る秋の大イベント。"
+      },
+      "en": {
+        "title": "Setagaya Tamagawa Fireworks",
+        "location": "Setagaya Ward, Tokyo",
+        "desc": "Co-hosted with Kawasaki fireworks on the opposite riverbank for a dual show."
+      }
+    }
+  }
+}

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ja" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Discovery - Traditional Matsuri Map</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slateDark: '#0b0f19',
+                        slateCard: '#131c2e',
+                        accentBlue: '#3b82f6',
+                        accentGold: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter & Noto Sans JP Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        body { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            background-color: #131c2e !important;
+            color: #f8fafa !important;
+            border: 1px solid #1e293b;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .leaflet-container { font-family: 'Noto Sans JP', sans-serif; }
+        .leaflet-popup-close-button { color: #94a3b8 !important; }
+        .leaflet-popup-close-button:hover { color: #ffffff !important; }
+        
+        .leaflet-touch .leaflet-bar, .leaflet-bar {
+            border: none !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
+            border-radius: 0.875rem !important;
+            overflow: hidden;
+            background-color: rgba(19, 28, 46, 0.85) !important;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(51, 65, 85, 0.8) !important;
+        }
+
+        .leaflet-touch .leaflet-bar a, .leaflet-bar a {
+            background-color: transparent !important;
+            color: #94a3b8 !important;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6) !important;
+            width: 36px !important;
+            height: 36px !important;
+            line-height: 36px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.2s ease !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+        }
+
+        .leaflet-touch .leaflet-bar a:last-child, .leaflet-bar a:last-child {
+            border-bottom: none !important;
+        }
+
+        .leaflet-touch .leaflet-bar a:hover, .leaflet-bar a:hover {
+            background-color: rgba(30, 41, 59, 0.9) !important;
+            color: #ffffff !important;
+        }
+
+        .spot-marker-icon {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .spot-marker-icon:hover {
+            transform: scale(1.25);
+            z-index: 1000 !important;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="bg-slateDark text-slate-100 h-full flex flex-col overflow-hidden">
+
+    <!-- Header -->
+    <header class="bg-slateCard/80 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between shrink-0 z-20">
+        <div class="flex items-center space-x-3">
+            <!-- ポータル(index.html)への戻りボタン -->
+            <a id="btnBackToPortal" href="../index.html" class="mr-1 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span class="hidden sm:inline">Portal</span>
+            </a>
+
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-red-600 flex items-center justify-center shadow-lg shadow-amber-500/20 shrink-0">
+                <span class="text-lg">⛩️</span>
+            </div>
+            <div>
+                <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                    Japan Discovery
+                    <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-normal">Matsuri Map</span>
+                </h1>
+                <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400">全国伝統祭り・神輿巡行ガイド</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Language Selector -->
+            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs text-white focus:outline-none focus:border-amber-500 cursor-pointer">
+                <option value="ja">🇯🇵 日本語</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="zh-TW">🇹🇼 繁體中文</option>
+                <option value="zh-CN">🇨🇳 简体中文</option>
+                <option value="ko">🇰🇷 한국어</option>
+                <option value="th">🇹🇭 ไทย</option>
+                <option value="id">🇮🇩 Bahasa Indonesia</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Main Toolbar -->
+    <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-2.5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 shrink-0 z-10">
+        <div class="flex flex-col sm:flex-row md:flex-row items-stretch sm:items-center gap-2.5 flex-1 min-w-0">
+            <!-- View Mode Switcher -->
+            <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800 shrink-0 justify-between sm:justify-start">
+                <button onclick="switchView('map')" id="btn-view-map" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-amber-600 text-white shadow-md">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    <span id="txt-nav-map">マップ</span>
+                </button>
+                <button onclick="switchView('list')" id="btn-view-list" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    <span id="txt-nav-list">リスト</span>
+                </button>
+                <button onclick="switchView('calendar')" id="btn-view-calendar" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span id="txt-nav-calendar">カレンダー</span>
+                </button>
+            </div>
+
+            <!-- 季節フィルター (四季切り替え) -->
+            <div class="relative flex items-center w-full min-w-0 overflow-hidden flex-1">
+                <button id="catScrollLeft" onclick="scrollCategories(-120)" class="absolute left-0 z-10 hidden p-1 bg-gradient-to-r from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+
+                <div id="catFilterScroll" onscroll="checkCatScroll()" class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar w-full scroll-smooth">
+                    <button onclick="filterSeason('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-amber-600 text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
+                    <button onclick="filterSeason('spring')" id="cat-spring" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🌸 春 (3-5月)</button>
+                    <button onclick="filterSeason('summer')" id="cat-summer" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🌿 夏 (6-8月)</button>
+                    <button onclick="filterSeason('autumn')" id="cat-autumn" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🍁 秋 (9-11月)</button>
+                    <button onclick="filterSeason('winter')" id="cat-winter" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">❄️ 冬 (12-2月)</button>
+                </div>
+
+                <button id="catScrollRight" onclick="scrollCategories(120)" class="absolute right-0 z-10 hidden p-1 bg-gradient-to-l from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div id="searchContainer" class="relative w-full md:w-64 hidden">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </span>
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名や祭りの名前で検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-8 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-all">
+            <button id="searchClearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-400 hover:text-white hidden transition-colors" title="クリア">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 relative overflow-hidden flex">
+        <!-- 1. Map View Container -->
+        <div id="view-map" class="absolute inset-0 flex">
+            <div id="map" class="w-full h-full z-0"></div>
+        </div>
+
+        <!-- 2. List View Container -->
+        <div id="view-list" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <span id="txt-list-title">開催期間・日付順祭りリスト</span>
+                    <span class="text-xs font-normal text-slate-400" id="listCount">（0件）</span>
+                </h2>
+                <div id="listContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            </div>
+        </div>
+
+        <!-- 3. Calendar View Container -->
+        <div id="view-calendar" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex items-center justify-between mb-6 bg-slateCard/60 border border-slate-800 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl">
+                    <button onclick="changeMonth(-1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <h2 id="calendarMonthTitle" class="text-base sm:text-lg font-bold text-white">2026年 8月</h2>
+                    <button onclick="changeMonth(1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+
+                <div class="bg-slateCard/40 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                    <div id="calendarHeaders" class="grid grid-cols-7 bg-slate-900/90 text-center text-xs font-semibold text-slate-400 py-3 border-b border-slate-800"></div>
+                    <div id="calendarGrid" class="grid grid-cols-7 bg-slate-800/20 gap-px"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col">
+            <div id="modalContent" class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-5"></div>
+            <div class="bg-slate-900/60 px-5 sm:px-6 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
+                <button onclick="closeDetailModal()" id="txt-close" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition-colors">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="imageLightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white/70 hover:text-white p-2.5 rounded-full bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 transition-all z-20" title="閉じる (Esc)">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="relative max-w-5xl max-h-[80vh] w-full flex items-center justify-center">
+            <button id="lightboxPrevBtn" onclick="prevLightboxImage()" class="absolute left-2 sm:left-4 text-white bg-slate-900/70 hover:bg-slate-900 p-3 rounded-full backdrop-blur-sm border border-slate-700/60 transition-all z-10 hover:scale-105" title="前の写真 (←)">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+
+            <img id="lightboxImage" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-slate-800">
+
+            <button id="lightboxNextBtn" onclick="nextLightboxImage()" class="absolute right-2 sm:right-4 text-white bg-slate-900/70 hover:bg-slate-900 p-3 rounded-full backdrop-blur-sm border border-slate-700/60 transition-all z-10 hover:scale-105" title="次の写真 (→)">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+
+        <div class="mt-4 text-center max-w-xl">
+            <p id="lightboxCaption" class="text-white text-sm font-medium mb-1"></p>
+            <p id="lightboxCounter" class="text-xs text-slate-400 font-mono"></p>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        const i18n = {
+            ja: {
+                subtitle: "全国伝統祭り・神輿巡行ガイド",
+                navMap: "マップ",
+                navList: "リスト",
+                navCalendar: "カレンダー",
+                catAll: "すべて",
+                catSpring: "🌸 春 (3-5月)",
+                catSummer: "🌿 夏 (6-8月)",
+                catAutumn: "🍁 秋 (9-11月)",
+                catWinter: "❄️ 冬 (12-2月)",
+                searchPlaceholder: "地域名や祭りの名前で検索...",
+                listTitle: "開催期間・日付順祭りリスト",
+                noResult: "該当するお祭りが見つかりませんでした。",
+                detailLink: "詳細・ガイド手配相談",
+                consultTitle: "このお祭りへの訪問・手配のご相談",
+                consultDesc: "特別観覧席の手配や現地ガイド、個別コンサルティングのお問い合わせ",
+                consultBtn: "相談する",
+                close: "閉じる",
+                photosTitle: "📸 写真ギャラリー （クリックで拡大表示）",
+                linksTitle: "🔗 関連リンク",
+                weekdays: ["日", "月", "火", "水", "木", "金", "土"],
+                formatMonth: (y, m) => `${y}年 ${m}月`
+            },
+            en: {
+                subtitle: "Japanese Traditional Festivals Guide",
+                navMap: "Map",
+                navList: "List",
+                navCalendar: "Calendar",
+                catAll: "All",
+                catSpring: "🌸 Spring (Mar-May)",
+                catSummer: "🌿 Summer (Jun-Aug)",
+                catAutumn: "🍁 Autumn (Sep-Nov)",
+                catWinter: "❄️ Winter (Dec-Feb)",
+                searchPlaceholder: "Search location or festival name...",
+                listTitle: "Date-sorted Festival List",
+                noResult: "No matching festivals found.",
+                detailLink: "View Details & Guide Arrangements",
+                consultTitle: "Consultation for Festival Visit & Guide",
+                consultDesc: "Inquiries for viewing seats, local guide, or private consulting",
+                consultBtn: "Consult",
+                close: "Close",
+                photosTitle: "📸 Photo Gallery (Click to enlarge)",
+                linksTitle: "🔗 Related Links",
+                weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                formatMonth: (y, m) => {
+                    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                    return `${months[m - 1]} ${y}`;
+                }
+            },
+            "zh-TW": {
+                subtitle: "日本傳統祭典與神輿巡境指南",
+                navMap: "地圖",
+                navList: "列表",
+                navCalendar: "日曆",
+                catAll: "全部",
+                catSpring: "🌸 春季 (3-5月)",
+                catSummer: "🌿 夏季 (6-8月)",
+                catAutumn: "🍁 秋季 (9-11月)",
+                catWinter: "❄️ 冬季 (12-2月)",
+                searchPlaceholder: "搜尋地區或祭典名稱...",
+                listTitle: "依日期排序祭典列表",
+                noResult: "找不到符合的祭典活動。",
+                detailLink: "詳細資訊與導覽諮詢",
+                consultTitle: "參觀安排與嚮導諮詢",
+                consultDesc: "觀賞席預訂、當地嚮導或個人諮詢洽詢",
+                consultBtn: "諮詢",
+                close: "關閉",
+                photosTitle: "📸 照片相册（點擊放大）",
+                linksTitle: "🔗 相關連結",
+                weekdays: ["日", "一", "二", "三", "四", "五", "六"],
+                formatMonth: (y, m) => `${y}年 ${m}月`
+            },
+            "zh-CN": {
+                subtitle: "日本传统祭典与神舆巡游指南",
+                navMap: "地图",
+                navList: "列表",
+                navCalendar: "日历",
+                catAll: "全部",
+                catSpring: "🌸 春季 (3-5月)",
+                catSummer: "🌿 夏季 (6-8月)",
+                catAutumn: "🍁 秋季 (9-11月)",
+                catWinter: "❄️ 冬季 (12-2月)",
+                searchPlaceholder: "搜索地区或祭典名称...",
+                listTitle: "按日期排序祭典列表",
+                noResult: "未找到符合的祭典活动。",
+                detailLink: "详细信息与导览咨询",
+                consultTitle: "参观安排与向导咨询",
+                consultDesc: "观赏席预订、当地向导或个人咨询洽询",
+                consultBtn: "咨询",
+                close: "关闭",
+                photosTitle: "📸 照片相册（点击放大）",
+                linksTitle: "🔗 相关链接",
+                weekdays: ["日", "一", "二", "三", "四", "五", "六"],
+                formatMonth: (y, m) => `${y}年 ${m}月`
+            },
+            ko: {
+                subtitle: "일본 전통 축제(마츠리) 가이드",
+                navMap: "지도",
+                navList: "목록",
+                navCalendar: "캘린더",
+                catAll: "전체",
+                catSpring: "🌸 봄 (3-5월)",
+                catSummer: "🌿 여름 (6-8월)",
+                catAutumn: "🍁 가을 (9-11월)",
+                catWinter: "❄️ 겨울 (12-2월)",
+                searchPlaceholder: "지역명이나 축제 이름으로 검색...",
+                listTitle: "날짜순 축제 목록",
+                noResult: "일치하는 축제를 찾을 수 없습니다.",
+                detailLink: "상세 정보 및 가이드 문의",
+                consultTitle: "축제 방문 및 수배 상담",
+                consultDesc: "특별 관람석 수배, 현지 가이드, 개인 컨설팅 문의",
+                consultBtn: "상담하기",
+                close: "닫기",
+                photosTitle: "📸 포토 갤러리 (클릭하여 확대)",
+                linksTitle: "🔗 관련 링크",
+                weekdays: ["일", "월", "화", "수", "목", "금", "토"],
+                formatMonth: (y, m) => `${y}년 ${m}월`
+            },
+            th: {
+                subtitle: "คู่มือเทศกาลดั้งเดิมของญี่ปุ่น (มัตสึริ)",
+                navMap: "แผนที่",
+                navList: "รายการ",
+                navCalendar: "ปฏิทิน",
+                catAll: "ทั้งหมด",
+                catSpring: "🌸 ฤดูใบไม้ผลิ (มี.ค.-พ.ค.)",
+                catSummer: "🌿 ฤดูร้อน (มิ.ย.-ส.ค.)",
+                catAutumn: "🍁 ฤดูใบไม้ร่วง (ก.ย.-พ.ย.)",
+                catWinter: "❄️ ฤดูหนาว (ธ.ค.-ก.พ.)",
+                searchPlaceholder: "ค้นหาชื่อสถานที่หรือเทศกาล...",
+                listTitle: "รายการเทศกาลเรียงตามวันที่",
+                noResult: "ไม่พบเทศกาลที่ตรงกัน",
+                detailLink: "ดูรายละเอียดและติดต่อไกด์",
+                consultTitle: "ปรึกษาการเข้าชมเทศกาลและจัดเตรียม",
+                consultDesc: "สอบถามการจองที่นั่ง ไกด์ท้องถิ่น หรือที่ปรึกษา",
+                consultBtn: "ปรึกษา",
+                close: "ปิด",
+                photosTitle: "📸 แกลเลอรี่รูปภาพ (คลิกเพื่อขยาย)",
+                linksTitle: "🔗 ลิงก์ที่เกี่ยวข้อง",
+                weekdays: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+                formatMonth: (y, m) => `${m}/${y}`
+            },
+            id: {
+                subtitle: "Panduan Festival Tradisional Jepang (Matsuri)",
+                navMap: "Peta",
+                navList: "Daftar",
+                navCalendar: "Kalender",
+                catAll: "Semua",
+                catSpring: "🌸 Musim Semi (Mar-Mei)",
+                catSummer: "🌿 Musim Panas (Jun-Agt)",
+                catAutumn: "🍁 Musim Gugur (Sep-Nov)",
+                catWinter: "❄️ Musim Dingin (Des-Feb)",
+                searchPlaceholder: "Cari lokasi atau nama festival...",
+                listTitle: "Daftar Festival Urut Tanggal",
+                noResult: "Tidak ada festival yang ditemukan.",
+                detailLink: "Detail & Pengaturan Pemandu",
+                consultTitle: "Konsultasi Kunjungan & Pemandu Festival",
+                consultDesc: "Pertanyaan pemesanan tempat duduk, pemandu lokal, atau konsultasi",
+                consultBtn: "Konsultasi",
+                close: "Tutup",
+                photosTitle: "📸 Galeri Foto (Klik untuk memperbesar)",
+                linksTitle: "🔗 Tautan Terkait",
+                weekdays: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+                formatMonth: (y, m) => {
+                    const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                    return `${months[m - 1]} ${y}`;
+                }
+            }
+        };
+
+        let spots = [];
+        let spotContentI18n = {};
+        let currentLang = 'ja';
+
+        let currentLightboxPhotos = [];
+        let currentLightboxIndex = 0;
+
+        let currentView = 'map';
+        let currentSeason = 'all';
+        let searchQuery = '';
+        
+        let todayObj = new Date();
+        let currentCalendarDate = new Date(todayObj.getFullYear(), todayObj.getMonth(), 1);
+
+        let map, markersLayer;
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            initMap();
+            await loadData();
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialLang = urlParams.get('lang') || 'ja';
+            
+            document.getElementById('langSelector').value = initialLang;
+            changeLanguage(initialLang);
+
+            window.addEventListener('resize', checkCatScroll);
+        });
+
+        async function loadData() {
+            try {
+                // 同じ matsuri フォルダ内の spots_data.json を相対パスで読み込む
+                const response = await fetch(`spots_data.json?v=${Date.now()}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.spots && data.spotContentI18n) {
+                        spots = data.spots.filter(s => !s.category || s.category === 'matsuri' || s.category === 'tourism');
+                        spotContentI18n = data.spotContentI18n;
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.log("spots_data.json fetch error, falling back to localStorage...");
+            }
+
+            spots = JSON.parse(localStorage.getItem('japan_discovery_spots')) || [];
+            spotContentI18n = JSON.parse(localStorage.getItem('japan_discovery_spot_i18n')) || {};
+        }
+
+        function buildPhotoUrl(urlRaw) {
+            if (!urlRaw) return "";
+            let u = String(urlRaw).trim();
+            if (u.startsWith('http://') || u.startsWith('https://')) return u;
+            if (u.startsWith('picture/')) u = u.replace('picture/', '');
+            return `picture/${u}`;
+        }
+
+        function getSeasonFromDate(dateStr) {
+            if (!dateStr) return 'summer';
+            const month = parseInt(dateStr.split('-')[1], 10);
+            if (month >= 3 && month <= 5) return 'spring';
+            if (month >= 6 && month <= 8) return 'summer';
+            if (month >= 9 && month <= 11) return 'autumn';
+            return 'winter';
+        }
+
+        function getLocalizedSpot(spot) {
+            const spotI18n = spotContentI18n[spot.id] || {};
+            const langData = spotI18n[currentLang] || spotI18n['ja'] || {};
+            
+            const processedPhotos = (spot.photos || []).map(p => ({
+                ...p,
+                url: buildPhotoUrl(p.url)
+            }));
+
+            const startDate = spot.startDate || '2026-08-01';
+            const season = getSeasonFromDate(startDate);
+
+            return {
+                ...spot,
+                category: 'matsuri',
+                season: season,
+                startDate: startDate,
+                endDate: spot.endDate || startDate,
+                title: langData.title || '',
+                location: langData.location || '',
+                desc: langData.desc || '',
+                photos: processedPhotos,
+                links: spot.links || []
+            };
+        }
+
+        function getSeasonDetails(season) {
+            const t = i18n[currentLang];
+            if (season === 'spring') {
+                return {
+                    label: t.catSpring,
+                    icon: '🌸',
+                    badgeStyle: 'bg-pink-500/10 text-pink-400 border-pink-500/20',
+                    mapStyle: 'bg-pink-500/20 backdrop-blur-md border-pink-400/50 text-pink-500 shadow-md shadow-pink-500/10',
+                    calStyle: 'bg-pink-500/15 text-pink-300 border-pink-500/20'
+                };
+            } else if (season === 'summer') {
+                return {
+                    label: t.catSummer,
+                    icon: '🌿',
+                    badgeStyle: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+                    mapStyle: 'bg-emerald-500/20 backdrop-blur-md border-emerald-400/50 text-emerald-500 shadow-md shadow-emerald-500/10',
+                    calStyle: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/20'
+                };
+            } else if (season === 'autumn') {
+                return {
+                    label: t.catAutumn,
+                    icon: '🍁',
+                    badgeStyle: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+                    mapStyle: 'bg-amber-500/20 backdrop-blur-md border-amber-400/50 text-amber-500 shadow-md shadow-amber-500/10',
+                    calStyle: 'bg-amber-500/15 text-amber-300 border-amber-500/20'
+                };
+            } else {
+                return {
+                    label: t.catWinter,
+                    icon: '❄️',
+                    badgeStyle: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+                    mapStyle: 'bg-cyan-500/20 backdrop-blur-md border-cyan-400/50 text-cyan-400 shadow-md shadow-cyan-500/10',
+                    calStyle: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/20'
+                };
+            }
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = i18n[lang];
+
+            document.getElementById('btnBackToPortal').href = `../index.html?lang=${lang}`;
+
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            document.getElementById('txt-nav-map').innerText = t.navMap;
+            document.getElementById('txt-nav-list').innerText = t.navList;
+            document.getElementById('txt-nav-calendar').innerText = t.navCalendar;
+
+            document.getElementById('cat-all').innerText = t.catAll;
+            document.getElementById('cat-spring').innerText = t.catSpring;
+            document.getElementById('cat-summer').innerText = t.catSummer;
+            document.getElementById('cat-autumn').innerText = t.catAutumn;
+            document.getElementById('cat-winter').innerText = t.catWinter;
+
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('txt-list-title').innerText = t.listTitle;
+            document.getElementById('txt-close').innerText = t.close;
+
+            const wd = t.weekdays;
+            document.getElementById('calendarHeaders').innerHTML = `
+                <div class="text-red-400">${wd[0]}</div>
+                <div>${wd[1]}</div>
+                <div>${wd[2]}</div>
+                <div>${wd[3]}</div>
+                <div>${wd[4]}</div>
+                <div>${wd[5]}</div>
+                <div class="text-blue-400">${wd[6]}</div>
+            `;
+
+            renderCurrentView();
+            setTimeout(checkCatScroll, 50);
+        }
+
+        function checkCatScroll() {
+            const container = document.getElementById('catFilterScroll');
+            const leftBtn = document.getElementById('catScrollLeft');
+            const rightBtn = document.getElementById('catScrollRight');
+
+            if (!container) return;
+
+            const scrollLeft = container.scrollLeft;
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+            if (scrollLeft > 5) {
+                leftBtn.classList.remove('hidden');
+            } else {
+                leftBtn.classList.add('hidden');
+            }
+
+            if (maxScrollLeft - scrollLeft > 5) {
+                rightBtn.classList.remove('hidden');
+            } else {
+                rightBtn.classList.add('hidden');
+            }
+        }
+
+        function scrollCategories(offset) {
+            const container = document.getElementById('catFilterScroll');
+            if (container) {
+                container.scrollBy({ left: offset, behavior: 'smooth' });
+            }
+        }
+
+        function initMap() {
+            if (map) return;
+            map = L.map('map', { zoomControl: false }).setView([37.5, 138.0], 6);
+
+            const CustomUnifiedControl = L.Control.extend({
+                options: { position: 'bottomright' },
+                onAdd: function(mapInstance) {
+                    const container = L.DomUtil.create('div', 'leaflet-bar');
+                    L.DomEvent.disableClickPropagation(container);
+
+                    const fitBtn = L.DomUtil.create('a', '', container);
+                    fitBtn.href = '#';
+                    fitBtn.title = '全体表示リセット';
+                    fitBtn.role = 'button';
+                    fitBtn.innerHTML = `
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                        </svg>
+                    `;
+                    L.DomEvent.on(fitBtn, 'click', function(e) {
+                        L.DomEvent.stop(e);
+                        fitMapToFilteredSpots();
+                    });
+
+                    const zoomInBtn = L.DomUtil.create('a', '', container);
+                    zoomInBtn.href = '#';
+                    zoomInBtn.title = '拡大';
+                    zoomInBtn.role = 'button';
+                    zoomInBtn.innerHTML = `
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                    `;
+                    L.DomEvent.on(zoomInBtn, 'click', function(e) {
+                        L.DomEvent.stop(e);
+                        mapInstance.zoomIn();
+                    });
+
+                    const zoomOutBtn = L.DomUtil.create('a', '', container);
+                    zoomOutBtn.href = '#';
+                    zoomOutBtn.title = '縮小';
+                    zoomOutBtn.role = 'button';
+                    zoomOutBtn.innerHTML = `
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                        </svg>
+                    `;
+                    L.DomEvent.on(zoomOutBtn, 'click', function(e) {
+                        L.DomEvent.stop(e);
+                        mapInstance.zoomOut();
+                    });
+
+                    return container;
+                }
+            });
+
+            map.addControl(new CustomUnifiedControl());
+
+            L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>'
+            }).addTo(map);
+
+            markersLayer = L.layerGroup().addTo(map);
+            updateMapMarkers();
+        }
+
+        function fitMapToFilteredSpots() {
+            if (!map) return;
+            const filtered = getFilteredSpots();
+            if (filtered.length === 0) {
+                map.setView([37.5, 138.0], 6);
+                return;
+            }
+
+            const bounds = L.latLngBounds(filtered.map(s => [s.lat, s.lng]));
+            map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
+        }
+
+        function updateMapMarkers() {
+            if (!markersLayer) return;
+            markersLayer.clearLayers();
+
+            const filtered = getFilteredSpots();
+            filtered.forEach(rawSpot => {
+                const spot = getLocalizedSpot(rawSpot);
+                const seasonMeta = getSeasonDetails(spot.season);
+                
+                const iconHtml = `
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg border ${seasonMeta.mapStyle} spot-marker-icon">
+                        ⛩️
+                    </div>
+                `;
+                const customIcon = L.divIcon({
+                    className: 'custom-div-icon',
+                    html: iconHtml,
+                    iconSize: [36, 36],
+                    iconAnchor: [18, 18]
+                });
+
+                const marker = L.marker([spot.lat, spot.lng], { icon: customIcon });
+                marker.on('click', () => showDetailModal(spot.id));
+                markersLayer.addLayer(marker);
+            });
+
+            fitMapToFilteredSpots();
+        }
+
+        function switchView(viewName) {
+            currentView = viewName;
+
+            const searchContainer = document.getElementById('searchContainer');
+            if (viewName === 'list') {
+                searchContainer.classList.remove('hidden');
+            } else {
+                searchContainer.classList.add('hidden');
+            }
+
+            ['map', 'list', 'calendar'].forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                const btn = document.getElementById(`btn-view-${v}`);
+                if (v === viewName) {
+                    el.classList.remove('hidden');
+                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-amber-600 text-white shadow-md";
+                } else {
+                    el.classList.add('hidden');
+                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white";
+                }
+            });
+
+            if (viewName === 'map' && map) {
+                setTimeout(() => {
+                    map.invalidateSize();
+                    fitMapToFilteredSpots();
+                }, 100);
+            }
+            renderCurrentView();
+            setTimeout(checkCatScroll, 100);
+        }
+
+        function filterSeason(season) {
+            currentSeason = season;
+            ['all', 'spring', 'summer', 'autumn', 'winter'].forEach(s => {
+                const btn = document.getElementById(`cat-${s}`);
+                if (s === season) {
+                    btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-amber-600 text-white shadow-sm whitespace-nowrap shrink-0";
+                } else {
+                    btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0";
+                }
+            });
+            renderCurrentView();
+        }
+
+        function handleSearch() {
+            const input = document.getElementById('searchInput');
+            searchQuery = input.value.toLowerCase();
+            
+            const clearBtn = document.getElementById('searchClearBtn');
+            if (searchQuery.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            if (currentView === 'list') {
+                renderListView();
+            }
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('searchInput');
+            input.value = '';
+            handleSearch();
+            input.focus();
+        }
+
+        function getFilteredSpots() {
+            return spots.map(s => getLocalizedSpot(s)).filter(spot => {
+                return currentSeason === 'all' || spot.season === currentSeason;
+            });
+        }
+
+        function renderCurrentView() {
+            updateMapMarkers();
+            if (currentView === 'list') renderListView();
+            if (currentView === 'calendar') renderCalendarView();
+        }
+
+        function renderListView() {
+            const container = document.getElementById('listContainer');
+            const filtered = getFilteredSpots()
+                .filter(spot => {
+                    if (!searchQuery) return true;
+                    return (spot.title || '').toLowerCase().includes(searchQuery) || 
+                           (spot.location || '').toLowerCase().includes(searchQuery) || 
+                           (spot.desc || '').toLowerCase().includes(searchQuery);
+                })
+                .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+            const t = i18n[currentLang];
+            document.getElementById('listCount').innerText = `（${filtered.length}件）`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 text-xs">${t.noResult}</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(spot => {
+                const seasonMeta = getSeasonDetails(spot.season);
+                const thumb = spot.photos && spot.photos.length > 0 ? spot.photos[0].url : null;
+                const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
+                return `
+                    <div onclick="showDetailModal(${spot.id})" class="bg-slateCard/70 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between">
+                        <div>
+                            ${thumb ? `<div class="w-full h-36 rounded-xl mb-3 overflow-hidden bg-slate-900"><img src="${thumb}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'"></div>` : ''}
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${seasonMeta.badgeStyle}">
+                                    ${seasonMeta.label}
+                                </span>
+                                <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-1.5">${spot.title || ''}</h3>
+                            <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-3">
+                                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                                ${spot.location || ''}
+                            </p>
+                            <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">${spot.desc || ''}</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-amber-400 font-medium">
+                            <span>${t.detailLink}</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function changeMonth(direction) {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + direction);
+            renderCalendarView();
+        }
+
+        function renderCalendarView() {
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth();
+            const t = i18n[currentLang];
+            document.getElementById('calendarMonthTitle').innerText = t.formatMonth(year, month + 1);
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+            const grid = document.getElementById('calendarGrid');
+            
+            const filtered = getFilteredSpots();
+            let html = '';
+
+            for (let i = 0; i < firstDayIndex; i++) {
+                html += `<div class="bg-slate-900/30 min-h-[90px] p-1.5 opacity-30"></div>`;
+            }
+
+            const todayY = todayObj.getFullYear();
+            const todayM = todayObj.getMonth();
+            const todayD = todayObj.getDate();
+
+            for (let day = 1; day <= totalDays; day++) {
+                const monthStr = String(month + 1).padStart(2, '0');
+                const dayStr = String(day).padStart(2, '0');
+                const dateKey = `${year}-${monthStr}-${dayStr}`;
+
+                const isToday = (year === todayY && month === todayM && day === todayD);
+
+                const daySpots = filtered.filter(s => {
+                    const start = s.startDate;
+                    const end = s.endDate || start;
+                    return dateKey >= start && dateKey <= end;
+                });
+
+                html += `
+                    <div class="min-h-[100px] p-1.5 sm:p-2 flex flex-col transition-colors border ${isToday ? 'bg-amber-600/15 border-amber-500/50 shadow-inner' : 'bg-slateCard/60 hover:bg-slateCard border-slate-800/40'}">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-[11px] sm:text-xs font-bold ${isToday ? 'text-amber-400 bg-amber-500/20 px-1.5 py-0.5 rounded-md' : 'text-slate-300'}">${day}</span>
+                            ${daySpots.length > 0 ? `<span class="text-[9px] bg-amber-500/20 text-amber-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}
+                        </div>
+                        <div class="flex-1 space-y-1 overflow-y-auto max-h-[70px]">
+                            ${daySpots.map(s => {
+                                const seasonMeta = getSeasonDetails(s.season);
+                                return `
+                                    <div onclick="showDetailModal(${s.id})" class="text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md truncate cursor-pointer transition-all border ${seasonMeta.calStyle}" title="${s.title}">
+                                        ⛩️ ${s.title}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        function showDetailModal(id) {
+            const rawSpot = spots.find(s => Number(s.id) === Number(id));
+            if (!rawSpot) return;
+            const spot = getLocalizedSpot(rawSpot);
+            const seasonMeta = getSeasonDetails(spot.season);
+            const t = i18n[currentLang];
+            const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
+
+            let photosHtml = '';
+            if (spot.photos && spot.photos.length > 0) {
+                currentLightboxPhotos = spot.photos;
+                photosHtml = `
+                    <div>
+                        <h4 class="text-xs font-bold text-amber-400 mb-2">${t.photosTitle}</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                            ${spot.photos.map((p, index) => `
+                                <div onclick="openLightbox(${index})" class="group relative bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-amber-500/50 cursor-pointer transition-all">
+                                    <div class="h-28 bg-slate-950">
+                                        <img src="${p.url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.style.display='none'">
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <span class="text-xs text-white bg-slate-900/80 px-2 py-1 rounded-md border border-slate-700 flex items-center gap-1">
+                                            🔍 拡大
+                                        </span>
+                                    </div>
+                                    ${p.caption ? `<div class="p-1.5 text-[10px] text-slate-300 truncate bg-slate-900/90">${p.caption}</div>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                currentLightboxPhotos = [];
+            }
+
+            let linksHtml = '';
+            if (spot.links && spot.links.length > 0) {
+                linksHtml = `
+                    <div>
+                        <h4 class="text-xs font-bold text-emerald-400 mb-2">${t.linksTitle}</h4>
+                        <div class="space-y-1.5">
+                            ${spot.links.map(l => `
+                                <a href="${l.url}" target="_blank" class="flex items-center justify-between bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 p-2.5 rounded-xl text-xs text-amber-400 transition-all">
+                                    <span class="truncate">${l.text || l.url}</span>
+                                    <svg class="w-3.5 h-3.5 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('modalContent').innerHTML = `
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${seasonMeta.badgeStyle}">
+                        ${seasonMeta.label}
+                    </span>
+                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
+                </div>
+                <h3 class="text-base font-bold text-white mb-2">${spot.title || ''}</h3>
+                <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-4">
+                    <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                    ${spot.location || ''}
+                </p>
+                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800">
+                    <p class="text-xs text-slate-300 leading-relaxed">${spot.desc || ''}</p>
+                </div>
+                ${photosHtml}
+                ${linksHtml}
+                <div class="bg-amber-600/10 border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                        <h4 class="text-xs font-bold text-amber-400 mb-0.5">${t.consultTitle}</h4>
+                        <p class="text-[11px] text-slate-400">${t.consultDesc}</p>
+                    </div>
+                    <button onclick="alert('ご相談窓口へ接続します')" class="bg-amber-600 hover:bg-amber-500 text-white px-3.5 py-2 rounded-xl text-xs font-medium shadow-md transition-all shrink-0 w-full sm:w-auto text-center">
+                        ${t.consultBtn}
+                    </button>
+                </div>
+            `;
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        function openLightbox(index) {
+            if (!currentLightboxPhotos || currentLightboxPhotos.length === 0) return;
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            document.getElementById('imageLightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('imageLightboxModal').classList.add('hidden');
+        }
+
+        function updateLightboxContent() {
+            const photo = currentLightboxPhotos[currentLightboxIndex];
+            if (!photo) return;
+
+            document.getElementById('lightboxImage').src = photo.url;
+            document.getElementById('lightboxCaption').innerText = photo.caption || '';
+            document.getElementById('lightboxCounter').innerText = `${currentLightboxIndex + 1} / ${currentLightboxPhotos.length}`;
+
+            const showNav = currentLightboxPhotos.length > 1;
+            document.getElementById('lightboxPrevBtn').style.display = showNav ? 'block' : 'none';
+            document.getElementById('lightboxNextBtn').style.display = showNav ? 'block' : 'none';
+        }
+
+        function prevLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxPhotos.length) % currentLightboxPhotos.length;
+            updateLightboxContent();
+        }
+
+        function nextLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxPhotos.length;
+            updateLightboxContent();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('imageLightboxModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+            }
+        });
+    </script>
+</body>
+</html>

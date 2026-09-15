@@ -1,0 +1,58 @@
+{
+  "themeColor": "amber",
+  "icon": "⛩️",
+  "iconGradient": "from-amber-600 to-red-600",
+  "badgeTheme": "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  "btnTheme": "bg-amber-600 hover:bg-amber-500",
+  "i18n": {
+    "ja": {
+      "title": "Matsuri Map",
+      "subtitle": "全国伝統祭り・神輿巡行ガイド",
+      "listTitle": "開催期間・日付順祭りリスト",
+      "consultTitle": "このお祭りへの訪問・手配のご相談",
+      "consultDesc": "特別観覧席の手配や現地ガイド、個別コンサルティングのお問い合わせ"
+    },
+    "en": {
+      "title": "Matsuri Map",
+      "subtitle": "Japanese Traditional Festivals Guide",
+      "listTitle": "Date-sorted Festival List",
+      "consultTitle": "Consultation for Festival Visit",
+      "consultDesc": "Inquiries for viewing seats, local guide, or private consulting"
+    },
+    "zh-TW": {
+      "title": "Matsuri Map",
+      "subtitle": "日本傳統祭典與神輿巡境指南",
+      "listTitle": "依日期排序祭典列表",
+      "consultTitle": "參觀安排與嚮導諮詢",
+      "consultDesc": "觀賞席預訂、當地嚮導或個人諮詢洽詢"
+    },
+    "zh-CN": {
+      "title": "Matsuri Map",
+      "subtitle": "日本传统祭典与神舆巡游指南",
+      "listTitle": "按日期排序祭典列表",
+      "consultTitle": "参观安排与向导咨询",
+      "consultDesc": "观赏席预订、当地向导或个人咨询洽询"
+    },
+    "ko": {
+      "title": "Matsuri Map",
+      "subtitle": "일본 전통 축제(마츠리) 가이드",
+      "listTitle": "날짜순 축제 목록",
+      "consultTitle": "축제 방문 및 수배 상담",
+      "consultDesc": "특별 관람석 수배, 현지 가이드, 개인 컨설팅 문의"
+    },
+    "th": {
+      "title": "Matsuri Map",
+      "subtitle": "คู่มือเทศกาลดั้งเดิมของญี่ปุ่น (มัตสึริ)",
+      "listTitle": "รายการเทศกาลเรียงตามวันที่",
+      "consultTitle": "ปรึกษาการเข้าชมเทศกาลและจัดเตรียม",
+      "consultDesc": "สอบถามการจองที่นั่ง ไกด์ท้องถิ่น หรือที่ปรึกษา"
+    },
+    "id": {
+      "title": "Matsuri Map",
+      "subtitle": "Panduan Festival Tradisional Jepang (Matsuri)",
+      "listTitle": "Daftar Festival Urut Tanggal",
+      "consultTitle": "Konsultasi Kunjungan & Pemandu Festival",
+      "consultDesc": "Pertanyaan pemesanan tempat duduk, pemandu lokal, atau konsultasi"
+    }
+  }
+}
