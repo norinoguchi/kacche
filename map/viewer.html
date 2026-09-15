@@ -83,6 +83,22 @@
             z-index: 1000 !important;
         }
 
+        /* マップのホバーツールチップのダークテーマ化 */
+        .leaflet-tooltip.custom-map-tooltip {
+            background-color: #131c2e !important;
+            color: #f8fafa !important;
+            border: 1px solid #334155 !important;
+            border-radius: 0.75rem !important;
+            padding: 4px 10px !important;
+            font-family: 'Noto Sans JP', sans-serif !important;
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+        }
+        .leaflet-tooltip.custom-map-tooltip::before {
+            border-top-color: #334155 !important;
+        }
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -488,12 +504,20 @@
                 `;
                 const customIcon = L.divIcon({ className: 'custom-div-icon', html: iconHtml, iconSize: [36, 36], iconAnchor: [18, 18] });
                 const marker = L.marker([spot.lat, spot.lng], { icon: customIcon });
+
+                // ★ ここを追加：マウスオーバー（スマホはタップ）でスポット名を表示するツールチップを設定
+                marker.bindTooltip(spot.title, {
+                    direction: 'top',      // マーカーの上部に表示
+                    offset: [0, -15],      // アイコンとの距離調整
+                    className: 'custom-map-tooltip' // 必要に応じてCSSデザイン用
+                });
+
                 marker.on('click', () => showDetailModal(spot.id));
                 markersLayer.addLayer(marker);
             });
             fitMapToFilteredSpots();
         }
-
+        
         function switchView(viewName) {
             currentView = viewName;
             document.getElementById('searchContainer').classList.toggle('hidden', viewName !== 'list');
