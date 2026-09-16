@@ -8,41 +8,47 @@
 </head>
 <body class="bg-gray-100 min-h-screen text-gray-800 pb-12">
 
+  <!-- 起動時のフォルダ選択モーダル (File System Access API) -->
+  <div id="modal-folder-setup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-[100]">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-8 space-y-6 shadow-2xl text-center">
+      <div class="mx-auto w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+      </div>
+      <h2 class="text-xl font-bold text-gray-800">テスト用データの保存先を選択</h2>
+      <p class="text-sm text-gray-600 text-left">
+        このシステムは、あなたのPC内のフォルダと直接同期して動作します。<br><br>
+        1. 下のボタンを押し、空のフォルダ（または過去に作成したテスト用フォルダ）を選択してください。<br>
+        2. フォルダが空の場合は、サーバーから初期データが自動でダウンロード＆作成されます。<br>
+        3. 以降、システム上で操作するたびにファイルが<b>自動で上書き保存（オートセーブ）</b>されます。
+      </p>
+      <button onclick="connectLocalFolder()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow-lg transition-colors text-lg flex justify-center items-center">
+        📂 ローカルフォルダを選択して開始
+      </button>
+      <p class="text-[10px] text-gray-400">※PC版の Google Chrome または Microsoft Edge でご利用ください。</p>
+    </div>
+  </div>
+
   <!-- ヘッダー & アプリ切り替えタブ -->
   <header class="bg-indigo-600 text-white p-3 sticky top-0 z-50 shadow-md">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-      <h1 class="text-base font-bold text-center md:text-left">アロケーション管理システム</h1>
+      <h1 class="text-base font-bold text-center md:text-left flex items-center justify-center md:justify-start">
+        アロケーション管理システム
+        <span id="sync-status-badge" class="ml-3 text-[10px] bg-gray-500 text-white px-2 py-0.5 rounded-full flex items-center">
+          <span class="w-2 h-2 rounded-full bg-gray-300 mr-1 animate-pulse" id="sync-dot"></span>
+          未接続
+        </span>
+      </h1>
       
       <div class="flex justify-center space-x-1 text-xs">
-        <button onclick="switchTab('member')" id="tab-member" class="px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold">メンバー (スマホ向け)</button>
-        <button onclick="switchTab('admin')" id="tab-admin" class="px-3 py-1.5 rounded-full bg-white text-indigo-600 font-bold shadow">事務局 (PC向け)</button>
-        <button onclick="switchTab('setting')" id="tab-setting" class="px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold">SME設定 (PC向け)</button>
+        <button onclick="switchTab('member')" id="tab-member" class="px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold transition-colors">メンバー (スマホ向け)</button>
+        <button onclick="switchTab('admin')" id="tab-admin" class="px-3 py-1.5 rounded-full bg-white text-indigo-600 font-bold shadow transition-colors">事務局 (PC向け)</button>
+        <button onclick="switchTab('setting')" id="tab-setting" class="px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold transition-colors">SME設定 (PC向け)</button>
       </div>
     </div>
-
-    <!-- 要上書きファイル通知 ＆ データDL保存バー -->
-    <div class="bg-indigo-800 p-2.5 rounded-lg max-w-6xl mx-auto flex flex-wrap items-center justify-between text-xs gap-2 mt-2 border border-indigo-700 shadow-inner">
-      <div class="flex items-center space-x-2">
-        <span class="font-bold text-indigo-200 flex items-center">
-          <svg class="w-4 h-4 mr-1 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-          テスト版につき要手動上書き:
-        </span>
-        <div id="dirty-files-container" class="flex flex-wrap gap-1 font-mono">
-          <span class="bg-indigo-900 text-indigo-300 px-2 py-0.5 rounded text-[11px] border border-indigo-700">変更なし (すべて最新)</span>
-        </div>
-      </div>
-      
-      <div class="flex items-center space-x-2">
-        <button onclick="exportDirtyFiles()" id="btn-dl-dirty" disabled class="bg-gray-500 text-gray-300 font-bold px-3 py-1 rounded shadow cursor-not-allowed">
-          更新されたデータを保存
-        </button>
-        <button onclick="exportAllDataJson()" class="bg-indigo-700 hover:bg-indigo-600 text-indigo-100 font-medium px-2.5 py-1 rounded text-[11px] border border-indigo-500">
-          全データのダウンロード
-        </button>
-        <div id="data-load-status" class="text-[10px] bg-indigo-950 text-indigo-300 px-2 py-1 rounded border border-indigo-800 font-mono">
-          データ読み込み中...
-        </div>
-      </div>
+    
+    <!-- オートセーブ通知インジケーター -->
+    <div id="save-indicator" class="max-w-6xl mx-auto mt-1 text-right text-[11px] font-bold text-emerald-300 opacity-0 transition-opacity duration-300 h-4">
+      <!-- ここに保存完了メッセージが出ます -->
     </div>
   </header>
 
@@ -69,7 +75,7 @@
         </div>
       </div>
 
-      <!-- 【追加】解除（クリア）通知 -->
+      <!-- 解除通知 -->
       <div id="clear-alert" class="hidden bg-blue-50 border-l-4 border-blue-500 p-4 rounded-xl shadow-md">
         <div class="flex items-start justify-between">
           <div>
@@ -88,12 +94,12 @@
         <button onclick="changeMonthMember(1)" class="px-3 py-1 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">翌月 ▶</button>
       </div>
 
-      <!-- 仮アサイン中メッセージエリア（未公開の月用） -->
+      <!-- 仮アサイン中メッセージエリア -->
       <div id="member-provisional-msg" class="hidden bg-white p-10 rounded-xl shadow-sm text-center text-sm font-bold text-gray-400">
         この月のアサインは現在事務局が調整中です。<br>（公開をお待ちください）
       </div>
 
-      <!-- カレンダーグリッド本体（公開月用） -->
+      <!-- カレンダーグリッド本体 -->
       <div id="member-calendar-container">
         <div class="bg-white p-3 rounded-xl shadow-sm">
           <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-gray-400 mb-2">
@@ -110,7 +116,7 @@
     </section>
 
     <!-- ================= 2. 事務局アプリ ================= -->
-    <section id="app-admin" class="space-y-4">
+    <section id="app-admin" class="space-y-4 hidden">
       <div class="bg-white p-2 rounded-xl shadow-sm flex space-x-2 text-xs font-bold border">
         <button onclick="switchAdminSubTab('basic')" id="subtab-admin-basic" class="w-1/2 py-2 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200">基本日程 設定</button>
         <button onclick="switchAdminSubTab('adjust')" id="subtab-admin-adjust" class="w-1/2 py-2 rounded-lg bg-gray-100 text-gray-600">アロケーション調整</button>
@@ -122,7 +128,6 @@
           <h2 class="font-bold text-base text-gray-800">曜日・役割別 基本アロケーション日程</h2>
           <p class="text-xs text-gray-500">各曜日・役割のデフォルト割り当てメンバーを設定します。</p>
         </div>
-
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-left border-collapse">
             <thead>
@@ -175,7 +180,7 @@
             </div>
           </div>
 
-          <!-- 【追加】仮アサインの確定・公開バナー -->
+          <!-- 仮アサインの確定・公開バナー -->
           <div id="publish-banner" class="hidden bg-amber-50 border border-amber-300 p-3 rounded-lg flex items-center justify-between mt-2">
             <div>
               <p class="text-xs font-bold text-amber-900">この月は「仮アサイン中」です（メンバーには非公開）</p>
@@ -219,14 +224,14 @@
   <!-- 事務局 モーダル (汎用) -->
   <div id="modal-action" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-xl max-w-sm w-full p-4 space-y-4 shadow-xl">
-      <h3 id="modal-action-title" class="font-bold text-sm text-gray-800">アロケーションの操作</h3>
-      <p id="modal-action-desc" class="text-xs text-gray-600"></p>
+      <h3 id="modal-action-title" class="font-bold text-sm text-gray-800"></h3>
+      <p id="modal-action-desc" class="text-xs text-gray-600 whitespace-pre-line"></p>
       <div id="modal-action-buttons" class="space-y-2 pt-2"></div>
       <button onclick="closeActionModal()" class="w-full bg-gray-200 text-gray-700 font-bold py-2 rounded-lg text-xs mt-2">閉じる</button>
     </div>
   </div>
 
-  <!-- 事務局用: 未承認CR一覧 ポップアップ -->
+  <!-- 未承認CR一覧 ポップアップ -->
   <div id="modal-cr-list" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-xl max-w-md w-full p-5 space-y-4 shadow-xl">
       <div class="border-b pb-2 flex justify-between items-center">
@@ -249,84 +254,139 @@
     let selectedMemberId = "m1";
     let activeModalContext = null;
 
-    let dirtyFiles = new Set();
+    // ----- [重要] File System Access API 用の変数 -----
+    let directoryHandle = null;
 
-    let roles = [
-      { id: "r1", name: "赤坂TOSBEC" },
-      { id: "r2", name: "渋谷TOSBEC" },
-      { id: "r3", name: "有楽町TOSBEC" },
-      { id: "r4", name: "赤坂BDCT" },
-      { id: "r5", name: "丸の内BDCT" },
-      { id: "r6", name: "有楽町BDCT" },
-      { id: "r7", name: "BDCTその他" }
-    ];
-
+    // データ格納用
+    let roles = [];
     let members = [];
     let basicSchedule = {};
     let memberAvailability = {};
     let assignments = {};
     let proposals = [];
-    
-    // 公開済みの月を管理する設定（初期状態では10月のみ公開済みとする）
     let settings = { publishedMonths: ["2026-10"] };
 
-    // --- ファイルの保存・UI更新機能 ---
-    function markDirty(filename) {
-      dirtyFiles.add(filename);
-      updateDirtyFilesUI();
-    }
-
-    function updateDirtyFilesUI() {
-      const container = document.getElementById('dirty-files-container');
-      const btn = document.getElementById('btn-dl-dirty');
-
-      if (dirtyFiles.size === 0) {
-        container.innerHTML = `<span class="bg-indigo-900 text-indigo-300 px-2 py-0.5 rounded text-[11px] border border-indigo-700">変更なし (すべて最新)</span>`;
-        btn.disabled = true;
-        btn.className = "bg-gray-500 text-gray-300 font-bold px-3 py-1 rounded shadow cursor-not-allowed";
-      } else {
-        container.innerHTML = Array.from(dirtyFiles).map(f => 
-          `<span class="bg-amber-400 text-amber-950 font-bold px-2 py-0.5 rounded text-[11px] animate-pulse shadow">data/${f}</span>`
-        ).join('');
-        btn.disabled = false;
-        btn.className = "bg-amber-500 hover:bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded shadow cursor-pointer";
-      }
-    }
-
-    function downloadFile(filename, contentObj) {
-      const jsonStr = JSON.stringify(contentObj, null, 2);
-      const blob = new Blob([jsonStr], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    async function exportDirtyFiles() {
-      if (dirtyFiles.size === 0) return;
-      const files = Array.from(dirtyFiles);
-      
-      for (const f of files) {
-        if (f === 'basic_schedule.json') downloadFile(f, basicSchedule);
-        if (f === 'assignments.json') downloadFile(f, assignments);
-        if (f === 'proposals.json') downloadFile(f, proposals);
-        if (f === 'members.json') downloadFile(f, members);
-        if (f === 'roles.json') downloadFile(f, roles);
-        if (f === 'member_availability.json') downloadFile(f, memberAvailability);
-        if (f === 'settings.json') downloadFile(f, settings);
+    // --- ローカルフォルダ接続と初期化 ---
+    async function connectLocalFolder() {
+      try {
+        if (!window.showDirectoryPicker) {
+          alert("お使いのブラウザはローカルフォルダの同期機能に対応していません。\nPC版の Chrome または Edge をご使用ください。");
+          return;
+        }
+        // ユーザーにフォルダを選ばせる
+        directoryHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
         
-        await new Promise(r => setTimeout(r, 300));
-      }
+        document.getElementById('modal-folder-setup').classList.add('hidden');
+        
+        // ヘッダーの同期ステータス更新
+        const badge = document.getElementById('sync-status-badge');
+        badge.className = "ml-3 text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full flex items-center";
+        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-300 mr-1 animate-pulse"></span> フォルダ同期中 (自動保存)`;
 
-      dirtyFiles.clear();
-      updateDirtyFilesUI();
+        await loadOrInitFolderFiles();
+
+      } catch (err) {
+        console.error(err);
+        alert('フォルダの選択がキャンセルされたか、権限がありませんでした。');
+      }
     }
 
-    function exportAllDataJson() {
-      const allData = { roles, members, basicSchedule, memberAvailability, assignments, proposals, settings };
-      downloadFile("all_allocation_data.json", allData);
+    async function loadOrInitFolderFiles() {
+      const filesToSync = ['roles.json', 'members.json', 'basic_schedule.json', 'assignments.json', 'proposals.json', 'member_availability.json', 'settings.json'];
+      
+      for (const filename of filesToSync) {
+        let data = await readLocalFile(filename);
+        
+        // フォルダにファイルが無い場合はサーバーから取得（または空データで初期化）して保存
+        if (!data) {
+          try {
+            const res = await fetch('./data/' + filename + '?t=' + Date.now());
+            if (res.ok) {
+              data = await res.json();
+            } else {
+              data = getDefaultEmptyData(filename);
+            }
+          } catch(e) {
+            data = getDefaultEmptyData(filename);
+          }
+          await writeLocalFile(filename, data);
+        }
+
+        // 変数にセット
+        if(filename === 'roles.json') roles = data;
+        if(filename === 'members.json') members = data;
+        if(filename === 'basic_schedule.json') basicSchedule = data;
+        if(filename === 'assignments.json') assignments = data;
+        if(filename === 'proposals.json') proposals = data;
+        if(filename === 'member_availability.json') memberAvailability = data;
+        if(filename === 'settings.json') settings = data;
+      }
+
+      // UIの初期描画
+      document.getElementById('app-admin').classList.remove('hidden');
+      switchTab('admin');
+      switchAdminSubTab('adjust');
+    }
+
+    function getDefaultEmptyData(filename) {
+      if (filename === 'roles.json') return [
+        { id: "r1", name: "赤坂TOSBEC" }, { id: "r2", name: "渋谷TOSBEC" }, { id: "r3", name: "有楽町TOSBEC" },
+        { id: "r4", name: "赤坂BDCT" }, { id: "r5", name: "丸の内BDCT" }, { id: "r6", name: "有楽町BDCT" }, { id: "r7", name: "BDCTその他" }
+      ];
+      if (filename === 'members.json') return [];
+      if (filename === 'basic_schedule.json') return {};
+      if (filename === 'assignments.json') return {};
+      if (filename === 'proposals.json') return [];
+      if (filename === 'member_availability.json') return {};
+      if (filename === 'settings.json') return { publishedMonths: ["2026-10"] };
+      return {};
+    }
+
+    // --- ファイルの読み書き用ヘルパー ---
+    async function readLocalFile(filename) {
+      if (!directoryHandle) return null;
+      try {
+        const fileHandle = await directoryHandle.getFileHandle(filename);
+        const file = await fileHandle.getFile();
+        const text = await file.text();
+        return JSON.parse(text);
+      } catch (e) {
+        // ファイルが存在しない場合は null
+        return null;
+      }
+    }
+
+    async function writeLocalFile(filename, contentObj) {
+      if (!directoryHandle) return;
+      try {
+        const fileHandle = await directoryHandle.getFileHandle(filename, { create: true });
+        const writable = await fileHandle.createWritable();
+        await writable.write(JSON.stringify(contentObj, null, 2));
+        await writable.close();
+
+        // 成功したら画面右上に小さく通知を出す
+        const el = document.getElementById('save-indicator');
+        el.innerText = `✓ ${filename} を上書き保存しました`;
+        el.classList.remove('opacity-0');
+        setTimeout(() => el.classList.add('opacity-0'), 2000);
+      } catch (e) {
+        console.error(filename + " の書き込みエラー", e);
+        alert(`ファイル ${filename} の保存に失敗しました。アクセス権限を確認してください。`);
+      }
+    }
+
+    // データが変更されたら「即座にローカルへ保存」する
+    function markDirty(filename) {
+      let data = null;
+      if(filename === 'roles.json') data = roles;
+      if(filename === 'members.json') data = members;
+      if(filename === 'basic_schedule.json') data = basicSchedule;
+      if(filename === 'assignments.json') data = assignments;
+      if(filename === 'proposals.json') data = proposals;
+      if(filename === 'member_availability.json') data = memberAvailability;
+      if(filename === 'settings.json') data = settings;
+      
+      if(data) writeLocalFile(filename, data);
     }
 
     function getRoleName(roleId) {
@@ -334,41 +394,7 @@
       return r ? r.name : roleId;
     }
 
-    // --- JSONの初回ロード ---
-    async function initialLoadAllJsonFiles() {
-      const statusEl = document.getElementById('data-load-status');
-      const cacheBuster = `?t=${new Date().getTime()}`;
-
-      try {
-        const [resRoles, resMembers, resBasic, resAssign, resProp, resAvail, resSet] = await Promise.all([
-          fetch(`./data/roles.json${cacheBuster}`).catch(()=>null),
-          fetch(`./data/members.json${cacheBuster}`).catch(()=>null),
-          fetch(`./data/basic_schedule.json${cacheBuster}`).catch(()=>null),
-          fetch(`./data/assignments.json${cacheBuster}`).catch(()=>null),
-          fetch(`./data/proposals.json${cacheBuster}`).catch(()=>null),
-          fetch(`./data/member_availability.json${cacheBuster}`).catch(()=>null),
-          fetch(`./data/settings.json${cacheBuster}`).catch(()=>null)
-        ]);
-
-        if (resRoles && resRoles.ok) roles = await resRoles.json();
-        if (resMembers && resMembers.ok) members = await resMembers.json();
-        if (resBasic && resBasic.ok) basicSchedule = await resBasic.json();
-        if (resAssign && resAssign.ok) assignments = await resAssign.json();
-        if (resProp && resProp.ok) proposals = await resProp.json();
-        if (resAvail && resAvail.ok) memberAvailability = await resAvail.json();
-        if (resSet && resSet.ok) settings = await resSet.json();
-
-        statusEl.innerText = "初回データロード完了";
-        statusEl.className = "text-[10px] bg-emerald-900 text-emerald-200 px-2 py-1 rounded border border-emerald-700 font-mono";
-      } catch (err) {
-        statusEl.innerText = "サンプルモード起動";
-        statusEl.className = "text-[10px] bg-amber-900 text-amber-200 px-2 py-1 rounded border border-amber-700 font-mono";
-      }
-
-      renderAdminBasicSchedule();
-      renderAdminCalendar();
-    }
-
+    // --- アプリ切り替え ---
     function switchTab(app) {
       document.getElementById('app-member').classList.add('hidden');
       document.getElementById('app-admin').classList.add('hidden');
@@ -516,7 +542,6 @@
       renderAdminCalendar();
     }
 
-    // 【追加】仮アサインの確定・公開
     function publishMonth() {
       const monthKey = `2026-${String(adminMonth).padStart(2, '0')}`;
       if (!settings.publishedMonths) settings.publishedMonths = [];
@@ -558,7 +583,7 @@
         badge.className = "text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-100 text-blue-800";
         badge.innerText = "当月（個別調整）";
         banner.classList.add('hidden');
-        publishBanner.classList.add('hidden'); // 当月は常に公開扱い
+        publishBanner.classList.add('hidden'); 
       } else {
         badge.className = "text-xs px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800";
         badge.innerText = "翌月（再アロケーション可）";
@@ -623,7 +648,6 @@
                   <span class="truncate max-w-[55px]">${propMember ? propMember.name : ''}(打診中)</span>
                 </div>`;
             } else if (memberObj) {
-              // 【追加】確定済みの枠をクリックして個別解除可能にする
               rolesHtml += `
                 <div onclick="openAdminClearModal('${dateStr}', '${r.id}', '${memberObj.id}')"
                      class="flex justify-between items-center bg-indigo-50 text-indigo-900 p-1 rounded border border-indigo-100 cursor-pointer hover:bg-indigo-100 transition-colors">
@@ -667,7 +691,6 @@
       }
     }
 
-    // 【追加】個別アサイン解除用モーダル
     function openAdminClearModal(dateStr, roleId, memberId) {
       const roleName = getRoleName(roleId);
       const memberObj = members.find(m => m.id === memberId);
@@ -705,7 +728,6 @@
       const monthKey = dateStr.substring(0, 7);
       const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
 
-      // 既に公開済みの月の場合のみ、メンバーに解除通知（CLEAR_NOTICE）を送る
       if (isPublished) {
         proposals.push({
           id: "clear-" + Date.now(),
@@ -884,7 +906,6 @@
       const provMsg = document.getElementById('member-provisional-msg');
       const calContainer = document.getElementById('member-calendar-container');
 
-      // 【追加】公開されていない月の場合、カレンダーを隠してメッセージ表示
       if (!isPublished) {
         provMsg.classList.remove('hidden');
         calContainer.classList.add('hidden');
@@ -906,7 +927,7 @@
         alertBox.classList.add('hidden');
       }
 
-      // 【追加】解除（クリア）通知の確認
+      // 解除（クリア）通知の確認
       const clearNotice = proposals.find(p => p.memberId === selectedMemberId && p.type === "CLEAR_NOTICE" && p.status === "unread");
       const clearAlertBox = document.getElementById('clear-alert');
       if (clearNotice) {
@@ -1013,7 +1034,6 @@
       renderMemberCalendar();
     }
 
-    // 【追加】解除通知の「承諾」ボタン処理
     function acknowledgeClear() {
       const clearNotice = proposals.find(p => p.memberId === selectedMemberId && p.type === "CLEAR_NOTICE" && p.status === "unread");
       if (clearNotice) {
@@ -1147,13 +1167,6 @@
         renderSettingApp();
       }
     }
-
-    // --- アプリの初期化 ---
-    initialLoadAllJsonFiles().then(() => {
-      switchTab('admin');
-      switchAdminSubTab('adjust');
-    });
-
   </script>
 </body>
 </html>
