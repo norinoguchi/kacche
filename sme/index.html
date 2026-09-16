@@ -20,22 +20,28 @@
       </div>
     </div>
 
-    <!-- JSON データ入出力エリア -->
-    <div class="bg-indigo-800 p-2 rounded-lg max-w-6xl mx-auto flex flex-wrap items-center justify-between text-xs gap-2 mt-2">
-      <div class="flex items-center space-x-1">
-        <span class="font-bold text-indigo-200">データ保存:</span>
-        <select id="export-target-select" class="bg-indigo-900 text-white rounded p-1 border border-indigo-700">
-          <option value="roles">roles.json (役割定義)</option>
-          <option value="members">members.json (SMEメンバー)</option>
-          <option value="basic_schedule">basic_schedule.json (基本日程)</option>
-          <option value="assignments">assignments.json (確定枠)</option>
-          <option value="proposals">proposals.json (打診/CR状態)</option>
-          <option value="all">all_data.json (全データ一括)</option>
-        </select>
-        <button onclick="exportJsonData()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-2.5 py-1 rounded shadow ml-1">DL保存</button>
+    <!-- 要上書きファイル通知 ＆ データDL保存バー -->
+    <div class="bg-indigo-800 p-2.5 rounded-lg max-w-6xl mx-auto flex flex-wrap items-center justify-between text-xs gap-2 mt-2 border border-indigo-700 shadow-inner">
+      <div class="flex items-center space-x-2">
+        <span class="font-bold text-indigo-200 flex items-center">
+          <svg class="w-4 h-4 mr-1 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          テスト版につき要手動上書き:
+        </span>
+        <div id="dirty-files-container" class="flex flex-wrap gap-1 font-mono">
+          <span class="bg-indigo-900 text-indigo-300 px-2 py-0.5 rounded text-[11px] border border-indigo-700">変更なし (すべて最新)</span>
+        </div>
       </div>
-      <div id="data-load-status" class="text-[10px] bg-indigo-900 text-indigo-200 px-2 py-1 rounded border border-indigo-700 font-mono">
-        データ読み込み中...
+      
+      <div class="flex items-center space-x-2">
+        <button onclick="exportDirtyFiles()" id="btn-dl-dirty" disabled class="bg-gray-500 text-gray-300 font-bold px-3 py-1 rounded shadow cursor-not-allowed">
+          更新されたデータを保存
+        </button>
+        <button onclick="exportAllDataJson()" class="bg-indigo-700 hover:bg-indigo-600 text-indigo-100 font-medium px-2.5 py-1 rounded text-[11px] border border-indigo-500">
+          全データのダウンロード
+        </button>
+        <div id="data-load-status" class="text-[10px] bg-indigo-950 text-indigo-300 px-2 py-1 rounded border border-indigo-800 font-mono">
+          データ読み込み中...
+        </div>
       </div>
     </div>
   </header>
@@ -49,7 +55,7 @@
         <select id="member-selector" onchange="onSelectMember(this.value)" class="w-full bg-white border border-indigo-300 rounded p-1.5 text-xs font-bold text-indigo-800 shadow-sm"></select>
       </div>
 
-      <!-- 打診通知アラートバッジ -->
+      <!-- 打診通知 -->
       <div id="proposal-alert" class="hidden bg-amber-50 border-l-4 border-amber-500 p-4 rounded-xl shadow-md">
         <div class="flex items-start justify-between">
           <div>
@@ -63,22 +69,43 @@
         </div>
       </div>
 
+      <!-- 【追加】解除（クリア）通知 -->
+      <div id="clear-alert" class="hidden bg-blue-50 border-l-4 border-blue-500 p-4 rounded-xl shadow-md">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="text-xs font-bold text-blue-900">【お知らせ】アサインが解除されました</p>
+            <p id="clear-text" class="text-xs text-blue-800 font-bold mt-1"></p>
+          </div>
+          <div class="flex space-x-1.5 ml-2">
+            <button onclick="acknowledgeClear()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-xs font-bold shadow whitespace-nowrap">承諾</button>
+          </div>
+        </div>
+      </div>
+
       <div class="bg-white p-3 rounded-xl shadow-sm flex items-center justify-between">
         <button onclick="changeMonthMember(-1)" class="px-3 py-1 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">◀ 前月</button>
         <h2 id="calendar-month-title-member" class="font-bold text-base text-gray-800">2026年10月</h2>
         <button onclick="changeMonthMember(1)" class="px-3 py-1 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">翌月 ▶</button>
       </div>
 
-      <div class="bg-white p-3 rounded-xl shadow-sm">
-        <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-gray-400 mb-2">
-          <span class="text-rose-500">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="text-blue-500">土</span>
-        </div>
-        <div id="calendar-grid-member" class="grid grid-cols-7 gap-1"></div>
+      <!-- 仮アサイン中メッセージエリア（未公開の月用） -->
+      <div id="member-provisional-msg" class="hidden bg-white p-10 rounded-xl shadow-sm text-center text-sm font-bold text-gray-400">
+        この月のアサインは現在事務局が調整中です。<br>（公開をお待ちください）
       </div>
 
-      <div class="bg-white p-4 rounded-xl shadow-sm space-y-3">
-        <h3 class="font-bold text-xs text-gray-500 uppercase tracking-wider">稼働日一覧・アロケーション変更申請 (CR)</h3>
-        <div id="day-list-member" class="space-y-2 text-xs"></div>
+      <!-- カレンダーグリッド本体（公開月用） -->
+      <div id="member-calendar-container">
+        <div class="bg-white p-3 rounded-xl shadow-sm">
+          <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-gray-400 mb-2">
+            <span class="text-rose-500">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="text-blue-500">土</span>
+          </div>
+          <div id="calendar-grid-member" class="grid grid-cols-7 gap-1"></div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-sm space-y-3 mt-4">
+          <h3 class="font-bold text-xs text-gray-500 uppercase tracking-wider">稼働日一覧・アロケーション変更申請 (CR)</h3>
+          <div id="day-list-member" class="space-y-2 text-xs"></div>
+        </div>
       </div>
     </section>
 
@@ -115,8 +142,6 @@
 
       <!-- 調整 カレンダー -->
       <div id="admin-sub-adjust" class="hidden space-y-4">
-        
-        <!-- 【追加】事務局向け CR承認通知バッジ（明示的な通知領域） -->
         <div id="admin-cr-alert" class="hidden bg-rose-50 border-l-4 border-rose-500 p-4 rounded-xl shadow-md">
           <div class="flex items-center justify-between">
             <div class="flex items-center space-x-2">
@@ -141,10 +166,22 @@
 
           <div id="reallocate-banner" class="hidden bg-indigo-50 border border-indigo-200 p-3 rounded-lg flex items-center justify-between">
             <div>
-              <p class="text-xs font-bold text-indigo-900">翌月の初期自動割り当て</p>
-              <p class="text-[10px] text-indigo-700">「基本日程」と「各メンバーのOK/NG回答」を参照して初期アロケーションを実行します。</p>
+              <p class="text-xs font-bold text-indigo-900">翌月のアロケーション操作</p>
+              <p class="text-[10px] text-indigo-700">「基本日程」と「各メンバーのOK/NG回答」を参照した展開、または全アサインの初期化を行います。</p>
             </div>
-            <button onclick="runAutoAllocationNextMonth()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2 rounded text-xs shadow whitespace-nowrap">一括初期アロケーション実行</button>
+            <div class="flex space-x-2">
+              <button onclick="runAutoAllocationNextMonth()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1.5 rounded text-xs shadow whitespace-nowrap">一括初期アロケーション実行</button>
+              <button onclick="clearNextMonthAllocations()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-3 py-1.5 rounded text-xs shadow whitespace-nowrap">翌月アサインを一括クリア</button>
+            </div>
+          </div>
+
+          <!-- 【追加】仮アサインの確定・公開バナー -->
+          <div id="publish-banner" class="hidden bg-amber-50 border border-amber-300 p-3 rounded-lg flex items-center justify-between mt-2">
+            <div>
+              <p class="text-xs font-bold text-amber-900">この月は「仮アサイン中」です（メンバーには非公開）</p>
+              <p class="text-[10px] text-amber-700">調整が完了したら確定ボタンを押してメンバーのカレンダーに公開してください。</p>
+            </div>
+            <button onclick="publishMonth()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-3 py-1.5 rounded text-xs shadow whitespace-nowrap">アサインを確定して公開する</button>
           </div>
         </div>
 
@@ -179,7 +216,7 @@
 
   </main>
 
-  <!-- 事務局 モーダル: 打診送信・CR個別承認 -->
+  <!-- 事務局 モーダル (汎用) -->
   <div id="modal-action" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-xl max-w-sm w-full p-4 space-y-4 shadow-xl">
       <h3 id="modal-action-title" class="font-bold text-sm text-gray-800">アロケーションの操作</h3>
@@ -189,18 +226,15 @@
     </div>
   </div>
 
-  <!-- 【追加】事務局用: 未承認CR一覧 ポップアップダイアログ -->
+  <!-- 事務局用: 未承認CR一覧 ポップアップ -->
   <div id="modal-cr-list" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-xl max-w-md w-full p-5 space-y-4 shadow-xl">
       <div class="border-b pb-2 flex justify-between items-center">
         <h3 class="font-bold text-sm text-rose-700">未承認キャンセルリクエスト（CR）一覧</h3>
         <button onclick="closeCRListModal()" class="text-gray-400 hover:text-gray-600 font-bold text-xs">✕ 閉じる</button>
       </div>
-      
       <p class="text-xs text-gray-600">メンバーから提出された辞退申請の一覧です。「承認」を押すとアサインが解除され、枠が「未」に戻ります。</p>
-      
       <div id="cr-items-container" class="space-y-2 max-h-60 overflow-y-auto text-xs"></div>
-
       <div class="pt-2">
         <button onclick="closeCRListModal()" class="w-full bg-gray-200 text-gray-700 font-bold py-2 rounded-lg text-xs">閉じる</button>
       </div>
@@ -215,6 +249,8 @@
     let selectedMemberId = "m1";
     let activeModalContext = null;
 
+    let dirtyFiles = new Set();
+
     let roles = [
       { id: "r1", name: "赤坂TOSBEC" },
       { id: "r2", name: "渋谷TOSBEC" },
@@ -225,85 +261,40 @@
       { id: "r7", name: "BDCTその他" }
     ];
 
-    let members = [
-      { id: "m1", name: "半田 泰代", availableRoles: ["r1", "r2", "r3", "r4", "r5", "r6", "r7"], availableDays: ["月", "火", "水", "木", "金"] },
-      { id: "m2", name: "鶴崎 実穂子", availableRoles: ["r1", "r2", "r3"], availableDays: ["月", "火", "水", "木", "金"] },
-      { id: "m4", name: "野口 紀彦", availableRoles: ["r1", "r2", "r3", "r4", "r5", "r6", "r7"], availableDays: ["月", "火", "水", "木", "金"] }
-    ];
+    let members = [];
+    let basicSchedule = {};
+    let memberAvailability = {};
+    let assignments = {};
+    let proposals = [];
+    
+    // 公開済みの月を管理する設定（初期状態では10月のみ公開済みとする）
+    let settings = { publishedMonths: ["2026-10"] };
 
-    let basicSchedule = {
-      "月": { "r3": "m2" },
-      "火": { "r1": "m4" },
-      "水": { "r2": "m1" }
-    };
-
-    let memberAvailability = {
-      "2026-11-17": { "m4": false }
-    };
-
-    let assignments = {
-      "2026-10-06": { "r1": "m4" },
-      "2026-10-08": { "r2": "m1" },
-      "2026-10-13": { "r1": "m1" }
-    };
-
-    let proposals = [
-      { id: "p1", date: "2026-10-13", roleId: "r1", memberId: "m1", type: "CR", status: "pending" },
-      { id: "p2", date: "2026-10-15", roleId: "r2", memberId: "m4", type: "PROPOSAL", status: "pending" }
-    ];
-
-    function getRoleName(roleId) {
-      const r = roles.find(item => item.id === roleId);
-      return r ? r.name : roleId;
+    // --- ファイルの保存・UI更新機能 ---
+    function markDirty(filename) {
+      dirtyFiles.add(filename);
+      updateDirtyFilesUI();
     }
 
-    // 全データ自動リロード処理（キャッシュ対策パラメータ付き）
-    async function autoLoadAllJsonFiles() {
-      const statusEl = document.getElementById('data-load-status');
-      const cacheBuster = `?t=${new Date().getTime()}`;
+    function updateDirtyFilesUI() {
+      const container = document.getElementById('dirty-files-container');
+      const btn = document.getElementById('btn-dl-dirty');
 
-      try {
-        const [resRoles, resMembers, resBasic, resAssign, resProp] = await Promise.all([
-          fetch(`./data/roles.json${cacheBuster}`),
-          fetch(`./data/members.json${cacheBuster}`),
-          fetch(`./data/basic_schedule.json${cacheBuster}`),
-          fetch(`./data/assignments.json${cacheBuster}`),
-          fetch(`./data/proposals.json${cacheBuster}`)
-        ]);
-
-        if (resRoles.ok) roles = await resRoles.json();
-        if (resMembers.ok) members = await resMembers.json();
-        if (resBasic.ok) basicSchedule = await resBasic.json();
-        if (resAssign.ok) assignments = await resAssign.json();
-        if (resProp.ok) proposals = await resProp.json();
-
-        statusEl.innerText = "自動リロード完了 (data/*.json)";
-        statusEl.className = "text-[10px] bg-emerald-900 text-emerald-200 px-2 py-1 rounded border border-emerald-700 font-mono";
-      } catch (err) {
-        statusEl.innerText = "サンプルモード (Webサーバー経由でデータ連携)";
-        statusEl.className = "text-[10px] bg-amber-900 text-amber-200 px-2 py-1 rounded border border-amber-700 font-mono";
+      if (dirtyFiles.size === 0) {
+        container.innerHTML = `<span class="bg-indigo-900 text-indigo-300 px-2 py-0.5 rounded text-[11px] border border-indigo-700">変更なし (すべて最新)</span>`;
+        btn.disabled = true;
+        btn.className = "bg-gray-500 text-gray-300 font-bold px-3 py-1 rounded shadow cursor-not-allowed";
+      } else {
+        container.innerHTML = Array.from(dirtyFiles).map(f => 
+          `<span class="bg-amber-400 text-amber-950 font-bold px-2 py-0.5 rounded text-[11px] animate-pulse shadow">data/${f}</span>`
+        ).join('');
+        btn.disabled = false;
+        btn.className = "bg-amber-500 hover:bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded shadow cursor-pointer";
       }
-
-      renderAdminBasicSchedule();
-      renderAdminCalendar();
     }
 
-    function exportJsonData() {
-      const target = document.getElementById('export-target-select').value;
-      let exportObj = null;
-      let filename = `${target}.json`;
-
-      if (target === 'roles') exportObj = roles;
-      else if (target === 'members') exportObj = members;
-      else if (target === 'basic_schedule') exportObj = basicSchedule;
-      else if (target === 'assignments') exportObj = assignments;
-      else if (target === 'proposals') exportObj = proposals;
-      else if (target === 'all') {
-        exportObj = { roles, members, basicSchedule, memberAvailability, assignments, proposals };
-        filename = "all_allocation_data.json";
-      }
-
-      const jsonStr = JSON.stringify(exportObj, null, 2);
+    function downloadFile(filename, contentObj) {
+      const jsonStr = JSON.stringify(contentObj, null, 2);
       const blob = new Blob([jsonStr], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -313,8 +304,72 @@
       URL.revokeObjectURL(url);
     }
 
-    // タブ切り替え時に「autoLoadAllJsonFiles()」を強制実行し、必ずリロードする
-    async function switchTab(app) {
+    async function exportDirtyFiles() {
+      if (dirtyFiles.size === 0) return;
+      const files = Array.from(dirtyFiles);
+      
+      for (const f of files) {
+        if (f === 'basic_schedule.json') downloadFile(f, basicSchedule);
+        if (f === 'assignments.json') downloadFile(f, assignments);
+        if (f === 'proposals.json') downloadFile(f, proposals);
+        if (f === 'members.json') downloadFile(f, members);
+        if (f === 'roles.json') downloadFile(f, roles);
+        if (f === 'member_availability.json') downloadFile(f, memberAvailability);
+        if (f === 'settings.json') downloadFile(f, settings);
+        
+        await new Promise(r => setTimeout(r, 300));
+      }
+
+      dirtyFiles.clear();
+      updateDirtyFilesUI();
+    }
+
+    function exportAllDataJson() {
+      const allData = { roles, members, basicSchedule, memberAvailability, assignments, proposals, settings };
+      downloadFile("all_allocation_data.json", allData);
+    }
+
+    function getRoleName(roleId) {
+      const r = roles.find(item => item.id === roleId);
+      return r ? r.name : roleId;
+    }
+
+    // --- JSONの初回ロード ---
+    async function initialLoadAllJsonFiles() {
+      const statusEl = document.getElementById('data-load-status');
+      const cacheBuster = `?t=${new Date().getTime()}`;
+
+      try {
+        const [resRoles, resMembers, resBasic, resAssign, resProp, resAvail, resSet] = await Promise.all([
+          fetch(`./data/roles.json${cacheBuster}`).catch(()=>null),
+          fetch(`./data/members.json${cacheBuster}`).catch(()=>null),
+          fetch(`./data/basic_schedule.json${cacheBuster}`).catch(()=>null),
+          fetch(`./data/assignments.json${cacheBuster}`).catch(()=>null),
+          fetch(`./data/proposals.json${cacheBuster}`).catch(()=>null),
+          fetch(`./data/member_availability.json${cacheBuster}`).catch(()=>null),
+          fetch(`./data/settings.json${cacheBuster}`).catch(()=>null)
+        ]);
+
+        if (resRoles && resRoles.ok) roles = await resRoles.json();
+        if (resMembers && resMembers.ok) members = await resMembers.json();
+        if (resBasic && resBasic.ok) basicSchedule = await resBasic.json();
+        if (resAssign && resAssign.ok) assignments = await resAssign.json();
+        if (resProp && resProp.ok) proposals = await resProp.json();
+        if (resAvail && resAvail.ok) memberAvailability = await resAvail.json();
+        if (resSet && resSet.ok) settings = await resSet.json();
+
+        statusEl.innerText = "初回データロード完了";
+        statusEl.className = "text-[10px] bg-emerald-900 text-emerald-200 px-2 py-1 rounded border border-emerald-700 font-mono";
+      } catch (err) {
+        statusEl.innerText = "サンプルモード起動";
+        statusEl.className = "text-[10px] bg-amber-900 text-amber-200 px-2 py-1 rounded border border-amber-700 font-mono";
+      }
+
+      renderAdminBasicSchedule();
+      renderAdminCalendar();
+    }
+
+    function switchTab(app) {
       document.getElementById('app-member').classList.add('hidden');
       document.getElementById('app-admin').classList.add('hidden');
       document.getElementById('app-setting').classList.add('hidden');
@@ -326,14 +381,23 @@
       document.getElementById('app-' + app).classList.remove('hidden');
       document.getElementById('tab-' + app).className = "px-3 py-1.5 rounded-full bg-white text-indigo-600 font-bold shadow";
 
-      // 画面切り替え時に必ず最新データを非同期リロード
-      await autoLoadAllJsonFiles();
-
-      if(app === 'member') updateMemberSelectorOptions();
-      if(app === 'setting') renderSettingApp();
+      if(app === 'member') {
+        updateMemberSelectorOptions();
+        renderMemberCalendar();
+      }
+      if(app === 'admin') {
+        if (!document.getElementById('admin-sub-adjust').classList.contains('hidden')) {
+          renderAdminCalendar();
+        } else {
+          renderAdminBasicSchedule();
+        }
+      }
+      if(app === 'setting') {
+        renderSettingApp();
+      }
     }
 
-    async function switchAdminSubTab(sub) {
+    function switchAdminSubTab(sub) {
       document.getElementById('admin-sub-basic').classList.add('hidden');
       document.getElementById('admin-sub-adjust').classList.add('hidden');
       
@@ -343,8 +407,8 @@
       document.getElementById('admin-sub-' + sub).classList.remove('hidden');
       document.getElementById('subtab-admin-' + sub).className = "w-1/2 py-2 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200 font-bold";
 
-      // サブタブ切替時もリロード実行
-      await autoLoadAllJsonFiles();
+      if (sub === 'basic') renderAdminBasicSchedule();
+      if (sub === 'adjust') renderAdminCalendar();
     }
 
     // --- 事務局: 基本日程画面 ---
@@ -382,6 +446,7 @@
     function updateBasicSchedule(wDay, roleId, memberId) {
       if (!basicSchedule[wDay]) basicSchedule[wDay] = {};
       basicSchedule[wDay][roleId] = memberId || null;
+      markDirty('basic_schedule.json');
     }
 
     // --- 事務局: 調整 画面 ---
@@ -408,7 +473,7 @@
     function runAutoAllocationNextMonth() {
       if (!confirm("「基本日程」と各メンバーの「OK/NG回答」を参照して、11月全体を自動アロケーションしますか？")) return;
 
-      const daysInMonth = 30;
+      const daysInMonth = 30; // 11月
       for (let day = 1; day <= daysInMonth; day++) {
         const dateStr = `2026-11-${String(day).padStart(2, '0')}`;
         const dayOfWeek = (day - 1) % 7; 
@@ -428,16 +493,52 @@
         });
       }
 
+      markDirty('assignments.json');
       alert("11月の初期アロケーションが完了しました！");
       renderAdminCalendar();
+    }
+
+    function clearNextMonthAllocations() {
+      const confirmMsg = "本当に翌月（11月）のアサインデータをすべてクリアして「未アサイン」状態に戻しますか？\n（※この操作は取り消せません）";
+      if (!confirm(confirmMsg)) return;
+
+      Object.keys(assignments).forEach(dateStr => {
+        if (dateStr.startsWith("2026-11-")) {
+          delete assignments[dateStr];
+        }
+      });
+
+      proposals = proposals.filter(p => !p.date.startsWith("2026-11-"));
+
+      markDirty('assignments.json');
+      markDirty('proposals.json');
+      alert("翌月（11月）のアサインをすべてクリアしました。");
+      renderAdminCalendar();
+    }
+
+    // 【追加】仮アサインの確定・公開
+    function publishMonth() {
+      const monthKey = `2026-${String(adminMonth).padStart(2, '0')}`;
+      if (!settings.publishedMonths) settings.publishedMonths = [];
+      
+      if (!settings.publishedMonths.includes(monthKey)) {
+        settings.publishedMonths.push(monthKey);
+        markDirty('settings.json');
+        alert(`${adminMonth}月のアサインを確定し、メンバーに公開しました。`);
+        renderAdminCalendar();
+      }
     }
 
     function renderAdminCalendar() {
       document.getElementById('calendar-month-title-admin').innerText = `2026年${adminMonth}月 アロケーション調整`;
       const badge = document.getElementById('month-status-badge');
       const banner = document.getElementById('reallocate-banner');
+      const publishBanner = document.getElementById('publish-banner');
 
-      // 事務局向け 未承認CR通知エリアの更新
+      const monthKey = `2026-${String(adminMonth).padStart(2, '0')}`;
+      const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
+
+      // CR通知
       const pendingCRs = proposals.filter(p => p.type === "CR" && p.status === "pending");
       const crAlertBox = document.getElementById('admin-cr-alert');
       if (pendingCRs.length > 0) {
@@ -447,18 +548,26 @@
         crAlertBox.classList.add('hidden');
       }
 
+      // バナー制御
       if (adminMonth < CURRENT_MONTH) {
         badge.className = "text-xs px-2.5 py-0.5 rounded-full font-bold bg-gray-200 text-gray-700";
         badge.innerText = "前月（変更不可）";
         banner.classList.add('hidden');
+        publishBanner.classList.add('hidden');
       } else if (adminMonth === CURRENT_MONTH) {
         badge.className = "text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-100 text-blue-800";
         badge.innerText = "当月（個別調整）";
         banner.classList.add('hidden');
+        publishBanner.classList.add('hidden'); // 当月は常に公開扱い
       } else {
         badge.className = "text-xs px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800";
         badge.innerText = "翌月（再アロケーション可）";
         banner.classList.remove('hidden');
+        if (!isPublished) {
+          publishBanner.classList.remove('hidden');
+        } else {
+          publishBanner.classList.add('hidden');
+        }
       }
 
       const grid = document.getElementById('calendar-grid-admin');
@@ -514,10 +623,14 @@
                   <span class="truncate max-w-[55px]">${propMember ? propMember.name : ''}(打診中)</span>
                 </div>`;
             } else if (memberObj) {
+              // 【追加】確定済みの枠をクリックして個別解除可能にする
               rolesHtml += `
-                <div class="flex justify-between items-center bg-indigo-50 text-indigo-900 p-1 rounded border border-indigo-100">
+                <div onclick="openAdminClearModal('${dateStr}', '${r.id}', '${memberObj.id}')"
+                     class="flex justify-between items-center bg-indigo-50 text-indigo-900 p-1 rounded border border-indigo-100 cursor-pointer hover:bg-indigo-100 transition-colors">
                   <span class="text-[10px] text-indigo-500 truncate max-w-[60px]" title="${r.name}">${r.name}:</span>
-                  <span class="font-bold truncate max-w-[55px]">${memberObj.name}</span>
+                  <span class="font-bold truncate max-w-[55px] flex items-center justify-between w-full ml-1">
+                    ${memberObj.name} <span class="text-indigo-300 ml-1">✕</span>
+                  </span>
                 </div>`;
             } else {
               const eligibleMembers = members.filter(m => {
@@ -554,7 +667,63 @@
       }
     }
 
-    // 事務局: CR一覧 ポップアップダイアログ表示機能
+    // 【追加】個別アサイン解除用モーダル
+    function openAdminClearModal(dateStr, roleId, memberId) {
+      const roleName = getRoleName(roleId);
+      const memberObj = members.find(m => m.id === memberId);
+      activeModalContext = { dateStr, roleId, memberId, action: 'CLEAR_ASSIGNMENT' };
+
+      document.getElementById('modal-action-title').innerText = "アサインの個別解除";
+      
+      const monthKey = dateStr.substring(0, 7);
+      const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
+      
+      let descText = `${dateStr} の 「${roleName}」 から ${memberObj.name} さんのアサインを解除（クリア）しますか？`;
+      if (isPublished) {
+         descText += `\n\n※この月はすでに公開済みのため、解除を実行すると本人へ「アサイン解除通知」が送られます。`;
+      }
+
+      document.getElementById('modal-action-desc').innerText = descText;
+
+      const btnContainer = document.getElementById('modal-action-buttons');
+      btnContainer.innerHTML = `
+        <button onclick="executeClearAssignment()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-lg text-xs shadow">
+          解除を実行する
+        </button>
+      `;
+      document.getElementById('modal-action').classList.remove('hidden');
+    }
+
+    function executeClearAssignment() {
+      if (!activeModalContext) return;
+      const { dateStr, roleId, memberId } = activeModalContext;
+
+      if (assignments[dateStr]) {
+        assignments[dateStr][roleId] = null;
+      }
+
+      const monthKey = dateStr.substring(0, 7);
+      const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
+
+      // 既に公開済みの月の場合のみ、メンバーに解除通知（CLEAR_NOTICE）を送る
+      if (isPublished) {
+        proposals.push({
+          id: "clear-" + Date.now(),
+          date: dateStr,
+          roleId: roleId,
+          memberId: memberId,
+          type: "CLEAR_NOTICE",
+          status: "unread"
+        });
+        markDirty('proposals.json');
+      }
+
+      markDirty('assignments.json');
+      alert("アサインを解除しました。");
+      closeActionModal();
+      renderAdminCalendar();
+    }
+
     function openCRListModal() {
       const pendingCRs = proposals.filter(p => p.type === "CR" && p.status === "pending");
       const container = document.getElementById('cr-items-container');
@@ -598,6 +767,9 @@
       }
       p.status = "approved";
 
+      markDirty('assignments.json');
+      markDirty('proposals.json');
+
       alert("CRを承認しました。該当枠のアサインを解除（未）に更新しました。");
       openCRListModal();
       renderAdminCalendar();
@@ -636,6 +808,8 @@
         status: "pending"
       });
 
+      markDirty('proposals.json');
+
       alert("メンバーへ打診（プロポーザル）を送信しました。相手の承諾待ちになります。");
       closeActionModal();
       renderAdminCalendar();
@@ -666,6 +840,9 @@
       if (assignments[dateStr]) assignments[dateStr][roleId] = null;
       const p = proposals.find(item => item.date === dateStr && item.roleId === roleId && item.memberId === memberId && item.type === "CR");
       if (p) p.status = "approved";
+
+      markDirty('assignments.json');
+      markDirty('proposals.json');
 
       alert("CRを承認し、アサインを解除しました。枠が「未」になりました。");
       closeActionModal();
@@ -701,6 +878,25 @@
     function renderMemberCalendar() {
       document.getElementById('calendar-month-title-member').innerText = `2026年${memberMonth}月`;
 
+      const monthKey = `2026-${String(memberMonth).padStart(2, '0')}`;
+      const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
+      
+      const provMsg = document.getElementById('member-provisional-msg');
+      const calContainer = document.getElementById('member-calendar-container');
+
+      // 【追加】公開されていない月の場合、カレンダーを隠してメッセージ表示
+      if (!isPublished) {
+        provMsg.classList.remove('hidden');
+        calContainer.classList.add('hidden');
+        document.getElementById('proposal-alert').classList.add('hidden');
+        document.getElementById('clear-alert').classList.add('hidden');
+        return; 
+      } else {
+        provMsg.classList.add('hidden');
+        calContainer.classList.remove('hidden');
+      }
+
+      // 打診通知の確認
       const activeProp = proposals.find(p => p.memberId === selectedMemberId && p.type === "PROPOSAL" && p.status === "pending");
       const alertBox = document.getElementById('proposal-alert');
       if (activeProp) {
@@ -708,6 +904,16 @@
         alertBox.classList.remove('hidden');
       } else {
         alertBox.classList.add('hidden');
+      }
+
+      // 【追加】解除（クリア）通知の確認
+      const clearNotice = proposals.find(p => p.memberId === selectedMemberId && p.type === "CLEAR_NOTICE" && p.status === "unread");
+      const clearAlertBox = document.getElementById('clear-alert');
+      if (clearNotice) {
+        document.getElementById('clear-text').innerText = `${clearNotice.date} の「${getRoleName(clearNotice.roleId)}」`;
+        clearAlertBox.classList.remove('hidden');
+      } else {
+        clearAlertBox.classList.add('hidden');
       }
 
       const grid = document.getElementById('calendar-grid-member');
@@ -794,18 +1000,31 @@
       const activeProp = proposals.find(p => p.memberId === selectedMemberId && p.type === "PROPOSAL" && p.status === "pending");
       if (!isOk && activeProp) {
         activeProp.status = "rejected";
+        markDirty('proposals.json');
         alert("オファーを辞退しました。");
       } else if (isOk && activeProp) {
         if (!assignments[activeProp.date]) assignments[activeProp.date] = {};
         assignments[activeProp.date][activeProp.roleId] = selectedMemberId;
         activeProp.status = "accepted";
+        markDirty('assignments.json');
+        markDirty('proposals.json');
         alert("オファーを受託しました！アサインが確定しました。");
       }
       renderMemberCalendar();
     }
 
+    // 【追加】解除通知の「承諾」ボタン処理
+    function acknowledgeClear() {
+      const clearNotice = proposals.find(p => p.memberId === selectedMemberId && p.type === "CLEAR_NOTICE" && p.status === "unread");
+      if (clearNotice) {
+        clearNotice.status = "read";
+        markDirty('proposals.json');
+      }
+      renderMemberCalendar();
+    }
+
     function requestCR(dateStr, roleId) {
-      if (confirm(`${dateStr} のアサインに対するキャンセルリクエスト（CR）を事務局に送信しますか？`)) {
+      if (confirm(`${dateStr} のアサインに対するキャンセルリクエスト（CR）を送信しますか？`)) {
         proposals.push({
           id: "cr-" + Date.now(),
           date: dateStr,
@@ -814,12 +1033,14 @@
           type: "CR",
           status: "pending"
         });
+        markDirty('proposals.json');
         renderMemberCalendar();
       }
     }
 
     function cancelCR(dateStr) {
       proposals = proposals.filter(p => !(p.date === dateStr && p.memberId === selectedMemberId && p.type === "CR"));
+      markDirty('proposals.json');
       renderMemberCalendar();
     }
 
@@ -827,6 +1048,8 @@
       if (!memberAvailability[dateStr]) memberAvailability[dateStr] = {};
       const current = memberAvailability[dateStr][selectedMemberId];
       memberAvailability[dateStr][selectedMemberId] = (current === false) ? true : false;
+      
+      markDirty('member_availability.json'); 
       renderMemberCalendar();
     }
 
@@ -881,6 +1104,7 @@
     function updateMemberName(mIdx, newName) {
       if (!newName.trim()) return;
       members[mIdx].name = newName.trim();
+      markDirty('members.json');
       renderSettingApp();
     }
 
@@ -889,6 +1113,7 @@
       const index = rolesArr.indexOf(roleId);
       if (index > -1) rolesArr.splice(index, 1);
       else rolesArr.push(roleId);
+      markDirty('members.json');
       renderSettingApp();
     }
 
@@ -897,6 +1122,7 @@
       const index = daysArr.indexOf(day);
       if (index > -1) daysArr.splice(index, 1);
       else daysArr.push(day);
+      markDirty('members.json');
       renderSettingApp();
     }
 
@@ -910,19 +1136,24 @@
         availableDays: []
       });
       nameInput.value = '';
+      markDirty('members.json');
       renderSettingApp();
     }
 
     function deleteMember(idx) {
       if (confirm(`${members[idx].name} を削除しますか？`)) {
         members.splice(idx, 1);
+        markDirty('members.json');
         renderSettingApp();
       }
     }
 
-    // 初期起動
-    switchTab('admin');
-    switchAdminSubTab('adjust');
+    // --- アプリの初期化 ---
+    initialLoadAllJsonFiles().then(() => {
+      switchTab('admin');
+      switchAdminSubTab('adjust');
+    });
+
   </script>
 </body>
 </html>
