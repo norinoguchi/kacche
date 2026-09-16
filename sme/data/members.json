@@ -1,0 +1,310 @@
+[
+  {
+    "id": "m1",
+    "name": "半田 泰代",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m2",
+    "name": "鶴崎 実穂子",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m3",
+    "name": "朝倉 久男",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m4",
+    "name": "野口 紀彦",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3",
+      "r7"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m5",
+    "name": "深澤 賢",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3",
+      "r7"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m6",
+    "name": "岡村 力",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m7",
+    "name": "横尾 浩輝",
+    "availableRoles": [
+      "r2"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m8",
+    "name": "菱田 州男",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3",
+      "r5"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m9",
+    "name": "岡田 章良",
+    "availableRoles": [
+      "r2",
+      "r1"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m10",
+    "name": "大橋 功",
+    "availableRoles": [
+      "r1",
+      "r2",
+      "r3",
+      "r7"
+    ],
+    "availableDays": [
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m11",
+    "name": "古森 明",
+    "availableRoles": [
+      "r6"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m12",
+    "name": "大竹 信彦",
+    "availableRoles": [
+      "r5"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m13",
+    "name": "河合 裕",
+    "availableRoles": [
+      "r4",
+      "r6"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m14",
+    "name": "湊 精",
+    "availableRoles": [
+      "r6",
+      "r7"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m15",
+    "name": "中込 美津子",
+    "availableRoles": [
+      "r5",
+      "r3",
+      "r2",
+      "r1"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m16",
+    "name": "竹澤 和宏",
+    "availableRoles": [
+      "r5"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m17",
+    "name": "草野 雅夫",
+    "availableRoles": [
+      "r4",
+      "r6"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m18",
+    "name": "岩松 廣行",
+    "availableRoles": [
+      "r7"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m19",
+    "name": "松下 均",
+    "availableRoles": [
+      "r4",
+      "r6"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  },
+  {
+    "id": "m20",
+    "name": "鈴木 一秀",
+    "availableRoles": [
+      "r5",
+      "r6",
+      "r4"
+    ],
+    "availableDays": [
+      "月",
+      "火",
+      "水",
+      "木",
+      "金"
+    ]
+  }
+]

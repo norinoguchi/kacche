@@ -1,0 +1,20 @@
+[
+  {
+    "id": "p-20261013-r1",
+    "date": "2026-10-13",
+    "role": "r1",
+    "memberId": "m1",
+    "type": "CR",
+    "status": "pending_admin_action",
+    "createdAt": "2026-10-01T10:00:00Z"
+  },
+  {
+    "id": "p-20261015-r2",
+    "date": "2026-10-15",
+    "role": "r2",
+    "memberId": "m3",
+    "type": "PROPOSAL",
+    "status": "waiting_member_response",
+    "createdAt": "2026-10-02T14:30:00Z"
+  }
+]
