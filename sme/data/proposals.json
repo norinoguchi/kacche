@@ -48,5 +48,21 @@
     "memberId": "m6",
     "type": "CR",
     "status": "approved"
+  },
+  {
+    "id": "cr-1789612802643",
+    "date": "2026-11-03",
+    "roleId": "r7",
+    "memberId": "m4",
+    "type": "CR",
+    "status": "approved"
+  },
+  {
+    "id": "clear-1789612827762",
+    "date": "2026-10-01",
+    "roleId": "r1",
+    "memberId": "m1",
+    "type": "CLEAR_NOTICE",
+    "status": "unread"
   }
 ]
