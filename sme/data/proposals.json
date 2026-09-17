@@ -64,5 +64,13 @@
     "memberId": "m1",
     "type": "CLEAR_NOTICE",
     "status": "unread"
+  },
+  {
+    "id": "clear-1789617475117",
+    "date": "2026-10-02",
+    "roleId": "r1",
+    "memberId": "m4",
+    "type": "CLEAR_NOTICE",
+    "status": "unread"
   }
 ]

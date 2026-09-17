@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100 min-h-screen text-gray-800 pb-12">
 
-  <!-- 起動時のフォルダ選択モーダル (File System Access API) -->
+  <!-- 起動時のフォルダ選択モーダル -->
   <div id="modal-folder-setup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-[100]">
     <div class="bg-white rounded-2xl max-w-lg w-full p-8 space-y-6 shadow-2xl text-center">
       <div class="mx-auto w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-4">
@@ -23,21 +23,18 @@
       </p>
       
       <div class="space-y-3 pt-2">
-        <!-- 再接続ボタン（ブラウザ再起動時など、権限リクエストが必要な場合のみ表示） -->
         <button id="btn-reconnect" onclick="reconnectFolder()" class="hidden w-full bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-3 rounded-xl shadow transition-colors text-lg flex justify-center items-center border border-blue-300">
           🔄 前回使用したフォルダに再接続
         </button>
-        <!-- 新規選択ボタン -->
         <button onclick="connectLocalFolder()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow-lg transition-colors text-lg flex justify-center items-center">
           📂 新しいローカルフォルダを選択
         </button>
       </div>
-      
       <p class="text-[10px] text-gray-400">※PC版の Google Chrome または Microsoft Edge でご利用ください。</p>
     </div>
   </div>
 
-  <!-- ヘッダー & アプリ切り替えタブ（固定表示） -->
+  <!-- ヘッダー & アプリ切り替えタブ -->
   <header class="bg-indigo-600 text-white p-3 sticky top-0 z-50 shadow-md">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-2">
       <div class="flex flex-col md:flex-row items-center gap-2">
@@ -49,7 +46,6 @@
             <span class="w-2 h-2 rounded-full bg-gray-300 mr-1 animate-pulse" id="sync-dot"></span>
             未接続
           </span>
-          <!-- フォルダ変更ボタン（新設） -->
           <button onclick="changeFolder()" class="text-[10px] bg-white text-indigo-700 px-2 py-0.5 rounded shadow-sm hover:bg-indigo-50 font-bold">
             📂 変更
           </button>
@@ -148,6 +144,7 @@
         <button onclick="switchAdminSubTab('adjust')" id="subtab-admin-adjust" class="w-1/2 py-2 rounded-lg bg-gray-100 text-gray-600">アロケーション調整</button>
       </div>
 
+      <!-- 基本日程 設定 -->
       <div id="admin-sub-basic" class="bg-white p-5 rounded-xl shadow-sm space-y-4">
         <div>
           <h2 class="font-bold text-base text-gray-800">曜日・役割別 基本アロケーション日程</h2>
@@ -170,16 +167,24 @@
         </div>
       </div>
 
+      <!-- アロケーション調整 -->
       <div id="admin-sub-adjust" class="hidden space-y-4">
         <div class="bg-white p-4 rounded-xl shadow-sm space-y-3">
+          
           <div class="flex items-center justify-between">
             <button onclick="changeMonthAdmin(-1)" class="px-4 py-1.5 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">◀ 前月</button>
-            <div class="text-center">
+            <div class="text-center flex-1 mx-2">
               <h2 id="calendar-month-title-admin" class="font-bold text-lg text-gray-800">2026年10月 アロケーション調整</h2>
               <span id="month-status-badge" class="text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-100 text-blue-800">当月（個別調整）</span>
             </div>
-            <button onclick="changeMonthAdmin(1)" class="px-4 py-1.5 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">翌月 ▶</button>
+            <div class="flex items-center space-x-2">
+              <button onclick="exportCSV()" class="px-3 py-1.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow flex items-center whitespace-nowrap">
+                📥 CSV出力
+              </button>
+              <button onclick="changeMonthAdmin(1)" class="px-4 py-1.5 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">翌月 ▶</button>
+            </div>
           </div>
+
           <div id="reallocate-banner" class="hidden bg-indigo-50 border border-indigo-200 p-3 rounded-lg flex items-center justify-between">
             <div>
               <p class="text-xs font-bold text-indigo-900">翌月のアロケーション操作</p>
@@ -294,19 +299,16 @@
       });
     }
 
-    // --- 【改善点】起動時のチェックと無条件自動接続 ---
     window.onload = async () => {
       try {
         const savedHandle = await getSavedDirHandle();
         if (savedHandle) {
-          // すでに権限があるかチェック（Live Serverのリロード時などは granted になる）
           const perm = await savedHandle.queryPermission({ mode: 'readwrite' });
           if (perm === 'granted') {
             directoryHandle = savedHandle;
             finalizeFolderConnection();
-            return; // 権限があれば画面を出さずにここで処理終了
+            return; 
           }
-          // 権限がない場合（ブラウザ再起動時など）はボタンを見せる
           document.getElementById('btn-reconnect').classList.remove('hidden');
         }
       } catch (e) {
@@ -319,7 +321,6 @@
     let directoryHandle = null;
     let roles = [], members = [], basicSchedule = {}, memberAvailability = {}, assignments = {}, proposals = [], settings = { publishedMonths: ["2026-10"] };
 
-    // 新規でローカルフォルダを選択する
     async function connectLocalFolder() {
       try {
         if (!window.showDirectoryPicker) {
@@ -334,12 +335,10 @@
       }
     }
 
-    // 記憶した前回のフォルダに再接続する（クリック時）
     async function reconnectFolder() {
       try {
         const savedHandle = await getSavedDirHandle();
         if (!savedHandle) return;
-
         const options = { mode: 'readwrite' };
         if ((await savedHandle.requestPermission(options)) === 'granted') {
           directoryHandle = savedHandle;
@@ -352,26 +351,21 @@
       }
     }
 
-    // 【新設】設定メニュー等からのフォルダ変更処理
     async function changeFolder() {
       try {
         const newHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
         directoryHandle = newHandle;
-        await saveDirHandle(newHandle); // 新しいパスで上書き記憶
+        await saveDirHandle(newHandle); 
         await loadOrInitFolderFiles();
         alert("データの保存先フォルダを変更し、データを再読み込みしました。");
-      } catch (e) {
-        // ユーザーが選択をキャンセルした場合は何もしない
-      }
+      } catch (e) { }
     }
 
-    // 接続成功後の共通処理
     async function finalizeFolderConnection() {
       document.getElementById('modal-folder-setup').classList.add('hidden');
       const badge = document.getElementById('sync-status-badge');
       badge.className = "ml-2 text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full flex items-center font-bold";
       badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-300 mr-1 animate-pulse"></span> 同期中 (自動保存)`;
-
       await loadOrInitFolderFiles();
     }
 
@@ -384,11 +378,8 @@
         if (!data) {
           try {
             const res = await fetch('./data/' + filename + '?t=' + Date.now());
-            if (res.ok) {
-              data = await res.json();
-            } else {
-              data = getDefaultEmptyData(filename);
-            }
+            if (res.ok) data = await res.json();
+            else data = getDefaultEmptyData(filename);
           } catch(e) {
             data = getDefaultEmptyData(filename);
           }
@@ -430,9 +421,7 @@
         const file = await fileHandle.getFile();
         const text = await file.text();
         return JSON.parse(text);
-      } catch (e) {
-        return null;
-      }
+      } catch (e) { return null; }
     }
 
     async function writeLocalFile(filename, contentObj) {
@@ -442,7 +431,6 @@
         const writable = await fileHandle.createWritable();
         await writable.write(JSON.stringify(contentObj, null, 2));
         await writable.close();
-
         const el = document.getElementById('save-indicator');
         el.innerText = `✓ ${filename} を保存しました`;
         el.classList.remove('opacity-0');
@@ -461,7 +449,6 @@
       if(filename === 'proposals.json') data = proposals;
       if(filename === 'member_availability.json') data = memberAvailability;
       if(filename === 'settings.json') data = settings;
-      
       if(data) writeLocalFile(filename, data);
     }
 
@@ -475,7 +462,6 @@
       document.getElementById('proposal-alert').classList.add('hidden');
       document.getElementById('clear-alert').classList.add('hidden');
       document.getElementById('admin-cr-alert').classList.add('hidden');
-
       document.getElementById('app-member').classList.add('hidden');
       document.getElementById('app-admin').classList.add('hidden');
       document.getElementById('app-setting').classList.add('hidden');
@@ -492,11 +478,8 @@
         renderMemberCalendar();
       }
       if(app === 'admin') {
-        if (!document.getElementById('admin-sub-adjust').classList.contains('hidden')) {
-          renderAdminCalendar();
-        } else {
-          renderAdminBasicSchedule();
-        }
+        if (!document.getElementById('admin-sub-adjust').classList.contains('hidden')) renderAdminCalendar();
+        else renderAdminBasicSchedule();
       }
       if(app === 'setting') {
         renderSettingApp();
@@ -506,13 +489,10 @@
     function switchAdminSubTab(sub) {
       document.getElementById('admin-sub-basic').classList.add('hidden');
       document.getElementById('admin-sub-adjust').classList.add('hidden');
-      
       document.getElementById('subtab-admin-basic').className = "w-1/2 py-2 rounded-lg bg-gray-100 text-gray-600";
       document.getElementById('subtab-admin-adjust').className = "w-1/2 py-2 rounded-lg bg-gray-100 text-gray-600";
-
       document.getElementById('admin-sub-' + sub).classList.remove('hidden');
       document.getElementById('subtab-admin-' + sub).className = "w-1/2 py-2 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200 font-bold";
-
       if (sub === 'basic') renderAdminBasicSchedule();
       if (sub === 'adjust') renderAdminCalendar();
     }
@@ -614,6 +594,48 @@
         alert(`${adminMonth}月のアサインを確定し、メンバーに公開しました。`);
         renderAdminCalendar();
       }
+    }
+
+    // --- CSVエクスポート機能 ---
+    function exportCSV() {
+      const monthStr = String(adminMonth).padStart(2, '0');
+      const targetPrefix = `2026-${monthStr}-`;
+      
+      // Excelで文字化けさせないためのBOM
+      let csvContent = "\uFEFF";
+      csvContent += "日付,曜日,拠点/役割,アサインメンバー名\n";
+
+      const daysInMonth = adminMonth === 10 ? 31 : 30;
+      const firstDayOffset = adminMonth === 9 ? 2 : (adminMonth === 10 ? 4 : 0);
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${targetPrefix}${String(day).padStart(2, '0')}`;
+        const dayOfWeek = (firstDayOffset + day - 1) % 7;
+        const isWorkDay = !(dayOfWeek === 0 || dayOfWeek === 6);
+        const wDayStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek];
+
+        if (isWorkDay) {
+          const dayAlloc = assignments[dateStr] || {};
+          roles.forEach(r => {
+            const memberId = dayAlloc[r.id];
+            const memberObj = memberId ? members.find(m => m.id === memberId) : null;
+            const memberName = memberObj ? memberObj.name : "未アサイン";
+            
+            // CSVの1行を追加
+            csvContent += `${dateStr},${wDayStr},${r.name},${memberName}\n`;
+          });
+        }
+      }
+
+      // Blob化してダウンロードトリガー
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `allocations_${targetPrefix.slice(0, -1)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
     function renderAdminCalendar() {
