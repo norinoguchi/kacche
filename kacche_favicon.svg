@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- 背景の丸みのあるダークプレート -->
+  <rect width="32" height="32" rx="8" fill="#090d16"/>
+  <!-- 水色とゴールドの交差をイメージした幾何学的な「K」モチーフ -->
+  <path d="M9 8v16M23 8l-7 8 7 8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="23" cy="8" r="2" fill="#facc15"/>
+</svg>
