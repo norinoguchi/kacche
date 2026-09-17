@@ -16,5 +16,37 @@
     "type": "PROPOSAL",
     "status": "waiting_member_response",
     "createdAt": "2026-10-02T14:30:00Z"
+  },
+  {
+    "id": "clear-1789611779027",
+    "date": "2026-11-03",
+    "roleId": "r5",
+    "memberId": "m16",
+    "type": "CLEAR_NOTICE",
+    "status": "unread"
+  },
+  {
+    "id": "cr-1789611805698",
+    "date": "2026-10-19",
+    "roleId": "r5",
+    "memberId": "m15",
+    "type": "CR",
+    "status": "approved"
+  },
+  {
+    "id": "clear-1789611911109",
+    "date": "2026-11-04",
+    "roleId": "r5",
+    "memberId": "m12",
+    "type": "CLEAR_NOTICE",
+    "status": "unread"
+  },
+  {
+    "id": "cr-1789612679542",
+    "date": "2026-10-01",
+    "roleId": "r3",
+    "memberId": "m6",
+    "type": "CR",
+    "status": "approved"
   }
 ]

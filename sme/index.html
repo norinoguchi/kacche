@@ -17,27 +17,44 @@
       <h2 class="text-xl font-bold text-gray-800">テスト用データの保存先を選択</h2>
       <p class="text-sm text-gray-600 text-left">
         このシステムは、あなたのPC内のフォルダと直接同期して動作します。<br><br>
-        1. 下のボタンを押し、空のフォルダ（または過去に作成したテスト用フォルダ）を選択してください。<br>
+        1. 空のフォルダ（または過去に作成したテスト用フォルダ）を選択してください。<br>
         2. フォルダが空の場合は、サーバーから初期データが自動でダウンロード＆作成されます。<br>
         3. 以降、システム上で操作するたびにファイルが<b>自動で上書き保存（オートセーブ）</b>されます。
       </p>
-      <button onclick="connectLocalFolder()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow-lg transition-colors text-lg flex justify-center items-center">
-        📂 ローカルフォルダを選択して開始
-      </button>
+      
+      <div class="space-y-3 pt-2">
+        <!-- 再接続ボタン（ブラウザ再起動時など、権限リクエストが必要な場合のみ表示） -->
+        <button id="btn-reconnect" onclick="reconnectFolder()" class="hidden w-full bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-3 rounded-xl shadow transition-colors text-lg flex justify-center items-center border border-blue-300">
+          🔄 前回使用したフォルダに再接続
+        </button>
+        <!-- 新規選択ボタン -->
+        <button onclick="connectLocalFolder()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow-lg transition-colors text-lg flex justify-center items-center">
+          📂 新しいローカルフォルダを選択
+        </button>
+      </div>
+      
       <p class="text-[10px] text-gray-400">※PC版の Google Chrome または Microsoft Edge でご利用ください。</p>
     </div>
   </div>
 
-  <!-- ヘッダー & アプリ切り替えタブ -->
+  <!-- ヘッダー & アプリ切り替えタブ（固定表示） -->
   <header class="bg-indigo-600 text-white p-3 sticky top-0 z-50 shadow-md">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-      <h1 class="text-base font-bold text-center md:text-left flex items-center justify-center md:justify-start">
-        アロケーション管理システム
-        <span id="sync-status-badge" class="ml-3 text-[10px] bg-gray-500 text-white px-2 py-0.5 rounded-full flex items-center">
-          <span class="w-2 h-2 rounded-full bg-gray-300 mr-1 animate-pulse" id="sync-dot"></span>
-          未接続
-        </span>
-      </h1>
+      <div class="flex flex-col md:flex-row items-center gap-2">
+        <h1 class="text-base font-bold text-center md:text-left flex items-center justify-center md:justify-start">
+          アロケーション管理システム
+        </h1>
+        <div class="flex items-center gap-1">
+          <span id="sync-status-badge" class="ml-2 text-[10px] bg-gray-500 text-white px-2 py-0.5 rounded-full flex items-center">
+            <span class="w-2 h-2 rounded-full bg-gray-300 mr-1 animate-pulse" id="sync-dot"></span>
+            未接続
+          </span>
+          <!-- フォルダ変更ボタン（新設） -->
+          <button onclick="changeFolder()" class="text-[10px] bg-white text-indigo-700 px-2 py-0.5 rounded shadow-sm hover:bg-indigo-50 font-bold">
+            📂 変更
+          </button>
+        </div>
+      </div>
       
       <div class="flex justify-center space-x-1 text-xs">
         <button onclick="switchTab('member')" id="tab-member" class="px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold transition-colors">メンバー (スマホ向け)</button>
@@ -47,8 +64,47 @@
     </div>
     
     <!-- オートセーブ通知インジケーター -->
-    <div id="save-indicator" class="max-w-6xl mx-auto mt-1 text-right text-[11px] font-bold text-emerald-300 opacity-0 transition-opacity duration-300 h-4">
-      <!-- ここに保存完了メッセージが出ます -->
+    <div id="save-indicator" class="max-w-6xl mx-auto mt-1 text-right text-[11px] font-bold text-emerald-300 opacity-0 transition-opacity duration-300 h-4"></div>
+
+    <!-- グローバル通知エリア -->
+    <div class="max-w-6xl mx-auto space-y-2 mt-2 empty:hidden">
+      <!-- メンバー用: 打診通知 -->
+      <div id="proposal-alert" class="hidden bg-amber-50 border-l-4 border-amber-500 p-3 rounded-lg shadow-lg text-gray-800">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="text-xs font-bold text-amber-900">【至急】事務局からアロケーション打診が届いています</p>
+            <p id="proposal-text" class="text-xs text-amber-800 font-bold mt-1"></p>
+          </div>
+          <div class="flex space-x-1.5 ml-2">
+            <button onclick="respondProposal(true)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded text-xs font-bold shadow">OK(受託)</button>
+            <button onclick="respondProposal(false)" class="bg-rose-500 hover:bg-rose-600 text-white px-3 py-1.5 rounded text-xs font-bold shadow">NG(辞退)</button>
+          </div>
+        </div>
+      </div>
+      <!-- メンバー用: 解除通知 -->
+      <div id="clear-alert" class="hidden bg-blue-50 border-l-4 border-blue-500 p-3 rounded-lg shadow-lg text-gray-800">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="text-xs font-bold text-blue-900">【お知らせ】アサインが解除されました</p>
+            <p id="clear-text" class="text-xs text-blue-800 font-bold mt-1"></p>
+          </div>
+          <div class="flex space-x-1.5 ml-2">
+            <button onclick="acknowledgeClear()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-xs font-bold shadow whitespace-nowrap">承諾</button>
+          </div>
+        </div>
+      </div>
+      <!-- 事務局用: CR通知 -->
+      <div id="admin-cr-alert" class="hidden bg-rose-50 border-l-4 border-rose-500 p-3 rounded-lg shadow-lg text-gray-800">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="bg-rose-500 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-pulse">CR通知</span>
+            <p id="admin-cr-alert-text" class="text-xs font-bold text-rose-900"></p>
+          </div>
+          <button onclick="openCRListModal()" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-1.5 rounded-lg text-xs font-bold shadow whitespace-nowrap">
+            確認・承認する ➔
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -61,45 +117,16 @@
         <select id="member-selector" onchange="onSelectMember(this.value)" class="w-full bg-white border border-indigo-300 rounded p-1.5 text-xs font-bold text-indigo-800 shadow-sm"></select>
       </div>
 
-      <!-- 打診通知 -->
-      <div id="proposal-alert" class="hidden bg-amber-50 border-l-4 border-amber-500 p-4 rounded-xl shadow-md">
-        <div class="flex items-start justify-between">
-          <div>
-            <p class="text-xs font-bold text-amber-900">【至急】事務局からアロケーション打診が届いています</p>
-            <p id="proposal-text" class="text-xs text-amber-800 font-bold mt-1"></p>
-          </div>
-          <div class="flex space-x-1.5 ml-2">
-            <button onclick="respondProposal(true)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded text-xs font-bold shadow">OK(受託)</button>
-            <button onclick="respondProposal(false)" class="bg-rose-500 hover:bg-rose-600 text-white px-3 py-1.5 rounded text-xs font-bold shadow">NG(辞退)</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 解除通知 -->
-      <div id="clear-alert" class="hidden bg-blue-50 border-l-4 border-blue-500 p-4 rounded-xl shadow-md">
-        <div class="flex items-start justify-between">
-          <div>
-            <p class="text-xs font-bold text-blue-900">【お知らせ】アサインが解除されました</p>
-            <p id="clear-text" class="text-xs text-blue-800 font-bold mt-1"></p>
-          </div>
-          <div class="flex space-x-1.5 ml-2">
-            <button onclick="acknowledgeClear()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-xs font-bold shadow whitespace-nowrap">承諾</button>
-          </div>
-        </div>
-      </div>
-
       <div class="bg-white p-3 rounded-xl shadow-sm flex items-center justify-between">
         <button onclick="changeMonthMember(-1)" class="px-3 py-1 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">◀ 前月</button>
         <h2 id="calendar-month-title-member" class="font-bold text-base text-gray-800">2026年10月</h2>
         <button onclick="changeMonthMember(1)" class="px-3 py-1 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">翌月 ▶</button>
       </div>
 
-      <!-- 仮アサイン中メッセージエリア -->
       <div id="member-provisional-msg" class="hidden bg-white p-10 rounded-xl shadow-sm text-center text-sm font-bold text-gray-400">
         この月のアサインは現在事務局が調整中です。<br>（公開をお待ちください）
       </div>
 
-      <!-- カレンダーグリッド本体 -->
       <div id="member-calendar-container">
         <div class="bg-white p-3 rounded-xl shadow-sm">
           <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-gray-400 mb-2">
@@ -107,7 +134,6 @@
           </div>
           <div id="calendar-grid-member" class="grid grid-cols-7 gap-1"></div>
         </div>
-
         <div class="bg-white p-4 rounded-xl shadow-sm space-y-3 mt-4">
           <h3 class="font-bold text-xs text-gray-500 uppercase tracking-wider">稼働日一覧・アロケーション変更申請 (CR)</h3>
           <div id="day-list-member" class="space-y-2 text-xs"></div>
@@ -122,7 +148,6 @@
         <button onclick="switchAdminSubTab('adjust')" id="subtab-admin-adjust" class="w-1/2 py-2 rounded-lg bg-gray-100 text-gray-600">アロケーション調整</button>
       </div>
 
-      <!-- 基本日程 設定 -->
       <div id="admin-sub-basic" class="bg-white p-5 rounded-xl shadow-sm space-y-4">
         <div>
           <h2 class="font-bold text-base text-gray-800">曜日・役割別 基本アロケーション日程</h2>
@@ -145,20 +170,7 @@
         </div>
       </div>
 
-      <!-- 調整 カレンダー -->
       <div id="admin-sub-adjust" class="hidden space-y-4">
-        <div id="admin-cr-alert" class="hidden bg-rose-50 border-l-4 border-rose-500 p-4 rounded-xl shadow-md">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="bg-rose-500 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-pulse">CR通知</span>
-              <p id="admin-cr-alert-text" class="text-xs font-bold text-rose-900"></p>
-            </div>
-            <button onclick="openCRListModal()" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-1.5 rounded-lg text-xs font-bold shadow whitespace-nowrap">
-              確認・承認する ➔
-            </button>
-          </div>
-        </div>
-
         <div class="bg-white p-4 rounded-xl shadow-sm space-y-3">
           <div class="flex items-center justify-between">
             <button onclick="changeMonthAdmin(-1)" class="px-4 py-1.5 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">◀ 前月</button>
@@ -168,7 +180,6 @@
             </div>
             <button onclick="changeMonthAdmin(1)" class="px-4 py-1.5 text-xs bg-gray-100 font-bold rounded hover:bg-gray-200">翌月 ▶</button>
           </div>
-
           <div id="reallocate-banner" class="hidden bg-indigo-50 border border-indigo-200 p-3 rounded-lg flex items-center justify-between">
             <div>
               <p class="text-xs font-bold text-indigo-900">翌月のアロケーション操作</p>
@@ -179,8 +190,6 @@
               <button onclick="clearNextMonthAllocations()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-3 py-1.5 rounded text-xs shadow whitespace-nowrap">翌月アサインを一括クリア</button>
             </div>
           </div>
-
-          <!-- 仮アサインの確定・公開バナー -->
           <div id="publish-banner" class="hidden bg-amber-50 border border-amber-300 p-3 rounded-lg flex items-center justify-between mt-2">
             <div>
               <p class="text-xs font-bold text-amber-900">この月は「仮アサイン中」です（メンバーには非公開）</p>
@@ -189,7 +198,6 @@
             <button onclick="publishMonth()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-3 py-1.5 rounded text-xs shadow whitespace-nowrap">アサインを確定して公開する</button>
           </div>
         </div>
-
         <div class="bg-white p-4 rounded-xl shadow-sm overflow-x-auto">
           <div class="grid grid-cols-7 gap-1.5 text-center text-xs font-bold text-gray-400 mb-2 min-w-[850px]">
             <span class="text-rose-500">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="text-blue-500">土</span>
@@ -212,7 +220,6 @@
           <button onclick="addMember()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2 rounded-lg shadow whitespace-nowrap">メンバーを追加</button>
         </div>
       </div>
-
       <div class="bg-white p-5 rounded-xl shadow-sm space-y-4">
         <h2 class="font-bold text-gray-800 text-sm border-b pb-2">登録済みSMEメンバー一覧・データ編集</h2>
         <div id="member-settings-list" class="space-y-4"></div>
@@ -221,7 +228,7 @@
 
   </main>
 
-  <!-- 事務局 モーダル (汎用) -->
+  <!-- モーダル類 -->
   <div id="modal-action" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-xl max-w-sm w-full p-4 space-y-4 shadow-xl">
       <h3 id="modal-action-title" class="font-bold text-sm text-gray-800"></h3>
@@ -230,8 +237,6 @@
       <button onclick="closeActionModal()" class="w-full bg-gray-200 text-gray-700 font-bold py-2 rounded-lg text-xs mt-2">閉じる</button>
     </div>
   </div>
-
-  <!-- 未承認CR一覧 ポップアップ -->
   <div id="modal-cr-list" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-xl max-w-md w-full p-5 space-y-4 shadow-xl">
       <div class="border-b pb-2 flex justify-between items-center">
@@ -254,50 +259,128 @@
     let selectedMemberId = "m1";
     let activeModalContext = null;
 
-    // ----- [重要] File System Access API 用の変数 -----
+    // ----- IndexedDB (前回のフォルダ記憶用) -----
+    const DB_NAME = 'AllocAppDB';
+    const STORE_NAME = 'handles';
+
+    function initDB() {
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open(DB_NAME, 1);
+        request.onupgradeneeded = (e) => {
+          e.target.result.createObjectStore(STORE_NAME);
+        };
+        request.onsuccess = (e) => resolve(e.target.result);
+        request.onerror = (e) => reject(e.target.error);
+      });
+    }
+
+    async function saveDirHandle(handle) {
+      const db = await initDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        tx.objectStore(STORE_NAME).put(handle, 'savedDirectory');
+        tx.oncomplete = () => resolve();
+        tx.onerror = (e) => reject(e);
+      });
+    }
+
+    async function getSavedDirHandle() {
+      const db = await initDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const req = tx.objectStore(STORE_NAME).get('savedDirectory');
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = (e) => reject(e);
+      });
+    }
+
+    // --- 【改善点】起動時のチェックと無条件自動接続 ---
+    window.onload = async () => {
+      try {
+        const savedHandle = await getSavedDirHandle();
+        if (savedHandle) {
+          // すでに権限があるかチェック（Live Serverのリロード時などは granted になる）
+          const perm = await savedHandle.queryPermission({ mode: 'readwrite' });
+          if (perm === 'granted') {
+            directoryHandle = savedHandle;
+            finalizeFolderConnection();
+            return; // 権限があれば画面を出さずにここで処理終了
+          }
+          // 権限がない場合（ブラウザ再起動時など）はボタンを見せる
+          document.getElementById('btn-reconnect').classList.remove('hidden');
+        }
+      } catch (e) {
+        console.log("DB初期化待ち");
+      }
+    };
+
+
+    // ----- File System Access API 用の変数 -----
     let directoryHandle = null;
+    let roles = [], members = [], basicSchedule = {}, memberAvailability = {}, assignments = {}, proposals = [], settings = { publishedMonths: ["2026-10"] };
 
-    // データ格納用
-    let roles = [];
-    let members = [];
-    let basicSchedule = {};
-    let memberAvailability = {};
-    let assignments = {};
-    let proposals = [];
-    let settings = { publishedMonths: ["2026-10"] };
-
-    // --- ローカルフォルダ接続と初期化 ---
+    // 新規でローカルフォルダを選択する
     async function connectLocalFolder() {
       try {
         if (!window.showDirectoryPicker) {
           alert("お使いのブラウザはローカルフォルダの同期機能に対応していません。\nPC版の Chrome または Edge をご使用ください。");
           return;
         }
-        // ユーザーにフォルダを選ばせる
         directoryHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-        
-        document.getElementById('modal-folder-setup').classList.add('hidden');
-        
-        // ヘッダーの同期ステータス更新
-        const badge = document.getElementById('sync-status-badge');
-        badge.className = "ml-3 text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full flex items-center";
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-300 mr-1 animate-pulse"></span> フォルダ同期中 (自動保存)`;
-
-        await loadOrInitFolderFiles();
-
+        await saveDirHandle(directoryHandle); 
+        finalizeFolderConnection();
       } catch (err) {
         console.error(err);
-        alert('フォルダの選択がキャンセルされたか、権限がありませんでした。');
       }
     }
+
+    // 記憶した前回のフォルダに再接続する（クリック時）
+    async function reconnectFolder() {
+      try {
+        const savedHandle = await getSavedDirHandle();
+        if (!savedHandle) return;
+
+        const options = { mode: 'readwrite' };
+        if ((await savedHandle.requestPermission(options)) === 'granted') {
+          directoryHandle = savedHandle;
+          finalizeFolderConnection();
+        } else {
+          alert("アクセスが許可されませんでした。「新しいフォルダを選択」から選び直してください。");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    // 【新設】設定メニュー等からのフォルダ変更処理
+    async function changeFolder() {
+      try {
+        const newHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+        directoryHandle = newHandle;
+        await saveDirHandle(newHandle); // 新しいパスで上書き記憶
+        await loadOrInitFolderFiles();
+        alert("データの保存先フォルダを変更し、データを再読み込みしました。");
+      } catch (e) {
+        // ユーザーが選択をキャンセルした場合は何もしない
+      }
+    }
+
+    // 接続成功後の共通処理
+    async function finalizeFolderConnection() {
+      document.getElementById('modal-folder-setup').classList.add('hidden');
+      const badge = document.getElementById('sync-status-badge');
+      badge.className = "ml-2 text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full flex items-center font-bold";
+      badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-300 mr-1 animate-pulse"></span> 同期中 (自動保存)`;
+
+      await loadOrInitFolderFiles();
+    }
+
 
     async function loadOrInitFolderFiles() {
       const filesToSync = ['roles.json', 'members.json', 'basic_schedule.json', 'assignments.json', 'proposals.json', 'member_availability.json', 'settings.json'];
       
       for (const filename of filesToSync) {
         let data = await readLocalFile(filename);
-        
-        // フォルダにファイルが無い場合はサーバーから取得（または空データで初期化）して保存
         if (!data) {
           try {
             const res = await fetch('./data/' + filename + '?t=' + Date.now());
@@ -312,7 +395,6 @@
           await writeLocalFile(filename, data);
         }
 
-        // 変数にセット
         if(filename === 'roles.json') roles = data;
         if(filename === 'members.json') members = data;
         if(filename === 'basic_schedule.json') basicSchedule = data;
@@ -322,7 +404,6 @@
         if(filename === 'settings.json') settings = data;
       }
 
-      // UIの初期描画
       document.getElementById('app-admin').classList.remove('hidden');
       switchTab('admin');
       switchAdminSubTab('adjust');
@@ -342,7 +423,6 @@
       return {};
     }
 
-    // --- ファイルの読み書き用ヘルパー ---
     async function readLocalFile(filename) {
       if (!directoryHandle) return null;
       try {
@@ -351,7 +431,6 @@
         const text = await file.text();
         return JSON.parse(text);
       } catch (e) {
-        // ファイルが存在しない場合は null
         return null;
       }
     }
@@ -364,18 +443,15 @@
         await writable.write(JSON.stringify(contentObj, null, 2));
         await writable.close();
 
-        // 成功したら画面右上に小さく通知を出す
         const el = document.getElementById('save-indicator');
-        el.innerText = `✓ ${filename} を上書き保存しました`;
+        el.innerText = `✓ ${filename} を保存しました`;
         el.classList.remove('opacity-0');
         setTimeout(() => el.classList.add('opacity-0'), 2000);
       } catch (e) {
         console.error(filename + " の書き込みエラー", e);
-        alert(`ファイル ${filename} の保存に失敗しました。アクセス権限を確認してください。`);
       }
     }
 
-    // データが変更されたら「即座にローカルへ保存」する
     function markDirty(filename) {
       let data = null;
       if(filename === 'roles.json') data = roles;
@@ -394,18 +470,22 @@
       return r ? r.name : roleId;
     }
 
-    // --- アプリ切り替え ---
+    // --- UI レンダリング関連ロジック ---
     function switchTab(app) {
+      document.getElementById('proposal-alert').classList.add('hidden');
+      document.getElementById('clear-alert').classList.add('hidden');
+      document.getElementById('admin-cr-alert').classList.add('hidden');
+
       document.getElementById('app-member').classList.add('hidden');
       document.getElementById('app-admin').classList.add('hidden');
       document.getElementById('app-setting').classList.add('hidden');
       
-      document.getElementById('tab-member').className = "px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold";
-      document.getElementById('tab-admin').className = "px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold";
-      document.getElementById('tab-setting').className = "px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold";
+      document.getElementById('tab-member').className = "px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold transition-colors";
+      document.getElementById('tab-admin').className = "px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold transition-colors";
+      document.getElementById('tab-setting').className = "px-3 py-1.5 rounded-full bg-indigo-700 text-white font-bold transition-colors";
 
       document.getElementById('app-' + app).classList.remove('hidden');
-      document.getElementById('tab-' + app).className = "px-3 py-1.5 rounded-full bg-white text-indigo-600 font-bold shadow";
+      document.getElementById('tab-' + app).className = "px-3 py-1.5 rounded-full bg-white text-indigo-600 font-bold shadow transition-colors";
 
       if(app === 'member') {
         updateMemberSelectorOptions();
@@ -437,25 +517,20 @@
       if (sub === 'adjust') renderAdminCalendar();
     }
 
-    // --- 事務局: 基本日程画面 ---
     function renderAdminBasicSchedule() {
       const tbody = document.getElementById('basic-schedule-matrix');
       tbody.innerHTML = '';
-
       roles.forEach(r => {
         const tr = document.createElement('tr');
         tr.className = "border-b hover:bg-gray-50";
         let rowHtml = `<td class="p-3 border font-bold text-gray-700 bg-gray-50">${r.name}</td>`;
-
         weekDays.forEach(wDay => {
           const currentAssignedId = (basicSchedule[wDay] && basicSchedule[wDay][r.id]) || "";
           const eligibleMembers = members.filter(m => m.availableDays.includes(wDay) && m.availableRoles.includes(r.id));
-
           let optionsHtml = `<option value="">-- 未アサイン --</option>`;
           eligibleMembers.forEach(m => {
             optionsHtml += `<option value="${m.id}" ${m.id === currentAssignedId ? 'selected' : ''}>${m.name}</option>`;
           });
-
           rowHtml += `
             <td class="p-2 border text-center">
               <select onchange="updateBasicSchedule('${wDay}', '${r.id}', this.value)" class="w-full border rounded p-1.5 text-xs bg-white">
@@ -463,7 +538,6 @@
               </select>
             </td>`;
         });
-
         tr.innerHTML = rowHtml;
         tbody.appendChild(tr);
       });
@@ -475,7 +549,6 @@
       markDirty('basic_schedule.json');
     }
 
-    // --- 事務局: 調整 画面 ---
     function changeMonthAdmin(delta) {
       adminMonth += delta;
       if (adminMonth > 11) adminMonth = 11;
@@ -498,15 +571,12 @@
 
     function runAutoAllocationNextMonth() {
       if (!confirm("「基本日程」と各メンバーの「OK/NG回答」を参照して、11月全体を自動アロケーションしますか？")) return;
-
       const daysInMonth = 30; // 11月
       for (let day = 1; day <= daysInMonth; day++) {
         const dateStr = `2026-11-${String(day).padStart(2, '0')}`;
         const dayOfWeek = (day - 1) % 7; 
         if (dayOfWeek === 0 || dayOfWeek === 6) continue;
-
-        const weekDayMap = ["日", "月", "火", "水", "木", "金", "土"];
-        const wDayStr = weekDayMap[dayOfWeek];
+        const wDayStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek];
 
         if (!assignments[dateStr]) assignments[dateStr] = {};
 
@@ -518,24 +588,17 @@
           }
         });
       }
-
       markDirty('assignments.json');
       alert("11月の初期アロケーションが完了しました！");
       renderAdminCalendar();
     }
 
     function clearNextMonthAllocations() {
-      const confirmMsg = "本当に翌月（11月）のアサインデータをすべてクリアして「未アサイン」状態に戻しますか？\n（※この操作は取り消せません）";
-      if (!confirm(confirmMsg)) return;
-
+      if (!confirm("本当に翌月（11月）のアサインデータをすべてクリアして「未アサイン」状態に戻しますか？\n（※この操作は取り消せません）")) return;
       Object.keys(assignments).forEach(dateStr => {
-        if (dateStr.startsWith("2026-11-")) {
-          delete assignments[dateStr];
-        }
+        if (dateStr.startsWith("2026-11-")) delete assignments[dateStr];
       });
-
       proposals = proposals.filter(p => !p.date.startsWith("2026-11-"));
-
       markDirty('assignments.json');
       markDirty('proposals.json');
       alert("翌月（11月）のアサインをすべてクリアしました。");
@@ -545,7 +608,6 @@
     function publishMonth() {
       const monthKey = `2026-${String(adminMonth).padStart(2, '0')}`;
       if (!settings.publishedMonths) settings.publishedMonths = [];
-      
       if (!settings.publishedMonths.includes(monthKey)) {
         settings.publishedMonths.push(monthKey);
         markDirty('settings.json');
@@ -563,7 +625,6 @@
       const monthKey = `2026-${String(adminMonth).padStart(2, '0')}`;
       const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
 
-      // CR通知
       const pendingCRs = proposals.filter(p => p.type === "CR" && p.status === "pending");
       const crAlertBox = document.getElementById('admin-cr-alert');
       if (pendingCRs.length > 0) {
@@ -573,7 +634,6 @@
         crAlertBox.classList.add('hidden');
       }
 
-      // バナー制御
       if (adminMonth < CURRENT_MONTH) {
         badge.className = "text-xs px-2.5 py-0.5 rounded-full font-bold bg-gray-200 text-gray-700";
         badge.innerText = "前月（変更不可）";
@@ -588,11 +648,8 @@
         badge.className = "text-xs px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800";
         badge.innerText = "翌月（再アロケーション可）";
         banner.classList.remove('hidden');
-        if (!isPublished) {
-          publishBanner.classList.remove('hidden');
-        } else {
-          publishBanner.classList.add('hidden');
-        }
+        if (!isPublished) publishBanner.classList.remove('hidden');
+        else publishBanner.classList.add('hidden');
       }
 
       const grid = document.getElementById('calendar-grid-admin');
@@ -600,9 +657,7 @@
       const daysInMonth = adminMonth === 10 ? 31 : 30;
       const firstDayOffset = adminMonth === 9 ? 2 : (adminMonth === 10 ? 4 : 0);
 
-      for (let i = 0; i < firstDayOffset; i++) {
-        grid.appendChild(document.createElement('div'));
-      }
+      for (let i = 0; i < firstDayOffset; i++) grid.appendChild(document.createElement('div'));
 
       for (let day = 1; day <= daysInMonth; day++) {
         const dateStr = `2026-${String(adminMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -611,81 +666,39 @@
         const wDayStr = ["日", "月", "火", "水", "木", "金", "土"][dayOfWeek];
 
         const cell = document.createElement('div');
-        cell.className = `min-h-[140px] p-2 border rounded-lg flex flex-col justify-between text-xs ${
-          !isWorkDay ? 'bg-gray-100 text-gray-400' : 'bg-white'
-        }`;
-
-        let dayHeaderHtml = `
-          <div class="flex justify-between items-center border-b pb-1 mb-1">
-            <span class="font-bold ${dayOfWeek === 0 ? 'text-rose-500' : dayOfWeek === 6 ? 'text-blue-500' : 'text-gray-700'}">${day}日 (${wDayStr})</span>
-          </div>
-        `;
+        cell.className = `min-h-[140px] p-2 border rounded-lg flex flex-col justify-between text-xs ${!isWorkDay ? 'bg-gray-100 text-gray-400' : 'bg-white'}`;
+        let dayHeaderHtml = `<div class="flex justify-between items-center border-b pb-1 mb-1"><span class="font-bold ${dayOfWeek === 0 ? 'text-rose-500' : dayOfWeek === 6 ? 'text-blue-500' : 'text-gray-700'}">${day}日 (${wDayStr})</span></div>`;
 
         let rolesHtml = '';
         if (isWorkDay) {
           const dayAlloc = assignments[dateStr] || {};
           rolesHtml = `<div class="space-y-1">`;
-
           roles.forEach(r => {
             const memberId = dayAlloc[r.id];
             const memberObj = members.find(m => m.id === memberId);
-
             const crProp = proposals.find(p => p.date === dateStr && p.roleId === r.id && p.type === "CR" && p.status === "pending");
             const activeProp = proposals.find(p => p.date === dateStr && p.roleId === r.id && p.type === "PROPOSAL" && p.status === "pending");
 
             if (crProp) {
-              rolesHtml += `
-                <div onclick="openAdminActionModal('${dateStr}', '${r.id}', 'CR', '${crProp.memberId}')" 
-                     class="flex justify-between items-center bg-rose-100 text-rose-800 p-1 rounded border border-rose-300 font-bold cursor-pointer hover:bg-rose-200 animate-pulse">
-                  <span class="text-[10px] text-rose-600 truncate max-w-[60px]">${r.name}:</span>
-                  <span class="truncate max-w-[55px]">${memberObj ? memberObj.name : '不明'}(CR) ➔</span>
-                </div>`;
+              rolesHtml += `<div onclick="openAdminActionModal('${dateStr}', '${r.id}', 'CR', '${crProp.memberId}')" class="flex justify-between items-center bg-rose-100 text-rose-800 p-1 rounded border border-rose-300 font-bold cursor-pointer hover:bg-rose-200 animate-pulse"><span class="text-[10px] text-rose-600 truncate max-w-[60px]">${r.name}:</span><span class="truncate max-w-[55px]">${memberObj ? memberObj.name : '不明'}(CR) ➔</span></div>`;
             } else if (activeProp) {
               const propMember = members.find(m => m.id === activeProp.memberId);
-              rolesHtml += `
-                <div class="flex justify-between items-center bg-amber-50 text-amber-800 p-1 rounded border border-amber-200 font-bold">
-                  <span class="text-[10px] text-amber-600 truncate max-w-[60px]">${r.name}:</span>
-                  <span class="truncate max-w-[55px]">${propMember ? propMember.name : ''}(打診中)</span>
-                </div>`;
+              rolesHtml += `<div class="flex justify-between items-center bg-amber-50 text-amber-800 p-1 rounded border border-amber-200 font-bold"><span class="text-[10px] text-amber-600 truncate max-w-[60px]">${r.name}:</span><span class="truncate max-w-[55px]">${propMember ? propMember.name : ''}(打診中)</span></div>`;
             } else if (memberObj) {
-              rolesHtml += `
-                <div onclick="openAdminClearModal('${dateStr}', '${r.id}', '${memberObj.id}')"
-                     class="flex justify-between items-center bg-indigo-50 text-indigo-900 p-1 rounded border border-indigo-100 cursor-pointer hover:bg-indigo-100 transition-colors">
-                  <span class="text-[10px] text-indigo-500 truncate max-w-[60px]" title="${r.name}">${r.name}:</span>
-                  <span class="font-bold truncate max-w-[55px] flex items-center justify-between w-full ml-1">
-                    ${memberObj.name} <span class="text-indigo-300 ml-1">✕</span>
-                  </span>
-                </div>`;
+              rolesHtml += `<div onclick="openAdminClearModal('${dateStr}', '${r.id}', '${memberObj.id}')" class="flex justify-between items-center bg-indigo-50 text-indigo-900 p-1 rounded border border-indigo-100 cursor-pointer hover:bg-indigo-100 transition-colors"><span class="text-[10px] text-indigo-500 truncate max-w-[60px]" title="${r.name}">${r.name}:</span><span class="font-bold truncate max-w-[55px] flex items-center justify-between w-full ml-1">${memberObj.name} <span class="text-indigo-300 ml-1">✕</span></span></div>`;
             } else {
-              const eligibleMembers = members.filter(m => {
-                const isRoleOk = m.availableRoles.includes(r.id);
-                const isDayOk = m.availableDays.includes(wDayStr);
-                const isUserOk = !(memberAvailability[dateStr] && memberAvailability[dateStr][m.id] === false);
-                return isRoleOk && isDayOk && isUserOk;
-              });
-
+              const eligibleMembers = members.filter(m => m.availableRoles.includes(r.id) && m.availableDays.includes(wDayStr) && !(memberAvailability[dateStr] && memberAvailability[dateStr][m.id] === false));
               let optionsHtml = `<option value="">未</option>`;
               eligibleMembers.forEach(m => {
-                const assignedDaysCount = getMemberAssignedCount(m.id, adminMonth);
-                optionsHtml += `<option value="${m.id}">${m.name} (${assignedDaysCount}日)</option>`;
+                optionsHtml += `<option value="${m.id}">${m.name} (${getMemberAssignedCount(m.id, adminMonth)}日)</option>`;
               });
-
-              rolesHtml += `
-                <div class="flex justify-between items-center bg-rose-50 p-1 rounded border border-rose-200">
-                  <span class="text-[10px] text-rose-500 truncate max-w-[60px]" title="${r.name}">${r.name}:</span>
-                  <select onchange="onAdminSelectCandidate('${dateStr}', '${r.id}', this.value)" 
-                          ${adminMonth < CURRENT_MONTH ? 'disabled' : ''}
-                          class="text-[10px] font-bold text-rose-600 bg-white border border-rose-300 rounded p-0.5 max-w-[75px]">
-                    ${optionsHtml}
-                  </select>
-                </div>`;
+              rolesHtml += `<div class="flex justify-between items-center bg-rose-50 p-1 rounded border border-rose-200"><span class="text-[10px] text-rose-500 truncate max-w-[60px]" title="${r.name}">${r.name}:</span><select onchange="onAdminSelectCandidate('${dateStr}', '${r.id}', this.value)" ${adminMonth < CURRENT_MONTH ? 'disabled' : ''} class="text-[10px] font-bold text-rose-600 bg-white border border-rose-300 rounded p-0.5 max-w-[75px]">${optionsHtml}</select></div>`;
             }
           });
           rolesHtml += `</div>`;
         } else {
           rolesHtml = `<div class="text-center text-gray-400 my-auto">非稼働日</div>`;
         }
-
         cell.innerHTML = dayHeaderHtml + rolesHtml;
         grid.appendChild(cell);
       }
@@ -695,51 +708,23 @@
       const roleName = getRoleName(roleId);
       const memberObj = members.find(m => m.id === memberId);
       activeModalContext = { dateStr, roleId, memberId, action: 'CLEAR_ASSIGNMENT' };
-
       document.getElementById('modal-action-title').innerText = "アサインの個別解除";
-      
-      const monthKey = dateStr.substring(0, 7);
-      const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
-      
+      const isPublished = settings.publishedMonths && settings.publishedMonths.includes(dateStr.substring(0, 7));
       let descText = `${dateStr} の 「${roleName}」 から ${memberObj.name} さんのアサインを解除（クリア）しますか？`;
-      if (isPublished) {
-         descText += `\n\n※この月はすでに公開済みのため、解除を実行すると本人へ「アサイン解除通知」が送られます。`;
-      }
-
+      if (isPublished) descText += `\n\n※この月はすでに公開済みのため、解除を実行すると本人へ「アサイン解除通知」が送られます。`;
       document.getElementById('modal-action-desc').innerText = descText;
-
-      const btnContainer = document.getElementById('modal-action-buttons');
-      btnContainer.innerHTML = `
-        <button onclick="executeClearAssignment()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-lg text-xs shadow">
-          解除を実行する
-        </button>
-      `;
+      document.getElementById('modal-action-buttons').innerHTML = `<button onclick="executeClearAssignment()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-lg text-xs shadow">解除を実行する</button>`;
       document.getElementById('modal-action').classList.remove('hidden');
     }
 
     function executeClearAssignment() {
       if (!activeModalContext) return;
       const { dateStr, roleId, memberId } = activeModalContext;
-
-      if (assignments[dateStr]) {
-        assignments[dateStr][roleId] = null;
-      }
-
-      const monthKey = dateStr.substring(0, 7);
-      const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
-
-      if (isPublished) {
-        proposals.push({
-          id: "clear-" + Date.now(),
-          date: dateStr,
-          roleId: roleId,
-          memberId: memberId,
-          type: "CLEAR_NOTICE",
-          status: "unread"
-        });
+      if (assignments[dateStr]) assignments[dateStr][roleId] = null;
+      if (settings.publishedMonths && settings.publishedMonths.includes(dateStr.substring(0, 7))) {
+        proposals.push({ id: "clear-" + Date.now(), date: dateStr, roleId: roleId, memberId: memberId, type: "CLEAR_NOTICE", status: "unread" });
         markDirty('proposals.json');
       }
-
       markDirty('assignments.json');
       alert("アサインを解除しました。");
       closeActionModal();
@@ -750,48 +735,30 @@
       const pendingCRs = proposals.filter(p => p.type === "CR" && p.status === "pending");
       const container = document.getElementById('cr-items-container');
       container.innerHTML = '';
-
       if (pendingCRs.length === 0) {
         container.innerHTML = `<p class="text-gray-400 text-center py-4">未承認のCRはありません。</p>`;
       } else {
         pendingCRs.forEach(p => {
           const m = members.find(item => item.id === p.memberId);
           const rName = getRoleName(p.roleId);
-
           const item = document.createElement('div');
           item.className = "flex items-center justify-between p-3 bg-rose-50 border border-rose-200 rounded-lg";
-          item.innerHTML = `
-            <div>
-              <span class="font-bold text-rose-900 block">${p.date} / ${rName}</span>
-              <span class="text-gray-600">申請メンバー: <strong>${m ? m.name : ''}</strong></span>
-            </div>
-            <button onclick="approveSpecificCR('${p.id}')" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-3 py-1.5 rounded-lg shadow whitespace-nowrap">
-              承認して解任
-            </button>
-          `;
+          item.innerHTML = `<div><span class="font-bold text-rose-900 block">${p.date} / ${rName}</span><span class="text-gray-600">申請メンバー: <strong>${m ? m.name : ''}</strong></span></div><button onclick="approveSpecificCR('${p.id}')" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-3 py-1.5 rounded-lg shadow whitespace-nowrap">承認して解任</button>`;
           container.appendChild(item);
         });
       }
-
       document.getElementById('modal-cr-list').classList.remove('hidden');
     }
 
-    function closeCRListModal() {
-      document.getElementById('modal-cr-list').classList.add('hidden');
-    }
+    function closeCRListModal() { document.getElementById('modal-cr-list').classList.add('hidden'); }
 
     function approveSpecificCR(proposalId) {
       const p = proposals.find(item => item.id === proposalId);
       if (!p) return;
-
-      if (assignments[p.date]) {
-        assignments[p.date][p.roleId] = null;
-      }
+      if (assignments[p.date]) assignments[p.date][p.roleId] = null;
       p.status = "approved";
-
       markDirty('assignments.json');
       markDirty('proposals.json');
-
       alert("CRを承認しました。該当枠のアサインを解除（未）に更新しました。");
       openCRListModal();
       renderAdminCalendar();
@@ -801,37 +768,18 @@
       if (!selectedMemberId) return;
       const memberObj = members.find(m => m.id === selectedMemberId);
       const roleName = getRoleName(roleId);
-
       activeModalContext = { dateStr, roleId, memberId: selectedMemberId };
-
       document.getElementById('modal-action-title').innerText = "アロケーション打診（プロポーザル）";
       document.getElementById('modal-action-desc').innerText = `${dateStr} の 「${roleName}」 枠に対して、${memberObj.name} さんへ打診（オファー）を送信しますか？`;
-
-      const btnContainer = document.getElementById('modal-action-buttons');
-      btnContainer.innerHTML = `
-        <button onclick="sendAdminProposal()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg text-xs shadow">
-          打診（プロポーザル）を送信する
-        </button>
-      `;
-
+      document.getElementById('modal-action-buttons').innerHTML = `<button onclick="sendAdminProposal()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg text-xs shadow">打診（プロポーザル）を送信する</button>`;
       document.getElementById('modal-action').classList.remove('hidden');
     }
 
     function sendAdminProposal() {
       if (!activeModalContext) return;
       const { dateStr, roleId, memberId } = activeModalContext;
-
-      proposals.push({
-        id: "p-" + Date.now(),
-        date: dateStr,
-        roleId: roleId,
-        memberId: memberId,
-        type: "PROPOSAL",
-        status: "pending"
-      });
-
+      proposals.push({ id: "p-" + Date.now(), date: dateStr, roleId: roleId, memberId: memberId, type: "PROPOSAL", status: "pending" });
       markDirty('proposals.json');
-
       alert("メンバーへ打診（プロポーザル）を送信しました。相手の承諾待ちになります。");
       closeActionModal();
       renderAdminCalendar();
@@ -841,31 +789,20 @@
       const roleName = getRoleName(roleId);
       const memberObj = members.find(m => m.id === memberId);
       activeModalContext = { dateStr, roleId, memberId };
-
       document.getElementById('modal-action-title').innerText = "キャンセル申請（CR）の処理";
       document.getElementById('modal-action-desc').innerText = `${dateStr} 「${roleName}」 に割り当てられている ${memberObj ? memberObj.name : ''} さんからアサインキャンセルの要望が出ています。`;
-
-      const btnContainer = document.getElementById('modal-action-buttons');
-      btnContainer.innerHTML = `
-        <button onclick="approveCR()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-lg text-xs shadow">
-          CRを承認してアサインを解除（「未」に戻す）
-        </button>
-      `;
-
+      document.getElementById('modal-action-buttons').innerHTML = `<button onclick="approveCR()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-lg text-xs shadow">CRを承認してアサインを解除（「未」に戻す）</button>`;
       document.getElementById('modal-action').classList.remove('hidden');
     }
 
     function approveCR() {
       if (!activeModalContext) return;
       const { dateStr, roleId, memberId } = activeModalContext;
-
       if (assignments[dateStr]) assignments[dateStr][roleId] = null;
       const p = proposals.find(item => item.date === dateStr && item.roleId === roleId && item.memberId === memberId && item.type === "CR");
       if (p) p.status = "approved";
-
       markDirty('assignments.json');
       markDirty('proposals.json');
-
       alert("CRを承認し、アサインを解除しました。枠が「未」になりました。");
       closeActionModal();
       renderAdminCalendar();
@@ -876,7 +813,6 @@
       activeModalContext = null;
     }
 
-    // --- メンバーアプリ機能 ---
     function updateMemberSelectorOptions() {
       const select = document.getElementById('member-selector');
       select.innerHTML = members.map(m => {
@@ -899,10 +835,8 @@
 
     function renderMemberCalendar() {
       document.getElementById('calendar-month-title-member').innerText = `2026年${memberMonth}月`;
-
       const monthKey = `2026-${String(memberMonth).padStart(2, '0')}`;
       const isPublished = settings.publishedMonths && settings.publishedMonths.includes(monthKey);
-      
       const provMsg = document.getElementById('member-provisional-msg');
       const calContainer = document.getElementById('member-calendar-container');
 
@@ -917,7 +851,6 @@
         calContainer.classList.remove('hidden');
       }
 
-      // 打診通知の確認
       const activeProp = proposals.find(p => p.memberId === selectedMemberId && p.type === "PROPOSAL" && p.status === "pending");
       const alertBox = document.getElementById('proposal-alert');
       if (activeProp) {
@@ -927,7 +860,6 @@
         alertBox.classList.add('hidden');
       }
 
-      // 解除（クリア）通知の確認
       const clearNotice = proposals.find(p => p.memberId === selectedMemberId && p.type === "CLEAR_NOTICE" && p.status === "unread");
       const clearAlertBox = document.getElementById('clear-alert');
       if (clearNotice) {
@@ -941,77 +873,41 @@
       const dayList = document.getElementById('day-list-member');
       grid.innerHTML = '';
       dayList.innerHTML = '';
-
       const daysInMonth = memberMonth === 10 ? 31 : 30;
       const firstDayOffset = memberMonth === 9 ? 2 : (memberMonth === 10 ? 4 : 0);
 
-      for (let i = 0; i < firstDayOffset; i++) {
-        grid.appendChild(document.createElement('div'));
-      }
+      for (let i = 0; i < firstDayOffset; i++) grid.appendChild(document.createElement('div'));
 
       for (let day = 1; day <= daysInMonth; day++) {
         const dateStr = `2026-${String(memberMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         const dayOfWeek = (firstDayOffset + day - 1) % 7;
         const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-
         const dayAlloc = assignments[dateStr] || {};
         let assignedRoleId = null;
-        Object.keys(dayAlloc).forEach(rId => {
-          if (dayAlloc[rId] === selectedMemberId) assignedRoleId = rId;
-        });
-
+        Object.keys(dayAlloc).forEach(rId => { if (dayAlloc[rId] === selectedMemberId) assignedRoleId = rId; });
         const crProp = proposals.find(p => p.date === dateStr && p.memberId === selectedMemberId && p.type === "CR" && p.status === "pending");
 
         const cell = document.createElement('div');
-        cell.className = `min-h-[50px] p-1 border rounded flex flex-col justify-between text-[10px] ${
-          isWeekend ? 'bg-gray-50 text-gray-400' : 'bg-white'
-        }`;
-
+        cell.className = `min-h-[50px] p-1 border rounded flex flex-col justify-between text-[10px] ${isWeekend ? 'bg-gray-50 text-gray-400' : 'bg-white'}`;
         let statusBadge = '';
-        if (crProp) {
-          statusBadge = `<span class="bg-rose-500 text-white px-1 py-0.5 rounded text-[8px] font-bold">CR申請中</span>`;
-        } else if (assignedRoleId) {
-          statusBadge = `<span class="bg-indigo-100 text-indigo-700 px-1 py-0.5 rounded text-[8px] font-bold truncate max-w-[60px]" title="${getRoleName(assignedRoleId)}">${getRoleName(assignedRoleId)}</span>`;
-        }
-
-        cell.innerHTML = `
-          <div class="flex justify-between items-center"><span class="font-bold">${day}</span></div>
-          <div class="mt-1">${statusBadge}</div>
-        `;
+        if (crProp) statusBadge = `<span class="bg-rose-500 text-white px-1 py-0.5 rounded text-[8px] font-bold">CR申請中</span>`;
+        else if (assignedRoleId) statusBadge = `<span class="bg-indigo-100 text-indigo-700 px-1 py-0.5 rounded text-[8px] font-bold truncate max-w-[60px]" title="${getRoleName(assignedRoleId)}">${getRoleName(assignedRoleId)}</span>`;
+        cell.innerHTML = `<div class="flex justify-between items-center"><span class="font-bold">${day}</span></div><div class="mt-1">${statusBadge}</div>`;
         grid.appendChild(cell);
 
         if (!isWeekend) {
           const isUserBlocked = memberAvailability[dateStr] && memberAvailability[dateStr][selectedMemberId] === false;
           const row = document.createElement('div');
           row.className = "flex items-center justify-between p-2.5 bg-gray-50 rounded-lg border text-xs";
-
-          let roleDisplay = assignedRoleId 
-            ? `<span class="font-bold text-indigo-600">${getRoleName(assignedRoleId)}</span>` 
-            : `<span class="text-gray-400">未アサイン</span>`;
-
+          let roleDisplay = assignedRoleId ? `<span class="font-bold text-indigo-600">${getRoleName(assignedRoleId)}</span>` : `<span class="text-gray-400">未アサイン</span>`;
           let actionButtonHtml = '';
           if (assignedRoleId) {
-            if (crProp) {
-              actionButtonHtml = `<button onclick="cancelCR('${dateStr}')" class="bg-rose-600 text-white px-3 py-1 rounded-lg font-bold shadow-sm">CR取り下げ</button>`;
-            } else {
-              actionButtonHtml = `<button onclick="requestCR('${dateStr}', '${assignedRoleId}')" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg font-bold shadow-sm">CR(辞退申請)</button>`;
-            }
+            if (crProp) actionButtonHtml = `<button onclick="cancelCR('${dateStr}')" class="bg-rose-600 text-white px-3 py-1 rounded-lg font-bold shadow-sm">CR取り下げ</button>`;
+            else actionButtonHtml = `<button onclick="requestCR('${dateStr}', '${assignedRoleId}')" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg font-bold shadow-sm">CR(辞退申請)</button>`;
           } else {
-            actionButtonHtml = `
-              <button onclick="toggleMemberBlockDay('${dateStr}')" class="px-3 py-1 rounded-lg font-bold ${
-                isUserBlocked ? 'bg-gray-400 text-white' : 'bg-emerald-600 text-white'
-              }">
-                ${isUserBlocked ? '対応不可 (ブロック中)' : '対応可能 (OK)'}
-              </button>`;
+            actionButtonHtml = `<button onclick="toggleMemberBlockDay('${dateStr}')" class="px-3 py-1 rounded-lg font-bold ${isUserBlocked ? 'bg-gray-400 text-white' : 'bg-emerald-600 text-white'}">${isUserBlocked ? '対応不可 (ブロック中)' : '対応可能 (OK)'}</button>`;
           }
-
-          row.innerHTML = `
-            <div>
-              <span class="font-bold text-gray-700">${memberMonth}月${day}日</span>
-              <span class="ml-2">${roleDisplay}</span>
-            </div>
-            <div>${actionButtonHtml}</div>
-          `;
+          row.innerHTML = `<div><span class="font-bold text-gray-700">${memberMonth}月${day}日</span><span class="ml-2">${roleDisplay}</span></div><div>${actionButtonHtml}</div>`;
           dayList.appendChild(row);
         }
       }
@@ -1045,14 +941,7 @@
 
     function requestCR(dateStr, roleId) {
       if (confirm(`${dateStr} のアサインに対するキャンセルリクエスト（CR）を送信しますか？`)) {
-        proposals.push({
-          id: "cr-" + Date.now(),
-          date: dateStr,
-          roleId: roleId,
-          memberId: selectedMemberId,
-          type: "CR",
-          status: "pending"
-        });
+        proposals.push({ id: "cr-" + Date.now(), date: dateStr, roleId: roleId, memberId: selectedMemberId, type: "CR", status: "pending" });
         markDirty('proposals.json');
         renderMemberCalendar();
       }
@@ -1068,54 +957,29 @@
       if (!memberAvailability[dateStr]) memberAvailability[dateStr] = {};
       const current = memberAvailability[dateStr][selectedMemberId];
       memberAvailability[dateStr][selectedMemberId] = (current === false) ? true : false;
-      
       markDirty('member_availability.json'); 
       renderMemberCalendar();
     }
 
-    // --- SME設定アプリ機能 ---
     function renderSettingApp() {
       const container = document.getElementById('member-settings-list');
       container.innerHTML = '';
-
       members.forEach((m, mIdx) => {
         const card = document.createElement('div');
         card.className = "border rounded-xl p-4 bg-gray-50 space-y-3 text-xs shadow-sm";
-
-        let header = `
-          <div class="flex justify-between items-center border-b pb-2">
-            <div class="flex items-center space-x-2">
-              <span class="font-bold text-gray-500">氏名:</span>
-              <input type="text" value="${m.name}" onchange="updateMemberName(${mIdx}, this.value)" 
-                     class="border border-indigo-300 rounded px-2.5 py-1 font-bold text-indigo-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              <span class="text-gray-400 text-[10px]">(ID: ${m.id})</span>
-            </div>
-            <button onclick="deleteMember(${mIdx})" class="text-rose-500 hover:text-rose-700 font-bold bg-rose-50 px-2.5 py-1 rounded">削除</button>
-          </div>
-        `;
-
+        let header = `<div class="flex justify-between items-center border-b pb-2"><div class="flex items-center space-x-2"><span class="font-bold text-gray-500">氏名:</span><input type="text" value="${m.name}" onchange="updateMemberName(${mIdx}, this.value)" class="border border-indigo-300 rounded px-2.5 py-1 font-bold text-indigo-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"><span class="text-gray-400 text-[10px]">(ID: ${m.id})</span></div><button onclick="deleteMember(${mIdx})" class="text-rose-500 hover:text-rose-700 font-bold bg-rose-50 px-2.5 py-1 rounded">削除</button></div>`;
         let rolesToggle = `<div class="space-y-1"><span class="font-bold text-gray-600 block">対応可能拠点/役割（編集可）:</span><div class="flex flex-wrap gap-2">`;
         roles.forEach(r => {
           const checked = m.availableRoles.includes(r.id);
-          rolesToggle += `
-            <label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-gray-200 cursor-pointer hover:bg-indigo-50">
-              <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleMemberRole(${mIdx}, '${r.id}')" class="rounded text-indigo-600">
-              <span class="${checked ? 'font-bold text-indigo-900' : 'text-gray-600'}">${r.name}</span>
-            </label>`;
+          rolesToggle += `<label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-gray-200 cursor-pointer hover:bg-indigo-50"><input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleMemberRole(${mIdx}, '${r.id}')" class="rounded text-indigo-600"><span class="${checked ? 'font-bold text-indigo-900' : 'text-gray-600'}">${r.name}</span></label>`;
         });
         rolesToggle += `</div></div>`;
-
         let daysToggle = `<div class="space-y-1"><span class="font-bold text-gray-600 block">対応可能曜日（編集可）:</span><div class="flex flex-wrap gap-2">`;
         weekDays.forEach(d => {
           const checked = m.availableDays.includes(d);
-          daysToggle += `
-            <label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-gray-200 cursor-pointer hover:bg-indigo-50">
-              <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleMemberDay(${mIdx}, '${d}')" class="rounded text-indigo-600">
-              <span class="${checked ? 'font-bold text-indigo-900' : 'text-gray-600'}">${d}曜</span>
-            </label>`;
+          daysToggle += `<label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-gray-200 cursor-pointer hover:bg-indigo-50"><input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleMemberDay(${mIdx}, '${d}')" class="rounded text-indigo-600"><span class="${checked ? 'font-bold text-indigo-900' : 'text-gray-600'}">${d}曜</span></label>`;
         });
         daysToggle += `</div></div>`;
-
         card.innerHTML = header + rolesToggle + daysToggle;
         container.appendChild(card);
       });
@@ -1127,39 +991,28 @@
       markDirty('members.json');
       renderSettingApp();
     }
-
     function toggleMemberRole(mIdx, roleId) {
       const rolesArr = members[mIdx].availableRoles;
       const index = rolesArr.indexOf(roleId);
-      if (index > -1) rolesArr.splice(index, 1);
-      else rolesArr.push(roleId);
+      if (index > -1) rolesArr.splice(index, 1); else rolesArr.push(roleId);
       markDirty('members.json');
       renderSettingApp();
     }
-
     function toggleMemberDay(mIdx, day) {
       const daysArr = members[mIdx].availableDays;
       const index = daysArr.indexOf(day);
-      if (index > -1) daysArr.splice(index, 1);
-      else daysArr.push(day);
+      if (index > -1) daysArr.splice(index, 1); else daysArr.push(day);
       markDirty('members.json');
       renderSettingApp();
     }
-
     function addMember() {
       const nameInput = document.getElementById('new-member-name');
       if (!nameInput.value.trim()) return;
-      members.push({
-        id: "m" + (members.length + 1),
-        name: nameInput.value.trim(),
-        availableRoles: [],
-        availableDays: []
-      });
+      members.push({ id: "m" + (members.length + 1), name: nameInput.value.trim(), availableRoles: [], availableDays: [] });
       nameInput.value = '';
       markDirty('members.json');
       renderSettingApp();
     }
-
     function deleteMember(idx) {
       if (confirm(`${members[idx].name} を削除しますか？`)) {
         members.splice(idx, 1);
