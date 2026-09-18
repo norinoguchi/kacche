@@ -1,0 +1,56 @@
+{
+  "iconGradient": "from-emerald-600 to-teal-600",
+  "btnTheme": "bg-emerald-600",
+  "badgeTheme": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+  "i18n": {
+    "ja": {
+      "title": "Japan Discovery",
+      "subtitle": "日本のお城マップ - 日本全国の名城をご案内します。",
+      "listTitle": "スポット一覧",
+      "consultTitle": "詳細情報・お問い合わせ",
+      "consultDesc": "このスポットに関する詳しい情報は観光協会等へお問い合わせください。"
+    },
+    "en": {
+      "title": "Japan Discovery",
+      "subtitle": "Japanese castle map - We will guide you to famous castles all over Japan.",
+      "listTitle": "Spot List",
+      "consultTitle": "Inquiries",
+      "consultDesc": "Please contact local tourist associations for more details."
+    },
+    "zh-TW": {
+      "title": "Japan Discovery",
+      "subtitle": "日本城堡地圖 - 我們將帶您參觀日本各地的著名城堡。",
+      "listTitle": "景點列表",
+      "consultTitle": "詳細資訊與洽詢",
+      "consultDesc": "有關此景點的詳細資訊，請洽當地觀光協會等單位。"
+    },
+    "zh-CN": {
+      "title": "Japan Discovery",
+      "subtitle": "日本城堡地图 - 我们将带您参观日本各地的著名城堡。",
+      "listTitle": "景点列表",
+      "consultTitle": "详细信息与咨询",
+      "consultDesc": "有关该景点的详细信息，请咨询当地观光协会等部门。"
+    },
+    "ko": {
+      "title": "Japan Discovery",
+      "subtitle": "일본의 성지도 - 일본 전국의 명성을 안내합니다.",
+      "listTitle": "관광지 목록",
+      "consultTitle": "상세정보 및 문의",
+      "consultDesc": "이 관광지에 대한 자세한 정보는 관광 협회 등에 문의하십시오."
+    },
+    "th": {
+      "title": "Japan Discovery",
+      "subtitle": "แผนที่ปราสาทญี่ปุ่น - เราจะพาคุณไปเยี่ยมชมปราสาทที่มีชื่อเสียงทั่วประเทศญี่ปุ่น",
+      "listTitle": "รายการสถานที่",
+      "consultTitle": "ข้อมูลเพิ่มเติมและติดต่อสอบถาม",
+      "consultDesc": "สำหรับข้อมูลเพิ่มเติมเกี่ยวกับสถานที่นี้ โปรดติดต่อสมาคมการท่องเที่ยวในท้องถิ่น"
+    },
+    "id": {
+      "title": "Japan Discovery",
+      "subtitle": "Peta kastil Jepang - Kami akan memandu Anda ke kastil-kastil terkenal di seluruh Jepang.",
+      "listTitle": "Daftar Lokasi",
+      "consultTitle": "Informasi Lebih Lanjut & Pertanyaan",
+      "consultDesc": "Silakan hubungi asosiasi pariwisata setempat untuk detail lebih lanjut."
+    }
+  }
+}

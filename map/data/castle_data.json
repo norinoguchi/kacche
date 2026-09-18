@@ -1,0 +1,108 @@
+{
+  "spots": [
+    {
+      "id": 3001,
+      "category": "castle",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-01",
+      "lat": 37.5727362,
+      "lng": 127.008569,
+      "updatedAt": "2026-09-18 16:31",
+      "photos": [
+        {
+          "url": "picture/castle/hakodate/Oshi-jo.JPG",
+          "caption": "",
+          "credit": "Free Licence"
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": 3002,
+      "category": "castle",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-01",
+      "lat": 26.2122345,
+      "lng": 127.6791452,
+      "updatedAt": "2026-09-18 16:12",
+      "photos": [],
+      "links": []
+    }
+  ],
+  "spotContentI18n": {
+    "3001": {
+      "ja": {
+        "title": "函館城",
+        "location": "函館城",
+        "desc": "テストデータ"
+      },
+      "en": {
+        "title": "hakodate castle",
+        "location": "hakodate castle",
+        "desc": "test data"
+      },
+      "zh-TW": {
+        "title": "函館城",
+        "location": "函館城",
+        "desc": "測試數據"
+      },
+      "zh-CN": {
+        "title": "函馆城",
+        "location": "函馆城",
+        "desc": "测试数据"
+      },
+      "ko": {
+        "title": "하코다테 성",
+        "location": "하코다테 성",
+        "desc": "테스트 데이터"
+      },
+      "th": {
+        "title": "ปราสาทฮาโกดาเตะ",
+        "location": "ปราสาทฮาโกดาเตะ",
+        "desc": "ข้อมูลการทดสอบ"
+      },
+      "id": {
+        "title": "kastil hakodate",
+        "location": "kastil hakodate",
+        "desc": "data uji"
+      }
+    },
+    "3002": {
+      "ja": {
+        "title": "沖縄城",
+        "location": "沖縄県那覇市",
+        "desc": "沖縄のテスト"
+      },
+      "en": {
+        "title": "okinawa castle",
+        "location": "Naha City, Okinawa Prefecture",
+        "desc": "Okinawa test"
+      },
+      "zh-TW": {
+        "title": "沖繩城",
+        "location": "沖繩縣那霸市",
+        "desc": "沖繩測試"
+      },
+      "zh-CN": {
+        "title": "冲绳城",
+        "location": "冲绳县那霸市",
+        "desc": "冲绳测试"
+      },
+      "ko": {
+        "title": "오키나와 성",
+        "location": "오키나와현 나하시",
+        "desc": "오키나와 테스트"
+      },
+      "th": {
+        "title": "ปราสาทโอกินาว่า",
+        "location": "เมืองนาฮะ จังหวัดโอกินาว่า",
+        "desc": "การทดสอบโอกินาว่า"
+      },
+      "id": {
+        "title": "kastil Okinawa",
+        "location": "Kota Naha, Prefektur Okinawa",
+        "desc": "Tes Okinawa"
+      }
+    }
+  }
+}

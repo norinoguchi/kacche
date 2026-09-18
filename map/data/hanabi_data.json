@@ -99,15 +99,17 @@
       "endDate": "2027-08-07",
       "lat": 35.7066318,
       "lng": 139.868677,
-      "updatedAt": "2026-09-15 16:25",
+      "updatedAt": "2026-09-18 14:08",
       "photos": [
         {
-          "url": "picture/hanabi/edogawa//pict1.jpg",
-          "caption": "江戸川区花火大会"
+          "url": "picture/hanabi/edogawa/pict1.jpg",
+          "caption": "江戸川区花火大会",
+          "credit": ""
         },
         {
-          "url": "picture/hanabi/edogawa//hanabi2.jpg",
-          "caption": ""
+          "url": "picture/hanabi/edogawa/Edogawa_Fireworks_Festival_2023_(53329140608).jpg",
+          "caption": "",
+          "credit": "Dick Thomas Johnson from Tokyo, Japan  Creative Commons Attribution 2.0"
         }
       ],
       "links": [

@@ -1,0 +1,38 @@
+{
+  "defaultMap": "matsuri",
+  "maps": [
+    {
+      "id": "matsuri",
+      "name": "祭りマップ",
+      "icon": "🏮",
+      "hasCalendar": true,
+      "theme": {
+        "iconGradient": "from-amber-600 to-red-600",
+        "btnTheme": "bg-amber-600 hover:bg-amber-500",
+        "badgeTheme": "bg-amber-500/10 text-amber-400 border-amber-500/20"
+      }
+    },
+    {
+      "id": "hanabi",
+      "name": "花火マップ",
+      "icon": "🎆",
+      "hasCalendar": true,
+      "theme": {
+        "iconGradient": "from-purple-600 to-indigo-600",
+        "btnTheme": "bg-purple-600 hover:bg-purple-500",
+        "badgeTheme": "bg-purple-500/10 text-purple-400 border-purple-500/20"
+      }
+    },
+    {
+      "id": "castle",
+      "name": "日本のお城マップ",
+      "icon": "🏯",
+      "hasCalendar": false,
+      "theme": {
+        "iconGradient": "from-emerald-600 to-teal-600",
+        "btnTheme": "bg-emerald-600 hover:bg-emerald-500",
+        "badgeTheme": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+      }
+    }
+  ]
+}

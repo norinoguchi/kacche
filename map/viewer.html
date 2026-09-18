@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japan Discovery - Map Viewer</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 動的にテーマカラーを拡張できるようにするための初期設定
         tailwind.config = {
             theme: {
                 extend: {
@@ -19,107 +17,36 @@
             }
         }
     </script>
-    <!-- Inter & Noto Sans JP Font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
     <style>
         body { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
-        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-            background-color: #131c2e !important;
-            color: #f8fafa !important;
-            border: 1px solid #1e293b;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip { background-color: #131c2e !important; color: #f8fafa !important; border: 1px solid #1e293b; border-radius: 1rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
         .leaflet-container { font-family: 'Noto Sans JP', sans-serif; }
         .leaflet-popup-close-button { color: #94a3b8 !important; }
-        .leaflet-popup-close-button:hover { color: #ffffff !important; }
-        
-        .leaflet-touch .leaflet-bar, .leaflet-bar {
-            border: none !important;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
-            border-radius: 0.875rem !important;
-            overflow: hidden;
-            background-color: rgba(19, 28, 46, 0.85) !important;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(51, 65, 85, 0.8) !important;
-        }
-
-        .leaflet-touch .leaflet-bar a, .leaflet-bar a {
-            background-color: transparent !important;
-            color: #94a3b8 !important;
-            border-bottom: 1px solid rgba(51, 65, 85, 0.6) !important;
-            width: 36px !important;
-            height: 36px !important;
-            line-height: 36px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            transition: all 0.2s ease !important;
-            font-size: 16px !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-        }
-
-        .leaflet-touch .leaflet-bar a:last-child, .leaflet-bar a:last-child {
-            border-bottom: none !important;
-        }
-
-        .leaflet-touch .leaflet-bar a:hover, .leaflet-bar a:hover {
-            background-color: rgba(30, 41, 59, 0.9) !important;
-            color: #ffffff !important;
-        }
-
-        .spot-marker-icon {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-        }
-        .spot-marker-icon:hover {
-            transform: scale(1.25);
-            z-index: 1000 !important;
-        }
-
-        /* マップのホバーツールチップのダークテーマ化 */
-        .leaflet-tooltip.custom-map-tooltip {
-            background-color: #131c2e !important;
-            color: #f8fafa !important;
-            border: 1px solid #334155 !important;
-            border-radius: 0.75rem !important;
-            padding: 4px 10px !important;
-            font-family: 'Noto Sans JP', sans-serif !important;
-            font-size: 11px !important;
-            font-weight: 500 !important;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
-        }
-        .leaflet-tooltip.custom-map-tooltip::before {
-            border-top-color: #334155 !important;
-        }
-
+        .leaflet-touch .leaflet-bar, .leaflet-bar { border: none !important; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); border-radius: 0.875rem !important; overflow: hidden; background-color: rgba(19, 28, 46, 0.85) !important; backdrop-filter: blur(8px); border: 1px solid rgba(51, 65, 85, 0.8) !important; }
+        .leaflet-touch .leaflet-bar a, .leaflet-bar a { background-color: transparent !important; color: #94a3b8 !important; border-bottom: 1px solid rgba(51, 65, 85, 0.6) !important; width: 36px !important; height: 36px !important; display: flex !important; align-items: center !important; justify-content: center !important; transition: all 0.2s ease !important; }
+        .leaflet-touch .leaflet-bar a:hover, .leaflet-bar a:hover { background-color: rgba(30, 41, 59, 0.9) !important; color: #ffffff !important; }
+        .spot-marker-icon { transition: transform 0.2s ease; cursor: pointer; }
+        .spot-marker-icon:hover { transform: scale(1.25); z-index: 1000 !important; }
+        .leaflet-tooltip.custom-map-tooltip { background-color: #131c2e !important; color: #f8fafa !important; border: 1px solid #334155 !important; border-radius: 0.75rem !important; padding: 4px 10px !important; font-size: 11px !important; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0b0f19; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
     </style>
 </head>
 <body class="bg-slateDark text-slate-100 h-full flex flex-col overflow-hidden">
-
-    <!-- Header -->
     <header class="bg-slateCard/80 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between shrink-0 z-20">
         <div class="flex items-center space-x-3">
             <a id="btnBackToPortal" href="index.html" class="mr-1 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 <span class="hidden sm:inline">Portal</span>
             </a>
-
-            <div id="headerIconContainer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-red-600 flex items-center justify-center shadow-lg shrink-0">
-                <span id="headerIcon" class="text-lg">⛩️</span>
+            <div id="headerIconContainer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-slate-600 bg-transparent flex items-center justify-center shrink-0">
+                <span id="headerIcon" class="text-lg sm:text-xl"></span>
             </div>
             <div>
                 <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
@@ -129,7 +56,6 @@
                 <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400">Loading...</p>
             </div>
         </div>
-
         <div class="flex items-center gap-2 sm:gap-3">
             <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs text-white focus:outline-none cursor-pointer">
                 <option value="ja">🇯🇵 日本語</option>
@@ -143,31 +69,24 @@
         </div>
     </header>
 
-    <!-- Main Toolbar -->
     <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-2.5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 shrink-0 z-10">
-        <div class="flex flex-col sm:flex-row md:flex-row items-stretch sm:items-center gap-2.5 flex-1 min-w-0">
-            <!-- View Mode Switcher -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 flex-1 min-w-0">
             <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800 shrink-0 justify-between sm:justify-start">
-                <button onclick="switchView('map')" id="btn-view-map" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 active-tab-btn text-white shadow-md">
+                <button onclick="switchView('map')" id="btn-view-map" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-white shadow-md">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     <span id="txt-nav-map">マップ</span>
                 </button>
-                <button onclick="switchView('list')" id="btn-view-list" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                <button onclick="switchView('list')" id="btn-view-list" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                     <span id="txt-nav-list">リスト</span>
                 </button>
-                <button onclick="switchView('calendar')" id="btn-view-calendar" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white">
+                <button onclick="switchView('calendar')" id="btn-view-calendar" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     <span id="txt-nav-calendar">カレンダー</span>
                 </button>
             </div>
-
-            <!-- Season / Category Filter Scroll -->
             <div class="relative flex items-center w-full min-w-0 overflow-hidden flex-1">
-                <button id="catScrollLeft" onclick="scrollCategories(-120)" class="absolute left-0 z-10 hidden p-1 bg-gradient-to-r from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-
+                <button id="catScrollLeft" onclick="scrollCategories(-120)" class="absolute left-0 z-10 hidden p-1 bg-gradient-to-r from-slateCard to-transparent text-slate-300 h-full flex items-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div id="catFilterScroll" onscroll="checkCatScroll()" class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar w-full scroll-smooth">
                     <button onclick="filterSeason('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all active-filter-btn text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
                     <button onclick="filterSeason('spring')" id="cat-spring" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🌸 春 (3-5月)</button>
@@ -175,56 +94,31 @@
                     <button onclick="filterSeason('autumn')" id="cat-autumn" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🍁 秋 (9-11月)</button>
                     <button onclick="filterSeason('winter')" id="cat-winter" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">❄️ 冬 (12-2月)</button>
                 </div>
-
-                <button id="catScrollRight" onclick="scrollCategories(120)" class="absolute right-0 z-10 hidden p-1 bg-gradient-to-l from-slateCard via-slateCard/90 to-transparent text-slate-300 hover:text-white h-full flex items-center transition-all">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-                </button>
+                <button id="catScrollRight" onclick="scrollCategories(120)" class="absolute right-0 z-10 hidden p-1 bg-gradient-to-l from-slateCard to-transparent text-slate-300 h-full flex items-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg></button>
             </div>
         </div>
-
-        <!-- Search Box -->
         <div id="searchContainer" class="relative w-full md:w-64 hidden">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </span>
-            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名や名称で検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-8 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none transition-all">
-            <button id="searchClearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-400 hover:text-white hidden transition-colors" title="クリア">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span>
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名や名称で検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-8 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+            <button id="searchClearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-400 hover:text-white hidden"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
     </div>
 
-    <!-- Main Content Area -->
     <main class="flex-1 relative overflow-hidden flex">
-        <!-- 1. Map View -->
-        <div id="view-map" class="absolute inset-0 flex">
-            <div id="map" class="w-full h-full z-0"></div>
-        </div>
-
-        <!-- 2. List View -->
+        <div id="view-map" class="absolute inset-0 flex"><div id="map" class="w-full h-full z-0"></div></div>
         <div id="view-list" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2">
-                    <span id="txt-list-title">リスト</span>
-                    <span class="text-xs font-normal text-slate-400" id="listCount">（0件）</span>
-                </h2>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2"><span id="txt-list-title">リスト</span><span class="text-xs font-normal text-slate-400" id="listCount">（0件）</span></h2>
                 <div id="listContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
         </div>
-
-        <!-- 3. Calendar View -->
         <div id="view-calendar" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
             <div class="max-w-5xl mx-auto">
                 <div class="flex items-center justify-between mb-6 bg-slateCard/60 border border-slate-800 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl">
-                    <button onclick="changeMonth(-1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
+                    <button onclick="changeMonth(-1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                     <h2 id="calendarMonthTitle" class="text-base sm:text-lg font-bold text-white">2027年 5月</h2>
-                    <button onclick="changeMonth(1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
+                    <button onclick="changeMonth(1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
                 </div>
-
                 <div class="bg-slateCard/40 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
                     <div id="calendarHeaders" class="grid grid-cols-7 bg-slate-900/90 text-center text-xs font-semibold text-slate-400 py-3 border-b border-slate-800"></div>
                     <div id="calendarGrid" class="grid grid-cols-7 bg-slate-800/20 gap-px"></div>
@@ -233,128 +127,82 @@
         </div>
     </main>
 
-    <!-- Detail Modal -->
     <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
         <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col">
             <div id="modalContent" class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-5"></div>
             <div class="bg-slate-900/60 px-5 sm:px-6 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
-                <button onclick="closeDetailModal()" id="txt-close" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition-colors">閉じる</button>
+                <button onclick="closeDetailModal()" id="txt-close" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium">閉じる</button>
             </div>
         </div>
     </div>
 
-    <!-- Lightbox Modal -->
-    <div id="imageLightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
-        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white/70 hover:text-white p-2.5 rounded-full bg-slate-800/60 hover:bg-slate-800 border border-slate-700/55 transition-all z-20" title="閉じる (Esc)">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-
-        <div class="relative max-w-5xl max-h-[80vh] w-full flex items-center justify-center">
-            <button id="lightboxPrevBtn" onclick="prevLightboxImage()" class="absolute left-2 sm:left-4 text-white bg-slate-900/70 hover:bg-slate-900 p-3 rounded-full backdrop-blur-sm border border-slate-700/60 transition-all z-10" title="前の写真">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-
-            <img id="lightboxImage" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-slate-800">
-
-            <button id="lightboxNextBtn" onclick="nextLightboxImage()" class="absolute right-2 sm:right-4 text-white bg-slate-900/70 hover:bg-slate-900 p-3 rounded-full backdrop-blur-sm border border-slate-700/60 transition-all z-10" title="次の写真">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </button>
-        </div>
-
-        <div class="mt-4 text-center max-w-xl">
-            <p id="lightboxCaption" class="text-white text-sm font-medium mb-1"></p>
-            <p id="lightboxCounter" class="text-xs text-slate-400 font-mono"></p>
-        </div>
-    </div>
-
-    <!-- Script Engine -->
     <script>
-        let uiText = {};
-        let mapConfig = {};
-        let spotData = { spots: [], spotContentI18n: {} };
-        
-        let currentMapID = 'matsuri';
-        let currentLang = 'ja';
-
-        let currentLightboxPhotos = [];
-        let currentLightboxIndex = 0;
-
-        let currentView = 'map';
-        let currentSeason = 'all';
-        let searchQuery = '';
-        
-        let todayObj = new Date();
-        let currentCalendarDate = new Date(2027, 4, 1); // 2027年5月を初期表示の目安に
-
-        let map, markersLayer;
+        let uiText = {}, mapConfig = {}, spotData = { spots: [], spotContentI18n: {} };
+        let currentMapID = 'matsuri', currentLang = 'ja';
+        let currentView = 'map', currentSeason = 'all', searchQuery = '';
+        let currentCalendarDate = new Date(2027, 4, 1);
+        let map, markersLayer, sysConfig = { defaultMap: 'matsuri', maps: [] };
 
         window.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            currentMapID = urlParams.get('map') || 'matsuri';
-            currentLang = urlParams.get('lang') || 'ja';
+            try {
+                const sysRes = await fetch(`config/maps_index.json?v=${Date.now()}`);
+                if (sysRes.ok) sysConfig = await sysRes.json();
+            } catch (e) { console.warn(e); }
 
+            const urlParams = new URLSearchParams(window.location.search);
+            currentMapID = urlParams.get('map') || sysConfig.defaultMap || 'matsuri';
+            currentLang = urlParams.get('lang') || 'ja';
             document.getElementById('langSelector').value = currentLang;
 
             initMap();
             await loadAllData();
             applyThemeAndText();
             renderCurrentView();
-
             window.addEventListener('resize', checkCatScroll);
         });
 
         async function loadAllData() {
             try {
-                // 1. 共通UIテキストの読み込み
                 const uiRes = await fetch(`config/common_ui.json?v=${Date.now()}`);
-                if (uiRes.ok) {
-                    uiText = await uiRes.json();
-                }
-
-                // 2. マップ固有コンフィグの読み込み
+                if (uiRes.ok) uiText = await uiRes.json();
                 const configRes = await fetch(`config/${currentMapID}_config.json?v=${Date.now()}`);
-                if (configRes.ok) {
-                    mapConfig = await configRes.json();
-                }
-
-                // 3. スポットデータの読み込み
+                if (configRes.ok) mapConfig = await configRes.json();
                 const dataRes = await fetch(`data/${currentMapID}_data.json?v=${Date.now()}`);
-                if (dataRes.ok) {
-                    spotData = await dataRes.json();
-                }
-
-            } catch (e) {
-                console.error("Data load error:", e);
-            }
+                if (dataRes.ok) spotData = await dataRes.json();
+            } catch (e) { console.error(e); }
         }
 
-        function getLocalizedUI(key) {
-            const langData = (uiText[currentLang] || uiText['ja'] || {});
-            return langData[key] || key;
-        }
-
+        function getLocalizedUI(key) { return ((uiText[currentLang] || uiText['ja'] || {})[key]) || key; }
         function getLocalizedConfig(key) {
             const configI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
             return configI18n[key] || '';
         }
 
         function applyThemeAndText() {
-            // ポータルへのリンク維持
+            const currentMapInfo = sysConfig.maps ? sysConfig.maps.find(m => m.id === currentMapID) : null;
+            
+            // maps_index からアイコン、カレンダー有無、色合いを取得
+            const hasCalendar = currentMapInfo ? (currentMapInfo.hasCalendar !== false) : true;
+            const icon = currentMapInfo ? (currentMapInfo.icon || '📍') : '📍';
+            const theme = currentMapInfo?.theme || { btnTheme: 'bg-amber-600', badgeTheme: 'bg-amber-500/10 text-amber-400 border-amber-500/25' };
+
+            mapConfig.hasCalendar = hasCalendar;
+            mapConfig.icon = icon;
+            mapConfig.btnTheme = theme.btnTheme;
+            mapConfig.badgeTheme = theme.badgeTheme;
+
+            const calendarBtnContainer = document.getElementById('btn-view-calendar').parentElement;
+            calendarBtnContainer.style.display = hasCalendar ? 'flex' : 'none';
+            if (!hasCalendar && currentView === 'calendar') switchView('map');
+
             document.getElementById('btnBackToPortal').href = `index.html?lang=${currentLang}`;
+            document.getElementById('headerIcon').innerText = icon;
 
-            // テーマカラー・アイコンの適用
-            const iconSpan = document.getElementById('headerIcon');
-            const iconContainer = document.getElementById('headerIconContainer');
-            if (mapConfig.icon) iconSpan.innerText = mapConfig.icon;
-            if (mapConfig.iconGradient) iconContainer.className = `w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr ${mapConfig.iconGradient} flex items-center justify-center shadow-lg shrink-0`;
-
-            // タイトル・サブタイトルの適用
             document.getElementById('txt-app-title').innerText = getLocalizedConfig('title') || "Japan Discovery";
             document.getElementById('txt-badge-title').innerText = currentMapID.toUpperCase();
             document.getElementById('txt-subtitle').innerText = getLocalizedConfig('subtitle') || "";
             document.getElementById('txt-list-title').innerText = getLocalizedConfig('listTitle') || "List";
 
-            // UI文言の適用
             document.getElementById('txt-nav-map').innerText = getLocalizedUI('navMap');
             document.getElementById('txt-nav-list').innerText = getLocalizedUI('navList');
             document.getElementById('txt-nav-calendar').innerText = getLocalizedUI('navCalendar');
@@ -368,17 +216,8 @@
             document.getElementById('searchInput').placeholder = getLocalizedUI('searchPlaceholder');
             document.getElementById('txt-close').innerText = getLocalizedUI('close');
 
-            // 曜日ヘッダー
             const wd = getLocalizedUI('weekdays') || ["日", "月", "火", "水", "木", "金", "土"];
-            document.getElementById('calendarHeaders').innerHTML = `
-                <div class="text-red-400">${wd[0]}</div>
-                <div>${wd[1]}</div>
-                <div>${wd[2]}</div>
-                <div>${wd[3]}</div>
-                <div>${wd[4]}</div>
-                <div>${wd[5]}</div>
-                <div class="text-blue-400">${wd[6]}</div>
-            `;
+            document.getElementById('calendarHeaders').innerHTML = `<div class="text-red-400">${wd[0]}</div><div>${wd[1]}</div><div>${wd[2]}</div><div>${wd[3]}</div><div>${wd[4]}</div><div>${wd[5]}</div><div class="text-blue-400">${wd[6]}</div>`;
             setTimeout(checkCatScroll, 50);
         }
 
@@ -387,95 +226,67 @@
             const url = new URL(window.location);
             url.searchParams.set('lang', lang);
             window.history.replaceState({}, '', url);
-
             applyThemeAndText();
             renderCurrentView();
         }
 
         function checkCatScroll() {
             const container = document.getElementById('catFilterScroll');
-            const leftBtn = document.getElementById('catScrollLeft');
-            const rightBtn = document.getElementById('catScrollRight');
             if (!container) return;
-
-            const scrollLeft = container.scrollLeft;
-            const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
-            leftBtn.classList.toggle('hidden', scrollLeft <= 5);
-            rightBtn.classList.toggle('hidden', maxScrollLeft - scrollLeft <= 5);
+            document.getElementById('catScrollLeft').classList.toggle('hidden', container.scrollLeft <= 5);
+            document.getElementById('catScrollRight').classList.toggle('hidden', (container.scrollWidth - container.clientWidth - container.scrollLeft) <= 5);
         }
 
-        function scrollCategories(offset) {
-            const container = document.getElementById('catFilterScroll');
-            if (container) container.scrollBy({ left: offset, behavior: 'smooth' });
-        }
+        function scrollCategories(offset) { document.getElementById('catFilterScroll')?.scrollBy({ left: offset, behavior: 'smooth' }); }
 
         function initMap() {
             if (map) return;
             map = L.map('map', { zoomControl: false }).setView([37.5, 138.0], 6);
-
             const CustomUnifiedControl = L.Control.extend({
                 options: { position: 'bottomright' },
-                onAdd: function(mapInstance) {
+                onAdd: function(mInst) {
                     const container = L.DomUtil.create('div', 'leaflet-bar');
                     L.DomEvent.disableClickPropagation(container);
-
                     const fitBtn = L.DomUtil.create('a', '', container);
                     fitBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>`;
                     L.DomEvent.on(fitBtn, 'click', (e) => { L.DomEvent.stop(e); fitMapToFilteredSpots(); });
-
-                    const zoomInBtn = L.DomUtil.create('a', '', container);
-                    zoomInBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>`;
-                    L.DomEvent.on(zoomInBtn, 'click', (e) => { L.DomEvent.stop(e); mapInstance.zoomIn(); });
-
-                    const zoomOutBtn = L.DomUtil.create('a', '', container);
-                    zoomOutBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>`;
-                    L.DomEvent.on(zoomOutBtn, 'click', (e) => { L.DomEvent.stop(e); mapInstance.zoomOut(); });
-
+                    const zIn = L.DomUtil.create('a', '', container);
+                    zIn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>`;
+                    L.DomEvent.on(zIn, 'click', (e) => { L.DomEvent.stop(e); mInst.zoomIn(); });
+                    const zOut = L.DomUtil.create('a', '', container);
+                    zOut.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>`;
+                    L.DomEvent.on(zOut, 'click', (e) => { L.DomEvent.stop(e); mInst.zoomOut(); });
                     return container;
                 }
             });
-
             map.addControl(new CustomUnifiedControl());
-
-            L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>'
-            }).addTo(map);
-
+            L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; 国土地理院' }).addTo(map);
             markersLayer = L.layerGroup().addTo(map);
         }
 
         function fitMapToFilteredSpots() {
             if (!map) return;
             const filtered = getFilteredSpots();
-            if (filtered.length === 0) {
-                map.setView([37.5, 138.0], 6);
-                return;
-            }
-            const bounds = L.latLngBounds(filtered.map(s => [s.lat, s.lng]));
-            map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
+            if (filtered.length === 0) { map.setView([37.5, 138.0], 6); return; }
+            map.fitBounds(L.latLngBounds(filtered.map(s => [s.lat, s.lng])), { padding: [50, 50], maxZoom: 14 });
         }
 
         function getSeasonFromDate(dateStr) {
             if (!dateStr) return 'summer';
-            const month = parseInt(dateStr.split('-')[1], 10);
-            if (month >= 3 && month <= 5) return 'spring';
-            if (month >= 6 && month <= 8) return 'summer';
-            if (month >= 9 && month <= 11) return 'autumn';
+            const m = parseInt(dateStr.split('-')[1], 10);
+            if (m >= 3 && m <= 5) return 'spring';
+            if (m >= 6 && m <= 8) return 'summer';
+            if (m >= 9 && m <= 11) return 'autumn';
             return 'winter';
         }
 
         function getLocalizedSpot(spot) {
             const spotI18n = (spotData.spotContentI18n && spotData.spotContentI18n[spot.id]) || {};
             const langData = spotI18n[currentLang] || spotI18n['ja'] || {};
-            
             const startDate = spot.startDate || '2027-05-01';
-            const season = getSeasonFromDate(startDate);
-
             return {
                 ...spot,
-                season: season,
+                season: getSeasonFromDate(startDate),
                 startDate: startDate,
                 endDate: spot.endDate || startDate,
                 title: langData.title || '',
@@ -487,57 +298,37 @@
         }
 
         function getFilteredSpots() {
-            const rawList = spotData.spots || [];
-            return rawList.map(s => getLocalizedSpot(s)).filter(spot => currentSeason === 'all' || spot.season === currentSeason);
+            return (spotData.spots || []).map(s => getLocalizedSpot(s)).filter(spot => currentSeason === 'all' || spot.season === currentSeason);
         }
 
         function updateMapMarkers() {
             if (!markersLayer) return;
             markersLayer.clearLayers();
-
-            const filtered = getFilteredSpots();
-            filtered.forEach(spot => {
-                const iconHtml = `
-                    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg border backdrop-blur-md shadow-md bg-slate-900/90 border-slate-700 text-white spot-marker-icon">
-                        ${mapConfig.icon || '📍'}
-                    </div>
-                `;
-                const customIcon = L.divIcon({ className: 'custom-div-icon', html: iconHtml, iconSize: [36, 36], iconAnchor: [18, 18] });
-                const marker = L.marker([spot.lat, spot.lng], { icon: customIcon });
-
-                // ★ ここを追加：マウスオーバー（スマホはタップ）でスポット名を表示するツールチップを設定
-                marker.bindTooltip(spot.title, {
-                    direction: 'top',      // マーカーの上部に表示
-                    offset: [0, -15],      // アイコンとの距離調整
-                    className: 'custom-map-tooltip' // 必要に応じてCSSデザイン用
-                });
-
+            getFilteredSpots().forEach(spot => {
+                const iconHtml = `<div class="flex items-center justify-center text-2xl spot-marker-icon" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.6);">${mapConfig.icon || '📍'}</div>`;
+                const marker = L.marker([spot.lat, spot.lng], { icon: L.divIcon({ className: 'custom-div-icon', html: iconHtml, iconSize: [36, 36], iconAnchor: [18, 18] }) });
+                marker.bindTooltip(spot.title, { direction: 'top', offset: [0, -15], className: 'custom-map-tooltip' });
                 marker.on('click', () => showDetailModal(spot.id));
                 markersLayer.addLayer(marker);
             });
             fitMapToFilteredSpots();
         }
-        
+
         function switchView(viewName) {
             currentView = viewName;
             document.getElementById('searchContainer').classList.toggle('hidden', viewName !== 'list');
-
             ['map', 'list', 'calendar'].forEach(v => {
-                const el = document.getElementById(`view-${v}`);
-                const btn = document.getElementById(`btn-view-${v}`);
+                const el = document.getElementById(`view-${v}`), btn = document.getElementById(`btn-view-${v}`);
+                if (!el || !btn) return;
                 if (v === viewName) {
                     el.classList.remove('hidden');
-                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-amber-600 text-white shadow-md";
-                    if(mapConfig.btnTheme) btn.className = `flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${mapConfig.btnTheme} text-white shadow-md`;
+                    btn.className = `flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-white shadow-md ${mapConfig.btnTheme || 'bg-amber-600'}`;
                 } else {
                     el.classList.add('hidden');
-                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-slate-400 hover:text-white";
+                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white";
                 }
             });
-
-            if (viewName === 'map' && map) {
-                setTimeout(() => { map.invalidateSize(); fitMapToFilteredSpots(); }, 100);
-            }
+            if (viewName === 'map' && map) { setTimeout(() => { map.invalidateSize(); fitMapToFilteredSpots(); }, 100); }
             renderCurrentView();
             setTimeout(checkCatScroll, 100);
         }
@@ -546,8 +337,9 @@
             currentSeason = season;
             ['all', 'spring', 'summer', 'autumn', 'winter'].forEach(s => {
                 const btn = document.getElementById(`cat-${s}`);
+                if (!btn) return;
                 if (s === season) {
-                    btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white shadow-sm whitespace-nowrap shrink-0 " + (mapConfig.btnTheme || "bg-amber-600");
+                    btn.className = `px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white shadow-sm whitespace-nowrap shrink-0 ${mapConfig.btnTheme || 'bg-amber-600'}`;
                 } else {
                     btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0";
                 }
@@ -561,111 +353,64 @@
             if (currentView === 'list') renderListView();
         }
 
-        function clearSearch() {
-            const input = document.getElementById('searchInput');
-            input.value = '';
-            handleSearch();
-            input.focus();
-        }
+        function clearSearch() { document.getElementById('searchInput').value = ''; handleSearch(); }
 
         function renderCurrentView() {
             if (currentView === 'map') updateMapMarkers();
             if (currentView === 'list') renderListView();
-            if (currentView === 'calendar') renderCalendarView();
+            if (currentView === 'calendar' && mapConfig.hasCalendar !== false) renderCalendarView();
         }
 
         function renderListView() {
             const container = document.getElementById('listContainer');
-            const filtered = getFilteredSpots()
-                .filter(spot => {
-                    if (!searchQuery) return true;
-                    return (spot.title || '').toLowerCase().includes(searchQuery) || 
-                           (spot.location || '').toLowerCase().includes(searchQuery) || 
-                           (spot.desc || '').toLowerCase().includes(searchQuery);
-                })
-                .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
-
+            const filtered = getFilteredSpots().filter(spot => !searchQuery || (spot.title || '').toLowerCase().includes(searchQuery) || (spot.location || '').toLowerCase().includes(searchQuery));
             document.getElementById('listCount').innerText = `（${filtered.length}件）`;
+            if (filtered.length === 0) { container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 text-xs">${getLocalizedUI('noResult')}</div>`; return; }
 
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 text-xs">${getLocalizedUI('noResult')}</div>`;
-                return;
-            }
-
+            const hasCalendar = mapConfig.hasCalendar !== false;
             container.innerHTML = filtered.map(spot => {
-                const thumb = spot.photos && spot.photos.length > 0 ? spot.photos[0].url : null;
+                const thumb = spot.photos?.[0]?.url;
                 const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
                 return `
                     <div onclick="showDetailModal(${spot.id})" class="bg-slateCard/70 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-xl flex flex-col justify-between">
                         <div>
-                            ${thumb ? `<div class="w-full h-36 rounded-xl mb-3 overflow-hidden bg-slate-900"><img src="${thumb}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'"></div>` : ''}
+                            ${thumb ? `<div class="w-full h-36 rounded-xl mb-3 overflow-hidden bg-slate-900"><img src="${thumb}" class="w-full h-full object-cover"></div>` : ''}
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${mapConfig.badgeTheme || 'bg-amber-500/10 text-amber-400 border-amber-500/20'}">
-                                    ${mapConfig.icon || ''} ${spot.season.toUpperCase()}
+                                <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${mapConfig.badgeTheme || ''}">
+                                    ${mapConfig.icon || ''} ${hasCalendar ? spot.season.toUpperCase() : spot.category.toUpperCase()}
                                 </span>
-                                <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
+                                ${hasCalendar ? `<span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>` : ''}
                             </div>
                             <h3 class="text-sm font-bold text-white mb-1.5">${spot.title || ''}</h3>
-                            <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-3">
-                                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                                ${spot.location || ''}
-                            </p>
+                            <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-3">${spot.location || ''}</p>
                             <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">${spot.desc || ''}</p>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-amber-400 font-medium">
+                        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium">
                             <span>${getLocalizedUI('detailLink')}</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        function changeMonth(direction) {
-            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + direction);
-            renderCalendarView();
-        }
+        function changeMonth(dir) { currentCalendarDate.setMonth(currentCalendarDate.getMonth() + dir); renderCalendarView(); }
 
         function renderCalendarView() {
-            const year = currentCalendarDate.getFullYear();
-            const month = currentCalendarDate.getMonth();
-            const monthsNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            document.getElementById('calendarMonthTitle').innerText = `${year}年 ${month + 1}月`;
-
-            const firstDayIndex = new Date(year, month, 1).getDay();
-            const totalDays = new Date(year, month + 1, 0).getDate();
-            const grid = document.getElementById('calendarGrid');
-            
-            const filtered = getFilteredSpots();
+            if (mapConfig.hasCalendar === false) return;
+            const y = currentCalendarDate.getFullYear(), m = currentCalendarDate.getMonth();
+            document.getElementById('calendarMonthTitle').innerText = `${y}年 ${m + 1}月`;
+            const firstDay = new Date(y, m, 1).getDay(), totalDays = new Date(y, m + 1, 0).getDate();
+            const grid = document.getElementById('calendarGrid'), filtered = getFilteredSpots();
             let html = '';
-
-            for (let i = 0; i < firstDayIndex; i++) {
-                html += `<div class="bg-slate-900/30 min-h-[90px] p-1.5 opacity-30"></div>`;
-            }
-
+            for (let i = 0; i < firstDay; i++) html += `<div class="bg-slate-900/30 min-h-[90px] p-1.5 opacity-30"></div>`;
             for (let day = 1; day <= totalDays; day++) {
-                const monthStr = String(month + 1).padStart(2, '0');
-                const dayStr = String(day).padStart(2, '0');
-                const dateKey = `${year}-${monthStr}-${dayStr}`;
-
-                const daySpots = filtered.filter(s => {
-                    const start = s.startDate;
-                    const end = s.endDate || start;
-                    return dateKey >= start && dateKey <= end;
-                });
-
+                const dateKey = `${y}-${String(m + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const daySpots = filtered.filter(s => dateKey >= s.startDate && dateKey <= (s.endDate || s.startDate));
                 html += `
-                    <div class="min-h-[100px] p-1.5 sm:p-2 flex flex-col transition-colors border bg-slateCard/60 hover:bg-slateCard border-slate-800/40">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-[11px] sm:text-xs font-bold text-slate-300">${day}</span>
-                            ${daySpots.length > 0 ? `<span class="text-[9px] bg-amber-500/20 text-amber-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}
-                        </div>
+                    <div class="min-h-[100px] p-1.5 sm:p-2 flex flex-col border bg-slateCard/60 border-slate-800/40">
+                        <div class="flex items-center justify-between mb-1"><span class="text-[11px] font-bold text-slate-300">${day}</span>${daySpots.length ? `<span class="text-[9px] bg-amber-500/20 text-amber-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}</div>
                         <div class="flex-1 space-y-1 overflow-y-auto max-h-[70px]">
-                            ${daySpots.map(s => `
-                                <div onclick="showDetailModal(${s.id})" class="text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md truncate cursor-pointer bg-amber-500/15 text-amber-300 border border-amber-500/20" title="${s.title}">
-                                    ${mapConfig.icon || '📍'} ${s.title}
-                                </div>
-                            `).join('')}
+                            ${daySpots.map(s => `<div onclick="showDetailModal(${s.id})" class="text-[10px] px-1.5 py-0.5 rounded-md truncate cursor-pointer bg-amber-500/15 text-amber-300 border border-amber-500/20">${mapConfig.icon}${s.title}</div>`).join('')}
                         </div>
                     </div>
                 `;
@@ -677,121 +422,28 @@
             const rawSpot = (spotData.spots || []).find(s => Number(s.id) === Number(id));
             if (!rawSpot) return;
             const spot = getLocalizedSpot(rawSpot);
+            const hasCalendar = mapConfig.hasCalendar !== false;
             const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
 
-            let photosHtml = '';
-            if (spot.photos && spot.photos.length > 0) {
-                currentLightboxPhotos = spot.photos;
-                photosHtml = `
-                    <div>
-                        <h4 class="text-xs font-bold text-amber-400 mb-2">${getLocalizedUI('photosTitle')}</h4>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                            ${spot.photos.map((p, index) => `
-                                <div onclick="openLightbox(${index})" class="group relative bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-amber-500/50 cursor-pointer transition-all">
-                                    <div class="h-28 bg-slate-950">
-                                        <img src="${p.url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.style.display='none'">
-                                    </div>
-                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <span class="text-xs text-white bg-slate-900/80 px-2 py-1 rounded-md border border-slate-700">🔍 拡大</span>
-                                    </div>
-                                    ${p.caption ? `<div class="p-1.5 text-[10px] text-slate-300 truncate bg-slate-900/90">${p.caption}</div>` : ''}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            } else {
-                currentLightboxPhotos = [];
-            }
-
-            let linksHtml = '';
-            if (spot.links && spot.links.length > 0) {
-                linksHtml = `
-                    <div>
-                        <h4 class="text-xs font-bold text-emerald-400 mb-2">${getLocalizedUI('linksTitle')}</h4>
-                        <div class="space-y-1.5">
-                            ${spot.links.map(l => `
-                                <a href="${l.url}" target="_blank" class="flex items-center justify-between bg-slate-900/80 hover:bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-xs text-amber-400 transition-all">
-                                    <span class="truncate">${l.text || l.url}</span>
-                                    <svg class="w-3.5 h-3.5 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                </a>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
+            let photosHtml = spot.photos?.length ? `<div><h4 class="text-xs font-bold text-amber-400 mb-2">${getLocalizedUI('photosTitle')}</h4><div class="grid grid-cols-2 sm:grid-cols-3 gap-3">${spot.photos.map(p => `<div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 h-28"><img src="${p.url}" class="w-full h-full object-cover"></div>`).join('')}</div></div>` : '';
+            
             document.getElementById('modalContent').innerHTML = `
                 <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${mapConfig.badgeTheme || ''}">
-                        ${mapConfig.icon || ''} ${spot.season.toUpperCase()}
-                    </span>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>
+                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${mapConfig.badgeTheme}">${mapConfig.icon} ${hasCalendar ? spot.season.toUpperCase() : spot.category.toUpperCase()}</span>
+                    ${hasCalendar ? `<span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>` : ''}
                 </div>
-                <h3 class="text-base font-bold text-white mb-2">${spot.title || ''}</h3>
-                <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-4">
-                    <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                    ${spot.location || ''}
-                </p>
-                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800">
-                    <p class="text-xs text-slate-300 leading-relaxed">${spot.desc || ''}</p>
-                </div>
+                <h3 class="text-base font-bold text-white mb-2">${spot.title}</h3>
+                <p class="text-xs text-slate-400 mb-4">${spot.location}</p>
+                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800"><p class="text-xs text-slate-300 leading-relaxed">${spot.desc}</p></div>
                 ${photosHtml}
-                ${linksHtml}
-                <div class="bg-amber-600/10 border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                    <div>
-                        <h4 class="text-xs font-bold text-amber-400 mb-0.5">${getLocalizedConfig('consultTitle')}</h4>
-                        <p class="text-[11px] text-slate-400">${getLocalizedConfig('consultDesc')}</p>
-                    </div>
-                    <button onclick="alert('ご相談窓口へ接続します')" class="${mapConfig.btnTheme || 'bg-amber-600'} text-white px-3.5 py-2 rounded-xl text-xs font-medium shadow-md transition-all shrink-0 w-full sm:w-auto text-center">
-                        ${getLocalizedUI('consultBtn')}
-                    </button>
+                <div class="bg-amber-600/10 border border-amber-500/30 rounded-xl p-4 flex justify-between items-center">
+                    <div><h4 class="text-xs font-bold text-amber-400">${getLocalizedConfig('consultTitle')}</h4><p class="text-[11px] text-slate-400">${getLocalizedConfig('consultDesc')}</p></div>
+                    <button class="${mapConfig.btnTheme} text-white px-3.5 py-2 rounded-xl text-xs font-medium">${getLocalizedUI('consultBtn')}</button>
                 </div>
             `;
             document.getElementById('detailModal').classList.remove('hidden');
         }
-
         function closeDetailModal() { document.getElementById('detailModal').classList.add('hidden'); }
-
-        function openLightbox(index) {
-            if (!currentLightboxPhotos || currentLightboxPhotos.length === 0) return;
-            currentLightboxIndex = index;
-            updateLightboxContent();
-            document.getElementById('imageLightboxModal').classList.remove('hidden');
-        }
-
-        function closeLightbox() { document.getElementById('imageLightboxModal').classList.add('hidden'); }
-
-        function updateLightboxContent() {
-            const photo = currentLightboxPhotos[currentLightboxIndex];
-            if (!photo) return;
-            document.getElementById('lightboxImage').src = photo.url;
-            document.getElementById('lightboxCaption').innerText = photo.caption || '';
-            document.getElementById('lightboxCounter').innerText = `${currentLightboxIndex + 1} / ${currentLightboxPhotos.length}`;
-
-            const showNav = currentLightboxPhotos.length > 1;
-            document.getElementById('lightboxPrevBtn').style.display = showNav ? 'block' : 'none';
-            document.getElementById('lightboxNextBtn').style.display = showNav ? 'block' : 'none';
-        }
-
-        function prevLightboxImage() {
-            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxPhotos.length) % currentLightboxPhotos.length;
-            updateLightboxContent();
-        }
-
-        function nextLightboxImage() {
-            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxPhotos.length;
-            updateLightboxContent();
-        }
-
-        document.addEventListener('keydown', (e) => {
-            const modal = document.getElementById('imageLightboxModal');
-            if (modal && !modal.classList.contains('hidden')) {
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowLeft') prevLightboxImage();
-                if (e.key === 'ArrowRight') nextLightboxImage();
-            }
-        });
     </script>
 </body>
 </html>
