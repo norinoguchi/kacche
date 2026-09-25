@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Japan Discovery - Map Viewer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -39,6 +40,7 @@
     </style>
 </head>
 <body class="bg-slateDark text-slate-100 h-full flex flex-col overflow-hidden">
+    <!-- Header (index.htmlと統一感を持たせたダーク系) -->
     <header class="bg-slateCard/80 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between shrink-0 z-20">
         <div class="flex items-center space-x-3">
             <a id="btnBackToPortal" href="index.html" class="mr-1 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0">
@@ -57,6 +59,7 @@
             </div>
         </div>
         <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Language Selector -->
             <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs text-white focus:outline-none cursor-pointer">
                 <option value="ja">🇯🇵 日本語</option>
                 <option value="en">🇺🇸 English</option>
@@ -69,8 +72,10 @@
         </div>
     </header>
 
+    <!-- Toolbar (Nav & Filter) -->
     <div class="bg-slateCard/40 border-b border-slate-800 px-4 sm:px-6 py-2.5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 shrink-0 z-10">
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 flex-1 min-w-0">
+            <!-- View Switcher -->
             <div class="flex bg-slate-900/80 p-1 rounded-xl border border-slate-800 shrink-0 justify-between sm:justify-start">
                 <button onclick="switchView('map')" id="btn-view-map" class="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-white shadow-md">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
@@ -85,69 +90,95 @@
                     <span id="txt-nav-calendar">カレンダー</span>
                 </button>
             </div>
+            <!-- Category Filter (Horizontal Scroll) -->
             <div class="relative flex items-center w-full min-w-0 overflow-hidden flex-1">
                 <button id="catScrollLeft" onclick="scrollCategories(-120)" class="absolute left-0 z-10 hidden p-1 bg-gradient-to-r from-slateCard to-transparent text-slate-300 h-full flex items-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div id="catFilterScroll" onscroll="checkCatScroll()" class="flex items-center gap-1.5 overflow-x-auto flex-nowrap py-0.5 no-scrollbar w-full scroll-smooth">
-                    <button onclick="filterSeason('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all active-filter-btn text-white shadow-sm whitespace-nowrap shrink-0">すべて</button>
-                    <button onclick="filterSeason('spring')" id="cat-spring" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🌸 春 (3-5月)</button>
-                    <button onclick="filterSeason('summer')" id="cat-summer" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🌿 夏 (6-8月)</button>
-                    <button onclick="filterSeason('autumn')" id="cat-autumn" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">🍁 秋 (9-11月)</button>
-                    <button onclick="filterSeason('winter')" id="cat-winter" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0">❄️ 冬 (12-2月)</button>
+                    <!-- JSで動的生成 -->
                 </div>
                 <button id="catScrollRight" onclick="scrollCategories(120)" class="absolute right-0 z-10 hidden p-1 bg-gradient-to-l from-slateCard to-transparent text-slate-300 h-full flex items-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg></button>
             </div>
         </div>
+        <!-- Search Bar -->
         <div id="searchContainer" class="relative w-full md:w-64 hidden">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span>
-            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名や名称で検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-8 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="地域名や名称で検索..." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-8 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-slate-600 focus:ring-1 focus:ring-slate-600">
             <button id="searchClearBtn" onclick="clearSearch()" class="absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-400 hover:text-white hidden"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
     </div>
 
+    <!-- Category Description Area (New: スポットモード時、Toolbarの下に表示) -->
+    <div id="categoryDescArea" class="hidden bg-slate-950/50 border-b border-slate-800 px-5 sm:px-7 py-2.5 shrink-0 z-10">
+        <p id="categoryDescText" class="text-xs text-slate-300 leading-relaxed"></p>
+    </div>
+
+    <!-- Main Content Area -->
     <main class="flex-1 relative overflow-hidden flex">
-        <div id="view-map" class="absolute inset-0 flex"><div id="map" class="w-full h-full z-0"></div></div>
+        <!-- Map View -->
+        <div id="view-map" class="absolute inset-0 flex">
+            <div id="map" class="w-full h-full z-0"></div>
+        </div>
+
+        <!-- List View -->
         <div id="view-list" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2"><span id="txt-list-title">リスト</span><span class="text-xs font-normal text-slate-400" id="listCount">（0件）</span></h2>
-                <div id="listContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                <div id="listContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- JSで動的生成 -->
+                </div>
             </div>
         </div>
+
+        <!-- Calendar View -->
         <div id="view-calendar" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6 hidden">
             <div class="max-w-5xl mx-auto">
-                <div class="flex items-center justify-between mb-6 bg-slateCard/60 border border-slate-800 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl">
-                    <button onclick="changeMonth(-1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
-                    <h2 id="calendarMonthTitle" class="text-base sm:text-lg font-bold text-white">2027年 5月</h2>
-                    <button onclick="changeMonth(1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                <!-- Calendar Header -->
+                <div class="flex items-center justify-between mb-6 bg-slateCard/60 border border-slate-800 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl shadow-lg">
+                    <button onclick="changeMonth(-1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                    <h2 id="calendarMonthTitle" class="text-base sm:text-lg font-bold text-white font-mono tracking-tight">2027年 5月</h2>
+                    <button onclick="changeMonth(1)" class="p-2 hover:bg-slate-800 rounded-xl text-slate-300 transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
                 </div>
+                <!-- Calendar Grid -->
                 <div class="bg-slateCard/40 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
-                    <div id="calendarHeaders" class="grid grid-cols-7 bg-slate-900/90 text-center text-xs font-semibold text-slate-400 py-3 border-b border-slate-800"></div>
-                    <div id="calendarGrid" class="grid grid-cols-7 bg-slate-800/20 gap-px"></div>
+                    <div id="calendarHeaders" class="grid grid-cols-7 bg-slate-900/90 text-center text-xs font-semibold text-slate-400 py-3 border-b border-slate-800">
+                        <!-- 曜日ヘッダーはJSで生成 -->
+                    </div>
+                    <div id="calendarGrid" class="grid grid-cols-7 bg-slate-800/20 gap-px">
+                        <!-- 日付セルはJSで生成 -->
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Detail Modal -->
     <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
-        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col">
-            <div id="modalContent" class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-5"></div>
+        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col card-transition">
+            <div id="modalContent" class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-5">
+                <!-- JSで動的生成 -->
+            </div>
             <div class="bg-slate-900/60 px-5 sm:px-6 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
-                <button onclick="closeDetailModal()" id="txt-close" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium">閉じる</button>
+                <button onclick="closeDetailModal()" id="txt-close" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition-colors">閉じる</button>
+                <!-- お問い合わせボタン等は状況に応じて追加 -->
             </div>
         </div>
     </div>
 
     <script>
+        // --- 状態管理 & データ ---
         let uiText = {}, mapConfig = {}, spotData = { spots: [], spotContentI18n: {} };
         let currentMapID = 'matsuri', currentLang = 'ja';
-        let currentView = 'map', currentSeason = 'all', searchQuery = '';
-        let currentCalendarDate = new Date(2027, 4, 1);
+        let currentView = 'map', currentFilter = 'all', searchQuery = '';
+        let currentCalendarDate = new Date(2027, 4, 1); // 2027年5月1日
         let map, markersLayer, sysConfig = { defaultMap: 'matsuri', maps: [] };
 
+        // --- 初期化 ---
         window.addEventListener('DOMContentLoaded', async () => {
+            // maps_index.json からシステム設定を読み込む
             try {
                 const sysRes = await fetch(`config/maps_index.json?v=${Date.now()}`);
                 if (sysRes.ok) sysConfig = await sysRes.json();
-            } catch (e) { console.warn(e); }
+            } catch (e) { console.warn('maps_index.json読み込み失敗', e); }
 
             const urlParams = new URLSearchParams(window.location.search);
             currentMapID = urlParams.get('map') || sysConfig.defaultMap || 'matsuri';
@@ -163,38 +194,54 @@
 
         async function loadAllData() {
             try {
-                const uiRes = await fetch(`config/common_ui.json?v=${Date.now()}`);
+                // 並行読み込み
+                const [uiRes, configRes, dataRes] = await Promise.all([
+                    fetch(`config/common_ui.json?v=${Date.now()}`),
+                    fetch(`config/${currentMapID}_config.json?v=${Date.now()}`),
+                    fetch(`data/${currentMapID}_data.json?v=${Date.now()}`)
+                ]);
                 if (uiRes.ok) uiText = await uiRes.json();
-                const configRes = await fetch(`config/${currentMapID}_config.json?v=${Date.now()}`);
                 if (configRes.ok) mapConfig = await configRes.json();
-                const dataRes = await fetch(`data/${currentMapID}_data.json?v=${Date.now()}`);
                 if (dataRes.ok) spotData = await dataRes.json();
-            } catch (e) { console.error(e); }
+            } catch (e) { console.error('データ読み込み失敗', e); }
         }
 
+        // 翻訳テキスト取得ユーティリティ
         function getLocalizedUI(key) { return ((uiText[currentLang] || uiText['ja'] || {})[key]) || key; }
-        function getLocalizedConfig(key) {
+        function getLocalizedConfig(key) { 
             const configI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
             return configI18n[key] || '';
         }
 
+        // --- テーマ & テキスト適用 ---
         function applyThemeAndText() {
+            // maps_index.json から該当マップの情報を取得（hasCalendar, theme, categories 定義）
             const currentMapInfo = sysConfig.maps ? sysConfig.maps.find(m => m.id === currentMapID) : null;
             
-            // maps_index からアイコン、カレンダー有無、色合いを取得
-            const hasCalendar = currentMapInfo ? (currentMapInfo.hasCalendar !== false) : true;
+            // mapConfig（旧config.jsonの内容）と maps_index の内容を統合・整理
+            const mapType = currentMapInfo?.mapType || (currentMapInfo?.hasCalendar === false ? 'spot' : 'event');
+            const hasCalendar = (mapType === 'event');
             const icon = currentMapInfo ? (currentMapInfo.icon || '📍') : '📍';
             const theme = currentMapInfo?.theme || { btnTheme: 'bg-amber-600', badgeTheme: 'bg-amber-500/10 text-amber-400 border-amber-500/25' };
 
+            // 互換性のためmapConfigにセット
+            mapConfig.mapType = mapType;
             mapConfig.hasCalendar = hasCalendar;
             mapConfig.icon = icon;
             mapConfig.btnTheme = theme.btnTheme;
             mapConfig.badgeTheme = theme.badgeTheme;
+            // スポットモード時のカテゴリー定義をセット
+            mapConfig.categories = currentMapInfo?.categories || mapConfig.categories || [];
 
-            const calendarBtnContainer = document.getElementById('btn-view-calendar').parentElement;
-            calendarBtnContainer.style.display = hasCalendar ? 'flex' : 'none';
+            // カレンダーボタンの表示切り替え
+            const calendarBtn = document.getElementById('btn-view-calendar');
+            if (calendarBtn) {
+                calendarBtn.style.display = hasCalendar ? 'flex' : 'none';
+            }            
+            // カレンダービューにいた場合はマップに戻す
             if (!hasCalendar && currentView === 'calendar') switchView('map');
 
+            // ヘッダー・タイトル
             document.getElementById('btnBackToPortal').href = `index.html?lang=${currentLang}`;
             document.getElementById('headerIcon').innerText = icon;
 
@@ -203,24 +250,53 @@
             document.getElementById('txt-subtitle').innerText = getLocalizedConfig('subtitle') || "";
             document.getElementById('txt-list-title').innerText = getLocalizedConfig('listTitle') || "List";
 
+            // ナビゲーション
             document.getElementById('txt-nav-map').innerText = getLocalizedUI('navMap');
             document.getElementById('txt-nav-list').innerText = getLocalizedUI('navList');
             document.getElementById('txt-nav-calendar').innerText = getLocalizedUI('navCalendar');
 
-            document.getElementById('cat-all').innerText = getLocalizedUI('catAll');
-            document.getElementById('cat-spring').innerText = getLocalizedUI('catSpring');
-            document.getElementById('cat-summer').innerText = getLocalizedUI('catSummer');
-            document.getElementById('cat-autumn').innerText = getLocalizedUI('catAutumn');
-            document.getElementById('cat-winter').innerText = getLocalizedUI('catWinter');
+            // フィルタータブの動的構築
+            const scrollContainer = document.getElementById('catFilterScroll');
+            if (hasCalendar) {
+                // イベントマップ：春夏秋冬（固定）
+                scrollContainer.innerHTML = `
+                    <button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white shadow-sm whitespace-nowrap shrink-0 ${currentFilter === 'all' ? mapConfig.btnTheme : 'bg-slate-800 text-slate-300'}">${getLocalizedUI('catAll')}</button>
+                    <button onclick="filterCategory('spring')" id="cat-spring" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'spring' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🌸 春 (3-5月)</button>
+                    <button onclick="filterCategory('summer')" id="cat-summer" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'summer' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🌿 夏 (6-8月)</button>
+                    <button onclick="filterCategory('autumn')" id="cat-autumn" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'autumn' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🍁 秋 (9-11月)</button>
+                    <button onclick="filterCategory('winter')" id="cat-winter" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'winter' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">❄️ 冬 (12-2月)</button>
+                `;
+                document.getElementById('categoryDescArea').classList.add('hidden'); // 説明エリア非表示
+            } else {
+                // スポットマップ：カスタムカテゴリー
+                let html = `<button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white shadow-sm whitespace-nowrap shrink-0 ${currentFilter === 'all' ? mapConfig.btnTheme : 'bg-slate-800 text-slate-300'}">すべて</button>`;
+                
+                // config の i18n データを参照してカテゴリー名・説明を取得
+                const curConfI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
+                const catsI18n = curConfI18n.categories || [];
 
+                mapConfig.categories.forEach((cat, idx) => {
+                    const cIcon = cat.icon || '📍';
+                    const cName = catsI18n[idx]?.name || cat.name || '無題';
+                    html += `<button onclick="filterCategory('${cat.name}', ${idx})" id="cat-${cat.name}" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === cat.name ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">${cIcon} ${cName}</button>`;
+                });
+                scrollContainer.innerHTML = html;
+                updateCategoryDescription(); // 初期表示の説明文
+            }
+
+            // 検索・モーダル
             document.getElementById('searchInput').placeholder = getLocalizedUI('searchPlaceholder');
             document.getElementById('txt-close').innerText = getLocalizedUI('close');
 
+            // カレンダー曜日ヘッダー
             const wd = getLocalizedUI('weekdays') || ["日", "月", "火", "水", "木", "金", "土"];
             document.getElementById('calendarHeaders').innerHTML = `<div class="text-red-400">${wd[0]}</div><div>${wd[1]}</div><div>${wd[2]}</div><div>${wd[3]}</div><div>${wd[4]}</div><div>${wd[5]}</div><div class="text-blue-400">${wd[6]}</div>`;
+
+            // スクリプト読み込み後にスクロールチェック
             setTimeout(checkCatScroll, 50);
         }
 
+        // 言語切り替え
         function changeLanguage(lang) {
             currentLang = lang;
             const url = new URL(window.location);
@@ -230,6 +306,7 @@
             renderCurrentView();
         }
 
+        // --- カテゴリーフィルタ（スクロール・タブ切り替え） ---
         function checkCatScroll() {
             const container = document.getElementById('catFilterScroll');
             if (!container) return;
@@ -239,28 +316,97 @@
 
         function scrollCategories(offset) { document.getElementById('catFilterScroll')?.scrollBy({ left: offset, behavior: 'smooth' }); }
 
+        function filterCategory(filterKey, catIdx = -1) {
+            currentFilter = filterKey;
+            
+            // タブUI更新
+            const hasCalendar = mapConfig.hasCalendar !== false;
+            let keys = ['all'];
+            if (hasCalendar) {
+                keys.push('spring', 'summer', 'autumn', 'winter');
+            } else {
+                (mapConfig.categories || []).forEach(c => keys.push(c.name));
+            }
+
+            keys.forEach(k => {
+                const btn = document.getElementById(`cat-${k}`);
+                if (!btn) return;
+                if (k === filterKey) {
+                    btn.className = `px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white shadow-sm whitespace-nowrap shrink-0 ${mapConfig.btnTheme || 'bg-amber-600'}`;
+                } else {
+                    btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0";
+                }
+            });
+
+            // スポットモード時の説明文更新
+            if (!hasCalendar) updateCategoryDescription(catIdx);
+
+            renderCurrentView(); // 描画更新
+        }
+
+        function updateCategoryDescription(catIdx = -1) {
+            if (mapConfig.mapType !== 'spot') return;
+            const descArea = document.getElementById('categoryDescArea');
+            const descText = document.getElementById('categoryDescText');
+
+            if (currentFilter === 'all' || catIdx === -1) {
+                descArea.classList.add('hidden'); descText.innerText = ''; return;
+            }
+
+            const curConfI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
+            const catsI18n = curConfI18n.categories || [];
+            const cat = mapConfig.categories[catIdx];
+            const cDesc = catsI18n[catIdx]?.desc || cat.desc || '';
+
+            if (cDesc) {
+                descText.innerText = `${cat.icon || '📍'} ${cDesc}`;
+                descArea.classList.remove('hidden');
+            } else {
+                descArea.classList.add('hidden');
+            }
+        }
+
+        // --- Leaflet マップ初期化 ---
         function initMap() {
             if (map) return;
-            map = L.map('map', { zoomControl: false }).setView([37.5, 138.0], 6);
+            map = L.map('map', { zoomControl: false }).setView([37.5, 138.0], 6); // 日本中心
+            
+            // 右下にズームコントロール & フィットボタンを統合
             const CustomUnifiedControl = L.Control.extend({
                 options: { position: 'bottomright' },
                 onAdd: function(mInst) {
                     const container = L.DomUtil.create('div', 'leaflet-bar');
                     L.DomEvent.disableClickPropagation(container);
+                    
+                    // Fit Button
                     const fitBtn = L.DomUtil.create('a', '', container);
                     fitBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>`;
+                    fitBtn.title = getLocalizedUI('btnFitMap');
                     L.DomEvent.on(fitBtn, 'click', (e) => { L.DomEvent.stop(e); fitMapToFilteredSpots(); });
+
+                    // Zoom In
                     const zIn = L.DomUtil.create('a', '', container);
                     zIn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>`;
+                    zIn.title = "Zoom In";
                     L.DomEvent.on(zIn, 'click', (e) => { L.DomEvent.stop(e); mInst.zoomIn(); });
+
+                    // Zoom Out
                     const zOut = L.DomUtil.create('a', '', container);
                     zOut.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>`;
+                    zOut.title = "Zoom Out";
                     L.DomEvent.on(zOut, 'click', (e) => { L.DomEvent.stop(e); mInst.zoomOut(); });
+
                     return container;
                 }
             });
             map.addControl(new CustomUnifiedControl());
-            L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; 国土地理院' }).addTo(map);
+
+            // タイルレイヤー (地理院地図 Pale)
+            L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>'
+            }).addTo(map);
+
             markersLayer = L.layerGroup().addTo(map);
         }
 
@@ -271,8 +417,9 @@
             map.fitBounds(L.latLngBounds(filtered.map(s => [s.lat, s.lng])), { padding: [50, 50], maxZoom: 14 });
         }
 
+        // --- データフィルタ & 局所化処理 ---
         function getSeasonFromDate(dateStr) {
-            if (!dateStr) return 'summer';
+            if (!dateStr) return 'summer'; // フォールバック
             const m = parseInt(dateStr.split('-')[1], 10);
             if (m >= 3 && m <= 5) return 'spring';
             if (m >= 6 && m <= 8) return 'summer';
@@ -281,12 +428,16 @@
         }
 
         function getLocalizedSpot(spot) {
-            const spotI18n = (spotData.spotContentI18n && spotData.spotContentI18n[spot.id]) || {};
-            const langData = spotI18n[currentLang] || spotI18n['ja'] || {};
-            const startDate = spot.startDate || '2027-05-01';
+            // spotContentI18n から型揺れフォールバック付きで取得
+            const spotI18n = (spotData.spotContentI18n && (spotData.spotContentI18n[spot.id] || spotData.spotContentI18n[String(spot.id)])) || {};
+            const langData = spotI18n[currentLang] || spotI18n['ja'] || {}; // jaをフォールバックに
+
+            // イベント期間定義
+            const startDate = spot.startDate || '2027-05-01'; // 新規マップなど日付がない場合
+
             return {
                 ...spot,
-                season: getSeasonFromDate(startDate),
+                season: getSeasonFromDate(startDate), // イベントマップ用
                 startDate: startDate,
                 endDate: spot.endDate || startDate,
                 title: langData.title || '',
@@ -298,69 +449,81 @@
         }
 
         function getFilteredSpots() {
-            return (spotData.spots || []).map(s => getLocalizedSpot(s)).filter(spot => currentSeason === 'all' || spot.season === currentSeason);
-        }
-
-        function updateMapMarkers() {
-            if (!markersLayer) return;
-            markersLayer.clearLayers();
-            getFilteredSpots().forEach(spot => {
-                const iconHtml = `<div class="flex items-center justify-center text-2xl spot-marker-icon" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.6);">${mapConfig.icon || '📍'}</div>`;
-                const marker = L.marker([spot.lat, spot.lng], { icon: L.divIcon({ className: 'custom-div-icon', html: iconHtml, iconSize: [36, 36], iconAnchor: [18, 18] }) });
-                marker.bindTooltip(spot.title, { direction: 'top', offset: [0, -15], className: 'custom-map-tooltip' });
-                marker.on('click', () => showDetailModal(spot.id));
-                markersLayer.addLayer(marker);
-            });
-            fitMapToFilteredSpots();
-        }
-
-        function switchView(viewName) {
-            currentView = viewName;
-            document.getElementById('searchContainer').classList.toggle('hidden', viewName !== 'list');
-            ['map', 'list', 'calendar'].forEach(v => {
-                const el = document.getElementById(`view-${v}`), btn = document.getElementById(`btn-view-${v}`);
-                if (!el || !btn) return;
-                if (v === viewName) {
-                    el.classList.remove('hidden');
-                    btn.className = `flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-white shadow-md ${mapConfig.btnTheme || 'bg-amber-600'}`;
+            const hasCalendar = mapConfig.hasCalendar !== false;
+            return (spotData.spots || []).map(s => getLocalizedSpot(s)).filter(spot => {
+                if (currentFilter === 'all') return true;
+                if (hasCalendar) {
+                    // イベントマップ：春夏秋冬
+                    return spot.season === currentFilter;
                 } else {
-                    el.classList.add('hidden');
-                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white";
+                    // スポットマップ：カスタムカテゴリー
+                    return spot.category === currentFilter;
                 }
             });
-            if (viewName === 'map' && map) { setTimeout(() => { map.invalidateSize(); fitMapToFilteredSpots(); }, 100); }
-            renderCurrentView();
-            setTimeout(checkCatScroll, 100);
         }
 
-        function filterSeason(season) {
-            currentSeason = season;
-            ['all', 'spring', 'summer', 'autumn', 'winter'].forEach(s => {
-                const btn = document.getElementById(`cat-${s}`);
-                if (!btn) return;
-                if (s === season) {
-                    btn.className = `px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white shadow-sm whitespace-nowrap shrink-0 ${mapConfig.btnTheme || 'bg-amber-600'}`;
-                } else {
-                    btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap shrink-0";
-                }
-            });
-            renderCurrentView();
+        // --- カテゴリーアイコン取得ユーティリティ ---
+        function getSpotCategoryDef(catName) {
+            if (!catName || mapConfig.mapType !== 'spot') return null;
+            const jaConf = mapConfig.i18n?.['ja'] || {}; // jaデータをマスターとする
+            const jaCats = jaConf.categories || [];
+            const curConfI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
+            const catsI18n = curConfI18n.categories || [];
+
+            // sysConfig.maps.categories (マスター配列) から探す
+            const idx = mapConfig.categories.findIndex(c => c.name === catName);
+            if (idx !== -1) {
+                const def = mapConfig.categories[idx];
+                return {
+                    icon: def.icon || '📍',
+                    name: catsI18n[idx]?.name || def.name // 翻訳名を返す
+                };
+            }
+            return null;
         }
 
-        function handleSearch() {
-            searchQuery = document.getElementById('searchInput').value.toLowerCase();
-            document.getElementById('searchClearBtn').classList.toggle('hidden', searchQuery.length === 0);
-            if (currentView === 'list') renderListView();
-        }
-
-        function clearSearch() { document.getElementById('searchInput').value = ''; handleSearch(); }
-
+        // --- 各ビューの描画処理 ---
         function renderCurrentView() {
             if (currentView === 'map') updateMapMarkers();
             if (currentView === 'list') renderListView();
             if (currentView === 'calendar' && mapConfig.hasCalendar !== false) renderCalendarView();
         }
 
+        // 1. マップマーカー更新
+        function updateMapMarkers() {
+            if (!markersLayer) return;
+            markersLayer.clearLayers();
+
+            // 春夏秋冬アイコンの定義を追加
+            const seasonIcons = { 'spring': '🌸', 'summer': '🌿', 'autumn': '🍁', 'winter': '❄️' };
+
+            getFilteredSpots().forEach(spot => {
+                let iconHtml = '';
+                if (mapConfig.mapType === 'spot') {
+                    // スポットモード：カテゴリーアイコン
+                    const catDef = getSpotCategoryDef(spot.category);
+                    const cIcon = catDef?.icon || mapConfig.icon || '📍';
+                    iconHtml = `<div class="flex items-center justify-center text-2xl spot-marker-icon" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.6));">${cIcon}</div>`;
+                } else {
+                    // イベントモード：春夏秋冬アイコンを表示
+                    const cIcon = seasonIcons[spot.season] || mapConfig.icon || '📍';
+                    iconHtml = `<div class="flex items-center justify-center text-2xl spot-marker-icon" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.6));">${cIcon}</div>`;
+                }
+
+                const marker = L.marker([spot.lat, spot.lng], {
+                    icon: L.divIcon({ className: 'custom-div-icon', html: iconHtml, iconSize: [36, 36], iconAnchor: [18, 18] })
+                });
+
+                // ツールチップ（ホバー時）
+                marker.bindTooltip(spot.title, { direction: 'top', offset: [0, -15], className: 'custom-map-tooltip' });
+                marker.on('click', () => showDetailModal(spot.id));
+                markersLayer.addLayer(marker);
+            });
+
+            fitMapToFilteredSpots();
+        }
+
+        // 2. リストビュー描画
         function renderListView() {
             const container = document.getElementById('listContainer');
             const filtered = getFilteredSpots().filter(spot => !searchQuery || (spot.title || '').toLowerCase().includes(searchQuery) || (spot.location || '').toLowerCase().includes(searchQuery));
@@ -371,13 +534,25 @@
             container.innerHTML = filtered.map(spot => {
                 const thumb = spot.photos?.[0]?.url;
                 const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
+                
+                // --- 修正箇所：リストのカテゴリー表示 ---
+                let catBadgeHtml = '';
+                if (mapConfig.mapType === 'spot') {
+                    const catDef = getSpotCategoryDef(spot.category);
+                    const cIcon = catDef?.icon || '📍';
+                    const cName = catDef?.name || spot.category;
+                    catBadgeHtml = `${cIcon} ${cName}`;
+                } else {
+                    catBadgeHtml = `${mapConfig.icon || '📍'} ${spot.season.toUpperCase()}`;
+                }
+
                 return `
                     <div onclick="showDetailModal(${spot.id})" class="bg-slateCard/70 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-xl flex flex-col justify-between">
                         <div>
                             ${thumb ? `<div class="w-full h-36 rounded-xl mb-3 overflow-hidden bg-slate-900"><img src="${thumb}" class="w-full h-full object-cover"></div>` : ''}
                             <div class="flex items-center justify-between mb-3">
                                 <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${mapConfig.badgeTheme || ''}">
-                                    ${mapConfig.icon || ''} ${hasCalendar ? spot.season.toUpperCase() : spot.category.toUpperCase()}
+                                    ${catBadgeHtml}
                                 </span>
                                 ${hasCalendar ? `<span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>` : ''}
                             </div>
@@ -386,26 +561,33 @@
                             <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">${spot.desc || ''}</p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium">
-                            <span>${getLocalizedUI('detailLink')}</span>
+                            <span class="${mapConfig.btnTheme.replace('bg-','text-')} group-hover:underline">${getLocalizedUI('detailLink')}</span>
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        function changeMonth(dir) { currentCalendarDate.setMonth(currentCalendarDate.getMonth() + dir); renderCalendarView(); }
-
+        // 3. カレンダービュー描画
         function renderCalendarView() {
             if (mapConfig.hasCalendar === false) return;
             const y = currentCalendarDate.getFullYear(), m = currentCalendarDate.getMonth();
             document.getElementById('calendarMonthTitle').innerText = `${y}年 ${m + 1}月`;
+            
             const firstDay = new Date(y, m, 1).getDay(), totalDays = new Date(y, m + 1, 0).getDate();
             const grid = document.getElementById('calendarGrid'), filtered = getFilteredSpots();
+            
             let html = '';
+            // 空白セル
             for (let i = 0; i < firstDay; i++) html += `<div class="bg-slate-900/30 min-h-[90px] p-1.5 opacity-30"></div>`;
+            
+            // 日付セル
             for (let day = 1; day <= totalDays; day++) {
                 const dateKey = `${y}-${String(m + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                // 期間内、または開始日が一致するスポット
                 const daySpots = filtered.filter(s => dateKey >= s.startDate && dateKey <= (s.endDate || s.startDate));
+                
                 html += `
                     <div class="min-h-[100px] p-1.5 sm:p-2 flex flex-col border bg-slateCard/60 border-slate-800/40">
                         <div class="flex items-center justify-between mb-1"><span class="text-[11px] font-bold text-slate-300">${day}</span>${daySpots.length ? `<span class="text-[9px] bg-amber-500/20 text-amber-400 px-1 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}</div>
@@ -418,24 +600,67 @@
             grid.innerHTML = html;
         }
 
+        // --- 詳細モーダル表示 ---
         function showDetailModal(id) {
             const rawSpot = (spotData.spots || []).find(s => Number(s.id) === Number(id));
             if (!rawSpot) return;
             const spot = getLocalizedSpot(rawSpot);
+            
             const hasCalendar = mapConfig.hasCalendar !== false;
             const dateStr = spot.startDate === spot.endDate ? spot.startDate : `${spot.startDate} 〜 ${spot.endDate}`;
-
-            let photosHtml = spot.photos?.length ? `<div><h4 class="text-xs font-bold text-amber-400 mb-2">${getLocalizedUI('photosTitle')}</h4><div class="grid grid-cols-2 sm:grid-cols-3 gap-3">${spot.photos.map(p => `<div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 h-28"><img src="${p.url}" class="w-full h-full object-cover"></div>`).join('')}</div></div>` : '';
             
+            // --- 修正箇所：モーダルのカテゴリー表示 ---
+            let catBadgeHtml = '';
+            if (mapConfig.mapType === 'spot') {
+                const catDef = getSpotCategoryDef(spot.category);
+                const cIcon = catDef?.icon || '📍';
+                const cName = catDef?.name || spot.category;
+                catBadgeHtml = `${cIcon} ${cName}`;
+            } else {
+                catBadgeHtml = `${mapConfig.icon || '📍'} ${spot.season.toUpperCase()}`;
+            }
+
+            // 写真ギャラリー
+            let photosHtml = '';
+            if (spot.photos && spot.photos.length > 0) {
+                photosHtml = `
+                    <div>
+                        <h4 class="text-xs font-bold text-amber-400 mb-2">${getLocalizedUI('photosTitle')}</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            ${spot.photos.map(p => `
+                                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 h-28 relative group">
+                                    <img src="${p.url}" class="w-full h-full object-cover">
+                                    ${p.caption ? `<div class="absolute inset-x-0 bottom-0 bg-black/70 p-1 text-[9px] text-white truncate">${p.caption}</div>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // 外部リンク
+            let linksHtml = '';
+            if (spot.links && spot.links.length > 0) {
+                linksHtml = `
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold text-amber-400">${getLocalizedUI('linksTitle')}</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${spot.links.map(l => `<a href="${l.url}" target="_blank" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 transition-colors">${l.label} ↗</a>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
             document.getElementById('modalContent').innerHTML = `
                 <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${mapConfig.badgeTheme}">${mapConfig.icon} ${hasCalendar ? spot.season.toUpperCase() : spot.category.toUpperCase()}</span>
+                    <span class="text-xs px-2.5 py-1 rounded-lg font-medium border ${mapConfig.badgeTheme}">${catBadgeHtml}</span>
                     ${hasCalendar ? `<span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">${dateStr}</span>` : ''}
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">${spot.title}</h3>
                 <p class="text-xs text-slate-400 mb-4">${spot.location}</p>
                 <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800"><p class="text-xs text-slate-300 leading-relaxed">${spot.desc}</p></div>
                 ${photosHtml}
+                ${linksHtml}
                 <div class="bg-amber-600/10 border border-amber-500/30 rounded-xl p-4 flex justify-between items-center">
                     <div><h4 class="text-xs font-bold text-amber-400">${getLocalizedConfig('consultTitle')}</h4><p class="text-[11px] text-slate-400">${getLocalizedConfig('consultDesc')}</p></div>
                     <button class="${mapConfig.btnTheme} text-white px-3.5 py-2 rounded-xl text-xs font-medium">${getLocalizedUI('consultBtn')}</button>
@@ -444,6 +669,76 @@
             document.getElementById('detailModal').classList.remove('hidden');
         }
         function closeDetailModal() { document.getElementById('detailModal').classList.add('hidden'); }
+
+        // カレンダー月移動
+        function changeMonth(dir) {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + dir);
+            renderCalendarView();
+        }
+
+        // --- ビュー切り替え & 検索 ---
+        function switchView(viewName) {
+            currentView = viewName;
+            
+            // ボタンのスタイル更新
+            const views = ['map', 'list', 'calendar'];
+            views.forEach(v => {
+                const btn = document.getElementById(`btn-view-${v}`);
+                if (!btn) return;
+                if (v === viewName) {
+                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-white shadow-md bg-slate-800 border-slate-700";
+                } else {
+                    btn.className = "flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white";
+                }
+                
+                // パネルの表示/非表示切り替え
+                const panel = document.getElementById(`view-${v}`);
+                if (panel) {
+                    if (v === viewName) {
+                        panel.classList.remove('hidden');
+                    } else {
+                        panel.classList.add('hidden');
+                    }
+                }
+            });
+
+            // 検索ボックスの表示制御（マップとリストのみ表示、カレンダー時は非表示）
+            const searchContainer = document.getElementById('searchContainer');
+            if (searchContainer) {
+                if (viewName === 'calendar') {
+                    searchContainer.classList.add('hidden');
+                } else {
+                    searchContainer.classList.remove('hidden');
+                }
+            }
+            
+            // マップビューに戻った場合、Leafletの描画を更新してサイズ崩れを防ぐ
+            if (viewName === 'map' && map) {
+                setTimeout(() => {
+                    map.invalidateSize();
+                    fitMapToFilteredSpots();
+                }, 10);
+            }
+
+            renderCurrentView();
+        }
+
+        // --- 検索機能 ---
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+            const clearBtn = document.getElementById('searchClearBtn');
+            if (clearBtn) {
+                clearBtn.classList.toggle('hidden', searchQuery.length === 0);
+            }
+            renderCurrentView();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            searchQuery = '';
+            document.getElementById('searchClearBtn')?.classList.add('hidden');
+            renderCurrentView();
+        }
     </script>
 </body>
 </html>

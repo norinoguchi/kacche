@@ -87,59 +87,88 @@
 
     <!-- Map Setting Edit Modal -->
     <div id="editMapModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
-            <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
-                <h3 class="text-sm font-bold text-white flex items-center gap-2">⚙️ マップ設定の編集 (<span id="editTargetMapId"></span>)</h3>
+        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col">
+            <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50 shrink-0">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2">⚙️ マップ設定編集 (<span id="editTargetMapId"></span>)</h3>
                 <button onclick="closeEditMapModal()" class="text-slate-400 hover:text-white">✕</button>
             </div>
-            <div class="p-5 space-y-4">
-                <div class="grid grid-cols-2 gap-3">
+            <div class="p-5 space-y-4 overflow-y-auto flex-1">
+                <div class="grid grid-cols-2 gap-3 mb-2">
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">マップID</label>
-                        <input type="text" id="editMapIdInput" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-400 font-mono" disabled>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">マップID (半角)*</label>
+                        <input type="text" id="editMapId" placeholder="例: castle" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">絵文字アイコン*</label>
-                        <input type="text" id="editMapIconInput" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                        <label class="block text-xs font-medium text-slate-300 mb-1">全体マップ絵文字アイコン*</label>
+                        <input type="text" id="editMapIcon" placeholder="例: 🏯" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
                     </div>
                 </div>
 
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label class="block text-xs font-medium text-slate-300">マップ名 (日本語)*</label>
-                        <button type="button" onclick="autoTranslateEditMap()" id="translateEditMapBtn" class="bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 px-3 py-1.5 rounded-xl text-xs font-medium transition-all border border-indigo-500/40 flex items-center gap-1.5">
-                            🌐 全言語へ自動翻訳
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">マップ種類*</label>
+                        <select id="editMapType" onchange="toggleEditMapCategories()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                            <option value="event">📅 イベントマップ (春夏秋冬フィルタ)</option>
+                            <option value="spot">📍 スポットマップ (カスタム定義カテゴリー)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">カラーテーマ</label>
+                        <select id="editMapThemeSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                            <option value="amber">🔴 アンバー (祭り系)</option>
+                            <option value="purple">🟣 パープル (花火系)</option>
+                            <option value="emerald">🟢 エメラルド (常設スポット系)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- スポットマップ用カテゴリー定義エリア -->
+                <div id="editMapCategoriesArea" class="hidden bg-slate-900/60 p-4 rounded-2xl border border-slate-800 space-y-3 mb-3">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-xs font-bold text-slate-200">🏷️ スポット分類カテゴリー定義 (最大4つ)</label>
+                        <button type="button" onclick="addEditCategoryRow()" id="btnAddEditCategory" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded-lg text-xs border border-slate-700 transition-colors">＋ カテゴリー追加</button>
+                    </div>
+                    <div id="editMapCategoriesRows" class="space-y-2">
+                        <!-- JSで動的生成 -->
+                    </div>
+                    <p class="text-[10px] text-slate-500">※各スポットはこの中から1つを選択します。カテゴリー名は多言語翻訳に対応します。</p>
+                </div>
+
+                <div class="border border-slate-700/80 rounded-2xl bg-slate-950/80 overflow-hidden">
+                    <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between gap-2">
+                        <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">🌐 マップ名・説明の多言語翻訳確認</span>
+                        <button type="button" onclick="autoTranslateEditMapUI()" id="translateEditMapBtn" class="bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 px-3 py-1.5 rounded-xl text-xs font-medium transition-all border border-indigo-500/40 flex items-center gap-1.5 shadow-sm">
+                            ✨ 日本語から全言語へ自動翻訳を実行
                         </button>
                     </div>
-                    <input type="text" id="editMapNameInput" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white mb-2">
 
-                    <label class="block text-xs font-medium text-slate-300 mb-1">サブタイトル・説明 (日本語)</label>
-                    <input type="text" id="editMapSubInput" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white mb-2">
+                    <div class="flex bg-slate-900/50 border-b border-slate-800 overflow-x-auto px-2 pt-2 gap-1" id="editMapLangTabsContainer">
+                        <!-- JSで動的生成（ja, en, zh-TW, zh-CN, ko, th, id） -->
+                    </div>
 
-                    <label class="block text-xs font-medium text-slate-300 mb-1">カラーテーマ*</label>
-                    <select id="editMapThemeSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white mb-3">
-                        <option value="amber">🔴 アンバー / レッド (祭り系)</option>
-                        <option value="purple">🟣 パープル / インディゴ (花火系)</option>
-                        <option value="emerald">🟢 エメラルド / ティール (お城・常設系)</option>
-                    </select>
-
-                    <div class="flex items-center gap-2.5 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
-                        <input type="checkbox" id="editMapHasCalendar" class="w-4 h-4 bg-slate-950 border border-slate-700 rounded text-emerald-600 cursor-pointer">
-                        <label for="editMapHasCalendar" class="text-xs font-medium text-slate-200 cursor-pointer">📅 カレンダー機能を持たせる</label>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-300 mb-1"><span id="currentEditMapLangLabel">🇯🇵 日本語</span> - マップ名</label>
+                            <input type="text" id="editActiveLangTitle" oninput="saveCurrentEditMapLangInput()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-300 mb-1">サブタイトル・説明</label>
+                            <input type="text" id="editActiveLangSub" oninput="saveCurrentEditMapLangInput()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                        </div>
+                        <div id="editActiveLangCats" class="space-y-2 hidden">
+                            <!-- スポットモード時、カテゴリー名の翻訳フィールドを表示 -->
+                        </div>
                     </div>
                 </div>
-                <div id="editMapTranslationStatus" class="hidden text-xs text-emerald-400 bg-emerald-900/20 p-3 rounded-xl border border-emerald-500/30 text-center font-bold">
-                    ✨ 多言語への自動翻訳が完了しました！
-                </div>
             </div>
-            <div class="bg-slate-900/80 px-5 py-3.5 border-t border-slate-800 flex justify-end gap-3">
+            <div class="bg-slate-900/80 px-5 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
                 <button onclick="closeEditMapModal()" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs font-medium">キャンセル</button>
-                <button onclick="saveEditedMapSettings()" class="px-5 py-2 bg-emerald-600 text-white rounded-xl text-xs font-medium">変更ファイルを生成</button>
+                <button onclick="saveEditedMapSettings()" class="px-5 py-2 bg-emerald-600 text-white rounded-xl text-xs font-medium">変更ファイルをダウンロード</button>
             </div>
         </div>
     </div>
 
-    <!-- Spot Edit / Add Modal -->
+    <!-- Spot Edit / Add Modal (維持) -->
     <div id="spotModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
         <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col">
             <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50 shrink-0">
@@ -150,11 +179,12 @@
             <div class="p-5 space-y-5 overflow-y-auto flex-1">
                 <input type="hidden" id="spotEditId">
                 
-                <!-- 基本情報 -->
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-medium text-slate-300 mb-1">カテゴリー*</label>
-                        <input type="text" id="spotCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                        <select id="spotCategorySelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            <!-- JSで動的生成（春夏秋冬、またはカスタム） -->
+                        </select>
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-slate-300 mb-1">エリア / 場所 (日本語)* ※住所取得用</label>
@@ -162,7 +192,6 @@
                     </div>
                 </div>
 
-                <!-- 緯度経度 ＆ 住所から取得ボタン -->
                 <div class="bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 space-y-3">
                     <div class="flex items-center justify-between">
                         <label class="block text-xs font-bold text-slate-200">📍 位置情報 (緯度・経度)</label>
@@ -182,8 +211,7 @@
                     </div>
                 </div>
 
-                <!-- 日付 -->
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-2 gap-3" id="dateInputFieldsContainer">
                     <div>
                         <label class="block text-xs font-medium text-slate-300 mb-1">開始日 (YYYY-MM-DD)</label>
                         <input type="date" id="spotStartDate" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
@@ -194,41 +222,28 @@
                     </div>
                 </div>
 
-                <!-- 写真・フォルダパス・ライセンス管理セクション -->
                 <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between">
                         <label class="block text-xs font-bold text-slate-200">🖼️ 写真画像・パス・ライセンス管理</label>
-                        <button type="button" onclick="addPhotoField()" class="bg-slate-800 hover:bg-slate-750 text-slate-200 px-2.5 py-1 rounded-lg text-xs border border-slate-700">＋ 写真を追加</button>
+                        <button type="button" onclick="addPhotoField()" class="bg-slate-800 hover:bg-slate-750 text-slate-200 px-2.5 py-1 rounded-lg text-xs border border-slate-700 transition-colors">＋ 写真を追加</button>
                     </div>
-                    
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1">写真格納フォルダプレフィックス (例: picture/matsuri/hamamatsu/)</label>
-                        <input type="text" id="spotPhotoBaseDir" placeholder="picture/matsuri/hamamatsu/" oninput="updateAllPhotoUrls()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono">
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">写真格納フォルダプレフィックス (例: picture/castle/)</label>
+                        <input type="text" id="spotPhotoBaseDir" placeholder="picture/castle/" oninput="updateAllPhotoUrls()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono">
                     </div>
-
-                    <div id="photosContainer" class="space-y-3">
-                        <!-- 動的に写真入力欄が追加されます -->
-                    </div>
+                    <div id="photosContainer" class="space-y-3"></div>
                 </div>
 
-                <!-- 多言語データ自動翻訳 ＆ 手動修正タブ -->
                 <div class="border border-slate-700/80 rounded-2xl bg-slate-900/80 overflow-hidden">
                     <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
                         <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">🌐 多言語コンテンツ管理 & 手動修正</span>
-                        <button type="button" onclick="runAutoTranslate()" id="translateSpotBtn" class="bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 px-3 py-1.5 rounded-xl text-xs font-medium transition-all border border-indigo-500/40 flex items-center gap-1.5">
+                        <button type="button" onclick="runAutoTranslateSpot()" id="translateSpotBtn" class="bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 px-3 py-1.5 rounded-xl text-xs font-medium transition-all border border-indigo-500/40 flex items-center gap-1.5 shadow-sm">
                             ✨ 日本語から全言語へ自動翻訳を実行
                         </button>
                     </div>
 
-                    <!-- 言語切り替えタブ -->
                     <div class="flex bg-slate-950/60 border-b border-slate-800 overflow-x-auto px-2 pt-2 gap-1" id="langTabsContainer">
-                        <button type="button" onclick="switchLangTab('ja')" id="tab-btn-ja" class="px-3 py-1.5 text-xs font-bold rounded-t-xl bg-slate-900 text-white border-t border-x border-slate-700">🇯🇵 日本語</button>
-                        <button type="button" onclick="switchLangTab('en')" id="tab-btn-en" class="px-3 py-1.5 text-xs font-medium rounded-t-xl text-slate-400 hover:text-white">🇺🇸 English</button>
-                        <button type="button" onclick="switchLangTab('zh-TW')" id="tab-btn-zh-TW" class="px-3 py-1.5 text-xs font-medium rounded-t-xl text-slate-400 hover:text-white">🇹🇼 繁體中文</button>
-                        <button type="button" onclick="switchLangTab('zh-CN')" id="tab-btn-zh-CN" class="px-3 py-1.5 text-xs font-medium rounded-t-xl text-slate-400 hover:text-white">🇨🇳 简体中文</button>
-                        <button type="button" onclick="switchLangTab('ko')" id="tab-btn-ko" class="px-3 py-1.5 text-xs font-medium rounded-t-xl text-slate-400 hover:text-white">🇰🇷 한국어</button>
-                        <button type="button" onclick="switchLangTab('th')" id="tab-btn-th" class="px-3 py-1.5 text-xs font-medium rounded-t-xl text-slate-400 hover:text-white">🇹🇭 ไทย</button>
-                        <button type="button" onclick="switchLangTab('id')" id="tab-btn-id" class="px-3 py-1.5 text-xs font-medium rounded-t-xl text-slate-400 hover:text-white">🇮🇩 Indonesia</button>
+                        <!-- JSで動的生成 -->
                     </div>
 
                     <div class="p-4 space-y-3">
@@ -246,7 +261,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="bg-slate-900/80 px-5 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
@@ -277,84 +291,94 @@
                     </div>
                     
                     <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <label class="block text-xs font-medium text-slate-300">マップ名 (日本語)*</label>
-                            <button type="button" onclick="autoTranslateNewMap()" id="translateNewMapBtn" class="bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 px-3 py-1.5 rounded-xl text-xs font-medium transition-all border border-indigo-500/40 flex items-center gap-1.5">
-                                🌐 全言語へ自動翻訳
-                            </button>
-                        </div>
-                        <input type="text" id="newMapTitleJa" placeholder="例: お城マップ" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white mb-2">
-                        
+                        <label class="block text-xs font-medium text-slate-300 mb-1">マップ名 (日本語)*</label>
+                        <input type="text" id="newMapTitleJa" placeholder="例: 日本のお城マップ" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                    </div>
+                    
+                    <div>
                         <label class="block text-xs font-medium text-slate-300 mb-1">サブタイトル・説明 (日本語)</label>
-                        <input type="text" id="newMapSubJa" placeholder="例: 全国の名城を探索" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white mb-2">
+                        <input type="text" id="newMapSubJa" placeholder="例: 日本全国の名城をご案内します。" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                    </div>
 
-                        <label class="block text-xs font-medium text-slate-300 mb-1">カラーテーマ</label>
-                        <select id="newMapThemeSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white mb-3">
-                            <option value="emerald">🟢 エメラルド (常設系)</option>
-                            <option value="amber">🔴 アンバー (祭り系)</option>
-                            <option value="purple">🟣 パープル (花火系)</option>
-                        </select>
-
-                        <div class="flex items-center gap-2.5 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
-                            <input type="checkbox" id="newMapHasCalendar" checked class="w-4 h-4 bg-slate-950 border border-slate-700 rounded text-emerald-600 cursor-pointer">
-                            <label for="newMapHasCalendar" class="text-xs font-medium text-slate-200 cursor-pointer">📅 カレンダー機能を持たせる</label>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">マップ種類*</label>
+                            <select id="newMapType" onchange="toggleNewMapCategories()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                                <option value="event">📅 イベントマップ</option>
+                                <option value="spot" selected>📍 スポットマップ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">カラーテーマ</label>
+                            <select id="newMapThemeSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                                <option value="emerald">🟢 エメラルド</option>
+                                <option value="amber">🔴 アンバー</option>
+                                <option value="purple">🟣 パープル</option>
+                            </select>
                         </div>
                     </div>
-                    <div id="newMapTranslationStatus" class="hidden text-xs text-emerald-400 bg-emerald-900/20 p-3 rounded-xl border border-emerald-500/30 text-center font-bold">
-                        ✨ 多言語への自動翻訳が完了しました！
-                    </div>
-                </div>
-                <div class="bg-slate-900/80 px-5 py-3.5 border-t border-slate-800 flex justify-end gap-3">
-                    <button onclick="closeNewMapModal()" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs font-medium">キャンセル</button>
-                    <button onclick="prepareNewMapFiles()" class="px-5 py-2 bg-emerald-600 text-white rounded-xl text-xs font-medium">ファイル生成を準備</button>
-                </div>
-            </div>
-            <!-- Download Step -->
-            <div id="newMapDownloadArea" class="hidden p-5 space-y-4">
-                <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-3 text-xs text-amber-300 font-bold text-center">以下のボタンを上から順に保存してください</div>
-                <div class="flex flex-col gap-2.5">
-                    <button onclick="downloadMapFile(1)" class="w-full px-4 py-3 bg-slate-800 hover:bg-emerald-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between"><span>1. maps_index.json</span></button>
-                    <button onclick="downloadMapFile(2)" class="w-full px-4 py-3 bg-slate-800 hover:bg-blue-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between"><span>2. <span id="dl-btn-2">config.json</span></span></button>
-                    <button onclick="downloadMapFile(3)" class="w-full px-4 py-3 bg-slate-800 hover:bg-indigo-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between"><span>3. <span id="dl-btn-3">data.json</span></span></button>
-                </div>
-                <div class="flex justify-end pt-3"><button onclick="location.reload()" class="px-5 py-2 bg-slate-700 text-white rounded-xl text-xs">すべて保存してリロード</button></div>
-            </div>
-        </div>
-    </div>
 
-    <!-- 複数ファイルダウンロード用汎用モーダル -->
-    <div id="editMapDownloadModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl p-5 space-y-4">
-            <div class="text-xs font-bold text-amber-300 bg-amber-900/20 border border-amber-500/30 p-3 rounded-xl text-center">
-                マップ設定と多言語テキストの更新ファイルを保存します。<br>以下の2つのボタンを押してください。
+                    <!-- スポットマップ用カテゴリー定義エリア（新規） -->
+                    <div id="newMapCategoriesArea" class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <label class="block text-xs font-bold text-slate-200">🏷️ スポット分類カテゴリー定義 (最大4つ)</label>
+                            <button type="button" onclick="addNewCategoryRow()" id="btnAddCategory" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded-lg text-xs border border-slate-700 transition-colors">＋ 追加</button>
+                        </div>
+                        <div id="newMapCategoriesRows" class="space-y-2">
+                            <!-- JSで動的生成。初期で1つ追加 -->
+                        </div>
+                        <p class="text-[10px] text-slate-500">※絵文字、カテゴリー名を入力してください。</p>
+                    </div>
+
+                </div>
+                <div class="bg-slate-900/80 px-5 py-3.5 border-t border-slate-800 flex justify-end gap-3 shrink-0">
+                    <button onclick="closeNewMapModal()" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs font-medium">キャンセル</button>
+                    <button onclick="prepareNewMapFiles()" class="px-5 py-2 bg-emerald-600 text-white rounded-xl text-xs font-medium">他言語を自動翻訳してファイル準備</button>
+                </div>
             </div>
-            <div class="flex flex-col gap-2.5">
-                <button onclick="triggerDownload('maps_index.json', pendingEditFiles.sysConfigStr)" class="w-full px-4 py-3 bg-slate-800 hover:bg-emerald-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between">
-                    <span>1. maps_index.json <span class="text-[10px] text-slate-400 font-normal">(config/フォルダ用)</span></span>
-                </button>
-                <button onclick="triggerDownload(pendingEditFiles.configFilename, pendingEditFiles.configStr)" class="w-full px-4 py-3 bg-slate-800 hover:bg-blue-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between">
-                    <span>2. <span id="edit-dl-btn-2">config.json</span> <span class="text-[10px] text-slate-400 font-normal">(config/フォルダ用)</span></span>
-                </button>
-            </div>
-            <div class="flex justify-end pt-2">
-                <button onclick="location.reload()" class="px-5 py-2 bg-slate-700 text-white rounded-xl text-xs font-medium">保存完了してリロード</button>
+            
+            <div id="newMapDownloadArea" class="hidden p-5 space-y-4">
+                <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-3 text-xs text-amber-300 font-bold text-center">以下のファイルを順番に保存してください</div>
+                <div class="flex flex-col gap-2.5">
+                    <button onclick="downloadMapFile(1)" class="w-full px-4 py-3 bg-slate-800 hover:bg-emerald-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between group">
+                        <span>1. maps_index.json <span class="text-[10px] text-slate-400 font-normal">(config/フォルダ用)</span></span>
+                        <svg class="w-4 h-4 text-slate-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    </button>
+                    <button onclick="downloadMapFile(2)" class="w-full px-4 py-3 bg-slate-800 hover:bg-blue-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between group">
+                        <span>2. <span id="dl-btn-2">config.json</span> <span class="text-[10px] text-slate-400 font-normal">(config/フォルダ用)</span></span>
+                        <svg class="w-4 h-4 text-slate-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    </button>
+                    <button onclick="downloadMapFile(3)" class="w-full px-4 py-3 bg-slate-800 hover:bg-indigo-900 border border-slate-600 text-slate-200 rounded-xl text-xs font-bold flex justify-between group">
+                        <span>3. <span id="dl-btn-3">data.json</span> <span class="text-[10px] text-slate-400 font-normal">(data/フォルダ用)</span></span>
+                        <svg class="w-4 h-4 text-slate-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    </button>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-900 p-3 rounded-lg border border-slate-800">※ダウンロードしたファイルを、GitHubリポジトリの対応するフォルダ（`config/`, `data/`）に上書きアップロード（コミット）してください。maps_index.json も忘れずに更新してください。</p>
+                <div class="flex justify-end pt-3">
+                    <button onclick="location.reload()" class="px-5 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-medium">すべて保存してリロード</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // --- 共通データ & 定数 ---
         let sysConfig = { defaultMap: 'matsuri', maps: [] };
         let currentMapID = null;
         let rawData = { spots: [], spotContentI18n: {} };
-        let pendingMapFiles = {};
-        let pendingEditFiles = {};
-        let newMapTranslations = {};
-        let editMapTranslations = {};
-
+        let pendingMapFiles = {}; // 新規マップファイル保持用
+        
+        // スポット編集用テンポラリ
         let currentSpotTranslations = {};
         let currentActiveLang = 'ja';
         let currentSpotPhotos = [];
 
+        // マップUI設定編集用テンポラリ
+        let currentEditMapConfigI18n = {};
+        let currentEditMapCategories = []; // スポットモード時のカテゴリー配列
+        let currentEditMapActiveLang = 'ja';
+
+        const langCodes = ['ja', 'en', 'zh-TW', 'zh-CN', 'ko', 'th', 'id'];
         const langNames = {
             'ja': '🇯🇵 日本語', 'en': '🇺🇸 English', 'zh-TW': '🇹🇼 繁體中文',
             'zh-CN': '🇨🇳 简体中文', 'ko': '🇰🇷 한국어', 'th': '🇹🇭 ไทย', 'id': '🇮🇩 Indonesia'
@@ -366,6 +390,7 @@
             emerald: { iconGradient: "from-emerald-600 to-teal-600", btnTheme: "bg-emerald-600 hover:bg-emerald-500", badgeTheme: "bg-emerald-500/10 text-emerald-400 border-emerald-500/25" }
         };
 
+        // --- 初期化 ---
         window.addEventListener('DOMContentLoaded', async () => {
             await loadSysConfig();
             await loadTargetMapData();
@@ -376,12 +401,16 @@
                 const res = await fetch(`config/maps_index.json?v=${Date.now()}`);
                 if (res.ok) sysConfig = await res.json();
             } catch (e) {
-                sysConfig = { defaultMap: 'matsuri', maps: [{id: 'matsuri', name: '祭りマップ', icon: '🏮', hasCalendar: true, theme: themePresets.amber}] };
+                console.warn('maps_index.json 読み込み失敗。デフォルトを使用します。', e);
+                sysConfig = { defaultMap: 'matsuri', maps: [{id: 'matsuri', name: '祭りマップ', icon: '🏮', mapType: 'event', theme: themePresets.amber}] };
             }
             if (!currentMapID) currentMapID = sysConfig.defaultMap || 'matsuri';
 
+            // マップセレクター生成
             const selector = document.getElementById('mapSelector');
             selector.innerHTML = sysConfig.maps.map(m => `<option value="${m.id}" ${m.id === currentMapID ? 'selected' : ''}>${m.icon} ${m.name} (${m.id})</option>`).join('');
+            
+            // 公開サイトリンク更新
             document.getElementById('publicSiteLink').href = `viewer.html?map=${currentMapID}`;
         }
 
@@ -393,262 +422,313 @@
 
         async function loadTargetMapData() {
             try {
+                // data/{mapId}_data.json 読み込み
                 const res = await fetch(`data/${currentMapID}_data.json?v=${Date.now()}`);
-                rawData = res.ok ? await res.json() : { spots: [], spotContentI18n: {} };
-            } catch (e) { rawData = { spots: [], spotContentI18n: {} }; }
+                if (res.ok) {
+                    rawData = await res.json();
+                } else {
+                    console.warn(`${currentMapID}_data.json が見つかりません。新規作成します。`);
+                    rawData = { spots: [], spotContentI18n: {} };
+                }
+            } catch (e) { 
+                console.error('データ読み込みエラー', e);
+                rawData = { spots: [], spotContentI18n: {} }; 
+            }
             renderTable();
         }
 
+        // --- メインテーブル描画 ---
         function renderTable() {
             const tbody = document.getElementById('adminTableBody');
             const spots = rawData.spots || [];
-            if (spots.length === 0) { tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-slate-500">スポットがありません。「＋ スポット追加」から登録してください。</td></tr>`; return; }
+            if (spots.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-slate-500 text-xs">スポットがまだ登録されていません。「＋ スポット追加」ボタンから登録してください。</td></tr>`;
+                return;
+            }
+
             tbody.innerHTML = spots.map((spot, idx) => {
-                const i18nObj = rawData.spotContentI18n?.[spot.id] || rawData.spotContentI18n?.[String(spot.id)] || {};
-                const ja = i18nObj['ja'] || {};
+                // 多言語データから日本語を取得
+                const spotI18n = (rawData.spotContentI18n && (rawData.spotContentI18n[spot.id] || rawData.spotContentI18n[String(spot.id)])) || {};
+                const ja = spotI18n['ja'] || {};
+
                 return `
-                    <tr class="hover:bg-slate-800/40">
-                        <td class="p-3 font-mono font-bold text-slate-300">#${idx + 1}</td>
-                        <td class="p-3"><span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400">${spot.category}</span></td>
-                        <td class="p-3 font-bold text-white">${ja.title || '---'}</td>
-                        <td class="p-3 text-slate-300">${ja.location || '---'}<div class="text-[10px] text-slate-500">${spot.startDate || ''}</div></td>
-                        <td class="p-3 font-mono text-slate-400">${Number(spot.lat).toFixed(3)}, ${Number(spot.lng).toFixed(3)}</td>
-                        <td class="p-3 font-mono text-slate-400">${spot.updatedAt || '---'}</td>
-                        <td class="p-3 text-right space-x-1.5">
-                            <button onclick="openSpotModalForEdit(${spot.id})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-xs border border-slate-700">編集</button>
-                            <button onclick="deleteSpot(${spot.id})" class="px-2.5 py-1 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white rounded text-xs border border-red-500/30">削除</button>
+                    <tr class="hover:bg-slate-800/40 border-b border-slate-800/60 last:border-b-0">
+                        <td class="p-3 sm:p-4 font-mono font-bold text-slate-300">#${idx + 1}</td>
+                        <td class="p-3 sm:p-4">
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-medium">
+                                ${spot.category}
+                            </span>
+                        </td>
+                        <td class="p-3 sm:p-4 font-bold text-white text-sm">${ja.title || '---'}</td>
+                        <td class="p-3 sm:p-4 text-slate-300 text-xs">
+                            ${ja.location || '---'}
+                            <div class="text-[10px] text-slate-500 mt-0.5 font-mono">${spot.startDate || ''}</div>
+                        </td>
+                        <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">
+                            ${Number(spot.lat).toFixed(4)}, ${Number(spot.lng).toFixed(4)}
+                        </td>
+                        <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">${spot.updatedAt || '---'}</td>
+                        <td class="p-3 sm:p-4 text-right space-x-1.5 whitespace-nowrap">
+                            <button onclick="openSpotModalForEdit(${spot.id})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-xs border border-slate-700 transition-colors">編集</button>
+                            <button onclick="deleteSpot(${spot.id})" class="px-2.5 py-1 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white rounded text-xs border border-red-500/30 transition-colors">削除</button>
                         </td>
                     </tr>
                 `;
             }).join('');
         }
 
+        // --- 共通ユーティリティ ---
         async function translateText(text, targetLang) {
             if (!text || !text.trim()) return "";
             try {
-                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
-                const res = await fetch(url);
+                // Google Translate GAS API (配布用サンプルURL。実際にはご自身のURLに差し替えてください)
+                // const gasUrl = 'https://script.google.com/macros/s/AKfycby5_サンプル_API_URL/exec';
+                // const res = await fetch(`${gasUrl}?text=${encodeURIComponent(text)}&source=ja&target=${targetLang}`);
+                
+                // --- 開発用ダミー翻訳（APIがない場合） ---
+                // return `[${targetLang}] ${text}`; 
+                
+                // --- 実装例（無料のgtranslate APIを使う場合。自己責任で利用してください） ---
+                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`);
                 const data = await res.json();
-                if (data && data[0]) return data[0].map(item => item[0]).join('');
-            } catch (e) { console.error(e); }
-            return text;
-        }
-
-        async function fetchCoordinatesFromAddress() {
-            const address = document.getElementById('spotLocationJa').value.trim();
-            const title = currentSpotTranslations['ja']?.title || document.getElementById('activeLangTitle').value.trim();
-            const query = address || title;
-            if (!query) { alert('先に「エリア / 場所」またはタイトルを入力してください。'); return; }
-            try {
-                const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`, {
-                    headers: { 'Accept-Language': 'ja' }
-                });
-                const data = await res.json();
-                if (data && data.length > 0) {
-                    document.getElementById('spotLat').value = parseFloat(data[0].lat).toFixed(6);
-                    document.getElementById('spotLng').value = parseFloat(data[0].lon).toFixed(6);
-                } else {
-                    alert('位置情報が見つかりませんでした。より具体的な地名を入力してください。');
+                if (data && data[0] && data[0][0] && data[0][0][0]) {
+                    return data[0].map(s => s[0]).join(''); // 長文対応
                 }
+                return text;
             } catch (e) {
-                console.error(e);
-                alert('位置情報の取得に失敗しました。');
+                console.error('翻訳エラー', e);
+                return text; // エラー時は原文を返す
             }
         }
 
+        function triggerDownload(filename, content) {
+            const blob = new Blob([content], { type: 'text/json;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        async function fetchCoordinatesFromAddress() {
+            const addressJa = document.getElementById('spotLocationJa').value.trim();
+            if (!addressJa) { alert('「エリア / 場所 (日本語)」を入力してください。'); return; }
+            
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ 取得中...';
+            btn.disabled = true;
+
+            try {
+                // Nominatim API (OpenStreetMap)
+                const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(addressJa)}&limit=1`, {
+                    headers: { 'Accept-Language': 'ja' }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.length > 0) {
+                        document.getElementById('spotLat').value = data[0].lat;
+                        document.getElementById('spotLng').value = data[0].lon;
+                    } else {
+                        alert('位置情報を特定できませんでした。住所をより具体的に入力するか、手動で入力してください。');
+                    }
+                }
+            } catch (e) {
+                console.error('Nominatim API エラー', e);
+                alert('位置情報の取得に失敗しました。時間をおいて試すか、手動で入力してください。');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // --- スポットカテゴリーSelectの生成 ---
+        function populateSpotCategorySelect(selectedCategory = '') {
+            const select = document.getElementById('spotCategorySelect');
+            const currentMap = sysConfig.maps.find(m => m.id === currentMapID);
+            
+            let categories = [];
+            if (currentMap && currentMap.mapType === 'spot' && currentMap.categories) {
+                // スポットマップ：カスタムカテゴリー
+                categories = currentMap.categories.map(c => ({ value: c.name, label: `${c.icon} ${c.name}` }));
+            } else {
+                // イベントマップ（またはデフォルト）：春夏秋冬
+                categories = [
+                    { value: 'spring', label: '🌸 春 (Spring)' },
+                    { value: 'summer', label: '🌿 夏 (Summer)' },
+                    { value: 'autumn', label: '🍁 秋 (Autumn)' },
+                    { value: 'winter', label: '❄️ 冬 (Winter)' }
+                ];
+            }
+
+            select.innerHTML = categories.map(c => 
+                `<option value="${c.value}" ${c.value === selectedCategory ? 'selected' : ''}>${c.label}</option>`
+            ).join('');
+        }
+
+        // --- スポット編集モーダル関連 ---
         function openSpotModalForNew() {
             document.getElementById('spotModalTitle').innerText = "スポットの新規追加";
             document.getElementById('spotEditId').value = '';
-            document.getElementById('spotCategory').value = currentMapID;
-            document.getElementById('spotLat').value = '35.681234';
-            document.getElementById('spotLng').value = '139.767123';
+            populateSpotCategorySelect(); // デフォルトカテゴリー
+            
+            // 日付フィールド表示切替
+            const currentMap = sysConfig.maps.find(m => m.id === currentMapID);
+            document.getElementById('dateInputFieldsContainer').classList.toggle('hidden', currentMap?.mapType === 'spot');
+
+            // フィールド初期化
+            document.getElementById('spotLat').value = '35.6812'; // 東京駅付近
+            document.getElementById('spotLng').value = '139.7671';
             document.getElementById('spotStartDate').value = '2027-05-01';
             document.getElementById('spotEndDate').value = '2027-05-01';
             document.getElementById('spotLocationJa').value = '';
             document.getElementById('spotPhotoBaseDir').value = `picture/${currentMapID}/`;
             
-            currentSpotTranslations = {
-                'ja': { title: '', location: '', desc: '' },
-                'en': { title: '', location: '', desc: '' },
-                'zh-TW': { title: '', location: '', desc: '' },
-                'zh-CN': { title: '', location: '', desc: '' },
-                'ko': { title: '', location: '', desc: '' },
-                'th': { title: '', location: '', desc: '' },
-                'id': { title: '', location: '', desc: '' }
-            };
+            currentSpotTranslations = {};
+            langCodes.forEach(lang => currentSpotTranslations[lang] = {title: '', location: '', desc: ''});
             currentSpotPhotos = [];
             renderPhotosList();
+
             switchLangTab('ja');
             document.getElementById('spotModal').classList.remove('hidden');
         }
 
-function openSpotModalForEdit(spotId) {
-    console.log("=== 編集対象 spotId:", spotId, "Type:", typeof spotId);
-    console.log("=== 全 spotContentI18n:", rawData.spotContentI18n);
+        function openSpotModalForEdit(spotId) {
+            const spot = rawData.spots.find(s => Number(s.id) === Number(spotId));
+            if (!spot) return;
 
-    const spot = (rawData.spots || []).find(s => String(s.id) === String(spotId));
-    if (!spot) {
-        console.error("スポットが見つかりません:", spotId);
-        return;
-    }
+            document.getElementById('spotModalTitle').innerText = `スポットの編集 (#${spotId})`;
+            document.getElementById('spotEditId').value = spotId;
+            
+            const currentMap = sysConfig.maps.find(m => m.id === currentMapID);
+            populateSpotCategorySelect(spot.category);
+            document.getElementById('dateInputFieldsContainer').classList.toggle('hidden', currentMap?.mapType === 'spot');
 
-    document.getElementById('spotModalTitle').innerText = "スポットの編集 (#" + spotId + ")";
-    document.getElementById('spotEditId').value = spotId;
-    document.getElementById('spotCategory').value = spot.category || currentMapID;
-    document.getElementById('spotLat').value = spot.lat || '';
-    document.getElementById('spotLng').value = spot.lng || '';
-    document.getElementById('spotStartDate').value = spot.startDate || '';
-    document.getElementById('spotEndDate').value = spot.endDate || '';
+            document.getElementById('spotLat').value = spot.lat;
+            document.getElementById('spotLng').value = spot.lng;
+            document.getElementById('spotStartDate').value = spot.startDate || '';
+            document.getElementById('spotEndDate').value = spot.endDate || '';
 
-    // 複数パターンのキー（数値・文字列）で確実にi18nデータを探索
-    const rawI18n = rawData.spotContentI18n?.[spotId] 
-                 || rawData.spotContentI18n?.[String(spotId)] 
-                 || rawData.spotContentI18n?.[Number(spotId)] || {};
-
-    console.log("取得できた rawI18n:", rawI18n);
-
-    currentSpotTranslations = JSON.parse(JSON.stringify(rawI18n));
-
-    // 各言語の入れ物が無い場合の安全な初期化
-    ['ja', 'en', 'zh-TW', 'zh-CN', 'ko', 'th', 'id'].forEach(lang => {
-        if (!currentSpotTranslations[lang]) {
-            currentSpotTranslations[lang] = { title: '', location: '', desc: '' };
-        }
-    });
-
-    // 日本語データを確実にフォームにセット
-    const jaData = currentSpotTranslations['ja'];
-    document.getElementById('spotLocationJa').value = jaData.location || '';
-    document.getElementById('activeLangTitle').value = jaData.title || '';
-    document.getElementById('activeLangLocation').value = jaData.location || '';
-    document.getElementById('activeLangDesc').value = jaData.desc || '';
-
-    currentSpotPhotos = JSON.parse(JSON.stringify(spot.photos || []));
-    if (currentSpotPhotos.length > 0 && currentSpotPhotos[0].url) {
-        const firstUrl = currentSpotPhotos[0].url;
-        const lastSlashIdx = firstUrl.lastIndexOf('/');
-        if (lastSlashIdx !== -1) {
-            document.getElementById('spotPhotoBaseDir').value = firstUrl.substring(0, lastSlashIdx + 1);
-            currentSpotPhotos.forEach(p => {
-                if (p.url.startsWith(document.getElementById('spotPhotoBaseDir').value)) {
-                    p.filename = p.url.substring(document.getElementById('spotPhotoBaseDir').value.length);
-                } else {
-                    p.filename = p.url;
-                }
+            // 多言語データの読み込み（型揺れフォールバック付き）
+            const spotI18n = (rawData.spotContentI18n && (rawData.spotContentI18n[spotId] || rawData.spotContentI18n[String(spotId)])) || {};
+            currentSpotTranslations = JSON.parse(JSON.stringify(spotI18n)); // ディープコピー
+            langCodes.forEach(lang => {
+                if (!currentSpotTranslations[lang]) currentSpotTranslations[lang] = {title: '', location: '', desc: ''};
             });
-        } else {
-            document.getElementById('spotPhotoBaseDir').value = `picture/${currentMapID}/`;
-            currentSpotPhotos.forEach(p => p.filename = p.url);
+
+            document.getElementById('spotLocationJa').value = currentSpotTranslations['ja'].location || '';
+            
+            // 写真リストの読み込み
+            currentSpotPhotos = spot.photos ? JSON.parse(JSON.stringify(spot.photos)) : [];
+            // BaseDirの推定（最初の写真のパスから）
+            if (currentSpotPhotos.length > 0 && currentSpotPhotos[0].url) {
+                const url = currentSpotPhotos[0].url;
+                const baseDir = url.substring(0, url.lastIndexOf('/') + 1);
+                document.getElementById('spotPhotoBaseDir').value = baseDir;
+                // 写真リストにはファイル名のみ保持するように調整
+                currentSpotPhotos.forEach(p => p.filename = p.url.replace(baseDir, ''));
+            } else {
+                document.getElementById('spotPhotoBaseDir').value = `picture/${currentMapID}/`;
+            }
+            renderPhotosList();
+
+            switchLangTab('ja');
+            document.getElementById('spotModal').classList.remove('hidden');
         }
-    } else {
-        document.getElementById('spotPhotoBaseDir').value = `picture/${currentMapID}/`;
-    }
 
-    renderPhotosList();
-    switchLangTab('ja');
-    document.getElementById('spotModal').classList.remove('hidden');
-}
-        function closeSpotModal() { document.getElementById('spotModal').classList.add('hidden'); }
+        function closeSpotModal() {
+            document.getElementById('spotModal').classList.add('hidden');
+        }
 
-        // --- 多言語タブ切り替え ＆ 手動修正同期 ---
+        // --- 多言語タブ関連（スポット） ---
         function switchLangTab(lang) {
+            // 現在の入力を保存
             saveCurrentLangInput();
+
             currentActiveLang = lang;
+            document.getElementById('currentLangLabel').innerText = langNames[lang];
+            
+            // タブUI更新
+            const container = document.getElementById('langTabsContainer');
+            container.innerHTML = langCodes.map(lc => `
+                <button type="button" onclick="switchLangTab('${lc}')" class="px-3 py-1.5 text-xs font-medium rounded-t-xl whitespace-nowrap transition-colors ${lc === lang ? 'bg-slate-900 text-white border-t border-x border-slate-700 font-bold' : 'text-slate-400 hover:text-white'}">
+                    ${langNames[lc].split(' ')[0]}
+                </button>
+            `).join('');
 
-            ['ja', 'en', 'zh-TW', 'zh-CN', 'ko', 'th', 'id'].forEach(l => {
-                const btn = document.getElementById(`tab-btn-${l}`);
-                if (!btn) return;
-                if (l === lang) {
-                    btn.className = "px-3 py-1.5 text-xs font-bold rounded-t-xl bg-slate-900 text-white border-t border-x border-slate-700";
-                } else {
-                    btn.className = "px-3 py-1.5 text-xs font-medium rounded-t-xl text-slate-400 hover:text-white";
-                }
-            });
-
-            document.getElementById('currentLangLabel').innerText = langNames[lang] || lang;
-            const data = currentSpotTranslations[lang] || { title: '', location: '', desc: '' };
+            // フィールドに値をセット
+            const data = currentSpotTranslations[lang] || {title: '', location: '', desc: ''};
             document.getElementById('activeLangTitle').value = data.title || '';
             document.getElementById('activeLangLocation').value = data.location || '';
             document.getElementById('activeLangDesc').value = data.desc || '';
         }
 
         function saveCurrentLangInput() {
-            if (!currentSpotTranslations[currentActiveLang]) {
-                currentSpotTranslations[currentActiveLang] = {};
-            }
+            if (!currentSpotTranslations[currentActiveLang]) currentSpotTranslations[currentActiveLang] = {};
             currentSpotTranslations[currentActiveLang].title = document.getElementById('activeLangTitle').value;
             currentSpotTranslations[currentActiveLang].location = document.getElementById('activeLangLocation').value;
             currentSpotTranslations[currentActiveLang].desc = document.getElementById('activeLangDesc').value;
-            
-            // 日本語タブのlocationが変更されたら上部のメイン入力欄にも同期する
-            if (currentActiveLang === 'ja') {
-                const locVal = document.getElementById('activeLangLocation').value;
-                const locInput = document.getElementById('spotLocationJa');
-                if (locInput) locInput.value = locVal;
-            }
         }
 
-        async function runAutoTranslate() {
-            saveCurrentLangInput();
-            const jaTitle = currentSpotTranslations['ja']?.title || '';
-            const jaLoc = currentSpotTranslations['ja']?.location || document.getElementById('spotLocationJa').value || '';
-            const jaDesc = currentSpotTranslations['ja']?.desc || '';
-
-            if (!jaTitle) { alert('まずは日本語タブでタイトルを入力してください。'); return; }
+        async function runAutoTranslateSpot() {
+            saveCurrentLangInput(); // jaの内容を確定
+            const jaData = currentSpotTranslations['ja'];
+            if (!jaData.title) { alert('まずは日本語タブでタイトルを入力してください。'); return; }
 
             const btn = document.getElementById('translateSpotBtn');
-            btn.innerText = "⏳ 翻訳中...";
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ 翻訳中...';
             btn.disabled = true;
 
-            currentSpotTranslations['ja'] = { title: jaTitle, location: jaLoc, desc: jaDesc };
-            const langs = ["en", "zh-TW", "zh-CN", "ko", "th", "id"];
-            for (const l of langs) {
-                currentSpotTranslations[l] = {
-                    title: await translateText(jaTitle, l),
-                    location: await translateText(jaLoc, l),
-                    desc: await translateText(jaDesc, l)
-                };
+            const targetLangs = langCodes.filter(l => l !== 'ja');
+            
+            for (const lang of targetLangs) {
+                // タイトル、場所、説明を翻訳
+                if (!currentSpotTranslations[lang].title) currentSpotTranslations[lang].title = await translateText(jaData.title, lang);
+                if (!currentSpotTranslations[lang].location) currentSpotTranslations[lang].location = await translateText(jaData.location, lang);
+                if (!currentSpotTranslations[lang].desc) currentSpotTranslations[lang].desc = await translateText(jaData.desc, lang);
             }
 
-            btn.innerText = "✨ 日本語から全言語へ自動翻訳を実行";
+            btn.innerHTML = originalText;
             btn.disabled = false;
+            // 現在表示中のタブをリフレッシュ
             switchLangTab(currentActiveLang);
-            alert('全言語への自動翻訳が完了しました！各言語タブを開いて確認・手修正できます。');
+            alert('日本語を元に、空のフィールドへの自動翻訳が完了しました。各言語タブで内容を確認・修正してください。');
         }
 
-        // --- 写真・ファイル選択・ライセンス管理 ---
+        // --- 写真管理関連 ---
         function renderPhotosList() {
             const container = document.getElementById('photosContainer');
+            const baseDir = document.getElementById('spotPhotoBaseDir').value;
+
             if (currentSpotPhotos.length === 0) {
-                container.innerHTML = `<div class="text-xs text-slate-500 text-center py-2">写真が登録されていません。「＋ 写真を追加」から登録してください。</div>`;
+                container.innerHTML = `<div class="text-xs text-slate-500 text-center py-2 bg-slate-950/60 rounded-lg border border-slate-800">写真が登録されていません。</div>`;
                 return;
             }
-            container.innerHTML = currentSpotPhotos.map((p, idx) => `
-                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-bold text-slate-300">写真 #${idx + 1}</span>
-                        <button type="button" onclick="removePhotoField(${idx})" class="text-red-400 hover:text-red-300 text-xs">削除</button>
+
+            container.innerHTML = currentSpotPhotos.map((photo, idx) => `
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2 group">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-[11px] font-bold text-slate-300 font-mono">#${idx + 1}</span>
+                        <div class="flex-1 flex gap-1 items-center overflow-hidden">
+                            <span class="text-[11px] text-slate-500 font-mono truncate">${baseDir}</span>
+                            <input type="text" placeholder="ファイル名 (例: pict1.jpg)" value="${photo.filename || ''}" oninput="currentSpotPhotos[${idx}].filename = this.value" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-xs text-white font-mono min-w-0">
+                        </div>
+                        <button type="button" onclick="removePhotoField(${idx})" class="text-slate-500 hover:text-red-400 text-xs transition-colors p-1">✕</button>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 items-center">
-                        <div class="sm:col-span-5 flex gap-1">
-                            <input type="text" placeholder="ファイル名 (例: pict1.jpg)" value="${p.filename || ''}" oninput="updatePhotoFilename(${idx}, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono">
-                            <input type="file" id="fileInput_${idx}" style="display:none" onchange="handleFileSelected(${idx}, event)">
-                            <button type="button" onclick="document.getElementById('fileInput_${idx}').click()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1.5 rounded-lg text-[11px] border border-slate-700 shrink-0" title="エクスプローラーからファイルを選択">📁 選択</button>
-                        </div>
-                        <div class="sm:col-span-4">
-                            <input type="text" placeholder="キャプション" value="${p.caption || ''}" oninput="currentSpotPhotos[${idx}].caption = this.value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white">
-                        </div>
-                        <div class="sm:col-span-3">
-                            <input type="text" placeholder="ライセンス (例: CC BY)" value="${p.license || ''}" oninput="currentSpotPhotos[${idx}].license = this.value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white">
-                        </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" placeholder="キャプション (日本語)" value="${photo.caption || ''}" oninput="currentSpotPhotos[${idx}].caption = this.value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-[11px] text-slate-200">
+                        <input type="text" placeholder="ライセンス / 出典" value="${photo.license || ''}" oninput="currentSpotPhotos[${idx}].license = this.value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-[11px] text-slate-400 font-mono">
                     </div>
-                    <div class="text-[10px] text-slate-500 font-mono truncate">生成URL: <span id="preview_url_${idx}">${p.url || ''}</span></div>
                 </div>
             `).join('');
         }
 
         function addPhotoField() {
-            currentSpotPhotos.push({ filename: '', caption: '', license: '', url: '' });
+            currentSpotPhotos.push({filename: '', caption: '', license: ''});
             renderPhotosList();
         }
 
@@ -657,324 +737,520 @@ function openSpotModalForEdit(spotId) {
             renderPhotosList();
         }
 
-        function updatePhotoFilename(idx, filename) {
-            currentSpotPhotos[idx].filename = filename;
-            const baseDir = document.getElementById('spotPhotoBaseDir').value.trim();
-            currentSpotPhotos[idx].url = baseDir + filename;
-            const preview = document.getElementById(`preview_url_${idx}`);
-            if (preview) preview.innerText = currentSpotPhotos[idx].url;
-        }
-
-        function handleFileSelected(idx, event) {
-            const file = event.target.files[0];
-            if (file) {
-                updatePhotoFilename(idx, file.name);
-                renderPhotosList();
-            }
-        }
-
         function updateAllPhotoUrls() {
-            const baseDir = document.getElementById('spotPhotoBaseDir').value.trim();
-            currentSpotPhotos.forEach((p, idx) => {
-                p.url = baseDir + (p.filename || '');
-                const preview = document.getElementById(`preview_url_${idx}`);
-                if (preview) preview.innerText = p.url;
-            });
+            // BaseDirが変更されたとき、テンポラリデータのfilenameには影響を与えない（保存時に結合する）
+            renderPhotosList(); 
         }
 
+        // --- データ保存（スポット） ---
         async function saveSpotData() {
-            saveCurrentLangInput();
-            updateAllPhotoUrls();
-            const editId = document.getElementById('spotEditId').value;
-            const category = document.getElementById('spotCategory').value.trim() || currentMapID;
+            saveCurrentLangInput(); // 現在のタブの内容を確定
+            
+            const spotId = document.getElementById('spotEditId').value;
+            const jaData = currentSpotTranslations['ja'];
             const lat = parseFloat(document.getElementById('spotLat').value);
             const lng = parseFloat(document.getElementById('spotLng').value);
-            const startDate = document.getElementById('spotStartDate').value;
-            const endDate = document.getElementById('spotEndDate').value || startDate;
+            const baseDir = document.getElementById('spotPhotoBaseDir').value.trim();
 
-            const jaTitle = currentSpotTranslations['ja']?.title || '';
-            if (!jaTitle || isNaN(lat) || isNaN(lng)) {
-                alert('日本語タイトル、緯度、経度は必須です。');
-                return;
+            // バリデーション
+            if (!jaData.title || isNaN(lat) || isNaN(lng)) {
+                alert('カテゴリー、日本語タイトル、緯度、経度は必須です。'); return;
             }
 
-            const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
-            let spotId;
+            const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16); // YYYY-MM-DD HH:MM
+            const currentMap = sysConfig.maps.find(m => m.id === currentMapID);
+            const isSpotMap = currentMap?.mapType === 'spot';
 
-            if (editId) {
-                spotId = Number(editId);
-                const spot = rawData.spots.find(s => Number(s.id) === spotId);
-                if (spot) {
-                    spot.category = category;
-                    spot.lat = lat;
-                    spot.lng = lng;
-                    spot.startDate = startDate;
-                    spot.endDate = endDate;
-                    spot.updatedAt = nowStr;
-                    spot.photos = currentSpotPhotos.map(p => ({ url: p.url, caption: p.caption, license: p.license }));
+            // 写真データのURL結合
+            const finalPhotos = currentSpotPhotos.filter(p => p.filename).map(p => ({
+                url: baseDir + p.filename,
+                caption: p.caption,
+                license: p.license
+            }));
+
+            if (spotId) {
+                // 編集
+                const idx = rawData.spots.findIndex(s => Number(s.id) === Number(spotId));
+                if (idx !== -1) {
+                    rawData.spots[idx] = {
+                        ...rawData.spots[idx],
+                        category: document.getElementById('spotCategorySelect').value,
+                        lat: lat,
+                        lng: lng,
+                        startDate: isSpotMap ? '' : document.getElementById('spotStartDate').value,
+                        endDate: isSpotMap ? '' : document.getElementById('spotEndDate').value,
+                        photos: finalPhotos,
+                        updatedAt: nowStr
+                    };
+                    rawData.spotContentI18n[spotId] = currentSpotTranslations;
                 }
             } else {
-                const maxId = rawData.spots.reduce((max, s) => Math.max(max, Number(s.id) || 0), 0);
-                spotId = maxId + 1;
-                const newSpot = {
-                    id: spotId,
-                    category: category,
+                // 新規追加
+                const maxId = rawData.spots.length > 0 ? Math.max(...rawData.spots.map(s => Number(s.id))) : 0;
+                const newId = maxId + 1;
+                rawData.spots.push({
+                    id: newId,
+                    category: document.getElementById('spotCategorySelect').value,
                     lat: lat,
                     lng: lng,
-                    startDate: startDate,
-                    endDate: endDate,
-                    updatedAt: nowStr,
-                    photos: currentSpotPhotos.map(p => ({ url: p.url, caption: p.caption, license: p.license })),
-                    links: []
-                };
-                rawData.spots.push(newSpot);
+                    startDate: isSpotMap ? '' : document.getElementById('spotStartDate').value,
+                    endDate: isSpotMap ? '' : document.getElementById('spotEndDate').value,
+                    photos: finalPhotos,
+                    links: [], // とりあえず空
+                    updatedAt: nowStr
+                });
+                if (!rawData.spotContentI18n) rawData.spotContentI18n = {};
+                rawData.spotContentI18n[newId] = currentSpotTranslations;
             }
 
-            if (!rawData.spotContentI18n) rawData.spotContentI18n = {};
-            rawData.spotContentI18n[spotId] = currentSpotTranslations;
-
+            // ローカル保存フロー（JSONダウンロード）
+            exportDataFile();
             closeSpotModal();
             renderTable();
-            exportDataFile();
-            alert(`スポットデータを更新しました！\n自動ダウンロードされた \`${currentMapID}_data.json\` を data/ フォルダに保存してください。`);
+            alert(`スポットデータを更新しました。JSONファイルをダウンロードします。GitHubリポジトリの data/${currentMapID}_data.json に上書きアップロードしてください。`);
         }
 
         function deleteSpot(spotId) {
-            if (!confirm(`本当にスポット #${spotId} を削除しますか？`)) return;
+            if (!confirm(`本当にスポット #${spotId} を削除しますか？\n(JSONファイルをダウンロードします)`)) return;
+            
             rawData.spots = rawData.spots.filter(s => Number(s.id) !== Number(spotId));
-            if (rawData.spotContentI18n) delete rawData.spotContentI18n[spotId];
-            renderTable();
+            if (rawData.spotContentI18n) {
+                delete rawData.spotContentI18n[spotId];
+                delete rawData.spotContentI18n[String(spotId)]; // 文字列キーも削除
+            }
+            
             exportDataFile();
-            alert(`スポットを削除しました。\`${currentMapID}_data.json\` をダウンロードして保存してください。`);
+            renderTable();
         }
 
-        // --- マップ設定編集・新規マップ作成 ---
+        function exportDataFile() {
+            triggerDownload(`${currentMapID}_data.json`, JSON.stringify(rawData, null, 2));
+        }
+
+        // === 新規機能：マップ設定編集・カテゴリー定義 ===
+
+        // --- カテゴリー行のHTML生成（共通） ---
+        // desc(説明)フィールドを削除しました
+        function createCategoryRowHtml(prefix, idx, icon = '', name = '') {
+            return `
+                <div class="flex items-center gap-2 bg-slate-950 p-2 rounded-xl border border-slate-800 group" id="${prefix}CategoryRow_${idx}">
+                    <input type="text" placeholder="🌸" value="${icon}" class="w-10 bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs text-center text-white" id="${prefix}CatIcon_${idx}">
+                    <input type="text" placeholder="カテゴリー名 (例: 春の風景)" value="${name}" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white" id="${prefix}CatNameJa_${idx}">
+                    <button type="button" onclick="removeCategoryRow(this)" class="text-slate-500 hover:text-red-400 text-sm transition-colors p-1">✕</button>
+                </div>
+            `;
+        }
+
+        function removeCategoryRow(btn) {
+            const row = btn.closest('.flex');
+            const container = row.parentElement;
+            if (container.children.length > 1) {
+                row.remove();
+            } else {
+                alert('カテゴリーは最低1つ必要です。');
+            }
+        }
+
+        // --- A. マップ設定編集モーダル ---
         async function openEditMapModal() {
-            const currentMapObj = sysConfig.maps.find(m => m.id === currentMapID);
-            if (!currentMapObj) return;
+            const mapInfo = sysConfig.maps.find(m => m.id === currentMapID);
+            if (!mapInfo) return;
 
             document.getElementById('editTargetMapId').innerText = currentMapID;
-            document.getElementById('editMapIdInput').value = currentMapID;
-            document.getElementById('editMapNameInput').value = currentMapObj.name || '';
-            document.getElementById('editMapIconInput').value = currentMapObj.icon || '';
-            document.getElementById('editMapHasCalendar').checked = currentMapObj.hasCalendar !== false;
-
+            document.getElementById('editMapId').value = mapInfo.id;
+            document.getElementById('editMapIcon').value = mapInfo.icon;
+            
+            // configファイル読み込み（翻訳データ取得）
             try {
                 const res = await fetch(`config/${currentMapID}_config.json?v=${Date.now()}`);
                 if (res.ok) {
-                    const cfg = await res.json();
-                    const subJa = cfg.i18n?.ja?.subtitle || '';
-                    const parts = subJa.split(' - ');
-                    document.getElementById('editMapSubInput').value = parts.length > 1 ? parts.slice(1).join(' - ') : '';
-                }
-            } catch (e) { document.getElementById('editMapSubInput').value = ''; }
+                    const configData = await res.json();
+                    currentEditMapConfigI18n = configData.i18n || {};
+                } else { currentEditMapConfigI18n = {}; }
+            } catch (e) { currentEditMapConfigI18n = {}; }
+            
+            const jaUI = currentEditMapConfigI18n['ja'] || {};
+            // JPタブで管理するため、jaデータを変数にセットしておく
+            if (!currentEditMapConfigI18n['ja']) currentEditMapConfigI18n['ja'] = {};
+            currentEditMapConfigI18n['ja'].title = jaUI.title || mapInfo.name;
+            currentEditMapConfigI18n['ja'].subtitle = jaUI.subtitle || '';
 
-            let currentThemeKey = 'emerald';
-            if (currentMapObj.theme?.btnTheme?.includes('amber')) currentThemeKey = 'amber';
-            if (currentMapObj.theme?.btnTheme?.includes('purple')) currentThemeKey = 'purple';
-            document.getElementById('editMapThemeSelect').value = currentThemeKey;
+            // マップ種類 & テーマ
+            document.getElementById('editMapType').value = mapInfo.mapType || 'event';
+            // テーマキーの推定（btnThemeから）
+            let themeKey = 'emerald';
+            if (mapInfo.theme?.btnTheme?.includes('amber')) themeKey = 'amber';
+            else if (mapInfo.theme?.btnTheme?.includes('purple')) themeKey = 'purple';
+            document.getElementById('editMapThemeSelect').value = themeKey;
 
-            editMapTranslations = {};
-            document.getElementById('editMapTranslationStatus').classList.add('hidden');
+            // カテゴリー定義の読み込み
+            currentEditMapCategories = mapInfo.categories ? JSON.parse(JSON.stringify(mapInfo.categories)) : [];
+            const rowsContainer = document.getElementById('editMapCategoriesRows');
+            rowsContainer.innerHTML = '';
+            if (currentEditMapCategories.length > 0) {
+                currentEditMapCategories.forEach((cat, idx) => {
+                    const icon = cat.icon || '📍';
+                    const name = typeof cat === 'object' ? cat.name : cat;
+                    rowsContainer.insertAdjacentHTML('beforeend', createCategoryRowHtml('editMap', idx, icon, name));
+                });
+            } else {
+                // 初期行
+                rowsContainer.insertAdjacentHTML('beforeend', createCategoryRowHtml('editMap', 0, '🌸', 'デフォルト'));
+            }
+
+            toggleEditMapCategories(); // 表示切替
+            switchEditMapLangTab('ja');
             document.getElementById('editMapModal').classList.remove('hidden');
         }
 
-        function closeEditMapModal() { document.getElementById('editMapModal').classList.add('hidden'); }
-
-        async function autoTranslateEditMap() {
-            const nameJa = document.getElementById('editMapNameInput').value.trim();
-            const subJa = document.getElementById('editMapSubInput').value.trim();
-            if (!nameJa) { alert('まずは「マップ名 (日本語)」を入力してください。'); return; }
-
-            const btn = document.getElementById('translateEditMapBtn');
-            btn.innerText = `⏳ 翻訳中...`;
-            btn.disabled = true;
-
-            editMapTranslations['ja'] = { title: nameJa, subtitle: subJa };
-            const targetLangs = ["en", "zh-TW", "zh-CN", "ko", "th", "id"];
-            for (const lang of targetLangs) {
-                editMapTranslations[lang] = {
-                    title: await translateText(nameJa, lang),
-                    subtitle: await translateText(subJa, lang)
-                };
-            }
-
-            btn.innerText = `🌐 全言語へ自動翻訳`;
-            btn.disabled = false;
-            document.getElementById('editMapTranslationStatus').classList.remove('hidden');
+        function closeEditMapModal() {
+            document.getElementById('editMapModal').classList.add('hidden');
         }
 
-        async function saveEditedMapSettings() {
-            const nameJa = document.getElementById('editMapNameInput').value.trim();
-            const subJa = document.getElementById('editMapSubInput').value.trim();
-            const icon = document.getElementById('editMapIconInput').value.trim();
-            const hasCalendar = document.getElementById('editMapHasCalendar').checked;
-            const themeKey = document.getElementById('editMapThemeSelect').value;
+        function toggleEditMapCategories() {
+            const isSpot = document.getElementById('editMapType').value === 'spot';
+            document.getElementById('editMapCategoriesArea').classList.toggle('hidden', !isSpot);
+        }
 
-            if (!nameJa || !icon) { alert('マップ名とアイコンは必須です。'); return; }
+        function addEditCategoryRow() {
+            const container = document.getElementById('editMapCategoriesRows');
+            if (container.children.length >= 4) { alert('カテゴリーは最大4つまでです。'); return; }
+            const nextIdx = container.children.length;
+            container.insertAdjacentHTML('beforeend', createCategoryRowHtml('editMap', nextIdx));
+        }
 
-            if (Object.keys(editMapTranslations).length === 0) {
-                editMapTranslations['ja'] = { title: nameJa, subtitle: subJa };
-                const targetLangs = ["en", "zh-TW", "zh-CN", "ko", "th", "id"];
-                for (const lang of targetLangs) {
-                    editMapTranslations[lang] = {
-                        title: await translateText(nameJa, lang),
-                        subtitle: await translateText(subJa, lang)
-                    };
+        // --- 多言語タブ関連（マップ設定） ---
+        function switchEditMapLangTab(lang) {
+            saveCurrentEditMapLangInput();
+            currentEditMapActiveLang = lang;
+            document.getElementById('currentEditMapLangLabel').innerText = langNames[lang];
+            
+            const container = document.getElementById('editMapLangTabsContainer');
+            container.innerHTML = langCodes.map(lc => `
+                <button type="button" onclick="switchEditMapLangTab('${lc}')" class="px-3 py-1.5 text-xs font-medium rounded-t-xl whitespace-nowrap transition-colors ${lc === lang ? 'bg-slate-900 text-white border-t border-x border-slate-700 font-bold' : 'text-slate-400 hover:text-white'}">
+                    ${langNames[lc].split(' ')[0]}
+                </button>
+            `).join('');
+
+            const curUI = currentEditMapConfigI18n[lang] || {};
+            document.getElementById('editActiveLangTitle').value = curUI.title || '';
+            document.getElementById('editActiveLangSub').value = curUI.subtitle || '';
+
+            // カテゴリー名の翻訳フィールド
+            const isSpot = document.getElementById('editMapType').value === 'spot';
+            const catContainer = document.getElementById('editActiveLangCats');
+            catContainer.innerHTML = '';
+            
+            if (isSpot && lang !== 'ja') {
+                catContainer.classList.remove('hidden');
+                catContainer.insertAdjacentHTML('beforeend', `<p class="text-[10px] text-slate-400 border-b border-slate-800 pb-1 mb-2">カテゴリー名の翻訳 (${langNames[lang]})</p>`);
+                
+                // 日本語のカテゴリー行を取得
+                const jaCatRows = document.getElementById('editMapCategoriesRows').querySelectorAll('.flex');
+                jaCatRows.forEach((row, idx) => {
+                    const icon = row.querySelector('[id^="editMapCatIcon_"]').value;
+                    const nameJa = row.querySelector('[id^="editMapCatNameJa_"]').value || '無題';
+                    
+                    const catsUI = curUI.categories || [];
+                    const catTrans = catsUI[idx] || {}; // インデックスでマッチング
+
+                    catContainer.insertAdjacentHTML('beforeend', `
+                        <div class="grid grid-cols-12 gap-2 items-center bg-slate-900 p-2 rounded-lg border border-slate-800">
+                            <span class="col-span-1 text-center text-xs">${icon}</span>
+                            <div class="col-span-11 space-y-1.5">
+                                <div class="text-[10px] text-slate-500 truncate">原文: ${nameJa}</div>
+                                <input type="text" placeholder="${nameJa} の翻訳" value="${catTrans.name || ''}" class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-xs text-white" id="editTransCatName_${idx}">
+                            </div>
+                        </div>
+                    `);
+                });
+            } else {
+                catContainer.classList.add('hidden');
+            }
+        }
+
+        function saveCurrentEditMapLangInput() {
+            const lang = currentEditMapActiveLang;
+            if (!currentEditMapConfigI18n[lang]) currentEditMapConfigI18n[lang] = {};
+            
+            currentEditMapConfigI18n[lang].title = document.getElementById('editActiveLangTitle').value;
+            currentEditMapConfigI18n[lang].subtitle = document.getElementById('editActiveLangSub').value;
+
+            // カテゴリー翻訳の保存
+            if (document.getElementById('editMapType').value === 'spot') {
+                if (lang !== 'ja') {
+                    const transCats = [];
+                    const catInputs = document.getElementById('editActiveLangCats').querySelectorAll('[id^="editTransCatName_"]');
+                    catInputs.forEach((input) => {
+                        const nameTrans = input.value;
+                        transCats.push({ name: nameTrans });
+                    });
+                    currentEditMapConfigI18n[lang].categories = transCats;
+                }
+            }
+        }
+
+        async function autoTranslateEditMapUI() {
+            // 現在のタブ入力を確定させ、jaタブベースで翻訳を開始
+            switchEditMapLangTab('ja'); 
+            const jaUI = currentEditMapConfigI18n['ja'];
+            if (!jaUI.title) { alert('まずは日本語のマップ名を入力してください。'); return; }
+
+            const btn = document.getElementById('translateEditMapBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ 翻訳中...';
+            btn.disabled = true;
+
+            const targetLangs = langCodes.filter(l => l !== 'ja');
+            const isSpot = document.getElementById('editMapType').value === 'spot';
+
+            // 日本語カテゴリーデータの収集
+            const jaCats = [];
+            if (isSpot) {
+                const jaCatRows = document.getElementById('editMapCategoriesRows').querySelectorAll('.flex');
+                jaCatRows.forEach(row => {
+                    jaCats.push({
+                        name: row.querySelector('[id^="editMapCatNameJa_"]').value
+                    });
+                });
+            }
+            jaUI.categories = jaCats; // ja configにもセット
+
+            for (const lang of targetLangs) {
+                if (!currentEditMapConfigI18n[lang]) currentEditMapConfigI18n[lang] = {};
+                const cur = currentEditMapConfigI18n[lang];
+                
+                // タイトル・サブタイトル
+                if (!cur.title) cur.title = await translateText(jaUI.title, lang);
+                if (!cur.subtitle && jaUI.subtitle) cur.subtitle = await translateText(jaUI.subtitle, lang);
+
+                // カテゴリーの翻訳
+                if (isSpot) {
+                    if (!cur.categories) cur.categories = [];
+                    for (let i = 0; i < jaCats.length; i++) {
+                        if (!cur.categories[i]) cur.categories[i] = { name: '' };
+                        if (!cur.categories[i].name && jaCats[i].name) cur.categories[i].name = await translateText(jaCats[i].name, lang);
+                    }
+                } else {
+                    delete cur.categories; // イベントモードなら削除
                 }
             }
 
-            const target = sysConfig.maps.find(m => m.id === currentMapID);
-            if (target) {
-                target.name = nameJa;
-                target.icon = icon;
-                target.hasCalendar = hasCalendar;
-                target.theme = themePresets[themeKey];
-            }
-
-            const staticI18n = {
-                ja: { listTitle: "スポット一覧", consultTitle: "詳細情報・お問い合わせ", consultDesc: "このスポットに関する詳しい情報は観光協会等へお問い合わせください。" },
-                en: { listTitle: "Spot List", consultTitle: "Inquiries", consultDesc: "Please contact local tourist associations for more details." },
-                "zh-TW": { listTitle: "景點列表", consultTitle: "詳細資訊與洽詢", consultDesc: "有關此景點的詳細資訊，請洽當地觀光協會等單位。" },
-                "zh-CN": { listTitle: "景点列表", consultTitle: "详细信息与咨询", consultDesc: "有关该景点的详细信息，请咨询当地观光协会等部门。" },
-                ko: { listTitle: "관광지 목록", consultTitle: "상세정보 및 문의", consultDesc: "이 관광지에 대한 자세한 정보는 관광 협회 등에 문의하십시오." },
-                th: { listTitle: "รายการสถานที่", consultTitle: "ข้อมูลเพิ่มเติมและติดต่อสอบถาม", consultDesc: "สำหรับข้อมูลเพิ่มเติมเกี่ยวกับสถานที่นี้ โปรดติดต่อสมาคมการท่องเที่ยวในท้องถิ่น" },
-                id: { listTitle: "Daftar Lokasi", consultTitle: "Informasi Lebih Lanjut & Pertanyaan", consultDesc: "Silakan hubungi asosiasi pariwisata setempat untuk detail lebih lanjut." }
-            };
-
-            const i18nData = {};
-            const langs = ["ja", "en", "zh-TW", "zh-CN", "ko", "th", "id"];
-            langs.forEach(lang => {
-                const trans = editMapTranslations[lang] || editMapTranslations['ja'];
-                const st = staticI18n[lang] || staticI18n['ja'];
-                i18nData[lang] = {
-                    title: "Japan Discovery",
-                    subtitle: trans.title + (trans.subtitle ? ` - ${trans.subtitle}` : ''),
-                    listTitle: st.listTitle,
-                    consultTitle: st.consultTitle,
-                    consultDesc: st.consultDesc
-                };
-            });
-
-            pendingEditFiles = {
-                sysConfigStr: JSON.stringify(sysConfig, null, 2),
-                configFilename: `${currentMapID}_config.json`,
-                configStr: JSON.stringify({ "i18n": i18nData }, null, 2)
-            };
-
-            document.getElementById('edit-dl-btn-2').innerText = `${currentMapID}_config.json`;
-            closeEditMapModal();
-            document.getElementById('editMapDownloadModal').classList.remove('hidden');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            switchEditMapLangTab(currentEditMapActiveLang); // タブ更新
+            alert('マップ情報とカテゴリー定義の自動翻訳が完了しました。');
         }
 
+        // --- 保存（マップ設定編集） ---
+        async function saveEditedMapSettings() {
+            saveCurrentEditMapLangInput(); // 現在のタブ入力を確定
+
+            const mapId = document.getElementById('editMapId').value.trim();
+            const icon = document.getElementById('editMapIcon').value.trim();
+            const mapType = document.getElementById('editMapType').value;
+            const themeKey = document.getElementById('editMapThemeSelect').value;
+
+            if (!mapId || !icon || !currentEditMapConfigI18n['ja']?.title) {
+                alert('マップID、絵文字、日本語マップ名(JPタブ)は必須です。'); return;
+            }
+
+            // --- 1. maps_index.json の更新準備 ---
+            const newSysConfig = JSON.parse(JSON.stringify(sysConfig));
+            const mapIdx = newSysConfig.maps.findIndex(m => m.id === currentMapID);
+            
+            // 日本語のカテゴリー定義を収集（maps_index用）
+            const finalCatsJa = [];
+            if (mapType === 'spot') {
+                const catRows = document.getElementById('editMapCategoriesRows').querySelectorAll('.flex');
+                catRows.forEach(row => {
+                    const name = row.querySelector('[id^="editMapCatNameJa_"]').value.trim();
+                    if (name) {
+                        finalCatsJa.push({
+                            icon: row.querySelector('[id^="editMapCatIcon_"]').value.trim() || '📍',
+                            name: name
+                        });
+                    }
+                });
+                if (finalCatsJa.length === 0) { alert('スポットマップの場合、カテゴリーは1つ以上必要です。'); return; }
+            }
+
+            const updatedMapEntry = {
+                id: mapId,
+                name: currentEditMapConfigI18n['ja'].title,
+                icon: icon,
+                mapType: mapType,
+                hasCalendar: mapType === 'event', // ロジック連動
+                theme: themePresets[themeKey],
+                categories: finalCatsJa // ja データをセット
+            };
+
+            if (mapIdx !== -1) {
+                newSysConfig.maps[mapIdx] = updatedMapEntry;
+            } else {
+                newSysConfig.maps.push(updatedMapEntry);
+            }
+            if (newSysConfig.defaultMap === currentMapID) newSysConfig.defaultMap = mapId;
+
+            // --- 2. {mapId}_config.json の更新準備 ---
+            const finalConfig = {
+                categories: finalCatsJa, // Viewer互換性のため ja データをルートにも置く
+                i18n: currentEditMapConfigI18n
+            };
+
+            // ダウンロード実行
+            triggerDownload('maps_index.json', JSON.stringify(newSysConfig, null, 2));
+            setTimeout(() => {
+                triggerDownload(`${mapId}_config.json`, JSON.stringify(finalConfig, null, 2));
+                alert('マップ設定を更新しました。\nダウンロードした2つのJSONファイルを GitHub の config/ フォルダにアップロードしてください。');
+                closeEditMapModal();
+                location.reload(); // システム設定が変わるためリロード
+            }, 500);
+        }
+
+        // --- B. 新規マップ作成モーダル ---
         function openNewMapModal() {
+            // フィールド初期化
             document.getElementById('newMapId').value = '';
-            document.getElementById('newMapIcon').value = '';
+            document.getElementById('newMapIcon').value = '🏯';
             document.getElementById('newMapTitleJa').value = '';
             document.getElementById('newMapSubJa').value = '';
-            document.getElementById('newMapHasCalendar').checked = true;
-            newMapTranslations = {};
-            document.getElementById('newMapTranslationStatus').classList.add('hidden');
+            document.getElementById('newMapType').value = 'spot'; // デフォルトスポット
+            document.getElementById('newMapThemeSelect').value = 'emerald';
+            
+            // カテゴリー初期行
+            const rowsContainer = document.getElementById('newMapCategoriesRows');
+            rowsContainer.innerHTML = createCategoryRowHtml('newMap', 0, '🌸', 'カテゴリー1');
+            
+            toggleNewMapCategories();
+
             document.getElementById('newMapFormArea').classList.remove('hidden');
             document.getElementById('newMapDownloadArea').classList.add('hidden');
             document.getElementById('newMapModal').classList.remove('hidden');
         }
-        function closeNewMapModal() { document.getElementById('newMapModal').classList.add('hidden'); }
 
-        async function autoTranslateNewMap() {
-            const titleJa = document.getElementById('newMapTitleJa').value.trim();
-            const subJa = document.getElementById('newMapSubJa').value.trim();
-            if (!titleJa) { alert('まずは「マップ名 (日本語)」を入力してください。'); return; }
-
-            const btn = document.getElementById('translateNewMapBtn');
-            btn.innerText = `⏳ 翻訳中...`;
-            btn.disabled = true;
-
-            newMapTranslations['ja'] = { title: titleJa, subtitle: subJa };
-            const targetLangs = ["en", "zh-TW", "zh-CN", "ko", "th", "id"];
-            for (const lang of targetLangs) {
-                newMapTranslations[lang] = {
-                    title: await translateText(titleJa, lang),
-                    subtitle: await translateText(subJa, lang)
-                };
-            }
-
-            btn.innerText = `🌐 全言語へ自動翻訳`;
-            btn.disabled = false;
-            document.getElementById('newMapTranslationStatus').classList.remove('hidden');
+        function closeNewMapModal() {
+            document.getElementById('newMapModal').classList.add('hidden');
         }
 
-        function prepareNewMapFiles() {
+        function toggleNewMapCategories() {
+            const isSpot = document.getElementById('newMapType').value === 'spot';
+            document.getElementById('newMapCategoriesArea').classList.toggle('hidden', !isSpot);
+        }
+
+        function addNewCategoryRow() {
+            const container = document.getElementById('newMapCategoriesRows');
+            if (container.children.length >= 4) { alert('カテゴリーは最大4つまでです。'); return; }
+            const nextIdx = container.children.length;
+            container.insertAdjacentHTML('beforeend', createCategoryRowHtml('newMap', nextIdx));
+        }
+
+        async function prepareNewMapFiles() {
             const mapId = document.getElementById('newMapId').value.trim().toLowerCase();
             const icon = document.getElementById('newMapIcon').value.trim();
-            const nameJa = document.getElementById('newMapTitleJa').value.trim();
+            const titleJa = document.getElementById('newMapTitleJa').value.trim();
             const subJa = document.getElementById('newMapSubJa').value.trim();
-            const hasCalendar = document.getElementById('newMapHasCalendar').checked;
+            const mapType = document.getElementById('newMapType').value;
             const themeKey = document.getElementById('newMapThemeSelect').value;
 
-            if (!mapId || !nameJa || !icon) { alert("マップID、アイコン、マップ名は必須です。"); return; }
+            // バリデーション
+            if (!mapId || !/^[a-z0-9_-]+$/.test(mapId)) { alert('マップIDは半角英数字・ハイフン・アンダーバーで入力してください。'); return; }
+            if (sysConfig.maps.some(m => m.id === mapId)) { alert('そのマップIDは既に使用されています。'); return; }
+            if (!icon || !titleJa) { alert('絵文字、マップ名は必須です。'); return; }
 
-            if (Object.keys(newMapTranslations).length === 0) {
-                newMapTranslations['ja'] = { title: nameJa, subtitle: subJa };
+            const btn = event.currentTarget;
+            btn.innerHTML = '⏳ 翻訳＆準備中...';
+            btn.disabled = true;
+
+            // カテゴリー定義の収集 (日本語)
+            const finalCatsJa = [];
+            if (mapType === 'spot') {
+                const catRows = document.getElementById('newMapCategoriesRows').querySelectorAll('.flex');
+                catRows.forEach(row => {
+                    const name = row.querySelector('[id^="newMapCatNameJa_"]').value.trim();
+                    if (name) {
+                        finalCatsJa.push({
+                            icon: row.querySelector('[id^="newMapCatIcon_"]').value.trim() || '📍',
+                            name: name
+                        });
+                    }
+                });
+                if (finalCatsJa.length === 0) { alert('スポットマップの場合、カテゴリーは1つ以上必要です。'); btn.innerHTML = '他言語を自動翻訳してファイル準備'; btn.disabled = false; return; }
             }
 
+            // --- 1. 自動翻訳 (config UI & categories) ---
+            const newConfigI18n = {};
+            newConfigI18n['ja'] = { title: titleJa, subtitle: subJa, categories: finalCatsJa.map(c => ({name: c.name})) };
+
+            const targetLangs = langCodes.filter(l => l !== 'ja');
+            for (const lang of targetLangs) {
+                const cur = newConfigI18n[lang] = {};
+                cur.title = await translateText(titleJa, lang);
+                cur.subtitle = subJa ? await translateText(subJa, lang) : '';
+                
+                // 共通UIテキスト（新規マップ用デフォルト）
+                cur.listTitle = await translateText("スポット一覧", lang);
+                cur.consultTitle = await translateText("詳細情報・お問い合わせ", lang);
+                cur.consultDesc = await translateText("観光協会等へお問い合わせください。", lang);
+
+                // カテゴリー翻訳
+                if (mapType === 'spot') {
+                    cur.categories = [];
+                    for (const jaCat of finalCatsJa) {
+                        cur.categories.push({
+                            name: await translateText(jaCat.name, lang)
+                        });
+                    }
+                }
+            }
+
+            // --- 2. ファイル内容の生成 ---
+
+            // maps_index.json
             const newSysConfig = JSON.parse(JSON.stringify(sysConfig));
-            newSysConfig.maps.push({ id: mapId, name: nameJa, icon, hasCalendar, theme: themePresets[themeKey] });
-
-            const staticI18n = {
-                ja: { listTitle: "スポット一覧", consultTitle: "詳細情報・お問い合わせ", consultDesc: "このスポットに関する詳しい情報は観光協会等へお問い合わせください。" },
-                en: { listTitle: "Spot List", consultTitle: "Inquiries", consultDesc: "Please contact local tourist associations for more details." },
-                "zh-TW": { listTitle: "景點列表", consultTitle: "詳細資訊與洽詢", consultDesc: "有關此景點的詳細資訊，請洽當地觀光協會等單位。" },
-                "zh-CN": { listTitle: "景点列表", consultTitle: "详细信息与咨询", consultDesc: "有关该景点的详细信息，请咨询当地观光协会等部门。" },
-                ko: { listTitle: "관광지 목록", consultTitle: "상세정보 및 문의", consultDesc: "이 관광지에 대한 자세한 정보는 관광 협회 등에 문의하십시오." },
-                th: { listTitle: "รายการสถานที่", consultTitle: "ข้อมูลเพิ่มเติมและติดต่อสอบถาม", consultDesc: "สำหรับข้อมูลเพิ่มเติมเกี่ยวกับสถานที่นี้ โปรดติดต่อสมาคมการท่องเที่ยวในท้องถิ่น" },
-                id: { listTitle: "Daftar Lokasi", consultTitle: "Informasi Lebih Lanjut & Pertanyaan", consultDesc: "Silakan hubungi asosiasi pariwisata setempat untuk detail lebih lanjut." }
-            };
-
-            const i18nData = {};
-            const langs = ["ja", "en", "zh-TW", "zh-CN", "ko", "th", "id"];
-            langs.forEach(lang => {
-                const trans = newMapTranslations[lang] || newMapTranslations['ja'];
-                const st = staticI18n[lang] || staticI18n['ja'];
-                i18nData[lang] = {
-                    title: "Japan Discovery",
-                    subtitle: trans.title + (trans.subtitle ? ` - ${trans.subtitle}` : ''),
-                    listTitle: st.listTitle,
-                    consultTitle: st.consultTitle,
-                    consultDesc: st.consultDesc
-                };
+            newSysConfig.maps.push({
+                id: mapId,
+                name: titleJa,
+                icon: icon,
+                mapType: mapType,
+                hasCalendar: mapType === 'event',
+                theme: themePresets[themeKey],
+                categories: finalCatsJa // ja データ
             });
 
+            // {mapId}_config.json
+            const newConfig = {
+                categories: finalCatsJa, // Root (Viewer互換)
+                i18n: newConfigI18n
+            };
+
+            // {mapId}_data.json (空)
+            const newData = { spots: [], spotContentI18n: {} };
+
+            // ダウンロードリンク準備
             pendingMapFiles = {
-                mapId,
-                sysConfigStr: JSON.stringify(newSysConfig, null, 2),
-                configStr: JSON.stringify({ "i18n": i18nData }, null, 2),
-                dataStr: JSON.stringify({ "spots": [], "spotContentI18n": {} }, null, 2)
+                mapId: mapId,
+                sysConfig: JSON.stringify(newSysConfig, null, 2),
+                config: JSON.stringify(newConfig, null, 2),
+                data: JSON.stringify(newData, null, 2)
             };
 
             document.getElementById('dl-btn-2').innerText = `${mapId}_config.json`;
             document.getElementById('dl-btn-3').innerText = `${mapId}_data.json`;
+
+            btn.innerHTML = '他言語を自動翻訳してファイル準備';
+            btn.disabled = false;
+
             document.getElementById('newMapFormArea').classList.add('hidden');
             document.getElementById('newMapDownloadArea').classList.remove('hidden');
         }
 
         function downloadMapFile(step) {
-            if (step === 1) triggerDownload("maps_index.json", pendingMapFiles.sysConfigStr);
-            if (step === 2) triggerDownload(`${pendingMapFiles.mapId}_config.json`, pendingMapFiles.configStr);
-            if (step === 3) triggerDownload(`${pendingMapFiles.mapId}_data.json`, pendingMapFiles.dataStr);
-        }
-
-        function triggerDownload(filename, content) {
-            const blob = new Blob([content], { type: 'text/json;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = filename;
-            document.body.appendChild(a); a.click(); a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        function exportDataFile() {
-            triggerDownload(`${currentMapID}_data.json`, JSON.stringify(rawData, null, 2));
+            const f = pendingMapFiles;
+            if (!f.mapId) return;
+            if (step === 1) triggerDownload('maps_index.json', f.sysConfig);
+            if (step === 2) triggerDownload(`${f.mapId}_config.json`, f.config);
+            if (step === 3) triggerDownload(`${f.mapId}_data.json`, f.data);
         }
     </script>
 </body>

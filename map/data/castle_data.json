@@ -2,17 +2,16 @@
   "spots": [
     {
       "id": 3001,
-      "category": "castle",
-      "startDate": "2027-08-01",
-      "endDate": "2027-08-01",
+      "category": "城跡",
+      "startDate": "",
+      "endDate": "",
       "lat": 37.5727362,
       "lng": 127.008569,
-      "updatedAt": "2026-09-18 16:31",
+      "updatedAt": "2026-09-19 06:02",
       "photos": [
         {
           "url": "picture/castle/hakodate/Oshi-jo.JPG",
-          "caption": "",
-          "credit": "Free Licence"
+          "caption": ""
         }
       ],
       "links": []
@@ -33,8 +32,8 @@
     "3001": {
       "ja": {
         "title": "函館城",
-        "location": "函館城",
-        "desc": "テストデータ"
+        "location": "北海道函館市",
+        "desc": "これは函館城のテストです。"
       },
       "en": {
         "title": "hakodate castle",
