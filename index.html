@@ -55,7 +55,7 @@
             transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
         }
         .accordion-content.open {
-            max-height: 2500px;
+            max-height: 3500px;
             transition: max-height 0.8s ease-in-out;
         }
     </style>
@@ -111,7 +111,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20">
                 <p class="text-3xl font-light text-slate-900">
-                    <span class="lang-jp">あらゆるチャレンジを支える2つの柱</span>
+                    <span class="lang-jp">事業内容</span>
                     <span class="lang-en">Two Pillars Supporting Your Challenge</span>
                 </p>
             </div>
@@ -143,7 +143,7 @@
                             
                             <div class="pt-6 border-t border-slate-200/60">
                                 <h4 class="text-lg font-medium text-slate-900 mb-2">
-                                    <span class="lang-jp">・地方活性化支援事業</span>
+                                    <span class="lang-jp">・地域活性化支援事業</span>
                                     <span class="lang-en">・Regional Vitalization Support</span>
                                 </h4>
                                 <p class="text-slate-600 text-sm leading-relaxed font-light">
@@ -226,21 +226,53 @@
 
             <!-- Collapsible About Content -->
             <div id="about-container" class="accordion-content mt-8">
-                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 md:p-14 text-slate-700 shadow-inner">
+                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 md:p-14 text-slate-700 shadow-inner space-y-12">
                     
                     <!-- Japanese Content -->
-                    <div class="lang-jp space-y-8">
+                    <div class="lang-jp space-y-10">
                         <div class="max-w-3xl mx-auto text-center space-y-4">
                             <h3 class="text-2xl font-light text-slate-900">会社概要 / About Kachie</h3>
                             <p class="text-base leading-relaxed text-slate-600 font-light">
-                                <strong class="font-medium text-slate-900">Kacche</strong> は、漢字では「<span class="text-sky-600 font-medium">活知恵</span>」、知恵を活かすと書きます。
+                                <strong class="font-medium text-slate-900">Kacche</strong> は, 漢字では「<span class="text-sky-600 font-medium">活知恵</span>」、知恵を活かすと書きます。
                             </p>
                             <p class="text-sm leading-relaxed text-slate-600 font-light text-left md:text-center">
                                 活知恵は、長年のビジネス経験と製品、システム開発で培った知恵と技術を活かして、新たなビジネスにチャレンジするあらゆる方々をサポートする、テクノロジー＆コンサルテーションカンパニーです。
                             </p>
                         </div>
 
-                        <div class="border-t border-slate-200/80 pt-8 max-w-2xl mx-auto">
+                        <!-- 代表からのメッセージ 開閉ボタン -->
+                        <div class="text-center pt-2">
+                            <button id="message-toggle-btn-jp" onclick="toggleMessage()" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-semibold hover:bg-sky-50 hover:border-sky-500 transition-all shadow-sm">
+                                <span>代表からのメッセージを見る</span>
+                                <svg id="message-arrow-jp" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                        </div>
+
+                        <!-- 代表からのメッセージ 本文 (折りたたみ) -->
+                        <div id="message-container-jp" class="accordion-content bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700">
+                            <div class="max-w-3xl mx-auto space-y-6 text-sm md:text-base leading-relaxed font-light">
+                                <h4 class="text-xl font-normal text-slate-900 text-center mb-6">不確実な時代を切り拓く、確かな伴走者として</h4>
+                                <p>
+                                    生成AIがスーパーインテリジェンス（SI）へと進化を遂げ、私たちの社会はこれまでにないスピードで大きく変貌しようとしています。
+                                </p>
+                                <p>
+                                    このようなVUCAの時代において、日本国内の企業や地域社会が持続的に発展していくためには、最新のテクノロジーを恐れず主体的に取り入れ、深刻化する人材不足や資材高騰の荒波を乗り越え、グローバルな競争環境に打ち勝っていくことが急務です。
+                                </p>
+                                <p>
+                                    「Kacche（活知恵）」は、バブル期から現在に至るまでの激動のビジネスシーンにおいて、常に新しい挑戦を続けてきたメンバーによって創業されました。
+                                </p>
+                                <p>
+                                    私たちは、国内外における新規事業の立ち上げ、多岐にわたるシステム開発、そして先進的な製品開発を通じて培ってきた豊富な「知恵」と「技術」を総動員します。予測困難なこの時代をしなやかに生き抜き、未来への大きな夢を描き、形にできるよう――。私たちは、皆様の最も信頼できるビジネス＆テクノロジーパートナーとして、全力で伴走し続けます。
+                                </p>
+                                <div class="pt-6 text-right font-medium text-slate-900">
+                                    <p>活知恵合同会社 代表社員</p>
+                                    <p class="text-lg font-bold text-sky-600 mt-1">野口 紀彦</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 会社基本情報テーブル -->
+                        <div class="border-t border-slate-200/80 pt-10 max-w-2xl mx-auto">
                             <dl class="grid grid-cols-1 md:grid-cols-3 gap-y-4 text-sm">
                                 <dt class="font-medium text-slate-900">会社名</dt>
                                 <dd class="md:col-span-2 text-slate-600">活知恵合同会社（Kacche LLC）</dd>
@@ -272,7 +304,7 @@
                     </div>
 
                     <!-- English Content -->
-                    <div class="lang-en space-y-8">
+                    <div class="lang-en space-y-10">
                         <div class="max-w-3xl mx-auto text-center space-y-4">
                             <h3 class="text-2xl font-light text-slate-900">About Us</h3>
                             <p class="text-base leading-relaxed text-slate-600 font-light">
@@ -283,7 +315,38 @@
                             </p>
                         </div>
 
-                        <div class="border-t border-slate-200/80 pt-8 max-w-2xl mx-auto">
+                        <!-- Message from CEO Toggle Button (EN) -->
+                        <div class="text-center pt-2">
+                            <button id="message-toggle-btn-en" onclick="toggleMessage()" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-semibold hover:bg-sky-50 hover:border-sky-500 transition-all shadow-sm">
+                                <span>Message from CEO</span>
+                                <svg id="message-arrow-en" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                        </div>
+
+                        <!-- Message from CEO Content (EN) -->
+                        <div id="message-container-en" class="accordion-content bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700">
+                            <div class="max-w-3xl mx-auto space-y-6 text-sm md:text-base leading-relaxed font-light">
+                                <h4 class="text-xl font-normal text-slate-900 text-center mb-6">Walking Hand-in-Hand Through an Era of Uncertainty</h4>
+                                <p>
+                                    As generative AI evolves into Super Intelligence (SI), our society is undergoing a profound and rapid transformation.
+                                </p>
+                                <p>
+                                    In this VUCA era, for Japanese enterprises and regional communities to achieve sustainable growth, it is imperative to embrace cutting-edge technology without hesitation, overcome severe labor shortages and rising material costs, and successfully compete in the global marketplace.
+                                </p>
+                                <p>
+                                    Kacche LLC was founded by professionals who have continuously embraced new business challenges through the turbulent economic eras from the bubble economy to the present day.
+                                </p>
+                                <p>
+                                    We bring together a wealth of wisdom and technological expertise cultivated through domestic and international new business launches, diverse system developments, and advanced product design. To help you navigate these uncertain times with resilience and inspire grand visions for the future—we are fully committed to walking alongside you as your trusted business and technology partner.
+                                </p>
+                                <div class="pt-6 text-right font-medium text-slate-900">
+                                    <p>Nori Noguchi</p>
+                                    <p class="text-sm text-sky-600 mt-1 font-semibold">Founder & CEO, Kacche LLC</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200/80 pt-10 max-w-2xl mx-auto">
                             <dl class="grid grid-cols-1 md:grid-cols-3 gap-y-4 text-sm">
                                 <dt class="font-medium text-slate-900">Company Name</dt>
                                 <dd class="md:col-span-2 text-slate-600">Kacche LLC</dd>
@@ -395,6 +458,41 @@
             }
         }
 
+        // Message from CEO Accordion Toggle
+        function toggleMessage() {
+            const containerJp = document.getElementById('message-container-jp');
+            const containerEn = document.getElementById('message-container-en');
+            const arrowJp = document.getElementById('message-arrow-jp');
+            const arrowEn = document.getElementById('message-arrow-en');
+            const btnSpanJp = document.querySelector('#message-toggle-btn-jp span');
+            const btnSpanEn = document.querySelector('#message-toggle-btn-en span');
+
+            // 現在英語モードか日本語モードかで判定
+            const isEnglish = document.documentElement.classList.contains('en');
+            const targetContainer = isEnglish ? containerEn : containerJp;
+            const targetArrow = isEnglish ? arrowEn : arrowJp;
+            const targetSpan = isEnglish ? btnSpanEn : btnSpanJp;
+
+            targetContainer.classList.toggle('open');
+            const isOpen = targetContainer.classList.contains('open');
+
+            if (isOpen) {
+                targetArrow.style.transform = 'rotate(180deg)';
+                if(isEnglish) {
+                    targetSpan.textContent = 'Close Message from CEO';
+                } else {
+                    targetSpan.textContent = '代表からのメッセージを閉じる';
+                }
+            } else {
+                targetArrow.style.transform = 'rotate(0deg)';
+                if(isEnglish) {
+                    targetSpan.textContent = 'Message from CEO';
+                } else {
+                    targetSpan.textContent = '代表からのメッセージを見る';
+                }
+            }
+        }
+
         // Language Switcher Logic
         function switchLang(lang) {
             const html = document.documentElement;
@@ -434,7 +532,6 @@
             const particleCount = Math.min(Math.floor((width * height) / 10000), 65);
 
             for (let i = 0; i < particleCount; i++) {
-                // 約20%の確率でゴールド（イエロー）、残りはシアン（水色）系のパーティクルを配置
                 const isYellow = Math.random() < 0.22;
                 particles.push({
                     x: Math.random() * width,
@@ -472,7 +569,6 @@
                             ctx.beginPath();
                             ctx.moveTo(p.x, p.y);
                             ctx.lineTo(p2.x, p2.y);
-                            // 水色とイエローが交差するような美しいグラデーションライン
                             ctx.strokeStyle = `rgba(56, 189, 248, ${0.3 * (1 - dist / 130)})`;
                             ctx.lineWidth = 0.8;
                             ctx.stroke();
