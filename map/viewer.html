@@ -40,29 +40,25 @@
     </style>
 </head>
 <body class="bg-slateDark text-slate-100 h-full flex flex-col overflow-hidden">
-    <!-- Header (index.htmlと統一感を持たせたダーク系) -->
-    <header class="bg-slateCard/80 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between shrink-0 z-20">
-        <div class="flex items-center space-x-3">
-            <a id="btnBackToPortal" href="index.html" class="mr-1 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0">
+
+    <!-- Header -->
+    <header class="bg-slateCard/80 backdrop-blur-md border-b border-slate-800 px-3 sm:px-6 py-3 flex items-center justify-between gap-2 shrink-0 z-20">
+        <div class="flex items-center space-x-2.5 flex-1 min-w-0">
+            <a id="btnBackToPortal" href="index.html" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 <span class="hidden sm:inline">Portal</span>
             </a>
-            <div id="headerIconContainer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-slate-600 bg-transparent flex items-center justify-center shrink-0">
-                <span id="headerIcon" class="text-lg sm:text-xl"></span>
-            </div>
-
-            <div class="min-w-0">
-                <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2 truncate">
-                    <span id="txt-app-title" class="truncate">Japan Discovery</span>
-                    <span id="txt-badge-title" class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-normal shrink-0">Map</span>
+            <div class="flex-1 min-w-0">
+                <h1 class="text-xs sm:text-base font-bold tracking-tight text-white flex items-center gap-2 leading-snug">
+                    <span id="txt-app-title" class="break-words">Japan Discovery</span>
+                    <span id="txt-badge-title" class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-normal shrink-0">Map</span>
                 </h1>
-                <!-- hidden sm:block を追加し、スマホでは長文サブタイトルを非表示にする -->
-                <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400 hidden sm:block truncate">Loading...</p>
+                <p id="txt-subtitle" class="text-[10px] sm:text-xs text-slate-400 hidden sm:block truncate mt-0.5">Loading...</p>
             </div>
         </div>
-        <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-2 shrink-0">
             <!-- Language Selector -->
-            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs text-white focus:outline-none cursor-pointer">
+            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 py-1.5 text-xs text-white focus:outline-none cursor-pointer">
                 <option value="ja">🇯🇵 日本語</option>
                 <option value="en">🇺🇸 English</option>
                 <option value="zh-TW">🇹🇼 繁體中文</option>
@@ -272,7 +268,7 @@
 
             // ヘッダー・タイトル
             document.getElementById('btnBackToPortal').href = `index.html?lang=${currentLang}`;
-            document.getElementById('headerIcon').innerText = icon;
+            // document.getElementById('headerIcon').innerText = icon;
 
             document.getElementById('txt-app-title').innerText = getLocalizedConfig('title') || "Japan Discovery";
             document.getElementById('txt-badge-title').innerText = currentMapID.toUpperCase();
