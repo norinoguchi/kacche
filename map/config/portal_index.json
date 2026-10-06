@@ -1,0 +1,282 @@
+{
+  "hero": {
+    "en": {
+      "tag": "✨ Genuine Culture & Local Heritage",
+      "title": "Discover the Authentic Japan",
+      "desc": "Experience real festivals, traditional craft heritage, and genuine local flavors through our interactive maps."
+    },
+    "ja": {
+      "tag": "✨ 本物の日本文化と地域の伝統",
+      "title": "Discover the Authentic Japan",
+      "desc": "本物の日本文化・伝統祭り・食文化を体感する特選インターナショナルガイドマップ。"
+    },
+    "zh-TW": {
+      "tag": "✨ 道地文化與地方傳統",
+      "title": "Discover the Authentic Japan",
+      "desc": "透過互動式地圖，探索最道地的日本文化、傳統祭典、匠人工藝與美食精髓。"
+    },
+    "zh-CN": {
+      "tag": "✨ 地道文化与地方传统",
+      "title": "Discover the Authentic Japan",
+      "desc": "通过互动式地图，探索最地道的日本文化、传统祭典、匠人工艺与美食精髓。"
+    },
+    "ko": {
+      "tag": "✨ 진정한 문화와 지역 유산",
+      "title": "Discover the Authentic Japan",
+      "desc": "인터랙티브 지도를 통해 일본의 진정한 문화, 전통 축제, 장인 정신이 담긴 미식을 체험해보세요."
+    },
+    "th": {
+      "tag": "✨ วัฒนธรรมแท้และมรดกท้องถิ่น",
+      "title": "Discover the Authentic Japan",
+      "desc": "สัมผัสประสบการณ์วัฒนธรรมญี่ปุ่นที่แท้จริง เทศกาลดั้งเดิม และรสชาติท้องถิ่นผ่านแผนที่แบบโต้ตอบ"
+    },
+    "id": {
+      "tag": "✨ Kebudayaan Otentik & Warisan Lokal",
+      "title": "Discover the Authentic Japan",
+      "desc": "Nikmati festival otentik, warisan kerajinan tradisional, dan cita rasa lokal melalui peta interaktif kami."
+    },
+    "vi": {
+      "tag": "✨ Văn hóa đích thực & Di sản địa phương",
+      "title": "Discover the Authentic Japan",
+      "desc": "Trải nghiệm các lễ hội đích thực, di sản nghề thủ công truyền thống và hương vị địa phương qua bản đồ tương tác của chúng tôi."
+    },
+    "es": {
+      "tag": "✨ Cultura Auténtica y Herencia Local",
+      "title": "Discover the Authentic Japan",
+      "desc": "Experimente festivales reales, herencia de artesanía tradicional y auténticos sabores locales a través de nuestros mapas interactivos."
+    }
+  },
+  "cards": [
+    {
+      "id": "matsuri",
+      "order": 1,
+      "status": "active",
+      "link": "viewer.html?map=matsuri",
+      "icon": "⛩️",
+      "images": [
+        "img/hamamatsu.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/hakata1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/hakata2.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "● Active Map", "title": "Matsuri & Festivals", "desc": "Explore historic Shinto festivals, traditional dance, shrine rituals, and seasonal celebrations across Japan.", "btn": "Open Map & Calendar →" },
+        "ja": { "badge": "● Active Map", "title": "全国の祭り・神輿マップ", "desc": "歴史ある神社神事、伝統踊り、熱気あふれる神輿巡行など全国の伝統祭りを網羅。", "btn": "マップ＆カレンダーを開く →" },
+        "zh-TW": { "badge": "● Active Map", "title": "日本祭典與神輿地圖", "desc": "輕鬆掌握全日本傳統神社神事、傳統舞蹈、神輿巡境與熱血祭典活動。", "btn": "開啟地圖與日曆 →" },
+        "zh-CN": { "badge": "● Active Map", "title": "日本祭典与神舆地图", "desc": "轻松掌握全日本传统神社神事、传统舞蹈、神舆巡游与热血祭典活动。", "btn": "打开地图与日历 →" },
+        "ko": { "badge": "● Active Map", "title": "전국 마츠리 & 축제 지도", "desc": "전통 신사 행사, 전통 무용, 역동적인 가마 행렬 등 전국의 축제를 안내합니다.", "btn": "지도 & 캘린더 열기 →" },
+        "th": { "badge": "● Active Map", "title": "แผนที่เทศกาลและมัตสึริ", "desc": "สำรวจเทศกาลดั้งเดิม การเต้นรำพื้นเมือง ขบวนแห่ศาลเจ้าทั่วญี่ปุ่น", "btn": "เปิดแผนที่และปฏิทิน →" },
+        "id": { "badge": "● Active Map", "title": "Peta Festival & Matsuri", "desc": "Jelajahi festival Shinto bersejarah, tarian tradisional, dan parade kuil di seluruh Jepang.", "btn": "Buka Peta & Kalender →" },
+        "vi": { "badge": "● Active Map", "title": "Bản đồ Lễ hội & Matsuri", "desc": "Khám phá các lễ hội Thần đạo lịch sử, múa truyền thống, nghi lễ đền thờ và các lễ kỷ niệm theo mùa trên khắp Nhật Bản.", "btn": "Mở Bản đồ & Lịch →" },
+        "es": { "badge": "● Active Map", "title": "Mapa de Festivales y Matsuri", "desc": "Explore festivales sintoístas históricos, danzas tradicionales, rituales de santuarios y celebraciones estacionales en todo Japón.", "btn": "Abrir Mapa y Calendario →" }
+      }
+    },
+    {
+      "id": "hanabi",
+      "order": 2,
+      "status": "active",
+      "link": "viewer.html?map=hanabi",
+      "icon": "🎆",
+      "images": [
+        "img/hanabi1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/hanabi2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/hanabi3.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "● Active Map", "title": "Fireworks Festivals", "desc": "Discover spectacular summer & autumn fireworks displays over rivers, lakes, and oceans.", "btn": "Open Map & Calendar →" },
+        "ja": { "badge": "● Active Map", "title": "全国花火大会マップ", "desc": "夜空と水面を彩る全国各地の大花火大会、職人たちの競技花火をマップでチェック。", "btn": "マップ＆カレンダーを開く →" },
+        "zh-TW": { "badge": "● Active Map", "title": "全日本花火大會地圖", "desc": "探索點亮夜空與水面的全日本大相花火大會與煙火職人競技會。", "btn": "開啟地圖與日曆 →" },
+        "zh-CN": { "badge": "● Active Map", "title": "全日本花火大会地图", "desc": "探索点亮夜空与水面的全日本盛大花火大会与烟花职人竞技会。", "btn": "打开地图与日历 →" },
+        "ko": { "badge": "● Active Map", "title": "전국 불꽃놀이 축제 지도", "desc": "밤하늘을 화려하게 수놓는 전국의 대형 불꽃놀이 대회 축제를 확인하세요.", "btn": "지도 & 캘린더 열기 →" },
+        "th": { "badge": "● Active Map", "title": "แผนที่เทศกาลดอกไม้ไฟ", "desc": "ชมการแสดงดอกไม้ไฟอันงดงามตระการตาทั่วประเทศต้อนรับฤดูร้อนและฤดูใบไม้ร่วง", "btn": "เปิดแผนที่และปฏิทิน →" },
+        "id": { "badge": "● Active Map", "title": "Peta Festival Kembang Api", "desc": "Temukan pertunjukan kembang api musim panas & gugur yang spektakuler.", "btn": "Buka Peta & Kalender →" },
+        "vi": { "badge": "● Active Map", "title": "Bản đồ Lễ hội Pháo hoa", "desc": "Khám phá những màn trình diễn pháo hoa ngoạn mục vào mùa hè và mùa thu trên các dòng sông, hồ và đại dương.", "btn": "Mở Bản đồ & Lịch →" },
+        "es": { "badge": "● Active Map", "title": "Mapa de Festivales de Fuegos Artificiales", "desc": "Descubra espectaculares exhibiciones de fuegos artificiales de verano y otoño sobre ríos, lagos y océanos.", "btn": "Abrir Mapa y Calendario →" }
+      }
+    },
+    {
+      "id": "food-event",
+      "order": 3,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🍱",
+      "images": [
+        "img/food1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/food2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/food3.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Gourmet & Food Events", "desc": "Seasonal seafood fairs, regional food markets, and street food gatherings nationwide.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "食のイベント・食フェスマップ", "desc": "旬の海鮮市からB級グルメフェス、地域特産品フェアなど食のイベントを特集。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "美食節與食文化地圖", "desc": "品嚐季節海鮮市集、地方特色美食節與在地下町美食盛會。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "美食节与食文化地图", "desc": "品尝季节海鲜市集、地方特色美食节与地道下町美食盛会。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "미식 & 푸드 이벤트 지도", "desc": "제철 해산물 축제부터 지역 먹거리 페스티벌까지 음식 이벤트를 총망라.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่กิจกรรมอาหารเทศกาล", "desc": "เทศกาลอาหารทะเลตามฤดูกาล ตลาดอาหารท้องถิ่น และสตรีทฟู้ด", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Acara Wisata Kuliner", "desc": "Pameran makanan laut musiman, pasar kuliner regional, dan festival jajanan.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Ẩm thực & Lễ hội Đồ ăn", "desc": "Hội chợ hải sản theo mùa, chợ thực phẩm khu vực và các tụ điểm ẩm thực đường phố trên toàn quốc.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Gastronomía y Eventos Culinarios", "desc": "Ferias de mariscos de temporada, mercados de alimentos regionales y reuniones de comida callejera en todo el país.", "btn": "Próximamente" }
+      }
+    },
+    {
+      "id": "sake-event",
+      "order": 4,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🍶",
+      "images": [
+        "img/sake1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/sake2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/sake3.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Sake & Drink Events", "desc": "Japanese Sake tasting fairs, brewery openings, and local craft beer & wine festivals.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "お酒・日本酒イベントマップ", "desc": "全国地酒の試飲会、酒蔵開き、クラフトビールや国産ワインのイベント巡り。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "日本酒與清酒盛會地圖", "desc": "全日本地酒品酒會、酒造開放日與在地精釀啤酒葡萄酒盛事。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "日本酒与清酒盛会地图", "desc": "全日本地酒品酒会、酒造开放日与地道精酿啤酒葡萄酒盛事。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "사케 & 전통주 축제 지도", "desc": "일본 전국 사케 시음회, 양조장 개방 행사, 크래프트 맥주 페스티벌.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่เทศกาลสาเกและเครื่องดื่ม", "desc": "งานชิมสาเกญี่ปุ่น การเปิดโรงบ่มสาเก และเทศกาลคราฟต์เบียร์", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Acara Sake & Minuman", "desc": "Acara mencicipi Sake Jepang, pembukaan kilang, dan festival bir kerajinan.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Lễ hội Rượu & Sake", "desc": "Hội chợ nếm thử rượu Sake Nhật Bản, lễ mở hầm rượu, và các lễ hội bia thủ công & rượu vang địa phương.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Eventos de Sake y Bebidas", "desc": "Ferias de degustación de sake japonés, apertura de cervecerías y festivales de cerveza artesanal y vino local.", "btn": "Próximamente" }
+      }
+    },
+    {
+      "id": "pottery",
+      "order": 5,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🏺",
+      "images": [
+        "img/pottery1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/pottery2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/pottery3.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Pottery & Craft Vessel Fairs", "desc": "Discover historic pottery markets (Arita, Mashiko, Mino) and artisan glass & craft vessel exhibitions across Japan.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "陶器市＆クラフト器市マップ", "desc": "有田焼・益子焼・美濃焼などの歴史ある陶器市や、ガラス器・工芸品の展示販売会を全国網羅。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "陶瓷市集與工藝器皿地圖", "desc": "網羅有田燒、益子燒等歷史悠久的陶瓷市集，以及琉璃玻璃與工藝展銷會。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "陶瓷市集与工艺器皿地图", "desc": "网罗有田烧、益子烧等历史悠久的陶瓷市集，以及琉璃玻璃与工艺展销会。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "도자기 및 공예 식기 시장 지도", "desc": "아리타, 마시코, 미노 등 역사 깊은 도자기 시장과 유리·공예 식기 전시 판매회.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่ตลาดเครื่องปั้นดินเผาและงานคราฟต์", "desc": "ค้นพบตลาดเครื่องปั้นดินเผาประวัติศาสตร์ (อาริตะ, มาชิโกะ) และงานแสดงแก้วและภาชนะคราฟต์", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Pasar Keramik & Wadah Kerajinan", "desc": "Jelajahi pasar keramik bersejarah (Arita, Mashiko, Mino) serta pameran kerajinan kaca dan wadah.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Hội chợ Gốm sứ & Đồ thủ công", "desc": "Khám phá các chợ gốm sứ lịch sử (Arita, Mashiko, Mino) và triển lãm đồ thủ công & thủy tinh nghệ thuật.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Ferias de Cerámica y Artesanía", "desc": "Descubra los históricos mercados de cerámica (Arita, Mashiko, Mino) y exposiciones de artesanía en vidrio por todo Japón.", "btn": "Próximamente" }
+      }
+    },
+    {
+      "id": "market",
+      "order": 6,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🛍️",
+      "images": [
+        "img/market1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/market2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/market3.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Community Markets", "desc": "Vibrant morning markets, local flea markets, and craft artisan bazaars.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "コミュニティマーケットマップ", "desc": "活気ある朝市、蚤の市、クラフト市など地域の人々と触れ合えるマーケット。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "在地市集與朝市地圖", "desc": "熱鬧朝市、跳蚤市場與手作匠人市集，體驗最親切的地方風境。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "本地市集与朝市地图", "desc": "热闹朝市、跳蚤市场与手作匠人市集，体验最亲切的地方风味。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "로컬 커뮤니티 마켓 지도", "desc": "활기찬 아침 시장, 플리마켓, 수공예 장인 마켓 등 현지 체험.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่ตลาดชุมชนท้องถิ่น", "desc": "ตลาดเช้าอันคึกคัก ตลาดนัดสินค้ามือสอง และตลาดงานหัตถกรรม", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Pasar Komunitas Lokal", "desc": "Pasar pagi yang meriah, pasar barang bekas, dan bazar kerajinan tangan.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Chợ Cộng đồng", "desc": "Chợ sáng sôi động, chợ đồ cũ địa phương và các khu chợ nghệ nhân thủ công.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Mercados Comunitarios", "desc": "Vibrantes mercados matutinos, mercados de pulgas locales y bazares de artesanos.", "btn": "Próximamente" }
+      }
+    },
+    {
+      "id": "ramen",
+      "order": 7,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🥢",
+      "images": [
+        "img/ramen1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/ramen2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/ramen3.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Authentic Ramen Trail", "desc": "From rich Tonkotsu in Kyushu to savory Miso in Hokkaido. Discover local ramen houses.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "全国本格ラーメンマップ", "desc": "九州の濃厚豚骨から北海道のこだわり味噌まで、地元で愛されるラーメン店を案内。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "全日本道地拉麵地圖", "desc": "從九州濃郁豚骨到北海道味增拉麵，尋訪在地名店，品嚐拉麵靈魂。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "全日本地道拉面地图", "desc": "从九州浓郁豚骨到北海道味噌拉面，寻访当地名店，品尝拉面灵魂。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "전국 라멘 투어 지도", "desc": "큐슈의 진한 돈코츠부터 홋카이도 미소 라멘까지, 현지인 맛집 라멘 축제.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่ตะลุยชิมราเมงแท้", "desc": "จากทงคตสึเข้มข้นในคิวชูถึงมิโซะราเมงในฮอกไกโด ค้นหาร้านราเมงยอดนิยม", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Otentik Ramen Japan", "desc": "Dari Tonkotsu khas Kyushu hingga Miso khas Hokkaido. Temukan kedai ramen favorit.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Mì Ramen Đích thực", "desc": "Từ Tonkotsu đậm đà ở Kyushu đến Miso thơm ngon ở Hokkaido. Khám phá những quán ramen địa phương.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Ramen Auténtico", "desc": "Desde el rico Tonkotsu en Kyushu hasta el sabroso Miso en Hokkaido. Descubra las casas locales de ramen.", "btn": "Próximamente" }
+      }
+    },
+    {
+      "id": "unagi",
+      "order": 8,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🍱",
+      "images": [
+        "img/unagi1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/unagi2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/unagi3.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Unagi Specialty Houses", "desc": "Exclusively dedicated eel specialty restaurants featuring historic charcoal grilling and secret sauce craftsmanship.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "全国うなぎ屋マップ（専門店限定）", "desc": "創業数十〜数百年の老舗鰻専門店に限定。伝統の炭火焼きと秘伝タレの職人技を掲載。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "鰻魚專賣店名店地圖", "desc": "嚴選傳承百年炭烤與秘傳醬汁的日式鰻魚飯專賣名店。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "鳗鱼专卖店名店地图", "desc": "严选传承百年炭烤与秘传酱汁的日式鳗鱼饭专卖名店。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "전국 장어 전문점 지도", "desc": "숯불 장어구이 전문점 한정. 전통 숯불구이와 장인의 비법 소스 명가 탐방.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่ร้านข้าวหน้าปลาไหลเฉพาะทาง", "desc": "คัดสรรเฉพาะร้านปลาไหลย่างเตาถ่านเก่าแก่และสูตรซอสลับเฉพาะทาง", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Kedai Spesialis Unagi", "desc": "Restoran belut panggang (Unagi) bersejarah spesialis dengan resep saus rahasia turunan.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Quán Lươn Đặc sản", "desc": "Các nhà hàng chuyên về lươn với truyền thống nướng than lịch sử và kỹ thuật nước sốt bí truyền.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Restaurantes Especializados en Unagi", "desc": "Restaurantes especializados en anguila que destacan por su histórica parrilla al carbón y su salsa secreta artesanal.", "btn": "Próximamente" }
+      }
+    },
+    {
+      "id": "sushi",
+      "order": 9,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🍣",
+      "images": [
+        "img/sushi1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/sushi2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/sushi3.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/sushi4.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Authentic Local Sushi", "desc": "Discover neighborhood sushi bars and local harbor Edomae masters cherished by residents.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "地域密着 寿司屋マップ", "desc": "地元漁港の旬のネタや職人の技を堪能できる、地元で愛される街の寿司処を厳選。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "在地人最愛壽司店地圖", "desc": "尋訪在地漁港直行鮮魚與在地江戶前職人壽司名店。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "本地人最爱寿司店地图", "desc": "寻访当地渔港直供鲜鱼与当地江户前职人寿司名店。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "지역 밀착 스시 명가 지도", "desc": "현지 어항 직송 신선한 회와 베테랑 장인의 손맛을 느낄 수 있는 동네 스시 집.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่ร้านซูชิท้องถิ่นดั้งเดิม", "desc": "ค้นหาร้านซูชิแถบเมืองและท่าเรือท้องถิ่นที่ขวัญใจคนในพื้นที่", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Kedai Sushi Lokal Otentik", "desc": "Jelajahi kedai sushi lokal dan koki tradisional Edomae favorit warga setempat.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Quán Sushi Địa phương", "desc": "Khám phá các quầy sushi lân cận và các bậc thầy Edomae bến cảng địa phương được cư dân yêu mến.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Sushi Local Auténtico", "desc": "Descubra las barras de sushi del vecindario y los maestros de Edomae del puerto local apreciados por los residentes.", "btn": "Próximamente" }
+      }
+    },
+    {
+      "id": "soba-udon",
+      "order": 10,
+      "status": "coming_soon",
+      "link": "#",
+      "icon": "🍜",
+      "images": [
+        "img/soba1.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/soba2.jpg?w=800&auto=format&fit=crop&q=80",
+        "img/soba4.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "Coming Soon", "title": "Handmade Soba & Udon", "desc": "Authentic buckwheat Soba and Sanuki Udon noodle artisan spots across Japan.", "btn": "Under Development" },
+        "ja": { "badge": "Coming Soon", "title": "手打ちそば＆うどんマップ", "desc": "職人が打つ本格蕎麦処から本場讃岐うどんの名店まで日本の麺文化を堪能。", "btn": "順次公開予定" },
+        "zh-TW": { "badge": "Coming Soon", "title": "手打蕎麥與烏龍麵地圖", "desc": "探索匠人手打蕎麥麵名店與正宗讚岐烏龍麵，感受日本麵食文化。", "btn": "即將推出" },
+        "zh-CN": { "badge": "Coming Soon", "title": "手打荞麦与乌龙面地图", "desc": "探索匠人手打荞麦面名店与正宗赞岐乌龙面，感受日本面食文化。", "btn": "即将推出" },
+        "ko": { "badge": "Coming Soon", "title": "수제 소바 & 우동 지도", "desc": "장인이 직접 반죽하는 수제 메밀 소바와 정통 사누키 우동 명가 투어.", "btn": "공개 예정" },
+        "th": { "badge": "Coming Soon", "title": "แผนที่โซบะและอุด้งทำมือ", "desc": "ลิ้มลองโซบะทำมือและซานุกิอุด้งต้นตำรับจากช่างฝีมือทั่วญี่ปุ่น", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "Coming Soon", "title": "Peta Soba & Udon Buatan Tangan", "desc": "Nikmati Soba gandum hitam otentik dan Udon Sanuki buatan tangan ahli lokal.", "btn": "Segera Hadir" },
+        "vi": { "badge": "Coming Soon", "title": "Bản đồ Mì Soba & Udon Thủ công", "desc": "Thưởng thức mì Soba lúa mạch và Sanuki Udon thủ công đích thực từ các nghệ nhân trên khắp Nhật Bản.", "btn": "Sắp ra mắt" },
+        "es": { "badge": "Coming Soon", "title": "Mapa de Soba y Udon Hechos a Mano", "desc": "Lugares de artesanos de auténticos fideos Soba de trigo sarraceno y Sanuki Udon en todo Japón.", "btn": "Próximamente" }
+      }
+    }
+  ]
+}

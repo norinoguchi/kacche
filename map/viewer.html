@@ -68,6 +68,8 @@
                 <option value="ko">🇰🇷 한국어</option>
                 <option value="th">🇹🇭 ไทย</option>
                 <option value="id">🇮🇩 Bahasa Indonesia</option>
+                <option value="vi">🇻🇳 Tiếng Việt</option>
+                <option value="es">🇪🇸 Español</option>
             </select>
         </div>
     </header>
@@ -261,10 +263,10 @@
                 // イベントマップ：春夏秋冬（固定）
                 scrollContainer.innerHTML = `
                     <button onclick="filterCategory('all')" id="cat-all" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white shadow-sm whitespace-nowrap shrink-0 ${currentFilter === 'all' ? mapConfig.btnTheme : 'bg-slate-800 text-slate-300'}">${getLocalizedUI('catAll')}</button>
-                    <button onclick="filterCategory('spring')" id="cat-spring" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'spring' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🌸 春 (3-5月)</button>
-                    <button onclick="filterCategory('summer')" id="cat-summer" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'summer' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🌿 夏 (6-8月)</button>
-                    <button onclick="filterCategory('autumn')" id="cat-autumn" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'autumn' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🍁 秋 (9-11月)</button>
-                    <button onclick="filterCategory('winter')" id="cat-winter" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'winter' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">❄️ 冬 (12-2月)</button>
+                    <button onclick="filterCategory('spring')" id="cat-spring" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'spring' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🌸 ${getLocalizedUI('catSpring') || '春 (3-5月)'}</button>
+                    <button onclick="filterCategory('summer')" id="cat-summer" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'summer' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🌿 ${getLocalizedUI('catSummer') || '夏 (6-8月)'}</button>
+                    <button onclick="filterCategory('autumn')" id="cat-autumn" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'autumn' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">🍁 ${getLocalizedUI('catAutumn') || '秋 (9-11月)'}</button>
+                    <button onclick="filterCategory('winter')" id="cat-winter" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${currentFilter === 'winter' ? mapConfig.btnTheme + ' text-white' : 'bg-slate-800 text-slate-300'} whitespace-nowrap shrink-0">❄️ ${getLocalizedUI('catWinter') || '冬 (12-2月)'}</button>
                 `;
                 document.getElementById('categoryDescArea').classList.add('hidden'); // 説明エリア非表示
             } else {
@@ -303,7 +305,7 @@
             url.searchParams.set('lang', lang);
             window.history.replaceState({}, '', url);
             applyThemeAndText();
-            renderCurrentView();
+            renderCurrentView(true); // ★ズーム位置をリセットしないように true を渡す
         }
 
         // --- カテゴリーフィルタ（スクロール・タブ切り替え） ---
@@ -483,14 +485,14 @@
         }
 
         // --- 各ビューの描画処理 ---
-        function renderCurrentView() {
-            if (currentView === 'map') updateMapMarkers();
+        function renderCurrentView(retainView = false) { // ★引数を追加
+            if (currentView === 'map') updateMapMarkers(retainView); // ★引数を渡す
             if (currentView === 'list') renderListView();
             if (currentView === 'calendar' && mapConfig.hasCalendar !== false) renderCalendarView();
         }
 
         // 1. マップマーカー更新
-        function updateMapMarkers() {
+        function updateMapMarkers(retainView = false) { // ★引数を追加
             if (!markersLayer) return;
             markersLayer.clearLayers();
 
@@ -520,7 +522,10 @@
                 markersLayer.addLayer(marker);
             });
 
-            fitMapToFilteredSpots();
+            // ★引数がfalseの場合のみズームをリセットする
+            if (!retainView) {
+                fitMapToFilteredSpots();
+            }
         }
 
         // 2. リストビュー描画

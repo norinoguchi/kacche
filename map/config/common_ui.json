@@ -124,5 +124,41 @@
     "photosTitle": "📸 Galeri Foto (Klik untuk memperbesar)",
     "linksTitle": "🔗 Tautan Terkait",
     "weekdays": ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"]
+  },
+  "vi": {
+    "navMap": "Bản đồ",
+    "navList": "Danh sách",
+    "navCalendar": "Lịch",
+    "catAll": "Tất cả",
+    "catSpring": "🌸 Mùa xuân (Tháng 3-5)",
+    "catSummer": "🌿 Mùa hè (Tháng 6-8)",
+    "catAutumn": "🍁 Mùa thu (Tháng 9-11)",
+    "catWinter": "❄️ Mùa đông (Tháng 12-2)",
+    "searchPlaceholder": "Tìm kiếm theo địa điểm hoặc tên...",
+    "noResult": "Không tìm thấy kết quả phù hợp.",
+    "detailLink": "Xem chi tiết & Tư vấn",
+    "consultBtn": "Tư vấn",
+    "close": "Đóng",
+    "photosTitle": "📸 Thư viện ảnh (Nhấp để phóng to)",
+    "linksTitle": "🔗 Liên kết liên quan",
+    "weekdays": ["CN", "T2", "T3", "T4", "T5", "T6", "T7"]
+  },
+  "es": {
+    "navMap": "Mapa",
+    "navList": "Lista",
+    "navCalendar": "Calendario",
+    "catAll": "Todo",
+    "catSpring": "🌸 Primavera (Mar-May)",
+    "catSummer": "🌿 Verano (Jun-Ago)",
+    "catAutumn": "🍁 Otoño (Sep-Nov)",
+    "catWinter": "❄️ Invierno (Dic-Feb)",
+    "searchPlaceholder": "Buscar por ubicación o nombre...",
+    "noResult": "No se encontraron resultados.",
+    "detailLink": "Ver detalles y Consultar",
+    "consultBtn": "Consultar",
+    "close": "Cerrar",
+    "photosTitle": "📸 Galería de fotos (Haz clic para ampliar)",
+    "linksTitle": "🔗 Enlaces relacionados",
+    "weekdays": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
   }
 }

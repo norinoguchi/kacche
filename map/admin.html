@@ -378,10 +378,11 @@
         let currentEditMapCategories = []; // スポットモード時のカテゴリー配列
         let currentEditMapActiveLang = 'ja';
 
-        const langCodes = ['ja', 'en', 'zh-TW', 'zh-CN', 'ko', 'th', 'id'];
+        const langCodes = ['ja', 'en', 'zh-TW', 'zh-CN', 'ko', 'th', 'id', 'vi', 'es'];
         const langNames = {
             'ja': '🇯🇵 日本語', 'en': '🇺🇸 English', 'zh-TW': '🇹🇼 繁體中文',
-            'zh-CN': '🇨🇳 简体中文', 'ko': '🇰🇷 한국어', 'th': '🇹🇭 ไทย', 'id': '🇮🇩 Indonesia'
+            'zh-CN': '🇨🇳 简体中文', 'ko': '🇰🇷 한국어', 'th': '🇹🇭 ไทย', 'id': '🇮🇩 Indonesia',
+            'vi': '🇻🇳 Tiếng Việt', 'es': '🇪🇸 Español'
         };
 
         const themePresets = {
@@ -481,23 +482,21 @@
         async function translateText(text, targetLang) {
             if (!text || !text.trim()) return "";
             try {
-                // Google Translate GAS API (配布用サンプルURL。実際にはご自身のURLに差し替えてください)
-                // const gasUrl = 'https://script.google.com/macros/s/AKfycby5_サンプル_API_URL/exec';
-                // const res = await fetch(`${gasUrl}?text=${encodeURIComponent(text)}&source=ja&target=${targetLang}`);
-                
-                // --- 開発用ダミー翻訳（APIがない場合） ---
-                // return `[${targetLang}] ${text}`; 
-                
-                // --- 実装例（無料のgtranslate APIを使う場合。自己責任で利用してください） ---
-                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`);
+                // 実装例: 無料のgtranslate APIを POST で呼び出し、URL文字数制限を回避
+                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=${targetLang}&dt=t`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `q=${encodeURIComponent(text)}`
+                });
                 const data = await res.json();
-                if (data && data[0] && data[0][0] && data[0][0][0]) {
-                    return data[0].map(s => s[0]).join(''); // 長文対応
+                if (data && data[0]) {
+                    // 長文や改行で分割された翻訳結果をすべて結合して返す
+                    return data[0].map(s => s[0]).join(''); 
                 }
                 return text;
             } catch (e) {
                 console.error('翻訳エラー', e);
-                return text; // エラー時は原文を返す
+                return text; 
             }
         }
 
@@ -592,6 +591,7 @@
             currentSpotPhotos = [];
             renderPhotosList();
 
+            currentActiveLang = null; // ★追加
             switchLangTab('ja');
             document.getElementById('spotModal').classList.remove('hidden');
         }
@@ -635,6 +635,7 @@
             }
             renderPhotosList();
 
+            currentActiveLang = null; // ★追加
             switchLangTab('ja');
             document.getElementById('spotModal').classList.remove('hidden');
         }
@@ -667,6 +668,7 @@
         }
 
         function saveCurrentLangInput() {
+            if (!currentActiveLang) return; // ★追加
             if (!currentSpotTranslations[currentActiveLang]) currentSpotTranslations[currentActiveLang] = {};
             currentSpotTranslations[currentActiveLang].title = document.getElementById('activeLangTitle').value;
             currentSpotTranslations[currentActiveLang].location = document.getElementById('activeLangLocation').value;
@@ -678,6 +680,9 @@
             const jaData = currentSpotTranslations['ja'];
             if (!jaData.title) { alert('まずは日本語タブでタイトルを入力してください。'); return; }
 
+            // 上書き確認ダイアログを追加
+            const overwrite = confirm('すでに翻訳済みのテキストがある場合、上書きして再翻訳しますか？\n（「キャンセル」を押すと、空欄のみ翻訳します）');
+
             const btn = document.getElementById('translateSpotBtn');
             const originalText = btn.innerHTML;
             btn.innerHTML = '⏳ 翻訳中...';
@@ -686,17 +691,23 @@
             const targetLangs = langCodes.filter(l => l !== 'ja');
             
             for (const lang of targetLangs) {
-                // タイトル、場所、説明を翻訳
-                if (!currentSpotTranslations[lang].title) currentSpotTranslations[lang].title = await translateText(jaData.title, lang);
-                if (!currentSpotTranslations[lang].location) currentSpotTranslations[lang].location = await translateText(jaData.location, lang);
-                if (!currentSpotTranslations[lang].desc) currentSpotTranslations[lang].desc = await translateText(jaData.desc, lang);
+                // overwrite が true なら強制上書き、false なら空欄の場合のみ翻訳
+                if (overwrite || !currentSpotTranslations[lang].title) {
+                    currentSpotTranslations[lang].title = await translateText(jaData.title, lang);
+                }
+                if (overwrite || !currentSpotTranslations[lang].location) {
+                    currentSpotTranslations[lang].location = await translateText(jaData.location, lang);
+                }
+                if (overwrite || !currentSpotTranslations[lang].desc) {
+                    currentSpotTranslations[lang].desc = await translateText(jaData.desc, lang);
+                }
             }
 
             btn.innerHTML = originalText;
             btn.disabled = false;
             // 現在表示中のタブをリフレッシュ
             switchLangTab(currentActiveLang);
-            alert('日本語を元に、空のフィールドへの自動翻訳が完了しました。各言語タブで内容を確認・修正してください。');
+            alert('自動翻訳が完了しました。各言語タブで内容を確認してください。');
         }
 
         // --- 写真管理関連 ---
@@ -991,10 +1002,11 @@
         }
 
         async function autoTranslateEditMapUI() {
-            // 現在のタブ入力を確定させ、jaタブベースで翻訳を開始
             switchEditMapLangTab('ja'); 
             const jaUI = currentEditMapConfigI18n['ja'];
             if (!jaUI.title) { alert('まずは日本語のマップ名を入力してください。'); return; }
+
+            const overwrite = confirm('すでに翻訳済みのテキストがある場合、上書きして再翻訳しますか？\n（「キャンセル」を押すと、空欄のみ翻訳します）');
 
             const btn = document.getElementById('translateEditMapBtn');
             const originalText = btn.innerHTML;
@@ -1009,38 +1021,38 @@
             if (isSpot) {
                 const jaCatRows = document.getElementById('editMapCategoriesRows').querySelectorAll('.flex');
                 jaCatRows.forEach(row => {
-                    jaCats.push({
-                        name: row.querySelector('[id^="editMapCatNameJa_"]').value
-                    });
+                    jaCats.push({ name: row.querySelector('[id^="editMapCatNameJa_"]').value });
                 });
             }
-            jaUI.categories = jaCats; // ja configにもセット
+            jaUI.categories = jaCats;
 
             for (const lang of targetLangs) {
                 if (!currentEditMapConfigI18n[lang]) currentEditMapConfigI18n[lang] = {};
                 const cur = currentEditMapConfigI18n[lang];
                 
                 // タイトル・サブタイトル
-                if (!cur.title) cur.title = await translateText(jaUI.title, lang);
-                if (!cur.subtitle && jaUI.subtitle) cur.subtitle = await translateText(jaUI.subtitle, lang);
+                if (overwrite || !cur.title) cur.title = await translateText(jaUI.title, lang);
+                if (jaUI.subtitle && (overwrite || !cur.subtitle)) cur.subtitle = await translateText(jaUI.subtitle, lang);
 
                 // カテゴリーの翻訳
                 if (isSpot) {
                     if (!cur.categories) cur.categories = [];
                     for (let i = 0; i < jaCats.length; i++) {
                         if (!cur.categories[i]) cur.categories[i] = { name: '' };
-                        if (!cur.categories[i].name && jaCats[i].name) cur.categories[i].name = await translateText(jaCats[i].name, lang);
+                        if (jaCats[i].name && (overwrite || !cur.categories[i].name)) {
+                            cur.categories[i].name = await translateText(jaCats[i].name, lang);
+                        }
                     }
                 } else {
-                    delete cur.categories; // イベントモードなら削除
+                    delete cur.categories; 
                 }
             }
 
             btn.innerHTML = originalText;
             btn.disabled = false;
-            switchEditMapLangTab(currentEditMapActiveLang); // タブ更新
+            switchEditMapLangTab(currentEditMapActiveLang);
             alert('マップ情報とカテゴリー定義の自動翻訳が完了しました。');
-        }
+        }  
 
         // --- 保存（マップ設定編集） ---
         async function saveEditedMapSettings() {

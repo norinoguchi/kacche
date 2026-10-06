@@ -2,12 +2,12 @@
   "spots": [
     {
       "id": 1789104657141,
-      "category": "matsuri",
-      "startDate": "2027-05-01",
-      "endDate": "2027-05-03",
+      "category": "spring",
+      "startDate": "2027-05-03",
+      "endDate": "2027-05-05",
       "lat": 34.7109786,
       "lng": 137.7259431,
-      "updatedAt": "2026-09-15 15:56",
+      "updatedAt": "2026-10-06 02:43",
       "photos": [
         {
           "url": "picture/matsuri/hamamatsu/pict1.jpg",
@@ -1259,39 +1259,49 @@
     },
     "1789104657141": {
       "ja": {
-        "title": "浜松まつり",
+        "title": "浜松祭り",
         "location": "静岡県浜松市",
-        "desc": "浜松まつりは毎年5月に行われる、大凧揚げと豪華な御殿屋台引き回しで有名な勇壮なお祭りです。"
+        "desc": "浜松まつりは、毎年5月3日〜5日に静岡県浜松市で開催される伝統的な祭りです。巨大な凧を揚げる「凧揚げ合戦」と、豪華な御殿屋台の引き回しが見どころ。勇壮で華やかな浜松を代表する一大イベントです。期間中は、日中は、中田島砂丘で凧揚げ合戦を、夕方からは浜松駅周辺で屋台引き回しが行われますので、1日中壮大な祭りを楽しむことが出来ます。"
       },
       "en": {
         "title": "Hamamatsu Festival",
         "location": "Hamamatsu City, Shizuoka Prefecture",
-        "desc": "Held every May, Hamamatsu Festival is famous for its massive kite-flying battles and ornate palace float parades."
+        "desc": "Hamamatsu Festival is a traditional festival held in Hamamatsu City, Shizuoka Prefecture from May 3rd to 5th every year. Highlights include the kite-flying battle, where giant kites are flown, and the parade of gorgeous palace floats. This is a major event that represents the brave and gorgeous Hamamatsu. During the festival, there will be a kite-flying contest at Nakatajima Sand Dunes during the day, and in the evening food stalls will be passed around Hamamatsu Station, so you can enjoy the magnificent festival all day long."
       },
       "zh-TW": {
-        "title": "濱松祭",
+        "title": "濱松節",
         "location": "靜岡縣濱松市",
-        "desc": "濱松祭於每年5月舉行，以放風箏大賽與豪華御殿屋台巡境而聞名的勇猛節慶。"
+        "desc": "濱松祭是靜岡縣濱松市每年5月3日至5日舉行的傳統節慶。亮點包括放飛巨型風箏的風箏大戰，以及華麗的宮廷花車遊行。這是代表濱松勇猛華麗的重大事件。祭典期間，白天在中田島沙丘舉辦放風箏比賽，晚上濱松站週邊小吃攤路過，讓您一整天都可以享受盛大的祭典。"
       },
       "zh-CN": {
-        "title": "滨松祭",
+        "title": "滨松节",
         "location": "静冈县滨松市",
-        "desc": "滨松祭于每年5月举行，以放风筝大赛与豪华御殿屋台巡游而闻名的勇猛节庆。"
+        "desc": "滨松祭是静冈县滨松市每年5月3日至5日举行的传统节日。亮点包括放飞巨型风筝的风筝大战，以及华丽的宫廷花车巡游。这是代表滨松勇猛华丽的重大事件。祭典期间，白天在中田岛沙丘举办放风筝比赛，晚上滨松站周边小吃摊路过，让您一整天都可以享受盛大的祭典。"
       },
       "ko": {
         "title": "하마마츠 축제",
-        "location": "시즈오카현 하마마츠시",
-        "desc": "매년 5월에 열리는 하마마츠 축제는 대형 연날리기와 화려한 고텐야타이 행진으로 유명합니다."
+        "location": "시즈오카현 하마마쓰시",
+        "desc": "하마마츠 축제는, 매년 5월 3일~5일에 시즈오카현 하마마츠시에서 개최되는 전통적인 축제입니다. 거대한 연을 튀기는 「연 튀김 합전」과, 호화로운 고텐 포장마차의 끌어당기는 것이 볼거리. 용장하고 화려한 하마마츠를 대표하는 일대 이벤트입니다. 기간중에는, 낮에는, 나카타시마 사구에서 연 튀김 합전을, 저녁부터는 하마마츠역 주변에서 포장마차 인회가 행해지므로, 하루 종일 장대한 축제를 즐길 수 있습니다."
       },
       "th": {
         "title": "เทศกาลฮามามัตสึ",
-        "location": "เมืองฮามามัตสึ จังหวัดชิซูโอกะ",
-        "desc": "จัดขึ้นทุกปีในเดือนพฤษภาคม มีชื่อเสียงด้านการเล่นว่าวยักษ์และการแห่รถเกี้ยวอันอลังการ"
+        "location": "เมืองฮามามัตสึ จังหวัดชิซึโอกะ",
+        "desc": "เทศกาลฮามามัตสึเป็นเทศกาลแบบดั้งเดิมที่จัดขึ้นในเมืองฮามามัตสึ จังหวัดชิซึโอกะ ตั้งแต่วันที่ 3 ถึง 5 พฤษภาคมของทุกปี ไฮไลท์ ได้แก่ การต่อสู้ว่าวว่าว ว่าวยักษ์ และขบวนแห่ขบวนแห่พระราชวังอันงดงาม นี่เป็นงานสำคัญที่แสดงถึงฮามามัตสึผู้กล้าหาญและสง่างาม ในช่วงเทศกาล จะมีการแข่งขันเล่นว่าวที่เนินทรายนากาตะจิมะในระหว่างวัน และในช่วงเย็นแผงขายอาหารจะผ่านไปรอบๆ สถานีฮามามัตสึ คุณจึงสามารถเพลิดเพลินกับเทศกาลอันงดงามได้ตลอดทั้งวัน"
       },
       "id": {
         "title": "Festival Hamamatsu",
         "location": "Kota Hamamatsu, Prefektur Shizuoka",
-        "desc": "Diadakan setiap bulan Mei, festival ini terkenal dengan pertarungan layang-layang raksasa dan parade kereta hias."
+        "desc": "Festival Hamamatsu adalah festival tradisional yang diadakan di Kota Hamamatsu, Prefektur Shizuoka dari tanggal 3 hingga 5 Mei setiap tahun. Sorotannya meliputi pertarungan menerbangkan layang-layang, di mana layang-layang raksasa diterbangkan, dan parade kendaraan hias istana yang indah. Ini adalah acara besar yang mewakili Hamamatsu yang pemberani dan cantik. Selama festival, akan ada kontes menerbangkan layang-layang di Bukit Pasir Nakatajima pada siang hari, dan pada malam hari akan banyak kedai makanan yang melintas di sekitar Stasiun Hamamatsu, sehingga Anda dapat menikmati megahnya festival sepanjang hari."
+      },
+      "vi": {
+        "title": "Lễ hội Hamamatsu",
+        "location": "Thành phố Hamamatsu, tỉnh Shizuoka",
+        "desc": "Lễ hội Hamamatsu là lễ hội truyền thống được tổ chức tại thành phố Hamamatsu, tỉnh Shizuoka từ ngày 3 đến ngày 5 tháng 5 hàng năm. Điểm nổi bật bao gồm trận chiến thả diều, nơi thả những con diều khổng lồ và cuộc diễu hành của những chiếc kiệu cung điện tuyệt đẹp. Đây là một sự kiện lớn đại diện cho Hamamatsu dũng cảm và xinh đẹp. Trong thời gian diễn ra lễ hội, sẽ có cuộc thi thả diều tại Cồn cát Nakatajima vào ban ngày và vào buổi tối, các quầy bán đồ ăn sẽ được di chuyển quanh Ga Hamamatsu để bạn có thể tận hưởng lễ hội hoành tráng suốt cả ngày."
+      },
+      "es": {
+        "title": "Festival de Hamamatsu",
+        "location": "Ciudad de Hamamatsu, Prefectura de Shizuoka",
+        "desc": "El Festival Hamamatsu es un festival tradicional que se celebra en la ciudad de Hamamatsu, prefectura de Shizuoka, del 3 al 5 de mayo de cada año. Los aspectos más destacados incluyen la batalla de vuelo de cometas, donde se vuelan cometas gigantes, y el desfile de hermosas carrozas palaciegas. Este es un evento importante que representa al valiente y hermoso Hamamatsu. Durante el festival, habrá un concurso de vuelo de cometas en las dunas de arena de Nakatajima durante el día, y por la noche habrá puestos de comida alrededor de la estación de Hamamatsu, para que puedas disfrutar del magnífico festival durante todo el día."
       }
     },
     "1789106389629": {
