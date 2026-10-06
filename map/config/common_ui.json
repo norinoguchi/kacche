@@ -2,6 +2,7 @@
   "ja": {
     "navMap": "マップ",
     "navList": "リスト",
+    "listTitle": "スポット一覧",
     "navCalendar": "カレンダー",
     "catAll": "すべて",
     "catSpring": "🌸 春 (3-5月)",
@@ -22,6 +23,7 @@
   "en": {
     "navMap": "Map",
     "navList": "List",
+    "listTitle": "Spot List",
     "navCalendar": "Calendar",
     "catAll": "All",
     "catSpring": "🌸 Spring (Mar-May)",
@@ -42,6 +44,7 @@
   "zh-TW": {
     "navMap": "地圖",
     "navList": "列表",
+    "listTitle": "景點列表",
     "navCalendar": "日曆",
     "catAll": "全部",
     "catSpring": "🌸 春季 (3-5月)",
@@ -62,6 +65,7 @@
   "zh-CN": {
     "navMap": "地图",
     "navList": "列表",
+    "listTitle": "景点列表",
     "navCalendar": "日历",
     "catAll": "全部",
     "catSpring": "🌸 春季 (3-5月)",
@@ -82,6 +86,7 @@
   "ko": {
     "navMap": "지도",
     "navList": "목록",
+    "listTitle": "스팟 목록",
     "navCalendar": "캘린더",
     "catAll": "전체",
     "catSpring": "🌸 봄 (3-5월)",
@@ -102,6 +107,7 @@
   "th": {
     "navMap": "แผนที่",
     "navList": "รายการ",
+    "listTitle": "รายการสถานที่",
     "navCalendar": "ปฏิทิน",
     "catAll": "ทั้งหมด",
     "catSpring": "🌸 ฤดูใบไม้ผลิ (มี.ค.-พ.ค.)",
@@ -122,6 +128,7 @@
   "id": {
     "navMap": "Peta",
     "navList": "Daftar",
+    "listTitle": "Daftar Tempat",
     "navCalendar": "Kalender",
     "catAll": "Semua",
     "catSpring": "🌸 Musim Semi (Mar-Mei)",
@@ -142,6 +149,7 @@
   "vi": {
     "navMap": "Bản đồ",
     "navList": "Danh sách",
+    "listTitle": "Danh sách địa điểm",
     "navCalendar": "Lịch",
     "catAll": "Tất cả",
     "catSpring": "🌸 Mùa xuân (Tháng 3-5)",
@@ -162,6 +170,7 @@
   "es": {
     "navMap": "Mapa",
     "navList": "Lista",
+    "listTitle": "Lista de lugares",
     "navCalendar": "Calendario",
     "catAll": "Todo",
     "catSpring": "🌸 Primavera (Mar-May)",
