@@ -50,12 +50,14 @@
             <div id="headerIconContainer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-slate-600 bg-transparent flex items-center justify-center shrink-0">
                 <span id="headerIcon" class="text-lg sm:text-xl"></span>
             </div>
-            <div>
-                <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                    <span id="txt-app-title">Japan Discovery</span>
-                    <span id="txt-badge-title" class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-normal">Map</span>
+
+            <div class="min-w-0">
+                <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2 truncate">
+                    <span id="txt-app-title" class="truncate">Japan Discovery</span>
+                    <span id="txt-badge-title" class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-normal shrink-0">Map</span>
                 </h1>
-                <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400">Loading...</p>
+                <!-- hidden sm:block を追加し、スマホでは長文サブタイトルを非表示にする -->
+                <p id="txt-subtitle" class="text-[11px] sm:text-xs text-slate-400 hidden sm:block truncate">Loading...</p>
             </div>
         </div>
         <div class="flex items-center gap-2 sm:gap-3">
