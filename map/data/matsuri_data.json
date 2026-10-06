@@ -1,75 +1,17 @@
 {
   "spots": [
     {
-      "id": 1789104657141,
-      "category": "spring",
-      "startDate": "2027-05-03",
-      "endDate": "2027-05-05",
-      "lat": 34.7109786,
-      "lng": 137.7259431,
-      "updatedAt": "2026-10-06 02:43",
-      "photos": [
-        {
-          "url": "picture/matsuri/hamamatsu/pict1.jpg",
-          "caption": "浜松まつり 大凧揚げ"
-        },
-        {
-          "url": "picture/matsuri/hamamatsu/pict2.jpg",
-          "caption": "御殿屋台引き回し"
-        },
-        {
-          "url": "picture/matsuri/hamamatsu/pict3.jpg",
-          "caption": ""
-        }
-      ],
-      "links": [
-        {
-          "url": "https://hamamatsu-daikite.jp/matsuri/",
-          "text": "浜松まつり公式サイト"
-        }
-      ]
-    },
-    {
-      "id": 1789106389629,
-      "category": "matsuri",
-      "startDate": "2027-05-03",
-      "endDate": "2027-05-04",
-      "lat": 33.5990204,
-      "lng": 130.418847,
-      "updatedAt": "2026-09-15 15:55",
-      "photos": [
-        {
-          "url": "picture/matsuri/hakata/pict1.jpg",
-          "caption": "博多どんたく どんたく隊パレード"
-        },
-        {
-          "url": "picture/matsuri/hakata/pict2.jpg",
-          "caption": ""
-        },
-        {
-          "url": "picture/matsuri/hakata/pict3.jpg",
-          "caption": ""
-        }
-      ],
-      "links": [
-        {
-          "url": "https://www.dontaku.fukuoka.jp/",
-          "text": "博多どんたく港まつり公式サイト"
-        }
-      ]
-    },
-    {
       "id": 1789182250991,
-      "category": "matsuri",
+      "category": "winter",
       "startDate": "2027-02-04",
       "endDate": "2027-02-11",
       "lat": 43.061936,
       "lng": 141.3542924,
-      "updatedAt": "2026-09-15 16:00",
+      "updatedAt": "2026-10-06 06:28",
       "photos": [
         {
           "url": "picture/matsuri/sapporo/pict1.jpg",
-          "caption": "大通会場の巨大雪像"
+          "caption": ""
         },
         {
           "url": "picture/matsuri/sapporo/pict2.jpg",
@@ -86,14 +28,20 @@
         {
           "url": "picture/matsuri/sapporo/pict5.jpg",
           "caption": ""
+        },
+        {
+          "url": "picture/matsuri/sapporo/pict6.jpg",
+          "caption": "",
+          "license": ""
         }
       ],
       "links": [
         {
-          "url": "https://www.snowfes.com/",
-          "text": "さっぽろ雪まつり公式サイト"
+          "text": "Offitial Site",
+          "url": "https://www.snowfes.com/"
         }
-      ]
+      ],
+      "consultUrl": "https://fujiair.quicktrip.jp/buy/reservation?salesTicketId=3367"
     },
     {
       "id": 1001,
@@ -117,6 +65,27 @@
       ]
     },
     {
+      "id": 1017,
+      "category": "matsuri",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-04",
+      "lat": 40.509,
+      "lng": 141.4883,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/hachinohe_sansa/pict1.jpg",
+          "caption": "豪華絢爛な山車の運行"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://hachinohe-kanko.com/10to4",
+          "text": "八戸三社大大祭ポータル"
+        }
+      ]
+    },
+    {
       "id": 1002,
       "category": "matsuri",
       "startDate": "2027-08-03",
@@ -134,6 +103,27 @@
         {
           "url": "https://www.kantou.gr.jp/",
           "text": "秋田竿燈まつり 公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 1018,
+      "category": "matsuri",
+      "startDate": "2027-08-01",
+      "endDate": "2027-08-04",
+      "lat": 39.7013,
+      "lng": 141.1544,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/morioka_sansa/pict1.jpg",
+          "caption": "和太鼓の大群舞"
+        }
+      ],
+      "links": [
+        {
+          "url": "http://www.sansaodori.jp/",
+          "text": "盛岡さんさ踊り 公式サイト"
         }
       ]
     },
@@ -180,6 +170,111 @@
       ]
     },
     {
+      "id": 1013,
+      "category": "matsuri",
+      "startDate": "2027-10-09",
+      "endDate": "2027-10-10",
+      "lat": 36.1455,
+      "lng": 137.257,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/takayama_autumn/pict1.jpg",
+          "caption": "秋の高山祭 宵祭"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.hidatakayama.or.jp/",
+          "text": "飛騨高山観光公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 1012,
+      "category": "matsuri",
+      "startDate": "2027-04-14",
+      "endDate": "2027-04-15",
+      "lat": 36.1424,
+      "lng": 137.258,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/takayama_spring/pict1.jpg",
+          "caption": "春の高山祭 屋台引き揃え"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.hidatakayama.or.jp/",
+          "text": "飛騨高山観光公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 1014,
+      "category": "matsuri",
+      "startDate": "2027-12-02",
+      "endDate": "2027-12-03",
+      "lat": 35.9991,
+      "lng": 139.0858,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/chichibu_yomatsuri/pict1.jpg",
+          "caption": "秩父夜祭 笠鉾・屋台と花火"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.chichibuji.gr.jp/event/yomatsuri/",
+          "text": "秩父観光協会 秩父夜祭"
+        }
+      ]
+    },
+    {
+      "id": 1011,
+      "category": "matsuri",
+      "startDate": "2027-05-14",
+      "endDate": "2027-05-16",
+      "lat": 35.7148,
+      "lng": 139.7967,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/asakusa_sanja/pict1.jpg",
+          "caption": "本社神輿担ぎ出し"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.asakusajinja.jp/sanjamatsuri/",
+          "text": "浅草神社 三社祭"
+        }
+      ]
+    },
+    {
+      "id": 1020,
+      "category": "matsuri",
+      "startDate": "2027-10-22",
+      "endDate": "2027-10-22",
+      "lat": 35.0314,
+      "lng": 135.7594,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/kyoto_jidai/pict1.jpg",
+          "caption": "歴史風俗行列"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://heianjingu.or.jp/",
+          "text": "平安神宮 時代祭案内"
+        }
+      ]
+    },
+    {
       "id": 1005,
       "category": "matsuri",
       "startDate": "2027-07-01",
@@ -197,6 +292,48 @@
         {
           "url": "http://www.gionmatsuri.or.jp/",
           "text": "祇園祭山鉾連合会 公式サイト"
+        }
+      ]
+    },
+    {
+      "id": 1015,
+      "category": "matsuri",
+      "startDate": "2027-10-02",
+      "endDate": "2027-10-03",
+      "lat": 34.9723,
+      "lng": 138.3892,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/kishiwada_danjiri/pict1.jpg",
+          "caption": "やりまわしの迫力"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.city.kishiwada.osaka.jp/site/danjiri/",
+          "text": "岸和田市 だんじり祭案内"
+        }
+      ]
+    },
+    {
+      "id": 1019,
+      "category": "matsuri",
+      "startDate": "2027-10-14",
+      "endDate": "2027-10-15",
+      "lat": 34.7797,
+      "lng": 134.6853,
+      "updatedAt": "2026-09-15 13:00",
+      "photos": [
+        {
+          "url": "picture/matsuri/nada_kenka/pict1.jpg",
+          "caption": "屋台の激しいぶつけ合い"
+        }
+      ],
+      "links": [
+        {
+          "url": "http://www.nada-kenkamatsuri.jp/",
+          "text": "灘のけんか祭り 公式サイト"
         }
       ]
     },
@@ -243,23 +380,31 @@
       ]
     },
     {
-      "id": 1008,
+      "id": 1789106389629,
       "category": "matsuri",
-      "startDate": "2027-08-09",
-      "endDate": "2027-08-12",
-      "lat": 33.5597,
-      "lng": 133.5311,
-      "updatedAt": "2026-09-15 13:00",
+      "startDate": "2027-05-03",
+      "endDate": "2027-05-04",
+      "lat": 33.5990204,
+      "lng": 130.418847,
+      "updatedAt": "2026-09-15 15:55",
       "photos": [
         {
-          "url": "picture/matsuri/kochi_yosakoi/pict1.jpg",
-          "caption": "鳴子を鳴らす鳴子踊り"
+          "url": "picture/matsuri/hakata/pict1.jpg",
+          "caption": "博多どんたく どんたく隊パレード"
+        },
+        {
+          "url": "picture/matsuri/hakata/pict2.jpg",
+          "caption": ""
+        },
+        {
+          "url": "picture/matsuri/hakata/pict3.jpg",
+          "caption": ""
         }
       ],
       "links": [
         {
-          "url": "http://www.cciweb.or.jp/kochi/yosakoiweb/",
-          "text": "よさこい祭 公式Webサイト"
+          "url": "https://www.dontaku.fukuoka.jp/",
+          "text": "博多どんたく港まつり公式サイト"
         }
       ]
     },
@@ -285,128 +430,23 @@
       ]
     },
     {
-      "id": 1010,
+      "id": 1008,
       "category": "matsuri",
-      "startDate": "2027-10-07",
-      "endDate": "2027-10-09",
-      "lat": 32.7448,
-      "lng": 129.8737,
+      "startDate": "2027-08-09",
+      "endDate": "2027-08-12",
+      "lat": 33.5597,
+      "lng": 133.5311,
       "updatedAt": "2026-09-15 13:00",
       "photos": [
         {
-          "url": "picture/matsuri/nagasaki_kunchi/pict1.jpg",
-          "caption": "龍踊（じゃおどり）"
+          "url": "picture/matsuri/kochi_yosakoi/pict1.jpg",
+          "caption": "鳴子を鳴らす鳴子踊り"
         }
       ],
       "links": [
         {
-          "url": "nagasakikunchi.jp",
-          "text": "長崎くんち 公式サイト"
-        }
-      ]
-    },
-    {
-      "id": 1011,
-      "category": "matsuri",
-      "startDate": "2027-05-14",
-      "endDate": "2027-05-16",
-      "lat": 35.7148,
-      "lng": 139.7967,
-      "updatedAt": "2026-09-15 13:00",
-      "photos": [
-        {
-          "url": "picture/matsuri/asakusa_sanja/pict1.jpg",
-          "caption": "本社神輿担ぎ出し"
-        }
-      ],
-      "links": [
-        {
-          "url": "https://www.asakusajinja.jp/sanjamatsuri/",
-          "text": "浅草神社 三社祭"
-        }
-      ]
-    },
-    {
-      "id": 1012,
-      "category": "matsuri",
-      "startDate": "2027-04-14",
-      "endDate": "2027-04-15",
-      "lat": 36.1424,
-      "lng": 137.258,
-      "updatedAt": "2026-09-15 13:00",
-      "photos": [
-        {
-          "url": "picture/matsuri/takayama_spring/pict1.jpg",
-          "caption": "春の高山祭 屋台引き揃え"
-        }
-      ],
-      "links": [
-        {
-          "url": "https://www.hidatakayama.or.jp/",
-          "text": "飛騨高山観光公式サイト"
-        }
-      ]
-    },
-    {
-      "id": 1013,
-      "category": "matsuri",
-      "startDate": "2027-10-09",
-      "endDate": "2027-10-10",
-      "lat": 36.1455,
-      "lng": 137.257,
-      "updatedAt": "2026-09-15 13:00",
-      "photos": [
-        {
-          "url": "picture/matsuri/takayama_autumn/pict1.jpg",
-          "caption": "秋の高山祭 宵祭"
-        }
-      ],
-      "links": [
-        {
-          "url": "https://www.hidatakayama.or.jp/",
-          "text": "飛騨高山観光公式サイト"
-        }
-      ]
-    },
-    {
-      "id": 1014,
-      "category": "matsuri",
-      "startDate": "2027-12-02",
-      "endDate": "2027-12-03",
-      "lat": 35.9991,
-      "lng": 139.0858,
-      "updatedAt": "2026-09-15 13:00",
-      "photos": [
-        {
-          "url": "picture/matsuri/chichibu_yomatsuri/pict1.jpg",
-          "caption": "秩父夜祭 笠鉾・屋台と花火"
-        }
-      ],
-      "links": [
-        {
-          "url": "https://www.chichibuji.gr.jp/event/yomatsuri/",
-          "text": "秩父観光協会 秩父夜祭"
-        }
-      ]
-    },
-    {
-      "id": 1015,
-      "category": "matsuri",
-      "startDate": "2027-10-02",
-      "endDate": "2027-10-03",
-      "lat": 34.9723,
-      "lng": 138.3892,
-      "updatedAt": "2026-09-15 13:00",
-      "photos": [
-        {
-          "url": "picture/matsuri/kishiwada_danjiri/pict1.jpg",
-          "caption": "やりまわしの迫力"
-        }
-      ],
-      "links": [
-        {
-          "url": "https://www.city.kishiwada.osaka.jp/site/danjiri/",
-          "text": "岸和田市 だんじり祭案内"
+          "url": "http://www.cciweb.or.jp/kochi/yosakoiweb/",
+          "text": "よさこい祭 公式Webサイト"
         }
       ]
     },
@@ -432,88 +472,55 @@
       ]
     },
     {
-      "id": 1017,
+      "id": 1010,
       "category": "matsuri",
-      "startDate": "2027-08-01",
-      "endDate": "2027-08-04",
-      "lat": 40.509,
-      "lng": 141.4883,
+      "startDate": "2027-10-07",
+      "endDate": "2027-10-09",
+      "lat": 32.7448,
+      "lng": 129.8737,
       "updatedAt": "2026-09-15 13:00",
       "photos": [
         {
-          "url": "picture/matsuri/hachinohe_sansa/pict1.jpg",
-          "caption": "豪華絢爛な山車の運行"
+          "url": "picture/matsuri/nagasaki_kunchi/pict1.jpg",
+          "caption": "龍踊（じゃおどり）"
         }
       ],
       "links": [
         {
-          "url": "https://hachinohe-kanko.com/10to4",
-          "text": "八戸三社大大祭ポータル"
+          "url": "nagasakikunchi.jp",
+          "text": "長崎くんち 公式サイト"
         }
       ]
     },
     {
-      "id": 1018,
-      "category": "matsuri",
-      "startDate": "2027-08-01",
-      "endDate": "2027-08-04",
-      "lat": 39.7013,
-      "lng": 141.1544,
-      "updatedAt": "2026-09-15 13:00",
+      "id": 1789104657141,
+      "category": "spring",
+      "startDate": "2027-05-03",
+      "endDate": "2027-05-05",
+      "lat": 34.7109786,
+      "lng": 137.7259431,
+      "updatedAt": "2026-10-06 05:52",
       "photos": [
         {
-          "url": "picture/matsuri/morioka_sansa/pict1.jpg",
-          "caption": "和太鼓の大群舞"
+          "url": "picture/matsuri/hamamatsu/pict1.jpg",
+          "caption": "浜松まつり 大凧揚げ"
+        },
+        {
+          "url": "picture/matsuri/hamamatsu/pict2.jpg",
+          "caption": "御殿屋台引き回し"
+        },
+        {
+          "url": "picture/matsuri/hamamatsu/pict3.jpg",
+          "caption": ""
         }
       ],
       "links": [
         {
-          "url": "http://www.sansaodori.jp/",
-          "text": "盛岡さんさ踊り 公式サイト"
-        }
-      ]
-    },
-    {
-      "id": 1019,
-      "category": "matsuri",
-      "startDate": "2027-10-14",
-      "endDate": "2027-10-15",
-      "lat": 34.7797,
-      "lng": 134.6853,
-      "updatedAt": "2026-09-15 13:00",
-      "photos": [
-        {
-          "url": "picture/matsuri/nada_kenka/pict1.jpg",
-          "caption": "屋台の激しいぶつけ合い"
+          "text": "Offitial site",
+          "url": "https://hamamatsu-daisuki.net/matsuri/"
         }
       ],
-      "links": [
-        {
-          "url": "http://www.nada-kenkamatsuri.jp/",
-          "text": "灘のけんか祭り 公式サイト"
-        }
-      ]
-    },
-    {
-      "id": 1020,
-      "category": "matsuri",
-      "startDate": "2027-10-22",
-      "endDate": "2027-10-22",
-      "lat": 35.0314,
-      "lng": 135.7594,
-      "updatedAt": "2026-09-15 13:00",
-      "photos": [
-        {
-          "url": "picture/matsuri/kyoto_jidai/pict1.jpg",
-          "caption": "歴史風俗行列"
-        }
-      ],
-      "links": [
-        {
-          "url": "https://heianjingu.or.jp/",
-          "text": "平安神宮 時代祭案内"
-        }
-      ]
+      "consultUrl": "https://fujiair.quicktrip.jp/buy/reservation?salesTicketId=3367"
     }
   ],
   "spotContentI18n": {
@@ -1344,38 +1351,48 @@
     "1789182250991": {
       "ja": {
         "title": "さっぽろ雪まつり",
-        "location": "北海道札幌市",
-        "desc": "大通公園を中心に迫力ある大雪像や氷彫刻が並ぶ、日本を代表する冬の世界的イベントです。"
+        "location": "北海道札幌市大通公園",
+        "desc": "札幌雪まつりは、毎年2月に北海道札幌市で開催される、日本を代表する冬のイベントです。大通公園などに巨大な雪像や氷像が並び、幻想的な冬の景観を楽しめます。国内外から多くの観光客が訪れる、北海道を代表する祭りです。"
       },
       "en": {
         "title": "Sapporo Snow Festival",
-        "location": "Sapporo City, Hokkaido",
-        "desc": "Japan's world-famous winter event featuring massive snow sculptures and ice carvings in Odori Park."
+        "location": "Odori Park, Sapporo, Hokkaido",
+        "desc": "The Sapporo Snow Festival is a winter event representing Japan, held every February in Sapporo, Hokkaido. Giant snow and ice sculptures are lined up in Odori Park and other places, and you can enjoy a fantastic winter landscape. It is a festival that represents Hokkaido and is visited by many tourists from Japan and abroad."
       },
       "zh-TW": {
         "title": "札幌冰雪節",
-        "location": "北海道札幌市",
-        "desc": "以大通公園為中心，展示壯觀的大型雪雕與冰雕，為日本代表性的冬季世界級盛會。"
+        "location": "大通公園, 札幌, 北海道",
+        "desc": "札幌冰雪節是代表日本的冬季活動，每年二月在北海道札幌舉行。在大通公園等地，巨大的冰雪雕塑鱗次櫛比，可以欣賞夢幻般的冬季景觀。這是北海道的代表性祭典，吸引了許多國內外遊客前來參觀。"
       },
       "zh-CN": {
         "title": "札幌冰雪节",
-        "location": "北海道札幌市",
-        "desc": "以大通公园为中心，展示壮观的大型雪雕与冰雕，为日本代表性的冬季世界级盛会。"
+        "location": "大通公园, 札幌, 北海道",
+        "desc": "札幌冰雪节是代表日本的冬季活动，每年二月在北海道札幌举行。在大通公园等地，巨大的冰雪雕塑鳞次栉比，可以欣赏到梦幻般的冬季景观。这是北海道的代表性祭典，吸引了众多国内外游客前来参观。"
       },
       "ko": {
-        "title": "삿포로 눈축제",
-        "location": "홋카이도 삿포로시",
-        "desc": "오도리 공원을 중심으로 거대한 눈조각과 얼음 조각이 늘어서는 세계적인 겨울 축제입니다."
+        "title": "삿포로 눈 축제",
+        "location": "홋카이도 삿포로시 오도리 공원",
+        "desc": "삿포로 눈 축제는, 매년 2월에 홋카이도 삿포로시에서 개최되는, 일본을 대표하는 겨울의 이벤트입니다. 오도리 공원 등에 거대한 설상과 빙상이 늘어서 환상적인 겨울 경관을 즐길 수 있습니다. 국내외에서 많은 관광객이 방문하는 홋카이도를 대표하는 축제입니다."
       },
       "th": {
         "title": "เทศกาลหิมะซัปโปโร",
-        "location": "เมืองซัปโปโร ฮอกไกโด",
-        "desc": "เทศกาลฤดูหนาวระดับโลกของญี่ปุ่น จัดแสดงประติมากรรมหิมะและน้ำแข็งขนาดใหญ่ที่สวนโอโดริ"
+        "location": "สวนโอโดริ ซัปโปโร ฮอกไกโด",
+        "desc": "เทศกาลหิมะซัปโปโรเป็นงานฤดูหนาวที่เป็นตัวแทนของประเทศญี่ปุ่น ซึ่งจัดขึ้นทุกเดือนกุมภาพันธ์ที่เมืองซัปโปโร ฮอกไกโด ประติมากรรมหิมะและน้ำแข็งขนาดยักษ์ตั้งเรียงรายอยู่ในสวนโอโดริและสถานที่อื่นๆ และคุณสามารถเพลิดเพลินกับภูมิทัศน์ฤดูหนาวที่น่าอัศจรรย์ได้ เป็นเทศกาลที่เป็นตัวแทนของฮอกไกโดและมีนักท่องเที่ยวจำนวนมากจากญี่ปุ่นและต่างประเทศมาเยี่ยมชม"
       },
       "id": {
         "title": "Festival Salju Sapporo",
         "location": "Kota Sapporo, Hokkaido",
-        "desc": "Acara musim dingin terkenal di dunia yang menampilkan patung salju raksasa di Taman Odori."
+        "desc": "Festival Salju Sapporo merupakan acara musim dingin mewakili Jepang yang diadakan setiap bulan Februari di Sapporo, Hokkaido. Patung salju dan es raksasa berjejer di Taman Odori dan tempat lainnya, dan Anda dapat menikmati pemandangan musim dingin yang fantastis. Ini adalah festival yang mewakili Hokkaido dan banyak dikunjungi wisatawan dari Jepang dan luar negeri."
+      },
+      "vi": {
+        "title": "Lễ hội tuyết Sapporo",
+        "location": "Công viên Odori, Sapporo, Hokkaido",
+        "desc": "Lễ hội tuyết Sapporo là một sự kiện mùa đông đại diện cho Nhật Bản, được tổ chức vào tháng 2 hàng năm tại Sapporo, Hokkaido. Các tác phẩm điêu khắc băng và tuyết khổng lồ được xếp hàng ở Công viên Odori và những nơi khác, giúp bạn có thể thưởng thức phong cảnh mùa đông tuyệt vời. Đây là lễ hội đại diện cho Hokkaido và được nhiều du khách trong và ngoài nước đến tham quan."
+      },
+      "es": {
+        "title": "Festival de la nieve de Sapporo",
+        "location": "Parque Odori, Sapporo, Hokkaido",
+        "desc": "El Festival de la Nieve de Sapporo es un evento invernal que representa a Japón y se celebra cada mes de febrero en Sapporo, Hokkaido. En el parque Odori y en otros lugares se alinean esculturas gigantes de nieve y hielo, y podrás disfrutar de un fantástico paisaje invernal. Es un festival que representa a Hokkaido y es visitado por muchos turistas de Japón y del extranjero."
       }
     }
   }

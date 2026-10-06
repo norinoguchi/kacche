@@ -15,7 +15,9 @@
     "close": "閉じる",
     "photosTitle": "📸 写真ギャラリー （クリックで拡大表示）",
     "linksTitle": "🔗 関連リンク",
-    "weekdays": ["日", "月", "火", "水", "木", "金", "土"]
+    "weekdays": ["日", "月", "火", "水", "木", "金", "土"],
+    "actionTitle": "チケット・ショップ",
+    "actionDesc": "公式チケットの購入や関連グッズはこちらからご確認ください。"
   },
   "en": {
     "navMap": "Map",
@@ -33,7 +35,9 @@
     "close": "Close",
     "photosTitle": "📸 Photo Gallery (Click to enlarge)",
     "linksTitle": "🔗 Related Links",
-    "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "actionTitle": "Tickets & Shop",
+    "actionDesc": "Check here to purchase official tickets and related goods."
   },
   "zh-TW": {
     "navMap": "地圖",
@@ -51,7 +55,9 @@
     "close": "關閉",
     "photosTitle": "📸 照片相册（點擊放大）",
     "linksTitle": "🔗 相關連結",
-    "weekdays": ["日", "一", "二", "三", "四", "五", "六"]
+    "weekdays": ["日", "一", "二", "三", "四", "五", "六"],
+    "actionTitle": "門票與商店",
+    "actionDesc": "請點擊此處購買官方門票及相關商品。"
   },
   "zh-CN": {
     "navMap": "地图",
@@ -69,7 +75,9 @@
     "close": "关闭",
     "photosTitle": "📸 照片相册（点击放大）",
     "linksTitle": "🔗 相关链接",
-    "weekdays": ["日", "一", "二", "三", "四", "五", "六"]
+    "weekdays": ["日", "一", "二", "三", "四", "五", "六"],
+    "actionTitle": "门票与商店",
+    "actionDesc": "请点击此处购买官方门票及相关商品。"
   },
   "ko": {
     "navMap": "지도",
@@ -79,7 +87,7 @@
     "catSpring": "🌸 봄 (3-5월)",
     "catSummer": "🌿 여름 (6-8월)",
     "catAutumn": "🍁 가을 (9-11월)",
-    "catWinter": "❄️ 겨울 (12-2월)",
+    "catWinter": "❄️️ 겨울 (12-2월)",
     "searchPlaceholder": "지역명이나 이름으로 검색...",
     "noResult": "일치하는 결과를 찾을 수 없습니다.",
     "detailLink": "상세 정보 및 가이드 문의",
@@ -87,7 +95,9 @@
     "close": "닫기",
     "photosTitle": "📸 포토 갤러리 (클릭하여 확대)",
     "linksTitle": "🔗 관련 링크",
-    "weekdays": ["일", "월", "화", "수", "목", "금", "토"]
+    "weekdays": ["일", "월", "화", "수", "목", "금", "토"],
+    "actionTitle": "티켓 및 상점",
+    "actionDesc": "공식 티켓 구매 및 관련 상품은 여기에서 확인하세요."
   },
   "th": {
     "navMap": "แผนที่",
@@ -105,7 +115,9 @@
     "close": "ปิด",
     "photosTitle": "📸 แกลเลอรี่รูปภาพ (คลิกเพื่อขยาย)",
     "linksTitle": "🔗 ลิงก์ที่เกี่ยวข้อง",
-    "weekdays": ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"]
+    "weekdays": ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+    "actionTitle": "ตั๋วและร้านค้า",
+    "actionDesc": "ตรวจสอบการซื้อตั๋วอย่างเป็นทางการและสินค้าที่เกี่ยวข้องได้ที่นี่"
   },
   "id": {
     "navMap": "Peta",
@@ -123,7 +135,9 @@
     "close": "Tutup",
     "photosTitle": "📸 Galeri Foto (Klik untuk memperbesar)",
     "linksTitle": "🔗 Tautan Terkait",
-    "weekdays": ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"]
+    "weekdays": ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+    "actionTitle": "Tiket & Toko",
+    "actionDesc": "Cek di sini untuk pembelian tiket resmi dan barang terkait."
   },
   "vi": {
     "navMap": "Bản đồ",
@@ -141,7 +155,9 @@
     "close": "Đóng",
     "photosTitle": "📸 Thư viện ảnh (Nhấp để phóng to)",
     "linksTitle": "🔗 Liên kết liên quan",
-    "weekdays": ["CN", "T2", "T3", "T4", "T5", "T6", "T7"]
+    "weekdays": ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+    "actionTitle": "Vé & Cửa hàng",
+    "actionDesc": "Kiểm tra tại đây để mua vé chính thức và các sản phẩm liên quan."
   },
   "es": {
     "navMap": "Mapa",
@@ -159,6 +175,8 @@
     "close": "Cerrar",
     "photosTitle": "📸 Galería de fotos (Haz clic para ampliar)",
     "linksTitle": "🔗 Enlaces relacionados",
-    "weekdays": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
+    "weekdays": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+    "actionTitle": "Entradas y Tienda",
+    "actionDesc": "Consulta aquí para comprar entradas oficiales y productos relacionados."
   }
 }

@@ -1,54 +1,63 @@
 {
+  "categories": [],
   "i18n": {
     "ja": {
-      "title": "Japan Discovery",
-      "subtitle": "祭りマップ",
+      "title": "日本の主要なお祭りマップ",
+      "subtitle": "日本全国で数多く開催されるお祭りのうち、外国人観光客にも人気な代表的なお祭りを紹介する地図です。",
       "listTitle": "スポット一覧",
       "consultTitle": "詳細情報・お問い合わせ",
-      "consultDesc": "観光協会等へお問い合わせください。"
+      "consultDesc": "観光協会等へお問い合わせください。",
+      "categories": []
     },
     "en": {
-      "title": "Japan Discovery",
-      "subtitle": "festival map",
+      "title": "Japan's major festival map",
+      "subtitle": "This is a map that introduces the most popular festivals among the many festivals held throughout Japan that are also popular with foreign tourists.",
       "listTitle": "スポット一覧",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "zh-TW": {
-      "title": "Japan Discovery",
-      "subtitle": "節日地圖",
+      "title": "日本主要祭典地圖",
+      "subtitle": "這是一張地圖，介紹了日本各地舉辦的眾多節日中最受歡迎的節日，這些節日也深受外國遊客的歡迎。",
       "listTitle": "スポット一覧",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "zh-CN": {
-      "title": "Japan Discovery",
-      "subtitle": "节日地图",
+      "title": "日本主要祭典地图",
+      "subtitle": "这是一张地图，介绍了日本各地举办的众多节日中最受欢迎的节日，这些节日也深受外国游客的欢迎。",
       "listTitle": "スポット一覧",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "ko": {
-      "title": "Japan Discovery",
-      "subtitle": "축제지도",
+      "title": "일본의 주요 축제지도",
+      "subtitle": "일본 전국에서 많이 개최되는 축제 중, 외국인 관광객에게도 인기 있는 대표적인 축제를 소개하는 지도입니다.",
       "listTitle": "スポット一覧",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "th": {
-      "title": "Japan Discovery",
-      "subtitle": "แผนที่เทศกาล",
+      "title": "แผนที่เทศกาลสำคัญของญี่ปุ่น",
+      "subtitle": "แผนที่นี้เป็นแผนที่แนะนำเทศกาลที่ได้รับความนิยมมากที่สุดในบรรดาเทศกาลต่างๆ ที่จัดขึ้นทั่วประเทศญี่ปุ่นซึ่งได้รับความนิยมจากนักท่องเที่ยวชาวต่างชาติเช่นกัน",
       "listTitle": "スポット一覧",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "id": {
-      "title": "Japan Discovery",
-      "subtitle": "peta festival",
+      "title": "Peta festival utama Jepang",
+      "subtitle": "Ini adalah peta yang memperkenalkan festival terpopuler di antara sekian banyak festival yang diadakan di seluruh Jepang yang juga populer di kalangan turis asing.",
       "listTitle": "スポット一覧",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
+    },
+    "vi": {
+      "title": "Bản đồ lễ hội lớn của Nhật Bản",
+      "subtitle": "Đây là bản đồ giới thiệu những lễ hội nổi tiếng nhất trong số rất nhiều lễ hội được tổ chức trên khắp Nhật Bản cũng được du khách nước ngoài yêu thích."
+    },
+    "es": {
+      "title": "El mapa de los principales festivales de Japón",
+      "subtitle": "Este es un mapa que presenta los festivales más populares entre los muchos festivales que se celebran en todo Japón y que también son populares entre los turistas extranjeros."
     }
-  },
-  "categories": []
+  }
 }

@@ -65,18 +65,20 @@
         </div>
     </header>
 
+
     <!-- Main Table -->
     <main class="flex-1 overflow-y-auto p-4 sm:p-6 max-w-7xl mx-auto w-full">
         <div class="bg-slateCard/60 border border-slate-800 rounded-2xl overflow-x-auto shadow-xl">
-            <table class="w-full text-left border-collapse min-w-[750px]">
+            <table class="w-full text-left border-collapse min-w-[850px]">
                 <thead>
                     <tr class="bg-slate-900/90 text-xs text-slate-400 border-b border-slate-800 font-semibold select-none">
-                        <th class="p-3 sm:p-4">通し番号</th>
-                        <th class="p-3 sm:p-4">カテゴリー</th>
+                        <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('id')">通し番号 <span class="text-[10px] text-slate-500">↕</span></th>
+                        <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('category')">カテゴリー <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4">タイトル (日本語)</th>
                         <th class="p-3 sm:p-4">エリア・開催期間</th>
-                        <th class="p-3 sm:p-4">緯度 / 経度</th>
-                        <th class="p-3 sm:p-4">最終更新日</th>
+                        <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('lat')">緯度 <span class="text-[10px] text-slate-500">↕</span></th>
+                        <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('lng')">経度 <span class="text-[10px] text-slate-500">↕</span></th>
+                        <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('updatedAt')">最終更新日 <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4 text-right">アクション</th>
                     </tr>
                 </thead>
@@ -220,6 +222,21 @@
                         <label class="block text-xs font-medium text-slate-300 mb-1">終了日 (YYYY-MM-DD)</label>
                         <input type="date" id="spotEndDate" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
                     </div>
+                </div>
+
+                <!-- 関連リンク設定 -->
+                 <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-2xl space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-xs font-bold text-slate-200">🔗 関連リンク設定</label>
+                        <button type="button" onclick="addLinkField()" class="bg-slate-800 hover:bg-slate-750 text-slate-200 px-2.5 py-1 rounded-lg text-xs border border-slate-700 transition-colors">＋ リンクを追加</button>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">チケット・ECショップ URL（「Go!」ボタンのリンク）</label>
+                        <input type="text" id="spotConsultUrl" placeholder="https://..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono">
+                    </div>
+
+                    <div id="linksContainer" class="space-y-3"></div>
                 </div>
 
                 <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-2xl space-y-3">
@@ -369,6 +386,7 @@
         let pendingMapFiles = {}; // 新規マップファイル保持用
         
         // スポット編集用テンポラリ
+        let currentSpotLinks = [];
         let currentSpotTranslations = {};
         let currentActiveLang = 'ja';
         let currentSpotPhotos = [];
@@ -443,7 +461,7 @@
             const tbody = document.getElementById('adminTableBody');
             const spots = rawData.spots || [];
             if (spots.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-slate-500 text-xs">スポットがまだ登録されていません。「＋ スポット追加」ボタンから登録してください。</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="8" class="p-8 text-center text-slate-500 text-xs">スポットがまだ登録されていません。「＋ スポット追加」ボタンから登録してください。</td></tr>`;
                 return;
             }
 
@@ -454,7 +472,7 @@
 
                 return `
                     <tr class="hover:bg-slate-800/40 border-b border-slate-800/60 last:border-b-0">
-                        <td class="p-3 sm:p-4 font-mono font-bold text-slate-300">#${idx + 1}</td>
+                        <td class="p-3 sm:p-4 font-mono font-bold text-slate-300">#${spot.id}</td>
                         <td class="p-3 sm:p-4">
                             <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-medium">
                                 ${spot.category}
@@ -465,18 +483,66 @@
                             ${ja.location || '---'}
                             <div class="text-[10px] text-slate-500 mt-0.5 font-mono">${spot.startDate || ''}</div>
                         </td>
-                        <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">
-                            ${Number(spot.lat).toFixed(4)}, ${Number(spot.lng).toFixed(4)}
-                        </td>
+                        <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">${Number(spot.lat).toFixed(4)}</td>
+                        <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">${Number(spot.lng).toFixed(4)}</td>
                         <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">${spot.updatedAt || '---'}</td>
-                        <td class="p-3 sm:p-4 text-right space-x-1.5 whitespace-nowrap">
-                            <button onclick="openSpotModalForEdit(${spot.id})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-xs border border-slate-700 transition-colors">編集</button>
+                        <td class="p-3 sm:p-4 text-right space-x-1 whitespace-nowrap">
+                            <button onclick="moveSpot(${idx}, -1)" title="上へ移動" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded text-[10px] border border-slate-700 transition-colors ${idx === 0 ? 'opacity-30 cursor-not-allowed' : ''}" ${idx === 0 ? 'disabled' : ''}>▲</button>
+                            <button onclick="moveSpot(${idx}, 1)" title="下へ移動" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded text-[10px] border border-slate-700 transition-colors ${idx === spots.length - 1 ? 'opacity-30 cursor-not-allowed' : ''}" ${idx === spots.length - 1 ? 'disabled' : ''}>▼</button>
+                            <button onclick="openSpotModalForEdit(${spot.id})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-xs border border-slate-700 transition-colors ml-1">編集</button>
                             <button onclick="deleteSpot(${spot.id})" class="px-2.5 py-1 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white rounded text-xs border border-red-500/30 transition-colors">削除</button>
                         </td>
                     </tr>
                 `;
             }).join('');
         }
+
+        // --- 並べ替え・ソート関連 ---
+        let currentSort = { key: null, asc: true };
+
+        function sortTable(key) {
+            // 同じキーがクリックされたら昇順・降順を切り替え
+            if (currentSort.key === key) {
+                currentSort.asc = !currentSort.asc;
+            } else {
+                currentSort.key = key;
+                currentSort.asc = true;
+            }
+
+            rawData.spots.sort((a, b) => {
+                let valA = a[key];
+                let valB = b[key];
+
+                // 数値として比較する列
+                if (key === 'id' || key === 'lat' || key === 'lng') {
+                    valA = Number(valA) || 0;
+                    valB = Number(valB) || 0;
+                } else {
+                    valA = valA || '';
+                    valB = valB || '';
+                }
+
+                if (valA < valB) return currentSort.asc ? -1 : 1;
+                if (valA > valB) return currentSort.asc ? 1 : -1;
+                return 0;
+            });
+
+            renderTable();
+        }
+
+        // --- 手動の▲▼移動処理 ---
+        function moveSpot(idx, direction) {
+            const newIdx = idx + direction;
+            if (newIdx < 0 || newIdx >= rawData.spots.length) return;
+            
+            // 配列内の要素を入れ替え
+            const temp = rawData.spots[idx];
+            rawData.spots[idx] = rawData.spots[newIdx];
+            rawData.spots[newIdx] = temp;
+            
+            renderTable();
+        }
+
 
         // --- 共通ユーティリティ ---
         async function translateText(text, targetLang) {
@@ -594,6 +660,10 @@
             currentActiveLang = null; // ★追加
             switchLangTab('ja');
             document.getElementById('spotModal').classList.remove('hidden');
+
+            document.getElementById('spotConsultUrl').value = '';
+            currentSpotLinks = [];
+            renderLinksList();
         }
 
         function openSpotModalForEdit(spotId) {
@@ -638,6 +708,12 @@
             currentActiveLang = null; // ★追加
             switchLangTab('ja');
             document.getElementById('spotModal').classList.remove('hidden');
+
+            document.getElementById('spotConsultUrl').value = spot.consultUrl || '';
+            currentSpotLinks = spot.links ? JSON.parse(JSON.stringify(spot.links)) : [];
+            // 古いデータで label が使われている場合を考慮して text に統一
+            currentSpotLinks.forEach(l => { if (l.label && !l.text) l.text = l.label; });
+            renderLinksList();
         }
 
         function closeSpotModal() {
@@ -753,10 +829,47 @@
             renderPhotosList(); 
         }
 
+        // --- リンク管理関連 ---
+        function renderLinksList() {
+            const container = document.getElementById('linksContainer');
+            if (currentSpotLinks.length === 0) {
+                container.innerHTML = `<div class="text-xs text-slate-500 text-center py-2 bg-slate-950/60 rounded-lg border border-slate-800">関連リンクが登録されていません。</div>`;
+                return;
+            }
+
+            container.innerHTML = currentSpotLinks.map((link, idx) => `
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex items-start gap-2 group">
+                    <span class="text-[11px] font-bold text-slate-300 font-mono mt-2">#${idx + 1}</span>
+                    <div class="flex-1 space-y-2">
+                        <input type="text" placeholder="表示テキスト (例: 公式サイト)" value="${link.text || ''}" oninput="currentSpotLinks[${idx}].text = this.value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-xs text-white">
+                        <input type="text" placeholder="URL (https://...)" value="${link.url || ''}" oninput="currentSpotLinks[${idx}].url = this.value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-[11px] text-slate-400 font-mono">
+                    </div>
+                    <button type="button" onclick="removeLinkField(${idx})" class="text-slate-500 hover:text-red-400 text-xs transition-colors p-1 mt-1">✕</button>
+                </div>
+            `).join('');
+        }
+
+        function addLinkField() {
+            currentSpotLinks.push({text: '', url: ''});
+            renderLinksList();
+        }
+
+        function removeLinkField(idx) {
+            currentSpotLinks.splice(idx, 1);
+            renderLinksList();
+        }
+
         // --- データ保存（スポット） ---
         async function saveSpotData() {
             saveCurrentLangInput(); // 現在のタブの内容を確定
-            
+
+
+            const consultUrl = document.getElementById('spotConsultUrl').value.trim();
+            const finalLinks = currentSpotLinks.filter(l => l.text && l.url).map(l => ({
+                text: l.text,
+                url: l.url
+            }));
+
             const spotId = document.getElementById('spotEditId').value;
             const jaData = currentSpotTranslations['ja'];
             const lat = parseFloat(document.getElementById('spotLat').value);
@@ -791,6 +904,8 @@
                         startDate: isSpotMap ? '' : document.getElementById('spotStartDate').value,
                         endDate: isSpotMap ? '' : document.getElementById('spotEndDate').value,
                         photos: finalPhotos,
+                        consultUrl: document.getElementById('spotConsultUrl').value.trim(),
+                        links: currentSpotLinks.filter(l => l.text && l.url).map(l => ({ text: l.text, url: l.url })),
                         updatedAt: nowStr
                     };
                     rawData.spotContentI18n[spotId] = currentSpotTranslations;
@@ -807,7 +922,8 @@
                     startDate: isSpotMap ? '' : document.getElementById('spotStartDate').value,
                     endDate: isSpotMap ? '' : document.getElementById('spotEndDate').value,
                     photos: finalPhotos,
-                    links: [], // とりあえず空
+                    consultUrl: document.getElementById('spotConsultUrl').value.trim(),
+                    links: currentSpotLinks.filter(l => l.text && l.url).map(l => ({ text: l.text, url: l.url })),
                     updatedAt: nowStr
                 });
                 if (!rawData.spotContentI18n) rawData.spotContentI18n = {};
@@ -910,6 +1026,8 @@
             }
 
             toggleEditMapCategories(); // 表示切替
+
+            currentEditMapActiveLang = null; // ★この1行を追加
             switchEditMapLangTab('ja');
             document.getElementById('editMapModal').classList.remove('hidden');
         }
@@ -981,6 +1099,8 @@
         }
 
         function saveCurrentEditMapLangInput() {
+        if (!currentEditMapActiveLang) return; // ★この1行を追加
+
             const lang = currentEditMapActiveLang;
             if (!currentEditMapConfigI18n[lang]) currentEditMapConfigI18n[lang] = {};
             

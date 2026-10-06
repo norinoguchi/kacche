@@ -166,6 +166,31 @@
         </div>
     </div>
 
+    <!-- Lightbox (Slideshow) Modal -->
+    <div id="lightboxModal" class="fixed inset-0 z-[60] bg-black/95 flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-4 sm:top-6 right-4 sm:right-6 text-slate-300 hover:text-white z-20 bg-slate-800/50 hover:bg-slate-700/80 p-2 sm:p-2.5 rounded-full backdrop-blur-sm transition-colors">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="relative w-full max-w-5xl h-full max-h-[85vh] flex items-center justify-center p-4">
+            <!-- 2枚の画像を重ねてクロスフェードさせるためのコンテナ -->
+            <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
+                <img id="lightboxImg1" src="" class="absolute max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-opacity duration-700 opacity-100">
+                <img id="lightboxImg2" src="" class="absolute max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-opacity duration-700 opacity-0">
+            </div>
+
+            <div id="lightboxCaption" class="absolute bottom-8 inset-x-0 text-center text-white text-xs sm:text-sm bg-black/60 py-2 px-4 mx-auto w-max max-w-xl rounded-xl backdrop-blur-md hidden z-10"></div>
+            
+            <button onclick="changeLightboxImage(-1)" class="absolute left-2 sm:left-6 text-white bg-slate-800/50 hover:bg-slate-700/80 p-2.5 sm:p-3.5 rounded-full backdrop-blur-sm transition-colors z-20" id="lightboxPrev">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button onclick="changeLightboxImage(1)" class="absolute right-2 sm:right-6 text-white bg-slate-800/50 hover:bg-slate-700/80 p-2.5 sm:p-3.5 rounded-full backdrop-blur-sm transition-colors z-20" id="lightboxNext">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+        <div class="absolute bottom-4 left-0 right-0 text-center text-slate-400 text-xs font-mono tracking-widest z-10" id="lightboxCounter"></div>
+    </div>
+
     <script>
         // --- 状態管理 & データ ---
         let uiText = {}, mapConfig = {}, spotData = { spots: [], spotContentI18n: {} };
@@ -632,9 +657,9 @@
                     <div>
                         <h4 class="text-xs font-bold text-amber-400 mb-2">${getLocalizedUI('photosTitle')}</h4>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                            ${spot.photos.map(p => `
-                                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 h-28 relative group">
-                                    <img src="${p.url}" class="w-full h-full object-cover">
+                            ${spot.photos.map((p, idx) => `
+                                <div onclick="openLightbox(${spot.id},${idx})" class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 h-28 relative group cursor-pointer hover:border-slate-500 transition-colors">
+                                    <img src="${p.url}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                     ${p.caption ? `<div class="absolute inset-x-0 bottom-0 bg-black/70 p-1 text-[9px] text-white truncate">${p.caption}</div>` : ''}
                                 </div>
                             `).join('')}
@@ -642,18 +667,24 @@
                     </div>
                 `;
             }
-            
-            // 外部リンク
+         
+            // 外部リンク (l.label を l.text に変更)
             let linksHtml = '';
             if (spot.links && spot.links.length > 0) {
                 linksHtml = `
                     <div class="space-y-2">
                         <h4 class="text-xs font-bold text-amber-400">${getLocalizedUI('linksTitle')}</h4>
                         <div class="flex flex-wrap gap-2">
-                            ${spot.links.map(l => `<a href="${l.url}" target="_blank" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 transition-colors">${l.label} ↗</a>`).join('')}
+                            ${spot.links.map(l => `<a href="${l.url}" target="_blank" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 transition-colors">${l.text || l.label} ↗</a>`).join('')}
                         </div>
                     </div>
                 `;
+            }
+
+            // お問い合わせボタン (URLが設定されていれば <a> タグにする)
+            let consultBtnHtml = `<button class="${mapConfig.btnTheme} text-white px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap shadow-md transition-transform hover:scale-105">Go！</button>`;
+            if (spot.consultUrl) {
+                consultBtnHtml = `<a href="${spot.consultUrl}" target="_blank" class="${mapConfig.btnTheme} text-white px-5 py-2.5 rounded-xl text-xs font-bold inline-block text-center whitespace-nowrap shadow-md transition-transform hover:scale-105">Go！</a>`;
             }
 
             document.getElementById('modalContent').innerHTML = `
@@ -666,13 +697,17 @@
                 <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800"><p class="text-xs text-slate-300 leading-relaxed">${spot.desc}</p></div>
                 ${photosHtml}
                 ${linksHtml}
-                <div class="bg-amber-600/10 border border-amber-500/30 rounded-xl p-4 flex justify-between items-center">
-                    <div><h4 class="text-xs font-bold text-amber-400">${getLocalizedConfig('consultTitle')}</h4><p class="text-[11px] text-slate-400">${getLocalizedConfig('consultDesc')}</p></div>
-                    <button class="${mapConfig.btnTheme} text-white px-3.5 py-2 rounded-xl text-xs font-medium">${getLocalizedUI('consultBtn')}</button>
+                 <div class="bg-amber-600/10 border border-amber-500/30 rounded-xl p-4 flex justify-between items-center gap-3">
+                    <div>
+                        <h4 class="text-sm font-bold text-amber-400">${getLocalizedUI('actionTitle')}</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">${getLocalizedUI('actionDesc')}</p>
+                    </div>
+                    ${consultBtnHtml}
                 </div>
             `;
             document.getElementById('detailModal').classList.remove('hidden');
         }
+
         function closeDetailModal() { document.getElementById('detailModal').classList.add('hidden'); }
 
         // カレンダー月移動
@@ -744,6 +779,127 @@
             document.getElementById('searchClearBtn')?.classList.add('hidden');
             renderCurrentView();
         }
+
+        // --- 写真スライドショー (Lightbox / オーバーラップディゾルブ) ---
+        let lightboxPhotos = [];
+        let currentLightboxIndex = 0;
+        let activeImgLayer = 1; // 1または2
+        let slideshowTimer = null;
+
+        function openLightbox(spotId, index) {
+            const rawSpot = (spotData.spots || []).find(s => Number(s.id) === Number(spotId));
+            if (!rawSpot || !rawSpot.photos || rawSpot.photos.length === 0) return;
+            
+            const spot = getLocalizedSpot(rawSpot);
+            lightboxPhotos = spot.photos;
+            currentLightboxIndex = index;
+            
+            activeImgLayer = 1;
+            const img1 = document.getElementById('lightboxImg1');
+            const img2 = document.getElementById('lightboxImg2');
+            
+            img1.src = lightboxPhotos[currentLightboxIndex].url;
+            img1.classList.remove('opacity-0');
+            img1.classList.add('opacity-100');
+            
+            img2.src = '';
+            img2.classList.remove('opacity-100');
+            img2.classList.add('opacity-0');
+
+            updateLightboxText();
+            
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+
+            startSlideshow();
+        }
+
+        function closeLightbox() {
+            stopSlideshow();
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                lightboxPhotos = [];
+            }, 300);
+        }
+
+        function changeLightboxImage(dir, isManual = true) {
+            if (isManual) stopSlideshow(); 
+            
+            currentLightboxIndex += dir;
+            if (currentLightboxIndex < 0) currentLightboxIndex = lightboxPhotos.length - 1;
+            if (currentLightboxIndex >= lightboxPhotos.length) currentLightboxIndex = 0;
+            
+            updateLightboxUI();
+
+            if (isManual) startSlideshow();
+        }
+
+        function updateLightboxUI() {
+            if (!lightboxPhotos || lightboxPhotos.length === 0) return;
+            const photo = lightboxPhotos[currentLightboxIndex];
+            
+            const img1 = document.getElementById('lightboxImg1');
+            const img2 = document.getElementById('lightboxImg2');
+
+            // アクティブなレイヤーを切り替えてクロスフェード（オーバーラップ）
+            if (activeImgLayer === 1) {
+                img2.src = photo.url;
+                img2.onload = () => {
+                    img2.classList.remove('opacity-0');
+                    img2.classList.add('opacity-100');
+                    img1.classList.remove('opacity-100');
+                    img1.classList.add('opacity-0');
+                };
+                activeImgLayer = 2;
+            } else {
+                img1.src = photo.url;
+                img1.onload = () => {
+                    img1.classList.remove('opacity-0');
+                    img1.classList.add('opacity-100');
+                    img2.classList.remove('opacity-100');
+                    img2.classList.add('opacity-0');
+                };
+                activeImgLayer = 1;
+            }
+
+            updateLightboxText();
+        }
+
+        function updateLightboxText() {
+            if (!lightboxPhotos || lightboxPhotos.length === 0) return;
+            const photo = lightboxPhotos[currentLightboxIndex];
+            
+            const captionEl = document.getElementById('lightboxCaption');
+            if (photo.caption) {
+                captionEl.innerText = photo.caption;
+                captionEl.classList.remove('hidden');
+            } else {
+                captionEl.classList.add('hidden');
+            }
+            
+            document.getElementById('lightboxCounter').innerText = `${currentLightboxIndex + 1} / ${lightboxPhotos.length}`;
+            
+            const showArrows = lightboxPhotos.length > 1;
+            document.getElementById('lightboxPrev').style.display = showArrows ? 'block' : 'none';
+            document.getElementById('lightboxNext').style.display = showArrows ? 'block' : 'none';
+        }
+
+        function startSlideshow() {
+            stopSlideshow();
+            if (lightboxPhotos.length > 1) {
+                slideshowTimer = setInterval(() => {
+                    changeLightboxImage(1, false);
+                }, 2000);
+            }
+        }
+
+        function stopSlideshow() {
+            if (slideshowTimer) clearInterval(slideshowTimer);
+        }
+
     </script>
 </body>
 </html>
