@@ -23,10 +23,28 @@
     <!-- Inter & Noto Sans JP Font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
+    <!-- <style>
         body { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
         .hero-gradient {
             background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 50%, #f8fafc 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.15);
+        }
+        .slideshow-img {
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style> -->
+    <style>
+        body { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+        /* 高級感のある落ち着いたダークトーンのヒーロー背景 */
+        .hero-custom-bg {
+            background-color: #0b0f19;
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b0f19 70%);
         }
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,7 +70,7 @@
             </div>
             <div class="min-w-0">
                 <span class="text-base sm:text-xl font-extrabold tracking-tight text-slate-900 block leading-tight truncate">
-                    Japan Discovery
+                    Authentic Japan Guide
                 </span>
                 <span class="text-[10px] sm:text-xs text-blue-600 font-bold font-mono tracking-wider block truncate">MAPS & CALENDAR</span>
             </div>
@@ -81,7 +99,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-gradient border-b border-blue-100/80 pt-12 pb-12 px-4 sm:px-6 text-center">
+    <!-- <section class="hero-gradient border-b border-blue-100/80 pt-12 pb-12 px-4 sm:px-6 text-center">
         <div class="max-w-4xl mx-auto space-y-4">
             <span id="hero-tag" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-700 text-xs font-bold">
                 Discover Genuine Japanese Culture & Local Heritage
@@ -93,212 +111,22 @@
                 Experience Japanese festivals, traditional craft heritage, and genuine local flavors through our interactive maps.
             </p>
         </div>
+    </section> -->
+    <!-- Hero Section -->
+    <section class="hero-custom-bg border-b border-slate-800 pt-16 pb-16 px-4 sm:px-6 text-center text-white">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <h1 id="hero-title" class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                Discover the Authentic Japan
+            </h1>
+            <p id="hero-desc" class="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal">
+                A multilingual guide introducing events to experience genuine Japanese culture and spots to enjoy the hidden charms of various regions across Japan, all through interactive maps and calendars.
+            </p>
+        </div>
     </section>
 
     <!-- Map Portal Grid -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="mapGrid">
-            
-            <!-- <a href="viewer.html?map=matsuri" id="link-event-map" class="order-1 group bg-white border border-slate-200/90 hover:border-blue-500/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col justify-between card-hover">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-matsuri"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">⛩️</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold">
-                                ● Active Map
-                            </span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-1.5" id="card1-title">
-                            Matsuri & Festivals
-                        </h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card1-desc">
-                            Explore historic Shinto festivals, traditional dance, shrine rituals, and seasonal celebrations across Japan.
-                        </p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600 group-hover:bg-blue-50/50 transition-colors">
-                    <span id="card1-btn">Open Map & Calendar →</span>
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </div>
-            </a> -->
-
-            <!-- 2. 花火 (Fireworks Shows) -> viewer.html?map=hanabi へ遷移 -->
-            <!-- <a href="viewer.html?map=hanabi" id="link-fireworks-map" class="order-2 group bg-white border border-slate-200/90 hover:border-purple-500/60 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col justify-between card-hover">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-fireworks"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🎆</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold">
-                                ● Active Map
-                            </span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 group-hover:text-purple-600 transition-colors mb-1.5" id="card2-title">
-                            Fireworks Festivals
-                        </h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card2-desc">
-                            Discover spectacular summer & autumn fireworks displays over rivers, lakes, and oceans.
-                        </p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-purple-600 group-hover:bg-purple-50/50 transition-colors">
-                    <span id="card2-btn">Open Map & Calendar →</span>
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </div>
-            </a> -->
-
-            <!-- 3. 食のイベント -->
-            <!-- <div class="order-3 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-food-event"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🍱</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card3-title">Gourmet & Food Events</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card3-desc">Seasonal seafood fairs, regional food markets, and street food gatherings nationwide.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card3-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
-
-            <!-- 4. お酒のイベント -->
-            <!-- <div class="order-4 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-sake-event"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🍶</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card4-title">Sake & Drink Events</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card4-desc">Japanese Sake tasting fairs, brewery openings, and local craft beer & wine festivals.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card4-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
-
-            <!-- 5. 全国ラーメンマップ -->
-            <!-- <div class="order-7 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-ramen"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🥢</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card5-title">Authentic Ramen Trail</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card5-desc">From rich Tonkotsu in Kyushu to savory Miso in Hokkaido. Discover local ramen houses.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card5-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
-
-            <!-- 6. 全国うなぎ屋マップ -->
-            <!-- <div class="order-9 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-unagi"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🍱</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card6-title">Unagi Specialty Houses</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card6-desc">Exclusively dedicated eel specialty restaurants featuring historic charcoal grilling and secret sauce craftsmanship.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card6-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
-
-            <!-- 7. 全国手打ちそば＆うどんマップ -->
-            <!-- <div class="order-10 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-soba-udon"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🍜</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card7-title">Handmade Soba & Udon</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card7-desc">Authentic buckwheat Soba and Sanuki Udon noodle artisan spots across Japan.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card7-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
-
-            <!-- 8. コミュニティマーケット -->
-            <!-- <div class="order-6 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-market"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🛍️</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card8-title">Community Markets</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card8-desc">Vibrant morning markets, local flea markets, and craft artisan bazaars.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card8-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
-
-            <!-- 9. 全国地域密着寿司屋マップ -->
-            <!-- <div class="order-9 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-sushi"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🍣</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card9-title">Authentic Local Sushi</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card9-desc">Discover neighborhood sushi bars and local harbor Edomae masters cherished by residents.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card9-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
-
-            <!-- 10. 全国 陶器市＆クラフト器市マップ -->
-            <!-- <div class="order-5 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between opacity-85 hover:opacity-100 transition-opacity">
-                <div>
-                    <div class="relative h-44 w-full bg-slate-100 overflow-hidden" id="slideshow-pottery"></div>
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-2xl">🏺</span>
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] font-bold">Coming Soon</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1.5" id="card10-title">Pottery & Craft Vessel Fairs</h2>
-                        <p class="text-xs text-slate-600 leading-relaxed" id="card10-desc">Discover historic pottery markets (Arita, Mashiko, Mino) and artisan glass & craft vessel exhibitions across Japan.</p>
-                    </div>
-                </div>
-                <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span id="card10-btn">Under Development</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div>
-            </div> -->
 
         </div>
     </main>
@@ -339,9 +167,8 @@
 
             if (!portalData.hero) return;
 
-            // 1. Heroセクションの更新
+            // 1. Heroセクションの更新（hero-tagの処理を削除しました）
             const heroTexts = portalData.hero[lang] || portalData.hero['en'];
-            document.getElementById('hero-tag').innerText = heroTexts.tag;
             document.getElementById('hero-title').innerText = heroTexts.title;
             document.getElementById('hero-desc').innerText = heroTexts.desc;
 
@@ -418,441 +245,6 @@
             });
         }
 
-        // let currentLang = 'en';
-
-        // const i18nPortal = {
-        //     en: {
-        //         heroTag: "✨ Genuine Culture & Local Heritage",
-        //         heroTitle: "Discover the Authentic Japan",
-        //         heroDesc: "Experience real festivals, traditional craft heritage, and genuine local flavors through our interactive maps.",
-        //         card1Title: "Matsuri & Festivals",
-        //         card1Desc: "Explore historic Shinto festivals, traditional dance, shrine rituals, and seasonal celebrations across Japan.",
-        //         card1Btn: "Open Map & Calendar →",
-        //         card2Title: "Fireworks Festivals",
-        //         card2Desc: "Discover spectacular summer & autumn fireworks displays over rivers, lakes, and oceans.",
-        //         card2Btn: "Open Map & Calendar →",
-        //         card3Title: "Gourmet & Food Events",
-        //         card3Desc: "Seasonal seafood fairs, regional food markets, and street food gatherings nationwide.",
-        //         card3Btn: "Under Development",
-        //         card4Title: "Sake & Drink Events",
-        //         card4Desc: "Japanese Sake tasting fairs, brewery openings, and local craft beer & wine festivals.",
-        //         card4Btn: "Under Development",
-        //         card5Title: "Authentic Ramen Trail",
-        //         card5Desc: "From rich Tonkotsu in Kyushu to savory Miso in Hokkaido. Discover local ramen houses.",
-        //         card5Btn: "Under Development",
-        //         card6Title: "Unagi Specialty Houses",
-        //         card6Desc: "Exclusively dedicated eel specialty restaurants featuring historic charcoal grilling and secret sauce craftsmanship.",
-        //         card6Btn: "Under Development",
-        //         card7Title: "Handmade Soba & Udon",
-        //         card7Desc: "Authentic buckwheat Soba and Sanuki Udon noodle artisan spots across Japan.",
-        //         card7Btn: "Under Development",
-        //         card8Title: "Community Markets",
-        //         card8Desc: "Vibrant morning markets, local flea markets, and craft artisan bazaars.",
-        //         card8Btn: "Under Development",
-        //         card9Title: "Authentic Local Sushi",
-        //         card9Desc: "Discover neighborhood sushi bars and local harbor Edomae masters cherished by residents.",
-        //         card9Btn: "Under Development",
-        //         card10Title: "Pottery & Craft Vessel Fairs",
-        //         card10Desc: "Discover historic pottery markets (Arita, Mashiko, Mino) and artisan glass & craft vessel exhibitions across Japan.",
-        //         card10Btn: "Under Development"
-        //     },
-        //     ja: {
-        //         heroTag: "✨ 本物の日本文化と地域の伝統",
-        //         heroTitle: "Discover the Authentic Japan",
-        //         heroDesc: "本物の日本文化・伝統祭り・食文化を体感する特選インターナショナルガイドマップ。",
-        //         card1Title: "全国の祭り・神輿マップ",
-        //         card1Desc: "歴史ある神社神事、伝統踊り、熱気あふれる神輿巡行など全国の伝統祭りを網羅。",
-        //         card1Btn: "マップ＆カレンダーを開く →",
-        //         card2Title: "全国花火大会マップ",
-        //         card2Desc: "夜空と水面を彩る全国各地の大花火大会、職人たちの競技花火をマップでチェック。",
-        //         card2Btn: "マップ＆カレンダーを開く →",
-        //         card3Title: "食のイベント・食フェスマップ",
-        //         card3Desc: "旬の海鮮市からB級グルメフェス、地域特産品フェアなど食のイベントを特集。",
-        //         card3Btn: "順次公開予定",
-        //         card4Title: "お酒・日本酒イベントマップ",
-        //         card4Desc: "全国地酒の試飲会、酒蔵開き、クラフトビールや国産ワインのイベント巡り。",
-        //         card4Btn: "順次公開予定",
-        //         card5Title: "全国本格ラーメンマップ",
-        //         card5Desc: "九州の濃厚豚骨から北海道のこだわり味噌まで、地元で愛されるラーメン店を案内。",
-        //         card5Btn: "順次公開予定",
-        //         card6Title: "全国うなぎ屋マップ（専門店限定）",
-        //         card6Desc: "創業数十〜数百年の老舗鰻専門店に限定。伝統の炭火焼きと秘伝タレの職人技を掲載。",
-        //         card6Btn: "順次公開予定",
-        //         card7Title: "手打ちそば＆うどんマップ",
-        //         card7Desc: "職人が打つ本格蕎麦処から本場讃岐うどんの名店まで日本の麺文化を堪能。",
-        //         card7Btn: "順次公開予定",
-        //         card8Title: "コミュニティマーケットマップ",
-        //         card8Desc: "活気ある朝市、蚤の市、クラフト市など地域の人々と触れ合えるマーケット。",
-        //         card8Btn: "順次公開予定",
-        //         card9Title: "地域密着 寿司屋マップ",
-        //         card9Desc: "地元漁港の旬のネタや職人の技を堪能できる、地元で愛される街の寿司処を厳選。",
-        //         card9Btn: "順次公開予定",
-        //         card10Title: "陶器市＆クラフト器市マップ",
-        //         card10Desc: "有田焼・益子焼・美濃焼などの歴史ある陶器市や、ガラス器・工芸品の展示販売会を全国網羅。",
-        //         card10Btn: "順次公開予定"
-        //     },
-        //     "zh-TW": {
-        //         heroTag: "✨ 道地文化與地方傳統",
-        //         heroTitle: "Discover the Authentic Japan",
-        //         heroDesc: "透過互動式地圖，探索最道地的日本文化、傳統祭典、匠人工藝與美食精髓。",
-        //         card1Title: "日本祭典與神輿地圖",
-        //         card1Desc: "輕鬆掌握全日本傳統神社神事、傳統舞蹈、神輿巡境與熱血祭典活動。",
-        //         card1Btn: "開啟地圖與日曆 →",
-        //         card2Title: "全日本花火大會地圖",
-        //         card2Desc: "探索點亮夜空與水面的全日本大相花火大會與煙火職人競技會。",
-        //         card2Btn: "開啟地圖與日曆 →",
-        //         card3Title: "美食節與食文化地圖",
-        //         card3Desc: "品嚐季節海鮮市集、地方特色美食節與在地下町美食盛會。",
-        //         card3Btn: "即將推出",
-        //         card4Title: "日本酒與清酒盛會地圖",
-        //         card4Desc: "全日本地酒品酒會、酒造開放日與在地精釀啤酒葡萄酒盛事。",
-        //         card4Btn: "即將推出",
-        //         card5Title: "全日本道地拉麵地圖",
-        //         card5Desc: "從九州濃郁豚骨到北海道味增拉麵，尋訪在地名店，品嚐拉麵靈魂。",
-        //         card5Btn: "即將推出",
-        //         card6Title: "鰻魚專賣店名店地圖",
-        //         card6Desc: "嚴選傳承百年炭烤與秘傳醬汁的日式鰻魚飯專賣名店。",
-        //         card6Btn: "即將推出",
-        //         card7Title: "手打蕎麥與烏龍麵地圖",
-        //         card7Desc: "探索匠人手打蕎麥麵名店與正宗讚岐烏龍麵，感受日本麵食文化。",
-        //         card7Btn: "即將推出",
-        //         card8Title: "在地市集與朝市地圖",
-        //         card8Desc: "熱鬧朝市、跳蚤市場與手作匠人市集，體驗最親切的地方風境。",
-        //         card8Btn: "即將推出",
-        //         card9Title: "在地人最愛壽司店地圖",
-        //         card9Desc: "尋訪在地漁港直行鮮魚與在地江戶前職人壽司名店。",
-        //         card9Btn: "即將推出",
-        //         card10Title: "陶瓷市集與工藝器皿地圖",
-        //         card10Desc: "網羅有田燒、益子燒等歷史悠久的陶瓷市集，以及琉璃玻璃與工藝展銷會。",
-        //         card10Btn: "即將推出"
-        //     },
-        //     "zh-CN": {
-        //         heroTag: "✨ 地道文化与地方传统",
-        //         heroTitle: "Discover the Authentic Japan",
-        //         heroDesc: "通过互动式地图，探索最地道的日本文化、传统祭典、匠人工艺与美食精髓。",
-        //         card1Title: "日本祭典与神舆地图",
-        //         card1Desc: "轻松掌握全日本传统神社神事、传统舞蹈、神舆巡游与热血祭典活动。",
-        //         card1Btn: "打开地图与日历 →",
-        //         card2Title: "全日本花火大会地图",
-        //         card2Desc: "探索点亮夜空与水面的全日本盛大花火大会与烟花职人竞技会。",
-        //         card2Btn: "打开地图与日历 →",
-        //         card3Title: "美食节与食文化地图",
-        //         card3Desc: "品尝季节海鲜市集、地方特色美食节与地道下町美食盛会。",
-        //         card3Btn: "即将推出",
-        //         card4Title: "日本酒与清酒盛会地图",
-        //         card4Desc: "全日本地酒品酒会、酒造开放日与地道精酿啤酒葡萄酒盛事。",
-        //         card4Btn: "即将推出",
-        //         card5Title: "全日本地道拉面地图",
-        //         card5Desc: "从九州浓郁豚骨到北海道味噌拉面，寻访当地名店，品尝拉面灵魂。",
-        //         card5Btn: "即将推出",
-        //         card6Title: "鳗鱼专卖店名店地图",
-        //         card6Desc: "严选传承百年炭烤与秘传酱汁的日式鳗鱼饭专卖名店。",
-        //         card6Btn: "即将推出",
-        //         card7Title: "手打荞麦与乌龙面地图",
-        //         card7Desc: "探索匠人手打荞麦面名店与正宗赞岐乌龙面，感受日本面食文化。",
-        //         card7Btn: "即将推出",
-        //         card8Title: "本地市集与朝市地图",
-        //         card8Desc: "热闹朝市、跳蚤市场与手作匠人市集，体验最亲切的地方风味。",
-        //         card8Btn: "即将推出",
-        //         card9Title: "本地人最爱寿司店地图",
-        //         card9Desc: "寻访当地渔港直供鲜鱼与当地江户前职人寿司名店。",
-        //         card9Btn: "即将推出",
-        //         card10Title: "陶瓷市集与工艺器皿地图",
-        //         card10Desc: "网罗有田烧、益子烧等历史悠久的陶瓷市集，以及琉璃玻璃与工艺展销会。",
-        //         card10Btn: "即将推出"
-        //     },
-        //     ko: {
-        //         heroTag: "✨ 진정한 문화와 지역 유산",
-        //         heroTitle: "Discover the Authentic Japan",
-        //         heroDesc: "인터랙티브 지도를 통해 일본의 진정한 문화, 전통 축제, 장인 정신이 담긴 미식을 체험해보세요.",
-        //         card1Title: "전국 마츠리 & 축제 지도",
-        //         card1Desc: "전통 신사 행사, 전통 무용, 역동적인 가마 행렬 등 전국의 축제를 안내합니다.",
-        //         card1Btn: "지도 & 캘린더 열기 →",
-        //         card2Title: "전국 불꽃놀이 축제 지도",
-        //         card2Desc: "밤하늘을 화려하게 수놓는 전국의 대형 불꽃놀이 대회 축제를 확인하세요.",
-        //         card2Btn: "지도 & 캘린더 열기 →",
-        //         card3Title: "미식 & 푸드 이벤트 지도",
-        //         card3Desc: "제철 해산물 축제부터 지역 먹거리 페스티벌까지 음식 이벤트를 총망라.",
-        //         card3Btn: "공개 예정",
-        //         card4Title: "사케 & 전통주 축제 지도",
-        //         card4Desc: "일본 전국 사케 시음회, 양조장 개방 행사, 크래프트 맥주 페스티벌.",
-        //         card4Btn: "공개 예정",
-        //         card5Title: "전국 라멘 투어 지도",
-        //         card5Desc: "큐슈의 진한 돈코츠부터 홋카이도 미소 라멘까지, 현지인 맛집 라멘 축제.",
-        //         card5Btn: "공개 예정",
-        //         card6Title: "전국 장어 전문점 지도",
-        //         card6Desc: "숯불 장어구이 전문점 한정. 전통 숯불구이와 장인의 비법 소스 명가 탐방.",
-        //         card6Btn: "공개 예정",
-        //         card7Title: "수제 소바 & 우동 지도",
-        //         card7Desc: "장인이 직접 반죽하는 수제 메밀 소바와 정통 사누키 우동 명가 투어.",
-        //         card7Btn: "공개 예정",
-        //         card8Title: "로컬 커뮤니티 마켓 지도",
-        //         card8Desc: "활기찬 아침 시장, 플리마켓, 수공예 장인 마켓 등 현지 체험.",
-        //         card8Btn: "공개 예정",
-        //         card9Title: "지역 밀착 스시 명가 지도",
-        //         card9Desc: "현지 어항 직송 신선한 회와 베테랑 장인의 손맛을 느낄 수 있는 동네 스시 집.",
-        //         card9Btn: "공개 예정",
-        //         card10Title: "도자기 및 공예 식기 시장 지도",
-        //         card10Desc: "아리타, 마시코, 미노 등 역사 깊은 도자기 시장과 유리·공예 식기 전시 판매회.",
-        //         card10Btn: "공개 예정"
-        //     },
-        //     th: {
-        //         heroTag: "✨ วัฒนธรรมแท้และมรดกท้องถิ่น",
-        //         heroTitle: "Discover the Authentic Japan",
-        //         heroDesc: "สัมผัสประสบการณ์วัฒนธรรมญี่ปุ่นที่แท้จริง เทศกาลดั้งเดิม และรสชาติท้องถิ่นผ่านแผนที่แบบโต้ตอบ",
-        //         card1Title: "แผนที่เทศกาลและมัตสึริ",
-        //         card1Desc: "สำรวจเทศกาลดั้งเดิม การเต้นรำพื้นเมือง ขบวนแห่ศาลเจ้าทั่วญี่ปุ่น",
-        //         card1Btn: "เปิดแผนที่และปฏิทิน →",
-        //         card2Title: "แผนที่เทศกาลดอกไม้ไฟ",
-        //         card2Desc: "ชมการแสดงดอกไม้ไฟอันงดงามตระการตาทั่วประเทศต้อนรับฤดูร้อนและฤดูใบไม้ร่วง",
-        //         card2Btn: "เปิดแผนที่และปฏิทิน →",
-        //         card3Title: "แผนที่กิจกรรมอาหารเทศกาล",
-        //         card3Desc: "เทศกาลอาหารทะเลตามฤดูกาล ตลาดอาหารท้องถิ่น และสตรีทฟู้ด",
-        //         card3Btn: "เร็วๆ นี้",
-        //         card4Title: "แผนที่เทศกาลสาเกและเครื่องดื่ม",
-        //         card4Desc: "งานชิมสาเกญี่ปุ่น การเปิดโรงบ่มสาเก และเทศกาลคราฟต์เบียร์",
-        //         card4Btn: "เร็วๆ นี้",
-        //         card5Title: "แผนที่ตะลุยชิมราเมงแท้",
-        //         card5Desc: "จากทงคตสึเข้มข้นในคิวชูถึงมิโซะราเมงในฮอกไกโด ค้นหาร้านราเมงยอดนิยม",
-        //         card5Btn: "เร็วๆ นี้",
-        //         card6Title: "แผนที่ร้านข้าวหน้าปลาไหลเฉพาะทาง",
-        //         card6Desc: "คัดสรรเฉพาะร้านปลาไหลย่างเตาถ่านเก่าแก่และสูตรซอสลับเฉพาะทาง",
-        //         card6Btn: "เร็วๆ นี้",
-        //         card7Title: "แผนที่โซบะและอุด้งทำมือ",
-        //         card7Desc: "ลิ้มลองโซบะทำมือและซานุกิอุด้งต้นตำรับจากช่างฝีมือทั่วญี่ปุ่น",
-        //         card7Btn: "เร็วๆ นี้",
-        //         card8Title: "แผนที่ตลาดชุมชนท้องถิ่น",
-        //         card8Desc: "ตลาดเช้าอันคึกคัก ตลาดนัดสินค้ามือสอง และตลาดงานหัตถกรรม",
-        //         card8Btn: "เร็วๆ นี้",
-        //         card9Title: "แผนที่ร้านซูชิท้องถิ่นดั้งเดิม",
-        //         card9Desc: "ค้นหาร้านซูชิแถบเมืองและท่าเรือท้องถิ่นที่ขวัญใจคนในพื้นที่",
-        //         card9Btn: "เร็วๆ นี้",
-        //         card10Title: "แผนที่ตลาดเครื่องปั้นดินเผาและงานคราฟต์",
-        //         card10Desc: "ค้นพบตลาดเครื่องปั้นดินเผาประวัติศาสตร์ (อาริตะ, มาชิโกะ) และงานแสดงแก้วและภาชนะคราฟต์",
-        //         card10Btn: "เร็วๆ นี้"
-        //     },
-        //     id: {
-        //         heroTag: "✨ Kebudayaan Otentik & Warisan Lokal",
-        //         heroTitle: "Discover the Authentic Japan",
-        //         heroDesc: "Nikmati festival otentik, warisan kerajinan tradisional, dan cita rasa lokal melalui peta interaktif kami.",
-        //         card1Title: "Peta Festival & Matsuri",
-        //         card1Desc: "Jelajahi festival Shinto bersejarah, tarian tradisional, dan parade kuil di seluruh Jepang.",
-        //         card1Btn: "Buka Peta & Kalender →",
-        //         card2Title: "Peta Festival Kembang Api",
-        //         card2Desc: "Temukan pertunjukan kembang api musim panas & gugur yang spektakuler.",
-        //         card2Btn: "Buka Peta & Kalender →",
-        //         card3Title: "Peta Acara Wisata Kuliner",
-        //         card3Desc: "Pameran makanan laut musiman, pasar kuliner regional, dan festival jajanan.",
-        //         card3Btn: "Segera Hadir",
-        //         card4Title: "Peta Acara Sake & Minuman",
-        //         card4Desc: "Acara mencicipi Sake Jepang, pembukaan kilang, dan festival bir kerajinan.",
-        //         card4Btn: "Segera Hadir",
-        //         card5Title: "Peta Otentik Ramen Japan",
-        //         card5Desc: "Dari Tonkotsu khas Kyushu hingga Miso khas Hokkaido. Temukan kedai ramen favorit.",
-        //         card5Btn: "Segera Hadir",
-        //         card6Title: "Peta Kedai Spesialis Unagi",
-        //         card6Desc: "Restoran belut panggang (Unagi) bersejarah spesialis dengan resep saus rahasia turunan.",
-        //         card6Btn: "Segera Hadir",
-        //         card7Title: "Peta Soba & Udon Buatan Tangan",
-        //         card7Desc: "Nikmati Soba gandum hitam otentik dan Udon Sanuki buatan tangan ahli lokal.",
-        //         card7Btn: "Segera Hadir",
-        //         card8Title: "Peta Pasar Komunitas Lokal",
-        //         card8Desc: "Pasar pagi yang meriah, pasar barang bekas, dan bazar kerajinan tangan.",
-        //         card8Btn: "Segera Hadir",
-        //         card9Title: "Peta Kedai Sushi Lokal Otentik",
-        //         card9Desc: "Jelajahi kedai sushi lokal dan koki tradisional Edomae favorit warga setempat.",
-        //         card9Btn: "Segera Hadir",
-        //         card10Title: "Peta Pasar Keramik & Wadah Kerajinan",
-        //         card10Desc: "Jelajahi pasar keramik bersejarah (Arita, Mashiko, Mino) serta pameran kerajinan kaca dan wadah.",
-        //         card10Btn: "Segera Hadir"
-        //     },
-        //     "vi": {
-        //         "heroTag": "✨ Văn hóa đích thực & Di sản địa phương",
-        //         "heroTitle": "Discover the Authentic Japan",
-        //         "heroDesc": "Trải nghiệm các lễ hội đích thực, di sản nghề thủ công truyền thống và hương vị địa phương qua bản đồ tương tác của chúng tôi.",
-        //         "card1Title": "Bản đồ Lễ hội & Matsuri",
-        //         "card1Desc": "Khám phá các lễ hội Thần đạo lịch sử, múa truyền thống, nghi lễ đền thờ và các lễ kỷ niệm theo mùa trên khắp Nhật Bản.",
-        //         "card1Btn": "Mở Bản đồ & Lịch →",
-        //         "card2Title": "Bản đồ Lễ hội Pháo hoa",
-        //         "card2Desc": "Khám phá những màn trình diễn pháo hoa ngoạn mục vào mùa hè và mùa thu trên các dòng sông, hồ và đại dương.",
-        //         "card2Btn": "Mở Bản đồ & Lịch →",
-        //         "card3Title": "Bản đồ Ẩm thực & Lễ hội Đồ ăn",
-        //         "card3Desc": "Hội chợ hải sản theo mùa, chợ thực phẩm khu vực và các tụ điểm ẩm thực đường phố trên toàn quốc.",
-        //         "card3Btn": "Sắp ra mắt",
-        //         "card4Title": "Bản đồ Lễ hội Rượu & Sake",
-        //         "card4Desc": "Hội chợ nếm thử rượu Sake Nhật Bản, lễ mở hầm rượu, và các lễ hội bia thủ công & rượu vang địa phương.",
-        //         "card4Btn": "Sắp ra mắt",
-        //         "card5Title": "Bản đồ Mì Ramen Đích thực",
-        //         "card5Desc": "Từ Tonkotsu đậm đà ở Kyushu đến Miso thơm ngon ở Hokkaido. Khám phá những quán ramen địa phương.",
-        //         "card5Btn": "Sắp ra mắt",
-        //         "card6Title": "Bản đồ Quán Lươn Đặc sản",
-        //         "card6Desc": "Các nhà hàng chuyên về lươn với truyền thống nướng than lịch sử và kỹ thuật nước sốt bí truyền.",
-        //         "card6Btn": "Sắp ra mắt",
-        //         "card7Title": "Bản đồ Mì Soba & Udon Thủ công",
-        //         "card7Desc": "Thưởng thức mì Soba lúa mạch và Sanuki Udon thủ công đích thực từ các nghệ nhân trên khắp Nhật Bản.",
-        //         "card7Btn": "Sắp ra mắt",
-        //         "card8Title": "Bản đồ Chợ Cộng đồng",
-        //         "card8Desc": "Chợ sáng sôi động, chợ đồ cũ địa phương và các khu chợ nghệ nhân thủ công.",
-        //         "card8Btn": "Sắp ra mắt",
-        //         "card9Title": "Bản đồ Quán Sushi Địa phương",
-        //         "card9Desc": "Khám phá các quầy sushi lân cận và các bậc thầy Edomae bến cảng địa phương được cư dân yêu mến.",
-        //         "card9Btn": "Sắp ra mắt",
-        //         "card10Title": "Bản đồ Hội chợ Gốm sứ & Đồ thủ công",
-        //         "card10Desc": "Khám phá các chợ gốm sứ lịch sử (Arita, Mashiko, Mino) và triển lãm đồ thủ công & thủy tinh nghệ thuật.",
-        //         "card10Btn": "Sắp ra mắt"
-        //     },
-        //     "es": {
-        //         "heroTag": "✨ Cultura Auténtica y Herencia Local",
-        //         "heroTitle": "Discover the Authentic Japan",
-        //         "heroDesc": "Experimente festivales reales, herencia de artesanía tradicional y auténticos sabores locales a través de nuestros mapas interactivos.",
-        //         "card1Title": "Mapa de Festivales y Matsuri",
-        //         "card1Desc": "Explore festivales sintoístas históricos, danzas tradicionales, rituales de santuarios y celebraciones estacionales en todo Japón.",
-        //         "card1Btn": "Abrir Mapa y Calendario →",
-        //         "card2Title": "Mapa de Festivales de Fuegos Artificiales",
-        //         "card2Desc": "Descubra espectaculares exhibiciones de fuegos artificiales de verano y otoño sobre ríos, lagos y océanos.",
-        //         "card2Btn": "Abrir Mapa y Calendario →",
-        //         "card3Title": "Mapa de Gastronomía y Eventos Culinarios",
-        //         "card3Desc": "Ferias de mariscos de temporada, mercados de alimentos regionales y reuniones de comida callejera en todo el país.",
-        //         "card3Btn": "Próximamente",
-        //         "card4Title": "Mapa de Eventos de Sake y Bebidas",
-        //         "card4Desc": "Ferias de degustación de sake japonés, apertura de cervecerías y festivales de cerveza artesanal y vino local.",
-        //         "card4Btn": "Próximamente",
-        //         "card5Title": "Mapa de Ramen Auténtico",
-        //         "card5Desc": "Desde el rico Tonkotsu en Kyushu hasta el sabroso Miso en Hokkaido. Descubra las casas locales de ramen.",
-        //         "card5Btn": "Próximamente",
-        //         "card6Title": "Mapa de Restaurantes Especializados en Unagi",
-        //         "card6Desc": "Restaurantes especializados en anguila que destacan por su histórica parrilla al carbón y su salsa secreta artesanal.",
-        //         "card6Btn": "Próximamente",
-        //         "card7Title": "Mapa de Soba y Udon Hechos a Mano",
-        //         "card7Desc": "Lugares de artesanos de auténticos fideos Soba de trigo sarraceno y Sanuki Udon en todo Japón.",
-        //         "card7Btn": "Próximamente",
-        //         "card8Title": "Mapa de Mercados Comunitarios",
-        //         "card8Desc": "Vibrantes mercados matutinos, mercados de pulgas locales y bazares de artesanos.",
-        //         "card8Btn": "Próximamente",
-        //         "card9Title": "Mapa de Sushi Local Auténtico",
-        //         "card9Desc": "Descubra las barras de sushi del vecindario y los maestros de Edomae del puerto local apreciados por los residentes.",
-        //         "card9Btn": "Próximamente",
-        //         "card10Title": "Mapa de Ferias de Cerámica y Artesanía",
-        //         "card10Desc": "Descubra los históricos mercados de cerámica (Arita, Mashiko, Mino) y exposiciones de artesanía en vidrio por todo Japón.",
-        //         "card10Btn": "Próximamente"
-        //     }
-        // };
-
-        // function changeLanguage(lang) {
-        //     currentLang = lang;
-        //     document.getElementById('langSelector').value = lang;
-        //     const t = i18nPortal[lang] || i18nPortal['en'];
-
-        //     document.getElementById('hero-tag').innerText = t.heroTag;
-        //     document.getElementById('hero-title').innerText = t.heroTitle;
-        //     document.getElementById('hero-desc').innerText = t.heroDesc;
-
-        //     for(let i=1; i<=10; i++) {
-        //         if(document.getElementById(`card${i}-title`)) {
-        //             document.getElementById(`card${i}-title`).innerText = t[`card${i}Title`];
-        //             document.getElementById(`card${i}-desc`).innerText = t[`card${i}Desc`];
-        //             document.getElementById(`card${i}-btn`).innerText = t[`card${i}Btn`];
-        //         }
-        //     }
-
-        //     // リンク先URLおよび言語パラメータの更新 (viewer.html へ連動)
-        //     document.getElementById('link-event-map').href = `viewer.html?map=matsuri&lang=${lang}`;
-        //     document.getElementById('link-fireworks-map').href = `viewer.html?map=hanabi&lang=${lang}`;
-        // }
-
-        // // --- スライドショー画像の設定 ---
-        // const slideshowData = {
-        //     'slideshow-matsuri': [
-        //         'img/hamamatsu.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/hakata1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/hakata2.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-fireworks': [
-        //         'img/hanabi1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/hanabi2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/hanabi3.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-food-event': [
-        //         'img/food1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/food2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/food3.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-market': [
-        //         'img/market1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/market2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/market3.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-sake-event': [
-        //         'img/sake1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/sake2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/sake3.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-ramen': [
-        //         'img/ramen1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/ramen2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/ramen3.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-unagi': [
-        //         'img/unagi1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/unagi2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/unagi3.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-soba-udon': [
-        //         'img/soba1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/soba2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/soba4.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-sushi': [
-        //         'img/sushi1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/sushi2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/sushi3.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/sushi4.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ],
-        //     'slideshow-pottery': [
-        //         'img/pottery1.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/pottery2.jpg?w=800&auto=format&fit=crop&q=80',
-        //         'img/pottery3.jpg?w=800&auto=format&fit=crop&q=80'
-        //     ]
-        // };
-
-        // function initSlideshows() {
-        //     Object.keys(slideshowData).forEach(containerId => {
-        //         const container = document.getElementById(containerId);
-        //         const images = slideshowData[containerId];
-        //         if (!container || !images || images.length === 0) return;
-
-        //         images.forEach((src, idx) => {
-        //             const img = document.createElement('img');
-        //             img.src = src;
-        //             img.className = `slideshow-img absolute inset-0 w-full h-full object-cover ${idx === 0 ? 'opacity-100' : 'opacity-0'}`;
-        //             img.onerror = function() {
-        //                 this.src = 'https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=800&auto=format&fit=crop&q=80';
-        //             };
-        //             container.appendChild(img);
-        //         });
-
-        //         if (images.length > 1) {
-        //             let currentIndex = 0;
-        //             setInterval(() => {
-        //                 const imgElements = container.querySelectorAll('.slideshow-img');
-        //                 imgElements[currentIndex].classList.remove('opacity-100');
-        //                 imgElements[currentIndex].classList.add('opacity-0');
-
-        //                 currentIndex = (currentIndex + 1) % imgElements.length;
-
-        //                 imgElements[currentIndex].classList.remove('opacity-0');
-        //                 imgElements[currentIndex].classList.add('opacity-100');
-        //             }, 4500);
-        //         }
-        //     });
-        // }
-
-        // window.addEventListener('DOMContentLoaded', () => {
-        //     const urlParams = new URLSearchParams(window.location.search);
-        //     const langParam = urlParams.get('lang') || 'en';
-        //     changeLanguage(langParam);
-        //     initSlideshows();
-        // });
     </script>
 </body>
 </html>

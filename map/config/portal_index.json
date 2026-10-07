@@ -55,9 +55,9 @@
       "link": "viewer.html?map=matsuri",
       "icon": "⛩️",
       "images": [
-        "img/hamamatsu.jpg?w=800&auto=format&fit=crop&q=80",
-        "img/hakata1.jpg?w=800&auto=format&fit=crop&q=80",
-        "img/hakata2.jpg?w=800&auto=format&fit=crop&q=80"
+        "picture/matsuri/sendai_tanabata/pict1.jpg?w=800&auto=format&fit=crop&q=80",
+        "picture/matsuri/hachinohe_sansa/pict1.jpg?w=800&auto=format&fit=crop&q=80",
+        "picture/matsuri/nebuta/pict3.jpg?w=800&auto=format&fit=crop&q=80"
       ],
       "i18n": {
         "en": { "badge": "● Active Map", "title": "Matsuri & Festivals", "desc": "Explore historic Shinto festivals, traditional dance, shrine rituals, and seasonal celebrations across Japan.", "btn": "Open Map & Calendar →" },
