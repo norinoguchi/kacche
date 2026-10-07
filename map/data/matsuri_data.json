@@ -7,32 +7,37 @@
       "endDate": "2027-02-11",
       "lat": 43.061936,
       "lng": 141.3542924,
-      "updatedAt": "2026-10-06 06:28",
+      "updatedAt": "2026-10-06 08:18",
       "photos": [
         {
           "url": "picture/matsuri/sapporo/pict1.jpg",
-          "caption": ""
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         },
         {
           "url": "picture/matsuri/sapporo/pict2.jpg",
-          "caption": ""
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         },
         {
           "url": "picture/matsuri/sapporo/pict3.jpg",
-          "caption": ""
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         },
         {
           "url": "picture/matsuri/sapporo/pict4.jpg",
-          "caption": ""
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         },
         {
           "url": "picture/matsuri/sapporo/pict5.jpg",
-          "caption": ""
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         },
         {
           "url": "picture/matsuri/sapporo/pict6.jpg",
           "caption": "",
-          "license": ""
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         }
       ],
       "links": [
@@ -45,45 +50,69 @@
     },
     {
       "id": 1001,
-      "category": "matsuri",
+      "category": "spring",
       "startDate": "2027-08-02",
       "endDate": "2027-08-07",
       "lat": 40.8244,
       "lng": 140.74,
-      "updatedAt": "2026-09-15 13:00",
+      "updatedAt": "2026-10-06 08:17",
       "photos": [
         {
-          "url": "picture/matsuri/aomori_nebuta/pict1.jpg",
-          "caption": "大型ねぶたの運行"
+          "url": "picture/matsuri/nebuta/pict1.jpg",
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+        },
+        {
+          "url": "picture/matsuri/nebuta/pict2.jpg",
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+        },
+        {
+          "url": "picture/matsuri/nebuta/pict3.jpg",
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         }
       ],
       "links": [
         {
-          "url": "https://www.nebuta.jp/",
-          "text": "青森ねぶた祭 オフィシャルサイト"
+          "text": "青森ねぶた祭 オフィシャルサイト",
+          "url": "https://www.nebuta.jp/"
         }
-      ]
+      ],
+      "consultUrl": ""
     },
     {
       "id": 1017,
-      "category": "matsuri",
-      "startDate": "2027-08-01",
+      "category": "summer",
+      "startDate": "2027-07-31",
       "endDate": "2027-08-04",
-      "lat": 40.509,
-      "lng": 141.4883,
-      "updatedAt": "2026-09-15 13:00",
+      "lat": 40.5122388,
+      "lng": 141.4882959,
+      "updatedAt": "2026-10-06 08:16",
       "photos": [
         {
           "url": "picture/matsuri/hachinohe_sansa/pict1.jpg",
-          "caption": "豪華絢爛な山車の運行"
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+        },
+        {
+          "url": "picture/matsuri/hachinohe_sansa/pict2.jpg",
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+        },
+        {
+          "url": "picture/matsuri/hachinohe_sansa/pict3.jpg",
+          "caption": "",
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
         }
       ],
       "links": [
         {
-          "url": "https://hachinohe-kanko.com/10to4",
-          "text": "八戸三社大大祭ポータル"
+          "text": "青森県観光情報サイト",
+          "url": "https://aomori-tourism.com/event/detail_28.html"
         }
-      ]
+      ],
+      "consultUrl": ""
     },
     {
       "id": 1002,
@@ -108,45 +137,47 @@
     },
     {
       "id": 1018,
-      "category": "matsuri",
+      "category": "spring",
       "startDate": "2027-08-01",
       "endDate": "2027-08-04",
       "lat": 39.7013,
       "lng": 141.1544,
-      "updatedAt": "2026-09-15 13:00",
+      "updatedAt": "2026-10-06 08:25",
       "photos": [
         {
           "url": "picture/matsuri/morioka_sansa/pict1.jpg",
-          "caption": "和太鼓の大群舞"
+          "caption": ""
         }
       ],
       "links": [
         {
-          "url": "http://www.sansaodori.jp/",
-          "text": "盛岡さんさ踊り 公式サイト"
+          "text": "盛岡さんさ踊り 公式サイト",
+          "url": "http://www.sansaodori.jp/"
         }
-      ]
+      ],
+      "consultUrl": ""
     },
     {
       "id": 1003,
-      "category": "matsuri",
+      "category": "spring",
       "startDate": "2027-08-06",
       "endDate": "2027-08-08",
       "lat": 38.2688,
       "lng": 140.8721,
-      "updatedAt": "2026-09-15 13:00",
+      "updatedAt": "2026-10-06 08:30",
       "photos": [
         {
           "url": "picture/matsuri/sendai_tanabata/pict1.jpg",
-          "caption": "豪華絢爛な笹飾り"
+          "caption": ""
         }
       ],
       "links": [
         {
-          "url": "https://www.sendaitanabata.com/",
-          "text": "仙台七夕まつり 公式サイト"
+          "text": "仙台七夕まつり 公式サイト",
+          "url": "https://www.sendaitanabata.com/"
         }
-      ]
+      ],
+      "consultUrl": ""
     },
     {
       "id": 1004,
@@ -528,37 +559,47 @@
       "ja": {
         "title": "青森ねぶた祭",
         "location": "青森県青森市",
-        "desc": "巨大な武者人形の灯籠「ねぶた」と「ハネト」の躍動的な乱舞が夜を彩る日本屈指の夏祭りです。"
+        "desc": "青森ねぶた祭は、毎年8月2日から7日に青森市で開催される、日本を代表する夏祭りの一つです。巨大な「ねぶた」と呼ばれる人形型の灯籠が街を練り歩き、太鼓や笛、掛け声が祭りを盛り上げます。色鮮やかで迫力あるねぶたと、参加者や観客が一体となる熱気が大きな魅力です。全国から多くの観光客が訪れる、青森を代表する伝統文化です。"
       },
       "en": {
         "title": "Aomori Nebuta Festival",
         "location": "Aomori City, Aomori Prefecture",
-        "desc": "One of Japan's top summer festivals featuring huge illuminated warrior floats and energetic dancers."
+        "desc": "The Aomori Nebuta Festival is one of Japan's most representative summer festivals, held in Aomori City from August 2nd to 7th every year. Giant doll-shaped lanterns called ``Nebuta'' are paraded through the streets, and drums, flutes, and shouts enliven the festival. The big attraction is the colorful and impressive Nebuta festival and the excitement that brings participants and spectators together. It is a traditional culture that represents Aomori and is visited by many tourists from all over the country."
       },
       "zh-TW": {
         "title": "青森睡魔祭",
         "location": "青森縣青森市",
-        "desc": "巨大的武士人形花燈「ねぶた」與跳人「ハネト」的熱情舞動照亮夜空，為日本屈指可數的夏日祭典。"
+        "desc": "青森睡魔祭是日本最具代表性的夏季祭之一，每年8月2日至7日在青森市舉行。被稱為「睡魔」的巨型娃娃形燈籠在街上遊行，鼓聲、笛聲和叫喊聲使節日變得熱鬧起來。最大的吸引力在於色彩繽紛、令人印象深刻的睡魔祭以及將參與者和觀眾聚集在一起的興奮。它是青森縣的代表傳統文化，受到全國各地遊客的青睞。"
       },
       "zh-CN": {
         "title": "青森睡魔祭",
         "location": "青森县青森市",
-        "desc": "巨大的武士人形花灯“ねぶた”与跳人“ハネト”的热情舞动照亮夜空，为日本屈指可数的夏日祭典。"
+        "desc": "青森睡魔祭是日本最具代表性的夏季祭典之一，每年8月2日至7日在青森市举行。被称为“睡魔”的巨型娃娃形灯笼在街道上游行，鼓声、笛声和叫喊声使节日变得热闹起来。最大的吸引力在于色彩缤纷、令人印象深刻的睡魔祭以及将参与者和观众聚集在一起的兴奋。它是青森县的代表传统文化，受到全国各地游客的青睐。"
       },
       "ko": {
         "title": "아오모리 네부타 축제",
         "location": "아오모리현 아오모리시",
-        "desc": "거대한 등불 가마 '네부타'와 '하네토' 무용수들의 역동적인 춤이 밤を 수놓는 대표 여름 축제."
+        "desc": "아오모리 네부타 축제는, 매년 8월 2일부터 7일에 아오모리시에서 개최되는, 일본을 대표하는 여름 축제의 하나입니다. 거대한 「네부타」라고 불리는 인형형의 등롱이 거리를 반죽해, 북과 피리, 걸음 소리가 축제를 북돋웁니다. 선명하고 박력있는 네부타와 참가자와 관객이 일체가되는 열기가 큰 매력입니다. 전국에서 많은 관광객이 방문하는 아오모리를 대표하는 전통 문화입니다."
       },
       "th": {
-        "title": "เทศกาลอาโอโมริ เนบุตะ",
+        "title": "เทศกาลอาโอโมริเนบุตะ",
         "location": "เมืองอาโอโมริ จังหวัดอาโอโมริ",
-        "desc": "หนึ่งในเทศกาลฤดูร้อนที่ยิ่งใหญ่ที่สุด ตระการตาด้วยหุ่นโคมไฟรบขนาดยักษ์และการเต้นรำอันทรงพลัง"
+        "desc": "เทศกาลอาโอโมริเนบุตะเป็นหนึ่งในเทศกาลฤดูร้อนที่เป็นตัวแทนมากที่สุดของญี่ปุ่น ซึ่งจัดขึ้นในเมืองอาโอโมริตั้งแต่วันที่ 2 ถึง 7 สิงหาคมของทุกปี โคมไฟรูปตุ๊กตาขนาดยักษ์ที่เรียกว่า ``เนบุตะ'' จะถูกแห่ไปตามถนน และเสียงกลอง ขลุ่ย และเสียงตะโกนก็ทำให้เทศกาลมีชีวิตชีวา สถานที่ท่องเที่ยวสำคัญคือเทศกาลเนบุตะที่เต็มไปด้วยสีสันและน่าประทับใจ รวมถึงความตื่นเต้นที่นำผู้เข้าร่วมและผู้ชมมารวมตัวกัน เป็นวัฒนธรรมดั้งเดิมที่เป็นตัวแทนของอาโอโมริและมีนักท่องเที่ยวจำนวนมากจากทั่วประเทศมาเยี่ยมชม"
       },
       "id": {
-        "title": "Festival Aomori Nebuta",
+        "title": "Festival Nebuta Aomori",
         "location": "Kota Aomori, Prefektur Aomori",
-        "desc": "Festival musim panas terkemuka dengan lentera prajurit raksasa dan penari yang energik."
+        "desc": "Festival Nebuta Aomori adalah salah satu festival musim panas paling representatif di Jepang, yang diadakan di Kota Aomori dari tanggal 2 hingga 7 Agustus setiap tahun. Lentera raksasa berbentuk boneka yang disebut ``Nebuta'' diarak di jalan-jalan, dan genderang, seruling, serta teriakan memeriahkan festival tersebut. Daya tarik terbesarnya adalah festival Nebuta yang penuh warna dan mengesankan serta kemeriahan yang mempertemukan peserta dan penonton. Ini adalah budaya tradisional yang mewakili Aomori dan dikunjungi oleh banyak wisatawan dari seluruh negeri."
+      },
+      "vi": {
+        "title": "Lễ hội Nebuta Aomori",
+        "location": "Thành phố Aomori, tỉnh Aomori",
+        "desc": "Lễ hội Aomori Nebuta là một trong những lễ hội mùa hè tiêu biểu nhất của Nhật Bản, được tổ chức tại thành phố Aomori từ ngày 2 đến ngày 7 tháng 8 hàng năm. Những chiếc đèn lồng hình con búp bê khổng lồ được gọi là `` Nebuta '' được diễu hành qua các đường phố, cùng với tiếng trống, sáo và tiếng hò reo làm sôi động lễ hội. Điểm thu hút lớn nhất là lễ hội Nebuta đầy màu sắc và ấn tượng cũng như sự phấn khích gắn kết người tham gia và khán giả lại với nhau. Đó là một nền văn hóa truyền thống đại diện cho Aomori và được nhiều khách du lịch từ khắp nơi trên đất nước ghé thăm."
+      },
+      "es": {
+        "title": "Festival Aomori Nebuta",
+        "location": "Ciudad de Aomori, Prefectura de Aomori",
+        "desc": "El Festival Aomori Nebuta es uno de los festivales de verano más representativos de Japón y se celebra en la ciudad de Aomori del 2 al 7 de agosto de cada año. Linternas gigantes con forma de muñeca llamadas \"Nebuta\" desfilan por las calles, y tambores, flautas y gritos amenizan el festival. La gran atracción es el colorido e impresionante festival Nebuta y la emoción que reúne a participantes y espectadores. Es una cultura tradicional que representa a Aomori y es visitada por muchos turistas de todo el país."
       }
     },
     "1002": {
@@ -602,37 +643,47 @@
       "ja": {
         "title": "仙台七夕まつり",
         "location": "宮城県仙台市",
-        "desc": "伊達政宗公の時代から続く伝統行事。アーケード街を埋め尽くす豪華絢爛な笹飾りが美しく揺れます。"
+        "desc": "仙台七夕まつりは、毎年8月6日から8日まで宮城県仙台市で開催される、日本を代表する七夕祭りの一つです。商店街を彩る豪華で色鮮やかな巨大な七夕飾りが最大の見どころ。和紙で作られた華やかな飾りが街を埋め尽くし、幻想的な雰囲気を演出します。多くの観光客が訪れる、仙台の夏を代表する伝統行事です。"
       },
       "en": {
         "title": "Sendai Tanabata Festival",
         "location": "Sendai City, Miyagi Prefecture",
-        "desc": "A historical festival since Lord Date Masamune's era, with colorful paper decorations throughout streets."
+        "desc": "The Sendai Tanabata Festival is one of Japan's most representative Tanabata festivals, held every year from August 6th to 8th in Sendai City, Miyagi Prefecture. The biggest highlight is the huge, gorgeous and colorful Tanabata decorations that decorate the shopping street. Gorgeous decorations made of Japanese paper fill the city, creating a fantastic atmosphere. It is a traditional event that represents summer in Sendai and is visited by many tourists."
       },
       "zh-TW": {
-        "title": "仙台七夕祭",
+        "title": "仙台七夕節",
         "location": "宮城縣仙台市",
-        "desc": "自伊達政宗公時代流傳至今的傳統行事。覆蓋整條商店街的豪華紙竹裝飾極為美豔。"
+        "desc": "仙台七夕祭是日本最具代表性的七夕祭之一，每年8月6日至8日在宮城縣仙台市舉行。最大的亮點是裝飾商店街的巨大、華麗、色彩繽紛的七夕裝飾。整個城市充滿了用和紙製成的華麗裝飾，營造出夢幻般的氛圍。這是代表仙台夏季的傳統活動，吸引了許多遊客前來參觀。"
       },
       "zh-CN": {
-        "title": "仙台七夕祭",
+        "title": "仙台七夕节",
         "location": "宫城县仙台市",
-        "desc": "自伊达政宗公时代流传至今的传统行事。覆盖整条商店街的豪华纸竹装饰极为美艳。"
+        "desc": "仙台七夕祭是日本最具代表性的七夕祭典之一，每年8月6日至8日在宫城县仙台市举行。最大的亮点是装饰商店街的巨大、华丽、色彩缤纷的七夕装饰品。整个城市充满了用和纸制成的华丽装饰，营造出梦幻般的氛围。这是代表仙台夏季的传统活动，吸引了众多游客前来参观。"
       },
       "ko": {
-        "title": "센다이 타나바타 축제",
+        "title": "센다이 칠석 축제",
         "location": "미야기현 센다이시",
-        "desc": "다테 마사무네 시대부터 이어져 온 전통 행사. 상가に 꽉 찬 화려한 대나무 장식이 장관입니다."
+        "desc": "센다이 칠석 축제는, 매년 8월 6일부터 8일까지 미야기현 센다이시에서 개최되는, 일본을 대표하는 칠석 축제의 하나입니다. 상가를 물들이는 호화로운 화려한 거대한 칠석 장식이 최대의 볼거리. 일본 종이로 만든 화려한 장식이 거리를 가득 채워 환상적인 분위기를 연출합니다. 많은 관광객이 방문하는 센다이의 여름을 대표하는 전통 행사입니다."
       },
       "th": {
-        "title": "เทศกาลเซนได ตาบานาตะ",
+        "title": "เทศกาลเซนไดทานาบาตะ",
         "location": "เมืองเซนได จังหวัดมิยางิ",
-        "desc": "ประเพณีประดับตกแต่งกระดาษทำมือหลากสีสันห้อยลงมาจากกระดาษ bamboo ทั่วเมืองอย่างงดงาม"
+        "desc": "เทศกาลเซนไดทานาบาตะเป็นหนึ่งในเทศกาลทานาบาตะที่เป็นตัวแทนมากที่สุดของญี่ปุ่น ซึ่งจัดขึ้นทุกปีตั้งแต่วันที่ 6 ถึง 8 สิงหาคมในเมืองเซนได จังหวัดมิยางิ ไฮไลท์ที่ใหญ่ที่สุดคือการตกแต่งทานาบาตะขนาดใหญ่ สวยงาม และมีสีสันที่ประดับถนนช้อปปิ้ง การตกแต่งอันวิจิตรตระการตาที่ทำจากกระดาษญี่ปุ่นกระจายไปทั่วเมือง ทำให้เกิดบรรยากาศที่น่าอัศจรรย์ เป็นงานประเพณีที่แสดงถึงฤดูร้อนในเซนไดและมีนักท่องเที่ยวจำนวนมากมาเยี่ยมชม"
       },
       "id": {
-        "title": "Festival Sendai Tanabata",
+        "title": "Festival Tanabata Sendai",
         "location": "Kota Sendai, Prefektur Miyagi",
-        "desc": "Tradisi bersejarah sejak zaman Date Masamune, dihiasi ribuan dekorasi kertas warna-warni."
+        "desc": "Festival Tanabata Sendai adalah salah satu festival Tanabata paling representatif di Jepang, diadakan setiap tahun dari tanggal 6 hingga 8 Agustus di Kota Sendai, Prefektur Miyagi. Sorotan terbesarnya adalah dekorasi Tanabata yang besar, cantik, dan penuh warna yang menghiasi jalan perbelanjaan. Dekorasi cantik yang terbuat dari kertas Jepang memenuhi kota, menciptakan suasana yang fantastis. Ini adalah acara tradisional yang mewakili musim panas di Sendai dan banyak dikunjungi wisatawan."
+      },
+      "vi": {
+        "title": "Lễ hội Tanabata Sendai",
+        "location": "Thành phố Sendai, tỉnh Miyagi",
+        "desc": "Lễ hội Tanabata Sendai là một trong những lễ hội Tanabata tiêu biểu nhất của Nhật Bản, được tổ chức hàng năm từ ngày 6 đến ngày 8 tháng 8 tại thành phố Sendai, tỉnh Miyagi. Điểm nổi bật nhất là những đồ trang trí Tanabata khổng lồ, lộng lẫy và đầy màu sắc trang trí cho phố mua sắm. Những đồ trang trí lộng lẫy làm bằng giấy Nhật Bản tràn ngập khắp thành phố, tạo nên một bầu không khí tuyệt vời. Đây là một sự kiện truyền thống tượng trưng cho mùa hè ở Sendai và được nhiều khách du lịch ghé thăm."
+      },
+      "es": {
+        "title": "Festival Tanabata de Sendai",
+        "location": "Ciudad de Sendai, Prefectura de Miyagi",
+        "desc": "El Festival Sendai Tanabata es uno de los festivales Tanabata más representativos de Japón y se celebra cada año del 6 al 8 de agosto en la ciudad de Sendai, Prefectura de Miyagi. Lo más destacado son las enormes, hermosas y coloridas decoraciones de Tanabata que decoran la calle comercial. Magníficas decoraciones hechas de papel japonés llenan la ciudad, creando una atmósfera fantástica. Es un evento tradicional que representa el verano en Sendai y es visitado por muchos turistas."
       }
     },
     "1004": {
@@ -1120,74 +1171,94 @@
       "ja": {
         "title": "八戸三社大祭",
         "location": "青森県八戸市",
-        "desc": "神話や歌舞伎を題材にした仕掛け付きの絢爛豪華な27台の大型山車が街を彩る伝統のお祭り。"
+        "desc": "八戸三社大祭は、毎年7月31日から8月4日まで青森県八戸市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華絢爛な巨大な山車（だし）の行列。精巧な人形や華やかな装飾を施した山車が市街地を練り歩き、祭りを盛り上げます。日本を代表する山車祭りの一つとして、多くの観光客が訪れます。"
       },
       "en": {
-        "title": "Hachinohe Sansa Taisai",
+        "title": "Hachinohe Sansha Festival",
         "location": "Hachinohe City, Aomori Prefecture",
-        "desc": "Features 27 magnificent large floats decorated with themes from kabuki and mythology."
+        "desc": "The Hachinohe Sanja Taisai Festival is a traditional festival with a history of about 300 years that is held in Hachinohe City, Aomori Prefecture from July 31st to August 4th every year. The biggest highlight is the procession of huge and gorgeous floats. Elaborate dolls and gorgeously decorated floats are paraded through the city, adding to the excitement of the festival. Many tourists visit this festival as one of Japan's most representative float festivals."
       },
       "zh-TW": {
-        "title": "八戶三社大祭",
+        "title": "八戶三社祭",
         "location": "青森縣八戶市",
-        "desc": "以神話與歌舞伎為主題、設有動態機關の27台大型山車，將街道裝點得絢爛華麗。"
+        "desc": "八戶三社大祭是每年7月31日至8月4日在青森縣八戶市舉行的具有約300年歷史的傳統祭典。最大的亮點是巨大華麗的花車遊行。精緻的玩偶和裝飾華麗的花車在城市中遊行，增添了節日的熱鬧氣氛。作為日本最具代表性的花車祭之一，許多遊客前來參觀。"
       },
       "zh-CN": {
-        "title": "八户三社大祭",
+        "title": "八户三社祭",
         "location": "青森县八户市",
-        "desc": "以神话与歌舞伎为主题、设有动态机关の27台大型山车，将街道装点得绚烂华丽。"
+        "desc": "八户三社大祭是每年7月31日至8月4日在青森县八户市举行的具有约300年历史的传统祭典。最大的亮点是巨大华丽的花车游行。精致的玩偶和装饰华丽的花车在城市中游行，增添了节日的热闹气氛。作为日本最具代表性的花车祭之一，许多游客前来参观。"
       },
       "ko": {
-        "title": "하치노헤 산샤 대축제",
+        "title": "하치노헤 3사 대제",
         "location": "아오모리현 하치노헤시",
-        "desc": "신화와 가부키를 테마로 한 움직이는 대형 가마 27대가 거리를 수놓는 전통 축제."
+        "desc": "하치노헤 3사 대제는, 매년 7월 31일부터 8월 4일까지 아오모리현 하치노헤시에서 개최되는, 약 300년의 역사를 가지는 전통적인 축제입니다. 가장 큰 볼거리는 호화 찬란한 거대한 수레 (다시) 행렬. 정교한 인형과 화려한 장식을 한 수레가 시가지를 걷고 축제를 북돋웁니다. 일본을 대표하는 산차 축제의 하나로서 많은 관광객이 방문합니다."
       },
       "th": {
-        "title": "เทศกาลฮาจิโนะเฮะ ซันสะ ไทไซ",
-        "location": "เมืองฮาจิโนะเฮะ จังหวัดอาโอโมริ",
-        "desc": "ตระการตากับขบวนรถเกี้ยวประดับลวดลายตำนานเทพและละครคาบูกิขนาดยักษ์ 27 คัน"
+        "title": "เทศกาลฮาจิโนเฮะซันชะ",
+        "location": "เมืองฮาชิโนเฮะ จังหวัดอาโอโมริ",
+        "desc": "เทศกาลฮาชิโนเฮะซันจะไทไซเป็นเทศกาลแบบดั้งเดิมที่มีประวัติยาวนานประมาณ 300 ปี ซึ่งจัดขึ้นในเมืองฮาชิโนเฮะ จังหวัดอาโอโมริ ตั้งแต่วันที่ 31 กรกฎาคม ถึง 4 สิงหาคมของทุกปี ไฮไลท์ที่ใหญ่ที่สุดคือขบวนแห่ขบวนแห่ขนาดใหญ่และงดงาม ตุ๊กตาอันประณีตและรถแห่ที่ตกแต่งอย่างวิจิตรงดงามจะถูกแห่ไปทั่วเมือง ช่วยเพิ่มความตื่นเต้นให้กับเทศกาล นักท่องเที่ยวจำนวนมากมาเยี่ยมชมเทศกาลนี้ในฐานะหนึ่งในเทศกาลลอยกระทงที่เป็นตัวแทนมากที่สุดของญี่ปุ่น"
       },
       "id": {
-        "title": "Festival Hachinohe Sansa Taisai",
+        "title": "Festival Hachinohe Sansha",
         "location": "Kota Hachinohe, Prefektur Aomori",
-        "desc": "Menampilkan 27 kereta hias megah bernuansa mitologi dan pertunjukan kabuki."
+        "desc": "Festival Hachinohe Sanja Taisai adalah festival tradisional dengan sejarah sekitar 300 tahun yang diadakan di Kota Hachinohe, Prefektur Aomori dari tanggal 31 Juli hingga 4 Agustus setiap tahun. Sorotan terbesarnya adalah prosesi kendaraan hias yang besar dan indah. Boneka-boneka rumit dan kendaraan hias yang dihias dengan indah diarak keliling kota, menambah kemeriahan festival. Banyak wisatawan mengunjungi festival ini sebagai salah satu festival kendaraan hias paling representatif di Jepang."
+      },
+      "vi": {
+        "title": "Lễ hội Hachinohe Sansha",
+        "location": "Thành phố Hachinohe, tỉnh Aomori",
+        "desc": "Lễ hội Hachinohe Sanja Taisai là một lễ hội truyền thống có lịch sử khoảng 300 năm được tổ chức tại thành phố Hachinohe, tỉnh Aomori từ ngày 31 tháng 7 đến ngày 4 tháng 8 hàng năm. Điểm nhấn lớn nhất là lễ rước kiệu khổng lồ và lộng lẫy. Những con búp bê tinh xảo và những chiếc xe hoa được trang trí lộng lẫy được diễu hành khắp thành phố, làm tăng thêm sự sôi động của lễ hội. Nhiều khách du lịch đến tham quan lễ hội này như một trong những lễ hội rước kiệu tiêu biểu nhất của Nhật Bản."
+      },
+      "es": {
+        "title": "Festival Hachinohe Sansha",
+        "location": "Ciudad de Hachinohe, Prefectura de Aomori",
+        "desc": "El Festival Hachinohe Sanja Taisai es un festival tradicional con una historia de aproximadamente 300 años que se celebra en la ciudad de Hachinohe, prefectura de Aomori, del 31 de julio al 4 de agosto de cada año. Lo más destacado es la procesión de enormes y hermosas carrozas. Muñecas elaboradas y carrozas magníficamente decoradas desfilan por la ciudad, lo que aumenta la emoción del festival. Muchos turistas visitan este festival como uno de los festivales de carrozas más representativos de Japón."
       }
     },
     "1018": {
       "ja": {
         "title": "盛岡さんさ踊り",
         "location": "岩手県盛岡市",
-        "desc": "「サッコラ チョイワヤッセ」の掛け声とともに、数千もの和太鼓と踊り手が群舞する世界一の太鼓舞踊です。"
+        "desc": "盛岡さんさ踊りは、毎年8月1日から4日まで岩手県盛岡市で開催される、東北を代表する夏祭りです。太鼓を打ち鳴らしながら踊り手が街を練り歩く「さんさ踊り」が最大の見どころ。華やかな衣装と力強い太鼓の音が街を包み、参加者と観客が一体となって祭りを楽しみます。盛岡の伝統と活気を感じられる夏の風物詩です。"
       },
       "en": {
-        "title": "Morioka Sansa Odori",
+        "title": "Morioka Sansa Dance",
         "location": "Morioka City, Iwate Prefecture",
-        "desc": "World's largest Taiko drum dance parade with thousands of drummers and dancers."
+        "desc": "Morioka Sansa Odori is a summer festival representing Tohoku that is held every year from August 1st to 4th in Morioka City, Iwate Prefecture. The biggest highlight is the ``Sansa Odori,'' where dancers parade through the city while beating drums. The city is filled with the colorful costumes and the powerful sound of drums, and participants and spectators come together to enjoy the festival. It is a summer tradition where you can feel the tradition and vibrancy of Morioka."
       },
       "zh-TW": {
-        "title": "盛岡三颯舞",
+        "title": "盛岡珊莎舞蹈",
         "location": "岩手縣盛岡市",
-        "desc": "伴隨著「Sakkora Choawayasse」口號，數千面和太鼓與舞者齊聚群舞的世界一太鼓舞踊。"
+        "desc": "盛岡三颯舞是每年8月1日至4日在岩手縣盛岡市舉辦的代表東北部的夏季祭典。最大的亮點是“Sansa Odori”，舞者敲著鼓在城市中遊行。這座城市充滿了色彩繽紛的服飾和雄渾的鼓聲，參與者和觀眾歡聚一堂，享受節日的樂趣。這是夏季的傳統活動，您可以感受到盛岡的傳統與活力。"
       },
       "zh-CN": {
-        "title": "盛冈三飒舞",
+        "title": "盛冈珊莎舞蹈",
         "location": "岩手县盛冈市",
-        "desc": "伴随着“Sakkora Choawayasse”口号，数千面和太鼓与舞者齐聚群舞的世界一太鼓舞踊。"
+        "desc": "盛冈三飒舞是每年8月1日至4日在岩手县盛冈市举办的代表东北的夏季祭典。最大的亮点是“Sansa Odori”，舞者敲着鼓在城市中游行。这座城市充满了色彩缤纷的服饰和雄浑的鼓声，参与者和观众欢聚一堂，享受节日的乐趣。这是夏季的传统活动，您可以感受到盛冈的传统和活力。"
       },
       "ko": {
-        "title": "모리오카 산사 오도리",
+        "title": "모리오카 산사 춤",
         "location": "이와테현 모리오카시",
-        "desc": "수천 개의 북과 무용수가 함께 춤추는 세계 최대 규모의 태고 춤 퍼레이드입니다."
+        "desc": "모리오카 산사오도리는 매년 8월 1일부터 4일까지 이와테현 모리오카시에서 개최되는 도호쿠를 대표하는 여름 축제입니다. 북을 울리면서 춤추는 사람이 거리를 걷는 '산사춤'이 최대의 볼거리. 화려한 의상과 강력한 북소리가 도시를 감싸고 참가자와 관객이 일체가 되어 축제를 즐길 수 있습니다. 모리오카의 전통과 활기를 느낄 수 있는 여름의 풍물시입니다."
       },
       "th": {
-        "title": "เทศกาลโมริโอกะ ซันสะ โอโดริ",
+        "title": "โมริโอกะ ซันสะ แดนซ์",
         "location": "เมืองโมริโอกะ จังหวัดอิวาเตะ",
-        "desc": "การแสดงตีกลองไทโกะและการเต้นรำพร้อมกันที่ยิ่งใหญ่ที่สุดในโลก บรรยากาศสุดเร้าใจ"
+        "desc": "โมริโอกะ ซันสะ โอโดริเป็นเทศกาลฤดูร้อนที่เป็นตัวแทนของภูมิภาคโทโฮคุ ซึ่งจัดขึ้นทุกปีตั้งแต่วันที่ 1 ถึง 4 สิงหาคมในเมืองโมริโอกะ จังหวัดอิวาเตะ ไฮไลท์ที่ใหญ่ที่สุดคือ ``ซันซา โอโดริ'' ซึ่งนักเต้นจะแห่ไปตามเมืองพร้อมกับตีกลอง เมืองนี้เต็มไปด้วยเครื่องแต่งกายหลากสีสันและเสียงกลองอันทรงพลัง ผู้เข้าร่วมและผู้ชมจะมารวมตัวกันเพื่อเพลิดเพลินกับเทศกาล เป็นประเพณีฤดูร้อนที่คุณสามารถสัมผัสได้ถึงประเพณีและความมีชีวิตชีวาของโมริโอกะ"
       },
       "id": {
-        "title": "Festival Morioka Sansa Odori",
+        "title": "Tari Morioka Sansa",
         "location": "Kota Morioka, Prefektur Iwate",
-        "desc": "Parade tari drum Taiko terbesar di dunia yang dikuti ribuan penabuh drum dan penari."
+        "desc": "Morioka Sansa Odori adalah festival musim panas yang mewakili Tohoku yang diadakan setiap tahun dari tanggal 1 hingga 4 Agustus di Kota Morioka, Prefektur Iwate. Sorotan terbesarnya adalah ``Sansa Odori,'' di mana para penari berparade keliling kota sambil menabuh genderang. Kota ini dipenuhi dengan kostum warna-warni dan suara drum yang kuat, dan para peserta serta penonton berkumpul untuk menikmati festival tersebut. Ini adalah tradisi musim panas di mana Anda dapat merasakan tradisi dan semangat Morioka."
+      },
+      "vi": {
+        "title": "Vũ điệu Morioka Sansa",
+        "location": "Thành phố Morioka, tỉnh Iwate",
+        "desc": "Morioka Sansa Odori là lễ hội mùa hè đại diện cho Tohoku được tổ chức hàng năm từ ngày 1 đến ngày 4 tháng 8 tại thành phố Morioka, tỉnh Iwate. Điểm nổi bật nhất là ``Sansa Odori'', nơi các vũ công diễu hành khắp thành phố trong khi đánh trống. Thành phố tràn ngập những bộ trang phục đầy màu sắc và âm thanh trống mạnh mẽ, những người tham gia và khán giả cùng nhau thưởng thức lễ hội. Đó là một truyền thống mùa hè nơi bạn có thể cảm nhận được truyền thống và sự sống động của Morioka."
+      },
+      "es": {
+        "title": "Danza Morioka Sansa",
+        "location": "Ciudad de Morioka, Prefectura de Iwate",
+        "desc": "Morioka Sansa Odori es un festival de verano que representa a Tohoku y que se celebra cada año del 1 al 4 de agosto en la ciudad de Morioka, prefectura de Iwate. Lo más destacado es el \"Sansa Odori\", donde los bailarines desfilan por la ciudad mientras tocan tambores. La ciudad se llena de trajes coloridos y el poderoso sonido de los tambores, y los participantes y espectadores se reúnen para disfrutar del festival. Es una tradición de verano donde puedes sentir la tradición y la vitalidad de Morioka."
       }
     },
     "1019": {
