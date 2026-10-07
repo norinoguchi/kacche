@@ -673,7 +673,7 @@
       },
       "es": {
         "title": "Festival Akita Kanto",
-        "location": "Ciudad de Akita, Prefektura de Akita",
+        "location": "Ciudad de Akita, Prefectura de Akita",
         "desc": "El Festival Akita Kanto es uno de los festivales de verano más representativos de Tohoku y se celebra en la ciudad de Akita del 3 al 6 de agosto de cada año. Lo más destacado es la habilidad virtuosa con la que desfilan mientras sostienen hábilmente un enorme \"kanto\" con forma de espiga de arroz con la frente, los hombros y las caderas. Innumerables linternas flotando en el cielo nocturno crean una vista fantástica, y el sonido de tambores y flautas anima el festival. Es una tradición de verano donde puedes sentir la tradición, la habilidad y el poder de Akita."
       }
     },
@@ -778,44 +778,44 @@
         "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "en": {
-        "title": "Gion Festival",
-        "location": "Kyoto City, Kyoto Prefecture",
-        "desc": "The Gion Festival is a traditional festival representing Japan, held at Yasaka Shrine in Kyoto City every July. Various Shinto rituals and events are held over a period of about a month, and the biggest highlight is the 'Yamaboko Junko', where gorgeous float processions parade through the streets of Kyoto. The scenery of Yoiyama decorated with lanterns is also beautiful, and it is a major event where you can feel the history and culture of Kyoto."
+        "title": "祇園祭",
+        "location": "京都府京都市",
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "zh-TW": {
         "title": "祇園祭",
         "location": "京都府京都市",
-        "desc": "祇園祭是日本最具代表性的傳統祭典，每年7月在京都市八阪神社舉行。為期約一個月的時間裡會舉行各種神事與活動，其中最大亮點是豪華絢爛的山鉾在京都街道巡行的「山鉾巡行」。被燈籠點綴的宵山景色也十分優美，是能感受京都歷史與文化的一大盛事。"
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "zh-CN": {
-        "title": "祇园祭",
+        "title": "祇園祭",
         "location": "京都府京都市",
-        "desc": "祇园祭是日本最具代表性的传统祭典，每年7月在京都市八阪神社举行。为期约一个月的时间里会举行各种神事与活动，其中最大亮点是豪华绚烂的山鉾在京都街道巡行的“山鉾巡行”。被灯笼点缀的宵山景色也十分优美，是能感受京都历史与文化的一大盛事。"
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "ko": {
-        "title": "기온 마츠리",
-        "location": "교토부 교토시",
-        "desc": "기온 마츠리는 매년 7월 교토시 야사카 신사에서 개최되는 일본을 대표하는 전통 축제입니다. 약 한 달에 걸쳐 다양한 신사와 행사가 열리며, 특히 호화찬란한 야마보코가 교토 거리를 순행하는 '야마보코 순행'이 가장 큰 볼거리입니다. 등롱으로 장식된 요이산의 풍경도 아름다워 교토의 역사와 문화를 느낄 수 있는 큰 이벤트입니다."
+        "title": "祇園祭",
+        "location": "京都府京都市",
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "th": {
-        "title": "เทศกาลกิออน",
-        "location": "เมืองเกียวโต จังหวัดเกียวโต",
-        "desc": "เทศกาลกิออนเป็นเทศกาลดั้งเดิมที่เป็นตัวแทนของญี่ปุ่น ซึ่งจัดขึ้นที่ศาลเจ้ายาซากะในเมืองเกียวโตทุกเดือนกรกฎาคม มีพิธีกรรมและกิจกรรมทางชินโตต่างๆ จัดขึ้นเป็นเวลาประมาณหนึ่งเดือน ไฮไลท์ที่ใหญ่ที่สุดคือ 'ยามาโบโกะ จุนโกะ' ซึ่งขบวนรถแห่อันหรูหราแห่ไปตามถนนในเกียวโต ทิวทัศน์ของโย이야มะที่ประดับด้วยโคมไฟก็น่าประทับใจเช่นกัน และเป็นงานสำคัญที่คุณสามารถสัมผัสได้ถึงประวัติศาสตร์และวัฒนธรรมของเกียวโต"
+        "title": "祇園祭",
+        "location": "京都府京都市",
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "id": {
-        "title": "Festival Gion",
-        "location": "Kota Kyoto, Prefektur Kyoto",
-        "desc": "Festival Gion adalah festival tradisional yang mewakili Jepang, diadakan di Kuil Yasaka di Kota Kyoto setiap bulan Juli. Berbagai ritual dan acara Shinto diadakan selama sekitar satu bulan, dan sorotan terbesarnya adalah 'Yamaboko Junko', di mana prosesi kendaraan hias yang megah berparade di jalan-jalan Kyoto. Pemandangan Yoiyama yang dihiasi lampion juga sangat indah, dan ini adalah acara besar di mana Anda dapat merasakan sejarah dan budaya Kyoto."
+        "title": "祇園祭",
+        "location": "京都府京都市",
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "vi": {
-        "title": "Lễ hội Gion",
-        "location": "Thành phố Kyoto, tỉnh Kyoto",
-        "desc": "Lễ hội Gion là một lễ hội truyền thống đại diện cho Nhật Bản, được tổ chức tại đền Yasaka ở thành phố Kyoto vào tháng 7 hàng năm. Các nghi lễ và sự kiện Thần đạo diễn ra trong khoảng một tháng, và điểm nổi bật nhất là 'Yamaboko Junko', nơi các đoàn diễu hành kiệu lộng lẫy diễu hành qua các đường phố Kyoto. Phong cảnh Yoiyama được trang trí bằng đèn lồng cũng rất đẹp, và đây là một sự kiện lớn nơi bạn có thể cảm nhận lịch sử và văn hóa của Kyoto."
+        "title": "祇園祭",
+        "location": "京都府京都市",
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       },
       "es": {
-        "title": "Festival Gion",
-        "location": "Ciudad de Kyoto, Prefektura de Kyoto",
-        "desc": "El Festival Gion es un festival tradicional que representa a Japón, celebrado en el Santuario Yasaka en la ciudad de Kyoto cada mes de julio. Se realizan varios rituales y eventos sintoístas durante un período de aproximadamente un mes, y el mayor atractivo es el 'Yamaboko Junko', donde opulentas carrozas desfilan por las calles de Kyoto. El paisaje de Yoiyama decorado con linternas también es hermoso, y es un gran evento donde se puede sentir la historia y la cultura de Kyoto."
+        "title": "祇園祭",
+        "location": "京都府京都市",
+        "desc": "祇園祭は、毎年7月に京都市の八坂神社で開催される、日本を代表する伝統的な祭りです。約1か月にわたってさまざまな神事や行事が行われ、特に豪華絢爛な山鉾が京都の街を巡行する「山鉾巡行」が最大の見どころです。提灯で彩られた宵山の風景も美しく、京都の歴史と文化を感じられる一大イベントです。"
       }
     },
     "1006": {
@@ -855,14 +855,14 @@
         "desc": "Salah satu dari 3 festival terbesar di Jepang, menghadirkan parade 100+ perahu di sungai."
       },
       "vi": {
-        "title": "Lễ hội Tenjin",
-        "location": "Thành phố Osaka, tỉnh Osaka",
-        "desc": "Một trong ba lễ hội lớn nhất Nhật Bản, nổi bật với đoàn diễu hành hơn 100 chiếc thuyền trên sông và pháo hoa."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Festival Tenjin",
-        "location": "Ciudad de Osaka, Prefectura de Osaka",
-        "desc": "Uno de los tres festivales principales de Japón, que cuenta con una procesión fluvial de más de 100 barcos y fuegos artificiales."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1007": {
@@ -902,14 +902,14 @@
         "desc": "Festival tari terbesar di Jepang bertema 400 tahun sejarah yang membakar semangat seluruh kota."
       },
       "vi": {
-        "title": "Awa Odori",
-        "location": "Thành phố Tokushima, tỉnh Tokushima",
-        "desc": "Lễ hội múa lớn nhất Nhật Bản với lịch sử 400 năm, làm ngập tràn niềm đam mê khắp thành phố."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Awa Odori",
-        "location": "Ciudad de Tokushima, Prefektura de Tokushima",
-        "desc": "El festival de danza más grande de Japón con 400 años de historia, que llena toda la ciudad de pasión."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1008": {
@@ -949,14 +949,14 @@
         "desc": "Penari memegang pemukul kayu Naruko tampil enerjik dengan kostum kustom yang kaya warna."
       },
       "vi": {
-        "title": "Lễ hội Yosakoi",
-        "location": "Thành phố Kochi, tỉnh Kochi",
-        "desc": "Các vũ công cầm phách gỗ Naruko biểu diễn những điệu nhảy đầy năng lượng trong trang phục tùy chỉnh rực rỡ."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Festival Yosakoi",
-        "location": "Ciudad de Kochi, Prefektura de Kochi",
-        "desc": "Bailarines que sostienen castañuelas de madera Naruko realizan rutinas enérgicas con coloridos trajes personalizados."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1009": {
@@ -966,44 +966,44 @@
         "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "en": {
-        "title": "Hakata Gion Yamakasa",
-        "location": "Fukuoka City, Fukuoka Prefecture",
-        "desc": "The Hakata Gion Yamakasa is a traditional festival with a history of about 780 years, held in Hakata Ward, Fukuoka City from July 1st to 15th every year. The biggest highlights are the gorgeous 'Kazari Yamakasa' and the 'Oiyama', where men in traditional loincloths carry 'Kakiyama' weighing about 1 ton and rush through the streets. The streets of Hakata are filled with excitement by the brave shouts and powerful running."
+        "title": "博多祇園山笠",
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "zh-TW": {
         "title": "博多祇園山笠",
-        "location": "福岡縣福岡市",
-        "desc": "博多祇園山笠是每年7月1日至15日在福岡市博多區舉行、擁有約780年歷史的傳統祭典。最大亮點是豪華的「裝飾山笠」，以及穿著兜裆布的男兒們扛著重約1噸的「抬山笠」在街頭奔馳的「追山」。雄壯的喊聲與充滿迫力的奔跑讓博多街道充滿熱情。"
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "zh-CN": {
-        "title": "博多祇园山笠",
-        "location": "福冈县福冈市",
-        "desc": "博多祇园山笠是每年7月1日至15日在福冈市博多区举行、拥有约780年历史的传统祭典。最大亮点是豪华的“装饰山笠”，以及穿着兜裆布的男儿们扛着重约1吨的“抬山笠”在街头奔跑的“追山”。雄壮的喊声与充满迫力的奔跑让福冈街道充满热情。"
+        "title": "博多祇園山笠",
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "ko": {
-        "title": "하카타 기온 야마카사",
-        "location": "후쿠오카현 후쿠오카시",
-        "desc": "하카타 기온 야마카사는 매년 7월 1일부터 15일까지 후쿠오카시 하카타구에서 개최되는 약 780년의 역사를 지닌 전통 축제입니다. 가장 큰 볼거리는 화려한 '가자리 야마카사'와 훈시시 차림의 남성들이 무게 약 1톤의 '가키야마'를 메고 거리를 질주하는 '오이야마'입니다. 용장한 구호와 박력 있는 질주로 하카타 거리가 열기로 가득합니다."
+        "title": "博多祇園山笠",
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "th": {
-        "title": "ฮากาตะ กิออน ยามะคาสะ",
-        "location": "เมืองฟุกุโอกะ จังหวัดฟุกุโอกะ",
-        "desc": "ฮากาตะ กิออน ยามะคาสะ เป็นเทศกาลดั้งเดิมที่มีประวัติยาวนานประมาณ 780 ปี จัดขึ้นที่เขตฮากาตะ เมืองฟุกุโอกะ ตั้งแต่วันที่ 1 ถึง 15 กรกฎาคมของทุกปี ไฮไลท์ที่ใหญ่ที่สุดคือ 'คาซาริ ยามะคาสะ' อันหรูหรา และ 'โอยามะ' ซึ่งผู้ชายในชุดดั้งเดิมแบก 'คาคิยามะ' หนักประมาณ 1ตันและวิ่งผ่านถนน เสียงตะโกนอันกล้าหาญและการวิ่งที่ทรงพลังทำให้ถนนในฮากาตะเต็มไปด้วยความตื่นเต้น"
+        "title": "博多祇園山笠",
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "id": {
-        "title": "Hakata Gion Yamakasa",
-        "location": "Kota Fukuoka, Prefektur Fukuoka",
-        "desc": "Hakata Gion Yamakasa adalah festival tradisional dengan sejarah sekitar 780 tahun, diadakan di Ward Hakata, Kota Fukuoka dari tanggal 1 hingga 15 Juli setiap tahun. Sorotan terbesarnya adalah 'Kazari Yamakasa' yang megah dan 'Oiyama', di mana para pria berpakaian tradisional menggendong 'Kakiyama' seberat sekitar 1 ton dan bergegas melalui jalan-jalan. Jalan-jalan Hakata dipenuhi dengan kegembiraan oleh teriakan berani dan lari yang kuat."
+        "title": "博多祇園山笠",
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "vi": {
-        "title": "Hakata Gion Yamakasa",
-        "location": "Thành phố Fukuoka, tỉnh Fukuoka",
-        "desc": "Hakata Gion Yamakasa là một lễ hội truyền thống có lịch sử khoảng 780 năm, được tổ chức tại quận Hakata, thành phố Fukuoka từ ngày 1 đến ngày 15 tháng 7 hàng năm. Điểm nổi bật lớn nhất là 'Kazari Yamakasa' lộng lẫy và 'Oiyama', nơi những người đàn ông mặc trang phục truyền thống mang theo 'Kakiyama' nặng khoảng 1 tấn và lao qua các con đường. Các đường phố của Hakata tràn ngập sự phấn khích bởi những tiếng hò reo dũng cảm và cuộc chạy đua đầy sức mạnh."
+        "title": "博多祇園山笠",
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       },
       "es": {
-        "title": "Hakata Gion Yamakasa",
-        "location": "Ciudad de Fukuoka, Prefectura de Fukuoka",
-        "desc": "El Hakata Gion Yamakasa es un festival tradicional con una historia de aproximadamente 780 años, celebrado en el distrito de Hakata, ciudad de Fukuoka, del 1 al 15 de julio de cada año. Los mayores atractivos son el magnífico 'Kazari Yamakasa' y el 'Oiyama', donde hombres con vestimenta tradicional cargan un 'Kakiyama' de aproximadamente 1 tonelada y corren por las calles. Las calles de Hakata se llenan de emoción con gritos valientes y carreras llenas de energía."
+        "title": "博多祇園山笠",
+        "location": "福岡県福岡市",
+        "desc": "博多祇園山笠は、毎年7月1日から15日まで福岡市博多区で開催される、約780年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な「飾り山笠」と、締め込み姿の男たちが重さ約1トンの「舁き山笠」を担いで街を駆け抜ける「追い山」です。勇壮な掛け声と迫力ある走りで博多の街が熱気に包まれます。"
       }
     },
     "1010": {
@@ -1043,14 +1043,14 @@
         "desc": "Festival musim gugur Kuil Suwa menampilkan Tarian Naga bercita rasa multikultural."
       },
       "vi": {
-        "title": "Nagasaki Kunchi",
-        "location": "Thành phố Nagasaki, tỉnh Nagasaki",
-        "desc": "Lễ hội mùa thu của đền Suwa thể hiện các màn trình diễn đa văn hóa như Múa rồng kỳ lạ."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Nagasaki Kunchi",
-        "location": "Ciudad de Nagasaki, Prefectura de Nagasaki",
-        "desc": "Festival de otoño del Santuario Suwa que muestra actuaciones multiculturales como la exótica Danza del Dragón."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1011": {
@@ -1090,14 +1090,14 @@
         "desc": "Festival ikonik Tokyo di Asakusa di mana hampir 100 kuil portabel diarak penuh semangat."
       },
       "vi": {
-        "title": "Lễ hội Sanja",
-        "location": "Quận Taito, Tokyo",
-        "desc": "Lễ hội mang tính biểu tượng của Tokyo tại Asakusa, nơi gần 100 đền thờ di động diễu hành với năng lượng mãnh liệt."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Festival Sanja",
-        "location": "Barrio Taito, Tokio",
-        "desc": "El festival icónico de Tokio en Asakusa donde casi 100 santuarios portátiles desfilan con intensa energía."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1012": {
@@ -1107,44 +1107,44 @@
         "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "en": {
-        "title": "Spring Takayama Festival (Sanno Festival)",
-        "location": "Takayama City, Gifu Prefecture",
-        "desc": "The Takayama Festival is a traditional festival with a history of about 400 years, held twice a year in spring and autumn in Takayama City, Gifu Prefecture. The spring 'Sanno Festival' is held on April 14th and 15th. The biggest highlight is the float called 'Yatai' with luxurious decorations. You can enjoy Hida's craftsmanship up close, such as exquisite carvings and karakuri dolls. It is also known as one of Japan's three major beauty festivals."
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "zh-TW": {
-        "title": "春季高山祭（山王祭）",
-        "location": "岐阜縣高山市",
-        "desc": "高山祭是岐阜縣高山市每年春季與秋季舉辦兩次、擁有約400年歷史的傳統祭典。春季的「山王祭」於4月14日、15日舉行。最大亮點是裝飾豪華、被稱為「屋台」的花車。您可以近距離欣賞精緻的雕刻與機關人偶等飛驒工匠的技藝。它也被譽為日本三大美祭之一。"
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "zh-CN": {
-        "title": "春季高山祭（山王祭）",
-        "location": "岐阜县高山市",
-        "desc": "高山祭是岐阜县高山市每年春季与秋季举办两次、拥有约400年历史的传统祭典。春季的“山王祭”于4月14日、15日举行。最大亮点是装饰豪华、被称为“屋台”的花车。您可以近距离欣赏精致的雕刻与机关人偶等飞驒工匠的技艺。它也被誉为日本三大美祭之一。"
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "ko": {
-        "title": "봄의 다카야마 축제(산노 축제)",
-        "location": "기후현 다카야마시",
-        "desc": "다카야마 축제는 기후현 다카야마시에서 봄과 가을 연 2회 개최되는 약 400년 역사의 전통 축제입니다. 봄의 '산노 축제'는 4월 14일~15일에 열립니다. 가장 큰 볼거리는 화려한 장식을 한 '야타이'라고 불리는 수레입니다. 정교한 조각과 가라쿠리 인형 등 히다 장인의 기술을 가까이서 즐길 수 있습니다. 일본 3대 미제(美祭) 중 하나로도 유명합니다."
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "th": {
-        "title": "เทศกาลทาคายามะฤดูใบไม้ผลิ (เทศกาลซันโนะ)",
-        "location": "เมืองทาคายามะ จังหวัดกิฟุ",
-        "desc": "เทศกาลทาคายามะเป็นเทศกาลดั้งเดิมที่มีประวัติยาวนานประมาณ 400 ปี จัดขึ้นปีละสองครั้งในฤดูใบไม้ผลิและฤดูใบไม้ร่วงในเมืองทาคายามะ จังหวัดกิฟุ 'เทศกาลซันโนะ' ในฤดูใบไม้ผลิจัดขึ้นในวันที่ 14 และ 15 เมษายน ไฮไลท์ที่ใหญ่ที่สุดคือรถแห่ที่เรียกว่า 'ยาไต' ซึ่งมีการตกแต่งอย่างหรูหรา คุณสามารถเพลิดเพลินกับงานฝีมือของฮิดะได้อย่างใกล้ชิด เช่น งานแกะสลักอันประณีตและตุ๊กตาคาราคุริ นอกจากนี้ยังเป็นที่รู้จักว่าเป็นหนึ่งในสามเทศกาลที่งดงามที่สุดของญี่ปุ่น"
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "id": {
-        "title": "Festival Musim Semi Takayama (Festival Sanno)",
-        "location": "Kota Takayama, Prefektur Gifu",
-        "desc": "Festival Takayama adalah festival tradisional dengan sejarah sekitar 400 tahun, diadakan dua kali setahun pada musim semi dan musim gugur di Kota Takayama, Prefektur Gifu. 'Festival Sanno' musim semi diadakan pada tanggal 14 dan 15 April. Sorotan terbesarnya adalah kendaraan hias yang disebut 'Yatai' dengan dekorasi mewah. Anda dapat menikmati keahlian Hida dari dekat, seperti ukiran indah dan boneka karakuri. Festival ini juga dikenal sebagai salah satu dari tiga festival terindah di Jepang."
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "vi": {
-        "title": "Lễ hội mùa xuân Takayama (Lễ hội Sanno)",
-        "location": "Thành phố Takayama, tỉnh Gifu",
-        "desc": "Lễ hội Takayama là một lễ hội truyền thống có lịch sử khoảng 400 năm, được tổ chức hai lần một năm vào mùa xuân và mùa thu tại thành phố Takayama, tỉnh Gifu. 'Lễ hội Sanno' mùa xuân được tổ chức vào ngày 14 và 15 tháng 4. Điểm nổi bật nhất là chiếc kiệu được gọi là 'Yatai' với trang trí lộng lẫy. Bạn có thể chiêm ngưỡng cận cảnh tay nghề thủ công của Hida, chẳng hạn như các tác phẩm chạm khắc tinh xảo và búp bê karakuri. Nó cũng được biết đến là một trong ba lễ hội đẹp nhất của Nhật Bản."
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       },
       "es": {
-        "title": "Festival de Primavera de Takayama (Festival Sanno)",
-        "location": "Ciudad de Takayama, Prefektura de Gifu",
-        "desc": "El Festival de Takayama es un festival tradicional con una historia de aproximadamente 400 años, celebrado dos veces al año en primavera y otoño en la ciudad de Takayama, prefectura de Gifu. El 'Festival Sanno' de primavera se celebra los días 14 y 15 de abril. El mayor atractivo son las carrozas llamadas 'Yatai' con decoraciones lujosas. Puedes disfrutar de cerca de la artesanía de Hida, como tallas exquisitas y muñecas karakuri. También se le conoce como uno de los tres festivales más bellos de Japón."
+        "title": "春の高山祭（山王祭）",
+        "location": "岐阜県高山市",
+        "desc": "高山祭は、岐阜県高山市で春と秋の年2回開催される、約400年の歴史を持つ伝統的な祭りです。春の「山王祭」は4月14・15日に行われます。最大の見どころは、豪華な装飾を施した「屋台」と呼ばれる山車。精巧な彫刻やからくり人形など、飛騨の匠の技を間近で楽しめます。日本三大美祭の一つとしても知られています。\n"
       }
     },
     "1013": {
@@ -1201,44 +1201,44 @@
         "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "en": {
-        "title": "Chichibu Night Festival",
-        "location": "Chichibu City, Saitama Prefecture",
-        "desc": "The Chichibu Night Festival is a traditional festival with a history of about 300 years, held in Chichibu City, Saitama Prefecture on December 2nd and 3rd every year. The biggest highlight is the brave pulling of six beautifully decorated floats (yatai and kasaboko) through the streets. Especially on the night of the 3rd, fireworks color the winter night sky, and you can enjoy a beautiful collaboration with the floats decorated with lanterns. It is also known as one of Japan's three major float festivals."
+        "title": "秩父夜祭",
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "zh-TW": {
         "title": "秩父夜祭",
-        "location": "埼玉縣秩父市",
-        "desc": "秩父夜祭是每年12月2日、3日在埼玉縣秩父市舉辦、擁有約300年歷史的傳統祭典。最大亮點是裝飾豪華的6台屋台與笠鉾在街頭穿梭的豪邁拖曳。特別是在3日夜晚，煙火點綴了冬日夜空，還能欣賞與被燈籠裝飾的花車交織出的美麗共演。它也被譽為日本三大曳山祭之一。"
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "zh-CN": {
         "title": "秩父夜祭",
-        "location": "埼玉县秩父市",
-        "desc": "秩父夜祭是每年12月2日、3日在埼玉县秩父市举办、拥有约300年历史的传统祭典。最大亮点是装饰豪华的6台屋台与笠鉾在街头穿梭的豪迈拖曳。特别是在3日夜晚，烟火点缀了冬日夜空，还能欣赏与被灯笼装饰的花车交织出的美丽共演。它也被誉为日本三大曳山祭之一。"
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "ko": {
-        "title": "치치부 야마츠리(야간 축제)",
-        "location": "사이타마현 치치부시",
-        "desc": "치치부 야마츠리는 매년 12월 2일~3일에 사이타마현 치치부시에서 개최되는 약 300년 역사의 전통 축제입니다. 가장 큰 볼거리는 화려하게 장식된 6대의 야타이·가사보코가 거리를 누비는 웅장한 행진입니다. 특히 3일 밤에는 불꽃놀이가 겨울 밤하늘을 수놓고, 등롱으로 장식된 수레와의 아름다운 조화를 즐길 수 있습니다. 일본 3대 히키야마(수레) 축제 중 하나로도 유명합니다."
+        "title": "秩父夜祭",
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "th": {
-        "title": "เทศกาลกลางคืนชิจิบุ",
-        "location": "เมืองชิจิบุ จังหวัดไซตามะ",
-        "desc": "เทศกาลกลางคืนชิจิบุเป็นเทศกาลดั้งเดิมที่มีประวัติยาวนานประมาณ 300 ปี จัดขึ้นที่เมืองชิจิบุ จังหวัดไซตามะ ในวันที่ 2 และ 3 ธันวาคมของทุกปี ไฮไลท์ที่ใหญ่ที่สุดคือการลากรถแห่ 6 คันที่ตกแต่งอย่างหรูหรา (ยาไตและคา사โบโกะ) ไปตามถนนอย่างกล้าหาญ โดยเฉพาะในคืนวันที่ 3 ดอกไม้ไฟจะแต่งแต้มท้องฟ้ายามค่ำคืนในฤดูหนาว และคุณสามารถเพลิดเพลินกับการแสดงร่วมกันอันสวยงามกับรถแห่ที่ประดับด้วยโคมไฟ นอกจากนี้ยังเป็นที่รู้จักว่าเป็นหนึ่งในสามเทศกาลรถแห่ที่ใหญ่ที่สุดของญี่ปุ่น"
+        "title": "秩父夜祭",
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "id": {
-        "title": "Festival Malam Chichibu",
-        "location": "Kota Chichibu, Prefektur Saitama",
-        "desc": "Festival Malam Chichibu adalah festival tradisional dengan sejarah sekitar 300 tahun, diadakan di Kota Chichibu, Prefektur Saitama pada tanggal 2 dan 3 Desember setiap tahun. Sorotan terbesarnya adalah penarikan gagah dari enam kendaraan hias (yatai dan kasaboko) yang didekorasi dengan indah melalui jalan-jalan. Terutama pada malam tanggal 3, kembang api mewarnai langit malam musim dingin, dan Anda dapat menikmati kolaborasi yang indah dengan kendaraan hias yang dihiasi lampion. Festival ini juga dikenal sebagai salah satu dari tiga festival kendaraan hias utama di Jepang."
+        "title": "秩父夜祭",
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "vi": {
-        "title": "Lễ hội đêm Chichibu",
-        "location": "Thành phố Chichibu, tỉnh Saitama",
-        "desc": "Lễ hội đêm Chichibu là một lễ hội truyền thống có lịch sử khoảng 300 năm, được tổ chức tại thành phố Chichibu, tỉnh Saitama vào ngày 2 và 3 tháng 12 hàng năm. Điểm nổi bật nhất là việc kéo sáu chiếc kiệu (yatai và kasaboko) được trang trí lộng lẫy diễu hành qua các con đường một cách dũng cảm. Đặc biệt vào đêm ngày 3, pháo hoa tô điểm bầu trời đêm mùa đông, và bạn có thể thưởng thức sự kết hợp tuyệt đẹp với những chiếc kiệu trang trí bằng đèn lồng. Nó cũng được biết đến là một trong ba lễ hội kiệu lớn của Nhật Bản."
+        "title": "秩父夜祭",
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       },
       "es": {
-        "title": "Festival Nocturno de Chichibu",
-        "location": "Ciudad de Chichibu, Prefectura de Saitama",
-        "desc": "El Festival Nocturno de Chichibu es un festival tradicional con una historia de aproximadamente 300 años, celebrado en la ciudad de Chichibu, prefectura de Saitama, los días 2 y 3 de diciembre de cada año. El mayor atractivo es el valiente arrastre de seis carrozas (yatai y kasaboko) bellamente decoradas por las calles. Especialmente en la noche del 3, los fuegos artificiales colorean el cielo nocturno de invierno y se puede disfrutar de una hermosa colaboración con las carrozas decoradas con linternas. También es conocido como uno de los tres festivales de carrozas más importantes de Japón."
+        "title": "秩父夜祭",
+        "location": "埼玉県秩父市",
+        "desc": "秩父夜祭は、毎年12月2日・3日に埼玉県秩父市で開催される、約300年の歴史を持つ伝統的な祭りです。最大の見どころは、豪華な装飾を施した6台の屋台・笠鉾が街を練り歩く勇壮な曳き回し。特に3日の夜には、花火が冬の夜空を彩り、提灯で飾られた山車との美しい共演を楽しめます。日本三大曳山祭の一つとしても知られています。"
       }
     },
     "1015": {
@@ -1278,14 +1278,14 @@
         "desc": "Terkenal dengan aksi mendebarkan 'Yarimawashi', membelokkan kereta 4 ton dalam kecepatan tinggi."
       },
       "vi": {
-        "title": "Lễ hội Danjiri Kishiwada",
-        "location": "Thành phố Kishiwada, tỉnh Osaka",
-        "desc": "Nổi tiếng với màn 'Yarimawashi' đầy kịch tính, quay những chiếc xe gỗ nặng 4 tấn ở các góc cua hẹp với tốc độ cao."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Festival Danjiri de Kishiwada",
-        "location": "Ciudad de Kishiwada, Prefektura de Osaka",
-        "desc": "Famoso por el emocionante 'Yarimawashi', girando carros de madera de 4 toneladas en esquinas cerradas a alta velocidad."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1016": {
@@ -1325,14 +1325,14 @@
         "desc": "14 kereta hias pernis raksasa berbentuk singa dan ikan kakap diarak keliling kota."
       },
       "vi": {
-        "title": "Karatsu Kunchi",
-        "location": "Thành phố Karatsu, tỉnh Saga",
-        "desc": "14 chiếc kiệu sơn mài khổng lồ hình sư tử và cá tráp diễu hành qua thị trấn lâu đài."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Karatsu Kunchi",
-        "location": "Ciudad de Karatsu, Prefektura de Saga",
-        "desc": "14 carrozas laqueadas gigantes con forma de leones y besugos desfilan por la ciudad del castillo."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1017": {
@@ -1466,14 +1466,14 @@
         "desc": "Festival musim gugur di mana 3 kuil portabel saling bertabrakan dengan sangat sengit."
       },
       "vi": {
-        "title": "Nada No Kenka Matsuri",
-        "location": "Thành phố Himeji, tỉnh Hyogo",
-        "desc": "Lễ hội mùa thu hoang dã tại đền Matsubara Hachiman, nơi ba đền thờ di động va chạm mạnh mẽ với nhau."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Nada No Kenka Matsuri",
-        "location": "Ciudad de Himeji, Prefectura de Hyogo",
-        "desc": "Festival salvaje de otoño del Santuario Matsubara Hachiman donde tres santuarios portátiles colisionan con fuerza."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1020": {
@@ -1513,14 +1513,14 @@
         "desc": "Parade sejarah 2.000 orang mengenakan kostum otentik yang mencakup 1.000 tahun sejarah Kyoto."
       },
       "vi": {
-        "title": "Lễ hội Jidai",
-        "location": "Thành phố Kyoto, tỉnh Kyoto",
-        "desc": "Một cuộc diễu hành lịch sử gồm 2.000 người mặc trang phục chân thực trải dài 1.000 năm lịch sử Kyoto."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Festival Jidai",
-        "location": "Ciudad de Kyoto, Prefektura de Kyoto",
-        "desc": "Un desfile histórico de 2.000 personas que visten trajes auténticos que abarcan 1.000 años de historia de Kyoto."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1789104657141": {
@@ -1537,12 +1537,12 @@
       "zh-TW": {
         "title": "濱松節",
         "location": "靜岡縣濱松市",
-        "desc": "濱松祭是靜岡縣濱松市每年5月3日至5日舉行的傳統節慶。亮點包括放飛巨型風箏的風箏大戰，以及華麗的宮廷花車遊行。這是代表濱松勇猛華麗的重大事件。祭典期間，白天在中田島砂丘舉辦放風箏比賽，晚上濱松站週邊小吃攤路過，讓您一整天都可以享受盛大的祭典。"
+        "desc": "濱松祭是靜岡縣濱松市每年5月3日至5日舉行的傳統節慶。亮點包括放飛巨型風箏的風箏大戰，以及華麗的宮廷花車遊行。這是代表濱松勇猛華麗的重大事件。祭典期間，白天在中田島沙丘舉辦放風箏比賽，晚上濱松站週邊小吃攤路過，讓您一整天都可以享受盛大的祭典。"
       },
       "zh-CN": {
         "title": "滨松节",
         "location": "静冈县滨松市",
-        "desc": "滨松祭是静冈县滨松市每年5月3日至5日举行的传统节日。亮点包括放飞巨型风筝的风筝大战，以及华丽的宫廷花车巡游。这是代表滨松勇猛华丽的重大事件。祭典期间，白天在中田岛砂丘举办放风筝比赛，晚上滨松站周边小吃摊路过，让您一整天都可以享受盛大的祭典。"
+        "desc": "滨松祭是静冈县滨松市每年5月3日至5日举行的传统节日。亮点包括放飞巨型风筝的风筝大战，以及华丽的宫廷花车巡游。这是代表滨松勇猛华丽的重大事件。祭典期间，白天在中田岛沙丘举办放风筝比赛，晚上滨松站周边小吃摊路过，让您一整天都可以享受盛大的祭典。"
       },
       "ko": {
         "title": "하마마츠 축제",
@@ -1607,14 +1607,14 @@
         "desc": "Diadakan selama Pekan Emas, ini adalah festival tradisional yang menarik lebih dari 2 juta orang dan dihadiri oleh seluruh warga negara."
       },
       "vi": {
-        "title": "Lễ hội Cảng Hakata Dontaku",
-        "location": "Thành phố Fukuoka, tỉnh Fukuoka",
-        "desc": "Được tổ chức trong Tuần lễ Vàng, đây là một lễ hội truyền thống thu hút hơn 2 triệu người tham gia và có sự góp mặt của toàn thể người dân."
+        "title": "",
+        "location": "",
+        "desc": ""
       },
       "es": {
-        "title": "Festival del Puerto de Hakata Dontaku",
-        "location": "Ciudad de Fukuoka, Prefektura de Fukuoka",
-        "desc": "Celebrado durante la Semana Dorada, es un festival tradicional que atrae a más de 2 millones de personas y cuenta con la participación de todos los ciudadanos."
+        "title": "",
+        "location": "",
+        "desc": ""
       }
     },
     "1789182250991": {

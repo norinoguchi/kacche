@@ -75,13 +75,14 @@
                         <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('id')">通し番号 <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('category')">カテゴリー <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4">タイトル (日本語)</th>
-                        <th class="p-3 sm:p-4">エリア・開催期間</th>
+                        <th class="p-3 sm:p-4">エリア</th>
+                        <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('startDate')">開催期間 <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('lat')">緯度 <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('lng')">経度 <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4 cursor-pointer hover:text-white transition-colors" onclick="sortTable('updatedAt')">最終更新日 <span class="text-[10px] text-slate-500">↕</span></th>
                         <th class="p-3 sm:p-4 text-right">アクション</th>
                     </tr>
-                </thead>
+                </thead>                
                 <tbody id="adminTableBody" class="divide-y divide-slate-800/60 text-xs"></tbody>
             </table>
         </div>
@@ -466,7 +467,6 @@
             }
 
             tbody.innerHTML = spots.map((spot, idx) => {
-                // 多言語データから日本語を取得
                 const spotI18n = (rawData.spotContentI18n && (rawData.spotContentI18n[spot.id] || rawData.spotContentI18n[String(spot.id)])) || {};
                 const ja = spotI18n['ja'] || {};
 
@@ -479,10 +479,8 @@
                             </span>
                         </td>
                         <td class="p-3 sm:p-4 font-bold text-white text-sm">${ja.title || '---'}</td>
-                        <td class="p-3 sm:p-4 text-slate-300 text-xs">
-                            ${ja.location || '---'}
-                            <div class="text-[10px] text-slate-500 mt-0.5 font-mono">${spot.startDate || ''}</div>
-                        </td>
+                        <td class="p-3 sm:p-4 text-slate-300 text-xs">${ja.location || '---'}</td>
+                        <td class="p-3 sm:p-4 text-slate-300 text-xs font-mono">${spot.startDate || '---'}</td>
                         <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">${Number(spot.lat).toFixed(4)}</td>
                         <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">${Number(spot.lng).toFixed(4)}</td>
                         <td class="p-3 sm:p-4 font-mono text-slate-400 text-[11px]">${spot.updatedAt || '---'}</td>
@@ -494,7 +492,7 @@
                         </td>
                     </tr>
                 `;
-            }).join('');
+            }).join('');        
         }
 
         // --- 並べ替え・ソート関連 ---
