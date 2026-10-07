@@ -41,11 +41,38 @@
     </style> -->
     <style>
         body { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+
         /* 高級感のある落ち着いたダークトーンのヒーロー背景 */
-        .hero-custom-bg {
+        /* .hero-custom-bg {
             background-color: #0b0f19;
             background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b0f19 70%);
         }
+         */
+        /* 奥行きと差し込む光を演出するリッチなダーク背景 */
+        .hero-custom-bg {
+            background-color: #0b0f19;
+            background-image: 
+                radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(30, 41, 59, 0.8) 0%, #0b0f19 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        /* ふんわりと優しく光るグラデーションの反射（光の差し込み） */
+        .hero-custom-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 250px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(56, 189, 248, 0.01) 100%);
+            border-radius: 0 0 50% 50%;
+            filter: blur(40px);
+            pointer-events: none;
+        }
+
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -63,16 +90,11 @@
     <!-- Header -->
     <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-8 py-3.5 flex items-center justify-between gap-3 shadow-sm shrink-0">
         <div class="flex items-center space-x-3 min-w-0">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
             <div class="min-w-0">
                 <span class="text-base sm:text-xl font-extrabold tracking-tight text-slate-900 block leading-tight truncate">
                     Authentic Japan Guide
                 </span>
-                <span class="text-[10px] sm:text-xs text-blue-600 font-bold font-mono tracking-wider block truncate">MAPS & CALENDAR</span>
+                <span class="text-xs sm:text-sm text-blue-600 font-bold font-mono tracking-wider block truncate">MAPS & CALENDAR</span>
             </div>
         </div>
 
@@ -99,22 +121,12 @@
     </header>
 
     <!-- Hero Section -->
-    <!-- <section class="hero-gradient border-b border-blue-100/80 pt-12 pb-12 px-4 sm:px-6 text-center">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <span id="hero-tag" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-700 text-xs font-bold">
-                Discover Genuine Japanese Culture & Local Heritage
-            </span>
-            <h1 id="hero-title" class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-                Curated Japan
-            </h1>
-            <p id="hero-desc" class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
-                Experience Japanese festivals, traditional craft heritage, and genuine local flavors through our interactive maps.
-            </p>
-        </div>
-    </section> -->
-    <!-- Hero Section -->
-    <section class="hero-custom-bg border-b border-slate-800 pt-16 pb-16 px-4 sm:px-6 text-center text-white">
-        <div class="max-w-4xl mx-auto space-y-4">
+    <section class="hero-custom-bg border-b border-slate-800/80 pt-24 pb-24 px-4 sm:px-6 text-center text-white relative z-10 overflow-hidden">
+        <!-- 上部から差し込む光の演出レイヤー -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-64 bg-gradient-to-b from-sky-400/15 via-indigo-500/5 to-transparent blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto space-y-4 relative z-10">
             <h1 id="hero-title" class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
                 Discover the Authentic Japan
             </h1>
