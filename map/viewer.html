@@ -892,6 +892,10 @@
             let html = '';
 
             if (calendarMode === 'month') {
+                // 【月表示】 7列グリッド＆曜日ヘッダーを表示に戻す
+                grid.className = "grid grid-cols-7 bg-slate-800/20 gap-px";
+                document.getElementById('calendarHeaders').style.display = 'grid';
+
                 const y = currentCalendarDate.getFullYear(), m = currentCalendarDate.getMonth();
                 if (['en', 'es', 'id'].includes(currentLang)) {
                     document.getElementById('calendarMonthTitle').innerText = `${mNames[m]} ${y}`;
@@ -918,8 +922,11 @@
                         </div>
                     `;
                 }
-} else {
-                // 週表示モード（年を含めたタイトル表示と、日付・曜日への年表示対応）
+            } else {
+                // 【週表示】 縦並び1列＆曜日ヘッダーを非表示
+                grid.className = "grid grid-cols-1 bg-slate-800/20 gap-2 p-2";
+                document.getElementById('calendarHeaders').style.display = 'none';
+
                 const startOfWeek = new Date(currentCalendarDate);
                 const dayOfWeek = startOfWeek.getDay();
                 startOfWeek.setDate(startOfWeek.getDate() - dayOfWeek);
@@ -934,24 +941,20 @@
                 const startDateNum = startOfWeek.getDate();
                 const endDateNum = endOfWeek.getDate();
 
-                // 言語に応じた週タイトルの組み立て
                 let titleStr = '';
                 if (['en', 'es', 'id'].includes(currentLang)) {
-                    // 英語・スペイン語・インドネシア語: "December 27, 2026 - January 2, 2027" 等
                     if (startYear !== endYear) {
                         titleStr = `${startMonthName} ${startDateNum}, ${startYear} - ${endMonthName} ${endDateNum}, ${endYear}`;
                     } else {
                         titleStr = `${startMonthName} ${startDateNum} - ${endMonthName} ${endDateNum}, ${startYear}`;
                     }
                 } else if (currentLang === 'vi') {
-                    // ベトナム語: "27 Tháng 12, 2026 - 2 Tháng 1, 2027" 等
                     if (startYear !== endYear) {
                         titleStr = `${startDateNum} ${startMonthName}, ${startYear} - ${endDateNum} ${endMonthName}, ${endYear}`;
                     } else {
                         titleStr = `${startDateNum} - ${endDateNum} ${startMonthName}, ${startYear}`;
                     }
                 } else {
-                    // 日本語・中国語・韓国語など: "2026年 12月27日 - 2027年 1月2日" 等
                     if (startYear !== endYear) {
                         titleStr = `${startYear}年 ${startMonthName}${startDateNum}日 - ${endYear}年 ${endMonthName}${endDateNum}日`;
                     } else {
@@ -966,29 +969,30 @@
                     const y = targetDate.getFullYear();
                     const m = targetDate.getMonth() + 1;
                     const d = targetDate.getDate();
+                    const dayName = wd[i];
                     const dateKey = `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
                     const daySpots = filtered.filter(s => dateKey >= s.startDate && dateKey <= (s.endDate || s.startDate));
 
+                    const dayColorClass = i === 0 ? 'text-red-400' : (i === 6 ? 'text-blue-400' : 'text-amber-400');
+
                     html += `
-                        <div class="min-h-[240px] p-2.5 flex flex-col border bg-slateCard/60 border-slate-800/40">
-                            <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-800">
-                                <span class="text-xs font-bold text-amber-400">${y}/${m}/${d}</span>
-                                ${daySpots.length ? `<span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : ''}
+                        <div class="p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slateCard/80 border border-slate-800 rounded-xl shadow-md">
+                            <div class="flex items-center gap-2.5 shrink-0 min-w-[120px]">
+                                <span class="text-xs font-bold font-mono ${dayColorClass}">${y}/${m}/${d} (${dayName})</span>
+                                ${daySpots.length ? `<span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full font-mono">${daySpots.length}</span>` : '<span class="text-[10px] text-slate-500 font-mono">0</span>'}
                             </div>
-                            <div class="flex-1 space-y-2 overflow-y-auto">
-                                ${daySpots.map(s => `
-                                    <div onclick="showDetailModal(${s.id})" class="p-2 rounded-lg cursor-pointer bg-amber-500/10 hover:bg-amber-500/20 text-amber-200 border border-amber-500/25 transition-colors">
-                                        <div class="text-xs font-bold mb-1 flex items-center gap-1">
-                                            <span>${s.title}</span>
-                                        </div>
-                                        <div class="text-[9px] text-amber-400/80 font-mono">📍 ${s.location || ''}</div>
+                            <div class="flex-1 flex flex-wrap gap-2">
+                                ${daySpots.length > 0 ? daySpots.map(s => `
+                                    <div onclick="showDetailModal(${s.id})" class="px-2.5 py-1.5 rounded-lg cursor-pointer bg-amber-500/10 hover:bg-amber-500/20 text-amber-200 border border-amber-500/25 transition-colors flex items-center gap-2">
+                                        <span class="text-xs font-bold">${s.title}</span>
+                                        <span class="text-[9px] text-amber-400/80 font-mono">📍 ${s.location || ''}</span>
                                     </div>
-                                `).join('')}
+                                `).join('') : '<span class="text-xs text-slate-500 italic">N/A</span>'}
                             </div>
                         </div>
                     `;
                 }
-            }
+            }                       
             grid.innerHTML = html;
         }
     </script>
