@@ -56,9 +56,9 @@
                 <p id="txt-subtitle" class="text-[10px] sm:text-xs text-slate-400 hidden sm:block truncate mt-0.5">Loading...</p>
             </div>
         </div>
-        <div class="flex items-center shrink-0">
-            <!-- Language Selector (index.html と順序・仕様を統一) -->
-            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 sm:px-3 py-1.5 text-xs text-white focus:outline-none focus:border-slate-500 cursor-pointer shadow-sm">
+        <!-- Language Selector (カスタム矢印仕様) -->
+        <div class="relative inline-block shrink-0">
+            <select id="langSelector" onchange="changeLanguage(this.value)" class="appearance-none bg-slate-900 border border-slate-700 rounded-xl pl-3 pr-8 py-1.5 text-xs text-white focus:outline-none focus:border-slate-500 cursor-pointer shadow-sm">
                 <option value="en">🇺🇸 English</option>
                 <option value="ja">🇯🇵 日本語</option>
                 <option value="zh-TW">🇹🇼 繁體中文</option>
@@ -69,6 +69,12 @@
                 <option value="vi">🇻🇳 Tiếng Việt</option>
                 <option value="es">🇪🇸 Español</option>
             </select>
+            <!-- すっきりしたカスタム矢印アイコン -->
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
         </div>
     </header>
     
