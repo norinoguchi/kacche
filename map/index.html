@@ -173,7 +173,7 @@
                 const isComingSoon = card.status === 'coming_soon';
                 
                 const Tag = isComingSoon ? 'div' : 'a';
-                const hrefAttr = isComingSoon ? '' : `href="${card.link}&lang=${lang}"`;
+                const hrefAttr = isComingSoon ? '' : `href="${card.link}&lang=${lang}" target="_blank" rel="noopener noreferrer"`;
                 const styleClasses = isComingSoon 
                     ? 'bg-white/80 opacity-85 hover:opacity-100' 
                     : 'bg-white border-slate-200/90 hover:border-blue-500/60 shadow-md hover:shadow-xl card-hover';
