@@ -4,7 +4,7 @@
     "ja": {
       "title": "日本の主要なお祭りマップ",
       "subtitle": "日本全国で数多く開催されるお祭りのうち、外国人観光客にも人気な代表的なお祭りを紹介する地図です。",
-      "listTitle": "スポット一覧",
+      "listDescription": "日本各地には、古くから多くの祭りが行われています。各地の祭りは、地域の歴史や文化を反映しており、地元の人々にとって重要なイベントです。祭りは、神社や寺院での宗教的な儀式から、伝統的な踊りや音楽、屋台や花火大会など、多彩な要素を含んでいます。祭りの開催時期は季節ごとに異なり、春には桜祭りや花祭り、夏には盆踊りや花火大会、秋には収穫祭や紅葉祭り、冬には雪まつりなどがあります。これらの祭りは、地域の特色を楽しむだけでなく、日本の文化や伝統を体験する絶好の機会でもあります。  ",    
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。",
       "categories": []
@@ -12,52 +12,58 @@
     "en": {
       "title": "Japan's major festival map",
       "subtitle": "This is a map that introduces the most popular festivals among the many festivals held throughout Japan that are also popular with foreign tourists.",
-      "listTitle": "スポット一覧",
-      "consultTitle": "詳細情報・お問い合わせ",
-      "consultDesc": "観光協会等へお問い合わせください。"
+      "listDescription": "Japan has many traditional festivals that have been held for centuries. These festivals reflect the history and culture of each region and are important events for local communities. Festivals include religious ceremonies at shrines and temples, traditional dances and music, floats, and fireworks. The timing of these festivals varies by season, with cherry blossom festivals in spring, Bon dance and fireworks in summer, harvest festivals and red leaf festivals in autumn, and snow festivals in winter. These festivals offer not only a chance to enjoy regional characteristics but also an excellent opportunity to experience Japanese culture and traditions.",
+      "consultTitle": "Detailed Information & Contact",
+      "consultDesc": "Please contact the tourism association or relevant authorities."
     },
     "zh-TW": {
       "title": "日本主要祭典地圖",
       "subtitle": "這是一張地圖，介紹了日本各地舉辦的眾多節日中最受歡迎的節日，這些節日也深受外國遊客的歡迎。",
-      "listTitle": "スポット一覧",
+      "listDescription": "日本各地有許多傳統節日，這些節日已經舉辦了幾個世紀。這些節日反映了每個地區的歷史和文化，對當地社區來說是重要的活動。節日包括神社和寺廟的宗教儀式、傳統舞蹈和音樂、花車遊行以及煙花表演。這些節日的舉辦時間因季節而異，春天有櫻花節和花卉節，夏天有盂蘭盆舞和煙花表演，秋天有收成節和紅葉節，冬天有雪祭。這些節日不僅讓您能享受地區特色，也是體驗日本文化和傳統的絕佳機會。",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "zh-CN": {
       "title": "日本主要祭典地图",
       "subtitle": "这是一张地图，介绍了日本各地举办的众多节日中最受欢迎的节日，这些节日也深受外国游客的欢迎。",
-      "listTitle": "スポット一覧",
+      "listDescription": "日本有許多傳統節日，這些節日已經舉辦了幾個世紀。這些節日反映了每個地區的歷史和文化，對當地社區來說是重要的活動。節日包括神社和寺廟的宗教儀式、傳統舞蹈和音樂、花車遊行以及煙花表演。這些節日的舉辦時間因季節而異，春天有櫻花節和花卉節，夏天有盂蘭盆舞和煙花表演，秋天有收成節和紅葉節，冬天有雪祭。這些節日不僅讓您能享受地區特色，也是體驗日本文化和傳統的絕佳機會。",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "ko": {
       "title": "일본의 주요 축제지도",
       "subtitle": "일본 전국에서 많이 개최되는 축제 중, 외국인 관광객에게도 인기 있는 대표적인 축제를 소개하는 지도입니다.",
-      "listTitle": "スポット一覧",
+      "listDescription": "일본에는 많은 전통 축제들이 있으며, 이들은 수세기 동안 지속되어 왔습니다. 이러한 축제들은 각 지역의 역사와 문화를 반영하며, 지역 사회にとって 중요한 이벤트입니다. 축제는 신사와 사찰에서 열리는 종교적 의식부터 전통적인 춤과 음악, 관 등과 불꽃놀이에 이르기까지 다양한 요소를 포함합니다. 이러한 축제들은 계절에 따라 다르게 열리며, 봄에는 벚꽃 축제와 꽃 축제, 여름에는 보른 댄스와 불꽃놀이, 가을에는 수확 축제와 단풍 축제, 겨울에는 눈 축제가 있습니다. 이러한 축제들은 지역의 특색을 즐기고자 하는 사람들뿐만 아니라 일본의 문화와 전통을 체험할 수 있는 훌륭한 기회를 제공합니다.",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "th": {
       "title": "แผนที่เทศกาลสำคัญของญี่ปุ่น",
       "subtitle": "แผนที่นี้เป็นแผนที่แนะนำเทศกาลที่ได้รับความนิยมมากที่สุดในบรรดาเทศกาลต่างๆ ที่จัดขึ้นทั่วประเทศญี่ปุ่นซึ่งได้รับความนิยมจากนักท่องเที่ยวชาวต่างชาติเช่นกัน",
-      "listTitle": "スポット一覧",
+      "listDescription": "แผนที่นี้เป็นแผนที่แนะนำเทศกาลที่ได้รับความนิยมมากที่สุดในบรรดาเทศกาลต่างๆ ที่จัดขึ้นทั่วประเทศญี่ปุ่นซึ่งได้รับความนิยมจากนักท่องเที่ยวชาวต่างชาติเช่นกัน",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "id": {
       "title": "Peta festival utama Jepang",
       "subtitle": "Ini adalah peta yang memperkenalkan festival terpopuler di antara sekian banyak festival yang diadakan di seluruh Jepang yang juga populer di kalangan turis asing.",
-      "listTitle": "スポット一覧",
+      "listDescription": "Jepang memiliki banyak festival tradisional yang telah diselenggarakan selama berabad-abad. Festival-festival ini mencerminkan sejarah dan budaya setiap daerah dan merupakan peristiwa penting bagi komunitas lokal. Festival meliputi upacara keagamaan di kuil dan kuil, tari dan musik tradisional, parade gerobak, serta pertunjukan kembang api. Waktu pelaksanaan festival ini bervariasi sesuai musim, dengan festival bunga sakura dan bunga di musim semi, tari Bon dan pertunjukan kembang api di musim panas, festival panen dan festival daun merah di musim gugur, serta festival salju di musim dingin. Festival-festival ini tidak hanya memberikan kesempatan untuk menikmati ciri khas daerah tetapi juga merupakan kesempatan yang sangat baik untuk mengalami budaya dan tradisi Jepang.",
       "consultTitle": "詳細情報・お問い合わせ",
       "consultDesc": "観光協会等へお問い合わせください。"
     },
     "vi": {
       "title": "Bản đồ lễ hội lớn của Nhật Bản",
-      "subtitle": "Đây là bản đồ giới thiệu những lễ hội nổi tiếng nhất trong số rất nhiều lễ hội được tổ chức trên khắp Nhật Bản cũng được du khách nước ngoài yêu thích."
+      "subtitle": "Đây là bản đồ giới thiệu những lễ hội nổi tiếng nhất trong số rất nhiều lễ hội được tổ chức trên khắp Nhật Bản cũng được du khách nước ngoài yêu thích.",
+      "listDescription": "Japan has many traditional festivals that have been held for centuries. These festivals reflect the history and culture of each region and are important events for local communities. Festivals include religious ceremonies at shrines and temples, traditional dances and music, floats, and fireworks. The timing of these festivals varies by season, with cherry blossom festivals in spring, Bon dance and fireworks in summer, harvest festivals and red leaf festivals in autumn, and snow festivals in winter. These festivals offer not only a chance to enjoy regional characteristics but also an excellent opportunity to experience Japanese culture and traditions.",
+      "consultTitle": "Detailed Information & Contact",
+      "consultDesc": "Please contact the tourism association or relevant authorities."
     },
     "es": {
       "title": "El mapa de los principales festivales de Japón",
-      "subtitle": "Este es un mapa que presenta los festivales más populares entre los muchos festivales que se celebran en todo Japón y que también son populares entre los turistas extranjeros."
+      "subtitle": "Este es un mapa que presenta los festivales más populares entre los muchos festivales que se celebran en todo Japón y que también son populares entre los turistas extranjeros.",
+      "listDescription": "Japan has many traditional festivals that have been held for centuries. These festivals reflect the history and culture of each region and are important events for local communities. Festivals include religious ceremonies at shrines and temples, traditional dances and music, floats, and fireworks. The timing of these festivals varies by season, with cherry blossom festivals in spring, Bon dance and fireworks in summer, harvest festivals and red leaf festivals in autumn, and snow festivals in winter. These festivals offer not only a chance to enjoy regional characteristics but also an excellent opportunity to experience Japanese culture and traditions.",
+      "consultTitle": "Detailed Information & Contact",
+      "consultDesc": "Please contact the tourism association or relevant authorities."
     }
   }
 }

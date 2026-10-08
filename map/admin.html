@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Discovery - Unified Admin CMS</title>
+    <title>Authentic Japan Guide - Unified Admin CMS</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+ 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -158,6 +160,12 @@
                             <label class="block text-[11px] font-medium text-slate-300 mb-1">サブタイトル・説明</label>
                             <input type="text" id="editActiveLangSub" oninput="saveCurrentEditMapLangInput()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
                         </div>
+
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-300 mb-1">リスト解説文 (listDescription)</label>
+                            <textarea id="editActiveLangListDesc" rows="3" oninput="saveCurrentEditMapLangInput()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" placeholder="リスト表示の上部に表示される解説文を入力..."></textarea>
+                        </div>
+
                         <div id="editActiveLangCats" class="space-y-2 hidden">
                             <!-- スポットモード時、カテゴリー名の翻訳フィールドを表示 -->
                         </div>
@@ -1062,6 +1070,7 @@
             const curUI = currentEditMapConfigI18n[lang] || {};
             document.getElementById('editActiveLangTitle').value = curUI.title || '';
             document.getElementById('editActiveLangSub').value = curUI.subtitle || '';
+            document.getElementById('editActiveLangListDesc').value = curUI.listDescription || ''; // 追加
 
             // カテゴリー名の翻訳フィールド
             const isSpot = document.getElementById('editMapType').value === 'spot';
@@ -1104,6 +1113,7 @@
             
             currentEditMapConfigI18n[lang].title = document.getElementById('editActiveLangTitle').value;
             currentEditMapConfigI18n[lang].subtitle = document.getElementById('editActiveLangSub').value;
+            currentEditMapConfigI18n[lang].listDescription = document.getElementById('editActiveLangListDesc').value; // 追加
 
             // カテゴリー翻訳の保存
             if (document.getElementById('editMapType').value === 'spot') {
@@ -1148,9 +1158,12 @@
                 if (!currentEditMapConfigI18n[lang]) currentEditMapConfigI18n[lang] = {};
                 const cur = currentEditMapConfigI18n[lang];
                 
-                // タイトル・サブタイトル
+                // タイトル・サブタイトル・解説文の翻訳
                 if (overwrite || !cur.title) cur.title = await translateText(jaUI.title, lang);
                 if (jaUI.subtitle && (overwrite || !cur.subtitle)) cur.subtitle = await translateText(jaUI.subtitle, lang);
+                if (jaUI.listDescription && (overwrite || !cur.listDescription)) {
+                    cur.listDescription = await translateText(jaUI.listDescription, lang); // 追加
+                }
 
                 // カテゴリーの翻訳
                 if (isSpot) {

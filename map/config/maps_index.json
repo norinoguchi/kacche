@@ -16,15 +16,15 @@
     },
     {
       "id": "hanabi",
-      "name": "花火マップ",
+      "name": "Fireworks Map",
       "icon": "🎆",
+      "mapType": "event",
       "hasCalendar": true,
       "theme": {
         "iconGradient": "from-purple-600 to-indigo-600",
         "btnTheme": "bg-purple-600 hover:bg-purple-500",
-        "badgeTheme": "bg-purple-500/10 text-purple-400 border-purple-500/20"
+        "badgeTheme": "bg-purple-500/10 text-purple-400 border-purple-500/25"
       },
-      "mapType": "event",
       "categories": []
     },
     {

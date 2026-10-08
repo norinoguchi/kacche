@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <title>Japan Discovery - Map Viewer</title>
+    <title>Authentic Japan Guide - Japan Maps & Calendar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -132,6 +132,11 @@
         <!-- List View -->
         <div id="view-list" class="absolute inset-0 bg-slateDark overflow-y-auto p-4 sm:p-6">
             <div class="max-w-6xl mx-auto">
+                 <!-- 多言語対応の解説文表示エリア（枠で囲み、下地と文字サイズを調整） -->
+                <div id="listDescriptionArea" class="hidden bg-slate-800/90 border border-slate-600/80 rounded-2xl p-4 sm:p-5 mb-5 text-sm sm:text-base text-slate-100 leading-relaxed shadow-lg">
+                    <p id="listDescriptionText"></p>
+                </div>
+
                 <h2 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2"><span id="txt-list-title">リスト</span><span class="text-xs font-normal text-slate-400" id="listCount">（0）</span></h2>
                 <div id="listContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- JSで動的生成 -->
@@ -286,6 +291,23 @@
             document.getElementById('btnBackToPortal').href = `index.html?lang=${currentLang}`;
             document.getElementById('txt-app-title').innerText = getLocalizedConfig('title') || "Japan Discovery";
             document.getElementById('txt-badge-title').innerText = currentMapID.toUpperCase();
+
+            // サブタイトルや解説文の取得と反映
+            const subtitle = getLocalizedConfig('subtitle') || "";
+            document.getElementById('txt-subtitle').innerText = subtitle;
+
+            // リスト上部の解説エリアへの反映（設定に listDescription または subtitle を使用する場合）
+            const listDescArea = document.getElementById('listDescriptionArea');
+            const listDescText = document.getElementById('listDescriptionText');
+            const customListDesc = getLocalizedConfig('listDescription') || subtitle;
+
+            if (customListDesc) {
+                listDescText.innerText = customListDesc;
+                listDescArea.classList.remove('hidden');
+            } else {
+                listDescArea.classList.add('hidden');
+            }
+
             document.getElementById('txt-subtitle').innerText = getLocalizedConfig('subtitle') || "";
             document.getElementById('txt-list-title').innerText = getLocalizedUI('listTitle') || "Spot List";
 
@@ -454,7 +476,7 @@
 
         function getLocalizedSpot(spot) {
             const spotI18n = (spotData.spotContentI18n && (spotData.spotContentI18n[spot.id] || spotData.spotContentI18n[String(spot.id)])) || {};
-            const langData = spotI18n[currentLang] || spotI18n['ja'] || {};
+const langData = spotI18n[currentLang] || spotI18n['en'] || spotI18n['ja'] || {};
             const startDate = spot.startDate || '2027-05-01';
 
             return {
@@ -484,7 +506,7 @@
 
         function getSpotCategoryDef(catName) {
             if (!catName || mapConfig.mapType !== 'spot') return null;
-            const curConfI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
+            const curConfI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['en']) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
             const catsI18n = curConfI18n.categories || [];
 
             const idx = mapConfig.categories.findIndex(c => c.name === catName);
