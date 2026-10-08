@@ -274,7 +274,7 @@
             
             return langData[key] || '';
         }
-        
+
         // --- テーマ & テキスト適用 ---
         function applyThemeAndText() {
             const currentMapInfo = sysConfig.maps ? sysConfig.maps.find(m => m.id === currentMapID) : null;
@@ -669,9 +669,11 @@ const langData = spotI18n[currentLang] || spotI18n['en'] || spotI18n['ja'] || {}
                 `;
             }
 
-            let consultBtnHtml = `<button class="${mapConfig.btnTheme} text-white px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap shadow-md transition-transform hover:scale-105">Go！</button>`;
-            if (spot.consultUrl) {
+            let consultBtnHtml = '';
+            if (spot.consultUrl && spot.consultUrl.trim() !== '') {
                 consultBtnHtml = `<a href="${spot.consultUrl}" target="_blank" class="${mapConfig.btnTheme} text-white px-5 py-2.5 rounded-xl text-xs font-bold inline-block text-center whitespace-nowrap shadow-md transition-transform hover:scale-105">Go！</a>`;
+            } else {
+                consultBtnHtml = `<button disabled class="bg-slate-700 text-slate-500 px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap cursor-not-allowed opacity-60">Go！</button>`;
             }
 
             document.getElementById('modalContent').innerHTML = `

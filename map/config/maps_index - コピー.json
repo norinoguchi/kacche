@@ -28,9 +28,9 @@
       "categories": []
     },
     {
-      "id": "komae_cafe",
-      "name": "Komae Cafe Map",
-      "icon": "☕️",
+      "id": "castle",
+      "name": "全国お城マップ",
+      "icon": "🏯",
       "mapType": "spot",
       "hasCalendar": false,
       "theme": {
@@ -40,12 +40,12 @@
       },
       "categories": [
         {
-          "icon": "☕️",
-          "name": "Cafe"
+          "icon": "🏰",
+          "name": "城郭"
         },
         {
-          "icon": "🍷",
-          "name": "Cafe & Bar"
+          "icon": "⛰",
+          "name": "城跡"
         }
       ]
     }

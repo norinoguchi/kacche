@@ -95,6 +95,28 @@
       }
     },
     {
+      "id": "komae_cafe",
+      "order": 3,
+      "status": "active",
+      "link": "viewer.html?map=komae_cafe",
+      "icon": "☕",
+      "images": [
+        "picture/komae_cafe/loeuf2.jpg?w=800&auto=format&fit=crop&q=80",
+        "picture/komae_cafe/ENCHANTE2.jpg?w=800&auto=format&fit=crop&q=80",
+        "picture/komae_cafe/kumicharyo1.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "● Active Map", "title": "Komae Cafes", "desc": "Discover wonderful cafes in Komae, Tokyo.", "btn": "Open Map →" },
+        "ja": { "badge": "● Active Map", "title": "狛江カフェマップ", "desc": "東京都狛江市内の素敵なカフェをご紹介します。", "btn": "マップを開く →" },
+        "zh-TW": { "badge": "● Active Map", "title": "狛江咖啡地圖", "desc": "探索狛江市內的精彩咖啡廳。", "btn": "打开地图 →" },
+        "zh-CN": { "badge": "● Active Map", "title": "狛江咖啡地圖", "desc": "探索狛江市內的精彩咖啡廳。", "btn": "打开地图 →" },
+        "ko": { "badge": "● Active Map", "title": "狛江 카페 지도", "desc": "도쿄 도내의 멋진 카페를 소개합니다.", "btn": "지도 열기 →" },
+        "id": { "badge": "● Active Map", "title": "Peta Cafe Komae", "desc": "Temukan cafe menarik di Komae, Tokyo.", "btn": "Buka Peta →" },
+        "vi": { "badge": "● Active Map", "title": "Bản đồ Quán cà phê Komae", "desc": "Khám phá những quán cà phê tuyệt vời ở Komae, Tokyo.", "btn": "Mở Bản đồ →" },
+        "es": { "badge": "● Active Map", "title": "Mapa de Cafés de Komae", "desc": "Descubre espectaculares exhibiciones de fuegos artificiales de verano y otoño sobre ríos, lagos y océanos.", "btn": "Abrir Mapa →" }
+      }
+    },
+    {
       "id": "food-event",
       "order": 3,
       "status": "coming_soon",

@@ -1,0 +1,123 @@
+{
+  "categories": [
+    {
+      "icon": "☕️",
+      "name": "Cafe"
+    },
+    {
+      "icon": "🍷",
+      "name": "Cafe & Bar"
+    }
+  ],
+  "i18n": {
+    "ja": {
+      "title": "Komae Cafe Map",
+      "subtitle": "東京都狛江市内の素敵なカフェをご紹介します。",
+      "listDescription": "狛江市には、駅前の便利なカフェから、住宅街にひっそり佇む居心地のよいお店まで、個性豊かなカフェが点在しています。こだわりのコーヒーやスイーツを楽しんだり、ランチを味わったり、ゆっくり読書をしたり……。それぞれのお店に、それぞれの魅力があります。このマップを片手に、いつもの道を少し寄り道して、狛江ならではの素敵なカフェとの出会いを楽しんでみませんか？"
+    },
+    "en": {
+      "title": "Komae Cafe Map",
+      "subtitle": "This guide introduces some wonderful cafés in Komae City, Tokyo.",
+      "listDescription": "Komae is home to a wonderful variety of cafés, from convenient spots near the station to cozy hidden gems tucked away in quiet residential neighborhoods. Enjoy carefully brewed coffee and delicious sweets, savor a leisurely lunch, or simply relax with a good book. Each café has its own unique atmosphere and charm. With this map in hand, why not take a little detour from your usual route and discover the delightful cafés that make Komae special?",
+      "categories": [
+        {
+          "name": "Cafe"
+        },
+        {
+          "name": "Cafe & Bar"
+        }
+      ]
+    },
+    "zh-TW": {
+      "title": "Komae Cafe Map",
+      "subtitle": "本指南將為您介紹東京都狛江市內的特色咖啡館。",
+      "listDescription": "狛江市有許多各具特色的咖啡館，從車站附近便利的店家，到靜謐住宅區中低調而舒適的小店，散布在城市各處。您可以品嚐講究的咖啡與甜點，享受悠閒的午餐，也可以找個角落慢慢閱讀。每一家咖啡館都有屬於自己的氛圍與魅力。拿著這張地圖，偶爾在熟悉的路上繞個小彎，發現狛江獨有的迷人咖啡館吧！",
+      "categories": [
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Komae Cafe Map",
+      "subtitle": "本指南将为您介绍东京都狛江市内的特色咖啡馆。",
+      "listDescription": "狛江市拥有许多各具特色的咖啡馆，从车站附近便利的店铺，到静谧住宅区中低调而舒适的小店，散布在城市各处。您可以品尝精心制作的咖啡和甜点，享受悠闲的午餐，也可以找个角落慢慢阅读。每一家咖啡馆都有属于自己的氛围与魅力。拿着这张地图，偶尔在熟悉的路上绕个小弯，发现狛江独有的迷人咖啡馆吧！",
+      "categories": [
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    "ko": {
+      "title": "Komae Cafe Map",
+      "subtitle": "이 가이드에서는 도쿄도 고마에시의 멋진 카페를 소개합니다.",
+      "listDescription": "고마에시에는 역 근처의 편리한 카페부터 조용한 주택가에 자리한 아늑한 숨은 카페까지, 개성 넘치는 카페들이 곳곳에 있습니다. 정성스럽게 내린 커피와 맛있는 디저트를 즐기거나, 여유롭게 점심을 맛보거나, 조용히 책을 읽으며 시간을 보낼 수도 있습니다. 카페마다 저마다의 분위기와 매력이 있습니다. 이 지도를 들고 평소 다니던 길에서 잠시 벗어나, 고마에만의 특별한 카페를 만나보세요!",
+      "categories": [
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    "th": {
+      "title": "Komae Cafe Map",
+      "subtitle": "คู่มือนี้ขอแนะนำคาเฟ่บรรยากาศดี ๆ ในเมืองโคมาเอะ กรุงโตเกียว",
+      "listDescription": "เมืองโคมาเอะมีคาเฟ่หลากหลายสไตล์ ตั้งแต่ร้านที่สะดวกสบายใกล้สถานี ไปจนถึงคาเฟ่แสนอบอุ่นที่ซ่อนตัวอยู่ในย่านที่พักอาศัยอันเงียบสงบ คุณสามารถเพลิดเพลินกับกาแฟและขนมหวานที่ใส่ใจในรายละเอียด ลิ้มรสอาหารกลางวันอย่างสบาย ๆ หรือใช้เวลานั่งอ่านหนังสืออย่างเพลิดเพลิน คาเฟ่แต่ละแห่งมีบรรยากาศและเสน่ห์เฉพาะตัว ลองถือแผนที่นี้แล้วแวะออกนอกเส้นทางเดิมสักเล็กน้อย เพื่อค้นพบคาเฟ่แสนพิเศษที่เป็นเสน่ห์ของโคมาเอะกันเถอะ!",
+      "categories": [
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    "id": {
+      "title": "Komae Cafe Map",
+      "subtitle": "Panduan ini memperkenalkan kafe-kafe menarik di Kota Komae, Tokyo.",
+      "listDescription": "Komae memiliki beragam kafe dengan karakter unik, mulai dari kafe yang nyaman di dekat stasiun hingga kafe tersembunyi yang tenang di kawasan permukiman. Nikmati kopi dan makanan manis yang dibuat dengan penuh perhatian, santap siang dengan santai, atau luangkan waktu untuk membaca buku. Setiap kafe memiliki suasana dan daya tariknya sendiri. Dengan membawa peta ini, cobalah sedikit menyimpang dari rute sehari-hari dan temukan kafe-kafe istimewa yang menjadi bagian dari pesona Komae!",
+      "categories": [
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    "vi": {
+      "title": "Komae Cafe Map",
+      "subtitle": "Hướng dẫn này giới thiệu những quán cà phê tuyệt vời tại thành phố Komae, Tokyo.",
+      "listDescription": "Komae có nhiều quán cà phê mang nét riêng, từ những quán thuận tiện gần ga đến những quán nhỏ ấm cúng nằm ẩn mình trong các khu dân cư yên tĩnh. Bạn có thể thưởng thức cà phê và bánh ngọt được chăm chút kỹ lưỡng, dùng bữa trưa thong thả hoặc đơn giản là tìm một góc yên tĩnh để đọc sách. Mỗi quán đều có bầu không khí và sức hấp dẫn riêng. Hãy cầm theo bản đồ này, thử rẽ khỏi con đường quen thuộc một chút và khám phá những quán cà phê tuyệt vời mang đậm nét riêng của Komae!",
+      "categories": [
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    "es": {
+      "title": "Komae Cafe Map",
+      "subtitle": "",
+      "listDescription": "Komae cuenta con una gran variedad de cafeterías con personalidad propia, desde cómodos locales cerca de la estación hasta acogedores rincones escondidos en tranquilas zonas residenciales. Puedes disfrutar de un café cuidadosamente preparado y deliciosos dulces, saborear un almuerzo tranquilo o simplemente relajarte leyendo un libro. Cada cafetería tiene su propio ambiente y encanto. Lleva este mapa contigo, desvíate un poco de tu ruta habitual y descubre las encantadoras cafeterías que hacen especial a Komae.",
+      "categories": [
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    }
+  }
+}

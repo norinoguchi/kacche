@@ -1,0 +1,236 @@
+{
+  "spots": [
+    {
+      "id": 1,
+      "category": "Cafe",
+      "lat": 35.6434955,
+      "lng": 139.5662989,
+      "startDate": "",
+      "endDate": "",
+      "photos": [
+        {
+          "url": "picture/komae_cafe/loeuf1.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/komae_cafe/loeuf2.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/komae_cafe/loeuf3.jpg",
+          "caption": "",
+          "license": ""
+        }
+      ],
+      "consultUrl": "",
+      "links": [],
+      "updatedAt": "2026-10-08 02:39"
+    },
+    {
+      "id": 2,
+      "category": "Cafe & Bar",
+      "lat": 35.6265436,
+      "lng": 139.5876618,
+      "startDate": "",
+      "endDate": "",
+      "photos": [
+        {
+          "url": "picture/komae_cafe/kumicharyo1.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/komae_cafe/kumicharyo2.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/komae_cafe/kumicharyo3.jpg",
+          "caption": "",
+          "license": ""
+        }
+      ],
+      "consultUrl": "",
+      "links": [
+        {
+          "text": "Instagram",
+          "url": "https://www.instagram.com/kuimicharyo_jp"
+        }
+      ],
+      "updatedAt": "2026-10-08 04:45"
+    },
+    {
+      "id": 3,
+      "category": "Cafe",
+      "lat": 35.6284791,
+      "lng": 139.5840661,
+      "startDate": "",
+      "endDate": "",
+      "photos": [
+        {
+          "url": "picture/komae_cafe/ENCHANTE1.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/komae_cafe/ENCHANTE2.jpg",
+          "caption": "",
+          "license": ""
+        }
+      ],
+      "consultUrl": "",
+      "links": [
+        {
+          "text": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1326/A132603/13194464/"
+        }
+      ],
+      "updatedAt": "2026-10-08 05:01"
+    }
+  ],
+  "spotContentI18n": {
+    "1": {
+      "ja": {
+        "title": "Loeuf",
+        "location": "〒201-0012 東京都狛江市中和泉５丁目３１−１６",
+        "desc": "アットホームな喫茶店。カフェスペースもありイートインも可能です。\n慈恵医科大学病院の目の前にお店はあります。"
+      },
+      "en": {
+        "title": "Loeuf",
+        "location": "5-31-16 Nakaizumi, Komae, Tokyo 201-0012, Japan",
+        "desc": "A cozy, welcoming café with a homely atmosphere. There is also a café space where you can enjoy your food and drinks on-site. The café is located right in front of Jikei University Hospital."
+      },
+      "zh-TW": {
+        "title": "",
+        "location": "",
+        "desc": "一家溫馨舒適、充滿親切氛圍的咖啡店。店內設有咖啡空間，可以在店內享用餐點與飲品。店家就位於東京慈惠會醫科大學附屬醫院正對面。"
+      },
+      "zh-CN": {
+        "title": "",
+        "location": "",
+        "desc": "一家温馨舒适、充满亲切氛围的咖啡店。店内设有咖啡空间，可以在店内享用餐点和饮品。店铺就位于东京慈惠会医科大学附属医院正对面。"
+      },
+      "ko": {
+        "title": "",
+        "location": "",
+        "desc": "아늑하고 편안한 분위기의 친근한 카페입니다. 카페 공간이 마련되어 있어 매장에서 음식과 음료를 즐길 수 있습니다. 도쿄지케이카이 의과대학 부속병원 바로 맞은편에 위치해 있습니다."
+      },
+      "th": {
+        "title": "",
+        "location": "",
+        "desc": "คาเฟ่บรรยากาศอบอุ่นและเป็นกันเอง มีพื้นที่สำหรับนั่งรับประทานอาหารและเครื่องดื่มภายในร้าน ร้านตั้งอยู่ตรงข้ามกับโรงพยาบาลมหาวิทยาลัยแพทยศาสตร์จิเคอิ"
+      },
+      "id": {
+        "title": "",
+        "location": "",
+        "desc": "Sebuah kafe yang nyaman dan hangat dengan suasana yang akrab. Tersedia juga area untuk makan dan minum di tempat. Kafe ini terletak tepat di seberang Rumah Sakit Universitas Jikei."
+      },
+      "vi": {
+        "title": "",
+        "location": "",
+        "desc": "Một quán cà phê nhỏ ấm cúng và thân thiện. Quán có khu vực phục vụ tại chỗ, nơi bạn có thể thưởng thức đồ ăn và thức uống ngay tại đây. Quán nằm ngay đối diện Bệnh viện Đại học Jikei."
+      },
+      "es": {
+        "title": "",
+        "location": "",
+        "desc": "Una cafetería acogedora y agradable, con un ambiente muy familiar. También dispone de un espacio donde se pueden disfrutar las comidas y bebidas en el propio local. Se encuentra justo enfrente del Hospital Universitario Jikei."
+      }
+    },
+    "2": {
+      "ja": {
+        "title": "葵觅茶寮 クイミチャリョ",
+        "location": "〒201-0016 東京都狛江市駒井町１丁目８−２",
+        "desc": "中国茶専門店。小田急線狛江駅南口よりバスで宇奈根行き、六小通り入口下車目の前\n本場・中国から厳選した中国茶をお届けしています。\n本場のお茶、おいしい淹れ方、中国の茶文化、杭州での学びをゆるく発信中♪"
+      },
+      "en": {
+        "title": "葵觅茶寮 (Kuimi Charyo)",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "A specialty shop dedicated to Chinese tea. From the south exit of Komae Station on the Odakyu Line, take a bus bound for Unane and get off at Rokusho-dori Iriguchi. The shop is right in front of the bus stop. We offer carefully selected Chinese teas sourced directly from China. We also casually share authentic tea, tips on how to brew delicious tea, Chinese tea culture, and what we have learned in Hangzhou♪"
+      },
+      "zh-TW": {
+        "title": "葵覓茶寮（Kuimi Charyo）",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "中國茶專門店。從小田急線狛江站南口搭乘前往宇奈根方向的巴士，在「六小通り入口」下車，店家就在站牌正前方。為您帶來從中國當地精選的優質中國茶。我們也輕鬆分享道地的中國茶、美味的泡茶方法、中國茶文化，以及在杭州學習的點滴♪"
+      },
+      "zh-CN": {
+        "title": "葵觅茶寮（Kuimi Charyo）",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "中国茶专门店。从小田急线狛江站南口乘坐开往宇奈根方向的巴士，在“六小通り入口”下车，店铺就在站牌正前方。我们为您带来从中国当地精选的优质中国茶。同时也会轻松分享正宗中国茶、好喝的泡茶方法、中国茶文化，以及在杭州学习的点滴♪"
+      },
+      "ko": {
+        "title": "葵觅茶寮（구이미차료）",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "중국차 전문점입니다. 오다큐선 고마에역 남쪽 출구에서 우나네행 버스를 타고 ‘로쿠쇼도리 이리구치’ 정류장에서 내리면 바로 앞에 매장이 있습니다. 중국 현지에서 엄선한 정통 중국차를 선보이고 있습니다. 본고장의 차와 맛있게 차를 우리는 방법, 중국의 차 문화, 항저우에서 배운 이야기 등을 편안한 분위기로 소개하고 있습니다♪"
+      },
+      "th": {
+        "title": "葵觅茶寮 (Kuimi Charyo)",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "ร้านชาเฉพาะทางที่เชี่ยวชาญด้านชาจีน จากทางออกทิศใต้ของสถานีโคมาเอะ สายโอดะคิว ขึ้นรถบัสสายที่มุ่งหน้าไปอุนะเนะ และลงที่ป้าย “Rokusho-dori Iriguchi” ร้านอยู่ตรงหน้าป้ายรถบัส เราคัดสรรชาจีนคุณภาพดีจากแหล่งผลิตในประเทศจีนมาให้คุณได้สัมผัส นอกจากนี้ยังแบ่งปันเรื่องราวเกี่ยวกับชาจีนแท้ วิธีชงชาให้อร่อย วัฒนธรรมการดื่มชาของจีน และสิ่งที่ได้เรียนรู้จากการศึกษาในเมืองหางโจวแบบสบาย ๆ♪"
+      },
+      "id": {
+        "title": "葵觅茶寮 (Kuimi Charyo)",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "Toko khusus teh Tiongkok. Dari pintu selatan Stasiun Komae di Jalur Odakyu, naik bus menuju Unane dan turun di halte Rokusho-dori Iriguchi. Toko berada tepat di depan halte. Kami menghadirkan teh Tiongkok pilihan yang langsung diseleksi dari berbagai daerah di Tiongkok. Kami juga berbagi cerita tentang teh asli Tiongkok, cara menyeduh teh yang nikmat, budaya minum teh Tiongkok, serta pengalaman belajar di Hangzhou dengan suasana santai♪"
+      },
+      "vi": {
+        "title": "葵觅茶寮 (Kuimi Charyo)",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "Cửa hàng chuyên về trà Trung Quốc. Từ cửa Nam ga Komae trên tuyến Odakyu, hãy đi xe buýt hướng đến Unane và xuống tại trạm “Rokusho-dori Iriguchi”. Cửa hàng nằm ngay trước trạm xe buýt. Chúng tôi mang đến những loại trà Trung Quốc được tuyển chọn kỹ lưỡng từ chính quê hương của trà. Chúng tôi cũng chia sẻ một cách nhẹ nhàng về trà chính gốc, cách pha trà ngon, văn hóa trà Trung Quốc và những điều đã học hỏi tại Hàng Châu♪"
+      },
+      "es": {
+        "title": "葵觅茶寮 (Kuimi Charyo)",
+        "location": "1-8-2 Komaicho, Komae, Tokyo 201-0016, Japan",
+        "desc": "Tienda especializada en té chino. Desde la salida sur de la estación de Komae de la línea Odakyu, toma el autobús con destino a Unane y baja en la parada Rokusho-dori Iriguchi. La tienda está justo enfrente de la parada. Ofrecemos una cuidada selección de tés chinos procedentes de distintas regiones de China. También compartimos de manera relajada información sobre el auténtico té chino, cómo prepararlo correctamente, la cultura del té en China y lo que hemos aprendido en Hangzhou♪"
+      }
+    },
+    "3": {
+      "ja": {
+        "title": "アンシャンテ ハーバル カフェ",
+        "location": "〒201-0015 東京都狛江市猪方１丁目１０−１０",
+        "desc": "木・金・土曜の午後のみ営業する、落ち着いた雰囲気のカフェレストラン。定番のキッシュプレートをはじめ、焼き菓子やケーキ、スコーン、ハンドドリップコーヒー、種類豊富なハーブティーなど、どれも丁寧に作られています。パスタや季節のスイーツもおすすめ。訪れる前にInstagramでメニューをチェックするのがおすすめです。"
+      },
+      "en": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "1-10-10 Inokata, Komae City, Tokyo 201-0015, Japan",
+        "desc": "A cozy café restaurant open only in the afternoons on Thursdays, Fridays, and Saturdays. The popular quiche plate is highly recommended, along with delicious homemade baked treats, cakes, scones, hand-drip coffee, and a variety of herbal teas. The pasta dishes and seasonal desserts are also worth trying. Check the menu on Instagram before your visit to find something you’ll love."
+      },
+      "zh-TW": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "",
+        "desc": "這是一家每週四、五、六下午營業的溫馨咖啡餐廳。人氣招牌鹹派套餐非常推薦，此外還有美味的手工烘焙點心、蛋糕、司康、手沖咖啡，以及多種花草茶。義大利麵和季節限定甜點也很值得一試。造訪前可以先在 Instagram 查看菜單，挑選自己喜歡的餐點。"
+      },
+      "zh-CN": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "",
+        "desc": "这是一家每周四、五、六下午营业的温馨咖啡餐厅。人气招牌咸派套餐非常值得推荐，此外还有美味的手工烘焙点心、蛋糕、司康、手冲咖啡，以及多种花草茶。意大利面和季节限定甜点也很值得一试。到访前可以先在 Instagram 查看菜单，选择自己喜欢的餐点。"
+      },
+      "ko": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "",
+        "desc": "목요일, 금요일, 토요일 오후에만 영업하는 아늑한 카페 레스토랑입니다. 인기 메뉴인 키슈 플레이트를 비롯해 맛있는 수제 구움과자, 케이크, 스콘, 핸드드립 커피와 다양한 허브티를 즐길 수 있습니다. 파스타와 계절 디저트도 추천합니다. 방문하기 전에 Instagram에서 메뉴를 확인해 보세요."
+      },
+      "th": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "",
+        "desc": "คาเฟ่เรสเตอรองต์บรรยากาศอบอุ่นที่เปิดให้บริการเฉพาะช่วงบ่ายของวันพฤหัสบดี ศุกร์ และเสาร์ เมนูแนะนำคือคีชเพลตยอดนิยม นอกจากนี้ยังมีขนมอบ เค้ก สโคน กาแฟดริป และชาสมุนไพรหลากหลายชนิดที่อร่อยไม่แพ้กัน รวมถึงพาสต้าและของหวานตามฤดูกาล ก่อนมาเยือน แนะนำให้ตรวจสอบเมนูใน Instagram ก่อน เพื่อเลือกเมนูที่ถูกใจ"
+      },
+      "id": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "",
+        "desc": "Kafe-restoran yang nyaman ini buka hanya pada sore hari, setiap Kamis, Jumat, dan Sabtu. Quiche plate yang menjadi menu andalan sangat direkomendasikan, begitu juga aneka kue panggang, cake, scone, kopi hand-drip, dan berbagai pilihan teh herbal. Pasta dan hidangan penutup musiman juga patut dicoba. Sebelum berkunjung, cek menu di Instagram untuk menemukan hidangan yang sesuai dengan selera Anda."
+      },
+      "vi": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "",
+        "desc": "Đây là một quán café – nhà hàng ấm cúng, chỉ mở cửa vào buổi chiều các ngày thứ Năm, thứ Sáu và thứ Bảy. Món quiche plate đặc trưng rất được yêu thích, cùng với các loại bánh nướng, bánh ngọt, scone, cà phê pha thủ công và nhiều loại trà thảo mộc. Các món pasta và món tráng miệng theo mùa cũng rất đáng thử. Bạn nên xem thực đơn trên Instagram trước khi ghé để chọn được món mình yêu thích."
+      },
+      "es": {
+        "title": "ENCHANTÉ Herbal Café",
+        "location": "",
+        "desc": "Un acogedor café-restaurante que abre únicamente por las tardes los jueves, viernes y sábados. Su popular plato de quiche es muy recomendable, al igual que sus deliciosos productos de repostería, tartas, scones, café preparado a mano y una amplia variedad de infusiones. También merece la pena probar sus pastas y postres de temporada. Se recomienda consultar el menú en Instagram antes de visitar el local para elegir tus platos favoritos."
+      }
+    }
+  }
+}

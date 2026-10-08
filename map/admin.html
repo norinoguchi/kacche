@@ -179,6 +179,9 @@
         </div>
     </div>
 
+    <!-- ご自身の Google Maps APIキーを設定してください -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHs7rAWnkmqtmEokuSA_eUrqHqBk4WT34&libraries=places"></script>
+
     <!-- Spot Edit / Add Modal (維持) -->
     <div id="spotModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
         <div class="bg-slateCard border border-slate-700/80 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col">
@@ -234,18 +237,21 @@
                 </div>
 
                 <!-- 関連リンク設定 -->
-                 <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-2xl space-y-3">
-                    <div class="flex items-center justify-between">
-                        <label class="block text-xs font-bold text-slate-200">🔗 関連リンク設定</label>
-                        <button type="button" onclick="addLinkField()" class="bg-slate-800 hover:bg-slate-750 text-slate-200 px-2.5 py-1 rounded-lg text-xs border border-slate-700 transition-colors">＋ リンクを追加</button>
-                    </div>
+                <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-2xl space-y-3">
+                    <h4 class="text-xs font-bold text-slate-200">🔗 リンク設定</h4>
                     
-                    <div class="mb-2">
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1">チケット・ECショップ URL（「Go!」ボタンのリンク）</label>
+                    <div class="mb-3">
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Go! ボタンの飛び先 URL (consultUrl)</label>
                         <input type="text" id="spotConsultUrl" placeholder="https://..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono">
                     </div>
 
-                    <div id="linksContainer" class="space-y-3"></div>
+                    <div class="border-t border-slate-800 pt-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-[11px] font-medium text-slate-400">その他の関連リンク (links)</label>
+                            <button type="button" onclick="addLinkField()" class="bg-slate-800 hover:bg-slate-750 text-slate-200 px-2.5 py-1 rounded-lg text-xs border border-slate-700 transition-colors">＋ リンクを追加</button>
+                        </div>
+                        <div id="linksContainer" class="space-y-3"></div>
+                    </div>
                 </div>
 
                 <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-2xl space-y-3">
@@ -594,23 +600,28 @@
             btn.disabled = true;
 
             try {
-                // Nominatim API (OpenStreetMap)
-                const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(addressJa)}&limit=1`, {
-                    headers: { 'Accept-Language': 'ja' }
-                });
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data && data.length > 0) {
-                        document.getElementById('spotLat').value = data[0].lat;
-                        document.getElementById('spotLng').value = data[0].lon;
-                    } else {
-                        alert('位置情報を特定できませんでした。住所をより具体的に入力するか、手動で入力してください。');
-                    }
+                // Google Maps Geocoding API の利用
+                if (typeof google === 'undefined' || !google.maps || !google.maps.Geocoder) {
+                    throw new Error('Google Maps API が読み込まれていません。APIキーを確認してください。');
                 }
+
+                const geocoder = new google.maps.Geocoder();
+                
+                geocoder.geocode({ address: addressJa }, (results, status) => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+
+                    if (status === 'OK' && results && results[0]) {
+                        const location = results[0].geometry.location;
+                        document.getElementById('spotLat').value = location.lat();
+                        document.getElementById('spotLng').value = location.lng();
+                    } else {
+                        alert('位置情報を特定できませんでした（ステータス: ' + status + '）。住所をより具体的に入力するか、手動で入力してください。');
+                    }
+                });
             } catch (e) {
-                console.error('Nominatim API エラー', e);
-                alert('位置情報の取得に失敗しました。時間をおいて試すか、手動で入力してください。');
-            } finally {
+                console.error('Geocoding エラー', e);
+                alert('位置情報の取得に失敗しました: ' + e.message);
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }
@@ -869,8 +880,7 @@
         async function saveSpotData() {
             saveCurrentLangInput(); // 現在のタブの内容を確定
 
-
-            const consultUrl = document.getElementById('spotConsultUrl').value.trim();
+            const consultUrlVal = document.getElementById('spotConsultUrl').value.trim();
             const finalLinks = currentSpotLinks.filter(l => l.text && l.url).map(l => ({
                 text: l.text,
                 url: l.url
@@ -887,11 +897,10 @@
                 alert('カテゴリー、日本語タイトル、緯度、経度は必須です。'); return;
             }
 
-            const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16); // YYYY-MM-DD HH:MM
+            const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
             const currentMap = sysConfig.maps.find(m => m.id === currentMapID);
             const isSpotMap = currentMap?.mapType === 'spot';
 
-            // 写真データのURL結合
             const finalPhotos = currentSpotPhotos.filter(p => p.filename).map(p => ({
                 url: baseDir + p.filename,
                 caption: p.caption,
@@ -910,8 +919,8 @@
                         startDate: isSpotMap ? '' : document.getElementById('spotStartDate').value,
                         endDate: isSpotMap ? '' : document.getElementById('spotEndDate').value,
                         photos: finalPhotos,
-                        consultUrl: document.getElementById('spotConsultUrl').value.trim(),
-                        links: currentSpotLinks.filter(l => l.text && l.url).map(l => ({ text: l.text, url: l.url })),
+                        consultUrl: consultUrlVal, // 正しく独立したconsultUrlに保存
+                        links: finalLinks,         // 正しく独立したlinks配列に保存
                         updatedAt: nowStr
                     };
                     rawData.spotContentI18n[spotId] = currentSpotTranslations;
@@ -928,19 +937,18 @@
                     startDate: isSpotMap ? '' : document.getElementById('spotStartDate').value,
                     endDate: isSpotMap ? '' : document.getElementById('spotEndDate').value,
                     photos: finalPhotos,
-                    consultUrl: document.getElementById('spotConsultUrl').value.trim(),
-                    links: currentSpotLinks.filter(l => l.text && l.url).map(l => ({ text: l.text, url: l.url })),
+                    consultUrl: consultUrlVal, // 正しく独立したconsultUrlに保存
+                    links: finalLinks,         // 正しく独立したlinks配列に保存
                     updatedAt: nowStr
                 });
                 if (!rawData.spotContentI18n) rawData.spotContentI18n = {};
                 rawData.spotContentI18n[newId] = currentSpotTranslations;
             }
 
-            // ローカル保存フロー（JSONダウンロード）
             exportDataFile();
             closeSpotModal();
             renderTable();
-            alert(`スポットデータを更新しました。JSONファイルをダウンロードします。GitHubリポジトリの data/${currentMapID}_data.json に上書きアップロードしてください。`);
+            alert(`スポットデータを更新しました。JSONファイルをダウンロードします。`);
         }
 
         function deleteSpot(spotId) {
