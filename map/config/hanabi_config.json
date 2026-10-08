@@ -11,62 +11,62 @@
       "categories": []
     },
     "en": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
+      "title": "Fireworks Guide",
+      "subtitle": "Fireworks Festivals Across Japan",
       "listTitle": "Date-sorted Fireworks List",
       "consultTitle": "Consultation for Fireworks Viewing",
       "consultDesc": "Inquiries for paid viewing seats, nearby lodging, or private consulting",
-      "listDescription": "Japanese fireworks are one of the country’s most beloved symbols of summer, lighting up the night sky with spectacular colors and shapes. Fireworks festivals are held throughout Japan, with a tradition believed to date back to the Edo period. Skilled fireworks makers carefully craft each shell by hand, creating beautiful patterns such as “Chrysanthemum” and “Peony,” which bloom in perfect circles, as well as “Willow,” whose sparkling trails cascade gracefully toward the ground. Beyond their brilliant colors and powerful sounds, the sequence and presentation of the fireworks are carefully designed to captivate the audience. Japanese fireworks are a unique summer tradition where craftsmanship and artistry come together."
+      "listDescription": "Fireworks are one of Japan’s most iconic seasonal traditions, lighting up the night sky throughout the year, especially during summer. They are believed to have originated in the Edo period, and today, fireworks festivals are held across Japan. Fireworks such as “Kiku” (Chrysanthemum) and “Botan” (Peony), which bloom into large, colorful circles, and “Yanagi” (Willow), whose sparkling trails seem to cascade downward, are carefully crafted by skilled artisans, one shell at a time. It is not only the light and sound that captivate audiences; great attention is also given to the order of the launches and the overall presentation. Fireworks are a beautiful Japanese summer tradition where traditional craftsmanship and technology come together."
     },
     "zh-TW": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
+      "title": "Fireworks Guide",
+      "subtitle": "日本各地的煙火大會",
       "listTitle": "依日期排序花火大會列表",
       "consultTitle": "觀賞花火大會安排諮詢",
       "consultDesc": "付費觀賞席預訂、周邊住宿或個人諮詢洽詢",
-      "listDescription": ""
+      "listDescription": "花火是日本最具代表性的夏季風物詩之一，以絢麗的光彩點綴著季節的夜空。據說花火始於江戶時代，如今日本各地都會舉辦花火大會。色彩繽紛、綻放成巨大圓形的「菊」與「牡丹」，以及宛如向下流淌般閃耀的「柳」等，每一發花火都是工匠傾注心力、精心製作而成。不僅在聲光效果上講究，連施放順序與整體演出也經過巧妙設計，深深吸引觀眾。這是一種融合傳統與技術、獨具日本特色的美麗夏日文化。"
     },
     "zh-CN": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
+      "title": "Fireworks Guide",
+      "subtitle": "日本各地的烟花大会",
       "listTitle": "按日期排序花火大会列表",
       "consultTitle": "观赏花火大会安排咨询",
       "consultDesc": "付费观赏席预订、周边住宿或个人咨询洽询",
-      "listDescription": ""
+      "listDescription": "烟花是日本最具代表性的夏季风物诗之一，用绚丽的光彩点缀着季节的夜空。据说烟花始于江户时代，如今日本各地都会举办烟花大会。色彩缤纷、绽放成巨大圆形的“菊”和“牡丹”，以及宛如向下流淌般闪耀的“柳”等，每一发烟花都是工匠倾注心力、精心制作而成。不仅在声光效果上讲究，连燃放顺序和整体演出也经过巧妙设计，深深吸引观众。这是一种融合传统与技术、独具日本特色的美丽夏日文化。"
     },
     "ko": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
+      "title": "Fireworks Guide",
+      "subtitle": "일본 각지의 불꽃놀이 축제",
       "listTitle": "날짜순 불꽃놀이 목록",
       "consultTitle": "불꽃놀이 관람 수배 상담",
       "consultDesc": "유료 관람석 수배, 주변 숙박, 개인 컨설팅 문의",
-      "listDescription": ""
+      "listDescription": "불꽃놀이는 계절의 밤하늘을 아름답게 수놓는 일본을 대표하는 풍경 중 하나이며, 특히 여름을 대표하는 문화로 잘 알려져 있습니다. 에도 시대에 시작된 것으로 알려져 있으며, 오늘날에는 일본 각지에서 불꽃놀이 축제가 열리고 있습니다. 화려한 빛이 커다란 원을 그리며 펼쳐지는 ‘국화’와 ‘모란’, 그리고 빛이 아래로 흘러내리는 듯한 ‘버드나무’ 등은 장인들이 한 발 한 발 정성을 다해 만들어 냅니다. 소리와 빛뿐만 아니라 발사 순서와 연출에도 세심한 아이디어가 더해져 관객을 매료시킵니다. 전통과 기술이 어우러진, 일본만의 아름다운 여름 문화입니다."
     },
     "th": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
+      "title": "Fireworks Guide",
+      "subtitle": "เทศกาลดอกไม้ไฟทั่วประเทศญี่ปุ่น",
       "listTitle": "รายการเทศกาลดอกไม้ไฟเรียงตามวันที่",
       "consultTitle": "ปรึกษาการเข้าชมเทศกาลดอกไม้ไฟ",
       "consultDesc": "สอบถามการจองที่นั่งแบบเสียเงิน ที่พักใกล้เคียง หรือที่ปรึกษา",
-      "listDescription": ""
+      "listDescription": "ดอกไม้ไฟเป็นหนึ่งในวัฒนธรรมอันเป็นเอกลักษณ์ของญี่ปุ่นที่ช่วยแต่งแต้มท้องฟ้ายามค่ำคืนในแต่ละฤดูกาลให้สวยงาม โดยเฉพาะในช่วงฤดูร้อน เชื่อกันว่าดอกไม้ไฟเริ่มต้นขึ้นในสมัยเอโดะ และในปัจจุบันมีการจัดงานเทศกาลดอกไม้ไฟขึ้นทั่วประเทศญี่ปุ่น ดอกไม้ไฟรูปแบบต่าง ๆ เช่น “ดอกเบญจมาศ” และ “ดอกโบตั๋น” ที่เบ่งบานเป็นวงกลมขนาดใหญ่ด้วยแสงหลากสี รวมถึง “ต้นหลิว” ที่เปล่งประกายราวกับแสงกำลังไหลริน ล้วนได้รับการประดิษฐ์ขึ้นอย่างประณีตโดยช่างฝีมือทีละลูก นอกจากแสงและเสียงแล้ว ลำดับการจุดและการจัดแสดงยังได้รับการออกแบบอย่างพิถีพิถันเพื่อสร้างความประทับใจให้แก่ผู้ชม นี่คือวัฒนธรรมฤดูร้อนอันงดงามที่ผสมผสานประเพณีและเทคโนโลยีไว้อย่างลงตัว และเป็นเอกลักษณ์ของญี่ปุ่น"
     },
     "id": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
+      "title": "Fireworks Guide",
+      "subtitle": "Festival Kembang Api di Seluruh Jepang",
       "listTitle": "Daftar Festival Kembang Api Urut Tanggal",
       "consultTitle": "Konsultasi Kunjungan Festival Kembang Api",
       "consultDesc": "Pertanyaan pemesanan tempat duduk berbayar, penginapan terdekat, atau konsultasi",
-      "listDescription": ""
+      "listDescription": "Kembang api merupakan salah satu tradisi khas Jepang yang menghiasi langit malam setiap musim, terutama pada musim panas. Kembang api dipercaya mulai berkembang pada zaman Edo, dan kini festival kembang api diadakan di berbagai daerah di seluruh Jepang. Bentuk seperti “Kiku” (krisan) dan “Botan” (peoni) yang mekar membentuk lingkaran besar dengan cahaya warna-warni, serta “Yanagi” (willow) yang berkilauan seolah-olah mengalir ke bawah, dibuat dengan penuh ketelitian oleh para pengrajin, satu demi satu. Tidak hanya cahaya dan suara, urutan peluncuran serta tata pertunjukannya juga dirancang dengan cermat untuk memukau para penonton. Inilah budaya musim panas Jepang yang indah, tempat tradisi dan teknologi berpadu secara harmonis."
     },
     "es": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
-      "listDescription": ""
+      "title": "Fireworks Guide",
+      "subtitle": "Festivales de fuegos artificiales en todo Japón",
+      "listDescription": "Los fuegos artificiales son una de las tradiciones más representativas de Japón y embellecen el cielo nocturno de cada estación, especialmente durante el verano. Se cree que los fuegos artificiales comenzaron en Japón durante el período Edo, y actualmente se celebran festivales de fuegos artificiales en todo el país. Figuras como el “Kiku” (crisantemo) y el “Botan” (peonía), que se abren formando grandes círculos de colores, o el “Yanagi” (sauce), cuyos destellos parecen caer suavemente hacia abajo, son elaboradas cuidadosamente por artesanos, una a una. No solo se cuidan la luz y el sonido, sino también el orden de los lanzamientos y la puesta en escena, creando espectáculos que cautivan al público. Es una hermosa tradición veraniega propia de Japón, donde se fusionan la tradición y la tecnología."
     },
     "vi": {
-      "title": "Fireworks Map",
-      "subtitle": "全国花火大会・競技花火ガイド",
-      "listDescription": ""
+      "title": "Fireworks Guide",
+      "subtitle": "Các lễ hội pháo hoa trên khắp Nhật Bản",
+      "listDescription": "Pháo hoa là một trong những nét văn hóa tiêu biểu của Nhật Bản, tô điểm bầu trời đêm theo từng mùa, đặc biệt là vào mùa hè. Người ta cho rằng nghệ thuật pháo hoa bắt đầu từ thời Edo, và ngày nay các lễ hội pháo hoa được tổ chức trên khắp Nhật Bản. Những màn pháo hoa như “Kiku” (hoa cúc) và “Botan” (hoa mẫu đơn), nở thành những vòng tròn lớn đầy màu sắc, hay “Yanagi” (cành liễu), tỏa sáng như những dòng ánh sáng đang buông xuống, đều được các nghệ nhân chế tác công phu từng quả một. Không chỉ chú trọng đến âm thanh và ánh sáng, thứ tự bắn pháo hoa và cách dàn dựng chương trình cũng được tính toán kỹ lưỡng, tạo nên sức hấp dẫn đặc biệt đối với khán giả. Đây là một nét văn hóa mùa hè tuyệt đẹp của Nhật Bản, nơi truyền thống hòa quyện với kỹ thuật."
     }
   }
 }

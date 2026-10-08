@@ -261,11 +261,20 @@
         }
 
         function getLocalizedUI(key) { return ((uiText[currentLang] || uiText['ja'] || {})[key]) || key; }
+ 
         function getLocalizedConfig(key) { 
-            const configI18n = (mapConfig.i18n && mapConfig.i18n[currentLang]) || (mapConfig.i18n && mapConfig.i18n['ja']) || {};
-            return configI18n[key] || '';
+            const i18n = mapConfig.i18n || {};
+            
+            // 選択中の言語 -> 英語('en') -> 日本語('ja') の順でフォールバックして取得
+            const langData = i18n[currentLang] || i18n['en'] || i18n['ja'] || {};
+            
+            if (key === 'listDescription') {
+                return langData.listDescription || i18n['en']?.listDescription || i18n['ja']?.listDescription || '';
+            }
+            
+            return langData[key] || '';
         }
-
+        
         // --- テーマ & テキスト適用 ---
         function applyThemeAndText() {
             const currentMapInfo = sysConfig.maps ? sysConfig.maps.find(m => m.id === currentMapID) : null;
