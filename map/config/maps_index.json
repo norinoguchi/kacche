@@ -16,7 +16,7 @@
     },
     {
       "id": "hanabi",
-      "name": "Fireworks Map",
+      "name": "Fireworks Guide",
       "icon": "🎆",
       "mapType": "event",
       "hasCalendar": true,
