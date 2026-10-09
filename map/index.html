@@ -173,7 +173,8 @@
                 const isComingSoon = card.status === 'coming_soon';
                 
                 const Tag = isComingSoon ? 'div' : 'a';
-                const hrefAttr = isComingSoon ? '' : `href="${card.link}&lang=${lang}" target="_blank" rel="noopener noreferrer"`;
+                // const hrefAttr = isComingSoon ? '' : `href="${card.link}&lang=${lang}" target="_blank" rel="noopener noreferrer"`;
+                const hrefAttr = isComingSoon ? '' : `href="${card.link}&lang=${lang}" onclick="handleCardClick(event, '${card.link}&lang=${lang}')"`;
                 const styleClasses = isComingSoon 
                     ? 'bg-white/80 opacity-85 hover:opacity-100' 
                     : 'bg-white border-slate-200/90 hover:border-blue-500/60 shadow-md hover:shadow-xl card-hover';
@@ -235,6 +236,18 @@
             });
         }
 
+        // スマホとPCでリンクの開き方を分岐する関数
+        function handleCardClick(event, url) {
+            // 画面幅が 768px 未満の場合をスマートフォン（モバイル）と判定
+            const isMobile = window.innerWidth < 768;
+
+            if (isMobile) {
+                event.preventDefault(); // デフォルトの同じタブでの遷移をキャンセル
+                window.open(url, '_blank', 'noopener,noreferrer'); // 新しいタブで開く
+            }
+            // PC（768px以上）の場合は event.preventDefault() を呼ばないため、
+            // 通常通り同じタブでスムーズに遷移します
+        }
     </script>
 </body>
 </html>
