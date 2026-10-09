@@ -1,0 +1,254 @@
+{
+  "spots": [
+    {
+      "id": 1,
+      "category": "関西風",
+      "lat": 34.7197915,
+      "lng": 137.7573589,
+      "startDate": "",
+      "endDate": "",
+      "photos": [
+        {
+          "url": "picture/unagi/kawamasu1.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/unagi/kawamasu2.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/unagi/kawamasu3.jpg",
+          "caption": "",
+          "license": ""
+        }
+      ],
+      "consultUrl": "",
+      "links": [
+        {
+          "text": "Tabelog",
+          "url": "https://tabelog.com/shizuoka/A2202/A220201/22002843/"
+        }
+      ],
+      "updatedAt": "2026-10-09 07:01"
+    },
+    {
+      "id": 2,
+      "category": "関西風",
+      "lat": 34.7802118,
+      "lng": 137.7914091,
+      "startDate": "",
+      "endDate": "",
+      "photos": [
+        {
+          "url": "picture/unagi/hosoda1.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/unagi/hosoda2.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/unagi/hosoda3.jpg",
+          "caption": "",
+          "license": ""
+        }
+      ],
+      "consultUrl": "",
+      "links": [
+        {
+          "text": "Instagram",
+          "url": "https://www.instagram.com/unagihosoda?igsh=dmpuamJjNml4MWc1"
+        },
+        {
+          "text": "Tabelog",
+          "url": "https://tabelog.com/shizuoka/A2202/A220201/22044597/"
+        }
+      ],
+      "updatedAt": "2026-10-09 07:22"
+    },
+    {
+      "id": 3,
+      "category": "関西風",
+      "lat": 35.487312,
+      "lng": 136.8987258,
+      "startDate": "",
+      "endDate": "",
+      "photos": [
+        {
+          "url": "picture/unagi/shigeyoshi1.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/unagi/shigeyoshi2.jpg",
+          "caption": "",
+          "license": ""
+        },
+        {
+          "url": "picture/unagi/shigeyoshi3.jpg",
+          "caption": "",
+          "license": ""
+        }
+      ],
+      "consultUrl": "",
+      "links": [
+        {
+          "text": "Instagram",
+          "url": "https://www.instagram.com/unagishigeyoshi?utm_medium=copy_link"
+        },
+        {
+          "text": "Tabelog",
+          "url": "https://tabelog.com/gifu/A2102/A210204/21000054/"
+        }
+      ],
+      "updatedAt": "2026-10-09 07:30"
+    }
+  ],
+  "spotContentI18n": {
+    "1": {
+      "ja": {
+        "title": "川ます（川〼）鰻店",
+        "location": "〒435-0044 静岡県浜松市中央区西塚町３２４−１",
+        "desc": "浜名湖の鰻に魅せられた初代親方が、岐阜から浜松に店を構えて40年。三代にわたり受け継がれる秘伝のタレと伝統の味が自慢です。注文後に活鰻を裂き、炭火で焼き上げる職人技をカウンター越しに楽しめます。"
+      },
+      "en": {
+        "title": "Unagi Kawamasu – Japanese Eel Restaurant",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "Inspired by the eels of Lake Hamana, the founding chef opened this restaurant in Hamamatsu 40 years ago after moving from Gifu. Its secret sauce and traditional flavors have been passed down through three generations. Watch skilled chefs prepare fresh live eel to order and grill it over charcoal, right before your eyes at the counter."
+      },
+      "zh-TW": {
+        "title": "鰻魚料理店 川〼（Kawamasu）",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "初代師傅因迷上濱名湖的鰻魚，從岐阜來到濱松開店，至今已有40年。代代相傳三代的秘製醬汁與傳統風味，是店家的最大特色。您可以在吧台前欣賞職人現場處理活鰻，並以炭火細心烤製的精湛技藝。"
+      },
+      "zh-CN": {
+        "title": "鳗鱼料理店 川〼（Kawamasu）",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "初代师傅因迷上滨名湖的鳗鱼，从岐阜来到滨松开店，至今已有40年。传承三代的秘制酱汁与传统风味，是这家店的最大特色。您可以在吧台前欣赏师傅现场处理活鳗，并用炭火精心烤制的精湛技艺。"
+      },
+      "ko": {
+        "title": "장어 요리 전문점 가와마스（川〼）",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "하마나호의 장어 맛에 매료된 초대 장인이 기후에서 하마마쓰로 옮겨와 문을 연 지 40년. 3대에 걸쳐 전해 내려오는 비법 소스와 전통의 맛이 자랑입니다. 카운터 너머로 주문 후 살아 있는 장어를 손질하고 숯불에 구워 내는 장인의 솜씨를 직접 감상할 수 있습니다."
+      },
+      "th": {
+        "title": "ร้านอาหารปลาไหลญี่ปุ่น Kawamasu（川〼）",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "ร้านแห่งนี้เปิดในเมืองฮามามัตสึมาเป็นเวลา 40 ปีแล้ว นับตั้งแต่เชฟรุ่นแรกหลงใหลในปลาไหลจากทะเลสาบฮามานะ จึงย้ายจากเมืองกิฟุมาตั้งร้านที่นี่ จุดเด่นคือซอสสูตรลับและรสชาติดั้งเดิมที่สืบทอดกันมาถึงสามรุ่น คุณสามารถชมฝีมือช่างผู้เชี่ยวชาญที่แล่ปลาไหลสดตามสั่งและย่างด้วยถ่านได้จากหน้าเคาน์เตอร์"
+      },
+      "id": {
+        "title": "Restoran Belut Jepang Kawamasu（川〼）",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "Terpesona oleh belut dari Danau Hamana, sang pendiri membuka restoran ini di Hamamatsu 40 tahun lalu setelah pindah dari Gifu. Saus rahasia dan cita rasa tradisionalnya diwariskan selama tiga generasi. Dari balik konter, Anda dapat menyaksikan langsung keahlian para koki dalam menyiapkan belut hidup setelah dipesan dan memanggangnya di atas arang."
+      },
+      "vi": {
+        "title": "Nhà hàng lươn Nhật Bản Kawamasu（川〼）",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "Bị chinh phục bởi hương vị lươn từ hồ Hamana, vị đầu bếp sáng lập đã chuyển từ Gifu đến Hamamatsu và mở nhà hàng cách đây 40 năm. Nước sốt bí truyền cùng hương vị truyền thống được gìn giữ qua ba thế hệ là niềm tự hào của quán. Ngồi tại quầy, bạn có thể tận mắt thưởng thức tay nghề của người đầu bếp khi sơ chế lươn sống sau khi khách gọi món và nướng trên than hồng."
+      },
+      "es": {
+        "title": "Restaurante de anguila japonesa Kawamasu（川〼）",
+        "location": "324-1 Nishizuka-cho, Chuo-ku, Hamamatsu, Shizuoka 435-0044, Japan",
+        "desc": "Hace 40 años, el fundador, cautivado por las anguilas del lago Hamana, se trasladó desde Gifu para abrir este restaurante en Hamamatsu. Su salsa secreta y sus sabores tradicionales se han transmitido a lo largo de tres generaciones. Desde la barra, podrás contemplar de cerca la destreza de los cocineros al preparar anguilas vivas al momento y asarlas cuidadosamente sobre carbón."
+      }
+    },
+    "2": {
+      "ja": {
+        "title": "炭焼きうなぎ細田",
+        "location": "〒434-0035 静岡県浜松市浜名区寺島３１６４−３",
+        "desc": "店主の細田さんは岐阜県飛騨地方出身。地元の日本料理店で3年間修業した後、浜松市内の和食店やうなぎ店で16年以上腕を磨き、2025年8月に独立出店した。真新しい店内ながら、老舗店にも負けない拘りが詰まった炭火焼・関西風の鰻は、鰻にはうるさい浜松地方の美食家からも高い評価を受けている。\n\n　店舗面積は約27坪。席数は、カウンター席4席、4人掛けと2人掛け用テーブル席4席、奥座敷に4人掛けテーブル席2席を備える。"
+      },
+      "en": {
+        "title": "Charcoal-grilled eel hosoda",
+        "location": "3164-3 Terashima, Hamana-ku, Hamamatsu City, Shizuoka Prefecture 434-0035",
+        "desc": "The owner, Mr. Hosoda, is from the Hida region of Gifu Prefecture. After training at a local Japanese restaurant for three years, he honed his skills for over 16 years at a Japanese restaurant and an eel restaurant in Hamamatsu City, and opened his own restaurant in August 2025. Although the restaurant is brand new, the charcoal-grilled, Kansai-style eel is as good as any long-established restaurant, and has been highly praised by gourmets in the Hamamatsu region who are picky about eel.\n\nThe store area is approximately 27 tsubo. There are 4 counter seats, 4 table seats for 4 people and 4 seats for 2 people, and 2 table seats for 4 people in the back parlor."
+      },
+      "zh-TW": {
+        "title": "炭烤細田鰻魚",
+        "location": "靜岡縣濱松市濱名區寺島 3164-3 郵編 434-0035",
+        "desc": "店主細田先生來自岐阜縣飛驒地區。他在當地一家日本餐廳學習了三年，之後又在濱松市的一家日本餐廳和一家鰻魚餐廳磨練了超過16年的技藝，並於2025年8月開設了自己的餐廳。儘管餐廳是全新的，但炭烤的關西風格鰻魚不亞於任何一家老字號餐廳，受到了對鰻魚挑剔的濱鬆地區美食家的高度評價。\n\n店舖面積約27坪。吧台座位4個，4人餐桌座位4個，2人餐桌座位4個，後廳有4人餐桌座位2個。"
+      },
+      "zh-CN": {
+        "title": "炭烤细田鳗鱼",
+        "location": "静冈县滨松市滨名区寺岛 3164-3 邮编 434-0035",
+        "desc": "店主细田先生来自岐阜县飞騨地区。他在当地一家日本餐厅学习了三年，之后又在滨松市的一家日本餐厅和一家鳗鱼餐厅磨练了超过16年的技艺，并于2025年8月开设了自己的餐厅。尽管餐厅是全新的，但炭烤的关西风格鳗鱼不亚于任何一家老字号餐厅，受到了对鳗鱼挑剔的滨松地区美食家的高度评价。\n\n店铺面积约27坪。吧台座位4个，4人餐桌座位4个，2人餐桌座位4个，后厅有4人餐桌座位2个。"
+      },
+      "ko": {
+        "title": "숯구이 장어 호소다",
+        "location": "〒434-0035 시즈오카현 하마마츠시 하마나구 테라지마 3164-3",
+        "desc": "가게 주인 호소다 씨는 기후현 히다 지방 출신. 현지의 일본 요리점에서 3년간 수업한 후, 하마마츠 시내의 일식점이나 장어점에서 16년 이상 팔을 닦고, 2025년 8월에 독립 출점했다. 브랜드 새로운 점내이면서, 노포점에도 지지 않는 구애가 막힌 숯불구이·간사이풍의 장어는, 장어에는 시끄러운 하마마츠 지방의 미식가로부터도 높은 평가를 받고 있다.\n\n점포 면적은 약 27평. 좌석수는 카운터석 4석, 4인용과 2인용 테이블석 4석, 안쪽 좌식에 4인용 테이블석 2석을 갖추고 있다."
+      },
+      "th": {
+        "title": "โฮโซดาปลาไหลย่างถ่าน",
+        "location": "3164-3 เทระชิมะ, ฮามานะ-คุ, เมืองฮามามัตสึ, จังหวัดชิซึโอกะ 434-0035",
+        "desc": "คุณโฮโซดะ เจ้าของมาจากภูมิภาคฮิดะ จังหวัดกิฟุ หลังจากฝึกฝนที่ร้านอาหารญี่ปุ่นในท้องถิ่นเป็นเวลาสามปี เขาได้ฝึกฝนทักษะของเขามานานกว่า 16 ปีที่ร้านอาหารญี่ปุ่นและร้านอาหารปลาไหลในเมืองฮามามัตสึ และเปิดร้านอาหารของตัวเองในเดือนสิงหาคม ปี 2025 แม้ว่าร้านอาหารแห่งนี้จะเป็นร้านใหม่เอี่ยม แต่ปลาไหลสไตล์คันไซย่างถ่านก็อร่อยพอๆ กับร้านอาหารที่มีมายาวนาน และได้รับการยกย่องอย่างสูงจากนักชิมในภูมิภาคฮามามัตสึที่พิถีพิถันเกี่ยวกับปลาไหล\n\nพื้นที่ร้านประมาณ 27 สึโบะ มีที่นั่งเคาน์เตอร์ 4 ที่นั่ง โต๊ะ 4 ที่นั่งสำหรับ 4 คน และ 4 ที่นั่งสำหรับ 2 คน และโต๊ะ 2 ที่นั่งสำหรับ 4 คนในห้องนั่งเล่นด้านหลัง"
+      },
+      "id": {
+        "title": "Hosoda belut bakar arang",
+        "location": "3164-3 Terashima, Hamana-ku, Kota Hamamatsu, Prefektur Shizuoka 434-0035",
+        "desc": "Pemiliknya, Tuan Hosoda, berasal dari wilayah Hida di Prefektur Gifu. Setelah berlatih di restoran lokal Jepang selama tiga tahun, ia mengasah keterampilannya selama lebih dari 16 tahun di restoran Jepang dan restoran belut di Kota Hamamatsu, dan membuka restorannya sendiri pada bulan Agustus 2025. Meskipun restoran tersebut masih baru, belut ala Kansai yang dipanggang dengan arang sama lezatnya dengan restoran mana pun yang sudah lama berdiri, dan sangat dipuji oleh para pecinta kuliner di wilayah Hamamatsu yang pilih-pilih soal belut.\n\nLuas tokonya kurang lebih 27 tsubo. Terdapat 4 kursi counter, 4 meja kursi untuk 4 orang dan 4 kursi untuk 2 orang, serta 2 meja kursi untuk 4 orang di ruang tamu belakang."
+      },
+      "vi": {
+        "title": "Lươn nướng than hosoda",
+        "location": "3164-3 Terashima, Hamana-ku, Thành phố Hamamatsu, Tỉnh Shizuoka 434-0035",
+        "desc": "Chủ sở hữu, ông Hosoda, đến từ vùng Hida của tỉnh Gifu. Sau khi được đào tạo tại một nhà hàng Nhật Bản địa phương trong ba năm, anh đã trau dồi kỹ năng của mình trong hơn 16 năm tại một nhà hàng Nhật Bản và một nhà hàng lươn ở Thành phố Hamamatsu, rồi mở nhà hàng của riêng mình vào tháng 8 năm 2025. Mặc dù nhà hàng này mới thành lập nhưng món lươn nướng than kiểu Kansai ngon không kém bất kỳ nhà hàng lâu đời nào và được những người sành ăn kén chọn ở vùng Hamamatsu đánh giá cao.\n\nDiện tích cửa hàng khoảng 27 tsubo. Có 4 ghế đối diện, 4 ghế bàn 4 người và 4 ghế 2 người, 2 bàn ghế 4 người ở phòng khách phía sau."
+      },
+      "es": {
+        "title": "Hosoda de anguila a la brasa",
+        "location": "3164-3 Terashima, Hamana-ku, ciudad de Hamamatsu, prefectura de Shizuoka 434-0035",
+        "desc": "El propietario, el Sr. Hosoda, es de la región de Hida, en la prefectura de Gifu. Después de formarse en un restaurante japonés local durante tres años, perfeccionó sus habilidades durante más de 16 años en un restaurante japonés y en un restaurante de anguilas en la ciudad de Hamamatsu, y abrió su propio restaurante en agosto de 2025. Aunque el restaurante es nuevo, la anguila al estilo Kansai a la parrilla de carbón es tan buena como cualquier restaurante establecido desde hace mucho tiempo, y ha sido muy elogiada por los gourmets de la región de Hamamatsu que son exigentes con la anguila.\n\nEl área de la tienda es de aproximadamente 27 tsubo. Hay 4 asientos en el mostrador, 4 asientos en la mesa para 4 personas y 4 asientos para 2 personas, y 2 asientos en la mesa para 4 personas en el salón trasero."
+      }
+    },
+    "3": {
+      "ja": {
+        "title": "鰻しげ𠮷",
+        "location": "〒501-3252 岐阜県関市山王通１丁目３−２９",
+        "desc": "香ばしく焼いた伝統的なうなぎ料理で知られる、気取らない雰囲気の有名店。"
+      },
+      "en": {
+        "title": "Shige-yoshi",
+        "location": "1-3-29 Sanno-dori, Seki City, Gifu Prefecture 501-3252",
+        "desc": "A famous restaurant with an unpretentious atmosphere, known for its traditional fragrant grilled eel dishes."
+      },
+      "zh-TW": {
+        "title": "Shige-yoshi",
+        "location": "郵編 501-3252 岐阜縣關市山王通 1-3-29",
+        "desc": "氣氛樸實的著名餐廳，以其傳統的香噴噴的烤鰻魚菜餚而聞名。"
+      },
+      "zh-CN": {
+        "title": "Shige-yoshi",
+        "location": "邮编 501-3252 岐阜县关市山王通 1-3-29",
+        "desc": "一家气氛朴实的著名餐厅，以其传统的香喷喷的烤鳗鱼菜肴而闻名。"
+      },
+      "ko": {
+        "title": "Shige-yoshi",
+        "location": "〒501-3252 기후현 세키시 야마노도오리 1가 3-29",
+        "desc": "고소하게 구운 전통적인 장어 요리로 유명한 분위기가 있는 유명한 가게."
+      },
+      "th": {
+        "title": "Shige-yoshi",
+        "location": "1-3-29 ซันโนะโดริ เมืองเซกิ จังหวัดกิฟุ 501-3252",
+        "desc": "ร้านอาหารชื่อดังที่มีบรรยากาศเรียบง่าย ขึ้นชื่อเรื่องเมนูปลาไหลย่างหอมกรุ่นแบบดั้งเดิม"
+      },
+      "id": {
+        "title": "Shige-yoshi",
+        "location": "1-3-29 Sanno-dori, Kota Seki, Prefektur Gifu 501-3252",
+        "desc": "Restoran terkenal dengan suasana bersahaja, terkenal dengan masakan belut bakar tradisionalnya yang harum."
+      },
+      "vi": {
+        "title": "Shige-yoshi",
+        "location": "1-3-29 Sanno-dori, Thành phố Seki, Tỉnh Gifu 501-3252",
+        "desc": "Một nhà hàng nổi tiếng với không gian khiêm tốn, nổi tiếng với món lươn nướng thơm truyền thống."
+      },
+      "es": {
+        "title": "Shige-yoshi",
+        "location": "1-3-29 Sanno-dori, ciudad de Seki, prefectura de Gifu 501-3252",
+        "desc": "Un famoso restaurante con un ambiente sin pretensiones, conocido por sus tradicionales y aromáticos platos de anguila a la parrilla."
+      }
+    }
+  }
+}

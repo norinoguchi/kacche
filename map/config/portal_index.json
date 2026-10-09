@@ -96,7 +96,7 @@
     },
     {
       "id": "komae_cafe",
-      "order": 3,
+      "order": 4,
       "status": "active",
       "link": "viewer.html?map=komae_cafe",
       "icon": "☕",
@@ -117,8 +117,31 @@
       }
     },
     {
-      "id": "food-event",
+      "id": "Unagi",
       "order": 3,
+      "status": "active",
+      "link": "viewer.html?map=unagi",
+      "icon": "鳗",
+      "images": [
+        "picture/unagi/kawamasu1.jpg?w=800&auto=format&fit=crop&q=80",
+        "picture/unagi/shigeyoshi2.jpg?w=800&auto=format&fit=crop&q=80",
+        "picture/unagi/kawamasu2.jpg?w=800&auto=format&fit=crop&q=80"
+      ],
+      "i18n": {
+        "en": { "badge": "● Active Map", "title": "Authentic Unagi Restaurants", "desc": "Discover traditional Japanese charcoal-grilled eel restaurants beloved by their local communities.", "btn": "Open Map →" },
+        "ja": { "badge": "● Active Map", "title": "特選・炭火焼うなぎ店", "desc": "地域の皆さんに愛されている、日本伝統の炭火うなぎ専門店を紹介します。", "btn": "マップを開く →" },
+        "zh-TW": { "badge": "● Active Map", "title": "正宗日本鰻魚料理專門店", "desc": "為您介紹深受當地居民喜愛、傳承日本傳統炭火烤鰻技藝的專門店。", "btn": "打开地图 →" },
+        "zh-CN": { "badge": "● Active Map", "title": "正宗日本鳗鱼料理专门店", "desc": "为您介绍深受当地居民喜爱、传承日本传统炭火烤鳗技艺的专门店。", "btn": "打开地图 →" },
+        "ko": { "badge": "● Active Map", "title": "정통 일본 장어 요리 전문점", "desc": "지역 주민들에게 사랑받는 일본 전통 숯불 장어 전문점을 소개합니다.", "btn": "지도 열기 →" },
+        "th": { "badge": "Coming Soon", "title": "ร้านอาหารปลาไหลญี่ปุ่นต้นตำรับ", "desc": "เทศกาลอาหารทะเลตามฤดูกาล ตลาดอาหารท้องถิ่น และสตรีทฟู้ด", "btn": "เร็วๆ นี้" },
+        "id": { "badge": "● Active Map", "title": "Restoran Spesialis Unagi Autentik Jepang", "desc": "Kami memperkenalkan restoran khusus belut panggang arang tradisional Jepang yang dicintai oleh masyarakat setempat.", "btn": "Buka Peta →" },
+        "vi": { "badge": "● Active Map", "title": "Nhà hàng lươn Nhật Bản chính thống", "desc": "Xin giới thiệu những nhà hàng chuyên lươn nướng than theo phong cách truyền thống Nhật Bản, được người dân địa phương yêu mến.", "btn": "Mở Bản đồ →" },
+        "es": { "badge": "● Active Map", "title": "Restaurantes auténticos de anguila japonesa", "desc": "Descubre restaurantes especializados en anguila a la parrilla con carbón, preparados al estilo tradicional japonés y apreciados por la comunidad local.", "btn": "Abrir Mapa →" }
+      }
+    },
+    {
+      "id": "food-event",
+      "order": 4,
       "status": "coming_soon",
       "link": "#",
       "icon": "🍱",

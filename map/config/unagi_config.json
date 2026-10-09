@@ -1,0 +1,131 @@
+{
+  "categories": [
+    {
+      "icon": "✴️",
+      "name": "関東風"
+    },
+    {
+      "icon": "❇️",
+      "name": "関西風"
+    }
+  ],
+  "i18n": {
+    "ja": {
+      "title": "炭火うなぎ店",
+      "subtitle": "日本各地に点在する、特選のうなぎ屋を集めました。",
+      "listDescription": "日本のうなぎ料理には、長い歴史の中で受け継がれてきた職人の技と、素材の持ち味を引き出す工夫が詰まっています。活きたうなぎを丁寧にさばき、串打ちや焼き加減にこだわり、秘伝のタレをまとわせながら香ばしく焼き上げる。その一つひとつの工程に、職人の経験と誇りが息づいています。地域や店ごとに異なる焼き方や味わいも、うなぎ料理の大きな魅力です。\n\nこのガイドマップでは、伝統的な製法を大切にし、こだわりのうなぎ料理を提供するお店をご紹介します。炭火で焼き上げる香ばしさ、とろけるような身の食感、代々受け継がれる秘伝のタレ、そして目の前で繰り広げられる職人の技。日本ならではの食文化に触れながら、各地の名店を巡り、心に残るうなぎとの出会いをお楽しみください。",
+      "categories": [
+        {
+          "name": "関東風"
+        },
+        {
+          "name": "関西風"
+        }
+      ]
+    },
+    "en": {
+      "title": "Charcoal-grilled eel restaurant",
+      "subtitle": "We have collected specially selected eel restaurants scattered throughout Japan.",
+      "listDescription": "Japanese eel dishes are full of craftsmanship that has been passed down over a long history and ingenuity to bring out the natural flavors of the ingredients. The live eel is carefully cut, skewered and grilled to perfection, then coated with a secret sauce and grilled until aromatic. The experience and pride of our craftsmen is imbued in each process. Another great appeal of eel dishes is the different grilling methods and flavors that vary by region and restaurant.\n\nThis guide map introduces restaurants that value traditional cooking methods and serve carefully selected eel dishes. The aroma of charcoal grilling, the melt-in-your-mouth texture of the meat, the secret sauce passed down from generation to generation, and the craftsmanship unfolding right before your eyes. Enjoy an unforgettable encounter with eel while experiencing Japan's unique food culture as you visit famous restaurants around the country.",
+      "categories": [
+        {
+          "name": "Kanto style"
+        },
+        {
+          "name": "Kansai style"
+        }
+      ]
+    },
+    "zh-TW": {
+      "title": "炭烤鰻魚店",
+      "subtitle": "我們特意收集了分佈在日本各地的鰻魚餐廳。",
+      "listDescription": "日本鰻魚料理充滿了悠久歷史傳承的工藝和匠心，襯托出食材的天然風味。活鰻魚經過精心切割、串燒、烤至完美，然後塗上秘密醬汁，烤至芳香四溢。我們工匠的經驗和自豪感滲透在每道工序中。鰻魚料理的另一個大魅力在於不同地區和餐廳的不同燒烤方法和風味。\n\n該指南地圖介紹了重視傳統烹飪方法並提供精心挑選的鰻魚菜餚的餐廳。炭火燒烤的香氣、入口即化的肉質、代代相傳的秘製醬汁、展現在眼前的手工技藝。參觀日本各地的著名餐廳，體驗日本獨特的飲食文化，享受與鰻魚的難忘邂逅。",
+      "categories": [
+        {
+          "name": "關東風格"
+        },
+        {
+          "name": "關西風格"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "炭烤鳗鱼店",
+      "subtitle": "我们特意收集了分布在日本各地的鳗鱼餐厅。",
+      "listDescription": "日本鳗鱼料理充满了悠久历史传承的工艺和匠心，衬托出食材的天然风味。活鳗鱼经过精心切割、串烧、烤至完美，然后涂上秘制酱汁，烤至芳香四溢。我们工匠的经验和自豪感渗透在每道工序中。鳗鱼料理的另一大魅力在于不同地区和餐厅的不同烧烤方法和风味。\n\n该指南地图介绍了重视传统烹饪方法并提供精心挑选的鳗鱼菜肴的餐厅。炭火烧烤的香气、入口即化的肉质、代代相传的秘制酱汁、展现在眼前的手工技艺。参观日本各地的著名餐厅，体验日本独特的饮食文化，享受与鳗鱼的难忘邂逅。",
+      "categories": [
+        {
+          "name": "关东风格"
+        },
+        {
+          "name": "关西风格"
+        }
+      ]
+    },
+    "ko": {
+      "title": "숯불 장어 가게",
+      "subtitle": "일본 각지에 점재하는 특선 장어집을 모았습니다.",
+      "listDescription": "일본의 장어 요리에는 오랜 역사 속에서 계승되어 온 장인의 기술과 소재의 맛을 이끌어내는 궁리가 담겨 있습니다. 살아있는 장어를 정성스럽게 심판, 꼬치와 구운 가감을 고집해, 비전의 소스를 정리시키면서 고소하게 구워낸다. 그 하나 하나의 공정에 장인의 경험과 자부심이 숨쉬고 있습니다. 지역이나 가게마다 다른 구이 방법이나 맛도, 장어 요리의 큰 매력입니다.\n\n이 가이드 맵에서는, 전통적인 제법을 소중히 해, 고집의 장어 요리를 제공하는 가게를 소개합니다. 숯불로 굽는 고소함, 녹는 듯한 몸의 식감, 대대로 이어지는 비전의 소스, 그리고 눈앞에서 펼쳐지는 장인의 기술. 일본 특유의 식문화를 접하면서 각지의 유명한 상점을 둘러보며 마음에 남는 장어와의 만남을 즐겨 주세요.",
+      "categories": [
+        {
+          "name": "관동풍"
+        },
+        {
+          "name": "간사이풍"
+        }
+      ]
+    },
+    "th": {
+      "title": "ร้านปลาไหลย่างเตาถ่าน",
+      "subtitle": "เราได้รวบรวมร้านอาหารปลาไหลที่คัดสรรมาเป็นพิเศษกระจายอยู่ทั่วญี่ปุ่น",
+      "listDescription": "อาหารปลาไหลญี่ปุ่นเต็มไปด้วยงานฝีมือที่สืบทอดมายาวนานและความเฉลียวฉลาดในการดึงเอารสชาติตามธรรมชาติของส่วนผสมออกมา ปลาไหลสดถูกตัดอย่างระมัดระวัง เสียบไม้ และย่างจนได้ความสมบูรณ์แบบ จากนั้นเคลือบด้วยซอสสูตรลับเฉพาะและย่างจนมีกลิ่นหอม ประสบการณ์และความภาคภูมิใจของช่างฝีมือของเราถูกฝังอยู่ในแต่ละขั้นตอน เมนูปลาไหลที่น่าดึงดูดอีกอย่างหนึ่งก็คือวิธีการย่างและรสชาติที่แตกต่างกันไปตามภูมิภาคและร้านอาหาร\n\nแผนที่แนะนำนี้แนะนำร้านอาหารที่ให้ความสำคัญกับวิธีการปรุงอาหารแบบดั้งเดิมและเสิร์ฟเมนูปลาไหลที่คัดสรรมาอย่างดี กลิ่นหอมของการย่างถ่าน เนื้อสัมผัสที่ละลายในปาก ซอสสูตรลับที่สืบทอดจากรุ่นสู่รุ่น และงานฝีมือที่เผยออกมาต่อหน้าต่อตาคุณ เพลิดเพลินกับการเผชิญหน้าปลาไหลไม่รู้ลืมขณะสัมผัสวัฒนธรรมอาหารอันเป็นเอกลักษณ์ของญี่ปุ่นขณะเยี่ยมชมร้านอาหารชื่อดังทั่วประเทศ",
+      "categories": [
+        {
+          "name": "สไตล์คันโต"
+        },
+        {
+          "name": "สไตล์คันไซ"
+        }
+      ]
+    },
+    "id": {
+      "title": "Restoran belut bakar arang",
+      "subtitle": "Kami telah mengumpulkan restoran belut pilihan khusus yang tersebar di seluruh Jepang.",
+      "listDescription": "Hidangan belut Jepang penuh dengan keahlian yang telah diwariskan selama sejarah panjang dan kecerdikan untuk menonjolkan cita rasa alami dari bahan-bahannya. Belut hidup dipotong dengan hati-hati, ditusuk dan dipanggang hingga sempurna, kemudian dilumuri dengan saus rahasia dan dipanggang hingga harum. Pengalaman dan kebanggaan pengrajin kami tertanam dalam setiap proses. Daya tarik lain dari hidangan belut adalah metode pemanggangan dan rasa yang berbeda-beda di setiap wilayah dan restoran.\n\nPeta panduan ini memperkenalkan restoran-restoran yang menghargai metode memasak tradisional dan menyajikan hidangan belut yang dipilih dengan cermat. Aroma panggangan arang, tekstur daging yang lumer di mulut, saus rahasia yang diwariskan dari generasi ke generasi, dan ketrampilan yang terbentang tepat di depan mata Anda. Nikmati pertemuan tak terlupakan dengan belut sambil merasakan budaya makanan unik Jepang saat Anda mengunjungi restoran terkenal di seluruh negeri.",
+      "categories": [
+        {
+          "name": "gaya Kanto"
+        },
+        {
+          "name": "Gaya Kansai"
+        }
+      ]
+    },
+    "vi": {
+      "title": "Nhà hàng lươn nướng than",
+      "subtitle": "Chúng tôi đã thu thập các nhà hàng lươn được lựa chọn đặc biệt rải rác khắp Nhật Bản.",
+      "listDescription": "Các món lươn Nhật Bản chứa đầy sự khéo léo đã được truyền qua lịch sử lâu đời và sự khéo léo để làm nổi bật hương vị tự nhiên của nguyên liệu. Lươn sống được cắt cẩn thận, xiên và nướng chín tới mức hoàn hảo, sau đó phủ một lớp nước sốt bí mật và nướng cho đến khi thơm. Kinh nghiệm và niềm tự hào của những người thợ của chúng tôi được thấm nhuần trong từng quy trình. Một điểm hấp dẫn khác của món lươn là các phương pháp nướng và hương vị khác nhau tùy theo vùng và nhà hàng.\n\nBản đồ hướng dẫn này giới thiệu các nhà hàng coi trọng phương pháp nấu ăn truyền thống và phục vụ các món lươn được lựa chọn cẩn thận. Mùi thơm của than nướng, kết cấu tan chảy trong miệng của thịt, nước sốt bí mật được truyền từ thế hệ này sang thế hệ khác và tay nghề thủ công mở ra ngay trước mắt bạn. Tận hưởng cuộc gặp gỡ khó quên với lươn trong khi trải nghiệm văn hóa ẩm thực độc đáo của Nhật Bản khi bạn ghé thăm các nhà hàng nổi tiếng trên khắp đất nước.",
+      "categories": [
+        {
+          "name": "Phong cách Kanto"
+        },
+        {
+          "name": "phong cách Kansai"
+        }
+      ]
+    },
+    "es": {
+      "title": "Restaurante de anguilas a la brasa",
+      "subtitle": "Hemos recopilado restaurantes de anguilas especialmente seleccionados repartidos por todo Japón.",
+      "listDescription": "Los platos de anguila japonesa están llenos de artesanía que se ha transmitido a lo largo de una larga historia e ingenio para resaltar los sabores naturales de los ingredientes. La anguila viva se corta cuidadosamente, se ensarta y se asa a la perfección, luego se cubre con una salsa secreta y se asa hasta que esté aromática. La experiencia y el orgullo de nuestros artesanos está impregnado en cada proceso. Otro gran atractivo de los platos de anguila son los diferentes métodos de asado y los sabores que varían según la región y el restaurante.\n\nEste mapa guía presenta restaurantes que valoran los métodos de cocina tradicionales y sirven platos de anguila cuidadosamente seleccionados. El aroma de la parrilla al carbón, la textura de la carne que se derrite en la boca, la salsa secreta transmitida de generación en generación y la artesanía que se desarrolla ante tus ojos. Disfrute de un encuentro inolvidable con la anguila mientras experimenta la cultura gastronómica única de Japón mientras visita restaurantes famosos de todo el país.",
+      "categories": [
+        {
+          "name": "estilo kanto"
+        },
+        {
+          "name": "estilo kansai"
+        }
+      ]
+    }
+  }
+}

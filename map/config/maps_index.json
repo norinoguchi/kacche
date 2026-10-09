@@ -48,6 +48,28 @@
           "name": "Cafe & Bar"
         }
       ]
+    },
+    {
+      "id": "unagi",
+      "name": "炭火うなぎ店",
+      "icon": "鰻",
+      "mapType": "spot",
+      "hasCalendar": false,
+      "theme": {
+        "iconGradient": "from-purple-600 to-indigo-600",
+        "btnTheme": "bg-purple-600 hover:bg-purple-500",
+        "badgeTheme": "bg-purple-500/10 text-purple-400 border-purple-500/25"
+      },
+      "categories": [
+        {
+          "icon": "✴️",
+          "name": "関東風"
+        },
+        {
+          "icon": "❇️",
+          "name": "関西風"
+        }
+      ]
     }
   ]
 }
