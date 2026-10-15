@@ -506,17 +506,17 @@
                 label_event_desc: "イベント概要",
                 label_location_title: "開催場所 / Location",
                 link_map: "📍 マップ・詳細を開く",
-                title_availability_list: "参加状況一覧",
-                privacy_note: "※プライバシー保護のため氏名・メールは非公開です",
+                title_availability_list: "登録状況",
+                privacy_note: "※氏名・メールは非公開にしています。",
                 alert_expired_title: "回答期限が終了しました",
                 alert_expired_desc: "このイベントの回答受付は終了したため、新規の回答や内容変更はできません。",
-                title_answer_form: "出欠を入力する",
-                label_nickname: "ニックネーム (公開) *",
-                label_fullname: "氏名 (非公開) *",
-                label_email: "連絡先メール (非公開) *",
+                title_answer_form: "出欠を登録する（☆同じニックネームとメールアドレスで再登録することで、上書き修正が可能です）",
+                label_nickname: "ニックネーム (公開用) *",
+                label_fullname: "氏名 (事務局確認用) *",
+                label_email: "連絡先メール (事務局確認用) *",
                 label_cand_availability: "出席可否 *",
                 btn_submit_answer: "回答を送信する",
-                th_participant: "参加者",
+                th_participant: "登録者（ニックネーム）",
                 badge_org_dash: "幹事管理ダッシュボード",
                 btn_back_home: "← ホームに戻る",
                 title_edit_settings: "イベント設定の編集",
@@ -551,7 +551,8 @@
                 btn_logout: "ログアウト",
                 title_signup_confirm: "登録内容の確認",
                 desc_signup_confirm: "以下の内容で初期登録を行います。問題なければ「OK」を押してください。",
-                btn_ok: "OK (登録する)"
+                btn_ok: "OK (登録する)",
+                error_email_mismatch: "すでに登録されているニックネームとメールアドレスが一致しません。上書き修正するには、登録時と同じメールアドレスを入力してください。"
             },
             en: {
                 btn_create_nav: "Create Event",
@@ -622,7 +623,8 @@
                 btn_logout: "Logout",
                 title_signup_confirm: "Confirm Registration",
                 desc_signup_confirm: "Please verify your registration details below.",
-                btn_ok: "OK (Register)"
+                btn_ok: "OK (Register)",
+                error_email_mismatch: "Email does not match the registered email for this nickname. Please use the exact same email used during initial registration to overwrite."
             }
         };
 
@@ -1059,9 +1061,9 @@
 
         async function handleAnswerSubmit(e) {
             e.preventDefault();
-            const nickname = document.getElementById('ansNickname').value;
-            const fullname = document.getElementById('ansFullname').value;
-            const email = document.getElementById('ansEmail').value;
+            const nickname = document.getElementById('ansNickname').value.trim();
+            const fullname = document.getElementById('ansFullname').value.trim();
+            const email = document.getElementById('ansEmail').value.trim();
             const selects = document.querySelectorAll('.ans-select');
             const availability = {};
             selects.forEach(s => availability[s.getAttribute('data-candidate')] = s.value);
@@ -1078,16 +1080,21 @@
                 
                 if (!res.ok) {
                     const t = translations[currentGlobalLang];
-                    if (data.error === "Email mismatch") throw new Error(t.error_email_mismatch);
-                    throw new Error(data.error || 'Failed to submit answer');
+                    let errorMsg = data.error;
+                    if (data.error === "Email mismatch") {
+                        errorMsg = t.error_email_mismatch || (currentGlobalLang === 'en' 
+                            ? "Email does not match the registered email for this nickname." 
+                            : "すでに登録されているニックネームとメールアドレスが一致しません。");
+                    }
+                    throw new Error(errorMsg || 'Failed to submit answer');
                 }
 
-                showModal("送信完了", "回答が正常に保存されました！");
+                showModal("送信完了", "回答が正常に保存されました！（上書き修正完了）");
                 document.getElementById('answerForm').reset();
                 currentEventData = data.event;
-                renderAvailabilityMatrix(currentEventData);
+                renderParticipateView(currentEventData); // 参加状況一覧を再描画
             } catch (err) {
-                alert(err.message);
+                showModal("エラー", err.message); // alert() ではなく showModal() で確実に表示
             }
         }
 
