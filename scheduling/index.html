@@ -777,12 +777,7 @@
 
             if (eventId && eventId.startsWith('evt-')) {
                 if (loggedInUserArea) {
-                    if (loggedInEmail) {
-                        loggedInUserArea.classList.remove('hidden');
-                        document.getElementById('headerUserEmail').textContent = loggedInEmail;
-                    } else {
-                        loggedInUserArea.classList.add('hidden');
-                    }
+                    loggedInUserArea.classList.add('hidden');
                 }
                 if (headerCreateBtn) headerCreateBtn.classList.add('hidden');
                 switchView('participate');
@@ -808,12 +803,23 @@
             document.getElementById(`view-${viewName}`).classList.remove('hidden');
             
             const headerCreateBtn = document.getElementById('headerCreateBtn');
+            const loggedInUserArea = document.getElementById('loggedInUserArea');
             const loggedInEmail = getLoggedInUser();
+            
             if (headerCreateBtn) {
                 if (viewName === 'participate' || !loggedInEmail) {
                     headerCreateBtn.classList.add('hidden');
                 } else {
                     headerCreateBtn.classList.remove('hidden');
+                }
+            }
+
+            if (loggedInUserArea) {
+                if (viewName === 'participate') {
+                    loggedInUserArea.classList.add('hidden');
+                } else if (loggedInEmail) {
+                    loggedInUserArea.classList.remove('hidden');
+                    document.getElementById('headerUserEmail').textContent = loggedInEmail;
                 }
             }
 
