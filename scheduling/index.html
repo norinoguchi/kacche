@@ -23,7 +23,14 @@
                 Event Scheduler
             </h1>
             <div class="flex items-center gap-3">
-                <button id="headerCreateBtn" onclick="switchView('create')" class="bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1 shadow-sm">
+                <div id="loggedInUserArea" class="hidden items-center gap-2 text-sm bg-indigo-700 px-3 py-1.5 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span id="headerUserEmail" class="font-medium"></span>
+                    <button onclick="handleLogout()" class="ml-2 bg-indigo-800 hover:bg-indigo-900 px-2 py-0.5 rounded text-xs transition" data-i18n="btn_logout">ログアウト</button>
+                </div>
+                <button id="headerCreateBtn" onclick="switchView('create')" class="hidden bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1 shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
@@ -40,11 +47,93 @@
     <!-- Main Container -->
     <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
 
-        <!-- Home / Dashboard View -->
-        <section id="view-home" class="space-y-6">
+        <!-- Auth View (Login / Signup / Verify) -->
+        <section id="view-auth" class="space-y-6 max-w-md mx-auto py-8">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+                <div class="text-center space-y-2">
+                    <h2 class="text-2xl font-bold text-slate-900" data-i18n="auth_title">管理者ログイン</h2>
+                    <p class="text-xs text-slate-500" data-i18n="auth_desc">専用のメールアドレスとパスワードでログインして管理画面を開いてください。</p>
+                </div>
+
+                <!-- ログインフォーム -->
+                <form id="loginForm" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_email">メールアドレス *</label>
+                        <input type="email" id="loginEmail" required placeholder="organizer@example.com" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_password">パスワード *</label>
+                        <div class="relative">
+                            <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none pr-10">
+                            <button type="button" onclick="togglePasswordVisibility('loginPassword', 'eyeIconLogin')" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600">
+                                <svg id="eyeIconLogin" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-medium shadow-md transition text-sm" data-i18n="btn_login">
+                        ログインする
+                    </button>
+                </form>
+
+                <div class="relative flex py-2 items-center">
+                    <div class="flex-grow border-t border-slate-200"></div>
+                    <span class="flex-shrink mx-4 text-xs text-slate-400" data-i18n="or_text">または</span>
+                    <div class="flex-grow border-t border-slate-200"></div>
+                </div>
+
+                <!-- 初期登録（サインアップ）へ切り替えボタン -->
+                <div class="text-center">
+                    <button onclick="toggleAuthMode()" class="text-indigo-600 hover:text-indigo-800 text-xs font-semibold underline" id="authSwitchBtn" data-i18n="btn_switch_signup">
+                        初めての方はこちら（初期登録）
+                    </button>
+                </div>
+
+                <!-- 初期登録フォーム（初期非表示） -->
+                <form id="signupForm" onsubmit="handleSignupSubmit(event)" class="space-y-4 hidden pt-4 border-t">
+                    <h3 class="text-sm font-bold text-slate-800" data-i18n="signup_header">管理者 初期登録</h3>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_email">メールアドレス *</label>
+                        <input type="email" id="signupEmail" required placeholder="organizer@example.com" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_password">パスワード *</label>
+                        <div class="relative">
+                            <input type="password" id="signupPassword" required placeholder="••••••••" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none pr-10">
+                            <button type="button" onclick="togglePasswordVisibility('signupPassword', 'eyeIconSignup')" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600">
+                                <svg id="eyeIconSignup" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_confirm_password">パスワード（確認） *</label>
+                        <div class="relative">
+                            <input type="password" id="signupConfirmPassword" required placeholder="••••••••" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none pr-10">
+                            <button type="button" onclick="togglePasswordVisibility('signupConfirmPassword', 'eyeIconConfirm')" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600">
+                                <svg id="eyeIconConfirm" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-medium shadow-md transition text-sm" data-i18n="btn_signup">
+                        初期登録を完了する
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Home / Dashboard View (Logged In) -->
+        <section id="view-home" class="hidden space-y-6">
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center py-12">
-                <h2 class="text-2xl font-bold text-slate-900 mb-2" data-i18n="home_title">日英対応・日程調整ツール（試運転中）</h2>
-                <p class="text-slate-600 max-w-lg mx-auto mb-6" data-i18n="home_desc">AWSを基盤と、Vibecodingで独自開発した日程調整ツールです。</p>
+                <h2 class="text-2xl font-bold text-slate-900 mb-2" data-i18n="home_title">日英対応・サーバーレス日程調整</h2>
+                <p class="text-slate-600 max-w-lg mx-auto mb-6" data-i18n="home_desc">あなたが登録したイベントの一覧と管理が可能です。</p>
                 <div class="flex justify-center gap-4">
                     <button onclick="switchView('create')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-medium shadow-md transition" data-i18n="btn_create_event">
                         イベントを新規作成する
@@ -52,13 +141,12 @@
                 </div>
             </div>
 
-            <!-- 作成済みイベント一覧（S3管理ダッシュボード） -->
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                 <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2" data-i18n="s3_dashboard_title">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
-                    S3保存済みイベント一覧（幹事ダッシュボード）
+                    あなたの管理イベント一覧
                 </h3>
                 <div id="myEventsList" class="space-y-3">
                     <p class="text-slate-400 text-sm" data-i18n="loading_events">イベントを読み込み中...</p>
@@ -96,7 +184,6 @@
                         </div>
                     </div>
 
-                    <!-- 開催場所（日英）およびマップリンク -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="label_loc_ja">開催場所 (日本語)</label>
@@ -119,7 +206,7 @@
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="label_organizer_email">幹事メールアドレス *</label>
-                            <input type="email" id="organizerEmail" required placeholder="organizer@example.com" class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            <input type="email" id="organizerEmail" required readonly class="w-full px-4 py-2 bg-slate-100 border rounded-xl text-sm text-slate-600 focus:outline-none cursor-not-allowed">
                         </div>
                     </div>
 
@@ -156,7 +243,6 @@
                     </div>
                 </div>
 
-                <!-- 概要 & 開催場所の表示ブロック -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
                         <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1" data-i18n="label_event_desc">イベント概要</h4>
@@ -182,7 +268,6 @@
                     </table>
                 </div>
 
-                <!-- 期限切れ警告または出欠入力フォーム -->
                 <div id="deadlineExpiredAlert" class="hidden p-6 bg-rose-50 rounded-2xl border border-rose-200 text-center space-y-2">
                     <h3 class="text-lg font-bold text-rose-800" data-i18n="alert_expired_title">回答期限が終了しました</h3>
                     <p class="text-sm text-rose-600" data-i18n="alert_expired_desc">このイベントの回答受付は終了したため、新規の回答や内容変更はできません。</p>
@@ -190,7 +275,7 @@
 
                 <div id="answerFormContainer" class="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
                     <h3 class="text-lg font-bold text-indigo-900 mb-4 flex items-center gap-2">
-                        <span data-i18n="title_answer_form">出欠を入力する</span>
+                        <span data-i18n="title_answer_form">出欠を入力する（☆同じニックネームとメールアドレスで再送信することで、上書き修正が可能です）</span>
                     </h3>
 
                     <form id="answerForm" onsubmit="handleAnswerSubmit(event)" class="space-y-4">
@@ -210,7 +295,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-2" data-i18n="label_cand_availability">各日時の可否 *</label>
+                            <label class="block text-xs font-semibold text-slate-700 mb-2" data-i18n="label_cand_availability">出席可否 *</label>
                             <div id="ansCandidatesContainer" class="space-y-2 bg-white p-4 rounded-xl border border-slate-200"></div>
                         </div>
 
@@ -238,12 +323,8 @@
                     </button>
                 </div>
 
-                <!-- 1. イベント設定の編集フォーム -->
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
                     <h3 class="text-base font-bold text-slate-800 flex items-center gap-2" data-i18n="title_edit_settings">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        </svg>
                         イベント設定の編集
                     </h3>
                     <form id="editEventForm" onsubmit="handleUpdateEvent(event)" class="space-y-4">
@@ -278,12 +359,9 @@
                             <input type="url" id="editLocationUrl" class="w-full px-3 py-2 bg-white border rounded-xl text-sm">
                         </div>
 
-                        <!-- 候補日時設定（管理画面用） -->
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-2" data-i18n="label_candidates">候補日時設定</label>
-                            <div id="editCandidateList" class="space-y-2 mb-2">
-                                <!-- 動的生成 -->
-                            </div>
+                            <div id="editCandidateList" class="space-y-2 mb-2"></div>
                             <button type="button" onclick="addEditCandidateRow()" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1" data-i18n="btn_add_cand">
                                 + 候補日時を追加する
                             </button>
@@ -303,28 +381,26 @@
                     </form>
                 </div>
 
-                <!-- 2. 参加者の詳細情報＆修正・削除テーブル -->
-                <div>
-                    <h3 class="text-lg font-bold text-slate-800 mb-3" data-i18n="title_ans_detail_mgmt">参加者の詳細回答・管理（幹事権限）</h3>
-                    <div class="overflow-x-auto border rounded-xl">
-                        <table class="w-full border-collapse text-sm text-left">
-                            <thead class="bg-slate-100 text-slate-700">
-                                <tr>
-                                    <th class="px-4 py-3 border-b" data-i18n="th_nickname">ニックネーム</th>
-                                    <th class="px-4 py-3 border-b" data-i18n="th_fullname">氏名</th>
-                                    <th class="px-4 py-3 border-b" data-i18n="th_email">メールアドレス</th>
-                                    <th class="px-4 py-3 border-b" data-i18n="th_answers">回答内容</th>
-                                    <th class="px-4 py-3 border-b text-center" data-i18n="th_actions">操作</th>
-                                </tr>
-                            </thead>
-                            <tbody id="orgAnswersDetailBody" class="divide-y divide-slate-200">
-                                <!-- 動的生成 -->
-                            </tbody>
+                <div class="space-y-4">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                        <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <span data-i18n="title_unified_matrix">参加者詳細・出欠管理テーブル（幹事権限）</span>
+                        </h3>
+                        <button onclick="downloadCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition flex items-center gap-1.5" data-i18n="btn_download_csv">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            CSVダウンロード
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto border rounded-xl bg-white shadow-sm">
+                        <table class="w-full border-collapse text-sm text-center">
+                            <thead id="unifiedOrgMatrixHead" class="bg-slate-100 text-slate-700"></thead>
+                            <tbody id="unifiedOrgMatrixBody" class="divide-y divide-slate-200"></tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- 3. 共有用リンク欄 -->
                 <div class="p-4 bg-indigo-50/50 rounded-xl border border-indigo-100 flex items-center justify-between">
                     <div>
                         <h4 class="text-sm font-bold text-indigo-900" data-i18n="title_share_url">参加者用 共有URL</h4>
@@ -338,6 +414,28 @@
         </section>
 
     </main>
+
+    <!-- 登録確認モーダル -->
+    <div id="signupConfirmModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-6 rounded-2xl max-w-md w-full shadow-xl space-y-4">
+            <h3 class="text-lg font-bold text-slate-900" data-i18n="title_signup_confirm">登録内容の確認</h3>
+            <p class="text-xs text-slate-500" data-i18n="desc_signup_confirm">以下の内容で初期登録を行います。よろしいですか？</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2 text-sm">
+                <div>
+                    <span class="text-xs text-slate-400 block" data-i18n="label_email">メールアドレス</span>
+                    <span id="confirmEmailDisplay" class="font-semibold text-slate-800"></span>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-400 block" data-i18n="label_password">パスワード</span>
+                    <span id="confirmPasswordDisplay" class="font-semibold text-slate-800"></span>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button type="button" onclick="closeSignupConfirmModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-xl text-sm font-medium transition" data-i18n="btn_cancel">キャンセル</button>
+                <button type="button" onclick="executeSignup()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-xl text-sm font-medium shadow-md transition" data-i18n="btn_ok">OK (登録する)</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div id="notificationModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
@@ -387,9 +485,9 @@
             ja: {
                 btn_create_nav: "イベント作成",
                 home_title: "多言語対応・サーバーレス日程調整",
-                home_desc: "AWS (API Gateway + Lambda + S3) を基盤とした、安全でコストを抑えた新しい日程調整ツールです。",
+                home_desc: "あなたが登録したイベントの一覧と管理が可能です。",
                 btn_create_event: "イベントを新規作成する",
-                s3_dashboard_title: "S3保存済みイベント一覧（幹事ダッシュボード）",
+                s3_dashboard_title: "あなたの管理イベント一覧",
                 loading_events: "イベントを読み込み中...",
                 create_event_title: "イベント新規作成（幹事メニュー）",
                 btn_cancel: "キャンセル",
@@ -416,38 +514,51 @@
                 label_nickname: "ニックネーム (公開) *",
                 label_fullname: "氏名 (非公開) *",
                 label_email: "連絡先メール (非公開) *",
-                label_cand_availability: "各日時の可否 *",
+                label_cand_availability: "出席可否 *",
                 btn_submit_answer: "回答を送信する",
                 th_participant: "参加者",
                 badge_org_dash: "幹事管理ダッシュボード",
                 btn_back_home: "← ホームに戻る",
                 title_edit_settings: "イベント設定の編集",
                 btn_save_settings: "イベント設定を保存する",
-                title_ans_detail_mgmt: "参加者の詳細回答・管理（幹事権限）",
+                title_unified_matrix: "参加者詳細・出欠管理テーブル（幹事権限）",
+                btn_download_csv: "CSVダウンロード",
                 th_nickname: "ニックネーム",
                 th_fullname: "氏名",
                 th_email: "メールアドレス",
-                th_answers: "回答内容",
                 th_actions: "操作",
                 title_share_url: "参加者用 共有URL",
                 btn_copy_url: "URLをコピー",
                 title_edit_ans: "参加者情報の修正",
                 btn_save: "保存する",
-                organizer_label: "幹事",
-                deadline_label: "期限",
+                organizer_label: "Organizer",
+                deadline_label: "Deadline",
                 tbd_location: "（未定 / TBD）",
                 no_desc: "（概要なし）",
-                no_answers: "まだ回答はありません。最初の回答を入力しましょう！",
+                no_answers: "まだ回答はありません。",
                 status_ok: "参加 (○)",
                 status_ng: "不参加 (×)",
-                status_hold: "検討中 (△)"
+                status_hold: "検討中 (△)",
+                auth_title: "管理者ログイン",
+                auth_desc: "専用のメールアドレスとパスワードでログインして管理画面を開いてください。",
+                label_password: "パスワード *",
+                label_confirm_password: "パスワード（確認） *",
+                btn_login: "ログインする",
+                or_text: "または",
+                btn_switch_signup: "初めての方はこちら（初期登録）",
+                signup_header: "管理者 初期登録",
+                btn_signup: "初期登録を完了する",
+                btn_logout: "ログアウト",
+                title_signup_confirm: "登録内容の確認",
+                desc_signup_confirm: "以下の内容で初期登録を行います。問題なければ「OK」を押してください。",
+                btn_ok: "OK (登録する)"
             },
             en: {
                 btn_create_nav: "Create Event",
                 home_title: "Multi-Language Serverless Scheduler",
-                home_desc: "A secure, cost-effective scheduling tool powered by AWS (API Gateway + Lambda + S3).",
+                home_desc: "Manage your registered events.",
                 btn_create_event: "Create New Event",
-                s3_dashboard_title: "S3 Saved Events (Organizer Dashboard)",
+                s3_dashboard_title: "Your Managed Events",
                 loading_events: "Loading events...",
                 create_event_title: "Create Event (Organizer Menu)",
                 btn_cancel: "Cancel",
@@ -481,11 +592,11 @@
                 btn_back_home: "&larr; Back to Home",
                 title_edit_settings: "Edit Event Settings",
                 btn_save_settings: "Save Event Settings",
-                title_ans_detail_mgmt: "Participant Answer Management (Organizer)",
+                title_unified_matrix: "Participant Details & Availability Management",
+                btn_download_csv: "Download CSV",
                 th_nickname: "Nickname",
                 th_fullname: "Full Name",
                 th_email: "Email",
-                th_answers: "Answers",
                 th_actions: "Actions",
                 title_share_url: "Participant Share URL",
                 btn_copy_url: "Copy URL",
@@ -495,10 +606,23 @@
                 deadline_label: "Deadline",
                 tbd_location: "(TBD)",
                 no_desc: "(No description)",
-                no_answers: "No answers yet. Be the first to submit!",
+                no_answers: "No answers yet.",
                 status_ok: "Attend (○)",
                 status_ng: "Decline (×)",
-                status_hold: "Hold (△)"
+                status_hold: "Hold (△)",
+                auth_title: "Organizer Login",
+                auth_desc: "Sign in with your email and password to access your dashboard.",
+                label_password: "Password *",
+                label_confirm_password: "Confirm Password *",
+                btn_login: "Login",
+                or_text: "or",
+                btn_switch_signup: "New user? Initial Signup",
+                signup_header: "Organizer Initial Signup",
+                btn_signup: "Complete Signup",
+                btn_logout: "Logout",
+                title_signup_confirm: "Confirm Registration",
+                desc_signup_confirm: "Please verify your registration details below.",
+                btn_ok: "OK (Register)"
             }
         };
 
@@ -506,10 +630,139 @@
         let currentEventData = null;
 
         window.onload = function() {
+            checkVerifyParam();
             checkRoute();
             window.addEventListener('hashchange', checkRoute);
             window.addEventListener('popstate', checkRoute);
         };
+
+        // パスワード表示切替（目マーク）
+        function togglePasswordVisibility(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                // 目を開いた状態（パスワードが見える）
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.057 10.057 0 012.063-3.085m3.264-2.228A9.878 9.878 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />';
+            } else {
+                input.type = 'password';
+                // 目を閉じた状態（パスワードが隠れる）
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />';
+            }
+        }
+
+        async function checkVerifyParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const verifyToken = urlParams.get('verify');
+            const email = urlParams.get('email');
+
+            if (verifyToken && email) {
+                try {
+                    const res = await fetch(`${API_BASE_URL}/auth/verify?email=${encodeURIComponent(email)}&token=${encodeURIComponent(verifyToken)}`);
+                    const data = await res.json();
+                    if (!res.ok) throw new Error(data.error || 'Verification failed');
+
+                    showModal("メール確認完了", "メールアドレスの確認が完了しました！ログインしてご利用ください。");
+                    window.history.replaceState({}, '', window.location.pathname);
+                } catch (err) {
+                    showModal("エラー", "確認リンクが無効または有効期限切れです: " + err.message);
+                    window.history.replaceState({}, '', window.location.pathname);
+                }
+            }
+        }
+
+        function getLoggedInUser() {
+            return localStorage.getItem('scheduler_org_email');
+        }
+
+        function setLoggedInUser(email) {
+            localStorage.setItem('scheduler_org_email', email);
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('scheduler_org_email');
+            window.location.href = window.location.pathname;
+        }
+
+        function toggleAuthMode() {
+            const signupForm = document.getElementById('signupForm');
+            const authSwitchBtn = document.getElementById('authSwitchBtn');
+            signupForm.classList.toggle('hidden');
+            if (signupForm.classList.contains('hidden')) {
+                authSwitchBtn.textContent = translations[currentGlobalLang].btn_switch_signup;
+            } else {
+                authSwitchBtn.textContent = currentGlobalLang === 'en' ? "Already registered? Login" : "既に登録済みの方はこちら（ログイン）";
+            }
+        }
+
+        async function handleLoginSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Login failed');
+
+                setLoggedInUser(data.email);
+                checkRoute();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        let pendingSignupData = null;
+
+        function handleSignupSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert(currentGlobalLang === 'en' ? "Passwords do not match." : "パスワードが一致しません。");
+                return;
+            }
+
+            pendingSignupData = { email, password };
+            document.getElementById('confirmEmailDisplay').textContent = email;
+            document.getElementById('confirmPasswordDisplay').textContent = password;
+            document.getElementById('signupConfirmModal').classList.remove('hidden');
+        }
+
+        function closeSignupConfirmModal() {
+            document.getElementById('signupConfirmModal').classList.add('hidden');
+            pendingSignupData = null;
+        }
+
+        async function executeSignup() {
+            if (!pendingSignupData) return;
+            const { email, password } = pendingSignupData;
+            closeSignupConfirmModal();
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/auth/signup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Signup failed');
+
+                // 登録完了通知と案内
+                showModal("初期登録の受付完了", `ご登録ありがとうございます。\nメールアドレス: ${email}\n\n仮登録が完了しました。管理画面をご利用いただくにはログインしてください。`);
+                
+                document.getElementById('signupForm').reset();
+                toggleAuthMode();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
 
         async function checkRoute() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -518,27 +771,46 @@
             const hashEventId = (hash && hash.startsWith('#')) ? hash.replace('#', '') : null;
             const eventId = queryEventId || hashEventId;
 
+            const loggedInEmail = getLoggedInUser();
+            const loggedInUserArea = document.getElementById('loggedInUserArea');
             const headerCreateBtn = document.getElementById('headerCreateBtn');
 
             if (eventId && eventId.startsWith('evt-')) {
-                if (headerCreateBtn) headerCreateBtn.classList.add('hidden'); // 参加者画面では新規作成ボタンを隠す
+                if (loggedInUserArea) {
+                    if (loggedInEmail) {
+                        loggedInUserArea.classList.remove('hidden');
+                        document.getElementById('headerUserEmail').textContent = loggedInEmail;
+                    } else {
+                        loggedInUserArea.classList.add('hidden');
+                    }
+                }
+                if (headerCreateBtn) headerCreateBtn.classList.add('hidden');
                 switchView('participate');
                 await fetchEventData(eventId);
+            } else if (!loggedInEmail) {
+                if (loggedInUserArea) loggedInUserArea.classList.add('hidden');
+                if (headerCreateBtn) headerCreateBtn.classList.add('hidden');
+                switchView('auth');
             } else {
-                if (headerCreateBtn) headerCreateBtn.classList.remove('hidden'); // ホームや作成画面では表示する
+                if (loggedInUserArea) {
+                    loggedInUserArea.classList.remove('hidden');
+                    document.getElementById('headerUserEmail').textContent = loggedInEmail;
+                }
+                if (headerCreateBtn) headerCreateBtn.classList.remove('hidden');
                 switchView('home');
             }
         }
 
         function switchView(viewName) {
-            ['home', 'create', 'participate', 'organizer'].forEach(v => {
+            ['auth', 'home', 'create', 'participate', 'organizer'].forEach(v => {
                 document.getElementById(`view-${v}`).classList.add('hidden');
             });
             document.getElementById(`view-${viewName}`).classList.remove('hidden');
             
             const headerCreateBtn = document.getElementById('headerCreateBtn');
+            const loggedInEmail = getLoggedInUser();
             if (headerCreateBtn) {
-                if (viewName === 'participate') {
+                if (viewName === 'participate' || !loggedInEmail) {
                     headerCreateBtn.classList.add('hidden');
                 } else {
                     headerCreateBtn.classList.remove('hidden');
@@ -546,14 +818,15 @@
             }
 
             if (viewName === 'home') loadMyEvents();
+            if (viewName === 'create' && loggedInEmail) {
+                document.getElementById('organizerEmail').value = loggedInEmail;
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function goHome() {
             window.history.pushState({}, '', window.location.pathname);
-            const headerCreateBtn = document.getElementById('headerCreateBtn');
-            if (headerCreateBtn) headerCreateBtn.classList.remove('hidden');
-            switchView('home');
+            checkRoute();
         }
 
         function changeGlobalLang(lang) {
@@ -572,7 +845,6 @@
             });
         }
 
-        // 候補日追加（作成画面）
         function addCandidateRow() {
             const container = document.getElementById('candidateList');
             const div = document.createElement('div');
@@ -590,7 +862,6 @@
             else alert('最低1つの候補日時が必要です。');
         }
 
-        // 候補日追加（編集画面）
         function addEditCandidateRow(val = '') {
             const container = document.getElementById('editCandidateList');
             const div = document.createElement('div');
@@ -617,7 +888,7 @@
             const locationEn = document.getElementById('eventLocationEn').value;
             const locationUrl = document.getElementById('eventLocationUrl').value;
             const deadline = document.getElementById('eventDeadline').value;
-            const organizerEmail = document.getElementById('organizerEmail').value;
+            const organizerEmail = getLoggedInUser();
             const candInputs = document.querySelectorAll('.cand-input');
             const candidates = Array.from(candInputs).map(i => i.value).filter(v => v);
 
@@ -704,9 +975,7 @@
             if (ev.deadline) {
                 const deadlineDate = new Date(ev.deadline);
                 const now = new Date();
-                if (now > deadlineDate) {
-                    isExpired = true;
-                }
+                if (now > deadlineDate) isExpired = true;
             }
 
             if (isExpired) {
@@ -800,14 +1069,19 @@
                     body: JSON.stringify({ nickname, fullname, email, availability })
                 });
                 const data = await res.json();
-                if (!res.ok) throw new Error(data.error || 'Failed to submit answer');
+                
+                if (!res.ok) {
+                    const t = translations[currentGlobalLang];
+                    if (data.error === "Email mismatch") throw new Error(t.error_email_mismatch);
+                    throw new Error(data.error || 'Failed to submit answer');
+                }
 
                 showModal("送信完了", "回答が正常に保存されました！");
                 document.getElementById('answerForm').reset();
                 currentEventData = data.event;
                 renderAvailabilityMatrix(currentEventData);
             } catch (err) {
-                alert('エラー: ' + err.message);
+                alert(err.message);
             }
         }
 
@@ -826,13 +1100,16 @@
             if (!container) return;
             container.innerHTML = '<p class="text-slate-400 text-sm">S3からイベント一覧を読み込み中...</p>';
 
+            const loggedInEmail = getLoggedInUser();
+            if (!loggedInEmail) return;
+
             try {
-                const res = await fetch(`${API_BASE_URL}/events`);
+                const res = await fetch(`${API_BASE_URL}/events?organizer=${encodeURIComponent(loggedInEmail)}`);
                 if (!res.ok) throw new Error('一覧の取得に失敗しました');
                 const events = await res.json();
 
                 if (!events || events.length === 0) {
-                    container.innerHTML = '<p class="text-slate-400 text-sm">S3上に保存されているイベントはまだありません。</p>';
+                    container.innerHTML = '<p class="text-slate-400 text-sm">作成したイベントはまだありません。</p>';
                     return;
                 }
 
@@ -840,7 +1117,7 @@
                     <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-indigo-200 transition">
                         <div>
                             <h4 class="font-bold text-slate-800">${ev.name}</h4>
-                            <p class="text-xs text-slate-500 mt-0.5">ID: ${ev.id} | 期限: ${ev.deadline ? ev.deadline.replace('T', ' ') : 'なし'} | 幹事: ${ev.organizerEmail || '不明'}</p>
+                            <p class="text-xs text-slate-500 mt-0.5">ID: ${ev.id} | 期限: ${ev.deadline ? ev.deadline.replace('T', ' ') : 'なし'}</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <a href="?id=${ev.id}" target="_blank" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition">
@@ -874,12 +1151,10 @@
             document.getElementById('orgEventTitleDisplay').textContent = ev.name;
             document.getElementById('orgEventIdDisplay').textContent = `イベントID: ${ev.id} | 幹事: ${ev.organizerEmail}`;
             
-            // イベント編集フォームに初期値をセット
             document.getElementById('editEventName').value = ev.name || '';
             document.getElementById('editDescJa').value = (ev.desc && ev.desc.ja) || '';
             document.getElementById('editDescEn').value = (ev.desc && ev.desc.en) || '';
             
-            // 開催場所（日本語・英語・URL）の値を正しくセット
             const loc = ev.location || {};
             document.getElementById('editLocationJa').value = loc.ja || '';
             document.getElementById('editLocationEn').value = loc.en || '';
@@ -887,7 +1162,6 @@
             
             document.getElementById('editDeadline').value = ev.deadline || '';
 
-            // 候補日時リストのセット
             const editCandidateList = document.getElementById('editCandidateList');
             editCandidateList.innerHTML = '';
             if (ev.candidates && ev.candidates.length > 0) {
@@ -899,34 +1173,151 @@
             const shareUrl = `${window.location.origin}${window.location.pathname}?id=${ev.id}`;
             document.getElementById('orgShareUrl').textContent = shareUrl;
 
-            const tbody = document.getElementById('orgAnswersDetailBody');
-            if (!ev.answers || ev.answers.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="px-4 py-6 text-slate-400 text-center">まだ回答はありません。</td></tr>`;
+            renderUnifiedOrganizerMatrix(ev);
+        }
+
+        function renderUnifiedOrganizerMatrix(ev) {
+            const head = document.getElementById('unifiedOrgMatrixHead');
+            const body = document.getElementById('unifiedOrgMatrixBody');
+            const t = translations[currentGlobalLang];
+            const answers = ev.answers || [];
+
+            let headHtml = `
+                <th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold">${t.th_nickname}</th>
+                <th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold">${t.th_fullname}</th>
+                <th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold">${t.th_email}</th>
+            `;
+            ev.candidates.forEach(c => {
+                headHtml += `<th class="px-3 py-3 border border-slate-200 font-medium">${formatDateStr(c)}</th>`;
+            });
+            headHtml += `<th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold text-center">${t.th_actions}</th>`;
+
+            let summaryRow = `<tr class="bg-indigo-50/60 font-semibold text-xs border-b-2 border-indigo-100">`;
+            summaryRow += `<td class="px-3 py-2.5 border border-slate-200 text-indigo-900" colspan="3">集計 (Summary)</td>`;
+            
+            ev.candidates.forEach(c => {
+                let okCount = 0, holdCount = 0, ngCount = 0;
+                answers.forEach(ans => {
+                    const st = (ans.availability && ans.availability[c]) || 'hold';
+                    if (st === 'ok') okCount++;
+                    else if (st === 'hold') holdCount++;
+                    else if (st === 'ng') ngCount++;
+                });
+                summaryRow += `
+                    <td class="px-2 py-2.5 border border-slate-200">
+                        <div class="flex justify-center items-center gap-1 flex-wrap">
+                            <span class="px-1.5 py-0.5 bg-emerald-100 text-emerald-800 rounded">○:${okCount}</span>
+                            <span class="px-1.5 py-0.5 bg-amber-100 text-amber-800 rounded">△:${holdCount}</span>
+                            <span class="px-1.5 py-0.5 bg-rose-100 text-rose-800 rounded">×:${ngCount}</span>
+                        </div>
+                    </td>
+                `;
+            });
+            summaryRow += `<td class="border border-slate-200"></td>`;
+            summaryRow += `</tr>`;
+
+            head.innerHTML = `<tr>${headHtml}</tr>` + summaryRow;
+
+            if (answers.length === 0) {
+                const totalCols = 4 + ev.candidates.length;
+                body.innerHTML = `<tr><td colspan="${totalCols}" class="px-4 py-6 text-slate-400 text-sm">${t.no_answers}</td></tr>`;
                 return;
             }
 
-            tbody.innerHTML = ev.answers.map((ans, idx) => {
-                const availText = Object.entries(ans.availability || {}).map(([cand, status]) => {
-                    const symbol = status === 'ok' ? '○' : (status === 'ng' ? '×' : '△');
-                    return `${formatDateStr(cand)}:${symbol}`;
-                }).join(' / ');
+            body.innerHTML = answers.map((ans, idx) => {
+                let row = `
+                    <tr class="hover:bg-slate-50 text-xs">
+                        <td class="px-3 py-3 border border-slate-200 font-semibold text-slate-800 bg-slate-50/50">${ans.nickname}</td>
+                        <td class="px-3 py-3 border border-slate-200 text-slate-600">${ans.fullname || '-'}</td>
+                        <td class="px-3 py-3 border border-slate-200 text-slate-600">${ans.email || '-'}</td>
+                `;
 
-                return `
-                    <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3 font-semibold text-slate-800">${ans.nickname}</td>
-                        <td class="px-4 py-3 text-slate-600">${ans.fullname || '-'}</td>
-                        <td class="px-4 py-3 text-slate-600">${ans.email || '-'}</td>
-                        <td class="px-4 py-3 text-xs text-slate-500">${availText}</td>
-                        <td class="px-4 py-3 text-center whitespace-nowrap">
-                            <button onclick="openEditAnswerModal(${idx})" class="bg-amber-50 hover:bg-amber-100 text-amber-700 px-2.5 py-1 rounded-lg text-xs font-semibold mr-1 transition">編集</button>
-                            <button onclick="deleteAnswer(${idx})" class="bg-rose-50 hover:bg-rose-100 text-rose-600 px-2.5 py-1 rounded-lg text-xs font-semibold transition">削除</button>
+                ev.candidates.forEach(c => {
+                    const status = (ans.availability && ans.availability[c]) || 'hold';
+                    row += `
+                        <td class="px-2 py-3 border border-slate-200">
+                            <select onchange="handleOrganizerCellChange(${idx}, '${c}', this.value)" class="px-2 py-1 border rounded-lg text-xs bg-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                                <option value="ok" ${status === 'ok' ? 'selected' : ''}>○ 参加</option>
+                                <option value="hold" ${status === 'hold' ? 'selected' : ''}>△ 検討中</option>
+                                <option value="ng" ${status === 'ng' ? 'selected' : ''}>× 不参加</option>
+                            </select>
+                        </td>
+                    `;
+                });
+
+                row += `
+                        <td class="px-3 py-3 border border-slate-200 text-center whitespace-nowrap">
+                            <button onclick="openEditAnswerModal(${idx})" class="bg-amber-50 hover:bg-amber-100 text-amber-700 px-2 py-1 rounded-lg font-semibold mr-1 transition">編集</button>
+                            <button onclick="deleteAnswer(${idx})" class="bg-rose-50 hover:bg-rose-100 text-rose-600 px-2 py-1 rounded-lg font-semibold transition">削除</button>
                         </td>
                     </tr>
                 `;
+                return row;
             }).join('');
         }
 
-        // イベント設定の更新処理
+        async function handleOrganizerCellChange(answerIdx, candidateKey, newStatus) {
+            if (!currentEventData || !currentEventData.answers[answerIdx]) return;
+
+            if (!currentEventData.answers[answerIdx].availability) {
+                currentEventData.answers[answerIdx].availability = {};
+            }
+            currentEventData.answers[answerIdx].availability[candidateKey] = newStatus;
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/events/${currentEventData.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(currentEventData)
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Failed to update availability');
+
+                currentEventData = data.event;
+                renderOrganizerView(currentEventData);
+            } catch (err) {
+                alert('エラー: ' + err.message);
+            }
+        }
+
+        function downloadCSV() {
+            if (!currentEventData || !currentEventData.answers || currentEventData.answers.length === 0) {
+                alert('ダウンロードする回答データがありません。');
+                return;
+            }
+
+            const ev = currentEventData;
+            const candidates = ev.candidates || [];
+
+            let csvRows = [];
+            let header = ['Nickname', 'Full Name', 'Email'];
+            candidates.forEach(c => header.push(formatDateStr(c)));
+            csvRows.push(header.map(h => `"${h.replace(/"/g, '""')}"`).join(','));
+
+            ev.answers.forEach(ans => {
+                let row = [ans.nickname || '', ans.fullname || '', ans.email || ''];
+                candidates.forEach(c => {
+                    const st = (ans.availability && ans.availability[c]) || 'hold';
+                    const stLabel = st === 'ok' ? '○参加' : (st === 'ng' ? '×不参加' : '△検討中');
+                    row.push(stLabel);
+                });
+                csvRows.push(row.map(val => `"${val.replace(/"/g, '""')}"`).join(','));
+            });
+
+            const csvString = '\uFEFF' + csvRows.join('\r\n');
+            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            const safeEventName = (ev.name || 'event').replace(/[^a-zA-Z0-9_\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/g, '_');
+            a.download = `${safeEventName}_availability.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
         async function handleUpdateEvent(e) {
             e.preventDefault();
             if (!currentEventData) return;
@@ -973,7 +1364,6 @@
             }
         }
 
-        // 参加者情報の編集モーダルを開く
         function openEditAnswerModal(idx) {
             const ans = currentEventData.answers[idx];
             document.getElementById('editAnsIndex').value = idx;
@@ -987,7 +1377,6 @@
             document.getElementById('editAnswerModal').classList.add('hidden');
         }
 
-        // 参加者情報の編集送信
         async function handleEditAnswerSubmit(e) {
             e.preventDefault();
             const idx = parseInt(document.getElementById('editAnsIndex').value);
@@ -1017,7 +1406,6 @@
             }
         }
 
-        // 参加者登録の削除
         async function deleteAnswer(idx) {
             if (!confirm('本当にこの参加者の回答を削除しますか？')) return;
 
