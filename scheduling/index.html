@@ -202,7 +202,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="label_deadline">回答期限 (日時)</label>
-                            <input type="datetime-local" id="eventDeadline" class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            <input type="datetime-local" id="eventDeadline" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="label_organizer_email">幹事メールアドレス *</label>
@@ -211,10 +211,16 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="label_candidates">候補日時設定 *</label>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-sm font-semibold text-slate-700" data-i18n="label_candidates">候補日時設定 *</label>
+                            <label class="flex items-center gap-1.5 text-xs text-slate-600 cursor-pointer">
+                                <input type="checkbox" id="isAllDayCreate" onchange="toggleAllDayMode('create')" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500">
+                                <span data-i18n="label_all_day">終日イベント（時間設定なし）</span>
+                            </label>
+                        </div>
                         <div id="candidateList" class="space-y-3 mb-3">
                             <div class="flex gap-2 candidate-row">
-                                <input type="datetime-local" required class="flex-grow px-4 py-2 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none cand-input">
+                                <input type="datetime-local" step="300" required class="flex-grow px-4 py-2 border rounded-xl text-sm ocus:ring-2 focus:ring-indigo-500 focus:outline-none cand-input">
                                 <button type="button" onclick="removeCandidateRow(this)" class="px-3 py-2 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100 transition" title="削除">×</button>
                             </div>
                         </div>
@@ -360,7 +366,13 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-2" data-i18n="label_candidates">候補日時設定</label>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="block text-xs font-semibold text-slate-700" data-i18n="label_candidates">候補日時設定</label>
+                                <label class="flex items-center gap-1.5 text-xs text-slate-600 cursor-pointer">
+                                    <input type="checkbox" id="isAllDayEdit" onchange="toggleAllDayMode('edit')" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500">
+                                    <span data-i18n="label_all_day">終日イベント（時間設定なし）</span>
+                                </label>
+                            </div>
                             <div id="editCandidateList" class="space-y-2 mb-2"></div>
                             <button type="button" onclick="addEditCandidateRow()" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1" data-i18n="btn_add_cand">
                                 + 候補日時を追加する
@@ -552,6 +564,7 @@
                 title_signup_confirm: "登録内容の確認",
                 desc_signup_confirm: "以下の内容で初期登録を行います。問題なければ「OK」を押してください。",
                 btn_ok: "OK (登録する)",
+                label_all_day: "終日イベント（時間設定なし）",
                 error_email_mismatch: "すでに登録されているニックネームとメールアドレスが一致しません。上書き修正するには、登録時と同じメールアドレスを入力してください。"
             },
             en: {
@@ -624,6 +637,7 @@
                 title_signup_confirm: "Confirm Registration",
                 desc_signup_confirm: "Please verify your registration details below.",
                 btn_ok: "OK (Register)",
+                label_all_day: "All-day event (No time)",
                 error_email_mismatch: "Email does not match the registered email for this nickname. Please use the exact same email used during initial registration to overwrite."
             }
         };
@@ -853,12 +867,15 @@
             });
         }
 
-        function addCandidateRow() {
+        function addCandidateRow(val = '') {
+            const isAllDay = document.getElementById('isAllDayCreate').checked;
+            const inputType = isAllDay ? 'date' : 'datetime-local';
+            const stepAttr = isAllDay ? '' : 'step="300"';
             const container = document.getElementById('candidateList');
             const div = document.createElement('div');
             div.className = "flex gap-2 candidate-row";
             div.innerHTML = `
-                <input type="datetime-local" required class="flex-grow px-4 py-2 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none cand-input">
+                <input type="${inputType}" ${stepAttr} value="${val ? val.substring(0, isAllDay ? 10 : 16) : ''}" required class="flex-grow px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none cand-input">
                 <button type="button" onclick="removeCandidateRow(this)" class="px-3 py-2 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100 transition" title="削除">×</button>
             `;
             container.appendChild(div);
@@ -870,12 +887,15 @@
             else alert('最低1つの候補日時が必要です。');
         }
 
-        function addEditCandidateRow(val = '') {
+         function addEditCandidateRow(val = '') {
+            const isAllDay = document.getElementById('isAllDayEdit').checked;
+            const inputType = isAllDay ? 'date' : 'datetime-local';
+            const stepAttr = isAllDay ? '' : 'step="300"';
             const container = document.getElementById('editCandidateList');
             const div = document.createElement('div');
             div.className = "flex gap-2 edit-candidate-row";
             div.innerHTML = `
-                <input type="datetime-local" value="${val}" required class="flex-grow px-3 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none edit-cand-input">
+                <input type="${inputType}" ${stepAttr} value="${val ? val.substring(0, isAllDay ? 10 : 16) : ''}" required class="flex-grow px-3 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none edit-cand-input">
                 <button type="button" onclick="removeEditCandidateRow(this)" class="px-2.5 py-1.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100 text-xs transition" title="削除">×</button>
             `;
             container.appendChild(div);
@@ -998,6 +1018,19 @@
 
         function formatDateStr(isoStr) {
             try {
+                // 終日（時間なし・YYYY-MM-DD形式）の場合
+                if (!isoStr.includes('T') && !isoStr.includes(' ')) {
+                    const parts = isoStr.split('-');
+                    if (parts.length === 3) {
+                        const d = new Date(parts[0], parts[1] - 1, parts[2]);
+                        const m = d.getMonth() + 1, day = d.getDate();
+                        const dow = ['日', '月', '火', '水', '木', '金', '土'][d.getDay()];
+                        return currentGlobalLang === 'en' 
+                            ? `${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getMonth()]} ${d.getDate()} (${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()]})`
+                            : `${m}/${day}(${dow})`;
+                    }
+                }
+
                 const d = new Date(isoStr);
                 const h = String(d.getHours()).padStart(2, '0'), min = String(d.getMinutes()).padStart(2, '0');
                 
@@ -1013,6 +1046,27 @@
             } catch (e) {
                 return isoStr;
             }
+        }
+
+                function loadMyAnswerToForm(idx) {
+            if (!currentEventData || !currentEventData.answers || !currentEventData.answers[idx]) return;
+            const ans = currentEventData.answers[idx];
+
+            document.getElementById('ansNickname').value = ans.nickname || '';
+            // プライバシー保護のため、氏名とメールアドレスは自動入力せず空欄にする（本人確認のため手入力）
+            document.getElementById('ansFullname').value = '';
+            document.getElementById('ansEmail').value = '';
+
+            const selects = document.querySelectorAll('.ans-select');
+            selects.forEach(s => {
+                const candidateKey = s.getAttribute('data-candidate');
+                if (ans.availability && ans.availability[candidateKey]) {
+                    s.value = ans.availability[candidateKey];
+                }
+            });
+
+            document.getElementById('answerFormContainer').scrollIntoView({ behavior: 'smooth' });
+            showModal("データ呼び出し成功", `ニックネーム「${ans.nickname}」の登録内容をフォームに読み込みました。\n変更したい箇所を修正して「回答を送信する」を押すと、上書き保存されます。`);
         }
 
         function renderAvailabilityMatrix(ev) {
@@ -1031,8 +1085,8 @@
                 return;
             }
 
-            body.innerHTML = ev.answers.map(ans => {
-                let row = `<td class="px-4 py-3 border border-slate-200 font-semibold text-slate-800 bg-slate-50/50">${ans.nickname}</td>`;
+            body.innerHTML = ev.answers.map((ans, idx) => {
+                let row = `<td class="px-4 py-3 border border-slate-200 font-semibold text-indigo-600 bg-slate-50/50 cursor-pointer hover:underline" title="クリックしてこの内容を編集フォームに読み込む" onclick="loadMyAnswerToForm(${idx})">${ans.nickname} ✏️</td>`;
                 ev.candidates.forEach(c => {
                     const status = ans.availability[c] || 'hold';
                     let badge = status === 'ok' ? '<span class="inline-block w-6 h-6 leading-6 rounded-full bg-emerald-100 text-emerald-700 font-bold">○</span>' :
@@ -1174,6 +1228,10 @@
             document.getElementById('editLocationUrl').value = loc.url || '';
             
             document.getElementById('editDeadline').value = ev.deadline || '';
+
+            // 候補日に時間が含まれていないものが一つでもあれば終日チェックを入れる
+            const isAllDayEvent = ev.candidates && ev.candidates.some(c => !c.includes('T') && !c.includes(' '));
+            document.getElementById('isAllDayEdit').checked = isAllDayEvent;
 
             const editCandidateList = document.getElementById('editCandidateList');
             editCandidateList.innerHTML = '';
@@ -1445,6 +1503,24 @@
             const url = document.getElementById('orgShareUrl').textContent;
             navigator.clipboard.writeText(url).then(() => {
                 showModal("コピー完了", "参加者用の共有URLをクリップボードにコピーしました！");
+            });
+        }
+
+        function toggleAllDayMode(mode) {
+            const isAllDay = document.getElementById(mode === 'create' ? 'isAllDayCreate' : 'isAllDayEdit').checked;
+            const containerId = mode === 'create' ? 'candidateList' : 'editCandidateList';
+            const rows = document.querySelectorAll(`#${containerId} ${mode === 'create' ? '.candidate-row' : '.edit-candidate-row'}`);
+            
+            rows.forEach(row => {
+                const input = row.querySelector('input');
+                const currentVal = input.value;
+                input.type = isAllDay ? 'date' : 'datetime-local';
+                if (isAllDay) {
+                    input.removeAttribute('step');
+                } else {
+                    input.step = '300';
+                }
+                input.value = currentVal ? currentVal.substring(0, isAllDay ? 10 : 16) : '';
             });
         }
     </script>
