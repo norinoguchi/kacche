@@ -23,19 +23,20 @@
                 Event Scheduler
             </h1>
             <div class="flex items-center gap-3">
-                <div id="loggedInUserArea" class="hidden items-center gap-2 text-sm bg-indigo-700 px-3 py-1.5 rounded-lg">
+                <!-- <div id="loggedInUserArea" class="hidden items-center gap-2 text-sm bg-indigo-700 px-3 py-1.5 rounded-lg"> -->
+                <div id="loggedInUserArea" class="hidden items-center gap-3 text-sm bg-indigo-700 px-5 py-2.5 rounded-xl whitespace-nowrap shadow-sm"></div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                     <span id="headerUserEmail" class="font-medium"></span>
                     <button onclick="handleLogout()" class="ml-2 bg-indigo-800 hover:bg-indigo-900 px-2 py-0.5 rounded text-xs transition" data-i18n="btn_logout">ログアウト</button>
                 </div>
-                <button id="headerCreateBtn" onclick="switchView('create')" class="hidden bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1 shadow-sm">
+                <!-- <button id="headerCreateBtn" onclick="switchView('create')" class="hidden bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1 shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     <span data-i18n="btn_create_nav">イベント作成</span>
-                </button>
+                </button> -->
                 <select id="globalLang" onchange="changeGlobalLang(this.value)" class="bg-indigo-700 text-white text-sm rounded px-2 py-1 border border-indigo-500 focus:outline-none">
                     <option value="ja">日本語</option>
                     <option value="en">English</option>
