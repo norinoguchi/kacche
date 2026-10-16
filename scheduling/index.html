@@ -281,7 +281,7 @@
 
                 <div id="answerFormContainer" class="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
                     <h3 class="text-lg font-bold text-indigo-900 mb-4 flex items-center gap-2">
-                        <span data-i18n="title_answer_form">出欠を入力する（☆同じニックネームとメールアドレスで再送信することで、上書き修正が可能です）</span>
+                        <span data-i18n="title_answer_form">出欠を入力する（☆同じメールアドレスで再登録することで、登録内容の修正が可能です）</span>
                     </h3>
 
                     <form id="answerForm" onsubmit="handleAnswerSubmit(event)" class="space-y-4">
@@ -305,7 +305,10 @@
                             <div id="ansCandidatesContainer" class="space-y-2 bg-white p-4 rounded-xl border border-slate-200"></div>
                         </div>
 
-                        <div class="pt-2 flex justify-end">
+                        <div class="pt-2 flex justify-between items-center">
+                            <button type="button" onclick="resetAnswerForm()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2.5 rounded-xl text-sm font-medium transition" data-i18n="btn_new_registration">
+                                新規登録（入力クリア）
+                            </button>
                             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium shadow-md transition" data-i18n="btn_submit_answer">
                                 回答を送信する
                             </button>
@@ -521,8 +524,8 @@
                 title_availability_list: "登録状況",
                 privacy_note: "※氏名・メールは非公開にしています。",
                 alert_expired_title: "回答期限が終了しました",
-                alert_expired_desc: "このイベントの回答受付は終了したため、新規の回答や内容変更はできません。",
-                title_answer_form: "出欠を登録する（☆同じニックネームとメールアドレスで再登録することで、上書き修正が可能です）",
+                alert_expired_desc: "このイベントの回答受付は終了したため、新規の登録や内容変更はできません。",
+                title_answer_form: "出欠を登録する（同じメールアドレスで再登録することで、登録内容の修正が可能です）",
                 label_nickname: "ニックネーム (公開用) *",
                 label_fullname: "氏名 (事務局確認用) *",
                 label_email: "連絡先メール (事務局確認用) *",
@@ -548,11 +551,11 @@
                 tbd_location: "（未定 / TBD）",
                 no_desc: "（概要なし）",
                 no_answers: "まだ回答はありません。",
-                status_ok: "参加 (○)",
-                status_ng: "不参加 (×)",
+                status_ok: "OK (○)",
+                status_ng: "NG (×)",
                 status_hold: "検討中 (△)",
                 auth_title: "管理者ログイン",
-                auth_desc: "専用のメールアドレスとパスワードでログインして管理画面を開いてください。",
+                auth_desc: "登録済の管理用メールアドレスとパスワードでログインして管理画面を開いてください。",
                 label_password: "パスワード *",
                 label_confirm_password: "パスワード（確認） *",
                 btn_login: "ログインする",
@@ -565,7 +568,8 @@
                 desc_signup_confirm: "以下の内容で初期登録を行います。問題なければ「OK」を押してください。",
                 btn_ok: "OK (登録する)",
                 label_all_day: "終日イベント（時間設定なし）",
-                error_email_mismatch: "すでに登録されているニックネームとメールアドレスが一致しません。上書き修正するには、登録時と同じメールアドレスを入力してください。"
+                btn_new_registration: "新規登録（入力クリア）",
+                error_email_mismatch: "登録されているメールアドレスと一致しません。上書き修正するには、登録時と同じメールアドレスを入力してください。"
             },
             en: {
                 btn_create_nav: "Create Event",
@@ -595,7 +599,7 @@
                 privacy_note: "* Full names & emails are hidden for privacy",
                 alert_expired_title: "Deadline Has Passed",
                 alert_expired_desc: "The response deadline for this event has passed. New submissions or updates are closed.",
-                title_answer_form: "Submit Your Availability",
+                title_answer_form: "Submit Your Availability (can be updated by registering again with the same email address.)",
                 label_nickname: "Nickname (Public) *",
                 label_fullname: "Full Name (Private) *",
                 label_email: "Email (Private) *",
@@ -621,8 +625,8 @@
                 tbd_location: "(TBD)",
                 no_desc: "(No description)",
                 no_answers: "No answers yet.",
-                status_ok: "Attend (○)",
-                status_ng: "Decline (×)",
+                status_ok: "OK (○)",
+                status_ng: "NG (×)",
                 status_hold: "Hold (△)",
                 auth_title: "Organizer Login",
                 auth_desc: "Sign in with your email and password to access your dashboard.",
@@ -638,6 +642,7 @@
                 desc_signup_confirm: "Please verify your registration details below.",
                 btn_ok: "OK (Register)",
                 label_all_day: "All-day event (No time)",
+                btn_new_registration: "New Registration (Clear)",
                 error_email_mismatch: "Email does not match the registered email for this nickname. Please use the exact same email used during initial registration to overwrite."
             }
         };
@@ -1066,7 +1071,7 @@
             });
 
             document.getElementById('answerFormContainer').scrollIntoView({ behavior: 'smooth' });
-            showModal("データ呼び出し成功", `ニックネーム「${ans.nickname}」の登録内容をフォームに読み込みました。\n変更したい箇所を修正して「回答を送信する」を押すと、上書き保存されます。`);
+            showModal("データ読み込み完了", `ニックネーム「${ans.nickname}」の登録内容を読み込みました。\n変更したい箇所を修正し、登録時と同じメールアドレスで「回答を送信する」と、上書き保存されます。`);
         }
 
         function renderAvailabilityMatrix(ev) {
@@ -1143,7 +1148,7 @@
                     throw new Error(errorMsg || 'Failed to submit answer');
                 }
 
-                showModal("送信完了", "回答が正常に保存されました！（上書き修正完了）");
+                showModal("送信完了", "回答が正常に保存されました！");
                 document.getElementById('answerForm').reset();
                 currentEventData = data.event;
                 renderParticipateView(currentEventData); // 参加状況一覧を再描画
@@ -1308,9 +1313,9 @@
                     row += `
                         <td class="px-2 py-3 border border-slate-200">
                             <select onchange="handleOrganizerCellChange(${idx}, '${c}', this.value)" class="px-2 py-1 border rounded-lg text-xs bg-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                                <option value="ok" ${status === 'ok' ? 'selected' : ''}>○ 参加</option>
+                                <option value="ok" ${status === 'ok' ? 'selected' : ''}>○ OK</option>
                                 <option value="hold" ${status === 'hold' ? 'selected' : ''}>△ 検討中</option>
-                                <option value="ng" ${status === 'ng' ? 'selected' : ''}>× 不参加</option>
+                                <option value="ng" ${status === 'ng' ? 'selected' : ''}>× NG</option>
                             </select>
                         </td>
                     `;
@@ -1369,7 +1374,7 @@
                 let row = [ans.nickname || '', ans.fullname || '', ans.email || ''];
                 candidates.forEach(c => {
                     const st = (ans.availability && ans.availability[c]) || 'hold';
-                    const stLabel = st === 'ok' ? '○参加' : (st === 'ng' ? '×不参加' : '△検討中');
+                    const stLabel = st === 'ok' ? '○ OK' : (st === 'ng' ? '× NG' : '△検討中');
                     row.push(stLabel);
                 });
                 csvRows.push(row.map(val => `"${val.replace(/"/g, '""')}"`).join(','));
@@ -1522,6 +1527,19 @@
                 }
                 input.value = currentVal ? currentVal.substring(0, isAllDay ? 10 : 16) : '';
             });
+        }
+
+        function resetAnswerForm() {
+            document.getElementById('ansNickname').value = '';
+            document.getElementById('ansFullname').value = '';
+            document.getElementById('ansEmail').value = '';
+
+            const selects = document.querySelectorAll('.ans-select');
+            selects.forEach(s => {
+                s.value = 'hold';
+            });
+
+            showModal("入力クリア", "入力欄と選択項目をクリアしました。新しい内容でご登録いただけます。");
         }
     </script>
 </body>

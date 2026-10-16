@@ -232,16 +232,22 @@ def lambda_handler(event, context):
                 return {"statusCode": 404, "headers": headers, "body": json.dumps({"error": "Event not found"}, ensure_ascii=False)}
 
             answers = event_data.get('answers', [])
-            existing_index = next((i for i, a in enumerate(answers) if a.get('nickname') == nickname), -1)
+
+            # existing_index = next((i for i, a in enumerate(answers) if a.get('nickname') == nickname), -1)
             
-            if existing_index >= 0:
-                existing_email = answers[existing_index].get('email')
-                if existing_email and submitted_email and existing_email != submitted_email:
-                    return {
-                        "statusCode": 400,
-                        "headers": headers,
-                        "body": json.dumps({"error": "Email mismatch"}, ensure_ascii=False)
-                    }
+            # if existing_index >= 0:
+            #     existing_email = answers[existing_index].get('email')
+            #     if existing_email and submitted_email and existing_email != submitted_email:
+            #         return {
+            #             "statusCode": 400,
+            #             "headers": headers,
+            #             "body": json.dumps({"error": "Email mismatch"}, ensure_ascii=False)
+            #         }
+
+            # 修正後（メールアドレスの一致で既存データを検索するように変更）
+            existing_index = -1
+            if submitted_email:
+                existing_index = next((i for i, a in enumerate(answers) if a.get('email') and a.get('email').strip().lower() == submitted_email.strip().lower()), -1)
 
             new_answer = {
                 "nickname": nickname,
