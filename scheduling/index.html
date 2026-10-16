@@ -66,9 +66,14 @@
                         <div class="relative">
                             <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none pr-10">
                             <button type="button" onclick="togglePasswordVisibility('loginPassword', 'eyeIconLogin')" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600">
-                                <svg id="eyeIconLogin" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <!-- 目を閉じたアイコン (デフォルト) -->
+                                <svg id="eyeIconLogin_closed" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <!-- 目を開いたアイコン (パスワード表示時) -->
+                                <svg id="eyeIconLogin_open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.057 10.057 0 012.063-3.085m3.264-2.228A9.878 9.878 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                                 </svg>
                             </button>
                         </div>
@@ -103,9 +108,14 @@
                         <div class="relative">
                             <input type="password" id="signupPassword" required placeholder="••••••••" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none pr-10">
                             <button type="button" onclick="togglePasswordVisibility('signupPassword', 'eyeIconSignup')" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600">
-                                <svg id="eyeIconSignup" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <!-- 目を閉じたアイコン (デフォルト) -->
+                                <svg id="eyeIconSignup_closed" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <!-- 目を開いたアイコン (パスワード表示時) -->
+                                <svg id="eyeIconSignup_open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.057 10.057 0 012.063-3.085m3.264-2.228A9.878 9.878 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                                 </svg>
                             </button>
                         </div>
@@ -115,9 +125,14 @@
                         <div class="relative">
                             <input type="password" id="signupConfirmPassword" required placeholder="••••••••" class="w-full px-4 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none pr-10">
                             <button type="button" onclick="togglePasswordVisibility('signupConfirmPassword', 'eyeIconConfirm')" class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-400 hover:text-slate-600">
-                                <svg id="eyeIconConfirm" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <!-- 目を閉じたアイコン (デフォルト) -->
+                                <svg id="eyeIconConfirm_closed" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <!-- 目を開いたアイコン (パスワード表示時) -->
+                                <svg id="eyeIconConfirm_open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.057 10.057 0 012.063-3.085m3.264-2.228A9.878 9.878 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                                 </svg>
                             </button>
                         </div>
@@ -298,6 +313,12 @@
                                 <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_email">連絡先メール (非公開) *</label>
                                 <input type="email" id="ansEmail" required placeholder="yamada@example.com" class="w-full px-3 py-2 bg-white border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                             </div>
+                        </div>
+
+                        <!-- 以下のコメント入力欄を新しく追加 -->
+                        <div class="mt-4">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_comment">コメント（事務局確認用）*</label>
+                            <textarea id="ansComment" required rows="2" placeholder="質問や連絡事項があればご記入ください" class="w-full px-3 py-2 bg-white border rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
                         </div>
 
                         <div>
@@ -481,6 +502,11 @@
                     <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_email">メールアドレス</label>
                     <input type="email" id="editAnsEmail" required class="w-full px-3 py-2 border rounded-xl text-sm">
                 </div>
+                <!-- 以下を追加 -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="label_comment">コメント</label>
+                    <textarea id="editAnsComment" rows="2" class="w-full px-3 py-2 border rounded-xl text-sm"></textarea>
+                </div>
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeEditAnswerModal()" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-sm" data-i18n="btn_cancel">キャンセル</button>
                     <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm" data-i18n="btn_save">保存する</button>
@@ -499,8 +525,8 @@
         const translations = {
             ja: {
                 btn_create_nav: "イベント作成",
-                home_title: "多言語対応・サーバーレス日程調整",
-                home_desc: "あなたが登録したイベントの一覧と管理が可能です。",
+                home_title: "日英対応・日程調整アプリ",
+                home_desc: "公開用のニックネームと非公開の氏名・メールアドレスが登録できます。幹事はすべての登録状況の確認・編集や、CSVのダウンロード可能です。",
                 btn_create_event: "イベントを新規作成する",
                 s3_dashboard_title: "あなたの管理イベント一覧",
                 loading_events: "イベントを読み込み中...",
@@ -529,6 +555,7 @@
                 label_nickname: "ニックネーム (公開用) *",
                 label_fullname: "氏名 (事務局確認用) *",
                 label_email: "連絡先メール (事務局確認用) *",
+                label_comment: "コメント（事務局確認用）*", // 追加
                 label_cand_availability: "出席可否 *",
                 btn_submit_answer: "回答を送信する",
                 th_participant: "登録者（ニックネーム）",
@@ -541,6 +568,7 @@
                 th_nickname: "ニックネーム",
                 th_fullname: "氏名",
                 th_email: "メールアドレス",
+                th_comment: "コメント", // 追加
                 th_actions: "操作",
                 title_share_url: "参加者用 共有URL",
                 btn_copy_url: "URLをコピー",
@@ -573,7 +601,7 @@
             },
             en: {
                 btn_create_nav: "Create Event",
-                home_title: "Multi-Language Serverless Scheduler",
+                home_title: "Multi-Language Scheduler",
                 home_desc: "Manage your registered events.",
                 btn_create_event: "Create New Event",
                 s3_dashboard_title: "Your Managed Events",
@@ -603,6 +631,7 @@
                 label_nickname: "Nickname (Public) *",
                 label_fullname: "Full Name (Private) *",
                 label_email: "Email (Private) *",
+                label_comment: "Comment (Admin Only) *", // 追加
                 label_cand_availability: "Availability *",
                 btn_submit_answer: "Submit Answer",
                 th_participant: "Participant",
@@ -615,6 +644,7 @@
                 th_nickname: "Nickname",
                 th_fullname: "Full Name",
                 th_email: "Email",
+                th_comment: "Comment", // 追加
                 th_actions: "Actions",
                 title_share_url: "Participant Share URL",
                 btn_copy_url: "Copy URL",
@@ -658,17 +688,19 @@
         };
 
         // パスワード表示切替（目マーク）
-        function togglePasswordVisibility(inputId, iconId) {
+        function togglePasswordVisibility(inputId, containerId) {
             const input = document.getElementById(inputId);
-            const icon = document.getElementById(iconId);
+            const eyeOpen = document.getElementById(containerId + '_open');
+            const eyeClosed = document.getElementById(containerId + '_closed');
+            
             if (input.type === 'password') {
                 input.type = 'text';
-                // 目を開いた状態（パスワードが見える）
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.057 10.057 0 012.063-3.085m3.264-2.228A9.878 9.878 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />';
+                eyeClosed.classList.add('hidden');
+                eyeOpen.classList.remove('hidden');
             } else {
                 input.type = 'password';
-                // 目を閉じた状態（パスワードが隠れる）
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />';
+                eyeOpen.classList.add('hidden');
+                eyeClosed.classList.remove('hidden');
             }
         }
 
@@ -776,7 +808,10 @@
                 if (!res.ok) throw new Error(data.error || 'Signup failed');
 
                 // 登録完了通知と案内
-                showModal("初期登録の受付完了", `ご登録ありがとうございます。\nメールアドレス: ${email}\n\n仮登録が完了しました。管理画面をご利用いただくにはログインしてください。`);
+                showModal("初期登録の受付完了", `ご登録ありがとうございます。
+メールアドレス: ${email}
+
+仮登録が完了しました。管理画面をご利用いただくにはログインしてください。`);
                 
                 document.getElementById('signupForm').reset();
                 toggleAuthMode();
@@ -948,7 +983,10 @@
 
                 const eventId = data.event.id;
                 const shareUrl = `${window.location.origin}${window.location.pathname}?id=${eventId}`;
-                showModal("イベント作成完了", `イベントが正常に作成されました！\n以下の個別URLを参加者に共有してください：\n\n${shareUrl}`);
+                showModal("イベント作成完了", `イベントが正常に作成されました！
+以下の個別URLを参加者に共有してください：
+
+${shareUrl}`);
                 
                 window.history.pushState({}, '', `?id=${eventId}`);
                 switchView('participate');
@@ -1061,6 +1099,7 @@
             // プライバシー保護のため、氏名とメールアドレスは自動入力せず空欄にする（本人確認のため手入力）
             document.getElementById('ansFullname').value = '';
             document.getElementById('ansEmail').value = '';
+            document.getElementById('ansComment').value = ''; // 追加
 
             const selects = document.querySelectorAll('.ans-select');
             selects.forEach(s => {
@@ -1071,7 +1110,8 @@
             });
 
             document.getElementById('answerFormContainer').scrollIntoView({ behavior: 'smooth' });
-            showModal("データ読み込み完了", `ニックネーム「${ans.nickname}」の登録内容を読み込みました。\n変更したい箇所を修正し、登録時と同じメールアドレスで「回答を送信する」と、上書き保存されます。`);
+            showModal("データ読み込み完了", `ニックネーム「${ans.nickname}」の登録内容を読み込みました。
+変更したい箇所を修正し、登録時と同じメールアドレスで「回答を送信する」と、上書き保存されます。`);
         }
 
         function renderAvailabilityMatrix(ev) {
@@ -1123,6 +1163,7 @@
             const nickname = document.getElementById('ansNickname').value.trim();
             const fullname = document.getElementById('ansFullname').value.trim();
             const email = document.getElementById('ansEmail').value.trim();
+            const comment = document.getElementById('ansComment').value.trim(); // 追加
             const selects = document.querySelectorAll('.ans-select');
             const availability = {};
             selects.forEach(s => availability[s.getAttribute('data-candidate')] = s.value);
@@ -1133,7 +1174,7 @@
                 const res = await fetch(`${API_BASE_URL}/events/${eventId}/answers`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nickname, fullname, email, availability })
+                    body: JSON.stringify({ nickname, fullname, email, comment, availability })
                 });
                 const data = await res.json();
                 
@@ -1262,6 +1303,7 @@
                 <th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold">${t.th_nickname}</th>
                 <th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold">${t.th_fullname}</th>
                 <th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold">${t.th_email}</th>
+                <th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold">${t.th_comment || 'コメント'}</th> <!-- 追加 -->
             `;
             ev.candidates.forEach(c => {
                 headHtml += `<th class="px-3 py-3 border border-slate-200 font-medium">${formatDateStr(c)}</th>`;
@@ -1269,7 +1311,7 @@
             headHtml += `<th class="px-3 py-3 border border-slate-200 bg-slate-100 font-bold text-center">${t.th_actions}</th>`;
 
             let summaryRow = `<tr class="bg-indigo-50/60 font-semibold text-xs border-b-2 border-indigo-100">`;
-            summaryRow += `<td class="px-3 py-2.5 border border-slate-200 text-indigo-900" colspan="3">集計 (Summary)</td>`;
+            summaryRow += `<td class="px-3 py-2.5 border border-slate-200 text-indigo-900" colspan="4">集計 (Summary)</td>`;
             
             ev.candidates.forEach(c => {
                 let okCount = 0, holdCount = 0, ngCount = 0;
@@ -1295,7 +1337,7 @@
             head.innerHTML = `<tr>${headHtml}</tr>` + summaryRow;
 
             if (answers.length === 0) {
-                const totalCols = 4 + ev.candidates.length;
+                const totalCols = 5 + ev.candidates.length; // 4から5に変更
                 body.innerHTML = `<tr><td colspan="${totalCols}" class="px-4 py-6 text-slate-400 text-sm">${t.no_answers}</td></tr>`;
                 return;
             }
@@ -1306,6 +1348,7 @@
                         <td class="px-3 py-3 border border-slate-200 font-semibold text-slate-800 bg-slate-50/50">${ans.nickname}</td>
                         <td class="px-3 py-3 border border-slate-200 text-slate-600">${ans.fullname || '-'}</td>
                         <td class="px-3 py-3 border border-slate-200 text-slate-600">${ans.email || '-'}</td>
+                        <td class="px-3 py-3 border border-slate-200 text-slate-600 min-w-[200px] max-w-[300px]whitespace-pre-wrap break-words">${ans.comment || '-'}</td> <!-- 追加 -->
                 `;
 
                 ev.candidates.forEach(c => {
@@ -1366,12 +1409,12 @@
             const candidates = ev.candidates || [];
 
             let csvRows = [];
-            let header = ['Nickname', 'Full Name', 'Email'];
+            let header = ['Nickname', 'Full Name', 'Email', 'Comment']; // Commentを追加
             candidates.forEach(c => header.push(formatDateStr(c)));
             csvRows.push(header.map(h => `"${h.replace(/"/g, '""')}"`).join(','));
 
             ev.answers.forEach(ans => {
-                let row = [ans.nickname || '', ans.fullname || '', ans.email || ''];
+                let row = [ans.nickname || '', ans.fullname || '', ans.email || '', ans.comment || '']; // ans.commentを追加
                 candidates.forEach(c => {
                     const st = (ans.availability && ans.availability[c]) || 'hold';
                     const stLabel = st === 'ok' ? '○ OK' : (st === 'ng' ? '× NG' : '△検討中');
@@ -1380,13 +1423,13 @@
                 csvRows.push(row.map(val => `"${val.replace(/"/g, '""')}"`).join(','));
             });
 
-            const csvString = '\uFEFF' + csvRows.join('\r\n');
+            const csvString = '\ufeff' + csvRows.join('\n');
             const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
 
             const a = document.createElement('a');
             a.href = url;
-            const safeEventName = (ev.name || 'event').replace(/[^a-zA-Z0-9_\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/g, '_');
+            const safeEventName = (ev.name || 'event').replace(/[^a-zA-Z0-9_぀-ゟ゠-ヿ一-龯]/g, '_');
             a.download = `${safeEventName}_availability.csv`;
             document.body.appendChild(a);
             a.click();
@@ -1446,6 +1489,7 @@
             document.getElementById('editAnsNickname').value = ans.nickname || '';
             document.getElementById('editAnsFullname').value = ans.fullname || '';
             document.getElementById('editAnsEmail').value = ans.email || '';
+            document.getElementById('editAnsComment').value = ans.comment || ''; // 追加
             document.getElementById('editAnswerModal').classList.remove('hidden');
         }
 
@@ -1459,10 +1503,12 @@
             const nickname = document.getElementById('editAnsNickname').value;
             const fullname = document.getElementById('editAnsFullname').value;
             const email = document.getElementById('editAnsEmail').value;
+            const comment = document.getElementById('editAnsComment').value; // 追加
 
             currentEventData.answers[idx].nickname = nickname;
             currentEventData.answers[idx].fullname = fullname;
             currentEventData.answers[idx].email = email;
+            currentEventData.answers[idx].comment = comment; // 追加
 
             try {
                 const res = await fetch(`${API_BASE_URL}/events/${currentEventData.id}`, {
