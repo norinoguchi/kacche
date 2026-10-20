@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreign Company Establishment & Business Manager Visa Guide (Oct 2025 Revised)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter & Noto Sans JP Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        .lang-section {
+            display: none;
+        }
+        .lang-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 glass-header border-b border-slate-200 dark:border-slate-800 px-4 sm:px-8 py-4 transition-all">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-600 text-white p-2.5 rounded-xl shadow-md shadow-emerald-500/20">
+                    <i class="fa-solid fa-building-shield text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg sm:text-xl tracking-tight leading-tight">Japan Company & Visa Guide</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Oct 16, 2025 Revised Criteria Edition</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Language Toggle -->
+                <div class="bg-slate-200 dark:bg-slate-800 p-1 rounded-xl flex items-center shadow-inner">
+                    <button onclick="switchLang('ja')" id="btn-ja" class="px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-white dark:bg-emerald-600 text-slate-900 dark:text-white shadow-sm">
+                        日本語
+                    </button>
+                    <button onclick="switchLang('en')" id="btn-en" class="px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                        English
+                    </button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="hidden lg:block lg:col-span-3 sticky top-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-bars-staggered"></i> <span class="nav-title-text">Table of Contents</span>
+            </h3>
+            <nav class="space-y-1 text-sm" id="desktop-toc">
+                <!-- Dynamically populated -->
+            </nav>
+        </aside>
+
+        <!-- Main Document Area -->
+        <main class="col-span-1 lg:col-span-9 space-y-12">
+
+            <!-- ========================================== -->
+            <!-- JAPANESE SECTION                           -->
+            <!-- ========================================== -->
+            <div id="section-ja" class="lang-section active space-y-12">
+                
+                <!-- Hero Banner -->
+                <div class="bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div class="relative z-10 space-y-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/30 text-emerald-200 border border-emerald-400/30">
+                            <i class="fa-solid fa-triangle-exclamation"></i> 2025年10月16日改正対応版
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">外国人が日本で会社を設立する方法と経営・管理ビザ取得の完全ガイド</h2>
+                        <p class="text-emerald-100 text-sm sm:text-base max-w-2xl leading-relaxed">2025年10月16日の制度改正により非常に厳格化した「経営・管理」ビザの新要件（資本金・常勤職員・日本語能力など）を踏まえ、会社設立からビザ取得までの実務を徹底解説。</p>
+                    </div>
+                </div>
+
+                <!-- 1. ビザなしでの会社設立と実務の現実 -->
+                <section id="ja-1" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">1</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">ビザなしでの会社設立と実務の現実</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>日本の会社法上、<strong>外国人（非居住者）であっても、日本に在留資格（ビザ）を持たずに株式会社や合同会社を設立することは可能</strong>です。</p>
+                        <p>しかし、2025年10月16日の経営・管理ビザ要件の大幅な厳格化に伴い、「とりあえず会社を作ってからビザを考える」という従来の手法では、ビザ取得が極めて困難になっています。</p>
+                        <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-800 dark:text-amber-200 text-sm">
+                            <p class="font-semibold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 改正後の重要性</p>
+                            新基準では、法人として数千万円規模の資産見込みや特定条件を満たす常勤職員の雇用などが要求されるため、設立準備の段階からビザ要件（新基準）を見据えた周到な事業計画が不可欠です。
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. 子会社と日本支店の比較 -->
+                <section id="ja-2" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">2</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">日本法人（子会社）と外国会社の日本支店の比較</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>外国企業が日本進出する際、「日本法人（子会社）」と「日本支店」のどちらを選択するかは、税務、責任範囲、そして経営・管理ビザの取得戦略に大きく影響します。</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base">日本法人（子会社 / 株式会社・合同会社）</h4>
+                                <ul class="list-disc pl-4 space-y-1.5 text-xs">
+                                    <li><strong>法的責任：</strong> 親会社から独立。責任は出資額の範囲内に限定。</li>
+                                    <li><strong>信用力：</strong> 日本市場でのビジネスにおいて高い信頼を得やすい。</li>
+                                    <li><strong>ビザ適合：</strong> 新基準の「経営・管理」ビザ要件（資本金等3,000万円基準など）に合わせた設計が明確。</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base">外国会社の日本支店</h4>
+                                <ul class="list-disc pl-4 space-y-1.5 text-xs">
+                                    <li><strong>法的責任：</strong> 本国法人が直接無限責任を負う。</li>
+                                    <li><strong>設立：</strong> 本国書類の認証等が必要だが手続きは比較的簡便。</li>
+                                    <li><strong>代表者：</strong> 国内住所を持つ代表者の選任が必須。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. 【2025年10月改正】「経営・管理」ビザの新要件 -->
+                <section id="ja-3" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">3</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">【2025年10月16日改正】「経営・管理」ビザの新要件</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>2025年10月16日の出入国管理法令改正により、「経営・管理」の許可基準は従来の「資本金500万円以上または常勤職員2名以上」という選択肢から大幅に変更され、より厳格な要件が課されるようになりました。新基準が適用される申請では、主に以下の条件を満たす必要があります。</p>
+                        
+                        <div class="bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 p-5 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved"></i> 新基準における主要な許可要件の概要
+                            </h4>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>資本金等：</strong> 法人の場合、原則として<strong>3,000万円以上</strong>の資本金や事業用財産が必要となります。</li>
+                                <li><strong>常勤職員の雇用：</strong> 少なくとも<strong>1人以上の対象となる常勤職員</strong>を雇用することが必須となります（対象職員には日本人、永住者、特別永住者、定住者などが含まれますが、一般的な就労ビザ保持者は原則含まれません）。</li>
+                                <li><strong>日本語能力：</strong> 申請者本人または所定の常勤職員が、<strong>CEFR B2相当以上</strong>など、定められた日本語能力要件を満たす必要があります。</li>
+                                <li><strong>学歴または経営経験：</strong> 経営・管理または事業に必要な技術・知識に関する分野の修士相当以上の学位、または<strong>3年以上の経営・管理経験</strong>を有すること。</li>
+                                <li><strong>事業計画の専門家確認：</strong> 事業計画の具体性、合理性、実現可能性について、所定の専門家による確認を受けることが求められます。</li>
+                                <li><strong>独立した事業所：</strong> 日本国内に事業に適した独立した事務所（店舗等）を確保していること。</li>
+                            </ul>
+                        </div>
+                        <p class="text-xs text-slate-500">※経過措置に該当するケースを除き、新規の多くの外国人起業家にはこの厳格な新基準が適用されます。</p>
+                        <div class="pt-2">
+                            <a href="https://www.moj.go.jp/isa/applications/resources/10_00237.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> 公式情報：出入国在留管理庁 (経営・管理基準改正案内)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. 必要書類、宣誓供述書、資本金払込の実務 -->
+                <section id="ja-4" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">4</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">必要書類、宣誓供述書、資本金払込の実務</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>非居住者が会社を設立し、さらに新基準に対応する準備を進める際の実務上の注意点は以下の通りです。</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>宣誓供述書（アフィデビット）：</strong> 海外居住者は日本の印鑑証明書がないため、本国の公証役場でサイン証明や宣誓供述書を作成し、必要に応じてアポスティーユを取得します。</li>
+                            <li><strong>3,000万円規模の資金計画：</strong> 新基準の資本金・事業資金要件を満たすための送金計画、資本金の払込証明方法を日本の専門家（行政書士や司法書士等）と事前協議することが不可欠です。</li>
+                            <li><strong>定款認証と登記：</strong> 電子定款を作成し、代理人を通じて公証人認証および法務局への登記申請を行います。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 5. 永住権・日本国籍（帰化）への影響 -->
+                <section id="ja-5" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">5</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">永住権・日本国籍（帰化）への影響</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>日本で会社経営を継続し、経営・管理ビザを更新していくことは、将来的な永住権や日本国籍（帰化）の取得に大きく影響します。</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>永住権の要件：</strong> 原則として日本に継続して10年以上在留し、そのうち就労・居住資格で5年以上在留していること、法人税や個人の所得税、社会保険料（健康保険・厚生年金）を適正に納付していることが厳しく見られます。</li>
+                            <li><strong>納税・法令遵守の重要性：</strong> 新基準で義務付けられる従業員の雇用や社会保険の完備は、経営・管理ビザの更新だけでなく、永住審査における最大のプラス査定（または未納による不許可要因）となります。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 6. 実務チェックリスト -->
+                <section id="ja-6" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">6</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">改正対応：実務チェックリスト</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">2025年10月改正後の新基準を見据えたチェック項目を確認しましょう。</p>
+                    
+                    <div class="space-y-2.5 pt-2">
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">資本金等（原則3,000万円以上）の調達・送金計画の確認</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">常勤職員（対象となる日本人・永住者等）の採用・雇用計画</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">申請者本人または職員の日本語能力（CEFR B2等）の証明準備</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">学歴（修士相当以上）または3年以上の経営経験の証明資料整理</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">事業計画に対する専門家による確認の取得</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">日本国内における独立した事業所（事務所）の確保</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">宣誓供述書・定款認証・法務局への会社設立登記の完了</span>
+                        </label>
+                    </div>
+                </section>
+
+            </div>
+
+
+            <!-- ========================================== -->
+            <!-- ENGLISH SECTION                            -->
+            <!-- ========================================== -->
+            <div id="section-en" class="lang-section space-y-12">
+                
+                <!-- Hero Banner (EN) -->
+                <div class="bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div class="relative z-10 space-y-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/30 text-emerald-200 border border-emerald-400/30">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Updated for Oct 16, 2025 Revisions
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">How to Establish a Company in Japan & Obtain the Business Manager Visa</h2>
+                        <p class="text-emerald-100 text-sm sm:text-base max-w-2xl leading-relaxed">A comprehensive handbook reflecting the significantly tightened Business Manager visa requirements effective October 16, 2025, covering capital, staffing, language proficiency, and incorporation steps.</p>
+                    </div>
+                </div>
+
+                <!-- 1. Setup Without Visa -->
+                <section id="en-1" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">1</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Company Setup Without a Visa & New Realities</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>Under Japanese company law, foreign nationals (non-residents) can legally establish a corporation without holding a status of residence.</p>
+                        <p>However, following the major October 16, 2025 regulatory revisions to the Business Manager visa, the traditional approach of "incorporating first and figuring out the visa later" is no longer viable.</p>
+                        <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-800 dark:text-amber-200 text-sm">
+                            <p class="font-semibold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Critical Importance of the Revised Criteria</p>
+                            Because the new standards require tens of millions of yen in capital/assets and mandatory local staffing, incorporation planning must align directly with the revised visa criteria from day one.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Subsidiary vs. Branch -->
+                <section id="en-2" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">2</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Subsidiary vs. Branch Office</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>Choosing between a Japanese subsidiary and a branch office impacts tax treatment, liability, and your Business Manager visa strategy.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base">Japanese Subsidiary (KK / GK)</h4>
+                                <ul class="list-disc pl-4 space-y-1.5 text-xs">
+                                    <li><strong>Liability:</strong> Independent entity; parent liability limited to investment.</li>
+                                    <li><strong>Credibility:</strong> High local standing with customers and partners.</li>
+                                    <li><strong>Visa Alignment:</strong> Clearly structureable to meet the revised JPY 30M capital/asset threshold.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base">Branch Office</h4>
+                                <ul class="list-disc pl-4 space-y-1.5 text-xs">
+                                    <li><strong>Liability:</strong> Parent company bears direct unlimited liability.</li>
+                                    <li><strong>Setup:</strong> Requires head office certification documents.</li>
+                                    <li><strong>Representative:</strong> Must appoint a representative residing in Japan.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Revised Business Manager Visa Requirements -->
+                <section id="en-3" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">3</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Revised Business Manager Visa Requirements (Effective Oct 16, 2025)</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>Under the revised Immigration Control Act criteria effective October 16, 2025, the traditional alternative of "JPY 5M capital or 2 full-time employees" has been substantially tightened. Applications subject to the new standards must generally satisfy:</p>
+                        
+                        <div class="bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 p-5 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved"></i> Summary of Revised Criteria
+                            </h4>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Capital / Assets:</strong> For corporations, generally at least <strong>JPY 30 million</strong> in qualifying capital or business assets.</li>
+                                <li><strong>Full-Time Staff:</strong> Employment of at least <strong>one qualifying full-time employee</strong> (includes Japanese nationals, permanent residents, long-term residents, etc., but generally excludes ordinary work-visa holders).</li>
+                                <li><strong>Japanese Language Proficiency:</strong> The applicant or a qualifying full-time employee must meet required Japanese proficiency standards, such as <strong>CEFR B2 equivalent</strong>.</li>
+                                <li><strong>Education or Experience:</strong> A qualifying master’s-level or higher degree in management/technical fields, or at least <strong>3 years of business management experience</strong>.</li>
+                                <li><strong>Professional Business Plan Review:</strong> Confirmation by a qualified professional regarding the specificity, rationality, and feasibility of the business plan.</li>
+                                <li><strong>Independent Business Office:</strong> Suitable and independent premises secured in Japan.</li>
+                            </ul>
+                        </div>
+                        <p class="text-xs text-slate-500">* Unless transitional provisions apply, new applicants must satisfy these rigorous standards.</p>
+                        <div class="pt-2">
+                            <a href="https://www.moj.go.jp/isa/applications/resources/10_00237.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Official Info: Immigration Services Agency (Revised Criteria)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Documents, Affidavits & Capital -->
+                <section id="en-4" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">4</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Documents, Affidavits & Capital Remittance</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>Key practical steps for non-resident incorporation under the revised framework include:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Affidavits:</strong> Since non-residents lack Japanese seal certificates, notarized signature affidavits and authentication (Apostille) are required.</li>
+                            <li><strong>Funding Scale:</strong> Coordinating with Japanese legal/administrative professionals to ensure compliance with the JPY 30M asset/capital expectations and remittance verification.</li>
+                            <li><strong>Registration:</strong> Electronic notarization of articles of incorporation and registration with the Legal Affairs Bureau.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 5. Permanent Residency & Naturalization -->
+                <section id="en-5" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">5</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Impact on Permanent Residency & Naturalization</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>Successfully managing a company and renewing your Business Manager visa paves the way for long-term residency options.</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Permanent Residency:</strong> Requires 10+ years of continuous residence in Japan (with 5+ years on working/residence visas), alongside flawless corporate tax, personal income tax, and social insurance compliance.</li>
+                            <li><strong>Compliance and Staffing:</strong> Meeting the revised staffing and social insurance obligations is crucial not only for visa renewals but also for successful permanent residency screening.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 6. Practical Checklist (EN) -->
+                <section id="en-6" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 font-bold text-sm">6</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Revised Framework Checklist</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Track your preparation against the tightened October 2025 standards.</p>
+                    
+                    <div class="space-y-2.5 pt-2">
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Capital/assets procurement and remittance plan (JPY 30M+ standard)</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Full-time qualifying staff hiring and employment plan</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Japanese language proficiency (CEFR B2 equivalent) verification</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Education degree (Master's equivalent) or 3+ years management experience proof</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Professional confirmation of the business plan</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Independent business office secured in Japan</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Affidavits, notarization, and company incorporation registration completed</span>
+                        </label>
+                    </div>
+                </section>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 px-4 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p>© 2026 Foreign Company Establishment & Business Manager Visa Guide (Oct 2025 Revised Edition). All rights reserved.</p>
+    </footer>
+
+    <!-- Scripting for Language Switching & TOC -->
+    <script>
+        const tocData = {
+            ja: [
+                { id: 'ja-1', title: '1. ビザなし設立の実態' },
+                { id: 'ja-2', title: '2. 子会社と日本支店の比較' },
+                { id: 'ja-3', title: '3. 経営・管理新基準（10/16改正）' },
+                { id: 'ja-4', title: '4. 必要書類・宣誓供述書・払込' },
+                { id: 'ja-5', title: '5. 永住権・国籍への影響' },
+                { id: 'ja-6', title: '6. 改正対応チェックリスト' }
+            ],
+            en: [
+                { id: 'en-1', title: '1. Setup & Realities' },
+                { id: 'en-2', title: '2. Subsidiary vs. Branch' },
+                { id: 'en-3', title: '3. Revised Visa Criteria' },
+                { id: 'en-4', title: '4. Documents & Capital' },
+                { id: 'en-5', title: '5. Residency & Impact' },
+                { id: 'en-6', title: '6. Revised Checklist' }
+            ]
+        };
+
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('section-' + lang).classList.add('active');
+
+            const btnJa = document.getElementById('btn-ja');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'ja') {
+                btnJa.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-white dark:bg-emerald-600 text-slate-900 dark:text-white shadow-sm";
+                btnEn.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+                document.documentElement.lang = 'ja';
+            } else {
+                btnEn.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-white dark:bg-emerald-600 text-slate-900 dark:text-white shadow-sm";
+                btnJa.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+                document.documentElement.lang = 'en';
+            }
+
+            renderToc(lang);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderToc(lang) {
+            const tocContainer = document.getElementById('desktop-toc');
+            tocContainer.innerHTML = '';
+            tocData[lang].forEach(item => {
+                const a = document.createElement('a');
+                a.href = '#' + item.id;
+                a.className = "block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-600 dark:hover:text-emerald-400 transition font-medium text-xs";
+                a.textContent = item.title;
+                tocContainer.appendChild(a);
+            });
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            renderToc('ja');
+        });
+    </script>
+</body>
+</html>

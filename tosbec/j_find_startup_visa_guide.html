@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-Find & Startup Visa Guide for Japan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        .lang-section {
+            display: none;
+        }
+        .lang-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 glass-header border-b border-slate-200 dark:border-slate-800 px-4 sm:px-8 py-4 transition-all">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-md shadow-indigo-500/20">
+                    <i class="fa-solid fa-passport text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg sm:text-xl tracking-tight leading-tight">Japan Startup Pathways</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">J-Find & Startup Visa Guide | Oct 2026</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Language Toggle -->
+                <div class="bg-slate-200 dark:bg-slate-800 p-1 rounded-xl flex items-center shadow-inner">
+                    <button onclick="switchLang('ja')" id="btn-ja" class="px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-white dark:bg-indigo-600 text-slate-900 dark:text-white shadow-sm">
+                        日本語
+                    </button>
+                    <button onclick="switchLang('en')" id="btn-en" class="px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                        English
+                    </button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container with Sidebar & Content -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="hidden lg:block lg:col-span-3 sticky top-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-bars-staggered"></i> <span class="nav-title-text">Table of Contents</span>
+            </h3>
+            <nav class="space-y-1 text-sm" id="desktop-toc">
+                <!-- Dynamically filled or static linked -->
+            </nav>
+        </aside>
+
+        <!-- Main Document Area -->
+        <main class="col-span-1 lg:col-span-9 space-y-12">
+
+            <!-- ========================================== -->
+            <!-- JAPANESE SECTION                           -->
+            <!-- ========================================== -->
+            <div id="section-ja" class="lang-section active space-y-12">
+                
+                <!-- Hero Header Card -->
+                <div class="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                        <i class="fa-solid fa-torii-gate"></i>
+                    </div>
+                    <div class="relative z-10 space-y-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30">
+                            <i class="fa-solid fa-calendar-check"></i> 2026年10月版
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">J-Findからスタートアップビザを活用して日本で起業する方法</h2>
+                        <p class="text-indigo-200 text-sm sm:text-base max-w-2xl leading-relaxed">外国人起業家のための実践ガイド。J-Find（未来創造人材制度）とスタートアップビザを段階的に活用し、経営・管理ビザへとつなげる仕組みを徹底解説。</p>
+                    </div>
+                </div>
+
+                <!-- 1. はじめに -->
+                <section id="ja-1" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">1</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">はじめに</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>日本で起業を目指す外国人にとって、J-Find（未来創造人材制度）とスタートアップビザを段階的に活用する方法は、検討に値する選択肢です。</p>
+                        <p>J-Findは、一定の大学ランキング要件を満たす海外大学等の卒業者が、日本で就職活動や起業準備活動を行うための在留資格です。一方、スタートアップビザは、経済産業大臣の認定を受けた自治体や民間事業者等の支援の下、日本で起業準備活動を行うための制度です。</p>
+                        <p>想定される流れは、次のとおりです。</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>J-Findで日本に滞在し、市場調査や事業計画の策定を進める。</li>
+                            <li>スタートアップビザを利用して、起業に必要な資金、事業所、人員などの準備を進める。</li>
+                            <li>要件を満たした段階で、在留資格「経営・管理」への変更を申請する。</li>
+                        </ul>
+                        <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-800 dark:text-amber-200 text-sm">
+                            <p class="font-semibold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 注意点</p>
+                            J-Findからスタートアップビザへの変更は自動的に認められるものではありません。また、スタートアップビザ自体にも起業準備上の要件があり、取得すれば「経営・管理」の許可が保証されるわけでもありません。本記事では、2026年10月時点の制度を前提として、このルートの仕組みと注意点を解説します。
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. J-Findとは？ -->
+                <section id="ja-2" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">2</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">J-Findとは？</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>J-Findは、正式には在留資格「特定活動（未来創造人材）」と呼ばれます。</p>
+                        <p>主な要件は以下のとおりです。</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>QS、THE、ARWUの3つの世界大学ランキングのうち、2つ以上で100位以内にランクインする対象大学を卒業するか、その大学の大学院課程を修了し、所定の学位等を取得していること。</li>
+                            <li>原則として、卒業・修了から5年以内であること。</li>
+                            <li>日本での滞在当初の生計維持費に関する要件を満たすこと。</li>
+                        </ul>
+                        <p>在留期間は6か月または1年で、更新を含め最長2年間の在留が可能です。ただし、2年間の在留が最初から保証されるわけではありません。更新時には、引き続き就職活動または起業準備活動を行っていることを示す資料等が必要です。</p>
+                        <p>J-Findの期間中は、事業アイデアの検証、市場調査、事業計画の作成、投資家や共同創業者との面談、資金調達の検討、事業所候補の調査などを進めることができます。</p>
+                        <p>一方、J-Findは自由に事業を経営できる在留資格ではありません。準備活動と実際の営業・経営活動を区別し、個々の活動が認められる範囲を確認する必要があります。</p>
+                        <div class="pt-2">
+                            <a href="https://www.moj.go.jp/isa/applications/status/designatedactivities51.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> 公式情報：出入国在留管理庁 (J-Find)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. スタートアップビザとは？ -->
+                <section id="ja-3" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">3</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">スタートアップビザとは？</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>スタートアップビザは、正式には「外国人起業活動促進事業」と呼ばれる制度で、在留資格「特定活動」を利用して日本で起業準備を進める仕組みです。一般に、外国人起業家向けの「スタートアップビザ」として知られています。</p>
+                        <p>申請者は、経済産業大臣の認定を受けた自治体または民間事業者等に起業準備活動計画を提出します。認定実施団体が計画を審査し、適当と認めた場合には確認証明書を交付します。その後、申請者が地方出入国在留管理局に必要書類を提出し、入管の審査を経て在留資格が付与されます。</p>
+                        <p>制度上、起業準備活動のために最長2年間の在留が可能ですが、個別の在留期間や更新の可否は審査によって決まります。</p>
+                        
+                        <div class="bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900 p-5 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i> 2025年10月16日以降の重要な変更
+                            </h4>
+                            <p class="text-sm">スタートアップビザの要件も、2025年10月16日に改正されています。単に「起業準備のための時間を確保できる制度」と理解するのは適切ではありません。</p>
+                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-200">新基準では、原則として次のような準備が求められます。</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                                <li><strong>資金・事業用財産：</strong> 1年以内に、申請事業に使用する財産の総額が3,000万円以上となる見込みがあること。更新時には、原則として6か月以内に要件を満たす見込みが求められます。</li>
+                                <li><strong>常勤職員：</strong> 1年以内に1人以上の常勤職員が従事する見込みがあること。更新時には、原則として6か月以内の見込みが必要です。</li>
+                                <li><strong>事業所：</strong> 1年以内に日本国内で事業所を確保する見込みがあること。更新時には、原則として6か月以内の見込みが求められます。</li>
+                                <li><strong>学歴または経験：</strong> 事業の経営・管理について1年以上の経験を有すること、または経営・管理に関する分野や事業に必要な技術・知識に関する分野の修士相当以上の学位を有すること。</li>
+                                <li><strong>起業準備活動計画：</strong> 事業内容、準備の進め方、実現可能性などについて所定の要件を満たすこと。</li>
+                                <li><strong>日本での居住：</strong> 起業準備活動期間中、日本に居住する計画であること。</li>
+                            </ul>
+                        </div>
+                        <p class="text-xs text-slate-500">※これらは主な基準の概要であり、個別の適用関係や必要書類は認定実施団体と出入国在留管理庁に確認してください。</p>
+                        <div class="pt-2">
+                            <a href="https://www.meti.go.jp/policy/newbusiness/startupvisa/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> 公式情報：経済産業省 (Startup Visa)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. J-Findからスタートアップビザへ移行する手順 -->
+                <section id="ja-4" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">4</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">J-Findからスタートアップビザへ移行する手順</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Phase 1 -->
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl space-y-3">
+                            <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">フェーズ 1</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">事業の基礎を作る</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">J-Findの期間中は、事業の実現可能性を検証し、起業準備を具体化します。</p>
+                            <ul class="list-disc pl-4 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li>日本市場の調査と顧客ヒアリング</li>
+                                <li>事業計画と収支予測の作成</li>
+                                <li>共同創業者・投資家との面談</li>
+                                <li>資金調達・初期費用の検討</li>
+                                <li>事業所・許認可の調査</li>
+                            </ul>
+                        </div>
+                        <!-- Phase 2 -->
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl space-y-3">
+                            <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">フェーズ 2</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">スタートアップビザ申請</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">起業する地域を選び、その地域で利用できる制度と認定実施団体を確認します。</p>
+                            <ul class="list-disc pl-4 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li>起業準備活動計画の策定</li>
+                                <li>資金・人員・事業所要件の具体化</li>
+                                <li>認定実施団体への申請と審査</li>
+                                <li>入管への在留資格変更申請</li>
+                            </ul>
+                        </div>
+                        <!-- Phase 3 -->
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl space-y-3">
+                            <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">フェーズ 3</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">事業基盤を整える</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">取得後は承認された計画に沿って基盤を確立し、経営・管理への変更に備えます。</p>
+                            <ul class="list-disc pl-4 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li>資金調達と事業所の確保</li>
+                                <li>常勤職員の採用と許認可確認</li>
+                                <li>進捗状況の記録と面談・報告対応</li>
+                                <li>最終的なビザ変更の準備</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. 経営・管理への変更要件 -->
+                <section id="ja-5" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">5</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">経営・管理への変更要件</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>2025年10月16日に「経営・管理」の許可基準が改正されました。新基準が適用される申請では、主に以下の要件を確認する必要があります。</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>資本金等：</strong> 法人の場合、原則3,000万円以上。</li>
+                            <li><strong>常勤職員：</strong> 少なくとも1人の対象となる常勤職員を雇用すること。</li>
+                            <li><strong>日本語能力：</strong> 申請者本人または所定の要件を満たす常勤職員が、CEFR B2相当以上など、基準に定められた日本語能力要件を満たすこと。</li>
+                            <li><strong>学歴または経営経験：</strong> 経営・管理または事業に必要な技術・知識に関する分野の修士相当以上の学位、または経営・管理について3年以上の経験を有すること。</li>
+                            <li><strong>事業計画：</strong> 具体性、合理性、実現可能性について、所定の専門家による確認を受けること。</li>
+                            <li><strong>事業所：</strong> 事業に適した事業所を確保すること。</li>
+                        </ul>
+                        <p class="text-xs text-slate-500">※常勤職員の対象には制限があり、原則として日本人、特別永住者、永住者、日本人の配偶者等、永住者の配偶者等、定住者などが該当します。一般の就労系在留資格を持つ外国人を1人雇うだけで、この雇用要件を満たすとは限りません。</p>
+                        <div class="pt-2">
+                            <a href="https://www.moj.go.jp/isa/applications/resources/10_00237.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> 公式情報：出入国在留管理庁 (経営・管理基準改正)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. 起業準備期間は3年の経営経験に算入できるか？ -->
+                <section id="ja-6" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">6</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">起業準備期間は3年の経営経験に算入できるか？</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>出入国在留管理庁の改正案内では、経営・管理の3年以上の経験について、在留資格「特定活動」に基づく、事業開始に必要な事業所の確保などを行う起業準備活動の期間を含むとされています。</p>
+                        <p>したがって、J-Findやスタートアップビザで行った活動が、実際に所定の起業準備活動に該当する場合、経験年数に算入できる可能性があります。</p>
+                        <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-800 dark:text-amber-200 text-sm">
+                            ただし、単にJ-Findで日本に滞在していた期間が自動的に3年の経験として認められるわけではありません。活動内容、期間、証拠資料、適用される基準を踏まえた判断が必要です。起業準備活動の記録や事業計画、各種資料を整理し、申請前に個別の取扱いを確認することを推奨します。
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. 経過措置 -->
+                <section id="ja-7" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">7</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">2025年10月16日前からの在留・申請に関する経過措置</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>2025年10月16日の基準改正には経過措置があります。出入国在留管理庁の案内では、改正前からのJ-Findの在留状況や申請状況、スタートアップビザの確認証明書が交付された時期などによって、「経営・管理」への変更時に旧基準が適用される場合があります。</p>
+                        <p>特に、2025年10月16日より前からJ-Findで在留していた人や、同日前にスタートアップビザの確認証明書が交付されていた人は、自分のケースに経過措置が適用されるかを個別に確認してください。</p>
+                    </div>
+                </section>
+
+                <!-- 8. 実務上のチェックリスト -->
+                <section id="ja-8" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">8</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">実務上のチェックリスト</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">J-Findからスタートアップビザ、そして経営・管理への移行を検討する場合、次の項目を早めに確認しましょう。</p>
+                    
+                    <div class="space-y-2.5 pt-2">
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">J-Findの残存期間と更新可能性</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">起業予定地域で利用できるスタートアップビザ制度</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">スタートアップビザの資金・人員・事業所要件を満たす見込み</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">経営・管理の資本金等3,000万円の資金計画</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">対象となる常勤職員の採用計画</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">日本語能力と学歴・経営経験の要件</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">起業準備活動を証明する資料の整理</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">経過措置の適用可能性の確認</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">法人設立、営業開始、在留資格変更の適切なタイミング</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- 9. まとめ -->
+                <section id="ja-9" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">9</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">まとめ</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>J-Findからスタートアップビザを経て「経営・管理」を目指す方法は、日本での起業を段階的に準備する選択肢です。</p>
+                        <p>ただし、スタートアップビザ自体にも2025年10月16日以降の要件があり、最終的な「経営・管理」の要件も別途満たす必要があります。準備期間が経験年数に算入できる可能性はありますが、自動的に認められるものではありません。</p>
+                        <p>実際の進め方は、本人の学歴・職歴、資金、事業内容、在留期限、利用する地域の制度によって異なります。申請前には、関係官庁や専門家に確認することが重要です。</p>
+                        
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs text-slate-500 space-y-2">
+                            <p class="font-semibold text-slate-700 dark:text-slate-300">公式リソース・免責事項</p>
+                            <p>本記事は一般的な情報の提供を目的としており、個別具体的な法的・移民法的助言ではありません。申請にあたっては必ず最新の公式規則をご確認ください。</p>
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <a href="https://www.moj.go.jp/isa/applications/status/designatedactivities51.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-600">出入国在留管理庁 (J-Find)</a>
+                                <a href="https://www.meti.go.jp/policy/newbusiness/startupvisa/" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-600">経済産業省 (Startup Visa)</a>
+                                <a href="https://www.moj.go.jp/isa/applications/resources/10_00237.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-600">出入国在留管理庁 (経営・管理)</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+
+            <!-- ========================================== -->
+            <!-- ENGLISH SECTION                            -->
+            <!-- ========================================== -->
+            <div id="section-en" class="lang-section space-y-12">
+                
+                <!-- Hero Header Card (EN) -->
+                <div class="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                        <i class="fa-solid fa-torii-gate"></i>
+                    </div>
+                    <div class="relative z-10 space-y-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30">
+                            <i class="fa-solid fa-calendar-check"></i> October 2026 Edition
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">How to Start a Business in Japan Through the J-Find and Startup Visa Pathways</h2>
+                        <p class="text-indigo-200 text-sm sm:text-base max-w-2xl leading-relaxed">A Practical Guide for Foreign Entrepreneurs | Explore how combining J-Find and Startup Visa pathways can lead to the Business Manager status.</p>
+                    </div>
+                </div>
+
+                <!-- 1. Introduction -->
+                <section id="en-1" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">1</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Introduction</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>For foreign nationals seeking to establish a business in Japan, combining the J-Find pathway with the Startup Visa program may offer a structured way to prepare for entrepreneurship.</p>
+                        <p>J-Find allows eligible graduates of qualifying overseas universities to stay in Japan for job hunting or entrepreneurial preparation. The Startup Visa program enables eligible foreign entrepreneurs to prepare to establish a business under the supervision and support of organizations authorized by Japan’s Ministry of Economy, Trade and Industry (METI).</p>
+                        <p>A potential pathway is to:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Use J-Find to research the Japanese market and develop a business plan.</li>
+                            <li>Use the Startup Visa framework to prepare the required funding, business premises, and personnel.</li>
+                            <li>Apply to change to the Business Manager status of residence once the applicable requirements have been met.</li>
+                        </ul>
+                        <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-800 dark:text-amber-200 text-sm">
+                            <p class="font-semibold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Important Note</p>
+                            This progression is not automatic. A change from J-Find to the Startup Visa framework requires the relevant approvals, and obtaining a Startup Visa does not guarantee approval for the Business Manager status.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. What Is J-Find? -->
+                <section id="en-2" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">2</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">What Is J-Find?</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>J-Find is the status of residence formally known as “Designated Activities (Future Creation Individual).”</p>
+                        <p>The principal eligibility requirements generally include:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Graduation from a qualifying university ranked within the top 100 in at least two of the QS, THE, and ARWU global university rankings, or completion of a qualifying graduate program with the required degree.</li>
+                            <li>Application within five years of graduation or completion.</li>
+                            <li>Sufficient funds to meet the applicable initial living-expense requirements in Japan.</li>
+                        </ul>
+                        <p>The period of stay is six months or one year and may be renewed up to a maximum total of two years, subject to the applicable rules and examination. The full two-year period is not guaranteed at the outset.</p>
+                        <p>During J-Find, eligible applicants may conduct market research, validate a business idea, prepare a business plan, meet prospective investors and co-founders, explore funding options, and research business premises.</p>
+                        <p>J-Find is not an unrestricted authorization to operate any business. Applicants should distinguish preparatory activities from actual commercial and management activities and confirm which activities are permitted under their status of residence.</p>
+                        <div class="pt-2">
+                            <a href="https://www.moj.go.jp/isa/applications/status/designatedactivities51.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Official Info: Immigration Services Agency (J-Find)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. What Is the Startup Visa Program? -->
+                <section id="en-3" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">3</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">What Is the Startup Visa Program?</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>Japan’s Startup Visa program, formally known as the Promotion of Foreign Entrepreneurial Activities program, allows eligible foreign entrepreneurs to undertake business-preparation activities under a status of residence in the “Designated Activities” category.</p>
+                        <p>Applicants submit a startup preparation activity plan to an organization authorized by METI, such as an eligible local government or private-sector implementing organization. If the plan is approved, the organization issues the relevant confirmation certificate. The applicant then submits the required documentation to the regional immigration authorities.</p>
+                        <p>The framework can provide a preparation period of up to two years, but the actual period granted and any renewal remain subject to the applicable procedures and examination.</p>
+                        
+                        <div class="bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900 p-5 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i> Important changes effective October 16, 2025
+                            </h4>
+                            <p class="text-sm">The Startup Visa requirements were revised on October 16, 2025. The program should therefore not be described simply as a way to obtain additional time to prepare a business.</p>
+                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Under the revised framework, the main requirements generally include:</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                                <li><strong>Business assets or funding:</strong> A reasonable expectation that the total assets to be used for the proposed business will reach at least JPY 30 million within one year. At renewal, the applicable expectation is generally within six months.</li>
+                                <li><strong>Full-time personnel:</strong> An expectation that at least one full-time employee will be engaged within one year, generally within six months at renewal.</li>
+                                <li><strong>Business premises:</strong> An expectation that business premises in Japan will be secured within one year, generally within six months at renewal.</li>
+                                <li><strong>Education or experience:</strong> At least one year of experience in business management, or a qualifying master’s-level or higher degree in management or a related technical field.</li>
+                                <li><strong>Startup preparation plan:</strong> A plan satisfying requirements concerning the proposed business and feasibility.</li>
+                                <li><strong>Residence in Japan:</strong> An intention to reside in Japan during the startup preparation period.</li>
+                            </ul>
+                        </div>
+                        <p class="text-xs text-slate-500">* These are the principal requirements, not an exhaustive list. Please confirm rules with implementing organizations and the ISA.</p>
+                        <div class="pt-2">
+                            <a href="https://www.meti.go.jp/policy/newbusiness/startupvisa/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Official Info: METI (Startup Visa)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. The Four Stages of the J-Find-to-Startup Visa Pathway -->
+                <section id="en-4" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">4</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">The Four Stages of the J-Find-to-Startup Visa Pathway</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Stage 1 -->
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl space-y-3">
+                            <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">Stage 1</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">Build Foundation</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">Use J-Find to validate the business concept and prepare a concrete launch plan.</p>
+                            <ul class="list-disc pl-4 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li>Research Japanese market & customer interviews</li>
+                                <li>Develop business plan & projections</li>
+                                <li>Meet potential co-founders & investors</li>
+                                <li>Explore funding & initial costs</li>
+                                <li>Research premises & permits</li>
+                            </ul>
+                        </div>
+                        <!-- Stage 2 -->
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl space-y-3">
+                            <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">Stage 2</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">Submit Application</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">Select business location and confirm available Startup Visa framework.</p>
+                            <ul class="list-disc pl-4 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li>Prepare startup activity plan</li>
+                                <li>Demonstrate funding, staffing & premises</li>
+                                <li>Apply through implementing organization</li>
+                                <li>Apply for status change at immigration</li>
+                            </ul>
+                        </div>
+                        <!-- Stage 3 -->
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl space-y-3">
+                            <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">Stage 3</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">Establish Infrastructure</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">Proceed with approved plan and prepare for Business Manager transition.</p>
+                            <ul class="list-disc pl-4 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li>Secure funding and premises</li>
+                                <li>Plan personnel recruitment</li>
+                                <li>Comply with reporting requirements</li>
+                                <li>Prepare for final visa transition</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Requirements for the Business Manager Status -->
+                <section id="en-5" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">5</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Requirements for the Business Manager Status</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>The criteria for the Business Manager status were revised effective October 16, 2025. Main criteria generally include:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Capital or investment:</strong> For a corporation, generally at least JPY 30 million in qualifying capital or business assets.</li>
+                            <li><strong>Full-time personnel:</strong> Employment of at least one qualifying full-time employee.</li>
+                            <li><strong>Japanese-language proficiency:</strong> CEFR B2-equivalent proficiency or another qualifying condition.</li>
+                            <li><strong>Education or experience:</strong> A qualifying master’s-level or higher degree, or at least 3 years of management experience.</li>
+                            <li><strong>Business plan:</strong> Confirmation by a qualified professional regarding specificity and feasibility.</li>
+                            <li><strong>Business premises:</strong> Suitable premises for the proposed business.</li>
+                        </ul>
+                        <p class="text-xs text-slate-500">* Qualifying full-time employees are restricted (e.g., Japanese nationals, permanent residents, etc.). Hiring ordinary work-visa holders does not automatically satisfy this requirement.</p>
+                        <div class="pt-2">
+                            <a href="https://www.moj.go.jp/isa/applications/resources/10_00237.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Official Info: Immigration Services Agency (Business Manager)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. Can Startup Preparation Time Count Toward the Three-Year Management Experience Requirement? -->
+                <section id="en-6" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">6</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Can Startup Preparation Time Count Toward Management Experience?</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>The Immigration Services Agency’s revised guidance states that the three-year experience requirement may include periods of startup preparation activities conducted under a qualifying “Designated Activities” status.</p>
+                        <p>Accordingly, time spent under J-Find or the Startup Visa framework may potentially count if actual activities qualify.</p>
+                        <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-800 dark:text-amber-200 text-sm">
+                            Merely residing in Japan under J-Find does not automatically establish three years of management experience. Evidence of startup preparation, business plans, and arrangements must be retained and verified before applying.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. Transitional Rules -->
+                <section id="en-7" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">7</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Transitional Rules for Cases Predating October 16, 2025</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>The revisions effective October 16, 2025 include transitional provisions. Criteria applicable to a change to Business Manager status may differ depending on J-Find residence or application status and the date confirmation certificates were issued.</p>
+                        <p>Individuals who were already residing in Japan under J-Find before October 16, 2025, or whose Startup Visa confirmation certificates were issued before that date, should verify whether transitional rules apply.</p>
+                    </div>
+                </section>
+
+                <!-- 8. Practical Checklist -->
+                <section id="en-8" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">8</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Practical Checklist</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Before proceeding from J-Find to the Startup Visa and then to Business Manager status, review the following:</p>
+                    
+                    <div class="space-y-2.5 pt-2">
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Remaining J-Find period and renewal eligibility</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Availability of Startup Visa program in intended location</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Expected ability to meet funding, staffing, and premises requirements</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Funding plan for JPY 30M Business Manager requirement</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Recruitment plan for qualifying full-time personnel</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Japanese-language proficiency, education, and experience</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Evidence of genuine startup preparation activities</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Potential applicability of transitional rules</span>
+                        </label>
+                        <label class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                            <span class="text-sm text-slate-700 dark:text-slate-200">Appropriate timing for incorporation and change-of-status application</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- 9. Conclusion -->
+                <section id="en-9" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 font-bold text-sm">9</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Conclusion</h3>
+                    </div>
+                    <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-sm sm:text-base">
+                        <p>The J-Find-to-Startup Visa-to-Business Manager pathway can provide a structured approach to preparing a business in Japan.</p>
+                        <p>However, the Startup Visa has its own requirements under rules effective October 16, 2025, and Business Manager criteria must also be satisfied separately. Startup preparation activities may count toward management experience, but recognition is not automatic.</p>
+                        <p>Applicants should confirm their individual circumstances with official government agencies and qualified professionals.</p>
+                        
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs text-slate-500 space-y-2">
+                            <p class="font-semibold text-slate-700 dark:text-slate-300">Official Resources & Disclaimer</p>
+                            <p>This article provides general information and is not individualized legal advice. Verify against official rules in force at application.</p>
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <a href="https://www.moj.go.jp/isa/applications/status/designatedactivities51.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-600">ISA (J-Find)</a>
+                                <a href="https://www.meti.go.jp/policy/newbusiness/startupvisa/" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-600">METI (Startup Visa)</a>
+                                <a href="https://www.moj.go.jp/isa/applications/resources/10_00237.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-600">ISA (Business Manager Criteria)</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 px-4 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p>© 2026 Japan Startup Visa & J-Find Practical Guide. All rights reserved.</p>
+    </footer>
+
+    <!-- Script to handle switching language & TOC -->
+    <script>
+        const tocData = {
+            ja: [
+                { id: 'ja-1', title: '1. はじめに' },
+                { id: 'ja-2', title: '2. J-Findとは？' },
+                { id: 'ja-3', title: '3. スタートアップビザとは？' },
+                { id: 'ja-4', title: '4. 移行の手順' },
+                { id: 'ja-5', title: '5. 経営・管理への変更要件' },
+                { id: 'ja-6', title: '6. 3年の経営経験への算入' },
+                { id: 'ja-7', title: '7. 経過措置に関する事項' },
+                { id: 'ja-8', title: '8. 実務上のチェックリスト' },
+                { id: 'ja-9', title: '9. まとめ' }
+            ],
+            en: [
+                { id: 'en-1', title: '1. Introduction' },
+                { id: 'en-2', title: '2. What Is J-Find?' },
+                { id: 'en-3', title: '3. Startup Visa Program' },
+                { id: 'en-4', title: '4. The Four Stages' },
+                { id: 'en-5', title: '5. Business Manager Requirements' },
+                { id: 'en-6', title: '6. Experience Count' },
+                { id: 'en-7', title: '7. Transitional Rules' },
+                { id: 'en-8', title: '8. Practical Checklist' },
+                { id: 'en-9', title: '9. Conclusion' }
+            ]
+        };
+
+        let currentLang = 'ja';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            
+            // Sections visibility
+            document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('section-' + lang).classList.add('active');
+
+            // Button styles
+            const btnJa = document.getElementById('btn-ja');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'ja') {
+                btnJa.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-white dark:bg-indigo-600 text-slate-900 dark:text-white shadow-sm";
+                btnEn.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+                document.documentElement.lang = 'ja';
+            } else {
+                btnEn.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-white dark:bg-indigo-600 text-slate-900 dark:text-white shadow-sm";
+                btnJa.className = "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+                document.documentElement.lang = 'en';
+            }
+
+            renderToc(lang);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderToc(lang) {
+            const tocContainer = document.getElementById('desktop-toc');
+            tocContainer.innerHTML = '';
+            tocData[lang].forEach(item => {
+                const a = document.createElement('a');
+                a.href = '#' + item.id;
+                a.className = "block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition font-medium text-xs";
+                a.textContent = item.title;
+                tocContainer.appendChild(a);
+            });
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        // Initialize theme and TOC on load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            renderToc('ja');
+        });
+    </script>
+</body>
+</html>

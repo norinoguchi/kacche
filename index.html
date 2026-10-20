@@ -52,11 +52,13 @@
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            visibility: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), visibility 0.5s;
         }
         .accordion-content.open {
-            max-height: 3500px;
-            transition: max-height 0.8s ease-in-out;
+            max-height: 4500px;
+            visibility: visible;
+            transition: max-height 0.8s ease-in-out, visibility 0s;
         }
     </style>
 </head>
@@ -93,8 +95,8 @@
                 <span class="lang-en" id="typewriter-en"></span>
             </h1>
             <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed mb-12 opacity-90">
-                <span class="lang-jp">柔軟な発想力による新たな事業の構想からデジタルテクノロジーによる社会実装まで、一気通貫で伴走するビジネス＆テクノロジーパートナー。</span>
-                <span class="lang-en">Your business & technology partner, walking hand-in-hand from flexible business conceptualization to social implementation through cutting-edge technology.</span>
+                <span class="lang-jp">柔軟な発想による事業構想から最新のデジタルテクノロジーによる社会実装まで、新たなビジネスを一気通貫で創出します。</span>
+                <span class="lang-en">From flexible business conceptualization to social implementation through cutting-edge technology.</span>
             </p>
             <div class="flex justify-center">
                 <a href="#services" class="inline-flex items-center gap-2 text-sm font-medium text-white border-b border-white pb-1 hover:text-sky-400 hover:border-sky-400 transition-colors">
@@ -130,25 +132,26 @@
                         </h3>
                         
                         <div class="space-y-8">
+
                             <div>
                                 <h4 class="text-lg font-medium text-slate-900 mb-2">
-                                    <span class="lang-jp">・新規事業実現・伴走支援</span>
+                                    <span class="lang-jp">・創業・新規事業伴走支援</span>
                                     <span class="lang-en">・Startup & New Business Incubation Support</span>
                                 </h4>
                                 <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                    <span class="lang-jp">アイデアの壁打ちから市場検証、事業化ロードマップ策定まで、新たな事業を企画し、実現するまでの全てのプロセスに伴走します。個別相談、創業支援セミナーのほか、貴社の若手社員に向けてのワークショップなどを提供し、未来のビジネスにチャレンジするあらゆる方に寄り添います。</span>
-                                    <span class="lang-en">Supporting the entire process of planning and realizing new businesses, from initial idea validation and market testing to roadmap creation. We offer one-on-one consultations, startup seminars, and workshops for your young professionals, closely supporting all who take on future business challenges.</span>
+                                    <span class="lang-jp">数多くの新製品や新規事業を立ち上げて来た経験を活かし、アイデアの壁打ちから市場検証、事業計画の策定まで、新たな事業を実現するまでの全てのプロセスを応援します。公的機関の相談業務や創業支援セミナーのほか、補助金を活用した新事業の立ち上げなど個別の伴走支援にも対応します。</span>
+                                    <span class="lang-en">Utilizing our extensive experience in launching new businesses, we support the entire process of planning and realizing new ventures, from initial idea validation and market testing to roadmap creation. We also provide individualized support through consultations with public institutions and startup seminars.</span>
                                 </p>
                             </div>
-                            
+
                             <div class="pt-6 border-t border-slate-200/60">
                                 <h4 class="text-lg font-medium text-slate-900 mb-2">
-                                    <span class="lang-jp">・地域活性化・伝統産業支援事業</span>
-                                    <span class="lang-en">・Regional Vitalization & Traditional Industry Support</span>
+                                    <span class="lang-jp">・デジタル化伴走支援（DX、AI導入）</span>
+                                    <span class="lang-en">・Digitalization Support (DX & AI Integration)</span>
                                 </h4>
                                 <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                    <span class="lang-jp">豊かな発想力と国際力、デジタル技術を活用して、日本の隠れた魅力を世界に伝えるお手伝いをさせて頂きます。ブランディング、6次製品企画開発、地方の魅力を伝えるコンテンツ開発まで、お気軽にご相談ください。</span>
-                                    <span class="lang-en">Leveraging digital marketing to share Japan's hidden treasures with the world. Feel free to consult us on branding, 6th-industry product planning, and content development highlighting regional appeal.</span>
+                                    <span class="lang-jp">30余年に渡ってデジタル技術に携わって来た知識と経験を活かし、業務プロセスの効率化や販売促進に役立つ、最新のデジタルツールの選定からAIの活用まで、実効性の高いデジタル化を現場に寄り添った実務レベルで助言し、導入サポートまで実施します。</span>
+                                    <span class="lang-en">Utilizing our extensive digital technology experience, we provide practical, hands-on advice and implementation support ranging from selecting the latest digital tools to leveraging AI for workflow optimization and sales promotion.</span>
                                 </p>
                             </div>
 
@@ -158,10 +161,11 @@
                                     <span class="lang-en">・Japan Market Entry Support for Overseas Startups</span>
                                 </h4>
                                 <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                    <span class="lang-jp">海外の優れたテクノロジーやサービスを日本に導入するための伴走支援を行います。日本市場にフィットするブランディング、展示会出展支援、販売チャネルの開拓など、優れた海外発スタートアップの日本における市場展開に寄り添います。</span>
-                                    <span class="lang-en">Providing hands-on support for introducing advanced foreign technologies and services into Japan. We assist overseas startups with market-fit branding, exhibition participation, and sales channel development in Japan.</span>
+                                    <span class="lang-jp">英国駐在の他、50か国以上をビジネス訪問した豊富な海外経験を活用し、海外の優れたテクノロジーやサービスを日本に導入するための伴走支援を行います。日本市場にフィットするブランディング、展示会出展支援、販売チャネルの開拓など、優れた海外発スタートアップの日本における市場展開に寄り添います。</span>
+                                    <span class="lang-en">Utilizing our extensive international business experience, we provide support for introducing advanced foreign technologies and services into Japan. We assist overseas startups with market-fit branding, exhibition participation, and sales channel development in Japan.</span>
                                 </p>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -172,30 +176,30 @@
                     <div>
                         <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-2">Pillar 02</div>
                         <h3 class="text-2xl font-normal text-slate-900 mb-8">
-                            <span class="lang-jp">デジタルテクノロジー事業</span>
-                            <span class="lang-en">Digital Technology Services</span>
+                            <span class="lang-jp">独自企画事業</span>
+                            <span class="lang-en">Independent Project Initiatives</span>
                         </h3>
                         
                         <div class="space-y-8">
                             <div>
                                 <h4 class="text-lg font-medium text-slate-900 mb-2">
-                                    <span class="lang-jp">・デジタル化伴走支援（DX、AI導入）</span>
-                                    <span class="lang-en">・Digitalization Support (DX & AI Integration)</span>
+                                    <span class="lang-jp">・地域活性化に資する事業</span>
+                                    <span class="lang-en">・Regional Vitalization Support</span>
                                 </h4>
                                 <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                    <span class="lang-jp">業務プロセスの効率化や販売促進に役立つ、最新のデジタルツールの選定からAIの活用まで、実効性の高いデジタル化を現場に寄り添った実務レベルで助言し、導入サポートまで実施します。</span>
-                                    <span class="lang-en">Practical, hands-on advice and implementation support ranging from selecting the latest digital tools to leveraging AI for workflow optimization and sales promotion.</span>
+                                    <span class="lang-jp">各地域の魅力を高め、持続的な発展に資する独自事業を企画し、地域の皆様の協力を得て実現します。持続可能な取り組みとするには、如何に魅力的なビジネスを創出するかが重要であり、数多くの新規事業を実現してきた経験と実行力を活かし、自治体の皆様ともタッグを組んで実現します。</span>
+                                    <span class="lang-en">Utilizing our experience in planning and leading new initiatives, we create unique projects that enhance the appeal of regional communities and support sustainable development, in collaboration with local stakeholders.</span>
                                 </p>
                             </div>
-                            
+
                             <div class="pt-6 border-t border-sky-100/60">
                                 <h4 class="text-lg font-medium text-slate-900 mb-2">
-                                    <span class="lang-jp">・ローコストシステム開発</span>
-                                    <span class="lang-en">・Low-Cost System Development</span>
+                                    <span class="lang-jp">・伝統工芸の発展に資する事業</span>
+                                    <span class="lang-en">・Traditional Crafts Business Development</span>
                                 </h4>
                                 <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                    <span class="lang-jp">小さなお店や会社でも、具体的に改善成果の出る専用のWebアプリケーションやスマホアプリを短期間で開発します。開発費は補助金なども有効活用し、小規模事業者にも優しいコスト負担をご提案します。</span>
-                                    <span class="lang-en">Developing custom web and mobile apps in short timeframes that deliver real improvement results, even for small shops and businesses. We help optimize costs using subsidies and grants.</span>
+                                    <span class="lang-jp">日本が誇る美しい伝統工芸品の実用的な価値をさらに広い世界に届けるために、新たなブランドを立ち上げ、国内外に向けて情報を発信、販路を拡大する新事業を実現します。既存製品の販売代理にとどまらず、市場のニーズに応じた新商品の開発にも各事業者様と取り組みます。</span>
+                                    <span class="lang-en">To further spread the practical value of beautiful traditional Japanese crafts to a wider world, we launch new promotional brands and expand into new business areas.</span>
                                 </p>
                             </div>
 
@@ -205,8 +209,8 @@
                                     <span class="lang-en">・Proprietary Digital Tools</span>
                                 </h4>
                                 <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                    <span class="lang-jp">Kaccheの独自企画による、さまざまな事業者様に役に立つデジタルツールを最新のAI技術を駆使して開発しています。従業員シフト調整、デジタルサイネージ、デジタルマップ、デジタルポイントカードなど、シンプルながら使いやすいツールを開発していきます。</span>
-                                    <span class="lang-en">Providing practically useful digital tools planned by Kacche at affordable costs. We sequentially develop user-friendly tools valuable for any business, such as staff shift managers, digital signage, digital maps, and digital loyalty cards.</span>
+                                    <span class="lang-jp">長年のシステム開発経験と中小企業診断士としての知識を活かし、さまざまな事業者様に役に立つデジタルツールを最新のAI技術を駆使して開発しています。従業員シフト調整、デジタルサイネージ、デジタルマップなど、シンプルながら使いやすいツールを開発していきます。</span>
+                                    <span class="lang-en">Utilizing our years of system development experience and knowledge as a small and medium enterprise consultant, we develop practical digital tools using the latest AI technology. We create simple yet user-friendly tools such as staff shift managers, digital signage, digital maps, and digital loyalty cards.</span>
                                 </p>
                             </div>
                         </div>
@@ -215,17 +219,10 @@
 
             </div>
 
-            <!-- About Section Accordion Toggle Button -->
-            <div class="mt-20 text-center">
-                <button id="about-toggle-btn" onclick="toggleAbout()" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-sky-600 transition-all shadow-md group">
-                    <span class="lang-jp">会社概要を見る</span>
-                    <span class="lang-en">About Us</span>
-                    <svg id="about-arrow" class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-            </div>
+
 
             <!-- Collapsible About Content -->
-            <div id="about-container" class="accordion-content mt-8">
+            <div id="about-container" class="mt-20">
                 <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 md:p-14 text-slate-700 shadow-inner space-y-12">
                     
                     <!-- Japanese Content -->
@@ -233,40 +230,109 @@
                         <div class="max-w-3xl mx-auto text-center space-y-4">
                             <h3 class="text-2xl font-light text-slate-900">会社概要 / About Kachie</h3>
                             <p class="text-base leading-relaxed text-slate-600 font-light">
-                                <strong class="font-medium text-slate-900">Kacche</strong> は, 漢字では「<span class="text-sky-600 font-medium">活知恵</span>」、知恵を活かすと書きます。
+                                <strong class="font-medium text-slate-900">Kacche（カッチェ）</strong> は, 漢字では「<span class="text-sky-600 font-medium">活知恵</span>」、「知恵を活かす」と書きます。
                             </p>
-                            <p class="text-sm leading-relaxed text-slate-600 font-light text-left md:text-center">
+                            <!-- <p class="text-sm leading-relaxed text-slate-600 font-light text-left md:text-center">
                                 活知恵は、長年のビジネス経験と製品、システム開発で培った知恵と技術を活かして、新たなビジネスにチャレンジするあらゆる方々をサポートする、テクノロジー＆コンサルテーションカンパニーです。
-                            </p>
+                            </p> -->
                         </div>
 
-                        <!-- 代表からのメッセージ 開閉ボタン -->
-                        <div class="text-center pt-2">
-                            <button id="message-toggle-btn-jp" onclick="toggleMessage()" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-semibold hover:bg-sky-50 hover:border-sky-500 transition-all shadow-sm">
-                                <span>代表からのメッセージを見る</span>
-                                <svg id="message-arrow-jp" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                        </div>
+
 
                         <!-- 代表からのメッセージ 本文 (折りたたみ) -->
-                        <div id="message-container-jp" class="accordion-content bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700">
+                        <div id="message-container-jp" class="bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700">
                             <div class="max-w-3xl mx-auto space-y-6 text-sm md:text-base leading-relaxed font-light">
                                 <h4 class="text-xl font-normal text-slate-900 text-center mb-6">不確実な時代を切り拓く、確かな伴走者として</h4>
                                 <p>
-                                    生成AIがスーパーインテリジェンス（SI）へと進化を遂げ、私たちの社会はこれまでにないスピードで大きく変貌しようとしています。
+                                    生成AIが驚くべき進化を遂げ、私たちの社会はこれまでにないスピードで大きく変貌しようとしています。
                                 </p>
                                 <p>
-                                    このようなVUCAの時代において、日本国内の企業や地域社会が持続的に発展していくためには、最新のテクノロジーを恐れず主体的に取り入れ、深刻化する人材不足や資材高騰の荒波を乗り越え、グローバルな競争環境に打ち勝っていくことが急務です。
+                                    このような将来を見通すことが困難な VUCA の時代において、企業や地域社会が持続的に発展していくためには、最新のテクノロジーを恐れず主体的に取り入れ、深刻化する人材不足や資材高騰の荒波を乗り越え、グローバルな競争環境に打ち勝っていくことが急務です。
                                 </p>
                                 <p>
-                                    「Kacche（活知恵）」は、バブル期から現在に至るまでの激動のビジネスシーンにおいて、常に新しい挑戦を続けてきたメンバーによって創業されました。
+                                    Kaccheは「知恵を活かす」という社名の下、バブル期から現在に至るまでの激動の時代において、様々なビジネスや国内外のプロジェクトにおいて、常に新しい挑戦を続けてきたメンバーを中心に創業しました。
                                 </p>
                                 <p>
-                                    私たちは、国内外における新規事業の立ち上げ、多岐にわたるシステム開発、そして先進的な製品開発を通じて培ってきた豊富な「知恵」と「技術」を総動員します。予測困難なこの時代をしなやかに生き抜き、未来への大きな夢を描き、形にできるよう――。私たちは、皆様の最も信頼できるビジネス＆テクノロジーパートナーとして、全力で伴走し続けます。
+                                    私たちは、国内外における新規事業の立ち上げや先進的な製品開発を通じて培ってきた、豊富な「知恵」と「技術」を活かし、皆様と一緒に未来への大きな夢を描き、共に実現させる、ビジネス＆テクノロジーパートナーとして成長することを目指していきます。
                                 </p>
                                 <div class="pt-6 text-right font-medium text-slate-900">
                                     <p>活知恵合同会社 代表社員</p>
                                     <p class="text-lg font-bold text-sky-600 mt-1">野口 紀彦</p>
+                                    <div class="mt-4">
+                                        <button id="bio-toggle-btn-jp" onclick="toggleBio()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold hover:bg-sky-100 transition-all shadow-sm">
+                                            <span>代表者の経歴</span>
+                                            <svg id="bio-arrow-jp" class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 代表者の経歴 本文 (折りたたみ - 添付mdデータに基づく) -->
+                        <div id="bio-container-jp" class="accordion-content hidden bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700 mt-6">
+                            <div class="max-w-3xl mx-auto space-y-8 text-sm md:text-base leading-relaxed font-light">
+                                
+                                
+                                <div class="space-y-4">
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1984年</div>
+                                        <div class="font-medium text-slate-900">静岡県立浜松北高校 卒業</div>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1988年</div>
+                                        <div class="font-medium text-slate-900">東京科学大学（旧：東京工業大学）制御工学科 卒業</div>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1990年</div>
+                                        <div class="font-medium text-slate-900">東京科学大学（旧：東京工業大学）大学院 理工学研究科 修了</div>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1990年 - 2013年</div>
+                                        <div class="font-medium text-slate-900">ソニー株式会社 入社</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>電子スチルカメラの制御ソフトウェア開発からキャリアを開始</li>
+                                            <li>放送局用映像制作機器の開発、新商品企画に従事</li>
+                                            <li>Sony Professional Europe に出向（英国駐在：2006-2009年頃等）し、欧州におけるマーケティング業務に従事</li>
+                                            <li>ソニーEMCS湖西テクノロジーセンターに出向し、製造販売管理業務に従事</li>
+                                        </ul>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">2015年</div>
+                                        <div class="font-medium text-slate-900">日本貿易振興機構（JETRO） 入構</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>外資系IT企業やスタートアップの日本市場定着支援業務に従事</li>
+                                            <li>日本の中小企業や外国人留学生との Meet UP イベントなどを企画運営</li>
+                                        </ul>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">2018年 - 2025年</div>
+                                        <div class="font-medium text-slate-900">レシップ株式会社／レシップホールディングス株式会社 入社</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>新規事業として、インバウンド観光客の急増に伴う観光課題を解決するDXソリューション事業を立ち上げ</li>
+                                            <li>多言語デジタルサイネージシステムを開発し、東京駅八重洲口や大阪駅などのバスターミナルに導入</li>
+                                            <li>多言語デジタルチケット QUICK TRIP を開発し、全国各地の観光／交通事業者／自治体に導入</li>
+                                            <li>静岡県から富士登山入山管理システムの開発・運用業務を受託し、2025年度から運用開始、富士登山の安心安全の確保に貢献</li>
+                                        </ul>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">2026年</div>
+                                        <div class="font-medium text-slate-900">活知恵合同会社を東京都狛江市で創業</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>東京都・開業ワンストップセンター（TOSBEC）相談員（中小企業診断士）</li>
+                                            <li>東京都・ビジネスコンシェルジュ東京（BDCT）相談員（中小企業診断士）</li>
+                                            <li>JICA、岐阜大学、TOSBECなどで創業やDXに関するセミナー講師を歴任</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 border-t border-slate-200">
+                                    <h5 class="font-medium text-slate-900 mb-3">保有資格</h5>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-600">
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・中小企業診断士（2011年登録）</div>
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・TOEIC：840点（2017年取得）</div>
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・高度情報処理技術者試験（エンベデッドシステムスペシャリスト）合格（2024年）</div>
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・国内旅行業務取扱管理者（2025年取得）</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -274,20 +340,20 @@
                         <!-- 会社基本情報テーブル -->
                         <div class="border-t border-slate-200/80 pt-10 max-w-2xl mx-auto">
                             <dl class="grid grid-cols-1 md:grid-cols-3 gap-y-4 text-sm">
-                                <dt class="font-medium text-slate-900">会社名</dt>
+                                <dt class="font-medium text-slate-900">社名</dt>
                                 <dd class="md:col-span-2 text-slate-600">活知恵合同会社（Kacche LLC）</dd>
 
-                                <dt class="font-medium text-slate-900">設立</dt>
+                                <dt class="font-medium text-slate-900">創業</dt>
                                 <dd class="md:col-span-2 text-slate-600">2026年1月7日</dd>
 
-                                <dt class="font-medium text-slate-900">本社</dt>
+                                <dt class="font-medium text-slate-900">拠点</dt>
                                 <dd class="md:col-span-2 text-slate-600">東京都狛江市</dd>
 
-                                <dt class="font-medium text-slate-900">資本金</dt>
-                                <dd class="md:col-span-2 text-slate-600">300万円</dd>
+                                <!-- <dt class="font-medium text-slate-900">資本金</dt>
+                                <dd class="md:col-span-2 text-slate-600">300万円</dd> -->
 
-                                <dt class="font-medium text-slate-900">代表</dt>
-                                <dd class="md:col-span-2 text-slate-600">野口 紀彦（Nori Noguchi）</dd>
+                                <!-- <dt class="font-medium text-slate-900">代表</dt>
+                                <dd class="md:col-span-2 text-slate-600">野口 紀彦（Nori Noguchi）</dd> -->
 
                                 <dt class="font-medium text-slate-900 align-top">事業内容</dt>
                                 <dd class="md:col-span-2 text-slate-600 space-y-1.5">
@@ -315,16 +381,10 @@
                             </p>
                         </div>
 
-                        <!-- Message from CEO Toggle Button (EN) -->
-                        <div class="text-center pt-2">
-                            <button id="message-toggle-btn-en" onclick="toggleMessage()" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-semibold hover:bg-sky-50 hover:border-sky-500 transition-all shadow-sm">
-                                <span>Message from CEO</span>
-                                <svg id="message-arrow-en" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                        </div>
+
 
                         <!-- Message from CEO Content (EN) -->
-                        <div id="message-container-en" class="accordion-content bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700">
+                        <div id="message-container-en" class="bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700">
                             <div class="max-w-3xl mx-auto space-y-6 text-sm md:text-base leading-relaxed font-light">
                                 <h4 class="text-xl font-normal text-slate-900 text-center mb-6">Walking Hand-in-Hand Through an Era of Uncertainty</h4>
                                 <p>
@@ -342,6 +402,81 @@
                                 <div class="pt-6 text-right font-medium text-slate-900">
                                     <p>Nori Noguchi</p>
                                     <p class="text-sm text-sky-600 mt-1 font-semibold">Founder & CEO, Kacche LLC</p>
+                                    <div class="mt-4">
+                                        <button id="bio-toggle-btn-en" onclick="toggleBio()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold hover:bg-sky-100 transition-all shadow-sm">
+                                            <span>CEO Biography</span>
+                                            <svg id="bio-arrow-en" class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CEO Biography Content (EN) -->
+                        <div id="bio-container-en" class="accordion-content hidden bg-white/80 border border-slate-200 rounded-xl p-6 md:p-10 text-slate-700 mt-6">
+                            <div class="max-w-3xl mx-auto space-y-8 text-sm md:text-base leading-relaxed font-light">
+                                
+                                
+                                <div class="space-y-4">
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1984</div>
+                                        <div class="font-medium text-slate-900">Graduated from Shizuoka Prefectural Hamamatsu Kita High School</div>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1988</div>
+                                        <div class="font-medium text-slate-900">Graduated from Tokyo University of Science (formerly Tokyo Institute of Technology), Department of Control Engineering</div>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1990</div>
+                                        <div class="font-medium text-slate-900">Completed Graduate School of Science and Engineering, Tokyo Institute of Technology (Master's Degree)</div>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">1990 - 2013</div>
+                                        <div class="font-medium text-slate-900">Joined Sony Corporation</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>Started career in control software development for electronic still cameras</li>
+                                            <li>Engaged in broadcasting video production equipment development and new product planning</li>
+                                            <li>Dispatched to Sony Professional Europe (UK assignment) for European marketing operations</li>
+                                            <li>Dispatched to Sony EMCS Kosai Technology Center for manufacturing and sales management operations</li>
+                                        </ul>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">2015</div>
+                                        <div class="font-medium text-slate-900">Joined Japan External Trade Organization (JETRO)</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>Engaged in supporting foreign IT companies and startups in establishing their presence in the Japanese market</li>
+                                            <li>Planned and operated Meetup events connecting Japanese SMEs with international talent/students</li>
+                                        </ul>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">2018 - 2025</div>
+                                        <div class="font-medium text-slate-900">Joined LECIP Corporation / LECIP Holdings Corporation</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>Launched a new DX solution business addressing tourism challenges caused by the surge in inbound visitors</li>
+                                            <li>Developed multilingual digital signage systems deployed at major bus terminals including Tokyo Station Yaesu Exit and Osaka Station</li>
+                                            <li>Developed the multilingual digital ticket platform "QUICK TRIP" deployed across tourism operators and local governments nationwide</li>
+                                            <li>Contracted by Shizuoka Prefecture to develop and operate the Mt. Fuji Climbing Entry Management System, contributing to climber safety since FY2025</li>
+                                        </ul>
+                                    </div>
+                                    <div class="border-l-2 border-sky-500 pl-4 space-y-1">
+                                        <div class="text-xs font-bold text-sky-600 font-mono">2026</div>
+                                        <div class="font-medium text-slate-900">Founded Kacche LLC in Komae City, Tokyo</div>
+                                        <ul class="list-disc list-inside text-slate-600 text-xs sm:text-sm space-y-1 mt-2 pl-2">
+                                            <li>Business Consultant (SME Management Consultant) at Tokyo One-Stop Business Establishment Center (TOSBEC)</li>
+                                            <li>Business Consultant (SME Management Consultant) at Business Development Center TOKYO (BDCT)</li>
+                                            <li>Served as seminar lecturer on startups and DX for JICA, Gifu University, and TOSBEC</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 border-t border-slate-200">
+                                    <h5 class="font-medium text-slate-900 mb-3">Professional Qualifications</h5>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-600">
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・SME Management Consultant (Registered 2011)</div>
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・TOEIC: 840 (2017)</div>
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・Applied Information Technology Engineer / Embedded Systems Specialist (2024)</div>
+                                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">・Domestic Travel Business Handling Manager (2025)</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -357,11 +492,11 @@
                                 <dt class="font-medium text-slate-900">Headquarters</dt>
                                 <dd class="md:col-span-2 text-slate-600">Komae City, Tokyo, Japan</dd>
 
-                                <dt class="font-medium text-slate-900">Capital</dt>
+                                <!-- <dt class="font-medium text-slate-900">Capital</dt>
                                 <dd class="md:col-span-2 text-slate-600">3 Million JPY</dd>
 
                                 <dt class="font-medium text-slate-900">Representative</dt>
-                                <dd class="md:col-span-2 text-slate-600">Nori Noguchi (CEO)</dd>
+                                <dd class="md:col-span-2 text-slate-600">Nori Noguchi (CEO)</dd> -->
 
                                 <dt class="font-medium text-slate-900 align-top">Business Activities</dt>
                                 <dd class="md:col-span-2 text-slate-600 space-y-1.5">
@@ -433,63 +568,49 @@
             typeWriterHTML('typewriter-en', textEn, 40);
         });
 
-        // About Section Accordion Toggle
-        function toggleAbout() {
-            const container = document.getElementById('about-container');
-            const arrow = document.getElementById('about-arrow');
-            const btnTextJp = document.querySelector('#about-toggle-btn .lang-jp');
-            const btnTextEn = document.querySelector('#about-toggle-btn .lang-en');
 
-            container.classList.toggle('open');
-            const isOpen = container.classList.contains('open');
 
-            if (isOpen) {
-                arrow.style.transform = 'rotate(180deg)';
-                if(btnTextJp) btnTextJp.textContent = '会社概要を閉じる';
-                if(btnTextEn) btnTextEn.textContent = 'Close About Us';
-                
-                setTimeout(() => {
-                    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 200);
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-                if(btnTextJp) btnTextJp.textContent = '会社概要を見る';
-                if(btnTextEn) btnTextEn.textContent = 'About Us';
-            }
-        }
 
-        // Message from CEO Accordion Toggle
-        function toggleMessage() {
-            const containerJp = document.getElementById('message-container-jp');
-            const containerEn = document.getElementById('message-container-en');
-            const arrowJp = document.getElementById('message-arrow-jp');
-            const arrowEn = document.getElementById('message-arrow-en');
-            const btnSpanJp = document.querySelector('#message-toggle-btn-jp span');
-            const btnSpanEn = document.querySelector('#message-toggle-btn-en span');
 
-            // 現在英語モードか日本語モードかで判定
+        // CEO Biography Accordion Toggle
+        function toggleBio() {
+            const containerJp = document.getElementById('bio-container-jp');
+            const containerEn = document.getElementById('bio-container-en');
+            const arrowJp = document.getElementById('bio-arrow-jp');
+            const arrowEn = document.getElementById('bio-arrow-en');
+            const btnSpanJp = document.querySelector('#bio-toggle-btn-jp span');
+            const btnSpanEn = document.querySelector('#bio-toggle-btn-en span');
+
             const isEnglish = document.documentElement.classList.contains('en');
             const targetContainer = isEnglish ? containerEn : containerJp;
             const targetArrow = isEnglish ? arrowEn : arrowJp;
             const targetSpan = isEnglish ? btnSpanEn : btnSpanJp;
 
-            targetContainer.classList.toggle('open');
             const isOpen = targetContainer.classList.contains('open');
 
-            if (isOpen) {
+            if (!isOpen) {
+                targetContainer.classList.remove('hidden');
+                targetContainer.offsetHeight; // force reflow
+                targetContainer.classList.add('open');
                 targetArrow.style.transform = 'rotate(180deg)';
                 if(isEnglish) {
-                    targetSpan.textContent = 'Close Message from CEO';
+                    targetSpan.textContent = 'Close CEO Biography';
                 } else {
-                    targetSpan.textContent = '代表からのメッセージを閉じる';
+                    targetSpan.textContent = '代表者の経歴を閉じる';
                 }
             } else {
+                targetContainer.classList.remove('open');
                 targetArrow.style.transform = 'rotate(0deg)';
                 if(isEnglish) {
-                    targetSpan.textContent = 'Message from CEO';
+                    targetSpan.textContent = 'CEO Biography';
                 } else {
-                    targetSpan.textContent = '代表からのメッセージを見る';
+                    targetSpan.textContent = '代表者の経歴を見る';
                 }
+                setTimeout(() => {
+                    if (!targetContainer.classList.contains('open')) {
+                        targetContainer.classList.add('hidden');
+                    }
+                }, 500);
             }
         }
 

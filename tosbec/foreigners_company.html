@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja" data-lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海外起業家のための日本進出・会社設立 &amp; 経営管理ビザ総合ガイド (2026年10月最新版)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .lang-en { display: none; }
+        html[data-lang="en"] .lang-ja { display: none; }
+        html[data-lang="en"] .lang-en { display: block; }
+        html[data-lang="en"] span.lang-en { display: inline; }
+        html[data-lang="ja"] span.lang-en { display: none; }
+        html[data-lang="en"] span.lang-ja { display: none; }
+        html[data-lang="ja"] span.lang-ja { display: inline; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Bar / Language Toggle -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="bg-brand-600 text-white font-bold px-2.5 py-1 rounded-lg text-sm">KACCHE LLC</span>
+                <span class="text-xs sm:text-sm font-medium text-slate-600">
+                    <span class="lang-ja">外国人の日本会社設立 &amp; 経営・管理ビザ総合ガイド</span>
+                    <span class="lang-en">Japan Company Setup &amp; Business Manager Visa Guide</span>
+                </span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button id="langToggle" onclick="toggleLanguage()" class="flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-xs font-semibold transition">
+                    <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span id="langLabel">English / 日本語</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-brand-950 text-white py-16 lg:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block bg-brand-500/20 text-brand-300 border border-brand-500/30 text-xs font-semibold px-3 py-1 rounded-full mb-6 uppercase tracking-wider">
+                <span class="lang-ja">2026年10月最新制度対応版</span>
+                <span class="lang-en">Updated for October 2026 Standards</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+                <span class="lang-ja">海外在住外国人のための日本法人設立 &amp; 経営・管理ビザ完全攻略ガイド</span>
+                <span class="lang-en">Complete Guide to Establishing a Company &amp; Securing a Business Manager Visa in Japan</span>
+            </h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                <span class="lang-ja">海外にいながら会社を設立する方法から、2025年10月改正の厳格なビザ要件（資本金3,000万円・常勤職員・日本語能力等）、タイムフレーム、永住権へのロードマップまで徹底解説。</span>
+                <span class="lang-en">From incorporating from overseas to navigating the strict revised visa criteria (JPY 30M capital, full-time staff, Japanese proficiency), timelines, and pathways to permanent residency.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+        <!-- Section 1: Overview & Branch vs Subsidiary -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                <span class="bg-brand-100 text-brand-700 w-8 h-8 rounded-lg flex items-center justify-center mr-3 text-sm font-black">1</span>
+                <span class="lang-ja">日本進出の第一歩：法人形態の選択（支店 vs 子会社）</span>
+                <span class="lang-en">Step 1: Choosing the Business Entity (Branch vs. Subsidiary)</span>
+            </h2>
+            <div class="text-slate-600 space-y-4 leading-relaxed">
+                <p>
+                    <span class="lang-ja">外国企業または外国人が日本に進出する際、最初に「日本支店（Branch）」とするか「日本法人（子会社：株式会社または合同会社）」とするかを決定します。</span>
+                    <span class="lang-en">When expanding into Japan, foreign enterprises and entrepreneurs must first choose between establishing a Japan Branch or a Japanese Subsidiary (Stock Company [K.K.] or Godo-Kaisha).</span>
+                </p>
+                <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 mb-2">🏢 <span class="lang-ja">日本支店 (Branch Office)</span><span class="lang-en">Japan Branch Office</span></h3>
+                        <p class="text-sm text-slate-600"><span class="lang-ja">本国の親会社の延長として日本で活動。設立手続きが比較的スピーディで、親会社の決算に統合できるため初期の赤字を連結しやすい一方、本国親会社が全ての責任を負います。</span><span class="lang-en">Operates as an extension of the parent company. Faster to set up and initial losses can be consolidated, but the parent bears unlimited liability.</span></p>
+                    </div>
+                    <div class="bg-brand-50/50 p-5 rounded-xl border border-brand-200">
+                        <h3 class="font-bold text-slate-900 mb-2">🌟 <span class="lang-ja">日本法人 / 株式会社 (Subsidiary / K.K.)</span><span class="lang-en">Japanese Subsidiary / K.K.</span></h3>
+                        <p class="text-sm text-slate-600"><span class="lang-ja">日本国内で独立した法人格を持つ形態。日本のビジネス社会における信用力が最も高く、銀行口座開設や許認可、経営・管理ビザ取得の観点から最も標準的かつ推奨される選択肢です。</span><span class="lang-en">An independent legal entity in Japan. Highly trusted in the Japanese market and standard for securing bank accounts, licenses, and the Business Manager visa.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Establishing Without Visa -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                <span class="bg-brand-100 text-brand-700 w-8 h-8 rounded-lg flex items-center justify-center mr-3 text-sm font-black">2</span>
+                <span class="lang-ja">ビザがなくても日本で会社を「設立」できるか？</span>
+                <span class="lang-en">Can You Establish a Company Without a Visa?</span>
+            </h2>
+            <div class="text-slate-600 space-y-4 leading-relaxed">
+                <p>
+                    <span class="lang-ja">日本の会社法上、<strong>海外在住で日本の在留資格（ビザ）を持たない外国人でも、株式会社や合同会社の「発起人（株主）」および「取締役」になることは可能</strong>です。法務局への登記手続きは、司法書士などの代理人を通じてオンラインや郵送で行えます。</span>
+                    <span class="lang-en">Under Japanese corporate law, <strong>foreign nationals residing overseas without a Japanese visa can still become promoters (shareholders) and directors</strong> of a Japanese company. Registration can be completed via proxy (such as a judicial scrivener).</span>
+                </p>
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-900 text-sm">
+                    <strong>⚠️ <span class="lang-ja">重要な注意点：</span><span class="lang-en">Crucial Distinction:</span></strong> 
+                    <span class="lang-ja">会社を「作る（所有する）」ことと、日本に住んで「経営・管理する（働く）」ことは完全に別物です。会社設立後に日本で合法的にビジネスを行ったり報酬を受け取るには、後述の「経営・管理ビザ」の取得が必須となります。</span>
+                    <span class="lang-en">Forming a company is entirely different from residing and managing it. To legally operate and earn remuneration in Japan after incorporation, you must obtain a Business Manager visa.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Timeline & Roadmap -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-brand-100 text-brand-700 w-8 h-8 rounded-lg flex items-center justify-center mr-3 text-sm font-black">3</span>
+                <span class="lang-ja">海外在住者向けの会社設立・来日ロードマップ（タイムフレーム）</span>
+                <span class="lang-en">Roadmap &amp; Timeline for Overseas Entrepreneurs</span>
+            </h2>
+            <div class="space-y-6">
+                <div class="border-l-2 border-brand-500 pl-4 space-y-2">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">Phase 1 (Month 1 - 2)</span>
+                    <h3 class="font-bold text-slate-900"><span class="lang-ja">事前準備とオフィスの確保・資金計画</span><span class="lang-en">Preparation, Office Security &amp; Capital Planning</span></h3>
+                    <p class="text-sm text-slate-600"><span class="lang-ja">事業計画の策定。経営・管理ビザの新基準（資本金・資産3,000万円以上）を見据えた資金調達。日本国内での独立した事業所（オフィス）の賃貸契約締結に向けた調査・仮押さえ。</span><span class="lang-en">Develop business plan, secure funding matching the JPY 30M+ requirement, and research/secure a physical office lease in Japan.</span></p>
+                </div>
+                <div class="border-l-2 border-brand-500 pl-4 space-y-2">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">Phase 2 (Month 3)</span>
+                    <h3 class="font-bold text-slate-900"><span class="lang-ja">書類作成・サイン証明書の取得・法人設立登記</span><span class="lang-en">Documentation, Signatures &amp; Incorporation</span></h3>
+                    <p class="text-sm text-slate-600"><span class="lang-ja">海外本国の親会社がある場合は宣誓供述書（Affidavit）の公証、個人発起人の場合はサイン証明書（Signature Certificate）を取得。定款作成・公証人認証、資本金払込みを経て法務局へ設立登記申請。</span><span class="lang-en">Obtain notarized Affidavits or Signature Certificates, notarize Articles of Incorporation, remit capital, and file incorporation with the Legal Affairs Bureau.</span></p>
+                </div>
+                <div class="border-l-2 border-brand-500 pl-4 space-y-2">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">Phase 3 (Month 4)</span>
+                    <h3 class="font-bold text-slate-900"><span class="lang-ja">日本在住の常勤職員の確保・法人銀行口座開設</span><span class="lang-en">Hiring Resident Staff &amp; Opening Corporate Bank Accounts</span></h3>
+                    <p class="text-sm text-slate-600"><span class="lang-ja">新基準で必須となる「少なくとも1名の常勤職員（日本人、永住者、日本人の配偶者等など対象者）」の雇用準備・契約。法人口座の開設手続きや税務署への各種届出。</span><span class="lang-en">Prepare recruitment of at least one qualifying resident employee (Japanese national, permanent resident, etc.) mandated by the new rules. Open corporate accounts and file tax notifications.</span></p>
+                </div>
+                <div class="border-l-2 border-brand-500 pl-4 space-y-2">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">Phase 4 (Month 5 - 6)</span>
+                    <h3 class="font-bold text-slate-900"><span class="lang-ja">「経営・管理」ビザ申請と来日・事業開始</span><span class="lang-en">Business Manager Visa Application &amp; Relocation</span></h3>
+                    <p class="text-sm text-slate-600"><span class="lang-ja">出入国在留管理局へ「経営・管理」ビザ（在留資格認定証明書交付申請：COE）を提出。審査通過後、ビザを発給して日本に来日し、本格的な事業運営を開始。</span><span class="lang-en">Submit the Business Manager visa (COE) application to the Immigration Services Agency, receive visa, relocate to Japan, and launch operations.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Strict Revised Business Manager Visa Criteria -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                <span class="bg-brand-100 text-brand-700 w-8 h-8 rounded-lg flex items-center justify-center mr-3 text-sm font-black">4</span>
+                <span class="lang-ja">【2025年10月16日以降】厳格化された「経営・管理」ビザの新基準</span>
+                <span class="lang-en">Strict Revised Business Manager Visa Criteria (Effective Oct 16, 2025)</span>
+            </h2>
+            <div class="text-slate-600 space-y-4 leading-relaxed mb-6">
+                <p>
+                    <span class="lang-ja">日本政府は2025年10月16日に「経営・管理」の許可基準を大幅に改正しました。従来の「資本金500万円以上または常勤2名」という要件から、以下のように著しく厳格化されています。</span>
+                    <span class="lang-en">The Japanese government significantly revised the Business Manager visa criteria on October 16, 2025, replacing the old JPY 5M threshold with much stricter requirements:</span>
+                </p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-slate-900 text-sm mb-1">💰 <span class="lang-ja">資本金・事業用資産</span><span class="lang-en">Capital / Assets</span></h3>
+                    <p class="text-xs text-slate-600"><span class="lang-ja">法人の場合、原則として<strong>3,000万円以上</strong>の資本金または事業用資産の総額が必要。</span><span class="lang-en">Generally requires at least <strong>JPY 30 million</strong> in capital or business assets for corporations.</span></p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-slate-900 text-sm mb-1">👥 <span class="lang-ja">常勤職員の雇用</span><span class="lang-en">Full-Time Personnel</span></h3>
+                    <p class="text-xs text-slate-600"><span class="lang-ja">少なくとも<strong>1名の対象となる常勤職員</strong>（日本人、永住者、日本人の配偶者等など）を雇用すること。</span><span class="lang-en">Must employ at least <strong>one qualifying full-time employee</strong> (Japanese national, permanent resident, etc.).</span></p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-slate-900 text-sm mb-1">🗣️ <span class="lang-ja">日本語能力</span><span class="lang-en">Japanese Proficiency</span></h3>
+                    <p class="text-xs text-slate-600"><span class="lang-ja">申請者本人または常勤職員が<strong>CEFR B2相当以上</strong>など、基準に定められた日本語能力を満たすこと。</span><span class="lang-en">Applicant or full-time staff must meet specified language requirements such as <strong>CEFR B2 equivalent</strong>.</span></p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-slate-900 text-sm mb-1">🎓 <span class="lang-ja">学歴または経営経験</span><span class="lang-en">Education / Experience</span></h3>
+                    <p class="text-xs text-slate-600"><span class="lang-ja">経営・管理分野の修士号以上の学位、または<strong>3年以上の経営・管理経験</strong>を有すること。</span><span class="lang-en">Must hold a Master's degree or higher in management, or have at least <strong>3 years of management experience</strong>.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Required Documents -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                <span class="bg-brand-100 text-brand-700 w-8 h-8 rounded-lg flex items-center justify-center mr-3 text-sm font-black">5</span>
+                <span class="lang-ja">会社設立の必要書類一覧（海外在住者・親会社出資の場合）</span><span class="lang-en">Required Documents for Company Establishment (Overseas/Parent Company)</span>
+            </h2>
+            <div class="space-y-4 text-slate-600 text-sm">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-slate-900 mb-2"><span class="lang-ja">海外側（親会社または個人発起人）で用意するもの</span><span class="lang-en">Prepared Overseas</span></h3>
+                    <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm">
+                        <li><span class="lang-ja">親会社の宣誓供述書（Affidavit）および代表者のサイン証明書（現地公証人認証済）</span><span class="lang-en">Parent company Affidavit &amp; Signature Certificate (Notarized)</span></li>
+                        <li><span class="lang-ja">役員就任者のサイン証明書（日本に住民登録がない場合）</span><span class="lang-en">Signature Certificates for incoming officers residing overseas</span></li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-slate-900 mb-2"><span class="lang-ja">日本国内で準備するもの</span><span class="lang-en">Prepared in Japan</span></h3>
+                    <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm">
+                        <li><span class="lang-ja">定款（日本語作成・公証役場認証）</span><span class="lang-en">Articles of Incorporation (in Japanese, notarized)</span></li>
+                        <li><span class="lang-ja">実質적支配者となるべき者の申告書</span><span class="lang-en">Declaration of Beneficial Owner</span></li>
+                        <li><span class="lang-ja">資本金の払込証明書（個人口座または日本支店のある外国銀行口座への入金証明）</span><span class="lang-en">Certificate of Capital Payment</span></li>
+                        <li><span class="lang-ja">会社実印（丸印）および印鑑届出書</span><span class="lang-en">Company Seal &amp; Registration Form</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: From Visa to Permanent Residency & Nationality -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                <span class="bg-brand-100 text-brand-700 w-8 h-8 rounded-lg flex items-center justify-center mr-3 text-sm font-black">6</span>
+                <span class="lang-ja">経営管理ビザから永住権・日本国籍（帰化）へのステップ</span><span class="lang-en">From Business Manager Visa to Permanent Residency &amp; Naturalization</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs sm:text-sm text-slate-600 border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-900 border-b border-slate-200">
+                            <th class="p-3"><span class="lang-ja">項目</span><span class="lang-en">Item</span></th>
+                            <th class="p-3">経営・管理ビザ <span class="text-xs font-normal">Business Manager</span></th>
+                            <th class="p-3">永住権 <span class="text-xs font-normal">Permanent Residence</span></th>
+                            <th class="p-3">日本国籍（帰化） <span class="text-xs font-normal">Naturalization</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr>
+                            <td class="p-3 font-medium text-slate-900"><span class="lang-ja">法的位置づけ</span><span class="lang-en">Legal Status</span></td>
+                            <td class="p-3"><span class="lang-ja">在留資格（1〜5年更新）</span><span class="lang-en">Residence Status</span></td>
+                            <td class="p-3"><span class="lang-ja">在留資格（更新不要）</span><span class="lang-en">PR Status</span></td>
+                            <td class="p-3"><span class="lang-ja">日本国籍そのもの</span><span class="lang-en">Japanese Nationality</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium text-slate-900"><span class="lang-ja">必要在留年数</span><span class="lang-en">Required Years</span></td>
+                            <td class="p-3">-</td>
+                            <td class="p-3"><span class="lang-ja">原則10年以上</span><span class="lang-en">Generally 10+ years</span></td>
+                            <td class="p-3"><span class="lang-ja">原則5年以上</span><span class="lang-en">Generally 5+ years</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium text-slate-900"><span class="lang-ja">国籍維持</span><span class="lang-en">Keep Home Nationality</span></td>
+                            <td class="p-3">可 <span class="lang-en">Yes</span></td>
+                            <td class="p-3">可 <span class="lang-en">Yes</span></td>
+                            <td class="p-3 font-bold text-red-600">原則不可 <span class="lang-en">No (Generally)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Interactive Checklist Section -->
+        <section class="bg-brand-900 text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+            <h2 class="text-2xl font-bold mb-3">
+                <span class="lang-ja">📋 実務チェックリスト</span>
+                <span class="lang-en">📋 Practical Checklist</span>
+            </h2>
+            <p class="text-brand-200 text-sm mb-6">
+                <span class="lang-ja">プロジェクトを進める際に、以下の項目を確認・チェックしてください。</span>
+                <span class="lang-en">Verify and check off the following items as you proceed with your setup.</span>
+            </p>
+            <div class="space-y-3">
+                <label class="flex items-center space-x-3 bg-brand-950/60 p-3.5 rounded-xl border border-brand-800 cursor-pointer hover:bg-brand-950 transition">
+                    <input type="checkbox" class="w-5 h-5 rounded text-brand-500 focus:ring-brand-400">
+                    <span class="text-sm"><span class="lang-ja">3,000万円以上の資本金・事業資金の調達計画策定</span><span class="lang-en">Formulate capital/funding plan of JPY 30M+</span></span>
+                </label>
+                <label class="flex items-center space-x-3 bg-brand-950/60 p-3.5 rounded-xl border border-brand-800 cursor-pointer hover:bg-brand-950 transition">
+                    <input type="checkbox" class="w-5 h-5 rounded text-brand-500 focus:ring-brand-400">
+                    <span class="text-sm"><span class="lang-ja">日本国内の独立したオフィスの選定・契約準備</span><span class="lang-en">Select and prepare lease for independent office in Japan</span></span>
+                </label>
+                <label class="flex items-center space-x-3 bg-brand-950/60 p-3.5 rounded-xl border border-brand-800 cursor-pointer hover:bg-brand-950 transition">
+                    <input type="checkbox" class="w-5 h-5 rounded text-brand-500 focus:ring-brand-400">
+                    <span class="text-sm"><span class="lang-ja">常勤職員（日本人・永住者等）の採用・雇用計画の策定</span><span class="lang-en">Plan recruitment of qualifying full-time employee</span></span>
+                </label>
+                <label class="flex items-center space-x-3 bg-brand-950/60 p-3.5 rounded-xl border border-brand-800 cursor-pointer hover:bg-brand-950 transition">
+                    <input type="checkbox" class="w-5 h-5 rounded text-brand-500 focus:ring-brand-400">
+                    <span class="text-sm"><span class="lang-ja">海外親会社の宣誓供述書（Affidavit）またはサイン証明書の取得</span><span class="lang-en">Obtain parent company Affidavit or Signature Certificate</span></span>
+                </label>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-20 py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center text-xs text-slate-500 space-y-2">
+            <p>&copy; Kacche LLC. All rights reserved.</p>
+            <p><span class="lang-ja">免責事項：本ガイドは一般的な情報提供であり、個別の法的・ビザ申請のアドバイスではありません。最新の公式規則を必ずご確認ください。</span><span class="lang-en">Disclaimer: This guide provides general information and does not constitute formal legal or immigration advice. Always verify with official authorities.</span></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Language Toggle -->
+    <script>
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('data-lang');
+            const newLang = currentLang === 'ja' ? 'en' : 'ja';
+            html.setAttribute('data-lang', newLang);
+        }
+    </script>
+</body>
+</html>
