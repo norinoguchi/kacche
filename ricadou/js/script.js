@@ -237,11 +237,11 @@ $(window).scroll(function () {
 // ページが読み込まれたらすぐに動かしたい場合の記述
 $(window).on('load',function(){
     
-    $("#splash-logo").delay(1200).fadeOut('slow');//ロゴを1.2秒でフェードアウトする記述 
+    $("#splash-logo").delay(300).fadeOut(300);//ロゴを1.2秒でフェードアウトする記述 
     
     //=====ここからローディングエリア（splashエリア）を1.5秒でフェードアウトした後に動かしたいJSをまとめる
 
-    $("#splash").delay(1500).fadeOut('slow',function(){//ローディングエリア（splashエリア）を1.5秒でフェードアウトする記述
+    $("#splash").delay(500).fadeOut(400,function(){//ローディングエリア（splashエリア）を1.5秒でフェードアウトする記述
     $('body').addClass('appear');//フェードアウト後bodyにappearクラス付与
      
     /* 印象編 8-17 テキストがほのかに光りながら出現*/  
