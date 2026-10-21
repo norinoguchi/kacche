@@ -100,29 +100,30 @@ $('#page-top').click(function () {
 // 動きのきっかけの起点となるアニメーションの名前を定義
 function fadeAnime(){
     // 4-1 ふわっ（その場で）
-	$('.fadeInTrigger').each(function(){ //fadeInTriggerというクラス名が
-		var elemPos = $(this).offset().top-50;//要素より、50px上の
+	$('.fadeInTrigger').each(function(){ 
+		var elemPos = $(this).offset().top - 50;
 		var scroll = $(window).scrollTop();
 		var windowHeight = $(window).height();
-		if (scroll >= elemPos - windowHeight){
-		$(this).addClass('fadeIn');// 画面内に入ったらfadeInというクラス名を追記
-		}else{
-		$(this).removeClass('fadeIn');// 画面外に出たらfadeInというクラス名を外す
+		// スマホなど画面上ですでに表示領域に入っている場合も考慮
+		if (scroll >= elemPos - windowHeight || elemPos <= scroll + windowHeight){
+			$(this).addClass('fadeIn');
+		} else {
+			$(this).removeClass('fadeIn');
 		}
-		});
+	});
     
     // 4-4 ボンッ（拡大）
-	$('.zoomOutTrigger').each(function(){ //zoomOutTriggerというクラス名が
-		var elemPos = $(this).offset().top;//要素上の
+	$('.zoomOutTrigger').each(function(){ 
+		var elemPos = $(this).offset().top;
 		var scroll = $(window).scrollTop();
 		var windowHeight = $(window).height();
-		if (scroll >= elemPos - windowHeight){
-		$(this).addClass('zoomOut');// 画面内に入ったらzoomOutというクラス名を追記
-		}else{
-		$(this).removeClass('zoomOut');// 画面外に出たらzoomOutというクラス名を外す
+		// スマホで初期表示に見えている要素も強制的に表示させる
+		if (scroll >= elemPos - windowHeight || elemPos <= scroll + windowHeight){
+			$(this).addClass('zoomOut');
+		} else {
+			$(this).removeClass('zoomOut');
 		}
-		});	
-    
+	});    
 }
 
 /*===========================================================*/
