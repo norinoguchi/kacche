@@ -239,36 +239,40 @@ $(window).on('load',function(){
     
     $("#splash-logo").delay(300).fadeOut(300);//ロゴを1.2秒でフェードアウトする記述 
     
-    //=====ここからローディングエリア（splashエリア）を1.5秒でフェードアウトした後に動かしたいJSをまとめる
-
     $("#splash").delay(500).fadeOut(400,function(){//ローディングエリア（splashエリア）を1.5秒でフェードアウトする記述
-    $('body').addClass('appear');//フェードアウト後bodyにappearクラス付与
-     
-    /* 印象編 8-17 テキストがほのかに光りながら出現*/  
-	//spanタグを追加する
-	var element = $(".glowAnime");
-	element.each(function () {
-		var text = $(this).text();
-		var textbox = "";
-		text.split('').forEach(function (t, i) {
-			if (t !== " ") {
-				if (i < 10) {
-					textbox += '<span style="animation-delay:.' + i + 's;">' + t + '</span>';
-				} else {
-					var n = i / 10;
-					textbox += '<span style="animation-delay:' + n + 's;">' + t + '</span>';
-				}
+	    $('body').addClass('appear');//フェードアウト後bodyにappearクラス付与
+    
+		// ★【追加】ページ読み込み時・スプラッシュ終了時に一度アニメーション関数を実行する
+        fadeAnime();
+        slideAnime();
+        GlowAnimeControl();
+        BlurTextAnimeControl();
 
-			} else {
-				textbox += t;
-			}
+		/* 印象編 8-17 テキストがほのかに光りながら出現*/  
+		//spanタグを追加する
+		var element = $(".glowAnime");
+		element.each(function () {
+			var text = $(this).text();
+			var textbox = "";
+			text.split('').forEach(function (t, i) {
+				if (t !== " ") {
+					if (i < 10) {
+						textbox += '<span style="animation-delay:.' + i + 's;">' + t + '</span>';
+					} else {
+						var n = i / 10;
+						textbox += '<span style="animation-delay:' + n + 's;">' + t + '</span>';
+					}
+
+				} else {
+					textbox += t;
+				}
+			});
+			$(this).html(textbox);
 		});
-		$(this).html(textbox);
-	});
-	GlowAnimeControl(); 
-	
+		GlowAnimeControl(); 
     });
-    //=====ここまでローディングエリア（splashエリア）を1.5秒でフェードアウトした後に動かしたいJSをまとめる
+
+	//=====ここまでローディングエリア（splashエリア）を1.5秒でフェードアウトした後に動かしたいJSをまとめる
   
     /*===========================================================*/
     /*機能編 4-2-5背景色が伸びる（中央から外）*/
