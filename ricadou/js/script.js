@@ -238,54 +238,36 @@ $(window).scroll(function () {
 // ページが読み込まれたらすぐに動かしたい場合の記述
 $(window).on('load',function(){
     
-    $("#splash-logo").delay(300).fadeOut(300);//ロゴを1.2秒でフェードアウトする記述 
-    
-    $("#splash").delay(500).fadeOut(400,function(){//ローディングエリア（splashエリア）を1.5秒でフェードアウトする記述
-	    $('body').addClass('appear');//フェードアウト後bodyにappearクラス付与
-    
-		// ★【追加】ページ読み込み時・スプラッシュ終了時に一度アニメーション関数を実行する
-        fadeAnime();
-        slideAnime();
-        GlowAnimeControl();
-        BlurTextAnimeControl();
+    // オープニング（スプラッシュ）を完全にスキップして即座に表示させるため、
+    // bodyに 'appear' クラスを即時付与します
+    $('body').addClass('appear');
 
-		/* 印象編 8-17 テキストがほのかに光りながら出現*/  
-		//spanタグを追加する
-		var element = $(".glowAnime");
-		element.each(function () {
-			var text = $(this).text();
-			var textbox = "";
-			text.split('').forEach(function (t, i) {
-				if (t !== " ") {
-					if (i < 10) {
-						textbox += '<span style="animation-delay:.' + i + 's;">' + t + '</span>';
-					} else {
-						var n = i / 10;
-						textbox += '<span style="animation-delay:' + n + 's;">' + t + '</span>';
-					}
+    // 初期表示時にアニメーション判定を即時実行
+    fadeAnime();
+    slideAnime();
+    GlowAnimeControl();
+    BlurTextAnimeControl();
 
-				} else {
-					textbox += t;
-				}
-			});
-			$(this).html(textbox);
-		});
-		GlowAnimeControl(); 
+    /* 印象編 8-17 テキストがほのかに光りながら出現*/  
+    // spanタグを追加する処理
+    var element = $(".glowAnime");
+    element.each(function () {
+        var text = $(this).text();
+        var textbox = "";
+        text.split('').forEach(function (t, i) {
+            if (t !== " ") {
+                if (i < 10) {
+                    textbox += '<span style="animation-delay:.' + i + 's;">' + t + '</span>';
+                } else {
+                    var n = i / 10;
+                    textbox += '<span style="animation-delay:' + n + 's;">' + t + '</span>';
+                }
+            } else {
+                textbox += t;
+            }
+        });
+        $(this).html(textbox);
     });
+    GlowAnimeControl(); 
 
-	//=====ここまでローディングエリア（splashエリア）を1.5秒でフェードアウトした後に動かしたいJSをまとめる
-  
-    /*===========================================================*/
-    /*機能編 4-2-5背景色が伸びる（中央から外）*/
-    /*===========================================================*/
-    
-    //=====ここから背景が伸びた後に動かしたいJSをまとめる
-    $('.splashbg1').on('animationend', function() {
-	setFadeElement();//機能編 8-1-4ページ内にある指定の範囲内で下から出現の関数を呼ぶ
-    fadeAnime();// 印象編 4 最低限おぼえておきたい動きの関数を呼ぶ
-    slideAnime();//印象編 8-2 テキストが流れるように出現（左から右）の関数を呼ぶ
-	BlurTextAnimeControl();//印象編 8-9 テキストがじわっと出現の関数を呼ぶ  
-	});
-    //=====ここまで背景が伸びた後に動かしたいJSをまとめる
-
-});// ここまでページが読み込まれたらすぐに動かしたい場合の記述
+});
