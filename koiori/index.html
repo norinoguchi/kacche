@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOIORI (恋織) - Woven with Love | 日本の伝統技術と若手デザイナーの感性</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#344A78',
+                            dark: '#1e2d4d',
+                            light: '#4d69a3'
+                        },
+                        sakura: {
+                            DEFAULT: '#D9A7AD',
+                            light: '#f5e4e6',
+                            dark: '#b37880'
+                        },
+                        ecru: {
+                            DEFAULT: '#F4EFE6',
+                            dark: '#e3dcce',
+                            light: '#faf8f5'
+                        },
+                        gold: {
+                            DEFAULT: '#B49A68',
+                            light: '#d6c29a',
+                            dark: '#917949'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #F4EFE6;
+            color: #344A78;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        .font-serif-jp {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .glass-nav {
+            background: rgba(244, 239, 230, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-pattern {
+            background-image: radial-gradient(#B49A68 0.75px, transparent 0.75px), radial-gradient(#344A78 0.75px, #F4EFE6 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            background-opacity: 0.05;
+        }
+
+        /* Refined KOIORI design system */
+        body { letter-spacing: .015em; }
+        .glass-nav { background: rgba(250, 248, 245, .78); border-color: rgba(180,154,104,.16); }
+        section { position: relative; }
+        .product-card { border-radius: 1.25rem; }
+        .product-card:hover { transform: translateY(-6px); }
+        h1, h2, h3 { letter-spacing: .02em; }
+        .hero-pattern { background-image: linear-gradient(135deg, rgba(180,154,104,.08) 1px, transparent 1px), linear-gradient(45deg, rgba(52,74,120,.035) 1px, transparent 1px); background-size: 42px 42px; }
+        .section-kicker { letter-spacing: .18em; }
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4EFE6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B49A68;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #344A78;
+        }
+
+        /* KOIORI visual hero slideshow */
+        .hero-slideshow { position:absolute; inset:0; overflow:hidden; background:#efe9e7; }
+        .hero-slide { position:absolute; inset:0; opacity:0; transition:opacity 1.6s ease-in-out, transform 7s ease-out; transform:scale(1.04); background-size:cover; background-position:center; }
+        .hero-slide.active { opacity:1; transform:scale(1); }
+        .hero-overlay { position:absolute; inset:0; background:linear-gradient(90deg, rgba(15,24,55,.62) 0%, rgba(15,24,55,.28) 42%, rgba(244,239,230,.18) 100%); }
+        .hero-content { text-shadow:0 2px 20px rgba(0,0,0,.18); }
+        .hero-content .hero-panel { background:rgba(250,248,245,.76); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:0 18px 60px rgba(20,25,50,.16); }
+        .hero-dots button { width:9px; height:9px; border-radius:999px; background:rgba(255,255,255,.55); transition:all .3s; }
+        .hero-dots button.active { width:28px; background:#fff; }
+        @media (max-width: 767px) { .hero-overlay { background:linear-gradient(to bottom, rgba(15,24,55,.35), rgba(15,24,55,.12) 40%, rgba(244,239,230,.55)); } .hero-slide { background-position:center; } }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-sakura selection:text-navy">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-gold/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="flex items-center">
+                    <img src="./img/koiori_logo.png" alt="KOIORI | 恋織" class="h-11 sm:h-12 w-auto object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-navy">
+                <a href="#vision" class="hover:text-gold transition-colors" data-i18n="nav_vision">01 Vision</a>
+                <a href="#products" class="hover:text-gold transition-colors" data-i18n="nav_products">02 Products</a>
+                <a href="#collaboration" class="hover:text-gold transition-colors" data-i18n="nav_collab">03 Collaboration</a>
+                <a href="#market" class="hover:text-gold transition-colors" data-i18n="nav_market">04 Market</a>
+                <a href="#branding" class="hover:text-gold transition-colors" data-i18n="nav_branding">05 Branding</a>
+                <a href="#promotion" class="hover:text-gold transition-colors" data-i18n="nav_promo">06 Promotion</a>
+            </nav>
+
+            <!-- Language Switcher & Partner CTA -->
+            <div class="flex items-center space-x-4">
+                <button id="langToggle" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-full border border-gold/60 text-xs font-semibold text-navy bg-white/50 hover:bg-navy hover:text-white transition-all duration-300 shadow-sm flex items-center space-x-1.5">
+                    <i class="fa-solid fa-globe text-gold"></i>
+                    <span id="langText">EN / 日本語</span>
+                </button>
+                <!-- <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full bg-navy text-ecru text-xs font-medium hover:bg-gold hover:text-navy transition-all duration-300 shadow-md">
+                    <span data-i18n="nav_partner">パートナー・お問い合わせ</span>
+                </a> -->
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-navy p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-ecru border-b border-gold/20 px-6 py-4 space-y-3 shadow-xl">
+            <a href="#vision" onclick="toggleMobileMenu()" class="block text-navy font-medium py-1" data-i18n="nav_vision">01 Vision</a>
+            <a href="#products" onclick="toggleMobileMenu()" class="block text-navy font-medium py-1" data-i18n="nav_products">02 Products</a>
+            <a href="#collaboration" onclick="toggleMobileMenu()" class="block text-navy font-medium py-1" data-i18n="nav_collab">03 Collaboration</a>
+            <a href="#market" onclick="toggleMobileMenu()" class="block text-navy font-medium py-1" data-i18n="nav_market">04 Market</a>
+            <a href="#branding" onclick="toggleMobileMenu()" class="block text-navy font-medium py-1" data-i18n="nav_branding">05 Branding</a>
+            <a href="#promotion" onclick="toggleMobileMenu()" class="block text-navy font-medium py-1" data-i18n="nav_promo">06 Promotion</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-center w-full py-2 bg-navy text-ecru rounded-full text-xs font-medium" data-i18n="nav_partner">パートナー・お問い合わせ</a>
+        </div>
+    </header>
+
+    <!-- Hero Section / Visual Slideshow -->
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
+        <div class="hero-slideshow" aria-label="KOIORI Collection Visuals">
+            <div class="hero-slide active" style="background-image:url('./img/koiori-jewelry.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('./img/koiori-mizuhiki.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('./img/koiori-scarf.jpg')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-20">
+            <div class="max-w-2xl hero-content">
+                <div class="hero-panel rounded-3xl p-7 sm:p-10 md:p-12 border border-white/60">
+                    <p class="text-xs md:text-base tracking-[0.28em] text-gold font-semibold mb-3">JAPANESE CRAFT × CONTEMPORARY DESIGN</p>
+                    <div class="mb-3">
+                        <span class="font-serif-jp text-3xl md:text-4xl font-bold tracking-wider text-navy" data-i18n="hero_brand">KOIORI <span class="text-2xl md:text-3xl font-normal text-gold ml-2">恋を、織る。</span></span>
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-serif-jp font-bold text-navy tracking-tight mb-5 leading-tight">
+                        <span class="block" data-i18n="hero_title_1">日本の伝統技術を、未来ブランドに織りなおす。</span>
+                    </h1>
+                    <p class="text-sm md:text-base text-navy/80 font-light mb-8 leading-relaxed" data-i18n="hero_desc">日本の伝統技術と若手デザイナーの感性が出会う、新しい日本発ブランド。技術・デザイン・市場をつなぎ、世界へ新たな価値をお届けします。</p>
+                </div>
+            </div>
+        </div>    </section>
+
+    <!-- 01 / VISION Section -->
+    <section id="vision" class="py-24 bg-white/60 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="text-xs font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-md">01 / VISION</span>
+                <div class="h-[1px] bg-gold/30 flex-grow"></div>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-serif-jp font-bold text-navy mb-6" data-i18n="vision_main_title">
+                ニッポンの伝統と感性を織り合わせ、新しいブランドを世界へ。
+            </h2>
+            <p class="text-lg text-navy/80 max-w-3xl mb-16 font-light leading-relaxed" data-i18n="vision_main_desc">
+                KOIORIは、技術・デザイン・市場をつなぐ共創ブランドです。伝統の技を現代の生活空間やグローバルなリゾートシーンに再編集し、世界へと発信します。
+            </p>
+
+            <!-- 3 Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Pillar 1 -->
+                <div class="bg-ecru/60 p-8 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute -right-4 -bottom-4 text-gold/10 text-8xl font-bold font-serif select-none group-hover:scale-110 transition-transform">技</div>
+                    <span class="text-xs font-semibold text-gold tracking-widest uppercase mb-2 block">HERITAGE | 伝統</span>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-4" data-i18n="vision_p1_title">職人の技と地域性</h3>
+                    <p class="text-sm text-navy/80 leading-relaxed" data-i18n="vision_p1_desc">
+                        日本各地の老舗工房に受け継がれる熟練の技術、厳選された素材、地域に根差したものづくりの背景。
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-ecru/60 p-8 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute -right-4 -bottom-4 text-gold/10 text-8xl font-bold font-serif select-none group-hover:scale-110 transition-transform">感</div>
+                    <span class="text-xs font-semibold text-gold tracking-widest uppercase mb-2 block">CREATIVITY | 創造</span>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-4" data-i18n="vision_p2_title">若手デザイナーの感性</h3>
+                    <p class="text-sm text-navy/80 leading-relaxed" data-i18n="vision_p2_desc">
+                        次世代を担う若いクリエイターたちの新しい発想と現代のライフスタイルを融合させる洗練のデザイン。
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-ecru/60 p-8 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute -right-4 -bottom-4 text-gold/10 text-8xl font-bold font-serif select-none group-hover:scale-110 transition-transform">世</div>
+                    <span class="text-xs font-semibold text-gold tracking-widest uppercase mb-2 block">GLOBAL | 世界</span>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-4" data-i18n="vision_p3_title">世界への新しい価値</h3>
+                    <p class="text-sm text-navy/80 leading-relaxed" data-i18n="vision_p3_desc">
+                        ラグジュアリーリゾート、高級ホテル、世界中のセレクトショップへ新しい日本発ブランドの販路を開拓。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 / PRODUCTS Section -->
+    <section id="products" class="py-24 bg-ecru">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="text-xs font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-md">02 / PRODUCTS</span>
+                <div class="h-[1px] bg-gold/30 flex-grow"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-serif-jp font-bold text-navy mb-3" data-i18n="prod_main_title">
+                        世界の旅先で出会う、日本の美。
+                    </h2>
+                    <p class="text-navy/80 font-light" data-i18n="prod_main_desc">「機能美」に拘った製品は、世界の日常やラグジュアリーな空間に溶け込みます。</p>
+                </div>
+
+                <!-- Product Filters -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2">
+                    <button onclick="filterProducts('all')" class="prod-filter active px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-navy text-ecru shadow-sm" data-filter="all" data-i18n="filter_all">すべて</button>
+                    <button onclick="filterProducts('craft')" class="prod-filter px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white/80 text-navy border border-gold/40 hover:bg-sakura/20" data-filter="craft" data-i18n="filter_craft">伝統工芸</button>
+                    <button onclick="filterProducts('lifestyle')" class="prod-filter px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white/80 text-navy border border-gold/40 hover:bg-sakura/20" data-filter="lifestyle" data-i18n="filter_lifestyle">ライフスタイル</button>
+                    <button onclick="filterProducts('gift')" class="prod-filter px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white/80 text-navy border border-gold/40 hover:bg-sakura/20" data-filter="gift" data-i18n="filter_gift">限定ギフト</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+                
+                <!-- Product 1: Edo Kiriko -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="craft">
+                    <div class="h-64 overflow-hidden relative bg-navy/10">
+                        <img src="https://placehold.co/600x400/344A78/F4EFE6?text=Edo+Kiriko" onerror="this.src='https://placehold.co/600x400/344A78/F4EFE6?text=Edo+Kiriko'" alt="江戸切子グラス" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">江戸切子 / Craft</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p1_title">江戸切子グラス</h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p1_desc">光が織りなす江戸の美。熟練のカット技術が創り出すきらめきを現代のテーブルウェアへ。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold/20">
+                            <span class="text-xs font-medium text-gold" data-i18n="p_tag">伝統工芸 × モダンデザイン</span>
+                            <button onclick="openProductModal('江戸切子グラス', '光が織りなす江戸の美。熟練のガラス職人と若手デザイナーの協業により誕生した、現代の空間に映えるカットグラス。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Koikaze Fan -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="lifestyle">
+                    <div class="h-64 overflow-hidden relative bg-navy/10">
+                        <img src="https://placehold.co/600x400/D9A7AD/344A78?text=Koikaze+Fan" onerror="this.src='https://placehold.co/600x400/D9A7AD/344A78?text=Koikaze+Fan'" alt="恋風 扇子" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">恋風 / Lifestyle</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p2_title">恋風 - 扇子</h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p2_desc">世界の街角でも美しく、やわらかな涼を贈る。伝統の竹骨と優美な和紙のグラデーション。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold/20">
+                            <span class="text-xs font-medium text-gold" data-i18n="p_tag">機能美・携帯性</span>
+                            <button onclick="openProductModal('恋風 - 扇子', '世界の街角でも美しく使える洗練されたデザイン。伝統的な扇子骨のしなやかさに、現代的な色彩感覚を吹き込みました。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Koinu Silk Scarf & Bags -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="lifestyle">
+                    <div class="h-64 overflow-hidden relative bg-navy/10">
+                        <img src="https://placehold.co/600x400/B49A68/F4EFE6?text=Koinu+Silk" onerror="this.src='https://placehold.co/600x400/B49A68/F4EFE6?text=Koinu+Silk'" alt="恋布 スカーフ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">恋布 / Lifestyle</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p3_title">恋布 - スカーフ・バッグ</h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p3_desc">横浜シルクや伝統織物を活かしたスカーフ、傘、手提げ袋など日常を彩る布製品。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold/20">
+                            <span class="text-xs font-medium text-gold" data-i18n="p_tag">横浜シルク × デザイン</span>
+                            <button onclick="openProductModal('恋布 - スカーフ・バッグ', '横浜シルクなどの上質なテキスタイルを使用し、洗練されたパターンデザインを施した日常を彩るラグジュアリーアイテム。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Raden & Makie -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="craft">
+                    <div class="h-64 overflow-hidden relative bg-navy/10">
+                        <img src="https://placehold.co/600x400/344A78/D9A7AD?text=Raden+Makie" onerror="this.src='https://placehold.co/600x400/344A78/D9A7AD?text=Raden+Makie'" alt="螺鈿・蒔絵" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">螺鈿・蒔絵 / Craft</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p4_title">螺鈿・蒔絵 工芸品</h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p4_desc">虹色に輝く貝殻の意匠と金銀の粉で描く極上の彩り。世界にひとつの美しさ。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold/20">
+                            <span class="text-xs font-medium text-gold" data-i18n="p_tag">伝統加飾技術</span>
+                            <button onclick="openProductModal('螺鈿・蒔絵 工芸品', '漆器に金銀の粉や貝の薄片を嵌め込む伝統技法。現代のインテリアやアクセサリに調和する洗練されたコレクション。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Kumihimo & Mizuhiki -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="craft">
+                    <div class="h-64 overflow-hidden relative bg-navy/10">
+                        <img src="https://placehold.co/600x400/B49A68/344A78?text=Kumihimo+Mizuhiki" onerror="this.src='https://placehold.co/600x400/B49A68/344A78?text=Kumihimo+Mizuhiki'" alt="組紐・水引" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">組紐・水引 / Craft</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p5_title">組紐・水引 アクセサリー</h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p5_desc">結ぶ想いを美しく。伝統の技が紡ぐ永遠の美しさを身に纏うモダンジュエリー。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold/20">
+                            <span class="text-xs font-medium text-gold" data-i18n="p_tag">結びの美学</span>
+                            <button onclick="openProductModal('組紐・水引 アクセサリー', '糸や水引を結んで形作る日本の伝統。人と人との縁を紡ぐストーリー性豊かなジュエリーやオブジェ。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Custom Gifts -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="gift">
+                    <div class="h-64 overflow-hidden relative bg-navy/10">
+                        <img src="https://placehold.co/600x400/D9A7AD/F4EFE6?text=Custom+Gifts" onerror="this.src='https://placehold.co/600x400/D9A7AD/F4EFE6?text=Custom+Gifts'" alt="限定ギフト・特注品" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">限定ギフト / Gift</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p6_title">各施設限定ギフトプログラム</h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p6_desc">世界のリゾート施設、ラグジュアリーホテル、企業ごとのオリジナルデザインパッケージ。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold/20">
+                            <span class="text-xs font-medium text-gold" data-i18n="p_tag">B2B オーダーメイド</span>
+                            <button onclick="openProductModal('各施設限定ギフトプログラム', '高級ホテルやリゾート、グローバル企業向けに、施設のアイデンティティを反映した特注パッケージおよび限定コレクションを制作。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 / COLLABORATION Section -->
+    <section id="collaboration" class="py-24 bg-white/60 border-t border-b border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="text-xs font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-md">03 / COLLABORATION</span>
+                <div class="h-[1px] bg-gold/30 flex-grow"></div>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-serif-jp font-bold text-navy mb-6" data-i18n="collab_main_title">
+                伝統ブランドが支える、新たなブランド。
+            </h2>
+            <p class="text-lg text-navy/80 max-w-3xl mb-16 font-light leading-relaxed" data-i18n="collab_main_desc">
+                伝統技術を語り継ぐ老舗工房と、情熱溢れる若手デザイナーの共創が拓く未来。KOIORIは両者を結ぶ架け橋となります。
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <!-- Old Brand -->
+                <div class="bg-ecru p-8 rounded-2xl border border-gold/30 text-center shadow-sm">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-navy text-ecru flex items-center justify-center text-xl mb-4 shadow">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="collab_b1_title">老舗ブランド</h3>
+                    <ul class="text-sm text-navy/80 space-y-2 mt-4 text-left">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i><span data-i18n="collab_b1_1">高い技術と確かな品質</span></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i><span data-i18n="collab_b1_2">歴史が紡ぐ深いストーリー</span></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i><span data-i18n="collab_b1_3">世代を超えて受け継ぐ素材</span></li>
+                    </ul>
+                </div>
+
+                <!-- Plus / KOIORI Center -->
+                <div class="text-center py-6 lg:py-0">
+                    <div class="inline-block p-6 rounded-full bg-navy text-ecru shadow-xl border-4 border-gold/40 mb-4 animate-bounce">
+                        <span class="font-serif font-bold text-2xl">KOIORI</span>
+                    </div>
+                    <p class="text-xs font-bold text-gold uppercase tracking-widest" data-i18n="collab_center_text">共創プロダクトを世界の販売先へ</p>
+                </div>
+
+                <!-- Young Designer -->
+                <div class="bg-ecru p-8 rounded-2xl border border-gold/30 text-center shadow-sm">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-sakura text-navy flex items-center justify-center text-xl mb-4 shadow">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="collab_b2_title">若手デザイナー</h3>
+                    <ul class="text-sm text-navy/80 space-y-2 mt-4 text-left">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i><span data-i18n="collab_b2_1">新しい発想と現代的感性</span></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i><span data-i18n="collab_b2_2">グローバル市場を見据えたデザイン</span></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i><span data-i18n="collab_b2_3">ライフスタイルへの適応力</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 / MARKET Section -->
+    <section id="market" class="py-24 bg-ecru">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="text-xs font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-md">04 / MARKET</span>
+                <div class="h-[1px] bg-gold/30 flex-grow"></div>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-serif-jp font-bold text-navy mb-6" data-i18n="market_main_title">
+                目指すのは、世界。
+            </h2>
+            <p class="text-lg text-navy/80 max-w-3xl mb-16 font-light leading-relaxed" data-i18n="market_main_desc">
+                KOIORIは、日本発の新たな世界ブランドを共創するプロジェクトです。世界の主要なラグジュアリーステークホルダーへ展開します。
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Market 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-umbrella-beach text-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-serif-jp font-bold text-navy mb-2" data-i18n="m1_title">世界のリゾート</h3>
+                    <p class="text-sm text-navy/70" data-i18n="m1_desc">滞在体験と深く結びつく、一味違うスーベニアやルームアメニティとして。</p>
+                </div>
+
+                <!-- Market 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-hotel text-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-serif-jp font-bold text-navy mb-2" data-i18n="m2_title">ラグジュアリーホテル</h3>
+                    <p class="text-sm text-navy/70" data-i18n="m2_desc">伝統文化や芸術への関心が高い世界中のアッパー層に向けた特別なしつらえ。</p>
+                </div>
+
+                <!-- Market 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-store text-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-serif-jp font-bold text-navy mb-2" data-i18n="m3_title">セレクトショップ</h3>
+                    <p class="text-sm text-navy/70" data-i18n="m3_desc">世界ブランドに負けない洗練されたデザイン性と品質を誇るインテリア・雑貨店。</p>
+                </div>
+
+                <!-- Market 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-globe text-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-serif-jp font-bold text-navy mb-2" data-i18n="m4_title">世界的な企業</h3>
+                    <p class="text-sm text-navy/70" data-i18n="m4_desc">“Designed & Made in Japan” の誇りを宿した記念品やVIP贈答品に。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 / BRANDING & DESIGN SYSTEM Section -->
+    <section id="branding" class="py-24 bg-white/60 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="text-xs font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-md">05 / BRANDING</span>
+                <div class="h-[1px] bg-gold/30 flex-grow"></div>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-serif-jp font-bold text-navy mb-6" data-i18n="brand_main_title">
+                デザインシステム & カラーパレット
+            </h2>
+            <p class="text-lg text-navy/80 max-w-3xl mb-16 font-light leading-relaxed" data-i18n="brand_main_desc">
+                日本の美意識とモダンなエレガンスを体現するKOIORIの色彩設計。伝統と現代の調和を生み出すカラーコード。
+            </p>
+
+            <!-- Color Palette Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <!-- Color 1 -->
+                <div class="bg-ecru rounded-2xl p-6 border border-gold/30 shadow-sm">
+                    <div class="w-full h-24 rounded-xl bg-[#344A78] mb-4 shadow-inner border border-white/20"></div>
+                    <span class="text-xs font-semibold text-gold uppercase tracking-widest">Deep Navy</span>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-1">深群青</h3>
+                    <p class="text-xs font-mono text-navy/70 mb-2">#344A78</p>
+                    <p class="text-xs text-navy/80" data-i18n="c1_desc">主役・伝統・洗練を象徴する基調色</p>
+                </div>
+
+                <!-- Color 2 -->
+                <div class="bg-ecru rounded-2xl p-6 border border-gold/30 shadow-sm">
+                    <div class="w-full h-24 rounded-xl bg-[#D9A7AD] mb-4 shadow-inner border border-white/20"></div>
+                    <span class="text-xs font-semibold text-gold uppercase tracking-widest">Cherry Blossom</span>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-1">雅桜</h3>
+                    <p class="text-xs font-mono text-navy/70 mb-2">#D9A7AD</p>
+                    <p class="text-xs text-navy/80" data-i18n="c2_desc">差し色・やさしさ・恋心を表現する色</p>
+                </div>
+
+                <!-- Color 3 -->
+                <div class="bg-ecru rounded-2xl p-6 border border-gold/30 shadow-sm">
+                    <div class="w-full h-24 rounded-xl bg-[#F4EFE6] mb-4 shadow-inner border border-gold/40"></div>
+                    <span class="text-xs font-semibold text-gold uppercase tracking-widest">Silk Ecru</span>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-1">絹生成り</h3>
+                    <p class="text-xs font-mono text-navy/70 mb-2">#F4EFE6</p>
+                    <p class="text-xs text-navy/80" data-i18n="c3_desc">ベース・上品・自然な風合いの背景</p>
+                </div>
+
+                <!-- Color 4 -->
+                <div class="bg-ecru rounded-2xl p-6 border border-gold/30 shadow-sm">
+                    <div class="w-full h-24 rounded-xl bg-[#B49A68] mb-4 shadow-inner border border-white/20"></div>
+                    <span class="text-xs font-semibold text-gold uppercase tracking-widest">Subtle Gold</span>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-1">淡金</h3>
+                    <p class="text-xs font-mono text-navy/70 mb-2">#B49A68</p>
+                    <p class="text-xs text-navy/80" data-i18n="c4_desc">アクセント・特別感・上質な輝き</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 / PROMOTION Section -->
+    <section id="promotion" class="py-24 bg-ecru border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="text-xs font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-md">06 / PROMOTION</span>
+                <div class="h-[1px] bg-gold/30 flex-grow"></div>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-serif-jp font-bold text-navy mb-6" data-i18n="promo_main_title">
+                伝えるのは、あなた。
+            </h2>
+            <p class="text-lg text-navy/80 max-w-3xl mb-16 font-light leading-relaxed" data-i18n="promo_main_desc">
+                KOIORIは、デジタルプロモーションの最先端を実践します。映像・インフルエンサー・ファンのコミュニティを通じて世界へ波及させます。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Promo 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-gold/30 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-navy text-ecru flex items-center justify-center text-lg mb-6">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-3" data-i18n="pr1_title">高品質プロモーション映像</h3>
+                    <p class="text-sm text-navy/70 leading-relaxed" data-i18n="pr1_desc">B2Bマーケティングおよびブランドイメージを高めるシネマティックな映像美を発信。</p>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-gold/30 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-sakura text-navy flex items-center justify-center text-lg mb-6">
+                        <i class="fa-solid fa-camera-retro"></i>
+                    </div>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-3" data-i18n="pr2_title">世界のインフルエンサー</h3>
+                    <p class="text-sm text-navy/70 leading-relaxed" data-i18n="pr2_desc">ストーリーを深く理解する世界のクリエイター・インフルエンサーとのコラボレーション。</p>
+                </div>
+
+                <!-- Promo 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-gold/30 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-gold text-white flex items-center justify-center text-lg mb-6">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-serif-jp font-bold text-navy mb-3" data-i18n="pr3_title">KOIORI 界隈（コミュニティ）</h3>
+                    <p class="text-sm text-navy/70 leading-relaxed" data-i18n="pr3_desc">ファンがファンを呼び、製品の魅力やユーザーの感動が世界へ自発的に広がる仕組み。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LET'S WEAVE THE FUTURE & Partner Recruitment / Contact -->
+    <section id="contact" class="py-24 bg-navy text-ecru relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 hero-pattern"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-semibold tracking-widest text-sakura uppercase mb-2 block">LET'S WEAVE THE FUTURE</span>
+                <h2 class="text-3xl md:text-5xl font-serif-jp font-bold text-white mb-4" data-i18n="contact_main_title">
+                    日本のものづくりの未来を、一緒に織りましょう。
+                </h2>
+                <p class="text-ecru/80 font-light" data-i18n="contact_main_desc">
+                    KOIORIは、共創パートナー（伝統工芸事業者・若手デザイナー・実店舗パートナー）を募集しています。
+                </p>
+            </div>
+
+            <!-- Partner Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="bg-white/10 backdrop-blur p-6 rounded-2xl border border-gold/30 text-center">
+                    <i class="fa-solid fa-hammer text-sakura text-2xl mb-3"></i>
+                    <h3 class="font-serif-jp font-bold text-lg mb-2" data-i18n="part_1_title">伝統工芸事業者</h3>
+                    <p class="text-xs text-ecru/70" data-i18n="part_1_desc">技術・製造・ブランドの新しい可能性をともに切り拓く工房様。</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-2xl border border-gold/30 text-center">
+                    <i class="fa-solid fa-pen-nib text-sakura text-2xl mb-3"></i>
+                    <h3 class="font-serif-jp font-bold text-lg mb-2" data-i18n="part_2_title">若手デザイナー</h3>
+                    <p class="text-xs text-ecru/70" data-i18n="part_2_desc">商品コンセプトやデザインで世界を目指すクリエイター様。</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-2xl border border-gold/30 text-center">
+                    <i class="fa-solid fa-shop text-sakura text-2xl mb-3"></i>
+                    <h3 class="font-serif-jp font-bold text-lg mb-2" data-i18n="part_3_title">実店舗パートナー</h3>
+                    <p class="text-xs text-ecru/70" data-i18n="part_3_desc">KOIORI製品の店頭販売・ホテル導入をご検討のリゾート・ショップ様。</p>
+                </div>
+            </div>
+
+            <!-- Inquiry Form -->
+            <div class="bg-white text-navy p-8 md:p-12 rounded-3xl shadow-2xl border border-gold/40 max-w-3xl mx-auto">
+                <h3 class="text-2xl font-serif-jp font-bold mb-6 text-center" data-i18n="form_title">パートナー・お問い合わせフォーム</h3>
+                <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-navy/70 mb-2" data-i18n="form_name">お名前 / Name</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gold/40 focus:outline-none focus:border-navy text-sm bg-ecru/30" placeholder="山田 太郎 / Taro Yamada">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-navy/70 mb-2" data-i18n="form_email">メールアドレス / Email</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gold/40 focus:outline-none focus:border-navy text-sm bg-ecru/30" placeholder="example@domain.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-navy/70 mb-2" data-i18n="form_type">パートナー種別 / Partner Category</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-gold/40 focus:outline-none focus:border-navy text-sm bg-ecru/30">
+                            <option data-i18n="opt_1">伝統工芸事業者 / Craft Artisan</option>
+                            <option data-i18n="opt_2">若手デザイナー / Young Designer</option>
+                            <option data-i18n="opt_3">実店舗・ホテルパートナー / Retail & Hotel Partner</option>
+                            <option data-i18n="opt_4">その他 / General Inquiry</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-navy/70 mb-2" data-i18n="form_msg">メッセージ / Message</label>
+                        <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-gold/40 focus:outline-none focus:border-navy text-sm bg-ecru/30" placeholder="お問い合わせ内容をご記入ください..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-navy text-ecru font-medium hover:bg-gold hover:text-navy transition-all duration-300 shadow-lg" data-i18n="form_submit">
+                        送信する / Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-ecru/60 py-12 border-t border-gold/20 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center">
+                <img src="./img/koiori_logo.png" alt="KOIORI | 恋織" class="h-9 w-auto object-contain brightness-0 invert opacity-90">
+            </div>
+            <p class="text-center" data-i18n="footer_copy">
+                Produced by Kacche LLC | 2026. All Rights Reserved. <br>
+                参照パートナー候補: <a href="https://ogura-fabrics.co.jp/" target="_blank" class="underline hover:text-sakura">ogura-fabrics.co.jp</a>
+            </p>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-sakura transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+                <a href="#" class="hover:text-sakura transition-colors"><i class="fa-brands fa-x-twitter text-base"></i></a>
+                <a href="#" class="hover:text-sakura transition-colors"><i class="fa-brands fa-linkedin text-base"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-ecru rounded-3xl max-w-lg w-full p-8 relative border border-gold/40 shadow-2xl animate-fade-in">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <span id="modalCategory" class="text-xs font-semibold text-gold tracking-widest uppercase mb-1 block">KOIORI COLLECTION</span>
+            <h3 id="modalTitle" class="text-2xl font-serif-jp font-bold text-navy mb-4">製品タイトル</h3>
+            <p id="modalDesc" class="text-sm text-navy/80 leading-relaxed mb-8">製品詳細説明がここに表示されます。</p>
+            <div class="flex justify-end">
+                <button onclick="closeProductModal()" class="px-6 py-2.5 rounded-full bg-navy text-ecru text-xs font-medium hover:bg-gold hover:text-navy transition-all" data-i18n="modal_close">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-navy text-ecru px-6 py-3 rounded-2xl shadow-2xl border border-gold/40 text-xs flex items-center space-x-3 transition-all">
+        <i class="fa-solid fa-circle-check text-sakura text-base"></i>
+        <span id="toastText">メッセージが送信されました。</span>
+    </div>
+
+    <!-- JavaScript for Bilingual Toggle, Filtering, and Interactivity -->
+    <script>
+        let currentLang = 'ja';
+
+        const translations = {
+            ja: {
+                tagline_sub: "恋を、織る。 Woven with Love",
+                nav_vision: "01 Vision",
+                nav_products: "02 Products",
+                nav_collab: "03 Collaboration",
+                nav_market: "04 Market",
+                nav_branding: "05 Branding",
+                nav_promo: "06 Promotion",
+                nav_partner: "パートナー・お問い合わせ",
+                hero_brand: "KOIORI <span class='text-2xl md:text-3xl font-normal text-gold ml-2'>恋を、織る。</span>",
+                hero_title_1: "日本の伝統技術を、未来ブランドに織りなおす。",
+                hero_title_2: "Woven with Love.",
+                hero_desc: "日本の伝統技術と若手デザイナーの感性が出会う、新しい日本発ブランド。技術・デザイン・市場をつなぎ、世界へ新たな価値をお届けします。",
+                hero_btn_explore: "コレクションを見る",
+                hero_btn_vision: "ビジョンについて",
+                vision_main_title: "ニッポンの伝統と感性を織り合わせ、新しいブランドを世界へ。",
+                vision_main_desc: "KOIORIは、技術・デザイン・市場をつなぐ共創ブランドです。伝統の技を現代の生活空間やグローバルなリゾートシーンに再編集し、世界へと発信します。",
+                vision_p1_title: "職人の技と地域性",
+                vision_p1_desc: "日本各地の老舗工房に受け継がれる熟練の技術、厳選された素材、地域に根差したものづくりの背景。",
+                vision_p2_title: "若手デザイナーの感性",
+                vision_p2_desc: "次世代を担う若いクリエイターたちの新しい発想と現代のライフスタイルを融合させる洗練のデザイン。",
+                vision_p3_title: "世界への新しい価値",
+                vision_p3_desc: "ラグジュアリーリゾート、高級ホテル、世界中のセレクトショップへ新しい日本発ブランドの販路を開拓。",
+                prod_main_title: "世界の旅先で出会う、日本の美。",
+                prod_main_desc: "「機能美」に拘った製品は、世界の日常やラグジュアリーな空間に溶け込みます。",
+                filter_all: "すべて",
+                filter_craft: "伝統工芸",
+                filter_lifestyle: "ライフスタイル",
+                filter_gift: "限定ギフト",
+                p1_title: "江戸切子グラス",
+                p1_desc: "光が織りなす江戸の美。熟練のカット技術が創り出すきらめきを現代のテーブルウェアへ。",
+                p2_title: "恋風 - 扇子",
+                p2_desc: "世界の街角でも美しく、やわらかな涼を贈る。伝統の竹骨と優美な和紙のグラデーション。",
+                p3_title: "恋布 - スカーフ・バッグ",
+                p3_desc: "横浜シルクや伝統織物を活かしたスカーフ、傘、手提げ袋など日常を彩る布製品。",
+                p4_title: "螺鈿・蒔絵 工芸品",
+                p4_desc: "虹色に輝く貝殻の意匠と金銀の粉で描く極上の彩り。世界にひとつの美しさ。",
+                p5_title: "組紐・水引 アクセサリー",
+                p5_desc: "結ぶ想いを美しく。伝統の技が紡ぐ永遠の美しさを身に纏うモダンジュエリー。",
+                p6_title: "各施設限定ギフトプログラム",
+                p6_desc: "世界のリゾート施設、ラグジュアリーホテル、企業ごとのオリジナルデザインパッケージ。",
+                p_tag: "伝統工芸 × モダンデザイン",
+                collab_main_title: "伝統ブランドが支える、新たなブランド。",
+                collab_main_desc: "伝統技術を語り継ぐ老舗工房と、情熱溢れる若手デザイナーの共創が拓く未来。KOIORIは両者を結ぶ架け橋となります。",
+                collab_b1_title: "老舗ブランド",
+                collab_b1_1: "高い技術と確かな品質",
+                collab_b1_2: "歴史が紡ぐ深いストーリー",
+                collab_b1_3: "世代を超えて受け継ぐ素材",
+                collab_center_text: "共創プロダクトを世界の販売先へ",
+                collab_b2_title: "若手デザイナー",
+                collab_b2_1: "新しい発想と現代的感性",
+                collab_b2_2: "グローバル市場を見据えたデザイン",
+                collab_b2_3: "ライフスタイルへの適応力",
+                market_main_title: "目指すのは、世界。",
+                market_main_desc: "KOIORIは、日本発の新たな世界ブランドを共創するプロジェクトです。世界の主要なラグジュアリーステークホルダーへ展開します。",
+                m1_title: "世界のリゾート",
+                m1_desc: "滞在体験と深く結びつく、一味違うスーベニアやルームアメニティとして。",
+                m2_title: "ラグジュアリーホテル",
+                m2_desc: "伝統文化や芸術への関心が高い世界中のアッパー層に向けた特別なしつらえ。",
+                m3_title: "セレクトショップ",
+                m3_desc: "世界ブランドに負けない洗練されたデザイン性と品質を誇るインテリア・雑貨店。",
+                m4_title: "世界的な企業",
+                m4_desc: "“Designed & Made in Japan” の誇りを宿した記念品やVIP贈答品に。",
+                brand_main_title: "デザインシステム & カラーパレット",
+                brand_main_desc: "日本の美意識とモダンなエレガンスを体現するKOIORIの色彩設計。伝統と現代の調和を生み出すカラーコード。",
+                c1_desc: "主役・伝統・洗練を象徴する基調色",
+                c2_desc: "差し色・やさしさ・恋心を表現する色",
+                c3_desc: "ベース・上品・自然な風合いの背景",
+                c4_desc: "アクセント・特別感・上質な輝き",
+                promo_main_title: "伝えるのは、あなた。",
+                promo_main_desc: "KOIORIは、デジタルプロモーションの最先端を実践します。映像・インフルエンサー・ファンのコミュニティを通じて世界へ波及させます。",
+                pr1_title: "高品質プロモーション映像",
+                pr1_desc: "B2Bマーケティングおよびブランドイメージを高めるシネマティックな映像美を発信。",
+                pr2_title: "世界のインフルエンサー",
+                pr2_desc: "ストーリーを深く理解する世界のクリエイター・インフルエンサーとのコラボレーション。",
+                pr3_title: "KOIORI 界隈（コミュニティ）",
+                pr3_desc: "ファンがファンを呼び、製品の魅力やユーザーの感動が世界へ自発的に広がる仕組み。",
+                contact_main_title: "日本のものづくりの未来を、一緒に織りましょう。",
+                contact_main_desc: "KOIORIは、共創パートナー（伝統工芸事業者・若手デザイナー・実店舗パートナー）を募集しています。",
+                part_1_title: "伝統工芸事業者",
+                part_1_desc: "技術・製造・ブランドの新しい可能性をともに切り拓く工房様。",
+                part_2_title: "若手デザイナー",
+                part_2_desc: "商品コンセプトやデザインで世界を目指すクリエイター様。",
+                part_3_title: "実店舗パートナー",
+                part_3_desc: "KOIORI製品の店頭販売・ホテル導入をご検討のリゾート・ショップ様。",
+                form_title: "パートナー・お問い合わせフォーム",
+                form_name: "お名前 / Name",
+                form_email: "メールアドレス / Email",
+                form_type: "パートナー種別 / Partner Category",
+                opt_1: "伝統工芸事業者 / Craft Artisan",
+                opt_2: "若手デザイナー / Young Designer",
+                opt_3: "実店舗・ホテルパートナー / Retail & Hotel Partner",
+                opt_4: "その他 / General Inquiry",
+                form_msg: "メッセージ / Message",
+                form_submit: "送信する / Send Message",
+                footer_copy: "Produced by Kacche LLC | 2026. All Rights Reserved. <br> 参照パートナー候補: ogura-fabrics.co.jp",
+                modal_close: "閉じる"
+            },
+            en: {
+                tagline_sub: "Woven with Love.",
+                nav_vision: "01 Vision",
+                nav_products: "02 Products",
+                nav_collab: "03 Collaboration",
+                nav_market: "04 Market",
+                nav_branding: "05 Branding",
+                nav_promo: "06 Promotion",
+                nav_partner: "Partnership & Contact",
+                hero_brand: "KOIORI <span class='text-2xl md:text-3xl font-normal text-gold ml-2'>- Woven with Love</span>",
+                hero_title_1: "Weaving Japanese heritage into tomorrow's brand.",
+                hero_title_2: "Woven with Love.",
+                hero_desc: "A new Japanese brand where traditional craft meets the sensitivity of young designers. Connecting heritage, creativity, and the global market.",
+                hero_btn_explore: "Explore Collection",
+                hero_btn_vision: "Our Vision",
+                vision_main_title: "Weaving Japanese Heritage and Sensibility into a Global Brand.",
+                vision_main_desc: "KOIORI is a co-creation brand bridging heritage craft, modern design, and global markets, bringing reimagined Japanese aesthetics to the world.",
+                vision_p1_title: "Master Craftsmanship",
+                vision_p1_desc: "Rooted in time-honored techniques, carefully curated materials, and regional craftsmanship from across Japan.",
+                vision_p2_title: "Young Designer Vision",
+                vision_p2_desc: "Sophisticated designs fusing fresh perspectives from the next generation of creators with contemporary lifestyles.",
+                vision_p3_title: "Global Value Creation",
+                vision_p3_desc: "Opening new distribution channels in luxury resorts, high-end hotels, and select concept stores worldwide.",
+                prod_main_title: "Japanese Aesthetics Found in Global Travels.",
+                prod_main_desc: "Products designed with functional beauty that naturally harmonize with daily life and luxury environments worldwide.",
+                filter_all: "All",
+                filter_craft: "Crafts",
+                filter_lifestyle: "Lifestyle",
+                filter_gift: "Exclusive Gifts",
+                p1_title: "Edo Kiriko Glass",
+                p1_desc: "The beauty of Edo woven by light. Master cut glass sparkling in modern table settings.",
+                p2_title: "Koikaze - Folding Fan",
+                p2_desc: "Soft cooling breezes in every corner of the world. Traditional bamboo ribs with elegant washi gradients.",
+                p3_title: "Koinu - Silk Scarves & Bags",
+                p3_desc: "Luxurious textile items including Yokohama silk scarves, umbrellas, and tote bags.",
+                p4_title: "Raden & Makie Artifacts",
+                p4_desc: "Iridescent shell inlay and gold/silver dust painting creating one-of-a-kind splendor.",
+                p5_title: "Kumihimo & Mizuhiki Jewelry",
+                p5_desc: "The beauty of knotting. Modern jewelry embodying eternal bonds through traditional techniques.",
+                p6_title: "Exclusive Resort Gift Programs",
+                p6_desc: "Original custom-designed packaging tailored for world-class resorts, hotels, and corporations.",
+                p_tag: "Tradition × Modern Design",
+                collab_main_title: "A New Brand Supported by Heritage Masters.",
+                collab_main_desc: "The future opened by co-creation between long-established craft ateliers and passionate young designers.",
+                collab_b1_title: "Heritage Brands",
+                collab_b1_1: "Superior craftsmanship & quality",
+                collab_b1_2: "Rich historical storytelling",
+                collab_b1_3: "Generational raw materials",
+                collab_center_text: "Connecting Co-Created Products Worldwide",
+                collab_b2_title: "Young Designers",
+                collab_b2_1: "Fresh ideas & contemporary sensibility",
+                collab_b2_2: "Global market-oriented design",
+                collab_b2_3: "Lifestyle adaptability",
+                market_main_title: "Aimed at the World.",
+                market_main_desc: "KOIORI is a co-creation project forging a new global brand originating from Japan.",
+                m1_title: "Global Resorts",
+                m1_desc: "Unique souvenirs and room amenities deeply tied to the luxury guest experience.",
+                m2_title: "Luxury Hotels",
+                m2_desc: "Special furnishings for discerning guests interested in traditional culture and art.",
+                m3_title: "Select Concept Shops",
+                m3_desc: "Interior and lifestyle stores boasting design and quality rivaling global brands.",
+                m4_title: "Global Corporations",
+                m4_desc: "Mementoes and VIP gifts bearing the pride of 'Designed & Made in Japan'.",
+                brand_main_title: "Design System & Color Palette",
+                brand_main_desc: "KOIORI's color design embodying Japanese aesthetics and modern elegance, creating harmony between past and present.",
+                c1_desc: "Primary color symbolizing tradition & sophistication",
+                c2_desc: "Accent color expressing tenderness & romance",
+                c3_desc: "Base tone offering natural elegance",
+                c4_desc: "Accent tone providing exquisite golden brilliance",
+                promo_main_title: "Spreading the Story through You.",
+                promo_main_desc: "Practicing cutting-edge digital promotion through cinematic videos, global influencers, and passionate fan communities.",
+                pr1_title: "High-End Promotional Videos",
+                pr1_desc: "Cinematic visual storytelling enhancing B2B marketing and brand prestige.",
+                pr2_title: "Global Influencers",
+                pr2_desc: "Collaborations with world-class creators who deeply understand the brand narrative.",
+                pr3_title: "KOIORI Community",
+                pr3_desc: "An ecosystem where fans inspire others, naturally spreading user delight worldwide.",
+                contact_main_title: "Let's Weave the Future of Japanese Craftsmanship Together.",
+                contact_main_desc: "KOIORI is currently seeking co-creation partners: craft artisans, young designers, and retail partners.",
+                part_1_title: "Craft Artisans",
+                part_1_desc: "Ateliers ready to pioneer new possibilities in technique, production, and branding.",
+                part_2_title: "Young Designers",
+                part_2_desc: "Creators aiming for the global stage with novel concepts and designs.",
+                part_3_title: "Retail Partners",
+                part_3_desc: "Resorts and shops interested in carrying KOIORI products or hotel installations.",
+                form_title: "Partnership & Inquiry Form",
+                form_name: "Name",
+                form_email: "Email Address",
+                form_type: "Partner Category",
+                opt_1: "Craft Artisan",
+                opt_2: "Young Designer",
+                opt_3: "Retail & Hotel Partner",
+                opt_4: "General Inquiry",
+                form_msg: "Message",
+                form_submit: "Send Message",
+                footer_copy: "Produced by Kacche LLC | 2026. All Rights Reserved. <br> Reference Partner Candidate: ogura-fabrics.co.jp",
+                modal_close: "Close"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+            document.getElementById('langText').innerText = currentLang === 'ja' ? 'EN / 日本語' : 'JA / English';
+            document.documentElement.setAttribute('lang', currentLang);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function filterProducts(category) {
+            // Update button styles
+            document.querySelectorAll('.prod-filter').forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.remove('bg-white/80', 'text-navy', 'border', 'border-gold/40');
+                    btn.classList.add('bg-navy', 'text-ecru');
+                } else {
+                    btn.classList.remove('bg-navy', 'text-ecru');
+                    btn.classList.add('bg-white/80', 'text-navy', 'border', 'border-gold/40');
+                }
+            });
+
+            // Filter cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openProductModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+            e.target.reset();
+        }
+
+        // KOIORI hero slideshow
+        (() => {
+            const slides = [...document.querySelectorAll('.hero-slide')];
+            const dots = [...document.querySelectorAll('.hero-dots button')];
+            let current = 0, timer;
+            const show = (n) => {
+                current = (n + slides.length) % slides.length;
+                slides.forEach((s,i) => s.classList.toggle('active', i === current));
+                dots.forEach((d,i) => d.classList.toggle('active', i === current));
+            };
+            const start = () => { clearInterval(timer); timer = setInterval(() => show(current + 1), 5500); };
+            dots.forEach((dot,i) => dot.addEventListener('click', () => { show(i); start(); }));
+            start();
+        })();
+
+    </script>
+</body>
+</html>
