@@ -521,9 +521,9 @@
                     <div>
                         <label class="block text-xs font-semibold uppercase text-navy/70 mb-2" data-i18n="form_type"></label>
                         <select class="w-full px-4 py-3 rounded-xl border border-gold/40 focus:outline-none focus:border-navy text-sm bg-ecru/30">
-                            <option data-i18n="opt_1">伝統工芸事業者 / Craft Artisan</option>
-                            <option data-i18n="opt_2">若手デザイナー / Young Designer</option>
-                            <option data-i18n="opt_3">実店舗・ホテルパートナー / Retail & Hotel Partner</option>
+                            <option data-i18n="opt_1">製造事業者 / Craft Factories</option>
+                            <option data-i18n="opt_2">デザイナー / Designers</option>
+                            <option data-i18n="opt_3">販売協力店 / Retail Partners</option>
                             <option data-i18n="opt_4">その他 / General Inquiry</option>
                         </select>
                     </div>
@@ -545,39 +545,18 @@
             <div class="flex items-center">
                 <img src="./img/koiori_logo.png" alt="KOIORI | 恋織" class="h-9 w-auto object-contain brightness-0 invert opacity-90">
             </div>
-            <p class="text-center" data-i18n="footer_copy">
-                Produced by Kacche LLC | 2026. All Rights Reserved. <br>
-                参照パートナー候補: <a href="https://ogura-fabrics.co.jp/" target="_blank" class="underline hover:text-sakura">ogura-fabrics.co.jp</a>
-            </p>
+            <p class="text-center" data-i18n="footer_copy"></p>
             <div class="flex space-x-4">
+                <a href="https://kacche.jp" class="hover:text-sakura transition-colors" target="_blank">https://kacche.jp</a>
                 <a href="#" class="hover:text-sakura transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
-                <a href="#" class="hover:text-sakura transition-colors"><i class="fa-brands fa-x-twitter text-base"></i></a>
-                <a href="#" class="hover:text-sakura transition-colors"><i class="fa-brands fa-linkedin text-base"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- Product Modal -->
-    <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-ecru rounded-3xl max-w-lg w-full p-8 relative border border-gold/40 shadow-2xl animate-fade-in">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <span id="modalCategory" class="text-xs font-semibold text-gold tracking-widest uppercase mb-1 block">KOIORI COLLECTION</span>
-            <h3 id="modalTitle" class="text-2xl font-serif-jp font-bold text-navy mb-4">製品タイトル</h3>
-            <p id="modalDesc" class="text-sm text-navy/80 leading-relaxed mb-8">製品詳細説明がここに表示されます。</p>
-            <div class="flex justify-end">
-                <button onclick="closeProductModal()" class="px-6 py-2.5 rounded-full bg-navy text-ecru text-xs font-medium hover:bg-gold hover:text-navy transition-all" data-i18n="modal_close">
-                    閉じる
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-navy text-ecru px-6 py-3 rounded-2xl shadow-2xl border border-gold/40 text-xs flex items-center space-x-3 transition-all">
         <i class="fa-solid fa-circle-check text-sakura text-base"></i>
-        <span id="toastText">メッセージが送信されました。</span>
+        <span id="toastText">メッセージが送信されました。/ Message sent.</span>
     </div>
 
     <!-- JavaScript for Bilingual Toggle, Filtering, and Interactivity -->
@@ -602,12 +581,12 @@
                 hero_btn_vision: "ビジョンについて",
                 vision_main_title: "伝統技術と現代の感性を織り合わせ、新たな魅力を世界へ。",
                 vision_main_desc: "KOIORIは、伝統技術・若手デザイナー・世界をつなぐ共創ブランドです。長い歴史を持つ日本のモノづくりの技術を、新しい日本発ブランドとして再編集し、未来志向の素敵な製品を求める世界各国のカスタマーに発信します。",
-                vision_p1_title: "職人の技と地域性",
+                vision_p1_title: "地域産業を支える職人の技",
                 vision_p1_desc: "日本各地の老舗工房に受け継がれる熟練の技術、厳選された素材、地域に根差したものづくりの背景。",
                 vision_p2_title: "若手デザイナーの感性",
                 vision_p2_desc: "次世代を担う若いクリエイターたちの新しい発想と現代のライフスタイルを融合させる洗練のデザイン。",
-                vision_p3_title: "世界への新しい価値",
-                vision_p3_desc: "ラグジュアリーリゾート、高級ホテル、世界中のセレクトショップへ新しい日本発ブランドの販路を開拓。",
+                vision_p3_title: "世界市場へのチャレンジ",
+                vision_p3_desc: "ラグジュアリーリゾート、高級ホテル、世界中のセレクトショップへ。新たなる日本発ブランドの販路を開拓。",
                 prod_main_title: "世界の街角で出会う、日本の美。",
                 prod_main_desc: "「機能美」に拘った製品は、世界の日常やラグジュアリーな空間に溶け込みます。",
                 filter_all: "すべて",
@@ -618,8 +597,8 @@
                 p1_desc: "光が織りなす江戸の美。熟練のカット技術と若手デザイナーの感性が創り出す新たな光の美しさ。",
                 p2_title: "恋風 - 扇子",
                 p2_desc: "世界の街角でも美しく、やわらかな涼を贈る。伝統の竹骨と優美な和紙のグラデーション。",
-                p3_title: "恋布 - スカーフ・織布製品",
-                p3_desc: "日本伝統の織物技術と新鮮なデザインが共創するプロダクツで、世界の日常を華やかに。",
+                p3_title: "恋布 - シルクスカーフ",
+                p3_desc: "日本伝統のシルク技術と若手デザイナーが共創する美しいスカーフをまとい、世界の街角へ。",
                 p4_title: "恋珠 - 螺鈿アクセサリー",
                 p4_desc: "貝の薄片を漆器に嵌め込む伝統技法が創り出す大人のための洗練されたコレクション。",
                 p5_title: "恋紐 - 組紐／水引アクセサリー",
@@ -663,13 +642,13 @@
                 pr3_title: "KOIORI 界隈（コミュニティ）",
                 pr3_desc: "ファンがファンを呼び、製品の魅力やユーザーの感動が世界へ自発的に広がる仕組み。",
                 contact_main_title: "日本のものづくりの未来を、一緒に織りましょう。",
-                contact_main_desc: "KOIORIは、共創パートナー（伝統工芸事業者・若手デザイナー・実店舗パートナー）を募集しています。",
-                part_1_title: "伝統工芸事業者",
-                part_1_desc: "技術・製造・ブランドの新しい可能性をともに切り拓く工房様。",
+                contact_main_desc: "KOIORIは、共創パートナーを募集しています。",
+                part_1_title: "製造事業者",
+                part_1_desc: "技術・製造・ブランドの新しい可能性をともに切り拓くお手伝いを頂ける工房・工場様。",
                 part_2_title: "若手デザイナー",
-                part_2_desc: "商品コンセプトやデザインで世界を目指すクリエイター様。",
-                part_3_title: "実店舗パートナー",
-                part_3_desc: "KOIORI製品の店頭販売・ホテル導入をご検討のリゾート・ショップ様。",
+                part_2_desc: "伝統工芸技術を活かしつつ若さ溢れる華やかなデザインに取り組んで頂ける方。",
+                part_3_title: "販売パートナー",
+                part_3_desc: "KOIORI製品の店頭販売をご検討頂ける、全国・全世界のショップ様。",
                 form_title: "パートナー・お問い合わせフォーム",
                 form_name: "お名前 / Name",
                 form_email: "メールアドレス / Email",
@@ -680,7 +659,7 @@
                 opt_4: "その他 / General Inquiry",
                 form_msg: "メッセージ / Message",
                 form_submit: "送信する / Send Message",
-                footer_copy: "Produced by Kacche LLC | 2026. All Rights Reserved. <br> 参照パートナー候補: ogura-fabrics.co.jp",
+                footer_copy: "事業企画・運営：活知恵合同会社 | 2026-2027. All Rights Reserved.",
                 modal_close: "閉じる"
             },
             en: {
@@ -712,18 +691,18 @@
                 filter_craft: "Crafts",
                 filter_lifestyle: "Lifestyle",
                 filter_gift: "Exclusive Gifts",
-                p1_title: "Edo Kiriko Glass",
-                p1_desc: "The beauty of Edo woven by light. Master cut glass sparkling in modern table settings.",
+                p1_title: "Koihikari - Edo Kiriko Accessories",
+                p1_desc: "The beauty of Edo through the play of light. A new brilliance created by the fusion of masterful cutting techniques and young designers' sensibilities.",
                 p2_title: "Koikaze - Folding Fan",
                 p2_desc: "Soft cooling breezes in every corner of the world. Traditional bamboo ribs with elegant washi gradients.",
-                p3_title: "Koinu - Silk Scarves & Bags",
-                p3_desc: "Luxurious textile items including Yokohama silk scarves, umbrellas, and tote bags.",
-                p4_title: "Raden & Makie Artifacts",
-                p4_desc: "Iridescent shell inlay and gold/silver dust painting creating one-of-a-kind splendor.",
-                p5_title: "Kumihimo & Mizuhiki Jewelry",
-                p5_desc: "The beauty of knotting. Modern jewelry embodying eternal bonds through traditional techniques.",
-                p6_title: "Exclusive Resort Gift Programs",
-                p6_desc: "Original custom-designed packaging tailored for world-class resorts, hotels, and corporations.",
+                p3_title: "Koifu - Silk Scarves",
+                p3_desc: "Wearing beautiful scarves co-created by Japan's traditional silk techniques and young designers, bringing elegance to the streets worldwide.",
+                p4_title: "Koijyu - Raden Accessories",
+                p4_desc: "Sophisticated collections for adults, crafted using the traditional technique of embedding thin shell pieces into lacquerware.",
+                p5_title: "Koihimo - Braided Cord / Mizuhiki Accessories",
+                p5_desc: "Beautifully tying emotions. Modern jewelry that embodies the eternal beauty woven by traditional techniques.",
+                p6_title: "Koiki - Makie Accessories",
+                p6_desc: "Accessories for special people, created through the traditional technique of sprinkling gold and silver powder onto lacquerware, imbuing it with a radiant glow.",
                 p_tag: "Tradition × Modern Design",
                 collab_main_title: "A New Brand Supported by Heritage Masters.",
                 collab_main_desc: "The future opened by co-creation between long-established craft ateliers and passionate young designers.",
@@ -778,7 +757,7 @@
                 opt_4: "General Inquiry",
                 form_msg: "Message",
                 form_submit: "Send Message",
-                footer_copy: "Produced by Kacche LLC | 2026. All Rights Reserved. <br> Reference Partner Candidate: ogura-fabrics.co.jp",
+                footer_copy: "Produced by Kacche LLC | 2026-2027. All Rights Reserved.",
                 modal_close: "Close"
             }
         };
