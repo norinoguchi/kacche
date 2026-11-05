@@ -504,8 +504,25 @@
                 </div>
             </div>
 
+            <!-- Inquiry Form (Commented out) & Direct Email Contact -->
+            <div class="bg-white text-navy p-8 md:p-12 rounded-3xl shadow-2xl border border-gold/40 max-w-2xl mx-auto text-center">
+                <div class="w-16 h-16 mx-auto rounded-full bg-navy/10 text-navy flex items-center justify-center text-2xl mb-4 shadow-sm border border-gold/30">
+                    <i class="fa-solid fa-envelope text-gold"></i>
+                </div>
+                <h3 class="text-xl font-serif-jp font-bold mb-3" data-i18n="contact_info_label">お問い合わせ先（メール）</h3>
+                <p class="text-sm text-navy/70 mb-6 font-light leading-relaxed" data-i18n="contact_email_note">
+                    本件に関するお問い合わせは、下記メールアドレスまでお気軽にご連絡ください。
+                </p>
+                <div class="inline-block bg-ecru px-6 py-4 rounded-2xl border border-gold/40 shadow-inner">
+                    <a href="mailto:koiori@kacche.jp" class="text-lg md:text-xl font-semibold text-navy hover:text-gold transition-colors flex items-center space-x-3">
+                        <i class="fa-solid fa-paper-plane text-gold text-base"></i>
+                        <span>koiori@kacche.jp</span>
+                    </a>
+                </div>
+            </div>
+
             <!-- Inquiry Form -->
-            <div class="bg-white text-navy p-8 md:p-12 rounded-3xl shadow-2xl border border-gold/40 max-w-3xl mx-auto">
+            <!-- <div class="bg-white text-navy p-8 md:p-12 rounded-3xl shadow-2xl border border-gold/40 max-w-3xl mx-auto">
                 <h3 class="text-2xl font-serif-jp font-bold mb-6 text-center" data-i18n="form_title"></h3>
                 <form onsubmit="handleFormSubmit(event)" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -534,7 +551,7 @@
                     <button type="submit" class="w-full py-4 rounded-xl bg-navy text-ecru font-medium hover:bg-gold hover:text-navy transition-all duration-300 shadow-lg" data-i18n="form_submit">
                         送信する / Send Message
                     </button>
-                </form>
+                </form> -->
             </div>
         </div>
     </section>
@@ -548,7 +565,7 @@
             <p class="text-center" data-i18n="footer_copy"></p>
             <div class="flex space-x-4">
                 <a href="https://kacche.jp" class="hover:text-sakura transition-colors" target="_blank">https://kacche.jp</a>
-                <a href="#" class="hover:text-sakura transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+                <a href="https://www.instagram.com/koiori2026/" class="hover:text-sakura transition-colors" target="_blank"><i class="fa-brands fa-instagram text-base"></i></a>
             </div>
         </div>
     </footer>
@@ -659,6 +676,8 @@
                 opt_4: "その他 / General Inquiry",
                 form_msg: "メッセージ / Message",
                 form_submit: "送信する / Send Message",
+                contact_info_label: "お問い合わせ先（メール）",
+                contact_email_note: "本件に関するお問い合わせは、下記メールアドレスまでお気軽にご連絡ください。",
                 footer_copy: "事業企画・運営：活知恵合同会社 | 2026-2027. All Rights Reserved.",
                 modal_close: "閉じる"
             },
@@ -757,6 +776,8 @@
                 opt_4: "General Inquiry",
                 form_msg: "Message",
                 form_submit: "Send Message",
+                contact_info_label: "Inquiry Email",
+                contact_email_note: "For inquiries regarding this project, please feel free to contact us via the email address below.",
                 footer_copy: "Produced by Kacche LLC | 2026-2027. All Rights Reserved.",
                 modal_close: "Close"
             }
