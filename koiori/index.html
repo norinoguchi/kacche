@@ -233,48 +233,37 @@
                     <h2 class="text-3xl md:text-4xl font-serif-jp font-bold text-navy mb-3" data-i18n="prod_main_title"></h2>
                     <p class="text-navy/80 font-light" data-i18n="prod_main_desc"></p>
                 </div>
-
-                <!-- Product Filters -->
-                <!-- <div class="mt-6 md:mt-0 flex flex-wrap gap-2">
-                    <button onclick="filterProducts('all')" class="prod-filter active px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-navy text-ecru shadow-sm" data-filter="all" data-i18n="filter_all">すべて</button>
-                    <button onclick="filterProducts('craft')" class="prod-filter px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white/80 text-navy border border-gold/40 hover:bg-sakura/20" data-filter="craft" data-i18n="filter_craft">伝統工芸</button>
-                    <button onclick="filterProducts('lifestyle')" class="prod-filter px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white/80 text-navy border border-gold/40 hover:bg-sakura/20" data-filter="lifestyle" data-i18n="filter_lifestyle">ライフスタイル</button>
-                    <button onclick="filterProducts('gift')" class="prod-filter px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white/80 text-navy border border-gold/40 hover:bg-sakura/20" data-filter="gift" data-i18n="filter_gift">限定ギフト</button>
-                </div> -->
             </div>
 
             <!-- Products Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
                 
-                <!-- Product 1: Edo Kiriko -->
+                <!-- Product 1 -->
                 <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="craft">
                     <div class="h-64 overflow-hidden relative bg-navy/10">
-                        <img src="./img/kiriko.jpg" alt="江戸切子グラス" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">                        <!-- <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">江戸切子 / Craft</span> -->
+                        <img src="./img/koiori-cushion.jpg" alt="クッション" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">                        <!-- <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">江戸切子 / Craft</span> -->
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p1_title"></h3>
                         <p class="text-sm text-navy/70 mb-4" data-i18n="p1_desc"></p>
                         <div class="flex items-center justify-between pt-4 border-t border-gold/20">
                             <span class="text-xs font-medium text-gold" data-i18n="p_tag"></span>
-                            <!-- <button onclick="openProductModal('江戸切子グラス', '光が織りなす江戸の美。熟練のガラス職人と若手デザイナーの協業により誕生した、現代の空間に映えるカットグラス。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button> -->
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 2: Koikaze Fan -->
-                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="lifestyle">
+                <!-- Product 2: Table Cross -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="craft">
                     <div class="h-64 overflow-hidden relative bg-navy/10">
-                        <img src="./img/koikaze.jpg" alt="恋風 扇子" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <!-- <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">恋風 / Lifestyle</span> -->
+                        <img src="./img/koiori-table.jpg" alt="テーブルクロス" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <!-- <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">螺鈿・蒔絵 / Craft</span> -->
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p2_title"></h3>
-                        <p class="text-sm text-navy/70 mb-4" data-i18n="p2_desc"></p>
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p4_title"></h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p4_desc"></p>
                         <div class="flex items-center justify-between pt-4 border-t border-gold/20">
                             <span class="text-xs font-medium text-gold" data-i18n="p_tag"></span>
-                            <!-- <button onclick="openProductModal('恋風 - 扇子', '世界の街角でも美しく使える洗練されたデザイン。伝統的な扇子骨のしなやかさに、現代的な色彩感覚を吹き込みました。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                            <!-- <button onclick="openProductModal('螺鈿・蒔絵 工芸品', '漆器に金銀の粉や貝の薄片を嵌め込む伝統技法。現代のインテリアやアクセサリに調和する洗練されたコレクション。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
                                 <i class="fa-solid fa-plus text-xs"></i>
                             </button> -->
                         </div>
@@ -299,18 +288,18 @@
                     </div>
                 </div>
 
-                <!-- Product 4: Raden & Makie -->
-                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="craft">
+                <!-- Product 4: -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gold/30 shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="lifestyle">
                     <div class="h-64 overflow-hidden relative bg-navy/10">
-                        <img src="./img/raden.jpg" alt="螺鈿アクセサリー" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <!-- <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">螺鈿・蒔絵 / Craft</span> -->
+                        <img src="./img/koikaze.jpg" alt="恋風 扇子" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <!-- <span class="absolute top-4 left-4 bg-navy/80 backdrop-blur text-ecru text-[10px] tracking-widest px-3 py-1 rounded-full uppercase font-medium">恋風 / Lifestyle</span> -->
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p4_title"></h3>
-                        <p class="text-sm text-navy/70 mb-4" data-i18n="p4_desc"></p>
+                        <h3 class="text-xl font-serif-jp font-bold text-navy mb-2" data-i18n="p2_title"></h3>
+                        <p class="text-sm text-navy/70 mb-4" data-i18n="p2_desc"></p>
                         <div class="flex items-center justify-between pt-4 border-t border-gold/20">
                             <span class="text-xs font-medium text-gold" data-i18n="p_tag"></span>
-                            <!-- <button onclick="openProductModal('螺鈿・蒔絵 工芸品', '漆器に金銀の粉や貝の薄片を嵌め込む伝統技法。現代のインテリアやアクセサリに調和する洗練されたコレクション。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
+                            <!-- <button onclick="openProductModal('恋風 - 扇子', '世界の街角でも美しく使える洗練されたデザイン。伝統的な扇子骨のしなやかさに、現代的な色彩感覚を吹き込みました。')" class="w-8 h-8 rounded-full bg-navy/10 text-navy flex items-center justify-center hover:bg-navy hover:text-white transition-colors">
                                 <i class="fa-solid fa-plus text-xs"></i>
                             </button> -->
                         </div>
@@ -436,6 +425,15 @@
             <p class="text-lg text-navy/80 max-w-3xl mb-16 font-light leading-relaxed" data-i18n="market_main_desc"></p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Market 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-store text-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-serif-jp font-bold text-navy mb-2" data-i18n="m3_title"></h3>
+                    <p class="text-sm text-navy/70" data-i18n="m3_desc"></p>
+                </div>
+
                 <!-- Market 1 -->
                 <div class="bg-white p-6 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow">
                     <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center text-lg mb-4">
@@ -452,15 +450,6 @@
                     </div>
                     <h3 class="text-lg font-serif-jp font-bold text-navy mb-2" data-i18n="m2_title"></h3>
                     <p class="text-sm text-navy/70" data-i18n="m2_desc"></p>
-                </div>
-
-                <!-- Market 3 -->
-                <div class="bg-white p-6 rounded-2xl border border-gold/30 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center text-lg mb-4">
-                        <i class="fa-solid fa-store text-gold"></i>
-                    </div>
-                    <h3 class="text-lg font-serif-jp font-bold text-navy mb-2" data-i18n="m3_title"></h3>
-                    <p class="text-sm text-navy/70" data-i18n="m3_desc"></p>
                 </div>
 
                 <!-- Market 4 -->
@@ -604,20 +593,22 @@
                 vision_p2_desc: "次世代を担う若いクリエイターたちの新しい発想と現代のライフスタイルを融合させる洗練のデザイン。",
                 vision_p3_title: "世界市場へのチャレンジ",
                 vision_p3_desc: "ラグジュアリーリゾート、高級ホテル、世界中のセレクトショップへ。新たなる日本発ブランドの販路を開拓。",
-                prod_main_title: "世界の街角で出会う、日本の美。",
+                prod_main_title: "世界の日常に映える、日本の美。",
                 prod_main_desc: "「機能美」に拘った製品は、世界の日常やラグジュアリーな空間に溶け込みます。",
                 filter_all: "すべて",
                 filter_craft: "伝統工芸",
                 filter_lifestyle: "ライフスタイル",
                 filter_gift: "限定ギフト",
-                p1_title: "恋光 - 江戸切子アクセサリー",
-                p1_desc: "光が織りなす江戸の美。熟練のカット技術と若手デザイナーの感性が創り出す新たな光の美しさ。",
+                p1_title: "恋枕 - 伝統工芸クッション",
+                p1_desc: "日本各地の伝統的な織物を用いた、高級感のあるデザインと機能性に満ちたクッション。",
+                // p1_title: "恋光 - 江戸切子アクセサリー",
+                // p1_desc: "光が織りなす江戸の美。熟練のカット技術と若手デザイナーの感性が創り出す新たな光の美しさ。",
                 p2_title: "恋風 - 扇子",
                 p2_desc: "世界の街角でも美しく、やわらかな涼を贈る。伝統の竹骨と優美な和紙のグラデーション。",
                 p3_title: "恋布 - シルクスカーフ",
                 p3_desc: "日本伝統のシルク技術と若手デザイナーが共創する美しいスカーフをまとい、世界の街角へ。",
-                p4_title: "恋珠 - 螺鈿アクセサリー",
-                p4_desc: "貝の薄片を漆器に嵌め込む伝統技法が創り出す大人のための洗練されたコレクション。",
+                p4_title: "恋机 - テーブルランナー",
+                p4_desc: "美しい日本の織物と洋風のライフスタイルが融合した、高級感のあるテーブルランナー。",
                 p5_title: "恋紐 - 組紐／水引アクセサリー",
                 p5_desc: "結ぶ想いを美しく。伝統の技が紡ぐ永遠の美しさを身に纏うモダンジュエリー。",
                 p6_title: "恋輝 - 蒔絵アクセサリー",
@@ -641,7 +632,7 @@
                 m2_title: "ラグジュアリーホテル",
                 m2_desc: "伝統文化や芸術への関心が高い世界中のプレステージ層に向けた特別な宿泊記念品。",
                 m3_title: "セレクトショップ",
-                m3_desc: "世界ブランドに負けない洗練されたデザイン性と品質を誇るアクセサリー・日常品。",
+                m3_desc: "世界ブランドに負けない美しいデザインと品質を誇る日常品やアクセサリー。",
                 m4_title: "世界的な企業",
                 m4_desc: "“Designed & Made in Japan” の確かな価値を、特別なお客様への贈り物として。",
                 brand_main_title: "デザインシステム & カラーパレット",
@@ -710,14 +701,16 @@
                 filter_craft: "Crafts",
                 filter_lifestyle: "Lifestyle",
                 filter_gift: "Exclusive Gifts",
-                p1_title: "Koihikari - Edo Kiriko Accessories",
-                p1_desc: "The beauty of Edo through the play of light. A new brilliance created by the fusion of masterful cutting techniques and young designers' sensibilities.",
+                p1_title: "koimakura - Traditional Craft Cushions",
+                p1_desc: "Cushions crafted from traditional Japanese textiles, combining luxurious design with functional elegance.",
+                // p1_title: "Koihikari - Edo Kiriko Accessories",
+                // p1_desc: "The beauty of Edo through the play of light. A new brilliance created by the fusion of masterful cutting techniques and young designers' sensibilities.",
                 p2_title: "Koikaze - Folding Fan",
                 p2_desc: "Soft cooling breezes in every corner of the world. Traditional bamboo ribs with elegant washi gradients.",
                 p3_title: "Koifu - Silk Scarves",
                 p3_desc: "Wearing beautiful scarves co-created by Japan's traditional silk techniques and young designers, bringing elegance to the streets worldwide.",
-                p4_title: "Koijyu - Raden Accessories",
-                p4_desc: "Sophisticated collections for adults, crafted using the traditional technique of embedding thin shell pieces into lacquerware.",
+                p4_title: "Koitsukue - Table Runners",
+                p4_desc: "Beautiful table runners that blend traditional Japanese textiles with contemporary design.",
                 p5_title: "Koihimo - Braided Cord / Mizuhiki Accessories",
                 p5_desc: "Beautifully tying emotions. Modern jewelry that embodies the eternal beauty woven by traditional techniques.",
                 p6_title: "Koiki - Makie Accessories",
